@@ -1,0 +1,18 @@
+* text=auto
+
+*.md text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.css text eol=lf
+*.tsx text eol=lf
+*.svg text eol=lf
+*.plist text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+
+*.ico -text
+*.icns -text
+*.png -text
+
+scripts/* linguist-vendored
+webpack.config.js linguist-vendored

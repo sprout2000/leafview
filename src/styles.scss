@@ -1,0 +1,37 @@
+@mixin transitionAll {
+  transition: all 0.3s ease-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root,
+.wrapper {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  overflow: hidden;
+
+  .sidebar {
+    flex: 1 0 0;
+    background-color: rgb(37, 37, 38);
+    @include transitionAll();
+  }
+
+  .collapsed {
+    flex: 1 0 200px;
+  }
+
+  .content {
+    flex: auto;
+    width: 100%;
+    position: relative;
+    @include transitionAll();
+  }
+}

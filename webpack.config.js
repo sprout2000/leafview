@@ -1,0 +1,111 @@
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const isDev = process.env.NODE_ENV === 'development';
+
+/** @type import('webpack').Configuration */
+const main = {
+  mode: isDev ? 'development' : 'production',
+  target: 'electron-main',
+  resolve: {
+    extensions: ['.js', '.ts', '.json'],
+  },
+  entry: './src/main.ts',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
+      },
+    ],
+  },
+  devtool: isDev ? 'inline-source-map' : false,
+};
+
+/** @type import('webpack').Configuration */
+const preload = {
+  mode: isDev ? 'development' : 'production',
+  target: 'electron-preload',
+  resolve: {
+    extensions: ['.js', '.ts', '.json'],
+  },
+  entry: './src/preload.ts',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'preload.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
+      },
+    ],
+  },
+  devtool: isDev ? 'inline-source-map' : false,
+};
+
+/** @type import('webpack').Configuration */
+const renderer = {
+  mode: isDev ? 'development' : 'production',
+  target: 'web',
+  resolve: {
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
+  },
+  entry: {
+    app: './src/app.tsx',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: isDev,
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: isDev,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(bmp|ico|gif|jpe?g|png|svg|ttf|eot|woff?2?)$/,
+        loader: 'url-loader',
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ],
+  performance: {
+    hints: false,
+  },
+  devtool: isDev ? 'inline-source-map' : false,
+};
+
+module.exports = [main, preload, renderer];

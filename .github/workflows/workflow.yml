@@ -1,0 +1,28 @@
+name: GitHub CI
+on:
+  push:
+    tags:
+      - 'v0.2.*'
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@master
+      with:
+        node-version: 12.x
+    - name: Install
+      run: yarn install
+    - name: Build
+      run: yarn build:prod
+    - name: Package
+      env: 
+        CSC_LINK: ${{ secrets.CSC_LINK }}
+        CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+        APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
+        APPLE_ID: ${{ secrets.APPLE_ID }}
+        APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+        ASC_PROVIDER: ${{ secrets.ASC_PROVIDER }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: yarn release
