@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,6 +15,9 @@ import './styles.scss';
 const App = (): JSX.Element => {
   const [sidebar, setSidebar] = useState(true);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
+
   const onClickToggle = (): void => {
     setSidebar((sidebar) => !sidebar);
   };
@@ -22,7 +25,7 @@ const App = (): JSX.Element => {
   return (
     <div className="wrapper">
       <div className={sidebar ? 'sidebar' : 'sidebar collapsed'}></div>
-      <div className="content">
+      <div ref={containerRef} className="content">
         <div className="bottom">
           <div className="toolbar">
             <div className="controls">
@@ -48,6 +51,7 @@ const App = (): JSX.Element => {
             </div>
           </div>
         </div>
+        <div ref={mapRef} className="map"></div>
       </div>
     </div>
   );

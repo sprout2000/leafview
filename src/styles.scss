@@ -56,6 +56,10 @@ body,
         border-radius: 6px;
         background-color: rgba(0, 0, 0, 0.8);
 
+        .map {
+          background-color: transparent;
+        }
+
         .controls {
           width: 144px;
           display: flex;
