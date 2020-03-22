@@ -49,13 +49,39 @@ body,
       transition: opacity 0.8s linear;
 
       .toolbar {
-        height: 48px;
+        display: flex;
+        height: 60px;
+        align-items: center;
+        padding: 0 24px;
+        border-radius: 6px;
+        background-color: rgba(0, 0, 0, 0.8);
+
+        .controls {
+          width: 144px;
+          display: flex;
+          justify-content: flex-start;
+        }
+
+        .arrows {
+          display: flex;
+        }
+
+        .trash {
+          width: 144px;
+          display: flex;
+          justify-content: flex-end;
+        }
 
         .icon-container {
+          width: 48px;
+          height: 48px;
           display: flex;
-          justify-content: start;
+          justify-content: center;
           align-items: center;
-          color: #ffffff;
+          color: rgb(174, 174, 178);
+          &:active {
+            color: rgb(242, 242, 247);
+          }
         }
       }
     }

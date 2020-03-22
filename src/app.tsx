@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faListAlt } from '@fortawesome/free-regular-svg-icons';
+import {
+  faListAlt,
+  faFolderOpen,
+  faArrowAltCircleLeft,
+  faArrowAltCircleRight,
+  faTrashAlt,
+} from '@fortawesome/free-regular-svg-icons';
 
 import './styles.scss';
 
@@ -19,8 +25,26 @@ const App = (): JSX.Element => {
       <div className="content">
         <div className="bottom">
           <div className="toolbar">
-            <div onClick={onClickToggle} className="icon-container">
-              <FontAwesomeIcon icon={faListAlt} size="2x" />
+            <div className="controls">
+              <div onClick={onClickToggle} className="icon-container">
+                <FontAwesomeIcon icon={faListAlt} size="2x" />
+              </div>
+              <div className="icon-container">
+                <FontAwesomeIcon icon={faFolderOpen} size="2x" />
+              </div>
+            </div>
+            <div className="arrows">
+              <div className="icon-container">
+                <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
+              </div>
+              <div className="icon-container">
+                <FontAwesomeIcon icon={faArrowAltCircleRight} size="2x" />
+              </div>
+            </div>
+            <div className="trash">
+              <div className="icon-container">
+                <FontAwesomeIcon icon={faTrashAlt} size="2x" />
+              </div>
             </div>
           </div>
         </div>
