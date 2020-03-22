@@ -57,7 +57,7 @@ if (!gotTheLock && win32) {
       title: 'LessView',
       show: false,
       autoHideMenuBar: true,
-      backgroundColor: '#1e1e1e',
+      backgroundColor: '#323232',
       webPreferences: {
         preload: path.resolve(getSourceDirectory(), 'preload.js'),
         nodeIntegration: false,

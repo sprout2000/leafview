@@ -33,5 +33,31 @@ body,
     width: 100%;
     position: relative;
     @include transitionAll();
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 128px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      &:hover {
+        opacity: 1;
+      }
+      transition: opacity 0.8s linear;
+
+      .toolbar {
+        height: 48px;
+
+        .icon-container {
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          color: #ffffff;
+        }
+      }
+    }
   }
 }
