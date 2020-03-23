@@ -133,6 +133,8 @@ const App = (): JSX.Element => {
   };
 
   const next = async (): Promise<void> => {
+    if (list.length <= 1) return;
+
     const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
 
     if (!newList || newList.length === 0) {
@@ -153,6 +155,8 @@ const App = (): JSX.Element => {
   };
 
   const prev = async (): Promise<void> => {
+    if (list.length <= 1) return;
+
     const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
 
     if (!newList || newList.length === 0) {
