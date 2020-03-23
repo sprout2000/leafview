@@ -11,12 +11,25 @@
 
 @mixin sidebar {
   grid-row: 1;
+  padding-top: 10px;
   background-color: rgb(37, 37, 38);
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
   user-select: none;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(115, 115, 115, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
+  }
 }
 
 @mixin content {
@@ -57,7 +70,7 @@ body,
 
   .thumb {
     @include thumb();
-    border: 4px solid rgb(174, 174, 178);
+    border: 4px solid rgba(115, 115, 115, 0.5);
   }
 
   .thumb-focus {
