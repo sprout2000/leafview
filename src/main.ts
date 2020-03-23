@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, ipcMain, dialog } from 'electron';
+import { app, BrowserWindow, Menu, ipcMain, dialog, shell } from 'electron';
 import i18next from 'i18next';
 import stateKeeper from 'electron-window-state';
 import loadDevtool from 'electron-load-devtool';
@@ -147,6 +147,11 @@ if (!gotTheLock && win32) {
 
         return filepath;
       }
+    });
+
+    ipcMain.handle('move-to-trash', (_e: Event, filepath: string) => {
+      const result = shell.moveItemToTrash(filepath);
+      return result;
     });
 
     if (process.env.NODE_ENV === 'development') {

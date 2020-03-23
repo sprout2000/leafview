@@ -179,11 +179,6 @@ const App = (): JSX.Element => {
   const onClickRight = (): Promise<void> => next();
   const onClickLeft = (): Promise<void> => prev();
 
-  const onResize = (): void => {
-    const node = containerRef.current;
-    if (node) draw(list[index], node.clientWidth, node.clientHeight);
-  };
-
   const onToggleSidebar = (): void => {
     setSidebar((hide) => !hide);
   };
@@ -217,6 +212,37 @@ const App = (): JSX.Element => {
 
     readdir(filepath);
   }, []);
+
+  const onClickRemove = async (): Promise<void> => {
+    const result: boolean = await ipcRenderer.invoke(
+      'move-to-trash',
+      list[index]
+    );
+
+    if (!result) {
+      setList([empty]);
+      return;
+    }
+
+    const copies = list.slice();
+    const newList = copies.splice(index, 1);
+
+    let newIndex = index;
+    if (index >= newList.length - 1) {
+      newIndex = newList.length - 1;
+    }
+
+    setIndex(() => {
+      setList(newList);
+
+      return newIndex;
+    });
+  };
+
+  const onResize = (): void => {
+    const node = containerRef.current;
+    if (node) draw(list[index], node.clientWidth, node.clientHeight);
+  };
 
   useEffect(() => {
     const node = containerRef.current;
@@ -299,7 +325,7 @@ const App = (): JSX.Element => {
               </div>
             </div>
             <div className="trash">
-              <div className="icon-container">
+              <div onClick={onClickRemove} className="icon-container">
                 <FontAwesomeIcon icon={faTrashAlt} size="2x" />
               </div>
             </div>
