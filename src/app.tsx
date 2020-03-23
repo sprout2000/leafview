@@ -132,7 +132,7 @@ const App = (): JSX.Element => {
     return [...new Set(old)].filter((item) => next.includes(item));
   };
 
-  const next = async (): Promise<void> => {
+  const next = useCallback(async (): Promise<void> => {
     if (list.length <= 1) return;
 
     const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
@@ -152,9 +152,9 @@ const App = (): JSX.Element => {
     } else {
       setIndex((index) => index + 1);
     }
-  };
+  }, [dir, index, list]);
 
-  const prev = async (): Promise<void> => {
+  const prev = useCallback(async (): Promise<void> => {
     if (list.length <= 1) return;
 
     const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
@@ -174,7 +174,7 @@ const App = (): JSX.Element => {
     } else {
       setIndex((index) => index - 1);
     }
-  };
+  }, [dir, index, list]);
 
   const onClickRight = (): Promise<void> => next();
   const onClickLeft = (): Promise<void> => prev();
@@ -249,6 +249,18 @@ const App = (): JSX.Element => {
 
     return (): void => ipcRenderer.removeAllListeners('selected-file');
   }, [onSelected]);
+
+  useEffect(() => {
+    ipcRenderer.on('menu-next', () => next());
+
+    return (): void => ipcRenderer.removeAllListeners('menu-next');
+  }, [next]);
+
+  useEffect(() => {
+    ipcRenderer.on('menu-prev', () => prev());
+
+    return (): void => ipcRenderer.removeAllListeners('menu-prev');
+  }, [prev]);
 
   useEffect(() => {
     const node = containerRef.current;
