@@ -29,6 +29,10 @@ const App = (): JSX.Element => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
 
+  const updateTitle = async (title: string): Promise<void> => {
+    await ipcRenderer.invoke('update-title', title);
+  };
+
   const isDarwin = async (): Promise<boolean> => {
     const darwin: boolean = await ipcRenderer.invoke('platform');
     return darwin;
@@ -295,6 +299,12 @@ const App = (): JSX.Element => {
       ipcRenderer.removeAllListeners('toggle-sidebar');
     };
   }, []);
+
+  useEffect(() => {
+    const title = 'LessView';
+
+    updateTitle(title);
+  });
 
   useEffect(() => {
     const node = containerRef.current;
