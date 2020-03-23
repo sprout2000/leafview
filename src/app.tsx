@@ -208,6 +208,12 @@ const App = (): JSX.Element => {
     readdir(filepath);
   };
 
+  const onSelected = useCallback((filepath: string): void => {
+    if (!filepath) return;
+
+    readdir(filepath);
+  }, []);
+
   useEffect(() => {
     const node = containerRef.current;
     if (node) {
@@ -233,6 +239,12 @@ const App = (): JSX.Element => {
       if (node) node.removeEventListener('drop', onDrop);
     };
   }, [onDrop]);
+
+  useEffect(() => {
+    ipcRenderer.on('selected-file', (_e, filepath) => onSelected(filepath));
+
+    return (): void => ipcRenderer.removeAllListeners('selected-file');
+  }, [onSelected]);
 
   useEffect(() => {
     const node = containerRef.current;
