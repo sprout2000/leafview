@@ -14,13 +14,13 @@ import {
   faTrashAlt,
 } from '@fortawesome/free-regular-svg-icons';
 
+import empty from './empty.png';
 import './styles.scss';
 
 const { ipcRenderer } = window;
 
 const App = (): JSX.Element => {
-  const initList: string[] = [];
-  const [list, setList] = useState(initList);
+  const [list, setList] = useState([empty]);
   const [index, setIndex] = useState(0);
   const [sidebar, setSidebar] = useState(true);
 
@@ -97,6 +97,26 @@ const App = (): JSX.Element => {
     },
     []
   );
+
+  const onClickPrev = (): void => {
+    if (list.length <= 1) return;
+
+    if (index === 0) {
+      setIndex(list.length - 1);
+    } else {
+      setIndex((index) => index - 1);
+    }
+  };
+
+  const onClickNext = (): void => {
+    if (list.length <= 1) return;
+
+    if (index === list.length - 1) {
+      setIndex(0);
+    } else {
+      setIndex((index) => index + 1);
+    }
+  };
 
   const onResize = (): void => {
     const node = containerRef.current;
@@ -183,10 +203,10 @@ const App = (): JSX.Element => {
               </div>
             </div>
             <div className="arrows">
-              <div className="icon-container">
+              <div onClick={onClickPrev} className="icon-container">
                 <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
               </div>
-              <div className="icon-container">
+              <div onClick={onClickNext} className="icon-container">
                 <FontAwesomeIcon icon={faArrowAltCircleRight} size="2x" />
               </div>
             </div>
