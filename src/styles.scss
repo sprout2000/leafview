@@ -1,5 +1,30 @@
-@mixin transitionAll {
-  transition: all 0.3s ease-out;
+@mixin thumb {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 88px;
+  background-color: #323232;
+  border-radius: 4px;
+}
+
+@mixin sidebar {
+  grid-row: 1;
+  background-color: rgb(37, 37, 38);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  user-select: none;
+}
+
+@mixin content {
+  height: 100%;
+  background-color: #323232;
+  overflow: hidden;
+  position: relative;
+  grid-row: 1;
 }
 
 * {
@@ -15,84 +40,104 @@ body,
 }
 
 .wrapper {
-  display: flex;
-  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 200px 1fr;
+  user-select: none;
 
   .sidebar {
-    flex: 1 0 0;
-    background-color: rgb(37, 37, 38);
-    @include transitionAll();
+    @include sidebar();
+    grid-column: 1 / 2;
   }
 
-  .collapsed {
-    flex: 1 0 200px;
+  .sidebar-hide {
+    @include sidebar();
+    grid-column: 1 / 1;
+  }
+
+  .thumb {
+    @include thumb();
+    border: 4px solid rgb(174, 174, 178);
+  }
+
+  .thumb-focus {
+    @include thumb();
+    border: 4px solid rgb(0, 122, 255);
+  }
+
+  .thumb-item {
+    max-width: 120px;
+    max-height: 80px;
   }
 
   .content {
-    flex: auto;
+    @include content();
+    grid-column: 1 / 3;
+  }
+
+  .content-side {
+    @include content();
+    grid-column: 2 / 3;
+  }
+
+  .map {
+    height: 100%;
+    z-index: 0;
+    background-color: transparent;
+    cursor: default;
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 0;
+    z-index: 20;
     width: 100%;
-    position: relative;
-    @include transitionAll();
-
-    .map {
-      height: 100%;
-      z-index: 0;
-      background-color: transparent;
-      cursor: default;
+    height: 128px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    &:hover {
+      opacity: 1;
     }
+    transition: opacity 0.8s linear;
 
-    .bottom {
-      position: absolute;
-      bottom: 0;
-      z-index: 20;
-      width: 100%;
-      height: 128px;
+    .toolbar {
       display: flex;
-      justify-content: center;
+      height: 60px;
       align-items: center;
-      opacity: 0;
-      &:hover {
-        opacity: 1;
-      }
-      transition: opacity 0.8s linear;
+      padding: 0 24px;
+      border-radius: 6px;
+      background-color: rgba(0, 0, 0, 0.5);
 
-      .toolbar {
+      .controls {
+        width: 144px;
         display: flex;
-        height: 60px;
+        justify-content: flex-start;
+      }
+
+      .arrows {
+        display: flex;
+      }
+
+      .trash {
+        width: 144px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .icon-container {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
         align-items: center;
-        padding: 0 24px;
-        border-radius: 6px;
-        background-color: rgba(0, 0, 0, 0.5);
-
-        .controls {
-          width: 144px;
-          display: flex;
-          justify-content: flex-start;
+        color: rgb(174, 174, 178);
+        &:hover {
+          cursor: pointer;
         }
-
-        .arrows {
-          display: flex;
-        }
-
-        .trash {
-          width: 144px;
-          display: flex;
-          justify-content: flex-end;
-        }
-
-        .icon-container {
-          width: 48px;
-          height: 48px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: rgb(174, 174, 178);
-          &:hover {
-            cursor: pointer;
-          }
-          &:active {
-            color: rgb(242, 242, 247);
-          }
+        &:active {
+          color: rgb(242, 242, 247);
         }
       }
     }

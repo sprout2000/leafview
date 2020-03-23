@@ -23,7 +23,7 @@ const App = (): JSX.Element => {
   const [dir, setDir] = useState('');
   const [list, setList] = useState([empty]);
   const [index, setIndex] = useState(0);
-  const [sidebar, setSidebar] = useState(true);
+  const [sidebar, setSidebar] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -301,20 +301,29 @@ const App = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    const title = 'LessView';
-
-    updateTitle(title);
-  });
-
-  useEffect(() => {
     const node = containerRef.current;
     if (node) draw(list[index], node.clientWidth, node.clientHeight);
   }, [draw, list, index]);
 
+  const thumbnails = list.map((item, key) => {
+    if (item === empty) {
+      return;
+    } else {
+      return (
+        <div
+          key={key}
+          id={`${key}`}
+          className={key === index ? 'thumb-focus' : 'thumb'}>
+          <img className="thumb-item" src={item} alt="" />
+        </div>
+      );
+    }
+  });
+
   return (
     <div className="wrapper">
-      <div className={sidebar ? 'sidebar' : 'sidebar collapsed'}></div>
-      <div ref={containerRef} className="content">
+      <div className={sidebar ? 'sidebar' : 'sidebar-hide'}>{thumbnails}</div>
+      <div ref={containerRef} className={sidebar ? 'content-side' : 'content'}>
         <ResizeDetector handleWidth handleHeight onResize={onResize} />
         <div className="bottom">
           <div className="toolbar">
