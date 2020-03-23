@@ -154,6 +154,11 @@ if (!gotTheLock && win32) {
       return result;
     });
 
+    ipcMain.handle('update-title', (_e: Event, title: string) => {
+      const basename = path.basename(title);
+      if (win) win.setTitle(basename);
+    });
+
     if (process.env.NODE_ENV === 'development') {
       win.webContents.openDevTools({ mode: 'detach' });
       loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);

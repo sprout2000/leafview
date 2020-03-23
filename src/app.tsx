@@ -301,6 +301,21 @@ const App = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
+    let title = 'LessView';
+
+    if (list[0] !== empty) {
+      title = list[index];
+    }
+
+    updateTitle(title);
+  }, [list, index]);
+
+  useEffect(() => {
+    const node = document.getElementById(`${index}`);
+    if (node) node.scrollIntoView({ block: 'center' });
+  }, [index]);
+
+  useEffect(() => {
     const node = containerRef.current;
     if (node) draw(list[index], node.clientWidth, node.clientHeight);
   }, [draw, list, index]);
