@@ -98,7 +98,7 @@ const App = (): JSX.Element => {
     []
   );
 
-  const onClickPrev = (): void => {
+  const prev = (): void => {
     if (list.length <= 1) return;
 
     if (index === 0) {
@@ -108,7 +108,7 @@ const App = (): JSX.Element => {
     }
   };
 
-  const onClickNext = (): void => {
+  const next = (): void => {
     if (list.length <= 1) return;
 
     if (index === list.length - 1) {
@@ -117,6 +117,9 @@ const App = (): JSX.Element => {
       setIndex((index) => index + 1);
     }
   };
+
+  const onClickPrev = (): void => prev();
+  const onClickNext = (): void => next();
 
   const onResize = (): void => {
     const node = containerRef.current;
