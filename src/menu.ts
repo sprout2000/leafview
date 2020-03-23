@@ -8,21 +8,8 @@ import {
 } from 'electron';
 import i18next from 'i18next';
 
-import en from './locales/en.json';
-import ja from './locales/ja.json';
-
 const createMenu = (win: BrowserWindow): Menu => {
   const darwin = process.platform === 'darwin';
-
-  const locale = app.getLocale();
-  i18next.init({
-    lng: locale,
-    fallbackLng: 'en',
-    resources: {
-      en: { translation: en },
-      ja: { translation: ja },
-    },
-  });
 
   const template: MenuItemConstructorOptions[] = [
     {

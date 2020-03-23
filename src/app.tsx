@@ -20,16 +20,14 @@ import './styles.scss';
 const { ipcRenderer } = window;
 
 const App = (): JSX.Element => {
-  const [url, setUrl] = useState(empty);
+  const [dir, setDir] = useState('');
+  const [list, setList] = useState([empty]);
+  const [index, setIndex] = useState(0);
   const [sidebar, setSidebar] = useState(true);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
-
-  const dirRef: React.MutableRefObject<string> = useRef('');
-  const listRef: React.MutableRefObject<string[]> = useRef([]);
-  const indexRef: React.MutableRefObject<number> = useRef(0);
 
   const isDarwin = async (): Promise<boolean> => {
     const darwin: boolean = await ipcRenderer.invoke('platform');
@@ -101,59 +99,76 @@ const App = (): JSX.Element => {
     []
   );
 
-  const next = async (): Promise<void> => {
-    if (listRef.current.length <= 1) return;
+  const readdir = async (filepath: string): Promise<void> => {
+    const dirpath = await ipcRenderer.invoke('getdir', filepath);
 
-    const list: string[] = await ipcRenderer.invoke('readdir', dirRef.current);
-
-    if (list.length === 0) {
-      setUrl(empty);
-      listRef.current = [];
-      indexRef.current = 0;
+    if (!dirpath) {
+      setList([empty]);
       return;
-    } else if (indexRef.current > list.length - 1) {
-      const index = list.length - 1;
-      listRef.current = list;
-      indexRef.current = index;
-      setUrl(listRef.current[indexRef.current]);
-    } else if (indexRef.current === list.length - 1) {
-      const index = 0;
-      listRef.current = list;
-      indexRef.current = index;
-      setUrl(listRef.current[indexRef.current]);
+    }
+
+    const newList: string[] | void = await ipcRenderer.invoke(
+      'readdir',
+      dirpath
+    );
+
+    if (!newList || newList.length === 0) {
+      setList([empty]);
+      return;
+    }
+
+    const newIndex = newList.indexOf(filepath);
+
+    setIndex(() => {
+      const idx = newIndex;
+      setDir(dirpath);
+      setList(newList);
+
+      return idx;
+    });
+  };
+
+  const diff = (old: string[], next: string[]): string[] => {
+    return [...new Set(old)].filter((item) => next.includes(item));
+  };
+
+  const next = async (): Promise<void> => {
+    const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
+
+    if (!newList || newList.length === 0) {
+      setList([empty]);
+      return;
+    }
+
+    const copy = list.slice();
+    const diffList = diff(copy, newList);
+
+    setList(diffList);
+
+    if (index >= diffList.length - 1) {
+      setIndex(0);
     } else {
-      const index = indexRef.current + 1;
-      listRef.current = list;
-      indexRef.current = index;
-      setUrl(listRef.current[indexRef.current]);
+      setIndex((index) => index + 1);
     }
   };
 
   const prev = async (): Promise<void> => {
-    if (listRef.current.length <= 1) return;
+    const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
 
-    const list: string[] = await ipcRenderer.invoke('readdir', dirRef.current);
-
-    if (list.length === 0) {
-      setUrl(empty);
-      listRef.current = [];
-      indexRef.current = 0;
+    if (!newList || newList.length === 0) {
+      setList([empty]);
       return;
-    } else if (indexRef.current > list.length - 1) {
-      const index = list.length - 1;
-      listRef.current = list;
-      indexRef.current = index;
-      setUrl(listRef.current[indexRef.current]);
-    } else if (indexRef.current === 0) {
-      const index = listRef.current.length - 1;
-      listRef.current = list;
-      indexRef.current = index;
-      setUrl(listRef.current[indexRef.current]);
+    }
+
+    const copy = list.slice();
+    const diffList = diff(copy, newList);
+
+    setList(diffList);
+
+    if (index === 0) {
+      setIndex(diffList.length - 1);
     } else {
-      const index = indexRef.current - 1;
-      listRef.current = list;
-      indexRef.current = index;
-      setUrl(listRef.current[indexRef.current]);
+      setIndex((index) => index - 1);
     }
   };
 
@@ -162,7 +177,7 @@ const App = (): JSX.Element => {
 
   const onResize = (): void => {
     const node = containerRef.current;
-    if (node) draw(url, node.clientWidth, node.clientHeight);
+    if (node) draw(list[index], node.clientWidth, node.clientHeight);
   };
 
   const onClickToggle = (): void => {
@@ -174,35 +189,24 @@ const App = (): JSX.Element => {
     e.stopPropagation();
   };
 
-  const onDrop = useCallback(async (e: DragEvent) => {
+  const onDrop = useCallback((e: DragEvent) => {
     preventDefault(e);
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
-      const dirpath = await ipcRenderer.invoke('selected-file', file.path);
-
-      if (!dirpath) {
-        setUrl(empty);
-        return;
-      }
-
-      const list: string[] = await ipcRenderer.invoke('readdir', dirpath);
-
-      if (list.length === 0) {
-        setUrl(empty);
-        return;
-      }
-      const index = list.indexOf(file.path);
-
-      for (const item of list) console.log(item);
-
-      dirRef.current = dirpath;
-      listRef.current = list;
-      indexRef.current = index;
-
-      setUrl(listRef.current[indexRef.current]);
+      readdir(file.path);
     }
   }, []);
+
+  const onClickOpen = async (): Promise<void> => {
+    const filepath: string | void | undefined = await ipcRenderer.invoke(
+      'open-dialog'
+    );
+
+    if (!filepath) return;
+
+    readdir(filepath);
+  };
 
   useEffect(() => {
     const node = containerRef.current;
@@ -232,8 +236,8 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     const node = containerRef.current;
-    if (node) draw(url, node.clientWidth, node.clientHeight);
-  }, [draw, url]);
+    if (node) draw(list[index], node.clientWidth, node.clientHeight);
+  }, [draw, list, index]);
 
   return (
     <div className="wrapper">
@@ -246,7 +250,7 @@ const App = (): JSX.Element => {
               <div onClick={onClickToggle} className="icon-container">
                 <FontAwesomeIcon icon={faListAlt} size="2x" />
               </div>
-              <div className="icon-container">
+              <div onClick={onClickOpen} className="icon-container">
                 <FontAwesomeIcon icon={faFolderOpen} size="2x" />
               </div>
             </div>

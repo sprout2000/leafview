@@ -1,4 +1,5 @@
-import { app, BrowserWindow, Menu, ipcMain } from 'electron';
+import { app, BrowserWindow, Menu, ipcMain, dialog } from 'electron';
+import i18next from 'i18next';
 import stateKeeper from 'electron-window-state';
 import loadDevtool from 'electron-load-devtool';
 
@@ -7,6 +8,8 @@ import path from 'path';
 import mime from 'mime-types';
 import natsort from 'natsort';
 
+import en from './locales/en.json';
+import ja from './locales/ja.json';
 import createMenu from './menu';
 
 const gotTheLock = app.requestSingleInstanceLock();
@@ -52,6 +55,16 @@ if (!gotTheLock && win32) {
   });
 
   app.once('ready', (): void => {
+    const locale = app.getLocale();
+    i18next.init({
+      lng: locale,
+      fallbackLng: 'en',
+      resources: {
+        en: { translation: en },
+        ja: { translation: ja },
+      },
+    });
+
     const windowState = stateKeeper({
       defaultWidth: 800,
       defaultHeight: 558,
@@ -82,7 +95,7 @@ if (!gotTheLock && win32) {
       return darwin;
     });
 
-    ipcMain.handle('selected-file', (_e, filepath) => {
+    ipcMain.handle('getdir', (_e: Event, filepath: string) => {
       const dirpath = path.dirname(filepath);
 
       return dirpath;
@@ -97,9 +110,43 @@ if (!gotTheLock && win32) {
             .map(({ name }) => path.join(dirpath, name))
             .filter((item) => checkmime(item))
             .sort(natsort({ insensitive: true }))
-        );
+        )
+        .catch((err) => console.log(err));
 
       return list;
+    });
+
+    ipcMain.handle('open-dialog', async () => {
+      if (win) {
+        const filepath = await dialog
+          .showOpenDialog(win, {
+            properties: ['openFile'],
+            title: i18next.t('dialogTitle'),
+            filters: [
+              {
+                name: i18next.t('dialogName'),
+                extensions: [
+                  'bmp',
+                  'gif',
+                  'ico',
+                  'jpg',
+                  'jpeg',
+                  'apng',
+                  'png',
+                  'svg',
+                  'webp',
+                ],
+              },
+            ],
+          })
+          .then((result) => {
+            if (result.canceled) return;
+            return result.filePaths[0];
+          })
+          .catch((err): void => console.log(err));
+
+        return filepath;
+      }
     });
 
     if (process.env.NODE_ENV === 'development') {
