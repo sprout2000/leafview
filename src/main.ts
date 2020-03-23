@@ -1,11 +1,15 @@
-import { app, BrowserWindow, Menu } from 'electron';
+import { app, BrowserWindow, Menu, ipcMain } from 'electron';
 import stateKeeper from 'electron-window-state';
 import loadDevtool from 'electron-load-devtool';
 
+import fs from 'fs';
 import path from 'path';
+import mime from 'mime-types';
+import natsort from 'natsort';
 
 import createMenu from './menu';
 
+const gotTheLock = app.requestSingleInstanceLock();
 const isDev = process.env.NODE_ENV === 'development';
 const win32 = process.platform === 'win32';
 const darwin = process.platform === 'darwin';
@@ -13,12 +17,18 @@ const darwin = process.platform === 'darwin';
 let win: BrowserWindow | null = null;
 let filepath: string | null = null;
 
-const gotTheLock = app.requestSingleInstanceLock();
-
 const getSourceDirectory = (): string =>
   isDev
     ? path.join(process.cwd(), 'dist')
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
+
+const checkmime = (filepath: string): boolean => {
+  const mimetype = mime.lookup(filepath);
+
+  return !mimetype || !mimetype.match(/bmp|gif|ico|jpeg|png|svg|webp/)
+    ? false
+    : true;
+};
 
 if (!gotTheLock && win32) {
   app.exit();
@@ -66,6 +76,21 @@ if (!gotTheLock && win32) {
         safeDialogs: true,
         sandbox: true,
       },
+    });
+
+    ipcMain.handle('selected-file', async (_e, filepath) => {
+      const dir = path.dirname(filepath);
+      const list = await fs.promises
+        .readdir(dir, { withFileTypes: true })
+        .then((dirents) =>
+          dirents
+            .filter((dirent) => dirent.isFile())
+            .map(({ name }) => path.join(dir, name))
+            .filter((item) => checkmime(item))
+            .sort(natsort({ insensitive: true }))
+        );
+
+      return list;
     });
 
     if (process.env.NODE_ENV === 'development') {
