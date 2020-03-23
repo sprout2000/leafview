@@ -15,6 +15,9 @@ import './styles.scss';
 const { ipcRenderer } = window;
 
 const App = (): JSX.Element => {
+  const initList: string[] = [];
+  const [list, setList] = useState(initList);
+  const [index, setIndex] = useState(0);
   const [sidebar, setSidebar] = useState(true);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -40,8 +43,16 @@ const App = (): JSX.Element => {
       );
 
       if (list.length === 0) return;
+      const index = list.indexOf(file.path);
 
       for (const item of list) console.log(item);
+
+      setIndex(() => {
+        const newIndex = index;
+        setList(list);
+
+        return newIndex;
+      });
     }
   }, []);
 
