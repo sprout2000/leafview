@@ -142,7 +142,13 @@ const App = (): JSX.Element => {
     const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
 
     if (!newList || newList.length === 0) {
-      setList([empty]);
+      setIndex(() => {
+        const idx = 0;
+        setList([empty]);
+
+        return idx;
+      });
+
       return;
     }
 
@@ -164,7 +170,13 @@ const App = (): JSX.Element => {
     const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
 
     if (!newList || newList.length === 0) {
-      setList([empty]);
+      setIndex(() => {
+        const idx = 0;
+        setList([empty]);
+
+        return idx;
+      });
+
       return;
     }
 
@@ -241,6 +253,32 @@ const App = (): JSX.Element => {
 
       return newIndex;
     });
+  };
+
+  const onClickThumb = async (id: number): Promise<void> => {
+    const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
+
+    if (!newList || newList.length === 0) {
+      setIndex(() => {
+        const newIndex = 0;
+        setList([empty]);
+
+        return newIndex;
+      });
+
+      return;
+    }
+
+    if (id > newList.length - 1) {
+      setIndex(() => {
+        const newIndex = newList.length - 1;
+        setList(newList);
+
+        return newIndex;
+      });
+    } else {
+      setIndex(id);
+    }
   };
 
   const onResize = (): void => {
@@ -328,6 +366,7 @@ const App = (): JSX.Element => {
         <div
           key={key}
           id={`${key}`}
+          onClick={(): Promise<void> => onClickThumb(key)}
           className={key === index ? 'thumb-focus' : 'thumb'}>
           <img className="thumb-item" src={item} alt="" />
         </div>

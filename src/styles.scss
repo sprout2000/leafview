@@ -7,6 +7,10 @@
   height: 88px;
   background-color: #323232;
   border-radius: 4px;
+  user-select: none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 @mixin sidebar {
@@ -36,6 +40,7 @@
   height: 100%;
   background-color: #323232;
   overflow: hidden;
+  user-select: none;
   position: relative;
   grid-row: 1;
 }
@@ -122,6 +127,7 @@ body,
       padding: 0 24px;
       border-radius: 6px;
       background-color: rgba(0, 0, 0, 0.5);
+      user-select: none;
 
       .controls {
         width: 144px;
