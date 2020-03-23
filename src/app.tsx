@@ -20,13 +20,16 @@ import './styles.scss';
 const { ipcRenderer } = window;
 
 const App = (): JSX.Element => {
-  const [list, setList] = useState([empty]);
-  const [index, setIndex] = useState(0);
+  const [url, setUrl] = useState(empty);
   const [sidebar, setSidebar] = useState(true);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
+
+  const dirRef: React.MutableRefObject<string> = useRef('');
+  const listRef: React.MutableRefObject<string[]> = useRef([]);
+  const indexRef: React.MutableRefObject<number> = useRef(0);
 
   const isDarwin = async (): Promise<boolean> => {
     const darwin: boolean = await ipcRenderer.invoke('platform');
@@ -98,32 +101,68 @@ const App = (): JSX.Element => {
     []
   );
 
-  const prev = (): void => {
-    if (list.length <= 1) return;
+  const next = async (): Promise<void> => {
+    if (listRef.current.length <= 1) return;
 
-    if (index === 0) {
-      setIndex(list.length - 1);
+    const list: string[] = await ipcRenderer.invoke('readdir', dirRef.current);
+
+    if (list.length === 0) {
+      setUrl(empty);
+      listRef.current = [];
+      indexRef.current = 0;
+      return;
+    } else if (indexRef.current > list.length - 1) {
+      const index = list.length - 1;
+      listRef.current = list;
+      indexRef.current = index;
+      setUrl(listRef.current[indexRef.current]);
+    } else if (indexRef.current === list.length - 1) {
+      const index = 0;
+      listRef.current = list;
+      indexRef.current = index;
+      setUrl(listRef.current[indexRef.current]);
     } else {
-      setIndex((index) => index - 1);
+      const index = indexRef.current + 1;
+      listRef.current = list;
+      indexRef.current = index;
+      setUrl(listRef.current[indexRef.current]);
     }
   };
 
-  const next = (): void => {
-    if (list.length <= 1) return;
+  const prev = async (): Promise<void> => {
+    if (listRef.current.length <= 1) return;
 
-    if (index === list.length - 1) {
-      setIndex(0);
+    const list: string[] = await ipcRenderer.invoke('readdir', dirRef.current);
+
+    if (list.length === 0) {
+      setUrl(empty);
+      listRef.current = [];
+      indexRef.current = 0;
+      return;
+    } else if (indexRef.current > list.length - 1) {
+      const index = list.length - 1;
+      listRef.current = list;
+      indexRef.current = index;
+      setUrl(listRef.current[indexRef.current]);
+    } else if (indexRef.current === 0) {
+      const index = listRef.current.length - 1;
+      listRef.current = list;
+      indexRef.current = index;
+      setUrl(listRef.current[indexRef.current]);
     } else {
-      setIndex((index) => index + 1);
+      const index = indexRef.current - 1;
+      listRef.current = list;
+      indexRef.current = index;
+      setUrl(listRef.current[indexRef.current]);
     }
   };
 
-  const onClickPrev = (): void => prev();
-  const onClickNext = (): void => next();
+  const onClickRight = (): Promise<void> => next();
+  const onClickLeft = (): Promise<void> => prev();
 
   const onResize = (): void => {
     const node = containerRef.current;
-    if (node) draw(list[index], node.clientWidth, node.clientHeight);
+    if (node) draw(url, node.clientWidth, node.clientHeight);
   };
 
   const onClickToggle = (): void => {
@@ -140,22 +179,28 @@ const App = (): JSX.Element => {
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
-      const list: string[] = await ipcRenderer.invoke(
-        'selected-file',
-        file.path
-      );
+      const dirpath = await ipcRenderer.invoke('selected-file', file.path);
 
-      if (list.length === 0) return;
+      if (!dirpath) {
+        setUrl(empty);
+        return;
+      }
+
+      const list: string[] = await ipcRenderer.invoke('readdir', dirpath);
+
+      if (list.length === 0) {
+        setUrl(empty);
+        return;
+      }
       const index = list.indexOf(file.path);
 
       for (const item of list) console.log(item);
 
-      setIndex(() => {
-        const newIndex = index;
-        setList(list);
+      dirRef.current = dirpath;
+      listRef.current = list;
+      indexRef.current = index;
 
-        return newIndex;
-      });
+      setUrl(listRef.current[indexRef.current]);
     }
   }, []);
 
@@ -187,8 +232,8 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     const node = containerRef.current;
-    if (node) draw(list[index], node.clientWidth, node.clientHeight);
-  }, [draw, list, index]);
+    if (node) draw(url, node.clientWidth, node.clientHeight);
+  }, [draw, url]);
 
   return (
     <div className="wrapper">
@@ -206,10 +251,10 @@ const App = (): JSX.Element => {
               </div>
             </div>
             <div className="arrows">
-              <div onClick={onClickPrev} className="icon-container">
+              <div onClick={onClickLeft} className="icon-container">
                 <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
               </div>
-              <div onClick={onClickNext} className="icon-container">
+              <div onClick={onClickRight} className="icon-container">
                 <FontAwesomeIcon icon={faArrowAltCircleRight} size="2x" />
               </div>
             </div>

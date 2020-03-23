@@ -82,14 +82,19 @@ if (!gotTheLock && win32) {
       return darwin;
     });
 
-    ipcMain.handle('selected-file', async (_e, filepath) => {
-      const dir = path.dirname(filepath);
+    ipcMain.handle('selected-file', (_e, filepath) => {
+      const dirpath = path.dirname(filepath);
+
+      return dirpath;
+    });
+
+    ipcMain.handle('readdir', async (_e, dirpath) => {
       const list = await fs.promises
-        .readdir(dir, { withFileTypes: true })
+        .readdir(dirpath, { withFileTypes: true })
         .then((dirents) =>
           dirents
             .filter((dirent) => dirent.isFile())
-            .map(({ name }) => path.join(dir, name))
+            .map(({ name }) => path.join(dirpath, name))
             .filter((item) => checkmime(item))
             .sort(natsort({ insensitive: true }))
         );
