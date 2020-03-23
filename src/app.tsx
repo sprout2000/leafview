@@ -184,8 +184,8 @@ const App = (): JSX.Element => {
     if (node) draw(list[index], node.clientWidth, node.clientHeight);
   };
 
-  const onClickToggle = (): void => {
-    setSidebar((sidebar) => !sidebar);
+  const onToggleSidebar = (): void => {
+    setSidebar((hide) => !hide);
   };
 
   const preventDefault = (e: DragEvent): void => {
@@ -263,6 +263,14 @@ const App = (): JSX.Element => {
   }, [prev]);
 
   useEffect(() => {
+    ipcRenderer.on('toggle-sidebar', onToggleSidebar);
+
+    return (): void => {
+      ipcRenderer.removeAllListeners('toggle-sidebar');
+    };
+  }, []);
+
+  useEffect(() => {
     const node = containerRef.current;
     if (node) draw(list[index], node.clientWidth, node.clientHeight);
   }, [draw, list, index]);
@@ -275,7 +283,7 @@ const App = (): JSX.Element => {
         <div className="bottom">
           <div className="toolbar">
             <div className="controls">
-              <div onClick={onClickToggle} className="icon-container">
+              <div onClick={onToggleSidebar} className="icon-container">
                 <FontAwesomeIcon icon={faListAlt} size="2x" />
               </div>
               <div onClick={onClickOpen} className="icon-container">
