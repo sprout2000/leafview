@@ -78,6 +78,10 @@ if (!gotTheLock && win32) {
       },
     });
 
+    ipcMain.handle('platform', () => {
+      return darwin;
+    });
+
     ipcMain.handle('selected-file', async (_e, filepath) => {
       const dir = path.dirname(filepath);
       const list = await fs.promises
