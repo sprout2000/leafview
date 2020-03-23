@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 
+import ResizeDetector from 'react-resize-detector';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -32,66 +33,74 @@ const App = (): JSX.Element => {
     return darwin;
   };
 
-  const draw = (url: string, width: number, height: number): void => {
-    const macOS = isDarwin();
-    const node = mapRef.current;
+  const draw = useCallback(
+    (url: string, width: number, height: number): void => {
+      const macOS = isDarwin();
+      const node = mapRef.current;
 
-    const img = new Image();
-    img.onload = (): void => {
-      let zoom = 1;
-      if (img.width > width || img.height > height) {
-        const zoomX = width / img.width;
-        const zoomY = height / img.height;
-        zoomX >= zoomY ? (zoom = zoomY) : (zoom = zoomX);
-      }
-      const size = { width: img.width * zoom, height: img.height * zoom };
-      const bounds = new L.LatLngBounds([
-        [0, 0],
-        [size.height, size.width],
-      ]);
+      const img = new Image();
+      img.onload = (): void => {
+        let zoom = 1;
+        if (img.width > width || img.height > height) {
+          const zoomX = width / img.width;
+          const zoomY = height / img.height;
+          zoomX >= zoomY ? (zoom = zoomY) : (zoom = zoomX);
+        }
+        const size = { width: img.width * zoom, height: img.height * zoom };
+        const bounds = new L.LatLngBounds([
+          [0, 0],
+          [size.height, size.width],
+        ]);
 
-      if (mapObj.current) {
-        mapObj.current.off();
-        mapObj.current.remove();
-      }
-
-      if (node) {
-        mapObj.current = L.map(node, {
-          maxBounds: bounds,
-          crs: L.CRS.Simple,
-          preferCanvas: true,
-          zoomDelta: 0.3,
-          zoomSnap: macOS ? 0.3 : 0,
-          doubleClickZoom: false,
-          zoomControl: false,
-          attributionControl: false,
-        });
-        mapObj.current.fitBounds(bounds);
-
-        mapObj.current.on('dblclick', () => {
-          if (mapObj.current) {
-            if (img.width < width && img.height < height) {
-              mapObj.current.setZoom(0);
-            } else {
-              mapObj.current.fitBounds(bounds);
-            }
-          }
-        });
-
-        if (img.width < width && img.height < height) {
-          mapObj.current.setZoom(0, { animate: false });
+        if (mapObj.current) {
+          mapObj.current.off();
+          mapObj.current.remove();
         }
 
-        L.imageOverlay(img.src, bounds).addTo(mapObj.current);
-      }
+        if (node) {
+          mapObj.current = L.map(node, {
+            maxBounds: bounds,
+            crs: L.CRS.Simple,
+            preferCanvas: true,
+            zoomDelta: 0.3,
+            zoomSnap: macOS ? 0.3 : 0,
+            doubleClickZoom: false,
+            zoomControl: false,
+            attributionControl: false,
+          });
+          mapObj.current.fitBounds(bounds);
 
-      if (node) {
-        node.blur();
-        node.focus();
-      }
-    };
+          mapObj.current.on('dblclick', () => {
+            if (mapObj.current) {
+              if (img.width < width && img.height < height) {
+                mapObj.current.setZoom(0);
+              } else {
+                mapObj.current.fitBounds(bounds);
+              }
+            }
+          });
 
-    img.src = url;
+          if (img.width < width && img.height < height) {
+            mapObj.current.setZoom(0, { animate: false });
+          }
+
+          L.imageOverlay(img.src, bounds).addTo(mapObj.current);
+        }
+
+        if (node) {
+          node.blur();
+          node.focus();
+        }
+      };
+
+      img.src = url;
+    },
+    []
+  );
+
+  const onResize = (): void => {
+    const node = containerRef.current;
+    if (node) draw(list[index], node.clientWidth, node.clientHeight);
   };
 
   const onClickToggle = (): void => {
@@ -153,10 +162,16 @@ const App = (): JSX.Element => {
     };
   }, [onDrop]);
 
+  useEffect(() => {
+    const node = containerRef.current;
+    if (node) draw(list[index], node.clientWidth, node.clientHeight);
+  }, [draw, list, index]);
+
   return (
     <div className="wrapper">
       <div className={sidebar ? 'sidebar' : 'sidebar collapsed'}></div>
       <div ref={containerRef} className="content">
+        <ResizeDetector handleWidth handleHeight onResize={onResize} />
         <div className="bottom">
           <div className="toolbar">
             <div className="controls">
