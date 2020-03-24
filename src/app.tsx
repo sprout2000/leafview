@@ -145,17 +145,17 @@ const App = (): JSX.Element => {
 
     if (!newList || newList.length === 0) {
       setIndex(() => {
-        const idx = 0;
+        const newIndex = 0;
         setList([empty]);
 
-        return idx;
+        return newIndex;
       });
 
       return;
     }
 
-    const copy = list.slice();
-    const diffList = diff(copy, newList);
+    const copies = list.slice();
+    const diffList = diff(copies, newList);
 
     setList(diffList);
 
@@ -173,25 +173,61 @@ const App = (): JSX.Element => {
 
     if (!newList || newList.length === 0) {
       setIndex(() => {
-        const idx = 0;
+        const newIndex = 0;
         setList([empty]);
 
-        return idx;
+        return newIndex;
       });
 
       return;
     }
 
-    const copy = list.slice();
-    const diffList = diff(copy, newList);
+    const copies = list.slice();
+    const diffList = diff(copies, newList);
 
     setList(diffList);
 
-    if (index === 0) {
+    if (index === 0 || index > diffList.length - 1) {
       setIndex(diffList.length - 1);
     } else {
       setIndex((index) => index - 1);
     }
+  }, [dir, index, list]);
+
+  const remove = useCallback(async (): Promise<void> => {
+    const result: boolean = await ipcRenderer.invoke(
+      'move-to-trash',
+      list[index]
+    );
+
+    if (!result) {
+      setList([empty]);
+      return;
+    }
+
+    const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
+
+    if (!newList || newList.length === 0) {
+      setIndex(() => {
+        const newIndex = 0;
+        setList([empty]);
+
+        return newIndex;
+      });
+
+      return;
+    }
+
+    let newIndex = index;
+    if (index > newList.length - 1) {
+      newIndex = newList.length - 1;
+    }
+
+    setIndex(() => {
+      setList(newList);
+
+      return newIndex;
+    });
   }, [dir, index, list]);
 
   const onClickRight = (): Promise<void> => next();
@@ -242,31 +278,8 @@ const App = (): JSX.Element => {
     readdir(filepath);
   }, []);
 
-  const onClickRemove = async (): Promise<void> => {
-    const result: boolean = await ipcRenderer.invoke(
-      'move-to-trash',
-      list[index]
-    );
-
-    if (!result) {
-      setList([empty]);
-      return;
-    }
-
-    const copies = list.slice();
-    const newList = copies.splice(index, 1);
-
-    let newIndex = index;
-    if (index >= newList.length - 1) {
-      newIndex = newList.length - 1;
-    }
-
-    setIndex(() => {
-      setList(newList);
-
-      return newIndex;
-    });
-  };
+  const onClickRemove = (): Promise<void> => remove();
+  const onMenuRemove = useCallback((): Promise<void> => remove(), [remove]);
 
   const onClickThumb = async (id: number): Promise<void> => {
     const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
@@ -352,6 +365,12 @@ const App = (): JSX.Element => {
 
     return (): void => ipcRenderer.removeAllListeners('menu-prev');
   }, [prev]);
+
+  useEffect(() => {
+    ipcRenderer.on('menu-remove', () => onMenuRemove());
+
+    return (): void => ipcRenderer.removeAllListeners('menu-remove');
+  }, [onMenuRemove]);
 
   useEffect(() => {
     ipcRenderer.on('toggle-sidebar', onToggleSidebar);
