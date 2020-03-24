@@ -56,8 +56,6 @@ Mouse | Function
 :---: | :---
 drag | pan
 double click | reset zoom
-right click | next image
-wheel click | previous image
 wheel | zoom in/out
 
 ## License
