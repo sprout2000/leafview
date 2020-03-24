@@ -8,6 +8,16 @@ An image viewer for minimalists.
 
 <img width="912" alt="2020-03-23 18 25 14" src="https://user-images.githubusercontent.com/52094761/77398743-6ce65d00-6deb-11ea-85a7-5353f35425c2.png">
 
+## Security
+
+Function | Boolean
+:--- | :---
+nodeIntegration | `false`
+contextIsolation | `true`
+enableRemoteModule | `false`
+safeDialogs | `true`
+sandbox | `true`
+
 ## Build and Install
 
 ```
