@@ -73,10 +73,21 @@ body,
     width: 176px;
     height: 36px;
     padding: 0 10px;
+    background-color: rgb(30, 30, 30);
     color: rgb(174, 174, 178);
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    .dirname {
+      margin-left: 10px;
+      font-size: 12px;
+      font-family: Roboto;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 168px;
+      text-overflow: ellipsis;
+    }
   }
 
   .sidebar-content {

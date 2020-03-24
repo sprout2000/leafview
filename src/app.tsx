@@ -379,6 +379,7 @@ const App = (): JSX.Element => {
       <div className={sidebar ? 'sidebar' : 'sidebar-hide'}>
         <div className="sidebar-header">
           <FontAwesomeIcon icon={faFolderOpen} />
+          <span className="dirname">{dir}</span>
         </div>
         <div className="sidebar-content">{thumbnails}</div>
       </div>
