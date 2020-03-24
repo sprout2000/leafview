@@ -1,8 +1,10 @@
 name: GitHub CI
 on:
   push:
-    tags:
-      - 'v0.2.*'
+    branches:
+      - master
+    # tags:
+      # - 'v*'
 jobs:
   build:
     runs-on: macOS-latest
@@ -18,11 +20,11 @@ jobs:
       run: yarn build:prod
     - name: Package
       env: 
-        CSC_LINK: ${{ secrets.CSC_LINK }}
-        CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-        APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
         APPLE_ID: ${{ secrets.APPLE_ID }}
         APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+        APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
         ASC_PROVIDER: ${{ secrets.ASC_PROVIDER }}
+        CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+        CSC_LINK: ${{ secrets.CSC_LINK }}
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: yarn release
