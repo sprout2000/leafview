@@ -15,13 +15,7 @@
 
 @mixin sidebar {
   grid-row: 1;
-  padding-top: 10px;
-  background-color: rgb(37, 37, 38);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   overflow-y: auto;
-  user-select: none;
   &::-webkit-scrollbar {
     width: 4px;
   }
@@ -71,6 +65,16 @@ body,
   .sidebar-hide {
     @include sidebar();
     grid-column: 1 / 1;
+  }
+
+  .sidebar-content {
+    padding-top: 10px;
+    background-color: rgb(37, 37, 38);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    user-select: none;
   }
 
   .thumb {

@@ -376,7 +376,10 @@ const App = (): JSX.Element => {
 
   return (
     <div className="wrapper">
-      <div className={sidebar ? 'sidebar' : 'sidebar-hide'}>{thumbnails}</div>
+      <div className={sidebar ? 'sidebar' : 'sidebar-hide'}>
+        <div className="sidebar-header"></div>
+        <div className="sidebar-content">{thumbnails}</div>
+      </div>
       <div ref={containerRef} className={sidebar ? 'content-side' : 'content'}>
         <ResizeDetector handleWidth handleHeight onResize={onResize} />
         <div className="bottom">
