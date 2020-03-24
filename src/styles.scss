@@ -1,6 +1,8 @@
 @mixin sidebar {
+  background-color: rgb(37, 37, 38);
   grid-row: 1;
   overflow-y: auto;
+  position: relative;
   &::-webkit-scrollbar {
     width: 4px;
   }
@@ -67,9 +69,18 @@ body,
     grid-column: 1 / 1;
   }
 
+  .sidebar-header {
+    width: 176px;
+    height: 36px;
+    padding: 0 10px;
+    color: rgb(174, 174, 178);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
   .sidebar-content {
     padding-top: 10px;
-    background-color: rgb(37, 37, 38);
     display: flex;
     flex-direction: column;
     align-items: center;
