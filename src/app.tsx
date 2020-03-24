@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faImages,
   faListAlt,
   faFolderOpen,
   faArrowAltCircleLeft,
@@ -381,6 +382,11 @@ const App = (): JSX.Element => {
       </div>
       <div ref={containerRef} className={sidebar ? 'content-side' : 'content'}>
         <ResizeDetector handleWidth handleHeight onResize={onResize} />
+        {list[0] === empty && (
+          <div className="empty" onClick={onClickOpen}>
+            <FontAwesomeIcon icon={faImages} size="3x" />
+          </div>
+        )}
         <div className="bottom">
           <div className="toolbar">
             <div className="controls">
