@@ -13,8 +13,8 @@ An image viewer for minimalists.
 Function | Boolean
 :--- | :---
 nodeIntegration | `false`
-contextIsolation | `true`
 enableRemoteModule | `false`
+contextIsolation | `true`
 safeDialogs | `true`
 sandbox | `true`
 
