@@ -1,7 +1,9 @@
 import { app, BrowserWindow, Menu, ipcMain, dialog, shell } from 'electron';
+import { autoUpdater } from 'electron-updater';
 import i18next from 'i18next';
 import stateKeeper from 'electron-window-state';
 import loadDevtool from 'electron-load-devtool';
+import log from 'electron-log';
 
 import fs from 'fs';
 import path from 'path';
@@ -11,6 +13,9 @@ import natsort from 'natsort';
 import en from './locales/en.json';
 import ja from './locales/ja.json';
 import createMenu from './menu';
+
+autoUpdater.logger = log;
+log.info('App starting...');
 
 const gotTheLock = app.requestSingleInstanceLock();
 const isDev = process.env.NODE_ENV === 'development';
@@ -192,12 +197,53 @@ if (!gotTheLock && win32) {
       win = null;
     });
 
+    autoUpdater.checkForUpdatesAndNotify();
     windowState.manage(win);
   });
 
   app.on('open-file', (e, path) => {
     e.preventDefault();
     if (win) win.webContents.send('selected-file', path);
+  });
+
+  app.setAboutPanelOptions({
+    applicationName: 'Viewdir',
+    applicationVersion: app.getVersion(),
+    copyright: 'Copyright (C) 2020 Office Nishigami.',
+  });
+
+  autoUpdater.once('error', (_e, err) => {
+    log.info(`Error in auto-updater: ${err}`);
+  });
+
+  autoUpdater.once('update-downloaded', () => {
+    log.info(`Update downloaded...`);
+
+    if (win) {
+      dialog
+        .showMessageBox(win, {
+          type: 'info',
+          buttons: ['OK', 'Cancel'],
+          defaultId: 0,
+          cancelId: 1,
+          title: 'Update Downloaded',
+          message: 'Update downloaded',
+          detail: 'Restart to install updates...',
+        })
+        .then((result) => {
+          if (result.response === 0) {
+            autoUpdater.quitAndInstall();
+          }
+        });
+    }
+  });
+
+  process.once('uncaughtException', (err) => {
+    log.error('electron:uncaughtException');
+    log.error(err.name);
+    log.error(err.message);
+    log.error(err.stack);
+    app.exit();
   });
 
   app.allowRendererProcessReuse = true;
