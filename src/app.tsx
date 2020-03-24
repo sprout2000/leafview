@@ -25,6 +25,7 @@ const App = (): JSX.Element => {
   const [list, setList] = useState([empty]);
   const [index, setIndex] = useState(0);
   const [sidebar, setSidebar] = useState(false);
+  const [onDrag, setOnDrag] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -205,12 +206,23 @@ const App = (): JSX.Element => {
     e.stopPropagation();
   };
 
+  const onDragEnter = useCallback((e: DragEvent): void => {
+    preventDefault(e);
+    setOnDrag(true);
+  }, []);
+
+  const onDragLeave = useCallback((e: DragEvent): void => {
+    preventDefault(e);
+    setOnDrag(false);
+  }, []);
+
   const onDrop = useCallback((e: DragEvent) => {
     preventDefault(e);
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
       readdir(file.path);
+      setOnDrag(false);
     }
   }, []);
 
@@ -289,20 +301,30 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     const node = containerRef.current;
-    if (node) {
-      node.addEventListener('dragenter', preventDefault);
-      node.addEventListener('dragover', preventDefault);
-      node.addEventListener('dragleave', preventDefault);
-    }
+    if (node) node.addEventListener('dragover', preventDefault);
 
     return (): void => {
-      if (node) {
-        node.removeEventListener('dragenter', preventDefault);
-        node.removeEventListener('dragover', preventDefault);
-        node.removeEventListener('dragleave', preventDefault);
-      }
+      if (node) node.removeEventListener('dragover', preventDefault);
     };
   }, []);
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (node) node.addEventListener('dragenter', onDragEnter);
+
+    return (): void => {
+      if (node) node.removeEventListener('dragenter', onDragEnter);
+    };
+  }, [onDragEnter]);
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (node) node.addEventListener('dragleave', onDragLeave);
+
+    return (): void => {
+      if (node) node.removeEventListener('dragleave', onDragLeave);
+    };
+  }, [onDragLeave]);
 
   useEffect(() => {
     const node = containerRef.current;
@@ -383,7 +405,9 @@ const App = (): JSX.Element => {
       <div ref={containerRef} className={sidebar ? 'content-side' : 'content'}>
         <ResizeDetector handleWidth handleHeight onResize={onResize} />
         {list[0] === empty && (
-          <div className="empty" onClick={onClickOpen}>
+          <div
+            className={onDrag ? 'empty-ondrag' : 'empty'}
+            onClick={onClickOpen}>
             <FontAwesomeIcon icon={faImages} size="3x" />
           </div>
         )}

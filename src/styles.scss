@@ -92,6 +92,12 @@
     border-color: rgb(174, 174, 178);
   }
 
+  .empty-ondrag {
+    @include empty();
+    color: rgb(242, 242, 247);
+    border-color: rgb(242, 242, 247);
+  }
+
   .map {
     height: 100%;
     z-index: 0;
