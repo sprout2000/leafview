@@ -207,7 +207,7 @@ if (!gotTheLock && win32) {
   });
 
   app.setAboutPanelOptions({
-    applicationName: 'Viewdir',
+    applicationName: 'LessView',
     applicationVersion: app.getVersion(),
     copyright: 'Copyright (C) 2020 Office Nishigami.',
   });
