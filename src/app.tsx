@@ -134,10 +134,6 @@ const App = (): JSX.Element => {
     });
   };
 
-  const diff = (old: string[], next: string[]): string[] => {
-    return [...new Set(old)].filter((item) => next.includes(item));
-  };
-
   const next = useCallback(async (): Promise<void> => {
     if (list.length <= 1) return;
 
@@ -154,12 +150,9 @@ const App = (): JSX.Element => {
       return;
     }
 
-    const copies = list.slice();
-    const diffList = diff(copies, newList);
+    setList(newList);
 
-    setList(diffList);
-
-    if (index >= diffList.length - 1) {
+    if (index >= newList.length - 1) {
       setIndex(0);
     } else {
       setIndex((index) => index + 1);
@@ -182,13 +175,10 @@ const App = (): JSX.Element => {
       return;
     }
 
-    const copies = list.slice();
-    const diffList = diff(copies, newList);
+    setList(newList);
 
-    setList(diffList);
-
-    if (index === 0 || index > diffList.length - 1) {
-      setIndex(diffList.length - 1);
+    if (index === 0 || index > newList.length - 1) {
+      setIndex(newList.length - 1);
     } else {
       setIndex((index) => index - 1);
     }
