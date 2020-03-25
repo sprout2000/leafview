@@ -18,8 +18,8 @@ const createMenu = (win: BrowserWindow): Menu => {
         {
           label: i18next.t('open'),
           accelerator: 'CmdOrCtrl+O',
-          click: (): void => {
-            dialog
+          click: async (): Promise<void> => {
+            await dialog
               .showOpenDialog(win, {
                 properties: ['openFile'],
                 title: i18next.t('dialogTitle'),
@@ -41,9 +41,8 @@ const createMenu = (win: BrowserWindow): Menu => {
                 ],
               })
               .then((result): void => {
-                if (result.filePaths) {
-                  win.webContents.send('selected-file', result.filePaths[0]);
-                }
+                if (result.canceled) return;
+                win.webContents.send('selected-file', result.filePaths[0]);
               })
               .catch((err): void => console.log(err));
           },
@@ -52,9 +51,7 @@ const createMenu = (win: BrowserWindow): Menu => {
         {
           label: i18next.t('trash'),
           accelerator: 'Delete',
-          click: (): void => {
-            win.webContents.send('menu-remove');
-          },
+          click: (): void => win.webContents.send('menu-remove'),
         },
         { type: 'separator' },
         {
