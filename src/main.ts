@@ -214,11 +214,11 @@ if (!gotTheLock && win32) {
     log.info(`Error in auto-updater: ${err}`);
   });
 
-  autoUpdater.once('update-downloaded', () => {
+  autoUpdater.once('update-downloaded', async () => {
     log.info(`Update downloaded...`);
 
     if (win) {
-      dialog
+      await dialog
         .showMessageBox(win, {
           type: 'info',
           buttons: ['OK', 'Cancel'],
@@ -232,7 +232,8 @@ if (!gotTheLock && win32) {
           if (result.response === 0) {
             autoUpdater.quitAndInstall();
           }
-        });
+        })
+        .catch((err) => log.info(`Error in showMessageBox: ${err}`));
     }
   });
 
