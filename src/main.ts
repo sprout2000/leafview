@@ -96,9 +96,7 @@ if (!gotTheLock && win32) {
       },
     });
 
-    ipcMain.handle('platform', () => {
-      return darwin;
-    });
+    ipcMain.handle('platform', () => darwin);
 
     ipcMain.handle('getdir', (_e: Event, filepath: string) => {
       const dirpath = path.dirname(filepath);
@@ -164,7 +162,7 @@ if (!gotTheLock && win32) {
       if (win) win.setTitle(basename);
     });
 
-    if (process.env.NODE_ENV === 'development') {
+    if (isDev) {
       win.webContents.openDevTools({ mode: 'detach' });
       loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
     }
