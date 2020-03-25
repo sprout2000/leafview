@@ -253,10 +253,7 @@ const App = (): JSX.Element => {
   }, []);
 
   const onClickOpen = async (): Promise<void> => {
-    const filepath: string | void | undefined = await ipcRenderer.invoke(
-      'open-dialog'
-    );
-
+    const filepath = await ipcRenderer.invoke('open-dialog');
     if (!filepath) return;
 
     readdir(filepath);
