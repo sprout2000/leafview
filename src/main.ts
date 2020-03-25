@@ -96,6 +96,8 @@ if (!gotTheLock && win32) {
       },
     });
 
+    ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
+
     ipcMain.handle('platform', () => darwin);
 
     ipcMain.handle('getdir', (_e: Event, filepath: string) => {
