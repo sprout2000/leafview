@@ -87,12 +87,12 @@ if (!gotTheLock && win32) {
       autoHideMenuBar: true,
       backgroundColor: '#323232',
       webPreferences: {
-        preload: path.resolve(getSourceDirectory(), 'preload.js'),
+        enableRemoteModule: false,
         nodeIntegration: false,
         contextIsolation: true,
-        enableRemoteModule: false,
         safeDialogs: true,
         sandbox: true,
+        preload: path.resolve(getSourceDirectory(), 'preload.js'),
       },
     });
 
