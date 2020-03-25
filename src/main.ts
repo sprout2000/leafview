@@ -177,18 +177,16 @@ if (!gotTheLock && win32) {
       if (win) win.show();
     });
 
-    win.webContents.on('did-finish-load', () => {
-      if (win32 && process.argv.length >= 2) {
-        if (win) {
-          win.webContents.send(
-            'selected-file',
-            process.argv[process.argv.length - 1]
-          );
-        }
+    win.webContents.once('did-finish-load', () => {
+      if (win && win32 && process.argv.length >= 2) {
+        win.webContents.send(
+          'selected-file',
+          process.argv[process.argv.length - 1]
+        );
       }
 
-      if (darwin && filepath) {
-        if (win) win.webContents.send('selected-file', filepath);
+      if (win && darwin && filepath) {
+        win.webContents.send('selected-file', filepath);
         filepath = null;
       }
     });
