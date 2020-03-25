@@ -122,6 +122,7 @@ const App = (): JSX.Element => {
       setList([empty]);
       return;
     }
+    ipcRenderer.send('file-history', filepath);
 
     const newIndex = newList.indexOf(filepath);
 
