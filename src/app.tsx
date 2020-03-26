@@ -143,6 +143,8 @@ const App = (): JSX.Element => {
   };
 
   const next = useCallback(async (): Promise<void> => {
+    if (url === empty) return;
+
     const dir = await ipcRenderer.invoke('dirname', url);
     if (!dir) {
       setUrl(empty);
@@ -166,6 +168,8 @@ const App = (): JSX.Element => {
   }, [url]);
 
   const prev = useCallback(async (): Promise<void> => {
+    if (url === empty) return;
+
     const dir = await ipcRenderer.invoke('dirname', url);
     if (!dir) {
       setUrl(empty);
@@ -192,6 +196,8 @@ const App = (): JSX.Element => {
   const onClickLeft = (): Promise<void> => prev();
 
   const remove = useCallback(async (): Promise<void> => {
+    if (url === empty) return;
+
     const result: boolean = await ipcRenderer.invoke('move-to-trash', url);
 
     if (!result) {
