@@ -14,8 +14,19 @@ import {
   faTrashAlt,
 } from '@fortawesome/free-regular-svg-icons';
 
+import {
+  Arrows,
+  Bottom,
+  Container,
+  Controls,
+  GlobalStyle,
+  Icon,
+  Initial,
+  Toolbar,
+  Trash,
+  View,
+} from './styles';
 import empty from './empty.png';
-import './styles.scss';
 
 const { ipcRenderer } = window;
 
@@ -285,39 +296,40 @@ const App = (): JSX.Element => {
   }, [draw, url]);
 
   return (
-    <div ref={containerRef} className="container">
-      <ResizeDetector handleWidth handleHeight onResize={onResize} />
-      {url === empty && (
-        <div
-          onClick={onClickOpen}
-          className={onDrag ? 'empty-ondrag' : 'empty'}>
-          <FontAwesomeIcon icon={faImages} size="3x" />
-        </div>
-      )}
-      <div className="bottom">
-        <div className="toolbar">
-          <div className="controls">
-            <div onClick={onClickOpen} className="icon-container">
-              <FontAwesomeIcon icon={faFolderOpen} size="2x" />
-            </div>
-          </div>
-          <div className="arrows">
-            <div onClick={onClickLeft} className="icon-container">
-              <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
-            </div>
-            <div onClick={onClickRight} className="icon-container">
-              <FontAwesomeIcon icon={faArrowAltCircleRight} size="2x" />
-            </div>
-          </div>
-          <div className="trash">
-            <div onClick={onClickTrash} className="icon-container">
-              <FontAwesomeIcon icon={faTrashAlt} size="2x" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div ref={mapRef} className="map"></div>
-    </div>
+    <React.Fragment>
+      <GlobalStyle />
+      <Container ref={containerRef}>
+        <ResizeDetector handleWidth handleHeight onResize={onResize} />
+        {url === empty && (
+          <Initial onClick={onClickOpen} drag={onDrag}>
+            <FontAwesomeIcon icon={faImages} size="3x" />
+          </Initial>
+        )}
+        <Bottom>
+          <Toolbar>
+            <Controls>
+              <Icon onClick={onClickOpen}>
+                <FontAwesomeIcon icon={faFolderOpen} size="2x" />
+              </Icon>
+            </Controls>
+            <Arrows>
+              <Icon onClick={onClickLeft}>
+                <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
+              </Icon>
+              <Icon onClick={onClickRight}>
+                <FontAwesomeIcon icon={faArrowAltCircleRight} size="2x" />
+              </Icon>
+            </Arrows>
+            <Trash>
+              <Icon onClick={onClickTrash}>
+                <FontAwesomeIcon icon={faTrashAlt} size="2x" />
+              </Icon>
+            </Trash>
+          </Toolbar>
+        </Bottom>
+        <View ref={mapRef}></View>
+      </Container>
+    </React.Fragment>
   );
 };
 
