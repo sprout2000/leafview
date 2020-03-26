@@ -76,12 +76,6 @@ const createMenu = (win: BrowserWindow): Menu => {
         },
         { type: 'separator' },
         {
-          label: i18next.t('toggleSidebar'),
-          accelerator: 'CmdOrCtrl+T',
-          click: (): void => win.webContents.send('toggle-sidebar'),
-        },
-        { type: 'separator' },
-        {
           label: i18next.t('toggleFullscreen'),
           role: 'togglefullscreen',
         },

@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, ipcMain, dialog, shell } from 'electron';
+import { BrowserWindow, app, Menu, ipcMain, dialog, shell } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import i18next from 'i18next';
 import stateKeeper from 'electron-window-state';
@@ -18,22 +18,22 @@ autoUpdater.logger = log;
 log.info('App starting...');
 
 const gotTheLock = app.requestSingleInstanceLock();
-const isDev = process.env.NODE_ENV === 'development';
 const win32 = process.platform === 'win32';
 const darwin = process.platform === 'darwin';
 
-let win: BrowserWindow | null = null;
+let win: BrowserWindow | null;
 let filepath: string | null = null;
 
-const getSourceDirectory = (): string =>
-  isDev
+const getSourceDirectory = (): string => {
+  return process.env.NODE_ENV === 'development'
     ? path.join(process.cwd(), 'dist')
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
+};
 
 const checkmime = (filepath: string): boolean => {
   const mimetype = mime.lookup(filepath);
 
-  return !mimetype || !mimetype.match(/bmp|gif|ico|jpeg|png|svg|webp/)
+  return !mimetype || !mimetype.match(/bmp|ico|gif|jpeg|png|svg|webp/)
     ? false
     : true;
 };
@@ -59,7 +59,7 @@ if (!gotTheLock && win32) {
     });
   });
 
-  app.once('ready', (): void => {
+  app.once('ready', () => {
     const locale = app.getLocale();
     i18next.init({
       lng: locale,
@@ -82,7 +82,6 @@ if (!gotTheLock && win32) {
       height: windowState.height,
       minWidth: 800,
       minHeight: 558,
-      title: 'LessView',
       show: false,
       autoHideMenuBar: true,
       backgroundColor: '#323232',
@@ -100,19 +99,22 @@ if (!gotTheLock && win32) {
 
     ipcMain.handle('platform', () => darwin);
 
-    ipcMain.handle('getdir', (_e: Event, filepath: string) => {
-      const dirpath = path.dirname(filepath);
-
-      return dirpath;
+    ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
+      return checkmime(filepath);
     });
 
-    ipcMain.handle('readdir', async (_e, dirpath) => {
+    ipcMain.handle('dirname', (_e: Event, filepath: string) => {
+      const dir = path.dirname(filepath);
+      return dir;
+    });
+
+    ipcMain.handle('readdir', async (e: Event, dir: string) => {
       const list = await fs.promises
-        .readdir(dirpath, { withFileTypes: true })
+        .readdir(dir, { withFileTypes: true })
         .then((dirents) =>
           dirents
             .filter((dirent) => dirent.isFile())
-            .map(({ name }) => path.join(dirpath, name))
+            .map(({ name }) => path.join(dir, name))
             .filter((item) => checkmime(item))
             .sort(natsort({ insensitive: true }))
         )
@@ -159,16 +161,14 @@ if (!gotTheLock && win32) {
       return result;
     });
 
-    ipcMain.handle('update-title', (_e: Event, title: string) => {
-      const basename = path.basename(title);
-      if (win) win.setTitle(basename);
+    ipcMain.handle('update-title', (_e: Event, fullpath: string) => {
+      if (win) win.setTitle(path.basename(fullpath));
     });
 
-    if (isDev) {
-      win.webContents.openDevTools({ mode: 'detach' });
+    if (process.env.NODE_ENV === 'development') {
       loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
+      win.webContents.openDevTools({ mode: 'detach' });
     }
-
     const menu = createMenu(win);
     Menu.setApplicationMenu(menu);
     win.loadFile('dist/index.html');
@@ -191,7 +191,7 @@ if (!gotTheLock && win32) {
       }
     });
 
-    win.once('closed', (): void => {
+    win.once('closed', () => {
       win = null;
     });
 
@@ -246,5 +246,5 @@ if (!gotTheLock && win32) {
   });
 
   app.allowRendererProcessReuse = true;
-  app.once('window-all-closed', () => app.exit());
+  app.once('window-all-closed', () => app.quit());
 }

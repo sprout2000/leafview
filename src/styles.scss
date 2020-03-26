@@ -1,61 +1,3 @@
-@mixin thumb {
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  height: 88px;
-  background-color: #323232;
-  border-radius: 4px;
-  user-select: none;
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-@mixin sidebar {
-  background-color: rgb(37, 37, 38);
-  grid-row: 1;
-  overflow-y: auto;
-  position: relative;
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-track {
-    border-radius: 10px;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(115, 115, 115, 0.5);
-    border-radius: 10px;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
-  }
-
-  .sidebar-content {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: auto;
-    user-select: none;
-
-    .thumb {
-      @include thumb();
-      border: 4px solid rgba(115, 115, 115, 0.5);
-    }
-
-    .thumb-focus {
-      @include thumb();
-      border: 4px solid rgb(0, 122, 255);
-    }
-
-    .thumb-item {
-      max-width: 120px;
-      max-height: 80px;
-    }
-  }
-}
-
 @mixin empty {
   position: absolute;
   top: 50%;
@@ -78,8 +20,19 @@
   }
 }
 
-@mixin content {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root,
+.container {
   height: 100%;
+}
+
+.container {
   background-color: #323232;
   overflow: hidden;
   user-select: none;
@@ -130,7 +83,7 @@
       user-select: none;
 
       .controls {
-        width: 144px;
+        width: 96px;
         display: flex;
         justify-content: flex-start;
       }
@@ -140,7 +93,7 @@
       }
 
       .trash {
-        width: 144px;
+        width: 96px;
         display: flex;
         justify-content: flex-end;
       }
@@ -160,44 +113,5 @@
         }
       }
     }
-  }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html,
-body,
-#root,
-.wrapper {
-  height: 100%;
-}
-
-.wrapper {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 200px 1fr;
-  user-select: none;
-
-  .sidebar {
-    @include sidebar();
-    grid-column: 1 / 2;
-  }
-
-  .sidebar-hide {
-    @include sidebar();
-    grid-column: 1 / 1;
-  }
-
-  .content {
-    @include content();
-    grid-column: 1 / 3;
-  }
-
-  .content-side {
-    @include content();
-    grid-column: 2 / 3;
   }
 }

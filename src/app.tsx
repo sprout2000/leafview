@@ -1,14 +1,13 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-
 import ResizeDetector from 'react-resize-detector';
+
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faImages,
-  faListAlt,
   faFolderOpen,
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
@@ -21,23 +20,16 @@ import './styles.scss';
 const { ipcRenderer } = window;
 
 const App = (): JSX.Element => {
-  const [dir, setDir] = useState('');
-  const [list, setList] = useState([empty]);
-  const [index, setIndex] = useState(0);
-  const [sidebar, setSidebar] = useState(false);
+  const [url, setUrl] = useState(empty);
   const [onDrag, setOnDrag] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
 
-  const updateTitle = async (title: string): Promise<void> => {
-    await ipcRenderer.invoke('update-title', title);
-  };
-
   const isDarwin = async (): Promise<boolean> => {
-    const darwin: boolean = await ipcRenderer.invoke('platform');
-    return darwin;
+    const result: boolean = await ipcRenderer.invoke('platform');
+    return result;
   };
 
   const draw = useCallback(
@@ -105,127 +97,9 @@ const App = (): JSX.Element => {
     []
   );
 
-  const readdir = async (filepath: string): Promise<void> => {
-    const dirpath = await ipcRenderer.invoke('getdir', filepath);
-
-    if (!dirpath) {
-      setList([empty]);
-      return;
-    }
-
-    const newList: string[] | void = await ipcRenderer.invoke(
-      'readdir',
-      dirpath
-    );
-
-    if (!newList || newList.length === 0) {
-      setList([empty]);
-      return;
-    }
-    ipcRenderer.send('file-history', filepath);
-
-    const newIndex = newList.indexOf(filepath);
-
-    setIndex(() => {
-      const idx = newIndex;
-      setDir(dirpath);
-      setList(newList);
-
-      return idx;
-    });
-  };
-
-  const next = useCallback(async (): Promise<void> => {
-    if (list.length <= 1) return;
-
-    const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
-
-    if (!newList || newList.length === 0) {
-      setIndex(() => {
-        const newIndex = 0;
-        setList([empty]);
-
-        return newIndex;
-      });
-
-      return;
-    }
-
-    setList(newList);
-
-    if (index >= newList.length - 1) {
-      setIndex(0);
-    } else {
-      setIndex((index) => index + 1);
-    }
-  }, [dir, index, list]);
-
-  const prev = useCallback(async (): Promise<void> => {
-    if (list.length <= 1) return;
-
-    const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
-
-    if (!newList || newList.length === 0) {
-      setIndex(() => {
-        const newIndex = 0;
-        setList([empty]);
-
-        return newIndex;
-      });
-
-      return;
-    }
-
-    setList(newList);
-
-    if (index === 0 || index > newList.length - 1) {
-      setIndex(newList.length - 1);
-    } else {
-      setIndex((index) => index - 1);
-    }
-  }, [dir, index, list]);
-
-  const remove = useCallback(async (): Promise<void> => {
-    const result: boolean = await ipcRenderer.invoke(
-      'move-to-trash',
-      list[index]
-    );
-
-    if (!result) {
-      setList([empty]);
-      return;
-    }
-
-    const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
-
-    if (!newList || newList.length === 0) {
-      setIndex(() => {
-        const newIndex = 0;
-        setList([empty]);
-
-        return newIndex;
-      });
-
-      return;
-    }
-
-    let newIndex = index;
-    if (index > newList.length - 1) {
-      newIndex = newList.length - 1;
-    }
-
-    setIndex(() => {
-      setList(newList);
-
-      return newIndex;
-    });
-  }, [dir, index, list]);
-
-  const onClickRight = (): Promise<void> => next();
-  const onClickLeft = (): Promise<void> => prev();
-
-  const onToggleSidebar = (): void => {
-    setSidebar((hide) => !hide);
+  const onResize = (): void => {
+    const node = containerRef.current;
+    if (node) draw(url, node.clientWidth, node.clientHeight);
   };
 
   const preventDefault = (e: DragEvent): void => {
@@ -233,7 +107,7 @@ const App = (): JSX.Element => {
     e.stopPropagation();
   };
 
-  const onDragEnter = useCallback((e: DragEvent): void => {
+  const onDragOver = useCallback((e: DragEvent): void => {
     preventDefault(e);
     setOnDrag(true);
   }, []);
@@ -243,80 +117,115 @@ const App = (): JSX.Element => {
     setOnDrag(false);
   }, []);
 
-  const onDrop = useCallback((e: DragEvent) => {
+  const onDrop = async (e: DragEvent): Promise<void> => {
     preventDefault(e);
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
-      readdir(file.path);
-      setOnDrag(false);
+
+      const mime: boolean = await ipcRenderer.invoke('mime-check', file.path);
+      if (mime) {
+        setUrl(file.path);
+        setOnDrag(false);
+      }
     }
-  }, []);
+  };
+
+  const next = useCallback(async (): Promise<void> => {
+    const dir = await ipcRenderer.invoke('dirname', url);
+    if (!dir) {
+      setUrl(empty);
+      return;
+    }
+
+    const list: void | string[] = await ipcRenderer.invoke('readdir', dir);
+    if (!list || list.length === 0 || !list.includes(url)) {
+      setUrl(empty);
+      return;
+    }
+
+    if (list.length === 1) return;
+
+    const index = list.indexOf(url);
+    if (index === list.length - 1) {
+      setUrl(list[0]);
+    } else {
+      setUrl(list[index + 1]);
+    }
+  }, [url]);
+
+  const prev = useCallback(async (): Promise<void> => {
+    const dir = await ipcRenderer.invoke('dirname', url);
+    if (!dir) {
+      setUrl(empty);
+      return;
+    }
+
+    const list: void | string[] = await ipcRenderer.invoke('readdir', dir);
+    if (!list || list.length === 0 || !list.includes(url)) {
+      setUrl(empty);
+      return;
+    }
+
+    if (list.length === 1) return;
+
+    const index = list.indexOf(url);
+    if (index === 0) {
+      setUrl(list[list.length - 1]);
+    } else {
+      setUrl(list[index - 1]);
+    }
+  }, [url]);
+
+  const onClickRight = (): Promise<void> => next();
+  const onClickLeft = (): Promise<void> => prev();
+
+  const remove = useCallback(async (): Promise<void> => {
+    const result: boolean = await ipcRenderer.invoke('move-to-trash', url);
+
+    if (!result) {
+      setUrl(empty);
+      return;
+    } else {
+      next();
+    }
+  }, [url, next]);
+
+  const onClickTrash = (): Promise<void> => remove();
 
   const onClickOpen = async (): Promise<void> => {
     const filepath = await ipcRenderer.invoke('open-dialog');
     if (!filepath) return;
 
-    readdir(filepath);
+    const mime = await ipcRenderer.invoke('mime-check', filepath);
+    if (mime) setUrl(filepath);
   };
 
-  const onSelected = useCallback((filepath: string): void => {
+  const onSelected = async (filepath: string): Promise<void> => {
     if (!filepath) return;
 
-    readdir(filepath);
-  }, []);
-
-  const onClickRemove = (): Promise<void> => remove();
-  const onMenuRemove = useCallback((): Promise<void> => remove(), [remove]);
-
-  const onClickThumb = async (id: number): Promise<void> => {
-    const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
-
-    if (!newList || newList.length === 0) {
-      setIndex(() => {
-        const newIndex = 0;
-        setList([empty]);
-
-        return newIndex;
-      });
-
-      return;
-    }
-
-    if (id > newList.length - 1) {
-      setIndex(() => {
-        const newIndex = newList.length - 1;
-        setList(newList);
-
-        return newIndex;
-      });
-    } else {
-      setIndex(id);
-    }
+    const mime = await ipcRenderer.invoke('mime-check', filepath);
+    if (mime) setUrl(filepath);
   };
 
-  const onResize = (): void => {
-    const node = containerRef.current;
-    if (node) draw(list[index], node.clientWidth, node.clientHeight);
+  const updateTitle = async (filepath: string): Promise<void> => {
+    await ipcRenderer.invoke('update-title', filepath);
   };
 
   useEffect(() => {
     const node = containerRef.current;
-    if (node) node.addEventListener('dragover', preventDefault);
+    if (node) {
+      node.addEventListener('dragenter', onDragOver);
+      node.addEventListener('dragover', onDragOver);
+    }
 
     return (): void => {
-      if (node) node.removeEventListener('dragover', preventDefault);
+      if (node) {
+        node.removeEventListener('dragenter', onDragOver);
+        node.addEventListener('dragover', onDragOver);
+      }
     };
-  }, []);
-
-  useEffect(() => {
-    const node = containerRef.current;
-    if (node) node.addEventListener('dragenter', onDragEnter);
-
-    return (): void => {
-      if (node) node.removeEventListener('dragenter', onDragEnter);
-    };
-  }, [onDragEnter]);
+  });
 
   useEffect(() => {
     const node = containerRef.current;
@@ -325,7 +234,7 @@ const App = (): JSX.Element => {
     return (): void => {
       if (node) node.removeEventListener('dragleave', onDragLeave);
     };
-  }, [onDragLeave]);
+  });
 
   useEffect(() => {
     const node = containerRef.current;
@@ -334,117 +243,80 @@ const App = (): JSX.Element => {
     return (): void => {
       if (node) node.removeEventListener('drop', onDrop);
     };
-  }, [onDrop]);
+  });
+
+  useEffect(() => {
+    ipcRenderer.on('menu-next', next);
+
+    return ipcRenderer.removeAllListeners('menu-next');
+  }, [next]);
+
+  useEffect(() => {
+    ipcRenderer.on('menu-prev', prev);
+
+    return ipcRenderer.removeAllListeners('menu-prev');
+  }, [prev]);
+
+  useEffect(() => {
+    ipcRenderer.on('menu-remove', remove);
+
+    return ipcRenderer.removeAllListeners('menu-remove');
+  }, [remove]);
 
   useEffect(() => {
     ipcRenderer.on('selected-file', (_e, filepath) => onSelected(filepath));
 
-    return (): void => ipcRenderer.removeAllListeners('selected-file');
-  }, [onSelected]);
-
-  useEffect(() => {
-    ipcRenderer.on('menu-next', () => next());
-
-    return (): void => ipcRenderer.removeAllListeners('menu-next');
-  }, [next]);
-
-  useEffect(() => {
-    ipcRenderer.on('menu-prev', () => prev());
-
-    return (): void => ipcRenderer.removeAllListeners('menu-prev');
-  }, [prev]);
-
-  useEffect(() => {
-    ipcRenderer.on('menu-remove', () => onMenuRemove());
-
-    return (): void => ipcRenderer.removeAllListeners('menu-remove');
-  }, [onMenuRemove]);
-
-  useEffect(() => {
-    ipcRenderer.on('toggle-sidebar', onToggleSidebar);
-
-    return (): void => {
-      ipcRenderer.removeAllListeners('toggle-sidebar');
-    };
+    return ipcRenderer.removeAllListeners('selected-file');
   }, []);
 
   useEffect(() => {
     let title = 'LessView';
 
-    if (list[0] !== empty) {
-      title = list[index];
+    if (url !== empty) {
+      title = url;
     }
 
     updateTitle(title);
-  }, [list, index]);
-
-  useEffect(() => {
-    const node = document.getElementById(`${index}`);
-    if (node) node.scrollIntoView({ block: 'center' });
-  }, [index]);
+  }, [url]);
 
   useEffect(() => {
     const node = containerRef.current;
-    if (node) draw(list[index], node.clientWidth, node.clientHeight);
-  }, [draw, list, index]);
-
-  const thumbnails = list.map((item, key) => {
-    if (item === empty) {
-      return;
-    } else {
-      return (
-        <div
-          key={key}
-          id={`${key}`}
-          onClick={(): Promise<void> => onClickThumb(key)}
-          className={key === index ? 'thumb-focus' : 'thumb'}>
-          <img className="thumb-item" src={item} alt="" />
-        </div>
-      );
-    }
-  });
+    if (node) draw(url, node.clientWidth, node.clientHeight);
+  }, [draw, url]);
 
   return (
-    <div className="wrapper">
-      <div className={sidebar ? 'sidebar' : 'sidebar-hide'}>
-        <div className="sidebar-content">{thumbnails}</div>
-      </div>
-      <div ref={containerRef} className={sidebar ? 'content-side' : 'content'}>
-        <ResizeDetector handleWidth handleHeight onResize={onResize} />
-        {list[0] === empty && (
-          <div
-            className={onDrag ? 'empty-ondrag' : 'empty'}
-            onClick={onClickOpen}>
-            <FontAwesomeIcon icon={faImages} size="3x" />
+    <div ref={containerRef} className="container">
+      <ResizeDetector handleWidth handleHeight onResize={onResize} />
+      {url === empty && (
+        <div
+          onClick={onClickOpen}
+          className={onDrag ? 'empty-ondrag' : 'empty'}>
+          <FontAwesomeIcon icon={faImages} size="3x" />
+        </div>
+      )}
+      <div className="bottom">
+        <div className="toolbar">
+          <div className="controls">
+            <div onClick={onClickOpen} className="icon-container">
+              <FontAwesomeIcon icon={faFolderOpen} size="2x" />
+            </div>
           </div>
-        )}
-        <div className="bottom">
-          <div className="toolbar">
-            <div className="controls">
-              <div onClick={onToggleSidebar} className="icon-container">
-                <FontAwesomeIcon icon={faListAlt} size="2x" />
-              </div>
-              <div onClick={onClickOpen} className="icon-container">
-                <FontAwesomeIcon icon={faFolderOpen} size="2x" />
-              </div>
+          <div className="arrows">
+            <div onClick={onClickLeft} className="icon-container">
+              <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
             </div>
-            <div className="arrows">
-              <div onClick={onClickLeft} className="icon-container">
-                <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
-              </div>
-              <div onClick={onClickRight} className="icon-container">
-                <FontAwesomeIcon icon={faArrowAltCircleRight} size="2x" />
-              </div>
+            <div onClick={onClickRight} className="icon-container">
+              <FontAwesomeIcon icon={faArrowAltCircleRight} size="2x" />
             </div>
-            <div className="trash">
-              <div onClick={onClickRemove} className="icon-container">
-                <FontAwesomeIcon icon={faTrashAlt} size="2x" />
-              </div>
+          </div>
+          <div className="trash">
+            <div onClick={onClickTrash} className="icon-container">
+              <FontAwesomeIcon icon={faTrashAlt} size="2x" />
             </div>
           </div>
         </div>
-        <div ref={mapRef} className="map"></div>
       </div>
+      <div ref={mapRef} className="map"></div>
     </div>
   );
 };
