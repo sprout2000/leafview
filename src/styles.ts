@@ -16,7 +16,6 @@ export const Container = styled.div`
   overflow: hidden;
   user-select: none;
   position: relative;
-  grid-row: 1;
 `;
 
 export const Initial = styled.div<{ drag: boolean }>`
