@@ -198,15 +198,40 @@ const App = (): JSX.Element => {
   const remove = useCallback(async (): Promise<void> => {
     if (url === empty) return;
 
+    const dir = await ipcRenderer.invoke('dirname', url);
+    if (!dir) {
+      setUrl(empty);
+      return;
+    }
+
+    const list: string[] | void = await ipcRenderer.invoke('readdir', dir);
+    if (!list || list.length === 0 || !list.includes(url)) {
+      setUrl(empty);
+      return;
+    }
+
+    const index = list.indexOf(url);
+
     const result: boolean = await ipcRenderer.invoke('move-to-trash', url);
+    console.log(`move-to-trash: ${result ? 'success' : 'failed'}`);
 
     if (!result) {
       setUrl(empty);
       return;
     } else {
-      next();
+      const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
+      if (!newList || newList.length === 0) {
+        setUrl(empty);
+        return;
+      }
+
+      if (index >= newList.length - 1) {
+        setUrl(newList[0]);
+      } else {
+        setUrl(newList[index]);
+      }
     }
-  }, [url, next]);
+  }, [url]);
 
   const onClickTrash = (): Promise<void> => remove();
 
