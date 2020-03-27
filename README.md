@@ -6,7 +6,7 @@
 
 An image viewer for minimalists.
 
-<img width="912" alt="2020-03-23 18 25 14" src="https://user-images.githubusercontent.com/52094761/77398743-6ce65d00-6deb-11ea-85a7-5353f35425c2.png">
+<img width="912" alt="2020-03-27 8 18 18" src="https://user-images.githubusercontent.com/52094761/77708128-89141500-700a-11ea-90fe-31f30f1dd9ee.png">
 
 ## Security
 
@@ -17,6 +17,13 @@ enableRemoteModule | `false`
 contextIsolation | `true`
 safeDialogs | `true`
 sandbox | `true`
+
+## Features
+
+- Pan & WheelZoom
+- Fast
+- Secure
+- Memory-Friendly
 
 ## Build and Install
 
@@ -45,7 +52,6 @@ Key | Function | Platform
 <kbd>+</kdb> | Zoom In | All
 <kbd>-</kdb> | Zoom Out | All
 <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan | All
-<kbd>Command</kbd> or <kbd>Ctrl</kbd>+<kbd>T</kdb> | Toggle Sidebar | macOS / Windows
 <kbd>Command</kbd>+<kbd>Control</kbd>+<kbd>F</kbd> | Toggle Fullscreen | macOS
 <kbd>F11</kbd> | Toggle Fullscreen | Windows
 <kbd>Alt</kbd> | Show/Hide Menu Bar | Windows
