@@ -148,16 +148,12 @@ const App = (): JSX.Element => {
     const dir = await ipcRenderer.invoke('dirname', url);
     if (!dir) {
       setUrl(empty);
-      ipcRenderer.send('log-info', `NOT FOUND: ${url} or ${dir}`);
-
       return;
     }
 
     const list: void | string[] = await ipcRenderer.invoke('readdir', dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       setUrl(empty);
-      ipcRenderer.send('log-info', `Failed: list of ${dir}`);
-
       return;
     }
 
@@ -177,16 +173,12 @@ const App = (): JSX.Element => {
     const dir = await ipcRenderer.invoke('dirname', url);
     if (!dir) {
       setUrl(empty);
-      ipcRenderer.send('log-info', `NOT FOUND: ${url} or ${dir}`);
-
       return;
     }
 
     const list: void | string[] = await ipcRenderer.invoke('readdir', dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       setUrl(empty);
-      ipcRenderer.send('log-info', `Failed: list of ${dir}`);
-
       return;
     }
 
@@ -206,16 +198,12 @@ const App = (): JSX.Element => {
     const dir = await ipcRenderer.invoke('dirname', url);
     if (!dir) {
       setUrl(empty);
-      ipcRenderer.send('log-info', `NOT FOUND: ${url} or ${dir}`);
-
       return;
     }
 
     const list: string[] | void = await ipcRenderer.invoke('readdir', dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       setUrl(empty);
-      ipcRenderer.send('log-info', `Failed: list of ${dir}`);
-
       return;
     }
 
@@ -225,8 +213,6 @@ const App = (): JSX.Element => {
 
     if (!result) {
       setUrl(empty);
-      ipcRenderer.send('log-info', `Failed: move-to-trash ${url}`);
-
       return;
     } else {
       const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
