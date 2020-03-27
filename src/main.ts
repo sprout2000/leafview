@@ -250,5 +250,5 @@ if (!gotTheLock && win32) {
   });
 
   app.allowRendererProcessReuse = true;
-  app.once('window-all-closed', () => app.quit());
+  app.once('window-all-closed', () => app.exit());
 }
