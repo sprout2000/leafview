@@ -138,6 +138,7 @@ const App = (): JSX.Element => {
       if (mime) {
         setUrl(file.path);
         setOnDrag(false);
+        ipcRenderer.send('file-histoy', file.path);
       }
     }
   };
@@ -236,14 +237,20 @@ const App = (): JSX.Element => {
     if (!filepath) return;
 
     const mime = await ipcRenderer.invoke('mime-check', filepath);
-    if (mime) setUrl(filepath);
+    if (mime) {
+      setUrl(filepath);
+      ipcRenderer.send('file-history', filepath);
+    }
   };
 
   const onMenuOpen = useCallback(async (_e: Event, filepath: string) => {
     if (!filepath) return;
 
     const mime = await ipcRenderer.invoke('mime-check', filepath);
-    if (mime) setUrl(filepath);
+    if (mime) {
+      setUrl(filepath);
+      ipcRenderer.send('file-history', filepath);
+    }
   }, []);
 
   const updateTitle = async (filepath: string): Promise<void> => {
