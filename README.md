@@ -25,6 +25,16 @@ sandbox | `true`
 - Secure
 - Memory-Friendly
 
+## Supported Image Formats
+
+- `bmp` (com.microsoft.bmp)
+- `ico` (com.microsoft.ico)
+- `gif` (com.compuserve.gif)
+- `jpg` (public.jpeg)
+- `png` (public.png)
+- `svg` (public.svg-image)
+- `webp` (image/webp)
+
 ## Build and Install
 
 ```
