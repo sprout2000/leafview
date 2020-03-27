@@ -42,7 +42,7 @@ const createMenu = (win: BrowserWindow): Menu => {
               })
               .then((result): void => {
                 if (result.canceled) return;
-                win.webContents.send('selected-file', result.filePaths[0]);
+                win.webContents.send('menu-open', result.filePaths[0]);
               })
               .catch((err): void => console.log(err));
           },

@@ -142,7 +142,7 @@ const App = (): JSX.Element => {
     }
   };
 
-  const onClickRight = useCallback(async (): Promise<void> => {
+  const next = useCallback(async (): Promise<void> => {
     if (url === empty) return;
 
     const dir = await ipcRenderer.invoke('dirname', url);
@@ -167,7 +167,7 @@ const App = (): JSX.Element => {
     }
   }, [url]);
 
-  const onClickLeft = useCallback(async (): Promise<void> => {
+  const prev = useCallback(async (): Promise<void> => {
     if (url === empty) return;
 
     const dir = await ipcRenderer.invoke('dirname', url);
@@ -285,20 +285,20 @@ const App = (): JSX.Element => {
   });
 
   useEffect(() => {
-    ipcRenderer.on('menu-next', onClickRight);
+    ipcRenderer.on('menu-next', next);
 
     return (): void => {
       ipcRenderer.removeAllListeners('menu-next');
     };
-  }, [onClickRight]);
+  }, [next]);
 
   useEffect(() => {
-    ipcRenderer.on('menu-prev', onClickLeft);
+    ipcRenderer.on('menu-prev', prev);
 
     return (): void => {
       ipcRenderer.removeAllListeners('menu-prev');
     };
-  }, [onClickLeft]);
+  }, [prev]);
 
   useEffect(() => {
     ipcRenderer.on('menu-remove', remove);
@@ -307,7 +307,7 @@ const App = (): JSX.Element => {
   }, [remove]);
 
   useEffect(() => {
-    ipcRenderer.on('selected-file', (_e, filepath) => onSelected(filepath));
+    ipcRenderer.on('menu-open', (_e, filepath) => onSelected(filepath));
 
     return ipcRenderer.removeAllListeners('selected-file');
   }, []);
@@ -345,10 +345,10 @@ const App = (): JSX.Element => {
               </Icon>
             </Controls>
             <Arrows>
-              <Icon onClick={onClickLeft}>
+              <Icon onClick={prev}>
                 <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
               </Icon>
-              <Icon onClick={onClickRight}>
+              <Icon onClick={next}>
                 <FontAwesomeIcon icon={faArrowAltCircleRight} size="2x" />
               </Icon>
             </Arrows>
