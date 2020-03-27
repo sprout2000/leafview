@@ -24,6 +24,7 @@ sandbox | `true`
 - Fast
 - Secure
 - Memory-Friendly
+- Auto Update (*macOS*)
 
 ## Supported Image Formats
 
