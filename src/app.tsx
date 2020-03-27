@@ -142,7 +142,7 @@ const App = (): JSX.Element => {
     }
   };
 
-  const next = useCallback(async (): Promise<void> => {
+  const onClickRight = useCallback(async (): Promise<void> => {
     if (url === empty) return;
 
     const dir = await ipcRenderer.invoke('dirname', url);
@@ -167,7 +167,7 @@ const App = (): JSX.Element => {
     }
   }, [url]);
 
-  const prev = useCallback(async (): Promise<void> => {
+  const onClickLeft = useCallback(async (): Promise<void> => {
     if (url === empty) return;
 
     const dir = await ipcRenderer.invoke('dirname', url);
@@ -191,9 +191,6 @@ const App = (): JSX.Element => {
       setUrl(list[index - 1]);
     }
   }, [url]);
-
-  const onClickRight = (): Promise<void> => next();
-  const onClickLeft = (): Promise<void> => prev();
 
   const remove = useCallback(async (): Promise<void> => {
     if (url === empty) return;
@@ -288,16 +285,20 @@ const App = (): JSX.Element => {
   });
 
   useEffect(() => {
-    ipcRenderer.on('menu-next', next);
+    ipcRenderer.on('menu-next', onClickRight);
 
-    return ipcRenderer.removeAllListeners('menu-next');
-  }, [next]);
+    return (): void => {
+      ipcRenderer.removeAllListeners('menu-next');
+    };
+  }, [onClickRight]);
 
   useEffect(() => {
-    ipcRenderer.on('menu-prev', prev);
+    ipcRenderer.on('menu-prev', onClickLeft);
 
-    return ipcRenderer.removeAllListeners('menu-prev');
-  }, [prev]);
+    return (): void => {
+      ipcRenderer.removeAllListeners('menu-prev');
+    };
+  }, [onClickLeft]);
 
   useEffect(() => {
     ipcRenderer.on('menu-remove', remove);
