@@ -32,7 +32,6 @@ const createMenu = (win: BrowserWindow): Menu => {
                       'ico',
                       'jpg',
                       'jpeg',
-                      'apng',
                       'png',
                       'svg',
                       'webp',
