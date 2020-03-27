@@ -165,6 +165,10 @@ if (!gotTheLock && win32) {
       if (win) win.setTitle(path.basename(fullpath));
     });
 
+    ipcMain.on('log-info', (_e: Event, message: string) => {
+      log.info(message);
+    });
+
     if (process.env.NODE_ENV === 'development') {
       loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
       win.webContents.openDevTools({ mode: 'detach' });
