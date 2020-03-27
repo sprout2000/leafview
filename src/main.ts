@@ -72,7 +72,7 @@ if (!gotTheLock && win32) {
 
     const windowState = stateKeeper({
       defaultWidth: 800,
-      defaultHeight: 558,
+      defaultHeight: darwin ? 558 : 562,
     });
 
     win = new BrowserWindow({
@@ -81,7 +81,7 @@ if (!gotTheLock && win32) {
       width: windowState.width,
       height: windowState.height,
       minWidth: 800,
-      minHeight: 558,
+      minHeight: darwin ? 558 : 562,
       show: false,
       autoHideMenuBar: true,
       backgroundColor: '#323232',
