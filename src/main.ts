@@ -48,7 +48,7 @@ if (!gotTheLock && win32) {
     }
 
     if (win32 && argv.length >= 4) {
-      if (win) win.webContents.send('selected-file', argv[argv.length - 1]);
+      if (win) win.webContents.send('menu-open', argv[argv.length - 1]);
     }
   });
 
@@ -180,13 +180,13 @@ if (!gotTheLock && win32) {
     win.webContents.once('did-finish-load', () => {
       if (win && win32 && process.argv.length >= 2) {
         win.webContents.send(
-          'selected-file',
+          'menu-open',
           process.argv[process.argv.length - 1]
         );
       }
 
       if (win && darwin && filepath) {
-        win.webContents.send('selected-file', filepath);
+        win.webContents.send('menu-open', filepath);
         filepath = null;
       }
     });
@@ -201,7 +201,7 @@ if (!gotTheLock && win32) {
 
   app.on('open-file', (e, path) => {
     e.preventDefault();
-    if (win) win.webContents.send('selected-file', path);
+    if (win) win.webContents.send('menu-open', path);
   });
 
   app.setAboutPanelOptions({
