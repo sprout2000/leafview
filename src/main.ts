@@ -14,6 +14,7 @@ import en from './locales/en.json';
 import ja from './locales/ja.json';
 import createMenu from './menu';
 
+console.log = log.log;
 autoUpdater.logger = log;
 log.info('App starting...');
 
