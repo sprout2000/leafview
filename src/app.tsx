@@ -240,12 +240,12 @@ const App = (): JSX.Element => {
     if (mime) setUrl(filepath);
   };
 
-  const onSelected = async (filepath: string): Promise<void> => {
+  const onMenuOpen = useCallback(async (_e: Event, filepath: string) => {
     if (!filepath) return;
 
     const mime = await ipcRenderer.invoke('mime-check', filepath);
     if (mime) setUrl(filepath);
-  };
+  }, []);
 
   const updateTitle = async (filepath: string): Promise<void> => {
     await ipcRenderer.invoke('update-title', filepath);
@@ -307,10 +307,12 @@ const App = (): JSX.Element => {
   }, [remove]);
 
   useEffect(() => {
-    ipcRenderer.on('menu-open', (_e, filepath) => onSelected(filepath));
+    ipcRenderer.on('menu-open', onMenuOpen);
 
-    return ipcRenderer.removeAllListeners('selected-file');
-  }, []);
+    return (): void => {
+      ipcRenderer.removeAllListeners('menu-open');
+    };
+  }, [onMenuOpen]);
 
   useEffect(() => {
     let title = 'LessView';
