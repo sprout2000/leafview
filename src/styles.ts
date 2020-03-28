@@ -57,7 +57,7 @@ export const Bottom = styled.div`
   &:hover {
     opacity: 1;
   }
-  transition: opacity 0.8s linear;
+  transition: opacity 0.8s ease-in-out;
 `;
 
 export const Toolbar = styled.div`
