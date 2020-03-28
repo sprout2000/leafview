@@ -222,7 +222,7 @@ const App = (): JSX.Element => {
         return;
       }
 
-      if (index >= newList.length - 1) {
+      if (index > newList.length - 1) {
         setUrl(newList[0]);
       } else {
         setUrl(newList[index]);
@@ -307,7 +307,9 @@ const App = (): JSX.Element => {
   useEffect(() => {
     ipcRenderer.on('menu-remove', remove);
 
-    return ipcRenderer.removeAllListeners('menu-remove');
+    return (): void => {
+      ipcRenderer.removeAllListeners('menu-remove');
+    };
   }, [remove]);
 
   useEffect(() => {
