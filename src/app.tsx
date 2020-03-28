@@ -230,8 +230,6 @@ const App = (): JSX.Element => {
     }
   }, [url]);
 
-  const onClickTrash = (): Promise<void> => remove();
-
   const onClickOpen = async (): Promise<void> => {
     const filepath = await ipcRenderer.invoke('open-dialog');
     if (!filepath) return;
@@ -361,7 +359,7 @@ const App = (): JSX.Element => {
               </Icon>
             </Arrows>
             <Trash>
-              <Icon onClick={onClickTrash}>
+              <Icon onClick={remove}>
                 <FontAwesomeIcon icon={faTrashAlt} size="2x" />
               </Icon>
             </Trash>
