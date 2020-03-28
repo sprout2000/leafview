@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/sprout2000/lessview/compare/v0.0.4...v0.0.5) (2020-03-28)
+
+
+### Bug Fixes
+
+* menu-remove ([8b9c400](https://github.com/sprout2000/lessview/commit/8b9c4001fa643861da2f00587034ec85ac6d2f46))
+
 ### [0.0.4](https://github.com/sprout2000/lessview/compare/v0.0.3...v0.0.4) (2020-03-27)
 
 
