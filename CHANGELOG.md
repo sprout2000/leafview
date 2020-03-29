@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/sprout2000/lessview/compare/v0.0.5...v0.0.6) (2020-03-29)
+
+
+### Bug Fixes
+
+* delete useEffect for onDragEvent ([c290e91](https://github.com/sprout2000/lessview/commit/c290e914bb08a7cd13c52f5c160990fcb97cec3b))
+
 ### [0.0.5](https://github.com/sprout2000/lessview/compare/v0.0.4...v0.0.5) (2020-03-28)
 
 
