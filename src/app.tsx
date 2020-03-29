@@ -113,22 +113,25 @@ const App = (): JSX.Element => {
     if (node) draw(url, node.clientWidth, node.clientHeight);
   };
 
-  const preventDefault = (e: DragEvent): void => {
+  const preventDefault = (e: React.DragEvent<HTMLDivElement>): void => {
     e.preventDefault();
     e.stopPropagation();
   };
 
-  const onDragOver = useCallback((e: DragEvent): void => {
+  const onDragOver = useCallback((e: React.DragEvent<HTMLDivElement>): void => {
     preventDefault(e);
     setOnDrag(true);
   }, []);
 
-  const onDragLeave = useCallback((e: DragEvent): void => {
-    preventDefault(e);
-    setOnDrag(false);
-  }, []);
+  const onDragLeave = useCallback(
+    (e: React.DragEvent<HTMLDivElement>): void => {
+      preventDefault(e);
+      setOnDrag(false);
+    },
+    []
+  );
 
-  const onDrop = async (e: DragEvent): Promise<void> => {
+  const onDrop = async (e: React.DragEvent<HTMLDivElement>): Promise<void> => {
     preventDefault(e);
 
     if (e.dataTransfer) {
@@ -256,39 +259,6 @@ const App = (): JSX.Element => {
   };
 
   useEffect(() => {
-    const node = containerRef.current;
-    if (node) {
-      node.addEventListener('dragenter', onDragOver);
-      node.addEventListener('dragover', onDragOver);
-    }
-
-    return (): void => {
-      if (node) {
-        node.removeEventListener('dragenter', onDragOver);
-        node.addEventListener('dragover', onDragOver);
-      }
-    };
-  });
-
-  useEffect(() => {
-    const node = containerRef.current;
-    if (node) node.addEventListener('dragleave', onDragLeave);
-
-    return (): void => {
-      if (node) node.removeEventListener('dragleave', onDragLeave);
-    };
-  });
-
-  useEffect(() => {
-    const node = containerRef.current;
-    if (node) node.addEventListener('drop', onDrop);
-
-    return (): void => {
-      if (node) node.removeEventListener('drop', onDrop);
-    };
-  });
-
-  useEffect(() => {
     ipcRenderer.on('menu-next', next);
 
     return (): void => {
@@ -338,7 +308,12 @@ const App = (): JSX.Element => {
   return (
     <React.Fragment>
       <GlobalStyle />
-      <Container ref={containerRef}>
+      <Container
+        ref={containerRef}
+        onDragEnter={(e): void => onDragOver(e)}
+        onDragOver={(e): void => onDragOver(e)}
+        onDragLeave={(e): void => onDragLeave(e)}
+        onDrop={(e): Promise<void> => onDrop(e)}>
         <ResizeDetector handleWidth handleHeight onResize={onResize} />
         {url === empty && (
           <Initial onClick={onClickOpen} drag={onDrag}>
