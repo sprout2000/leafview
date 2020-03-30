@@ -41,10 +41,10 @@ sandbox | `true`
 ```
 $ git clone git@github.com:sprout2000/lessview.git
 $ cd lessview
-$ yarn install && yarn package
+$ npm install && npm run package
 ```
 
-*Note that you will need to have [Node.js](https://nodejs.org), [Git](https://git-scm.com/) and [Yarn](https://yarnpkg.com/) installed.*
+*Note that you will need to have [Node.js](https://nodejs.org) and [Git](https://git-scm.com/) installed.*
 
 *And you might also need to have some build tools (ex. [Microsoft Build Tools](https://www.microsoft.com/en-us/download/details.aspx?id=48159), [Xcode](https://apps.apple.com/app/xcode/id497799835)) installed.*
 
