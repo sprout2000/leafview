@@ -342,7 +342,7 @@ const App = (): JSX.Element => {
             </Trash>
           </Toolbar>
         </Bottom>
-        <View ref={mapRef}></View>
+        <View init={url === empty} ref={mapRef}></View>
       </Container>
     </React.Fragment>
   );

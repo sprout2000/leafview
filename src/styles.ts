@@ -101,9 +101,9 @@ export const Icon = styled.div`
   }
 `;
 
-export const View = styled.div`
+export const View = styled.div<{ init: boolean }>`
   height: 100%;
   z-index: 0;
   background-color: transparent;
-  cursor: default;
+  cursor: ${({ init }): string => (init ? 'default' : 'grab')};
 `;
