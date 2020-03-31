@@ -22,7 +22,8 @@
     "electron"
   ],
   "engines": {
-    "node": "12.x"
+    "node": ">=12",
+    "npm": ">=6.13"
   },
   "scripts": {
     "start": "run-s clean build serve",
