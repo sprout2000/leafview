@@ -1,22 +1,36 @@
 {
   "compilerOptions": {
+    /* Basic Options */
+    "target": "ES2015",
+    "module": "ES2015",
+    "lib": ["DOM", "ES2015"],
+    "jsx": "react",
+    "sourceMap": true,
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    // "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    /* Module Resolution Options */
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "*": [
-        "@types/*"
-      ]
+      "*": ["@types/*"]
     },
-    "target": "es2015",
-    "module": "es2015",
-    "moduleResolution": "node",
+    // "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": [
-      "dom",
-      "es2015"
-    ],
-    "sourceMap": true,
-    "strict": true,
-    "jsx": "react",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+
+    /* Experimental Options */
+    // "experimentalDecorators": true,
+
+    /* Advanced Options */
+    "forceConsistentCasingInFileNames": true
   }
 }
