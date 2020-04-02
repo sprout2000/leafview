@@ -43,7 +43,7 @@
     "@types/electron-load-devtool": "^1.2.0",
     "@types/leaflet": "^1.5.12",
     "@types/mime-types": "^2.1.0",
-    "@types/react": "^16.9.31",
+    "@types/react": "^16.9.32",
     "@types/react-dom": "^16.9.6",
     "@types/react-resize-detector": "^4.2.0",
     "@types/styled-components": "^5.0.1",
