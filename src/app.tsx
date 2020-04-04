@@ -82,13 +82,7 @@ const App = (): JSX.Element => {
           mapObj.current.fitBounds(bounds);
 
           mapObj.current.on('dblclick', () => {
-            if (mapObj.current) {
-              if (img.width < width && img.height < height) {
-                mapObj.current.setZoom(0);
-              } else {
-                mapObj.current.fitBounds(bounds);
-              }
-            }
+            if (mapObj.current) mapObj.current.setZoom(0);
           });
 
           if (img.width < width && img.height < height) {
@@ -268,8 +262,12 @@ const App = (): JSX.Element => {
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
     if (url === empty) return;
 
-    if (e.keyCode === 48) {
+    if (e.keyCode === 49) {
       if (mapObj.current) mapObj.current.setZoom(1);
+    }
+
+    if (e.keyCode === 48) {
+      if (mapObj.current) mapObj.current.setZoom(0);
     }
   };
 
