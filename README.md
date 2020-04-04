@@ -64,7 +64,7 @@ Key | Function | Platform
 <kbd>-</kbd> | Zoom Out | Both
 <kbd>0</kbd> | Reset Zoom | Both
 <kbd>1</kbd> | Actual Size | Both
-<kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan | All
+<kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan | Both
 <kbd>Command</kbd>+<kbd>Control</kbd>+<kbd>F</kbd> | Toggle Fullscreen | macOS
 <kbd>F11</kbd> | Toggle Fullscreen | Windows
 <kbd>Alt</kbd> | Show/Hide Menu Bar | Windows
