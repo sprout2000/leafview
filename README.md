@@ -73,7 +73,7 @@ Mouse | Function
 :---: | :---
 drag | pan
 double click | reset zoom
-right click | zoom in/out to actual size
+wheel click | zoom in/out to actual size
 wheel | zoom in/out
 
 ## License
