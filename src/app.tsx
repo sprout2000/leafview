@@ -261,11 +261,15 @@ const App = (): JSX.Element => {
     if (url === empty) return;
 
     if (e.button === 1) {
-      if (mapObj.current) {
-        mapObj.current.setZoom(1);
-      }
-    } else {
-      return;
+      if (mapObj.current) mapObj.current.setZoom(1);
+    }
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+    if (url === empty) return;
+
+    if (e.keyCode === 48) {
+      if (mapObj.current) mapObj.current.setZoom(1);
     }
   };
 
@@ -329,7 +333,8 @@ const App = (): JSX.Element => {
         onDragOver={(e): void => onDragOver(e)}
         onDragLeave={(e): void => onDragLeave(e)}
         onDrop={(e): Promise<void> => onDrop(e)}
-        onMouseDown={(e): void => onMouseDown(e)}>
+        onMouseDown={(e): void => onMouseDown(e)}
+        onKeyDown={(e): void => onKeyDown(e)}>
         <ResizeDetector handleWidth handleHeight onResize={onResize} />
         {url === empty && (
           <Initial onClick={onClickOpen} drag={onDrag}>
