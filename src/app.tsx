@@ -56,10 +56,10 @@ const App = (): JSX.Element => {
           const zoomY = height / img.height;
           zoomX >= zoomY ? (zoom = zoomY) : (zoom = zoomX);
         }
-        const size = { width: img.width * zoom, height: img.height * zoom };
+
         const bounds = new L.LatLngBounds([
           [0, 0],
-          [size.height, size.width],
+          [img.height * zoom, img.width * zoom],
         ]);
 
         if (mapObj.current) {
@@ -72,6 +72,7 @@ const App = (): JSX.Element => {
             maxBounds: bounds,
             crs: L.CRS.Simple,
             preferCanvas: true,
+            zoom: zoom,
             zoomDelta: 0.3,
             zoomSnap: macOS ? 0.3 : 0,
             doubleClickZoom: false,
@@ -254,6 +255,18 @@ const App = (): JSX.Element => {
     }
   }, []);
 
+  const onMouseDown = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ): void => {
+    if (url === empty) return;
+
+    if (e.button === 2) {
+      if (mapObj.current) {
+        mapObj.current.setZoom(1);
+      }
+    }
+  };
+
   const updateTitle = async (filepath: string): Promise<void> => {
     await ipcRenderer.invoke('update-title', filepath);
   };
@@ -313,7 +326,8 @@ const App = (): JSX.Element => {
         onDragEnter={(e): void => onDragOver(e)}
         onDragOver={(e): void => onDragOver(e)}
         onDragLeave={(e): void => onDragLeave(e)}
-        onDrop={(e): Promise<void> => onDrop(e)}>
+        onDrop={(e): Promise<void> => onDrop(e)}
+        onMouseDown={(e): void => onMouseDown(e)}>
         <ResizeDetector handleWidth handleHeight onResize={onResize} />
         {url === empty && (
           <Initial onClick={onClickOpen} drag={onDrag}>
