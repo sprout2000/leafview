@@ -260,10 +260,12 @@ const App = (): JSX.Element => {
   ): void => {
     if (url === empty) return;
 
-    if (e.button === 2) {
+    if (e.button === 1) {
       if (mapObj.current) {
         mapObj.current.setZoom(1);
       }
+    } else {
+      return;
     }
   };
 
