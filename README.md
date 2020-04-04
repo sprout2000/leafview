@@ -59,9 +59,9 @@ You can download binary packages for macOS (signed & notarized) at [releases](ht
 Key | Function | Platform
 :---: | :--- | :---
 <kbd>J</kbd> | Next Image | All
-<kbd>K</kdb> | Previous Image | All
-<kbd>+</kdb> | Zoom In | All
-<kbd>-</kdb> | Zoom Out | All
+<kbd>K</kbd> | Previous Image | All
+<kbd>+</kbd> | Zoom In | All
+<kbd>-</kbd> | Zoom Out | All
 <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan | All
 <kbd>Command</kbd>+<kbd>Control</kbd>+<kbd>F</kbd> | Toggle Fullscreen | macOS
 <kbd>F11</kbd> | Toggle Fullscreen | Windows
