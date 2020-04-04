@@ -62,7 +62,8 @@ Key | Function | Platform
 <kbd>K</kbd> | Previous Image | All
 <kbd>+</kbd> | Zoom In | All
 <kbd>-</kbd> | Zoom Out | All
-<kbd>0</kbd> | Actual Size | All
+<kbd>0</kbd> | Reset Zoom | All
+<kbd>1</kbd> | Actual Size | All
 <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan | All
 <kbd>Command</kbd>+<kbd>Control</kbd>+<kbd>F</kbd> | Toggle Fullscreen | macOS
 <kbd>F11</kbd> | Toggle Fullscreen | Windows
