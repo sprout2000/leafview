@@ -66,7 +66,7 @@ export const Toolbar = styled.div`
   align-items: center;
   padding: 0 24px;
   border-radius: 6px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   user-select: none;
 `;
 
@@ -92,12 +92,12 @@ export const Icon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(174, 174, 178);
+  color: rgb(199, 199, 204);
   &:hover {
     cursor: pointer;
   }
   &:active {
-    color: rgb(242, 242, 247);
+    color: rgb(255, 255, 255);
   }
 `;
 
