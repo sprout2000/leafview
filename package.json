@@ -21,6 +21,10 @@
     "cross-platform",
     "electron"
   ],
+  "os": [
+    "darwin",
+    "win32"
+  ],
   "engines": {
     "node": ">=12",
     "npm": ">=6.13"
