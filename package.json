@@ -47,7 +47,7 @@
     "@types/electron-load-devtool": "^1.2.0",
     "@types/leaflet": "^1.5.12",
     "@types/mime-types": "^2.1.0",
-    "@types/react": "^16.9.32",
+    "@types/react": "^16.9.33",
     "@types/react-dom": "^16.9.6",
     "@types/react-resize-detector": "^4.2.0",
     "@types/styled-components": "^5.0.1",
@@ -70,7 +70,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
     "html-webpack-plugin": "^4.0.4",
-    "i18next": "^19.3.4",
+    "i18next": "^19.4.0",
     "leaflet": "^1.6.0",
     "mime-types": "^2.1.26",
     "natsort": "^2.0.2",
@@ -85,7 +85,7 @@
     "styled-components": "^5.1.0",
     "ts-loader": "^6.2.2",
     "typescript": "^3.8.3",
-    "url-loader": "^4.0.0",
+    "url-loader": "^4.1.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   }
