@@ -42,17 +42,17 @@ const App = (): JSX.Element => {
     return result;
   };
 
-  const draw = useCallback(
-    (url: string, width: number, height: number): void => {
-      const macOS = isDarwin();
-      const node = mapRef.current;
+  const draw = useCallback((): void => {
+    const macOS = isDarwin();
+    const node = mapRef.current;
 
+    if (node) {
       const img = new Image();
       img.onload = (): void => {
         let zoom = 1;
-        if (img.width > width || img.height > height) {
-          const zoomX = width / img.width;
-          const zoomY = height / img.height;
+        if (img.width > node.clientWidth || img.height > node.clientHeight) {
+          const zoomX = node.clientWidth / img.width;
+          const zoomY = node.clientHeight / img.height;
           zoomX >= zoomY ? (zoom = zoomY) : (zoom = zoomX);
         }
 
@@ -66,46 +66,38 @@ const App = (): JSX.Element => {
           mapObj.current.remove();
         }
 
-        if (node) {
-          mapObj.current = L.map(node, {
-            maxBounds: bounds,
-            crs: L.CRS.Simple,
-            preferCanvas: true,
-            zoom: zoom,
-            zoomDelta: 0.3,
-            zoomSnap: macOS ? 0.3 : 0,
-            doubleClickZoom: false,
-            zoomControl: false,
-            attributionControl: false,
-          });
-          mapObj.current.fitBounds(bounds);
+        mapObj.current = L.map(node, {
+          maxBounds: bounds,
+          crs: L.CRS.Simple,
+          preferCanvas: true,
+          zoom: zoom,
+          zoomDelta: 0.3,
+          zoomSnap: macOS ? 0.3 : 0,
+          doubleClickZoom: false,
+          zoomControl: false,
+          attributionControl: false,
+        });
+        mapObj.current.fitBounds(bounds);
 
-          mapObj.current.on('dblclick', () => {
-            if (mapObj.current) mapObj.current.setZoom(0);
-          });
+        mapObj.current.on('dblclick', () => {
+          if (mapObj.current) mapObj.current.setZoom(0);
+        });
 
-          if (img.width < width && img.height < height) {
-            mapObj.current.setZoom(0, { animate: false });
-          }
-
-          L.imageOverlay(img.src, bounds).addTo(mapObj.current);
+        if (img.width < node.clientWidth && img.height < node.clientHeight) {
+          mapObj.current.setZoom(0, { animate: false });
         }
 
-        if (node) {
-          node.blur();
-          node.focus();
-        }
+        L.imageOverlay(img.src, bounds).addTo(mapObj.current);
+
+        node.blur();
+        node.focus();
       };
 
       img.src = url;
-    },
-    []
-  );
+    }
+  }, [url]);
 
-  const onResize = (): void => {
-    const node = mapRef.current;
-    if (node) draw(url, node.clientWidth, node.clientHeight);
-  };
+  const onResize = (): void => draw();
 
   const preventDefault = (e: React.DragEvent<HTMLDivElement>): void => {
     e.preventDefault();
@@ -313,10 +305,7 @@ const App = (): JSX.Element => {
     updateTitle(title);
   }, [url]);
 
-  useEffect(() => {
-    const node = mapRef.current;
-    if (node) draw(url, node.clientWidth, node.clientHeight);
-  }, [draw, url]);
+  useEffect(() => draw(), [draw]);
 
   return (
     <React.Fragment>
