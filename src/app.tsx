@@ -325,12 +325,12 @@ const App = (): JSX.Element => {
     <React.Fragment>
       <GlobalStyle />
       <Container
-        onDragEnter={(e): void => onDragOver(e)}
-        onDragOver={(e): void => onDragOver(e)}
-        onDragLeave={(e): void => onDragLeave(e)}
-        onDrop={(e): Promise<void> => onDrop(e)}
-        onMouseDown={(e): void => onMouseDown(e)}
-        onKeyDown={(e): void => onKeyDown(e)}>
+        onDragEnter={onDragOver}
+        onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
+        onDrop={onDrop}
+        onMouseDown={onMouseDown}
+        onKeyDown={onKeyDown}>
         {url === empty && (
           <Initial onClick={onClickOpen} drag={onDrag}>
             <FontAwesomeIcon icon={faImages} size="3x" />
