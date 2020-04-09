@@ -112,18 +112,15 @@ const App = (): JSX.Element => {
     e.stopPropagation();
   };
 
-  const onDragOver = useCallback((e: React.DragEvent<HTMLDivElement>): void => {
+  const onDragOver = (e: React.DragEvent<HTMLDivElement>): void => {
     preventDefault(e);
     setOnDrag(true);
-  }, []);
+  };
 
-  const onDragLeave = useCallback(
-    (e: React.DragEvent<HTMLDivElement>): void => {
-      preventDefault(e);
-      setOnDrag(false);
-    },
-    []
-  );
+  const onDragLeave = (e: React.DragEvent<HTMLDivElement>): void => {
+    preventDefault(e);
+    setOnDrag(false);
+  };
 
   const onDrop = async (e: React.DragEvent<HTMLDivElement>): Promise<void> => {
     preventDefault(e);
