@@ -34,7 +34,6 @@ const App = (): JSX.Element => {
   const [url, setUrl] = useState(empty);
   const [onDrag, setOnDrag] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
 
@@ -104,7 +103,7 @@ const App = (): JSX.Element => {
   );
 
   const onResize = (): void => {
-    const node = containerRef.current;
+    const node = mapRef.current;
     if (node) draw(url, node.clientWidth, node.clientHeight);
   };
 
@@ -318,7 +317,7 @@ const App = (): JSX.Element => {
   }, [url]);
 
   useEffect(() => {
-    const node = containerRef.current;
+    const node = mapRef.current;
     if (node) draw(url, node.clientWidth, node.clientHeight);
   }, [draw, url]);
 
@@ -326,14 +325,12 @@ const App = (): JSX.Element => {
     <React.Fragment>
       <GlobalStyle />
       <Container
-        ref={containerRef}
         onDragEnter={(e): void => onDragOver(e)}
         onDragOver={(e): void => onDragOver(e)}
         onDragLeave={(e): void => onDragLeave(e)}
         onDrop={(e): Promise<void> => onDrop(e)}
         onMouseDown={(e): void => onMouseDown(e)}
         onKeyDown={(e): void => onKeyDown(e)}>
-        <ResizeDetector handleWidth handleHeight onResize={onResize} />
         {url === empty && (
           <Initial onClick={onClickOpen} drag={onDrag}>
             <FontAwesomeIcon icon={faImages} size="3x" />
@@ -361,7 +358,9 @@ const App = (): JSX.Element => {
             </Trash>
           </Toolbar>
         </Bottom>
-        <View init={url === empty} ref={mapRef}></View>
+        <View init={url === empty} ref={mapRef}>
+          <ResizeDetector handleWidth handleHeight onResize={onResize} />
+        </View>
       </Container>
     </React.Fragment>
   );
