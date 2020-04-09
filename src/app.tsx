@@ -328,11 +328,9 @@ const App = (): JSX.Element => {
         onDrop={onDrop}
         onMouseDown={onMouseDown}
         onKeyDown={onKeyDown}>
-        {url === empty && (
-          <Initial onClick={onClickOpen} drag={onDrag}>
-            <FontAwesomeIcon icon={faImages} size="3x" />
-          </Initial>
-        )}
+        <Initial onClick={onClickOpen} drag={onDrag} visible={url === empty}>
+          <FontAwesomeIcon icon={faImages} size="3x" />
+        </Initial>
         <Bottom>
           <Toolbar>
             <Controls>

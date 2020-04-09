@@ -18,14 +18,14 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Initial = styled.div<{ drag: boolean }>`
+export const Initial = styled.div<{ drag: boolean; visible: boolean }>`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100px;
   height: 100px;
-  display: flex;
+  display: ${({ visible }): string => (visible ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
   border: dotted 3px;
