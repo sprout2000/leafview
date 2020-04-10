@@ -237,22 +237,8 @@ const App = (): JSX.Element => {
     }
   }, []);
 
-  const onMouseDown = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ): void => {
-    if (url === empty) return;
-
-    if (e.button === 1) {
-      if (mapObj.current) mapObj.current.setZoom(1);
-    }
-  };
-
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
     if (url === empty) return;
-
-    if (e.keyCode === 49) {
-      if (mapObj.current) mapObj.current.setZoom(1);
-    }
 
     if (e.keyCode === 48) {
       if (mapObj.current) mapObj.current.setZoom(0);
@@ -315,7 +301,6 @@ const App = (): JSX.Element => {
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
         onDrop={onDrop}
-        onMouseDown={onMouseDown}
         onKeyDown={onKeyDown}>
         <Initial onClick={onClickOpen} drag={onDrag} visible={url === empty}>
           <FontAwesomeIcon icon={faImages} size="3x" />
