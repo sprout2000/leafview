@@ -54,8 +54,8 @@ const App = (): JSX.Element => {
         }
 
         const bounds = new L.LatLngBounds([
-          [0, 0],
-          [img.height * zoom, img.width * zoom],
+          [img.height * zoom, 0],
+          [0, img.width * zoom],
         ]);
 
         if (mapObj.current) {
@@ -67,21 +67,21 @@ const App = (): JSX.Element => {
           maxBounds: bounds,
           crs: L.CRS.Simple,
           preferCanvas: true,
-          zoom: zoom,
           zoomDelta: 0.3,
           zoomSnap: macOS ? 0.3 : 0,
           doubleClickZoom: false,
           zoomControl: false,
           attributionControl: false,
-        });
-        mapObj.current.fitBounds(bounds);
+        }).fitBounds(bounds);
 
         mapObj.current.on('dblclick', () => {
-          if (mapObj.current) mapObj.current.setZoom(0);
+          const center = bounds.getCenter();
+          if (mapObj.current) mapObj.current.setView(center, 0);
         });
 
         if (img.width < node.clientWidth && img.height < node.clientHeight) {
-          mapObj.current.setZoom(0, { animate: false });
+          const center = bounds.getCenter();
+          mapObj.current.setView(center, 0, { animate: false });
         }
 
         L.imageOverlay(img.src, bounds).addTo(mapObj.current);
