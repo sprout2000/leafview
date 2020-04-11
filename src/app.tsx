@@ -101,14 +101,6 @@ const App = (): JSX.Element => {
     e.stopPropagation();
   };
 
-  const onDragOver = (e: React.DragEvent<HTMLDivElement>): void => {
-    preventDefault(e);
-  };
-
-  const onDragLeave = (e: React.DragEvent<HTMLDivElement>): void => {
-    preventDefault(e);
-  };
-
   const onDrop = async (e: React.DragEvent<HTMLDivElement>): Promise<void> => {
     preventDefault(e);
 
@@ -291,9 +283,9 @@ const App = (): JSX.Element => {
     <React.Fragment>
       <GlobalStyle />
       <Container
-        onDragEnter={onDragOver}
-        onDragOver={onDragOver}
-        onDragLeave={onDragLeave}
+        onDragEnter={preventDefault}
+        onDragOver={preventDefault}
+        onDragLeave={preventDefault}
         onDrop={onDrop}
         onKeyDown={onKeyDown}>
         <Bottom>
