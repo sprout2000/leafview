@@ -18,32 +18,6 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Initial = styled.div<{ drag: boolean; visible: boolean }>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
-  display: ${({ visible }): string => (visible ? 'flex' : 'none')};
-  justify-content: center;
-  align-items: center;
-  border: dotted 3px;
-  border-radius: 6px;
-  z-index: 20;
-  color: ${({ drag }): string =>
-    drag ? 'rgb(242, 242, 247)' : 'rgb(174, 174, 178)'};
-  border-color: ${({ drag }): string =>
-    drag ? 'rgb(242, 242, 247)' : 'rgb(174, 174, 178)'};
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    color: rgb(242, 242, 247);
-    border-color: rgb(242, 242, 247);
-  }
-`;
-
 export const Bottom = styled.div`
   position: absolute;
   bottom: 0;

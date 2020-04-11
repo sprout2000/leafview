@@ -7,7 +7,6 @@ import 'leaflet/dist/leaflet.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faImages,
   faFolderOpen,
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
@@ -21,7 +20,6 @@ import {
   Controls,
   GlobalStyle,
   Icon,
-  Initial,
   Toolbar,
   Trash,
   View,
@@ -32,7 +30,6 @@ const { ipcRenderer } = window;
 
 const App = (): JSX.Element => {
   const [url, setUrl] = useState(empty);
-  const [onDrag, setOnDrag] = useState(false);
 
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
@@ -106,12 +103,10 @@ const App = (): JSX.Element => {
 
   const onDragOver = (e: React.DragEvent<HTMLDivElement>): void => {
     preventDefault(e);
-    setOnDrag(true);
   };
 
   const onDragLeave = (e: React.DragEvent<HTMLDivElement>): void => {
     preventDefault(e);
-    setOnDrag(false);
   };
 
   const onDrop = async (e: React.DragEvent<HTMLDivElement>): Promise<void> => {
@@ -123,7 +118,6 @@ const App = (): JSX.Element => {
       const mime: boolean = await ipcRenderer.invoke('mime-check', file.path);
       if (mime) {
         setUrl(file.path);
-        setOnDrag(false);
         ipcRenderer.send('file-histoy', file.path);
       }
     }
@@ -302,9 +296,6 @@ const App = (): JSX.Element => {
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onKeyDown={onKeyDown}>
-        <Initial onClick={onClickOpen} drag={onDrag} visible={url === empty}>
-          <FontAwesomeIcon icon={faImages} size="3x" />
-        </Initial>
         <Bottom>
           <Toolbar>
             <Controls>
