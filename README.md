@@ -8,6 +8,14 @@ An image viewer for minimalists.
 
 <img width="912" alt="2020-04-07" src="https://user-images.githubusercontent.com/52094761/78643180-cf148700-78ee-11ea-9ac8-8fca8eca5a4b.png">
 
+## Features
+
+- Pan & WheelZoom
+- Fast
+- Secure
+- Memory-Friendly
+- Auto Update (*macOS*)
+
 ## Security
 
 Function | Boolean
@@ -17,14 +25,6 @@ enableRemoteModule | `false`
 contextIsolation | `true`
 safeDialogs | `true`
 sandbox | `true`
-
-## Features
-
-- Pan & WheelZoom
-- Fast
-- Secure
-- Memory-Friendly
-- Auto Update (*macOS*)
 
 ## Supported Image Formats
 
