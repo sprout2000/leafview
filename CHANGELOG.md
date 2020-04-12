@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/sprout2000/lessview/compare/v0.1.0...v0.1.1) (2020-04-12)
+
+
+### Features
+
+* create trash can sound ([e65ab14](https://github.com/sprout2000/lessview/commit/e65ab14874cc4248314ce16639247ddc57f27856))
+
 ## [0.1.0](https://github.com/sprout2000/lessview/compare/v0.0.14...v0.1.0) (2020-04-11)
 
 ### [0.0.14](https://github.com/sprout2000/lessview/compare/v0.0.13...v0.0.14) (2020-04-11)
