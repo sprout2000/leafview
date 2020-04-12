@@ -1,6 +1,6 @@
 {
   "name": "lessview",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/main.js",
   "description": "An image viewer for minimalists",
   "author": {
