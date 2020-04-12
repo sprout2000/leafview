@@ -83,7 +83,7 @@ const renderer = {
       {
         test: /\.mp3$/,
         include: path.resolve(__dirname, 'src/audio'),
-        loader: 'file-loader',
+        loader: 'url-loader',
       },
     ],
   },
