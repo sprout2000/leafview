@@ -80,6 +80,11 @@ const renderer = {
         test: /\.(bmp|ico|gif|jpe?g|png|svg|ttf|eot|woff?2?)$/,
         loader: 'url-loader',
       },
+      {
+        test: /\.mp3$/,
+        include: path.resolve(__dirname, 'src/audio'),
+        loader: 'file-loader',
+      },
     ],
   },
   plugins: [

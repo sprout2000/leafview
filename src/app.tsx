@@ -2,6 +2,9 @@ import React, { useRef, useCallback, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import ResizeDetector from 'react-resize-detector';
 
+import { Howl } from 'howler';
+import Audio from './audio/trash.mp3';
+
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -188,6 +191,11 @@ const App = (): JSX.Element => {
       setUrl(empty);
       return;
     } else {
+      const sound = new Howl({
+        src: [Audio],
+      });
+      sound.play();
+
       const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
       if (!newList || newList.length === 0) {
         setUrl(empty);
