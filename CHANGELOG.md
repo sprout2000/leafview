@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/sprout2000/lessview/compare/v0.1.2...v0.1.3) (2020-04-13)
+
+
+### Features
+
+* set titles on each buttons ([a7c7326](https://github.com/sprout2000/lessview/commit/a7c7326a6ce4f210576e5c527b59d42d34711b12))
+
 ### [0.1.2](https://github.com/sprout2000/lessview/compare/v0.1.1...v0.1.2) (2020-04-12)
 
 
