@@ -1,4 +1,4 @@
-# <img width="64" alt="icon_128x128@2x" src="https://user-images.githubusercontent.com/52094761/75083039-f3dcb700-5559-11ea-94c4-5550a885a972.png"> LessView
+# ![icon_64x64](https://user-images.githubusercontent.com/52094761/79167678-fa353400-7e22-11ea-896b-4e7f600ad63a.png) LessView
 
 [![GitHub CI](https://github.com/sprout2000/lessview/workflows/GitHub%20CI/badge.svg)](https://github.com/sprout2000/lessview/actions?query=workflow%3A%22GitHub+CI%22)
 [![GitHub license](https://img.shields.io/github/license/sprout2000/lessview)](https://github.com/sprout2000/lessview/blob/master/LICENSE.md)
