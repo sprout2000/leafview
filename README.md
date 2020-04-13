@@ -6,7 +6,7 @@
 
 An image viewer for minimalists.
 
-<img width="912" alt="2020-04-07" src="https://user-images.githubusercontent.com/52094761/78643180-cf148700-78ee-11ea-9ac8-8fca8eca5a4b.png">
+<img width="912" alt="2020-04-13 15 07 43" src="https://user-images.githubusercontent.com/52094761/79097565-037abe00-7d9b-11ea-9f38-5a9e995792d8.png">
 
 ## Features
 
