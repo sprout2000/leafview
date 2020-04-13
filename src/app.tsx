@@ -8,6 +8,10 @@ import Audio from './audio/trash.mp3';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import i18next from 'i18next';
+import en from './locales/en.json';
+import ja from './locales/ja.json';
+
 import {
   AiOutlineFolderOpen,
   AiOutlineLeftCircle,
@@ -29,6 +33,18 @@ import {
 import empty from './empty.png';
 
 const { ipcRenderer } = window;
+
+const locale =
+  (window.navigator.languages && window.navigator.languages[0]) ||
+  window.navigator.language;
+i18next.init({
+  lng: locale,
+  fallbackLng: 'en',
+  resources: {
+    en: { translation: en },
+    ja: { translation: ja },
+  },
+});
 
 const App = (): JSX.Element => {
   const [url, setUrl] = useState(empty);
@@ -298,20 +314,20 @@ const App = (): JSX.Element => {
         <Bottom>
           <Toolbar>
             <Controls>
-              <Icon onClick={onClickOpen}>
+              <Icon title={i18next.t('open')} onClick={onClickOpen}>
                 <AiOutlineFolderOpen size="2rem" />
               </Icon>
             </Controls>
             <Arrows>
-              <Icon onClick={prev}>
+              <Icon title={i18next.t('prev')} onClick={prev}>
                 <AiOutlineLeftCircle size="2rem" />
               </Icon>
-              <Icon onClick={next}>
+              <Icon title={i18next.t('next')} onClick={next}>
                 <AiOutlineRightCircle size="2rem" />
               </Icon>
             </Arrows>
             <Trash>
-              <Icon onClick={remove}>
+              <Icon title={i18next.t('trash')} onClick={remove}>
                 <AiOutlineDelete size="2rem" />
               </Icon>
             </Trash>
