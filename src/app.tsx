@@ -8,13 +8,12 @@ import Audio from './audio/trash.mp3';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faFolderOpen,
-  faArrowAltCircleLeft,
-  faArrowAltCircleRight,
-  faTrashAlt,
-} from '@fortawesome/free-regular-svg-icons';
+  AiOutlineFolderOpen,
+  AiOutlineLeftCircle,
+  AiOutlineRightCircle,
+  AiOutlineDelete,
+} from 'react-icons/ai';
 
 import {
   Arrows,
@@ -300,20 +299,20 @@ const App = (): JSX.Element => {
           <Toolbar>
             <Controls>
               <Icon onClick={onClickOpen}>
-                <FontAwesomeIcon icon={faFolderOpen} size="2x" />
+                <AiOutlineFolderOpen size="2rem" />
               </Icon>
             </Controls>
             <Arrows>
               <Icon onClick={prev}>
-                <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
+                <AiOutlineLeftCircle size="2rem" />
               </Icon>
               <Icon onClick={next}>
-                <FontAwesomeIcon icon={faArrowAltCircleRight} size="2x" />
+                <AiOutlineRightCircle size="2rem" />
               </Icon>
             </Arrows>
             <Trash>
               <Icon onClick={remove}>
-                <FontAwesomeIcon icon={faTrashAlt} size="2x" />
+                <AiOutlineDelete size="2rem" />
               </Icon>
             </Trash>
           </Toolbar>

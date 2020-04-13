@@ -85,6 +85,7 @@
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-icons": "^3.9.0",
     "react-resize-detector": "^4.2.1",
     "rimraf": "^3.0.2",
     "standard-version": "^7.1.0",
