@@ -10,6 +10,7 @@ import App from './app';
 const locale =
   (window.navigator.languages && window.navigator.languages[0]) ||
   window.navigator.language;
+
 i18next.init({
   lng: locale,
   fallbackLng: 'en',
