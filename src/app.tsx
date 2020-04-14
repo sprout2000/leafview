@@ -1,5 +1,4 @@
 import React, { useRef, useCallback, useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import ResizeDetector from 'react-resize-detector';
 
 import { Howl } from 'howler';
@@ -7,10 +6,6 @@ import Audio from './audio/trash.mp3';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-
-import i18next from 'i18next';
-import en from './locales/en.json';
-import ja from './locales/ja.json';
 
 import {
   AiOutlineFolderOpen,
@@ -30,21 +25,11 @@ import {
   Trash,
   View,
 } from './styles';
+
+import i18next from 'i18next';
 import empty from './empty.png';
 
 const { ipcRenderer } = window;
-
-const locale =
-  (window.navigator.languages && window.navigator.languages[0]) ||
-  window.navigator.language;
-i18next.init({
-  lng: locale,
-  fallbackLng: 'en',
-  resources: {
-    en: { translation: en },
-    ja: { translation: ja },
-  },
-});
 
 const App = (): JSX.Element => {
   const [url, setUrl] = useState(empty);
@@ -341,4 +326,4 @@ const App = (): JSX.Element => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export default App;
