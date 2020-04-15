@@ -19,7 +19,7 @@ An image viewer for minimalists.
 
 ## Security
 
-Function | Boolean
+API | Boolean
 :--- | :---
 nodeIntegration | `false`
 enableRemoteModule | `false`
