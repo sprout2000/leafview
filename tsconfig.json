@@ -1,36 +1,24 @@
 {
   "compilerOptions": {
-    /* Basic Options */
     "target": "ES2015",
     "module": "ES2015",
     "lib": ["DOM", "ES2015"],
     "jsx": "react",
     "sourceMap": true,
-
-    /* Strict Type-Checking Options */
     "strict": true,
-    // "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-
-    /* Module Resolution Options */
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
       "*": ["@types/*"]
     },
-    // "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-
-    /* Experimental Options */
-    // "experimentalDecorators": true,
-
-    /* Advanced Options */
     "forceConsistentCasingInFileNames": true
   }
 }
