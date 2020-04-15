@@ -6,12 +6,6 @@
     "jsx": "react",
     "sourceMap": true,
     "strict": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
