@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "run-s clean build serve",
-    "upgrade-interactive": "npm-check --update",
+    "upgrade": "npm-check --update",
     "clean": "rimraf dist release",
     "build": "cross-env NODE_ENV=\"development\" webpack --progress",
     "build:prod": "cross-env NODE_ENV=\"production\" webpack --progress",
