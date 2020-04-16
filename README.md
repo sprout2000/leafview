@@ -11,7 +11,6 @@ An image viewer for minimalists.
 ## Features
 
 - Pan & WheelZoom
-- D&D and `Open with...`
 - Fast
 - Secure
 - Memory-Friendly
