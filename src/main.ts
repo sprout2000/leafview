@@ -222,12 +222,13 @@ if (!gotTheLock && win32) {
       await dialog
         .showMessageBox(win, {
           type: 'info',
-          buttons: ['OK', 'Cancel'],
+          buttons: ['Restart', 'Cancel'],
           defaultId: 0,
           cancelId: 1,
           title: 'Update Downloaded',
           message: 'Update downloaded',
-          detail: 'Restart to install updates...',
+          detail: `We have finished downloading the latest updates.
+          Do you want to install the updates now?`,
         })
         .then((result) => {
           if (result.response === 0) {
