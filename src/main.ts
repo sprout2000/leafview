@@ -206,7 +206,7 @@ if (!gotTheLock && win32) {
   });
 
   app.setAboutPanelOptions({
-    applicationName: app.getName(),
+    applicationName: app.name,
     applicationVersion: app.getVersion(),
     copyright: 'Copyright (C) 2020 Office Nishigami.',
   });
