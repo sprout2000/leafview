@@ -76,6 +76,12 @@ drag | pan
 double click | reset zoom
 wheel | zoom in/out
 
+## Contributing
+
+### Adding missing translations
+
+The list of all English strings can be found in [en.json](https://github.com/sprout2000/lessview/blob/master/src/locales/en.json). If there are translations missing for your language and you'd like to help with the translation, you can add the translated strings to your language's file in [src/locales](https://github.com/sprout2000/lessview/tree/master/src/locales) and submit a PR.
+
 ## License
 
 [MIT](https://github.com/sprout2000/lessview/blob/master/LICENSE.md)
