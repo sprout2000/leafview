@@ -51,7 +51,8 @@ $ yarn install && yarn package
 
 ## Download
 
-You can download binary packages for macOS (signed & notarized) at [releases](https://github.com/sprout2000/lessview/releases).
+You can download the latest version of LessView from the releases page here:  
+[https://github.com/sprout2000/lessview/releases](https://github.com/sprout2000/lessview/releases)
 
 ## Usage
 
