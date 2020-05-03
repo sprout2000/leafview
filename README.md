@@ -80,17 +80,13 @@ wheel | zoom in/out
 
 ## Contributing
 
-### Adding missing translations
-
-The list of all English strings can be found in [en.json](https://github.com/sprout2000/lessview/blob/master/src/locales/en.json). If there are translations missing for your language and you'd like to help with the translation, you can add the translated strings to your language's file in [src/locales](https://github.com/sprout2000/lessview/tree/master/src/locales) and submit a PR.
-
 ### Adding a new language
 
 If the app isn't translated into your language yet and you'd like to help out, you can easily add translations with the following steps:
 
 1. The translation files can be found in [`src/locales`](https://github.com/sprout2000/lessview/tree/master/src/locales). Duplicate the [`en.json`](https://github.com/sprout2000/lessview/blob/master/src/locales/en.json) file as `[LANG].json`, where `[LANG]` is the [shortcode of your language](https://electronjs.org/docs/api/locales).
 2. In the file you just created, replace the English translations with your own.
-3. Run the app in your language (just type `npm start`) and make sure that the translations fit into the app (e.g. that they aren't too long for input fields).
+3. Run the app in your language (just type `npm start`) and make sure that the translations fit into the app.
 4. Submit a PR. Thanks for your help!
 
 ## License
