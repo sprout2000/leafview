@@ -13,9 +13,9 @@ jobs:
       with:
         node-version: 12.x
     - name: Install
-      run: npm install
+      run: yarn install
     - name: Build
-      run: npm run build:prod
+      run: yarn build:prod
     - name: Release
       env: 
         APPLE_ID: ${{ secrets.APPLE_ID }}
@@ -25,4 +25,4 @@ jobs:
         CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
         CSC_LINK: ${{ secrets.CSC_LINK }}
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npm run release
+      run: yarn release
