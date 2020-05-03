@@ -86,7 +86,7 @@ If the app isn't translated into your language yet and you'd like to help out, y
 
 1. The translation files can be found in [`src/locales`](https://github.com/sprout2000/lessview/tree/master/src/locales). Duplicate the [`en.json`](https://github.com/sprout2000/lessview/blob/master/src/locales/en.json) file as `[LANG].json`, where `[LANG]` is the [shortcode of your language](https://electronjs.org/docs/api/locales).
 2. In the file you just created, replace the English translations with your own.
-3. Run the app in your language (just type `npm start`) and make sure that the translations fit into the app.
+3. Run the app in your language (just type `yarn start`) and make sure that the translations fit into the app.
 4. Submit a PR. Thanks for your help!
 
 ## License
