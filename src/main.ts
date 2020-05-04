@@ -60,7 +60,7 @@ if (!gotTheLock && win32) {
     });
   });
 
-  app.once('ready', () => {
+  app.whenReady().then(() => {
     const locale = app.getLocale();
     i18next.init({
       lng: locale,
