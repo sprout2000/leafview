@@ -5,7 +5,7 @@ import i18next from 'i18next';
 import en from './locales/en.json';
 import ja from './locales/ja.json';
 
-import App from './renderer';
+import App from './App';
 
 const locale =
   (window.navigator.languages && window.navigator.languages[0]) ||
