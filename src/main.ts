@@ -19,8 +19,8 @@ autoUpdater.logger = log;
 log.info('App starting...');
 
 const gotTheLock = app.requestSingleInstanceLock();
-const win32 = process.platform === 'win32';
 const darwin = process.platform === 'darwin';
+const isDev = process.env.NODE_ENV === 'development';
 
 let win: BrowserWindow | null;
 let filepath: string | null = null;
@@ -39,17 +39,15 @@ const checkmime = (filepath: string): boolean => {
     : true;
 };
 
-if (!gotTheLock && win32) {
+if (!gotTheLock && !darwin) {
   app.exit();
 } else {
   app.on('second-instance', (_e, argv) => {
-    if (win) {
-      if (win.isMinimized()) win.restore();
-      win.focus();
-    }
+    if (win?.isMinimized()) win.restore();
+    win?.focus();
 
-    if (win32 && argv.length >= 4) {
-      if (win) win.webContents.send('menu-open', argv[argv.length - 1]);
+    if (!darwin && argv.length >= 4) {
+      win?.webContents.send('menu-open', argv[argv.length - 1]);
     }
   });
 
@@ -163,31 +161,30 @@ if (!gotTheLock && win32) {
     });
 
     ipcMain.handle('update-title', (_e: Event, fullpath: string) => {
-      if (win) win.setTitle(path.basename(fullpath));
+      win?.setTitle(path.basename(fullpath));
     });
 
-    if (process.env.NODE_ENV === 'development') {
+    if (isDev) {
       loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
       win.webContents.openDevTools({ mode: 'detach' });
     }
+
     const menu = createMenu(win);
     Menu.setApplicationMenu(menu);
     win.loadFile('dist/index.html');
 
-    win.once('ready-to-show', (): void => {
-      if (win) win.show();
-    });
+    win.once('ready-to-show', (): void => win?.show());
 
     win.webContents.once('did-finish-load', () => {
-      if (win && win32 && process.argv.length >= 2) {
-        win.webContents.send(
+      if (!darwin && !isDev && process.argv.length >= 2) {
+        win?.webContents.send(
           'menu-open',
           process.argv[process.argv.length - 1]
         );
       }
 
-      if (win && darwin && filepath) {
-        win.webContents.send('menu-open', filepath);
+      if (darwin && filepath) {
+        win?.webContents.send('menu-open', filepath);
         filepath = null;
       }
     });
@@ -196,7 +193,7 @@ if (!gotTheLock && win32) {
       win = null;
     });
 
-    autoUpdater.checkForUpdatesAndNotify();
+    if (darwin) autoUpdater.checkForUpdatesAndNotify();
     windowState.manage(win);
   });
 
