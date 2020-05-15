@@ -68,7 +68,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "dotenv": "^8.2.0",
-    "electron": "^8.2.4",
+    "electron": "^8.3.0",
     "electron-builder": "^22.6.0",
     "electron-load-devtool": "^1.2.0",
     "electron-notarize": "^0.3.0",
