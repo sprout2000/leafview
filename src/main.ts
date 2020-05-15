@@ -19,7 +19,7 @@ autoUpdater.logger = log;
 log.info('App starting...');
 
 const gotTheLock = app.requestSingleInstanceLock();
-const darwin = process.platform === 'darwin';
+const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
 let win: BrowserWindow | null;
@@ -39,14 +39,14 @@ const checkmime = (filepath: string): boolean => {
     : true;
 };
 
-if (!gotTheLock && !darwin) {
+if (!gotTheLock && !isDarwin) {
   app.exit();
 } else {
   app.on('second-instance', (_e, argv) => {
     if (win?.isMinimized()) win.restore();
     win?.focus();
 
-    if (!darwin && argv.length >= 4) {
+    if (!isDarwin && argv.length >= 4) {
       win?.webContents.send('menu-open', argv[argv.length - 1]);
     }
   });
@@ -71,7 +71,7 @@ if (!gotTheLock && !darwin) {
 
     const windowState = stateKeeper({
       defaultWidth: 800,
-      defaultHeight: darwin ? 558 : 562,
+      defaultHeight: isDarwin ? 558 : 562,
     });
 
     win = new BrowserWindow({
@@ -80,7 +80,7 @@ if (!gotTheLock && !darwin) {
       width: windowState.width,
       height: windowState.height,
       minWidth: 800,
-      minHeight: darwin ? 558 : 562,
+      minHeight: isDarwin ? 558 : 562,
       show: false,
       autoHideMenuBar: true,
       backgroundColor: '#323232',
@@ -96,7 +96,7 @@ if (!gotTheLock && !darwin) {
 
     ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
 
-    ipcMain.handle('platform', () => darwin);
+    ipcMain.handle('platform', () => isDarwin);
 
     ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
       return checkmime(filepath);
@@ -176,14 +176,14 @@ if (!gotTheLock && !darwin) {
     win.once('ready-to-show', (): void => win?.show());
 
     win.webContents.once('did-finish-load', () => {
-      if (!darwin && !isDev && process.argv.length >= 2) {
+      if (!isDarwin && !isDev && process.argv.length >= 2) {
         win?.webContents.send(
           'menu-open',
           process.argv[process.argv.length - 1]
         );
       }
 
-      if (darwin && filepath) {
+      if (isDarwin && filepath) {
         win?.webContents.send('menu-open', filepath);
         filepath = null;
       }
@@ -193,13 +193,13 @@ if (!gotTheLock && !darwin) {
       win = null;
     });
 
-    if (darwin) autoUpdater.checkForUpdatesAndNotify();
+    if (isDarwin) autoUpdater.checkForUpdatesAndNotify();
     windowState.manage(win);
   });
 
   app.on('open-file', (e, path) => {
     e.preventDefault();
-    if (win) win.webContents.send('menu-open', path);
+    win?.webContents.send('menu-open', path);
   });
 
   app.setAboutPanelOptions({
