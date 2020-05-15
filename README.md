@@ -7,6 +7,7 @@
 
 [![GitHub CI](https://github.com/sprout2000/lessview/workflows/GitHub%20CI/badge.svg)](https://github.com/sprout2000/lessview/actions?query=workflow%3A%22GitHub+CI%22)
 [![GitHub license](https://img.shields.io/github/license/sprout2000/lessview)](https://github.com/sprout2000/lessview/blob/master/LICENSE.md)
+[![GitHub stars](https://img.shields.io/github/stars/sprout2000/lessview)](https://github.com/sprout2000/lessview/stargazers)
 ![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/sprout2000/lessview)
 
 ## Features
