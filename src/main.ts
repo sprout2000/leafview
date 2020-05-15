@@ -18,6 +18,14 @@ console.log = log.log;
 autoUpdater.logger = log;
 log.info('App starting...');
 
+process.once('uncaughtException', (err) => {
+  log.error('electron:uncaughtException');
+  log.error(err.name);
+  log.error(err.message);
+  log.error(err.stack);
+  app.exit();
+});
+
 const gotTheLock = app.requestSingleInstanceLock();
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
@@ -228,20 +236,10 @@ if (!gotTheLock && !isDarwin) {
             'We have finished downloading the latest updates.\nDo you want to install the updates now?',
         })
         .then((result) => {
-          if (result.response === 0) {
-            autoUpdater.quitAndInstall();
-          }
+          result.response === 0 && autoUpdater.quitAndInstall();
         })
         .catch((err) => log.info(`Error in showMessageBox: ${err}`));
     }
-  });
-
-  process.once('uncaughtException', (err) => {
-    log.error('electron:uncaughtException');
-    log.error(err.name);
-    log.error(err.message);
-    log.error(err.stack);
-    app.exit();
   });
 
   app.allowRendererProcessReuse = true;
