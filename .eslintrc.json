@@ -36,7 +36,8 @@
         "singleQuote": true,
         "jsxBracketSameLine": true
       }
-    ]
+    ],
+    "react/prop-types": "off"
   },
   "overrides": [
     {
