@@ -7,26 +7,9 @@ import Audio from './audio/trash.mp3';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import {
-  AiOutlineFolderOpen,
-  AiOutlineLeftCircle,
-  AiOutlineRightCircle,
-  AiOutlineDelete,
-} from 'react-icons/ai';
+import { Bottom, Container, GlobalStyle, View } from './styles';
 
-import {
-  Arrows,
-  Bottom,
-  Container,
-  Controls,
-  GlobalStyle,
-  Icon,
-  Toolbar,
-  Trash,
-  View,
-} from './styles';
-
-import i18next from 'i18next';
+import Float from './Float';
 import empty from './empty.png';
 
 const { ipcRenderer } = window;
@@ -297,26 +280,12 @@ const App = (): JSX.Element => {
         onDrop={onDrop}
         onKeyDown={onKeyDown}>
         <Bottom>
-          <Toolbar>
-            <Controls>
-              <Icon title={i18next.t('open')} onClick={onClickOpen}>
-                <AiOutlineFolderOpen size="2rem" />
-              </Icon>
-            </Controls>
-            <Arrows>
-              <Icon title={i18next.t('prev')} onClick={prev}>
-                <AiOutlineLeftCircle size="2rem" />
-              </Icon>
-              <Icon title={i18next.t('next')} onClick={next}>
-                <AiOutlineRightCircle size="2rem" />
-              </Icon>
-            </Arrows>
-            <Trash>
-              <Icon title={i18next.t('trash')} onClick={remove}>
-                <AiOutlineDelete size="2rem" />
-              </Icon>
-            </Trash>
-          </Toolbar>
+          <Float
+            onClickOpen={onClickOpen}
+            prev={prev}
+            next={next}
+            remove={remove}
+          />
         </Bottom>
         <View init={url === empty} ref={mapRef}>
           <ResizeDetector handleWidth handleHeight onResize={onResize} />
