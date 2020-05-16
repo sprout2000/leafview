@@ -14,7 +14,7 @@ import empty from './empty.png';
 
 const { ipcRenderer } = window;
 
-const App = (): JSX.Element => {
+const App: React.FC = () => {
   const [url, setUrl] = useState(empty);
 
   const mapRef = useRef<HTMLDivElement>(null);
