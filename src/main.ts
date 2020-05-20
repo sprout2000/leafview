@@ -213,6 +213,7 @@ if (!gotTheLock && !isDarwin) {
   app.setAboutPanelOptions({
     applicationName: app.name,
     applicationVersion: app.getVersion(),
+    version: process.versions['electron'],
     copyright: 'Copyright (C) 2020 Office Nishigami.',
   });
 
