@@ -1,10 +1,9 @@
 const builder = require('electron-builder');
-require('dotenv').config();
 
 builder
   .build({
     config: {
-      appId: process.env.APP_BUNDLE_ID,
+      appId: 'jp.nishigami.LessView',
       productName: 'LessView',
       copyright: 'Copyright (C) 2020 Office Nishigami.',
       artifactName: '${productName}-${version}-${platform}.${ext}',
