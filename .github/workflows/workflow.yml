@@ -13,7 +13,7 @@ jobs:
       with:
         node-version: 12.x
     - name: Install
-      run: yarn install
+      run: yarn install --frozen-lockfile --ignore-optional
     - name: Build
       run: yarn build:prod
     - name: Release
