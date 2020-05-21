@@ -25,6 +25,10 @@
   "engines": {
     "node": ">=10.14"
   },
+  "os": [
+    "win32",
+    "darwin"
+  ],
   "scripts": {
     "start": "run-s clean build serve",
     "clean": "rimraf dist release",
