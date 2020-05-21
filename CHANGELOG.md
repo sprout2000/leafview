@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/sprout2000/lessview/compare/v0.1.11...v0.1.12) (2020-05-21)
+
+
+### Features
+
+* add version to about panel for macOS ([34ebb33](https://github.com/sprout2000/lessview/commit/34ebb33b32201ab28395de18ce3ee78e44572510))
+
 ### [0.1.11](https://github.com/sprout2000/lessview/compare/v0.1.10...v0.1.11) (2020-05-15)
 
 ### [0.1.10](https://github.com/sprout2000/lessview/compare/v0.1.9...v0.1.10) (2020-05-15)
