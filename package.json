@@ -23,7 +23,8 @@
     "electron"
   ],
   "engines": {
-    "node": ">=10.14"
+    "node": ">=10.14",
+    "npm": "please_use_yarn_instead"
   },
   "os": [
     "win32",
