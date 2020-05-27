@@ -35,7 +35,6 @@
     "clean": "rimraf dist release",
     "build": "cross-env NODE_ENV=\"development\" webpack --progress",
     "build:prod": "cross-env NODE_ENV=\"production\" webpack --progress",
-    "build:appx": "cross-env NODE_ENV=\"production\" webpack --progress --config webpack.config.prod.js",
     "serve": "electron .",
     "release": "node scripts/build.js",
     "prepackage": "run-s clean build:prod",
