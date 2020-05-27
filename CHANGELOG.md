@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/sprout2000/lessview/compare/v0.1.12...v0.1.13) (2020-05-27)
+
+
+### Features
+
+* create gh-pages.yml ([149d6e9](https://github.com/sprout2000/lessview/commit/149d6e9fdf78a5c0fff9172bb69acb0ce7660344))
+* create public ([8610926](https://github.com/sprout2000/lessview/commit/8610926103e7d7e6a83276178fde14c049db2f97))
+* update icons ([ea89130](https://github.com/sprout2000/lessview/commit/ea891302d542da2ae07192bc043f4ff07e0362e3))
+
 ### [0.1.12](https://github.com/sprout2000/lessview/compare/v0.1.11...v0.1.12) (2020-05-21)
 
 
