@@ -1,12 +1,10 @@
 node_modules/
 dist/
 build/
-public/
 release/
 npm-*.log
 yarn-*.log
 parent.plist
-*.provisionprofile
 gh-pages
 .env
 .DS_Store
