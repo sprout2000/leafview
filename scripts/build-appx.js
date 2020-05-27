@@ -20,7 +20,7 @@ builder
       appx: {
         applicationId: process.env.APPLICATION_ID,
         backgroundColor: '#5c677d',
-        displayName: 'genicons',
+        displayName: 'LessView',
         identityName: process.env.IDENTITY_NAME,
         publisher: process.env.PUBLISHER,
         publisherDisplayName: 'sprout2000',
