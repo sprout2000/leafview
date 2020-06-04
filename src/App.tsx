@@ -20,7 +20,7 @@ const App: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
 
-  const isDarwin = async (): Promise<boolean> => await myAPI.platform();
+  const isDarwin = async () => await myAPI.platform();
 
   const draw = useCallback((): void => {
     const macOS = isDarwin();
