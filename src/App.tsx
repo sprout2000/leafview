@@ -12,7 +12,7 @@ import { Bottom, Container, GlobalStyle, View } from './styles';
 import Float from './Float';
 import empty from './empty.png';
 
-const { ipcRenderer } = window;
+const { myAPI } = window;
 
 const App: React.FC = () => {
   const [url, setUrl] = useState(empty);
@@ -20,10 +20,7 @@ const App: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
 
-  const isDarwin = async (): Promise<boolean> => {
-    const result: boolean = await ipcRenderer.invoke('platform');
-    return result;
-  };
+  const isDarwin = async (): Promise<boolean> => await myAPI.platform();
 
   const draw = useCallback((): void => {
     const macOS = isDarwin();
@@ -93,10 +90,10 @@ const App: React.FC = () => {
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
 
-      const mime: boolean = await ipcRenderer.invoke('mime-check', file.path);
+      const mime = await myAPI.mimecheck(file.path);
       if (mime) {
         setUrl(file.path);
-        ipcRenderer.send('file-histoy', file.path);
+        myAPI.history(file.path);
       }
     }
   };
@@ -104,13 +101,13 @@ const App: React.FC = () => {
   const next = useCallback(async (): Promise<void> => {
     if (url === empty) return;
 
-    const dir = await ipcRenderer.invoke('dirname', url);
+    const dir = await myAPI.dirname(url);
     if (!dir) {
       setUrl(empty);
       return;
     }
 
-    const list: void | string[] = await ipcRenderer.invoke('readdir', dir);
+    const list = await myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       setUrl(empty);
       return;
@@ -129,13 +126,13 @@ const App: React.FC = () => {
   const prev = useCallback(async (): Promise<void> => {
     if (url === empty) return;
 
-    const dir = await ipcRenderer.invoke('dirname', url);
+    const dir = await myAPI.dirname(url);
     if (!dir) {
       setUrl(empty);
       return;
     }
 
-    const list: void | string[] = await ipcRenderer.invoke('readdir', dir);
+    const list = await myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       setUrl(empty);
       return;
@@ -154,13 +151,13 @@ const App: React.FC = () => {
   const remove = useCallback(async (): Promise<void> => {
     if (url === empty) return;
 
-    const dir = await ipcRenderer.invoke('dirname', url);
+    const dir = await myAPI.dirname(url);
     if (!dir) {
       setUrl(empty);
       return;
     }
 
-    const list: string[] | void = await ipcRenderer.invoke('readdir', dir);
+    const list = await myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       setUrl(empty);
       return;
@@ -168,7 +165,7 @@ const App: React.FC = () => {
 
     const index = list.indexOf(url);
 
-    const result: boolean = await ipcRenderer.invoke('move-to-trash', url);
+    const result = await myAPI.moveToTrash(url);
 
     if (!result) {
       setUrl(empty);
@@ -179,7 +176,7 @@ const App: React.FC = () => {
       });
       sound.play();
 
-      const newList: string[] | void = await ipcRenderer.invoke('readdir', dir);
+      const newList = await myAPI.readdir(dir);
       if (!newList || newList.length === 0) {
         setUrl(empty);
         return;
@@ -194,23 +191,23 @@ const App: React.FC = () => {
   }, [url]);
 
   const onClickOpen = async (): Promise<void> => {
-    const filepath = await ipcRenderer.invoke('open-dialog');
+    const filepath = await myAPI.openDialog();
     if (!filepath) return;
 
-    const mime = await ipcRenderer.invoke('mime-check', filepath);
+    const mime = await myAPI.mimecheck(filepath);
     if (mime) {
       setUrl(filepath);
-      ipcRenderer.send('file-history', filepath);
+      myAPI.history(filepath);
     }
   };
 
   const onMenuOpen = useCallback(async (_e: Event, filepath: string) => {
     if (!filepath) return;
 
-    const mime = await ipcRenderer.invoke('mime-check', filepath);
+    const mime = await myAPI.mimecheck(filepath);
     if (mime) {
       setUrl(filepath);
-      ipcRenderer.send('file-history', filepath);
+      myAPI.history(filepath);
     }
   }, []);
 
@@ -223,38 +220,38 @@ const App: React.FC = () => {
   };
 
   const updateTitle = async (filepath: string): Promise<void> => {
-    await ipcRenderer.invoke('update-title', filepath);
+    await myAPI.updateTitle(filepath);
   };
 
   useEffect(() => {
-    ipcRenderer.on('menu-next', next);
+    myAPI.menuNext(next);
 
     return (): void => {
-      ipcRenderer.removeAllListeners('menu-next');
+      myAPI.removeMenuNext();
     };
   }, [next]);
 
   useEffect(() => {
-    ipcRenderer.on('menu-prev', prev);
+    myAPI.menuPrev(prev);
 
     return (): void => {
-      ipcRenderer.removeAllListeners('menu-prev');
+      myAPI.removeMenuPrev();
     };
   }, [prev]);
 
   useEffect(() => {
-    ipcRenderer.on('menu-remove', remove);
+    myAPI.menuRemove(remove);
 
     return (): void => {
-      ipcRenderer.removeAllListeners('menu-remove');
+      myAPI.removeMenuRemove();
     };
   }, [remove]);
 
   useEffect(() => {
-    ipcRenderer.on('menu-open', onMenuOpen);
+    myAPI.menuOpen(onMenuOpen);
 
     return (): void => {
-      ipcRenderer.removeAllListeners('menu-open');
+      myAPI.removeMenuOpen();
     };
   }, [onMenuOpen]);
 
