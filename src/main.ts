@@ -104,8 +104,6 @@ if (!gotTheLock && !isDarwin) {
 
     ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
 
-    ipcMain.handle('platform', () => isDarwin);
-
     ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
       return checkmime(filepath);
     });
