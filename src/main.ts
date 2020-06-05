@@ -100,7 +100,6 @@ if (!gotTheLock && !isDarwin) {
       minWidth: 800,
       minHeight: isDarwin ? 558 : 562,
       show: false,
-      autoHideMenuBar: true,
       backgroundColor: nativeTheme.shouldUseDarkColors ? '#242424' : '#f8f8f8',
       webPreferences: {
         enableRemoteModule: false,
