@@ -116,11 +116,22 @@ const createMenu = (win: BrowserWindow): Menu => {
                 'https://github.com/sprout2000/leafview#readme'
               ),
           },
-          { type: 'separator' },
           {
             label: i18next.t('about'),
             accelerator: 'Ctrl+I',
             click: (): void => app.showAboutPanel(),
+          },
+          { type: 'separator' },
+          {
+            label: i18next.t('toggleDevTools'),
+            accelerator: 'Ctrl+Alt+I',
+            click: (): void => {
+              if (win.webContents.isDevToolsOpened()) {
+                win.webContents.openDevTools({ mode: 'detach' });
+              } else {
+                win.webContents.closeDevTools();
+              }
+            },
           },
         ],
       }
@@ -158,6 +169,18 @@ const createMenu = (win: BrowserWindow): Menu => {
               await shell.openExternal(
                 'https://github.com/sprout2000/leafview#readme'
               ),
+          },
+          { type: 'separator' },
+          {
+            label: i18next.t('toggleDevTools'),
+            accelerator: 'Cmd+Shift+I',
+            click: (): void => {
+              if (win.webContents.isDevToolsOpened()) {
+                win.webContents.openDevTools({ mode: 'detach' });
+              } else {
+                win.webContents.closeDevTools();
+              }
+            },
           },
         ],
       }
