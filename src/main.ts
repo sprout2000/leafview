@@ -91,7 +91,7 @@ if (!gotTheLock && !isDarwin) {
       minHeight: isDarwin ? 558 : 562,
       show: false,
       autoHideMenuBar: true,
-      backgroundColor: '#323232',
+      backgroundColor: '#242424',
       webPreferences: {
         enableRemoteModule: false,
         nodeIntegration: false,
