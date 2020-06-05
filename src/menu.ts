@@ -127,9 +127,9 @@ const createMenu = (win: BrowserWindow): Menu => {
             accelerator: 'Ctrl+Alt+I',
             click: (): void => {
               if (win.webContents.isDevToolsOpened()) {
-                win.webContents.openDevTools({ mode: 'detach' });
-              } else {
                 win.webContents.closeDevTools();
+              } else {
+                win.webContents.openDevTools({ mode: 'detach' });
               }
             },
           },
@@ -176,9 +176,9 @@ const createMenu = (win: BrowserWindow): Menu => {
             accelerator: 'Cmd+Shift+I',
             click: (): void => {
               if (win.webContents.isDevToolsOpened()) {
-                win.webContents.openDevTools({ mode: 'detach' });
-              } else {
                 win.webContents.closeDevTools();
+              } else {
+                win.webContents.openDevTools({ mode: 'detach' });
               }
             },
           },
