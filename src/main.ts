@@ -38,8 +38,6 @@ const gotTheLock = app.requestSingleInstanceLock();
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
-nativeTheme.themeSource = isDarwin ? 'system' : 'dark';
-
 let win: BrowserWindow | null;
 let filepath: string | null = null;
 
