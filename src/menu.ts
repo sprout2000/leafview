@@ -123,7 +123,7 @@ const createMenu = (win: BrowserWindow): Menu => {
           },
           { type: 'separator' },
           {
-            label: i18next.t('toggleDevTools'),
+            label: i18next.t('toggleDevtools'),
             accelerator: 'Ctrl+Alt+I',
             click: (): void => {
               if (win.webContents.isDevToolsOpened()) {
@@ -172,7 +172,7 @@ const createMenu = (win: BrowserWindow): Menu => {
           },
           { type: 'separator' },
           {
-            label: i18next.t('toggleDevTools'),
+            label: i18next.t('toggleDevtools'),
             accelerator: 'Cmd+Shift+I',
             click: (): void => {
               if (win.webContents.isDevToolsOpened()) {
