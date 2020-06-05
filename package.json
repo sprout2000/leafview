@@ -19,8 +19,9 @@
   },
   "keywords": [
     "image-viewer",
-    "cross-platform",
-    "electron"
+    "electron",
+    "pan",
+    "zoom"
   ],
   "engines": {
     "node": ">=10.14",
