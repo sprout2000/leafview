@@ -5,8 +5,6 @@ declare global {
 }
 
 export interface Sandbox {
-  platform: () => Promise<boolean>;
-
   mimecheck: (filepath: string) => Promise<boolean>;
 
   history: (filepath: string) => void;

@@ -20,10 +20,13 @@ const App: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
 
+<<<<<<< HEAD
   const isDarwin = async () => await myAPI.platform();
 
+=======
+>>>>>>> master
   const draw = useCallback((): void => {
-    const macOS = isDarwin();
+    const macOS = window.navigator.userAgent.includes('Mac OS X');
     const node = mapRef.current;
 
     if (node) {
