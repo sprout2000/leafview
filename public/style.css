@@ -11,7 +11,7 @@ body {
 }
 
 a {
-  color: rgb(0, 138, 243);
+  color: rgb(26, 207, 139);
   text-decoration: none;
 }
 
@@ -133,7 +133,8 @@ h3 {
 
 .issues {
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 100;
+  text-decoration: underline;
 }
 
 .github {
