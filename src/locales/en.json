@@ -17,10 +17,10 @@
   "bringAllToFront": "Bring All to Front",
   "close": "Close",
   "help": "Help(&H)",
-  "about": "About LessView",
+  "about": "About ELView",
   "support": "Support URL...",
-  "hide": "Hide LessView",
+  "hide": "Hide ELView",
   "hideOthers": "Hide Others",
   "unhide": "Unhide All",
-  "quit": "Quit LessView"
+  "quit": "Quit ELView"
 }

@@ -1,14 +1,14 @@
 <div align="center">
   <img src="https://user-images.githubusercontent.com/52094761/79167678-fa353400-7e22-11ea-896b-4e7f600ad63a.png">
-  <h1>LessView</h1>
+  <h1>ELView</h1>
   <strong>An image viewer for minimalists.</strong>
   <img width="912" alt="2020-04-13 15 07 43" src="https://user-images.githubusercontent.com/52094761/79097565-037abe00-7d9b-11ea-9f38-5a9e995792d8.png">
 </div>
 
-[![GitHub CI](https://github.com/sprout2000/lessview/workflows/GitHub%20CI/badge.svg)](https://github.com/sprout2000/lessview/actions?query=workflow%3A%22GitHub+CI%22)
-[![GitHub license](https://img.shields.io/github/license/sprout2000/lessview)](https://github.com/sprout2000/lessview/blob/master/LICENSE.md)
-[![GitHub stars](https://img.shields.io/github/stars/sprout2000/lessview)](https://github.com/sprout2000/lessview/stargazers)
-![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/sprout2000/lessview)
+[![GitHub CI](https://github.com/sprout2000/elview/workflows/GitHub%20CI/badge.svg)](https://github.com/sprout2000/elview/actions?query=workflow%3A%22GitHub+CI%22)
+[![GitHub license](https://img.shields.io/github/license/sprout2000/elview)](https://github.com/sprout2000/elview/blob/master/LICENSE.md)
+[![GitHub stars](https://img.shields.io/github/stars/sprout2000/elview)](https://github.com/sprout2000/elview/stargazers)
+![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/sprout2000/elview)
 
 ## Features
 
@@ -41,8 +41,8 @@ sandbox | `true`
 ## Build and Install
 
 ```
-$ git clone git@github.com:sprout2000/lessview.git
-$ cd lessview
+$ git clone git@github.com:sprout2000/elview.git
+$ cd elview
 $ yarn install && yarn package
 ```
 
@@ -52,8 +52,8 @@ $ yarn install && yarn package
 
 ## Download
 
-You can download the latest version of LessView from the releases page here:  
-[https://github.com/sprout2000/lessview/releases](https://github.com/sprout2000/lessview/releases)
+You can download the latest version of ELView from the releases page here:  
+[https://github.com/sprout2000/elview/releases](https://github.com/sprout2000/elview/releases)
 
 ## Usage
 
@@ -81,4 +81,4 @@ wheel | zoom in/out
 
 ## License
 
-[MIT](https://github.com/sprout2000/lessview/blob/master/LICENSE.md)
+[MIT](https://github.com/sprout2000/elview/blob/master/LICENSE.md)

@@ -17,10 +17,10 @@
   "bringAllToFront": "すべてを前面に配置",
   "close": "閉じる",
   "help": "ヘルプ(&H)",
-  "about": "LessView について",
+  "about": "ELView について",
   "support": "サポートページ...",
-  "hide": "LessView を隠す",
+  "hide": "ELView を隠す",
   "hideOthers": "その他を非表示にする",
   "unhide": "すべて表示",
-  "quit": "LessView を終了"
+  "quit": "ELView を終了"
 }

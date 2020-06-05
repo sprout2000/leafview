@@ -254,7 +254,7 @@ const App: React.FC = () => {
   }, [onMenuOpen]);
 
   useEffect(() => {
-    let title = 'LessView';
+    let title = 'ELView';
 
     if (url !== empty) {
       title = url;
