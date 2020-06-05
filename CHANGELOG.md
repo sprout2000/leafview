@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/sprout2000/leafview/compare/v0.2.1...v0.2.2) (2020-06-05)
+
+
+### Features
+
+* add ToggleDevtools to Help menu ([42003d3](https://github.com/sprout2000/leafview/commit/42003d39b432fc53983135ba5a6365269f6985ba))
+* dark mode to the OS default on Windows ([2150972](https://github.com/sprout2000/leafview/commit/2150972abfd7f96f0b72c6b7fb0caff7d559d9ec))
+
+
+### Bug Fixes
+
+* Devtools issue on Help menu ([67058ff](https://github.com/sprout2000/leafview/commit/67058ff4d433eb3cabdc96a43b6cb54295ea6b32))
+* shortcut indicator on en_US ([d9fef4a](https://github.com/sprout2000/leafview/commit/d9fef4aecdcabe99a91cd1ba200355d55004b816))
+
 ### [0.2.1](https://github.com/sprout2000/lessview/compare/v0.2.0...v0.2.1) (2020-06-05)
 
 
