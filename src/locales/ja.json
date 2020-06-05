@@ -17,10 +17,10 @@
   "bringAllToFront": "すべてを前面に配置",
   "close": "閉じる",
   "help": "ヘルプ(&H)",
-  "about": "ELView について",
+  "about": "LeafView について",
   "support": "サポートページ...",
-  "hide": "ELView を隠す",
+  "hide": "LeafView を隠す",
   "hideOthers": "その他を非表示にする",
   "unhide": "すべて表示",
-  "quit": "ELView を終了"
+  "quit": "LeafView を終了"
 }

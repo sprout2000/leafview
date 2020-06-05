@@ -4,7 +4,7 @@ builder
   .build({
     config: {
       appId: process.env.APP_BUNDLE_ID,
-      productName: 'ELView',
+      productName: 'LeafView',
       copyright: 'Copyright (C) 2020 Office Nishigami.',
       artifactName: '${productName}-${version}-${platform}.${ext}',
       files: ['dist/**/*'],
@@ -43,9 +43,9 @@ builder
         target: ['dmg', 'zip'],
         icon: 'assets/icon.icns',
         extendInfo: {
-          CFBundleName: 'ELView',
-          CFBundleDisplayName: 'ELView',
-          CFBundleExecutable: 'ELView',
+          CFBundleName: 'LeafView',
+          CFBundleDisplayName: 'LeafView',
+          CFBundleExecutable: 'LeafView',
           CFBundlePackageType: 'APPL',
           CFBundleDocumentTypes: [
             {

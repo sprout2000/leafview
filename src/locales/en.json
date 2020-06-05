@@ -17,10 +17,10 @@
   "bringAllToFront": "Bring All to Front",
   "close": "Close",
   "help": "Help(&H)",
-  "about": "About ELView",
+  "about": "About LeafView",
   "support": "Support URL...",
-  "hide": "Hide ELView",
+  "hide": "Hide LeafView",
   "hideOthers": "Hide Others",
   "unhide": "Unhide All",
-  "quit": "Quit ELView"
+  "quit": "Quit LeafView"
 }

@@ -3,7 +3,7 @@ const builder = require('electron-builder');
 builder
   .build({
     config: {
-      productName: 'ELView',
+      productName: 'LeafView',
       copyright: 'Copyright (C) 2020 Office Nishigami.',
       artifactName: '${productName}-${version}-${platform}.${ext}',
       files: ['dist/**/*'],
@@ -36,9 +36,9 @@ builder
         target: ['dmg'],
         icon: 'assets/icon.icns',
         extendInfo: {
-          CFBundleName: 'ELView',
-          CFBundleDisplayName: 'ELView',
-          CFBundleExecutable: 'ELView',
+          CFBundleName: 'LeafView',
+          CFBundleDisplayName: 'LeafView',
+          CFBundleExecutable: 'LeafView',
           CFBundlePackageType: 'APPL',
           CFBundleDocumentTypes: [
             {

@@ -113,7 +113,7 @@ const createMenu = (win: BrowserWindow): Menu => {
             label: i18next.t('support'),
             click: async (): Promise<void> =>
               await shell.openExternal(
-                'https://github.com/sprout2000/elview#readme'
+                'https://github.com/sprout2000/leafview#readme'
               ),
           },
           { type: 'separator' },
@@ -156,7 +156,7 @@ const createMenu = (win: BrowserWindow): Menu => {
             label: i18next.t('support'),
             click: async (): Promise<void> =>
               await shell.openExternal(
-                'https://github.com/sprout2000/elview#readme'
+                'https://github.com/sprout2000/leafview#readme'
               ),
           },
         ],
@@ -164,7 +164,7 @@ const createMenu = (win: BrowserWindow): Menu => {
     );
 
     template.unshift({
-      label: 'ELView',
+      label: 'LeafView',
       submenu: [
         {
           label: i18next.t('about'),

@@ -4,7 +4,7 @@ const builder = require('electron-builder');
 builder
   .build({
     config: {
-      productName: 'ELView',
+      productName: 'LeafView',
       copyright: 'Copyright (C) 2020 sprout2000.',
       artifactName: '${productName}-${version}-${platform}.${ext}',
       files: ['dist/**/*'],
@@ -25,9 +25,9 @@ builder
         ],
       },
       appx: {
-        applicationId: 'sprout2000.ELView',
+        applicationId: 'sprout2000.LeafView',
         backgroundColor: '#1d3557',
-        displayName: 'ELView',
+        displayName: 'LeafView',
         identityName: process.env.IDENTITY_NAME,
         publisher: process.env.PUBLISHER,
         publisherDisplayName: 'sprout2000',
