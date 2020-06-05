@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
   height: 100%;
-  background-color: #323232;
   overflow: hidden;
   user-select: none;
   position: relative;

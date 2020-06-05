@@ -1,4 +1,12 @@
-import { BrowserWindow, app, Menu, ipcMain, dialog, shell } from 'electron';
+import {
+  BrowserWindow,
+  app,
+  Menu,
+  ipcMain,
+  dialog,
+  shell,
+  nativeTheme,
+} from 'electron';
 import { autoUpdater } from 'electron-updater';
 import i18next from 'i18next';
 import stateKeeper from 'electron-window-state';
@@ -91,7 +99,7 @@ if (!gotTheLock && !isDarwin) {
       minHeight: isDarwin ? 558 : 562,
       show: false,
       autoHideMenuBar: true,
-      backgroundColor: '#323232',
+      backgroundColor: nativeTheme.shouldUseDarkColors ? '#242424' : '#f8f8f8',
       webPreferences: {
         enableRemoteModule: false,
         nodeIntegration: false,
