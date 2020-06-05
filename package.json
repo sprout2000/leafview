@@ -25,7 +25,8 @@
   ],
   "engines": {
     "node": ">=10.14",
-    "npm": "please_use_yarn_instead"
+    "npm": "please_use_yarn_instead",
+    "yarn": ">=1.22.0"
   },
   "os": [
     "win32",
