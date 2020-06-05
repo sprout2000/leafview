@@ -32,10 +32,10 @@
   ],
   "scripts": {
     "start": "run-s clean build serve",
+    "serve": "electron .",
     "clean": "rimraf dist release",
     "build": "cross-env NODE_ENV=\"development\" webpack --progress",
     "build:prod": "cross-env NODE_ENV=\"production\" webpack --progress",
-    "serve": "electron .",
     "release": "node scripts/build.js",
     "prepackage": "run-s clean build:prod",
     "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=false node scripts/build-unsign.js",
