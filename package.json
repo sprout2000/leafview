@@ -3,7 +3,7 @@
   "productName": "LeafView",
   "version": "0.2.1",
   "main": "dist/main.js",
-  "description": "An image viewer for minimalists",
+  "description": "Secure image viewer for minimalists based on leaflet.js",
   "author": {
     "name": "sprout2000",
     "url": "https://github.com/sprout2000"
