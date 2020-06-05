@@ -1,8 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('myAPI', {
-  platform: async (): Promise<boolean> => await ipcRenderer.invoke('platform'),
-
   mimecheck: async (filepath: string): Promise<boolean> =>
     await ipcRenderer.invoke('mime-check', filepath),
 
