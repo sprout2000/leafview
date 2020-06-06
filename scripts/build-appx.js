@@ -19,8 +19,8 @@ builder
         target: ['appx'],
         fileAssociations: [
           {
-            ext: ['png'],
-            description: 'PNG files',
+            ext: ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'ico', 'svg', 'webp'],
+            description: 'Image files',
           },
         ],
       },
