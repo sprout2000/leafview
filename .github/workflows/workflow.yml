@@ -4,7 +4,7 @@ on:
     tags:
       - 'v*'
 jobs:
-  build:
+  build_dmg:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@master
@@ -24,5 +24,24 @@ jobs:
         ASC_PROVIDER: ${{ secrets.ASC_PROVIDER }}
         CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
         CSC_LINK: ${{ secrets.CSC_LINK }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: yarn release
+
+build_appx:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@master
+      with:
+        node-version: 12.x
+    - name: Install
+      run: yarn install --frozen-lockfile --ignore-optional
+    - name: Build
+      run: yarn build:prod
+    - name: Release
+      env: 
+        IDENTITY_NAME: ${{ secrets.IDENTITY_NAME }}
+        PUBLISHER: ${{ secrets.PUBLISHER }}
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: yarn release

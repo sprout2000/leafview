@@ -3,7 +3,6 @@ const builder = require('electron-builder');
 builder
   .build({
     config: {
-      appId: process.env.APP_BUNDLE_ID,
       productName: 'LeafView',
       copyright: 'Copyright (C) 2020 Office Nishigami.',
       artifactName: '${productName}-${version}-${platform}.${ext}',
@@ -15,13 +14,14 @@ builder
         },
       ],
       directories: {
+        buildResources: 'assets',
         output: 'release',
       },
       asar: true,
       asarUnpack: ['dist/preload.js'],
       win: {
         icon: 'assets/icon.ico',
-        target: ['nsis', 'zip'],
+        target: ['appx'],
         publisherName: 'sprout2000',
         fileAssociations: [
           {
@@ -30,15 +30,17 @@ builder
           },
         ],
       },
-      nsis: {
-        oneClick: false,
-        perMachine: false,
-        createDesktopShortcut: false,
-        createStartMenuShortcut: true,
-        installerIcon: 'assets/installerIcon.ico',
-        artifactName: '${productName}-${version}-installer.${ext}',
+      appx: {
+        applicationId: 'sprout2000.LeafView',
+        backgroundColor: '#1d3557',
+        displayName: 'LeafView',
+        languages: ['EN-US', 'JA-JP'],
+        identityName: process.env.IDENTITY_NAME,
+        publisher: process.env.PUBLISHER,
+        publisherDisplayName: 'sprout2000',
       },
       mac: {
+        appId: process.env.APP_BUNDLE_ID,
         category: 'public.app-category.photography',
         target: ['dmg', 'zip'],
         icon: 'assets/icon.icns',
