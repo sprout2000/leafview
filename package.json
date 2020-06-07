@@ -24,9 +24,9 @@
     "zoom"
   ],
   "engines": {
-    "node": ">=10.14",
-    "npm": "please_use_yarn_instead",
-    "yarn": ">=1.22.0"
+    "node": "12.x",
+    "yarn": ">=1.22.0",
+    "npm": "please_use_yarn_instead"
   },
   "os": [
     "win32",
@@ -103,5 +103,8 @@
     "gh-pages": "^3.0.0",
     "prettier": "^2.0.5",
     "standard-version": "^8.0.0"
+  },
+  "resolutions": {
+    "yargs-parser": "^18.1.2"
   }
 }
