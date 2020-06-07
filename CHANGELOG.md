@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/sprout2000/leafview/compare/v0.2.2...v0.2.3) (2020-06-07)
+
+
+### Bug Fixes
+
+* accelerator for DevTools on macOS ([8336a69](https://github.com/sprout2000/leafview/commit/8336a69e1ea6af9a6a433dc6544a6fb0e2d22afc))
+* file-history won't work ([da5f87f](https://github.com/sprout2000/leafview/commit/da5f87f7372339717aee52dc94984c2619275c77))
+* fileAssociations on win32 ([9fa7bb1](https://github.com/sprout2000/leafview/commit/9fa7bb1710d3ada0846f43c75d23f747a9149dd1))
+
 ### [0.2.2](https://github.com/sprout2000/leafview/compare/v0.2.1...v0.2.2) (2020-06-05)
 
 
