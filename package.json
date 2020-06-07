@@ -24,9 +24,9 @@
     "zoom"
   ],
   "engines": {
-    "node": ">=10.14",
-    "npm": "please_use_yarn_instead",
-    "yarn": ">=1.22.0"
+    "node": "12.x",
+    "yarn": ">=1.22.0",
+    "npm": "please_use_yarn_instead"
   },
   "os": [
     "win32",
