@@ -52,8 +52,14 @@ $ yarn install && yarn package
 
 ## Download
 
+### macOS
+
 You can download the latest version of LeafView from the releases page here:  
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
+
+### Windows10
+
+You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
 
 ## Usage
 
