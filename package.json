@@ -21,7 +21,8 @@
     "image-viewer",
     "electron",
     "pan",
-    "zoom"
+    "zoom",
+    "cross-platform"
   ],
   "engines": {
     "node": "12.x",
