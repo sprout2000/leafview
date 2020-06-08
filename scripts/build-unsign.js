@@ -4,7 +4,7 @@ builder
   .build({
     config: {
       productName: 'LeafView',
-      copyright: 'Copyright (C) 2020 Office Nishigami.',
+      copyright: 'Copyright (C) 2020 sprout2000.',
       artifactName: '${productName}-${version}-${platform}.${ext}',
       files: ['dist/**/*'],
       directories: {

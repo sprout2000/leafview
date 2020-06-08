@@ -219,7 +219,7 @@ if (!gotTheLock && !isDarwin) {
     applicationName: app.name,
     applicationVersion: app.getVersion(),
     version: process.versions['electron'],
-    copyright: 'Copyright (C) 2020 Office Nishigami.',
+    copyright: 'Copyright (C) 2020 sprout2000.',
   });
 
   autoUpdater.once('error', (_e, err) => {
