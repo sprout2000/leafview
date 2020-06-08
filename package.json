@@ -43,7 +43,7 @@
     "prepackage": "run-s clean build:prod",
     "prepackage:appx": "run-s clean build:prod",
     "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=false node scripts/build-unsign.js",
-    "package:appx": "node scripts/build-appx.js",
+    "package:appx": "node scripts/build.js",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
