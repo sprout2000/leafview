@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/sprout2000/leafview/compare/v0.2.3...v0.2.4) (2020-06-08)
+
+
+### Bug Fixes
+
+* publisher name on copyrights ([065468c](https://github.com/sprout2000/leafview/commit/065468c03f59a69476075ac9d20191e7baf21d2f))
+
 ### [0.2.3](https://github.com/sprout2000/leafview/compare/v0.2.2...v0.2.3) (2020-06-07)
 
 
