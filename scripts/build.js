@@ -6,7 +6,6 @@ builder
     config: {
       productName: 'LeafView',
       copyright: 'Copyright (C) 2020 sprout2000.',
-      artifactName: '${productName}-${version}-${platform}.${ext}',
       files: ['dist/**/*'],
       publish: [
         {
@@ -21,6 +20,7 @@ builder
       asar: true,
       asarUnpack: ['dist/preload.js'],
       win: {
+        artifactName: '${productName}-${version}-${platform}.${ext}',
         icon: 'assets/icon.ico',
         target: ['appx'],
         publisherName: 'sprout2000',
@@ -42,6 +42,7 @@ builder
       },
       mac: {
         appId: process.env.APP_BUNDLE_ID,
+        artifactName: '${productName}-${version}-x64.${ext}',
         category: 'public.app-category.photography',
         target: 'default',
         icon: 'assets/icon.icns',
