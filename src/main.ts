@@ -127,6 +127,7 @@ if (!gotTheLock && !isDarwin) {
           dirents
             .filter((dirent) => dirent.isFile())
             .map(({ name }) => path.join(dir, name))
+            .filter((item) => !/(^|\/)\.[^/.]/g.test(item))
             .filter((item) => checkmime(item))
             .sort(natsort({ insensitive: true }))
         )
