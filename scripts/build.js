@@ -43,7 +43,7 @@ builder
       mac: {
         appId: process.env.APP_BUNDLE_ID,
         category: 'public.app-category.photography',
-        target: ['dmg', 'zip'],
+        target: 'default',
         icon: 'assets/icon.icns',
         extendInfo: {
           CFBundleName: 'LeafView',
