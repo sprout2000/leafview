@@ -231,10 +231,10 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
-"@types/howler@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@types/howler/-/howler-2.1.2.tgz#318a9cac65eeb8ed7d453dd70c9367067d35137b"
-  integrity sha512-gK7snhJcWVvTdiE6cCBAjeZ9od9Q8LmB5lEyB/3n6jMJOLn7EQ8Zvmkz8XPhnN5xB+b7QzCiqxJY3YiHrM3Jpg==
+"@types/howler@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@types/howler/-/howler-2.2.0.tgz#a7938992ea0694a2dc92977e63a6f5e0c79be93f"
+  integrity sha512-YUQOF+2usyZc7v6GPsifKXsHI50bYKjpfNtaw9SqpgZF/72ofUbpLWmfSpWN8VMZ1xVU1ga8/yMm/B+sJ7Fc2w==
 
 "@types/html-minifier-terser@^5.0.0":
   version "5.1.0"
@@ -273,10 +273,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.43.tgz#b60ce047822e526e7a9252e50844eee79d5386ff"
   integrity sha512-KUyZdkGCnVPuXfsKmDUu2XLui65LZIJ2s0M57noy5e+ixUT2oK33ep7zlvgzI8LElcWqbf8AR+o/3GqAPac2zA==
 
-"@types/node@^14.0.12":
-  version "14.0.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.12.tgz#9c1d8ffb8084e8936603a6122a7649e40e68e04b"
-  integrity sha512-/sjzehvjkkpvLpYtN6/2dv5kg41otMGuHQUt9T2aiAuIfleCQRQHXXzF1eAw/qkZTj5Kcf4JSTf7EIizHocy6Q==
+"@types/node@^14.0.13":
+  version "14.0.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.13.tgz#ee1128e881b874c371374c1f72201893616417c9"
+  integrity sha512-rouEWBImiRaSJsVA+ITTFM6ZxibuAlTuNOCyxVbwreu6k6+ujs7DfnU9o+PShFhET78pMBl3eH+AGSI5eOTkPA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
