@@ -73,6 +73,9 @@ if (!gotTheLock && !isDarwin) {
   app.once('will-finish-launching', () => {
     app.once('open-file', (e, filepath) => {
       e.preventDefault();
+
+      if (path.basename(filepath).startsWith('.')) return;
+
       openfile = filepath;
     });
   });
@@ -219,6 +222,9 @@ if (!gotTheLock && !isDarwin) {
 
   app.on('open-file', (e, filepath) => {
     e.preventDefault();
+
+    if (path.basename(filepath).startsWith('.')) return;
+
     win?.webContents.send('menu-open', filepath);
   });
 
