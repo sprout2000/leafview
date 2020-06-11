@@ -41,6 +41,8 @@ const createMenu = (win: BrowserWindow): Menu => {
               })
               .then((result): void => {
                 if (result.canceled) return;
+                if (result.filePaths[0].match(/(^|\/|\\)\.[^/.]/g)) return;
+
                 win.webContents.send('menu-open', result.filePaths[0]);
               })
               .catch((err): void => console.log(err));
