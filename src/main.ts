@@ -71,9 +71,9 @@ if (!gotTheLock && !isDarwin) {
   });
 
   app.once('will-finish-launching', () => {
-    app.once('open-file', (e, path) => {
+    app.once('open-file', (e, filepath) => {
       e.preventDefault();
-      openfile = path;
+      openfile = filepath;
     });
   });
 
@@ -217,9 +217,9 @@ if (!gotTheLock && !isDarwin) {
     windowState.manage(win);
   });
 
-  app.on('open-file', (e, path) => {
+  app.on('open-file', (e, filepath) => {
     e.preventDefault();
-    win?.webContents.send('menu-open', path);
+    win?.webContents.send('menu-open', filepath);
   });
 
   app.setAboutPanelOptions({
