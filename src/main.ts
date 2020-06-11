@@ -141,7 +141,7 @@ if (!gotTheLock && !isDarwin) {
 
     ipcMain.handle('open-dialog', async () => {
       if (win) {
-        const fullpath = await dialog
+        const filepath = await dialog
           .showOpenDialog(win, {
             properties: ['openFile'],
             title: i18next.t('dialogTitle'),
@@ -170,7 +170,7 @@ if (!gotTheLock && !isDarwin) {
           })
           .catch((err): void => console.log(err));
 
-        return fullpath;
+        return filepath;
       }
     });
 
@@ -179,8 +179,8 @@ if (!gotTheLock && !isDarwin) {
       return result;
     });
 
-    ipcMain.handle('update-title', (_e: Event, fullpath: string) => {
-      win?.setTitle(path.basename(fullpath));
+    ipcMain.handle('update-title', (_e: Event, filepath: string) => {
+      win?.setTitle(path.basename(filepath));
     });
 
     if (isDev) {
@@ -196,11 +196,11 @@ if (!gotTheLock && !isDarwin) {
 
     win.webContents.once('did-finish-load', () => {
       if (!isDarwin && !isDev && process.argv.length >= 2) {
-        const fullpath = process.argv[process.argv.length - 1];
+        const filepath = process.argv[process.argv.length - 1];
 
-        if (path.basename(fullpath).startsWith('._')) return;
+        if (path.basename(filepath).startsWith('._')) return;
 
-        win?.webContents.send('menu-open', fullpath);
+        win?.webContents.send('menu-open', filepath);
       }
 
       if (isDarwin && openfile) {
