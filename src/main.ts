@@ -38,6 +38,8 @@ const gotTheLock = app.requestSingleInstanceLock();
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
+const dotfiles = isDarwin ? '.' : '._';
+
 let win: BrowserWindow | null;
 let openfile: string | null = null;
 
@@ -133,7 +135,7 @@ if (!gotTheLock && !isDarwin) {
           dirents
             .filter((dirent) => dirent.isFile())
             .map(({ name }) => path.join(dir, name))
-            .filter((item) => !path.basename(item).startsWith('._'))
+            .filter((item) => !path.basename(item).startsWith(dotfiles))
             .filter((item) => checkmime(item))
             .sort(natsort({ insensitive: true }))
         )
