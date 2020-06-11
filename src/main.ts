@@ -127,7 +127,7 @@ if (!gotTheLock && !isDarwin) {
           dirents
             .filter((dirent) => dirent.isFile())
             .map(({ name }) => path.join(dir, name))
-            .filter((item) => !/(^|\/)\.[^/.]/g.test(item))
+            .filter((item) => !/(^|\/|\\)\.[^/.]/g.test(item))
             .filter((item) => checkmime(item))
             .sort(natsort({ insensitive: true }))
         )
@@ -161,6 +161,8 @@ if (!gotTheLock && !isDarwin) {
           })
           .then((result) => {
             if (result.canceled) return;
+            if (result.filePaths[0].match(/(^|\/|\\)\.[^/.]/g)) return;
+
             return result.filePaths[0];
           })
           .catch((err): void => console.log(err));
