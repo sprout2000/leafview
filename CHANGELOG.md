@@ -2,13 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.2.5](https://github.com/sprout2000/leafview/compare/v0.2.4...v0.2.5) (2020-06-10)
-
-
-### Bug Fixes
-
-* do not show dot files ([7d0828a](https://github.com/sprout2000/leafview/commit/7d0828ad908318b9dec6f1c4fe6bb994c4cda0fa))
-
 ### [0.2.4](https://github.com/sprout2000/leafview/compare/v0.2.3...v0.2.4) (2020-06-08)
 
 
