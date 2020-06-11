@@ -169,7 +169,7 @@ if (!gotTheLock && !isDarwin) {
           })
           .then((result) => {
             if (result.canceled) return;
-            if (path.basename(result.filePaths[0]).startsWith('._')) return;
+            if (path.basename(result.filePaths[0]).startsWith(dotfiles)) return;
 
             return result.filePaths[0];
           })

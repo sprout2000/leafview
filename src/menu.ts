@@ -12,6 +12,7 @@ import i18next from 'i18next';
 
 const createMenu = (win: BrowserWindow): Menu => {
   const darwin = process.platform === 'darwin';
+  const dotfiles = darwin ? '.' : '._';
 
   const template: MenuItemConstructorOptions[] = [
     {
@@ -43,7 +44,10 @@ const createMenu = (win: BrowserWindow): Menu => {
               })
               .then((result): void => {
                 if (result.canceled) return;
-                if (path.basename(result.filePaths[0]).startsWith('._')) return;
+
+                if (path.basename(result.filePaths[0]).startsWith(dotfiles)) {
+                  return;
+                }
 
                 win.webContents.send('menu-open', result.filePaths[0]);
               })
