@@ -87,7 +87,7 @@ const App: React.FC = () => {
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
-      if (file.name.startsWith('._')) return;
+      if (file.name.startsWith('.')) return;
 
       const mime = await myAPI.mimecheck(file.path);
       if (mime) {

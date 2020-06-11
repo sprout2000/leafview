@@ -38,6 +38,8 @@ const gotTheLock = app.requestSingleInstanceLock();
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
+const dotfiles = isDarwin ? '.' : '._';
+
 let win: BrowserWindow | null;
 let openfile: string | null = null;
 
@@ -71,9 +73,12 @@ if (!gotTheLock && !isDarwin) {
   });
 
   app.once('will-finish-launching', () => {
-    app.once('open-file', (e, path) => {
+    app.once('open-file', (e, filepath) => {
       e.preventDefault();
-      openfile = path;
+
+      if (path.basename(filepath).startsWith('.')) return;
+
+      openfile = filepath;
     });
   });
 
@@ -130,7 +135,7 @@ if (!gotTheLock && !isDarwin) {
           dirents
             .filter((dirent) => dirent.isFile())
             .map(({ name }) => path.join(dir, name))
-            .filter((item) => !path.basename(item).startsWith('._'))
+            .filter((item) => !path.basename(item).startsWith(dotfiles))
             .filter((item) => checkmime(item))
             .sort(natsort({ insensitive: true }))
         )
@@ -164,7 +169,7 @@ if (!gotTheLock && !isDarwin) {
           })
           .then((result) => {
             if (result.canceled) return;
-            if (path.basename(result.filePaths[0]).startsWith('._')) return;
+            if (path.basename(result.filePaths[0]).startsWith(dotfiles)) return;
 
             return result.filePaths[0];
           })
@@ -217,9 +222,12 @@ if (!gotTheLock && !isDarwin) {
     windowState.manage(win);
   });
 
-  app.on('open-file', (e, path) => {
+  app.on('open-file', (e, filepath) => {
     e.preventDefault();
-    win?.webContents.send('menu-open', path);
+
+    if (path.basename(filepath).startsWith('.')) return;
+
+    win?.webContents.send('menu-open', filepath);
   });
 
   app.setAboutPanelOptions({
