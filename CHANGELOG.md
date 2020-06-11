@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.6](https://github.com/sprout2000/leafview/compare/v0.2.5...v0.2.6) (2020-06-11)
+
+
+### Bug Fixes
+
+* disallow open ._ from dialogs ([d7f90ee](https://github.com/sprout2000/leafview/commit/d7f90ee839b178926623bd56c604925903ae9ae0))
+* disallow opening ._ form the menu ([818dc4e](https://github.com/sprout2000/leafview/commit/818dc4e6fac7f695d45b92694fc626b04e400c3a))
+* disallow opening ._ on start ([4f6d91f](https://github.com/sprout2000/leafview/commit/4f6d91ff4585450132c8791524d4b50c20b9be8a))
+* disallow opening *_ on second instance ([cf4cf5d](https://github.com/sprout2000/leafview/commit/cf4cf5d58506fed4d789f2daef768903b06e443d))
+* do not list ._ on readdir() ([4b84288](https://github.com/sprout2000/leafview/commit/4b8428861192f8d68e631a2c7bdf993caf82f44b))
+* ignore ._ on macOS ([384c8d6](https://github.com/sprout2000/leafview/commit/384c8d6a4d7eca510dc7b6765a809bbf6e0d5b4c))
+
 ### [0.2.5](https://github.com/sprout2000/leafview/compare/v0.2.3...v0.2.5) (2020-06-11)
 
 
