@@ -39,7 +39,7 @@ const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
 let win: BrowserWindow | null;
-let filepath: string | null = null;
+let openfile: string | null = null;
 
 const getSourceDirectory = (): string => {
   return process.env.NODE_ENV === 'development'
@@ -73,7 +73,7 @@ if (!gotTheLock && !isDarwin) {
   app.once('will-finish-launching', () => {
     app.once('open-file', (e, path) => {
       e.preventDefault();
-      filepath = path;
+      openfile = path;
     });
   });
 
@@ -203,9 +203,9 @@ if (!gotTheLock && !isDarwin) {
         win?.webContents.send('menu-open', fullpath);
       }
 
-      if (isDarwin && filepath) {
-        win?.webContents.send('menu-open', filepath);
-        filepath = null;
+      if (isDarwin && openfile) {
+        win?.webContents.send('menu-open', openfile);
+        openfile = null;
       }
     });
 
