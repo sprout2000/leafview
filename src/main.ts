@@ -161,6 +161,8 @@ if (!gotTheLock && !isDarwin) {
           })
           .then((result) => {
             if (result.canceled) return;
+            if (result.filePaths[0].match(/(^|\/|\\)\.[^/.]/g)) return;
+
             return result.filePaths[0];
           })
           .catch((err): void => console.log(err));
