@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.7](https://github.com/sprout2000/leafview/compare/v0.2.6...v0.2.7) (2020-06-11)
+
+
+### Bug Fixes
+
+* disallow dotfiles on 'open-file' event ([574b648](https://github.com/sprout2000/leafview/commit/574b648323169120c5522941d797e93c4dd36c67))
+* disallow hidden files on open-dialog ([ec8d4b7](https://github.com/sprout2000/leafview/commit/ec8d4b7ab6e82fbd42984781bdb15a0c5c5d202f))
+* do not accept dotfiles to drop ([50c4b43](https://github.com/sprout2000/leafview/commit/50c4b4311f6a5e848e5bf7bd024bbabf064f3d52))
+* do not list dotfiles ([0540718](https://github.com/sprout2000/leafview/commit/05407189bd5257846d1ccddd152a1d1966947ac1))
+
 ### [0.2.6](https://github.com/sprout2000/leafview/compare/v0.2.5...v0.2.6) (2020-06-11)
 
 
