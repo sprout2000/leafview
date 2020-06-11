@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.5](https://github.com/sprout2000/leafview/compare/v0.2.3...v0.2.5) (2020-06-11)
+
+
+### Bug Fixes
+
+* disallow dropping dotfiles ([c9e5748](https://github.com/sprout2000/leafview/commit/c9e574810ee1f5f32812707116685a505e9832ca))
+* disallow opening dotfiles on start ([f318e90](https://github.com/sprout2000/leafview/commit/f318e907d4f569a8f74c73dd110f2a6c09d0cc1a))
+* do not list dotfiles on macOS ([e8cecf0](https://github.com/sprout2000/leafview/commit/e8cecf0886b56942f2ecdc87e2357fd1019b1461))
+* do not list dotfiles on Windows ([581457a](https://github.com/sprout2000/leafview/commit/581457a36cdb3437be1044f9d796e1d9ddad9c71))
+* do not open dotfiles from onClickOpen ([1735d6a](https://github.com/sprout2000/leafview/commit/1735d6a277df5ae445ba3437c2a9fa54afecfa73))
+* do not open dotfiles from the menu ([c681b49](https://github.com/sprout2000/leafview/commit/c681b4999475a0cdfcac3d09b145b5d5ef4e598c))
+* publisher name on copyrights ([25c72fd](https://github.com/sprout2000/leafview/commit/25c72fd9f738133effa6b040b32ed26df62d55bd))
+
 ### [0.2.4](https://github.com/sprout2000/leafview/compare/v0.2.3...v0.2.4) (2020-06-08)
 
 
