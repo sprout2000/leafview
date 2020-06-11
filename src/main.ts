@@ -204,11 +204,6 @@ if (!gotTheLock && !isDarwin) {
       }
 
       if (isDarwin && filepath) {
-        if (filepath.match(/(^|\/|\\)\.[^/.]/g)) {
-          filepath = null;
-          return;
-        }
-
         win?.webContents.send('menu-open', filepath);
         filepath = null;
       }
@@ -224,8 +219,6 @@ if (!gotTheLock && !isDarwin) {
 
   app.on('open-file', (e, path) => {
     e.preventDefault();
-    if (path.match(/(^|\/|\\)\.[^/.]/g)) return;
-
     win?.webContents.send('menu-open', path);
   });
 
