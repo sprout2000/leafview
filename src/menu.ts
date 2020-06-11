@@ -6,6 +6,8 @@ import {
   MenuItemConstructorOptions,
   shell,
 } from 'electron';
+
+import path from 'path';
 import i18next from 'i18next';
 
 const createMenu = (win: BrowserWindow): Menu => {
@@ -41,7 +43,7 @@ const createMenu = (win: BrowserWindow): Menu => {
               })
               .then((result): void => {
                 if (result.canceled) return;
-                if (result.filePaths[0].match(/(^|\/|\\)\.[^/.]/g)) return;
+                if (path.basename(result.filePaths[0]).startsWith('._')) return;
 
                 win.webContents.send('menu-open', result.filePaths[0]);
               })
