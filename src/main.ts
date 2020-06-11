@@ -63,6 +63,10 @@ if (!gotTheLock && !isDarwin) {
     win?.focus();
 
     if (!isDarwin && argv.length >= 4) {
+      if (process.argv[process.argv.length - 1].match(/(^|\/|\\)\.[^/.]/g)) {
+        return;
+      }
+
       win?.webContents.send('menu-open', argv[argv.length - 1]);
     }
   });
@@ -193,6 +197,10 @@ if (!gotTheLock && !isDarwin) {
 
     win.webContents.once('did-finish-load', () => {
       if (!isDarwin && !isDev && process.argv.length >= 2) {
+        if (process.argv[process.argv.length - 1].match(/(^|\/|\\)\.[^/.]/g)) {
+          return;
+        }
+
         win?.webContents.send(
           'menu-open',
           process.argv[process.argv.length - 1]
@@ -200,6 +208,11 @@ if (!gotTheLock && !isDarwin) {
       }
 
       if (isDarwin && filepath) {
+        if (filepath.match(/(^|\/|\\)\.[^/.]/g)) {
+          filepath = null;
+          return;
+        }
+
         win?.webContents.send('menu-open', filepath);
         filepath = null;
       }
@@ -215,6 +228,8 @@ if (!gotTheLock && !isDarwin) {
 
   app.on('open-file', (e, path) => {
     e.preventDefault();
+    if (path.match(/(^|\/|\\)\.[^/.]/g)) return;
+
     win?.webContents.send('menu-open', path);
   });
 
