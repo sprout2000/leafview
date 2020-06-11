@@ -196,11 +196,11 @@ if (!gotTheLock && !isDarwin) {
 
     win.webContents.once('did-finish-load', () => {
       if (!isDarwin && !isDev && process.argv.length >= 2) {
-        const filepath = process.argv[process.argv.length - 1];
+        const fullpath = process.argv[process.argv.length - 1];
 
-        if (path.basename(filepath).startsWith('._')) return;
+        if (path.basename(fullpath).startsWith('._')) return;
 
-        win?.webContents.send('menu-open', filepath);
+        win?.webContents.send('menu-open', fullpath);
       }
 
       if (isDarwin && filepath) {
