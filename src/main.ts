@@ -63,9 +63,8 @@ if (!gotTheLock && !isDarwin) {
     win?.focus();
 
     if (!isDarwin && argv.length >= 4) {
-      if (process.argv[process.argv.length - 1].match(/(^|\/|\\)\.[^/.]/g)) {
-        return;
-      }
+      const dotscore = path.basename(argv[argv.length - 1]).startsWith('._');
+      if (dotscore) return;
 
       win?.webContents.send('menu-open', argv[argv.length - 1]);
     }
