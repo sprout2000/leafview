@@ -164,7 +164,7 @@ if (!gotTheLock && !isDarwin) {
           })
           .then((result) => {
             if (result.canceled) return;
-            if (result.filePaths[0].match(/(^|\/|\\)\.[^/.]/g)) return;
+            if (path.basename(result.filePaths[0]).startsWith('._')) return;
 
             return result.filePaths[0];
           })
