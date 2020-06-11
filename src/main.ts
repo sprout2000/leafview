@@ -196,14 +196,11 @@ if (!gotTheLock && !isDarwin) {
 
     win.webContents.once('did-finish-load', () => {
       if (!isDarwin && !isDev && process.argv.length >= 2) {
-        if (process.argv[process.argv.length - 1].match(/(^|\/|\\)\.[^/.]/g)) {
-          return;
-        }
+        const filepath = process.argv[process.argv.length - 1];
 
-        win?.webContents.send(
-          'menu-open',
-          process.argv[process.argv.length - 1]
-        );
+        if (path.basename(filepath).startsWith('._')) return;
+
+        win?.webContents.send('menu-open', filepath);
       }
 
       if (isDarwin && filepath) {
