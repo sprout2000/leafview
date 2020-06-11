@@ -39,7 +39,7 @@ const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
 let win: BrowserWindow | null;
-let filepath: string | null = null;
+let openfile: string | null = null;
 
 const getSourceDirectory = (): string => {
   return process.env.NODE_ENV === 'development'
@@ -63,9 +63,8 @@ if (!gotTheLock && !isDarwin) {
     win?.focus();
 
     if (!isDarwin && argv.length >= 4) {
-      if (process.argv[process.argv.length - 1].match(/(^|\/|\\)\.[^/.]/g)) {
-        return;
-      }
+      const dotscore = path.basename(argv[argv.length - 1]).startsWith('._');
+      if (dotscore) return;
 
       win?.webContents.send('menu-open', argv[argv.length - 1]);
     }
@@ -74,7 +73,7 @@ if (!gotTheLock && !isDarwin) {
   app.once('will-finish-launching', () => {
     app.once('open-file', (e, path) => {
       e.preventDefault();
-      filepath = path;
+      openfile = path;
     });
   });
 
@@ -131,7 +130,7 @@ if (!gotTheLock && !isDarwin) {
           dirents
             .filter((dirent) => dirent.isFile())
             .map(({ name }) => path.join(dir, name))
-            .filter((item) => !/(^|\/|\\)\.[^/.]/g.test(item))
+            .filter((item) => !path.basename(item).startsWith('._'))
             .filter((item) => checkmime(item))
             .sort(natsort({ insensitive: true }))
         )
@@ -165,7 +164,7 @@ if (!gotTheLock && !isDarwin) {
           })
           .then((result) => {
             if (result.canceled) return;
-            if (result.filePaths[0].match(/(^|\/|\\)\.[^/.]/g)) return;
+            if (path.basename(result.filePaths[0]).startsWith('._')) return;
 
             return result.filePaths[0];
           })
@@ -180,8 +179,8 @@ if (!gotTheLock && !isDarwin) {
       return result;
     });
 
-    ipcMain.handle('update-title', (_e: Event, fullpath: string) => {
-      win?.setTitle(path.basename(fullpath));
+    ipcMain.handle('update-title', (_e: Event, filepath: string) => {
+      win?.setTitle(path.basename(filepath));
     });
 
     if (isDev) {
@@ -197,24 +196,16 @@ if (!gotTheLock && !isDarwin) {
 
     win.webContents.once('did-finish-load', () => {
       if (!isDarwin && !isDev && process.argv.length >= 2) {
-        if (process.argv[process.argv.length - 1].match(/(^|\/|\\)\.[^/.]/g)) {
-          return;
-        }
+        const filepath = process.argv[process.argv.length - 1];
 
-        win?.webContents.send(
-          'menu-open',
-          process.argv[process.argv.length - 1]
-        );
-      }
-
-      if (isDarwin && filepath) {
-        if (filepath.match(/(^|\/|\\)\.[^/.]/g)) {
-          filepath = null;
-          return;
-        }
+        if (path.basename(filepath).startsWith('._')) return;
 
         win?.webContents.send('menu-open', filepath);
-        filepath = null;
+      }
+
+      if (isDarwin && openfile) {
+        win?.webContents.send('menu-open', openfile);
+        openfile = null;
       }
     });
 
@@ -228,8 +219,6 @@ if (!gotTheLock && !isDarwin) {
 
   app.on('open-file', (e, path) => {
     e.preventDefault();
-    if (path.match(/(^|\/|\\)\.[^/.]/g)) return;
-
     win?.webContents.send('menu-open', path);
   });
 
