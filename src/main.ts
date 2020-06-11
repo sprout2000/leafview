@@ -141,7 +141,7 @@ if (!gotTheLock && !isDarwin) {
 
     ipcMain.handle('open-dialog', async () => {
       if (win) {
-        const filepath = await dialog
+        const fullpath = await dialog
           .showOpenDialog(win, {
             properties: ['openFile'],
             title: i18next.t('dialogTitle'),
@@ -170,7 +170,7 @@ if (!gotTheLock && !isDarwin) {
           })
           .catch((err): void => console.log(err));
 
-        return filepath;
+        return fullpath;
       }
     });
 
