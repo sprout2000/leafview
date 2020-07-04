@@ -67,7 +67,7 @@
   "devDependencies": {
     "@types/electron-load-devtool": "^1.2.0",
     "@types/howler": "^2.2.1",
-    "@types/leaflet": "^1.5.12",
+    "@types/leaflet": "^1.5.13",
     "@types/mime-types": "^2.1.0",
     "@types/node": "^14.0.14",
     "@types/react": "^16.9.41",
@@ -88,7 +88,7 @@
     "styled-components": "^5.1.1",
     "terser-webpack-plugin": "^3.0.6",
     "ts-loader": "^7.0.5",
-    "typescript": "^3.9.5",
+    "typescript": "^3.9.6",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
