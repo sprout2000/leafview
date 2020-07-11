@@ -38,12 +38,9 @@ const gotTheLock = app.requestSingleInstanceLock();
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
-const dotfiles = isDarwin ? '.' : '._';
-
-let win: BrowserWindow | null;
 let openfile: string | null = null;
 
-const getSourceDirectory = (): string => {
+const getResourceDirectory = () => {
   return process.env.NODE_ENV === 'development'
     ? path.join(process.cwd(), 'dist')
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
@@ -57,27 +54,193 @@ const checkmime = (filepath: string): boolean => {
     : true;
 };
 
-if (!gotTheLock && !isDarwin) {
-  app.exit();
-} else {
-  app.on('second-instance', (_e, argv) => {
-    if (win?.isMinimized()) win.restore();
-    win?.focus();
+const createWindow = () => {
+  const windowState = stateKeeper({
+    defaultWidth: 800,
+    defaultHeight: isDarwin ? 558 : 562,
+  });
 
-    if (!isDarwin && argv.length >= 4) {
-      const dotscore = path.basename(argv[argv.length - 1]).startsWith('._');
-      if (dotscore) return;
+  const dotfiles = isDarwin ? '.' : '._';
 
-      win?.webContents.send('menu-open', argv[argv.length - 1]);
+  const mainWindow = new BrowserWindow({
+    x: windowState.x,
+    y: windowState.y,
+    width: windowState.width,
+    height: windowState.height,
+    minWidth: 800,
+    minHeight: isDarwin ? 558 : 562,
+    show: false,
+    backgroundColor: nativeTheme.shouldUseDarkColors ? '#242424' : '#f8f8f8',
+    webPreferences: {
+      enableRemoteModule: false,
+      nodeIntegration: false,
+      contextIsolation: true,
+      safeDialogs: true,
+      sandbox: true,
+      preload: path.resolve(getResourceDirectory(), 'preload.js'),
+    },
+  });
+
+  ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
+
+  ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
+    return checkmime(filepath);
+  });
+
+  ipcMain.handle('dirname', (_e: Event, filepath: string) => {
+    const dir = path.dirname(filepath);
+    return dir;
+  });
+
+  ipcMain.handle('readdir', async (_e: Event, dir: string) => {
+    const list = await fs.promises
+      .readdir(dir, { withFileTypes: true })
+      .then((dirents) =>
+        dirents
+          .filter((dirent) => dirent.isFile())
+          .map(({ name }) => path.join(dir, name))
+          .filter((item) => !path.basename(item).startsWith(dotfiles))
+          .filter((item) => checkmime(item))
+          .sort(natsort({ insensitive: true }))
+      )
+      .catch((err) => console.log(err));
+
+    return list;
+  });
+
+  ipcMain.handle('open-dialog', async () => {
+    const filepath = await dialog
+      .showOpenDialog(mainWindow, {
+        properties: ['openFile'],
+        title: i18next.t('dialogTitle'),
+        filters: [
+          {
+            name: i18next.t('dialogName'),
+            extensions: [
+              'bmp',
+              'gif',
+              'ico',
+              'jpg',
+              'jpeg',
+              'apng',
+              'png',
+              'svg',
+              'webp',
+            ],
+          },
+        ],
+      })
+      .then((result) => {
+        if (result.canceled) return;
+        if (path.basename(result.filePaths[0]).startsWith(dotfiles)) return;
+
+        return result.filePaths[0];
+      })
+      .catch((err): void => console.log(err));
+
+    return filepath;
+  });
+
+  ipcMain.handle('move-to-trash', (_e: Event, filepath: string) => {
+    const result = shell.moveItemToTrash(filepath);
+    return result;
+  });
+
+  ipcMain.handle('update-title', (_e: Event, filepath: string) => {
+    mainWindow.setTitle(path.basename(filepath));
+  });
+
+  const menu = createMenu(mainWindow);
+  Menu.setApplicationMenu(menu);
+  mainWindow.loadFile('dist/index.html');
+
+  mainWindow.once('ready-to-show', () => mainWindow.show());
+
+  if (isDev) {
+    loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
+    mainWindow.webContents.openDevTools({ mode: 'detach' });
+  }
+
+  mainWindow.webContents.once('did-finish-load', () => {
+    if (!isDarwin && !isDev && process.argv.length >= 2) {
+      const filepath = process.argv[process.argv.length - 1];
+      if (path.basename(filepath).startsWith(dotfiles)) return;
+
+      mainWindow.webContents.send('menu-open', filepath);
+    }
+
+    if (isDarwin && openfile) {
+      if (path.basename(openfile).startsWith(dotfiles)) {
+        openfile = null;
+        return;
+      }
+
+      mainWindow.webContents.send('menu-open', openfile);
+      openfile = null;
     }
   });
 
+  if (!isDarwin) {
+    app.on('second-instance', (_e, argv) => {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+
+      if (argv.length >= 4) {
+        const filepath = process.argv[process.argv.length - 1];
+        if (path.basename(filepath).startsWith(dotfiles)) return;
+
+        mainWindow.webContents.send('menu-open', filepath);
+      }
+    });
+  }
+
+  app.on('open-file', (e, filepath) => {
+    e.preventDefault();
+
+    if (mainWindow.isMinimized()) mainWindow.restore();
+    mainWindow.focus();
+
+    if (path.basename(filepath).startsWith(dotfiles)) return;
+
+    mainWindow.webContents.send('menu-open', filepath);
+  });
+
+  if (isDarwin) autoUpdater.checkForUpdatesAndNotify();
+
+  autoUpdater.once('error', (_e, err) => {
+    log.info(`Error in auto-updater: ${err}`);
+  });
+
+  autoUpdater.once('update-downloaded', async () => {
+    log.info(`Update downloaded...`);
+
+    await dialog
+      .showMessageBox(mainWindow, {
+        type: 'info',
+        buttons: ['Restart', 'Cancel'],
+        defaultId: 0,
+        cancelId: 1,
+        title: 'Update Downloaded',
+        message: 'Update downloaded',
+        detail:
+          'We have finished downloading the latest updates.\n' +
+          'Do you want to install the updates now?',
+      })
+      .then((result) => {
+        result.response === 0 && autoUpdater.quitAndInstall();
+      })
+      .catch((err) => log.info(`Error in showMessageBox: ${err}`));
+  });
+
+  windowState.manage(mainWindow);
+};
+
+if (!gotTheLock && !isDarwin) {
+  app.exit();
+} else {
   app.once('will-finish-launching', () => {
     app.once('open-file', (e, filepath) => {
       e.preventDefault();
-
-      if (path.basename(filepath).startsWith('.')) return;
-
       openfile = filepath;
     });
   });
@@ -93,141 +256,7 @@ if (!gotTheLock && !isDarwin) {
       },
     });
 
-    const windowState = stateKeeper({
-      defaultWidth: 800,
-      defaultHeight: isDarwin ? 558 : 562,
-    });
-
-    win = new BrowserWindow({
-      x: windowState.x,
-      y: windowState.y,
-      width: windowState.width,
-      height: windowState.height,
-      minWidth: 800,
-      minHeight: isDarwin ? 558 : 562,
-      show: false,
-      backgroundColor: nativeTheme.shouldUseDarkColors ? '#242424' : '#f8f8f8',
-      webPreferences: {
-        enableRemoteModule: false,
-        nodeIntegration: false,
-        contextIsolation: true,
-        safeDialogs: true,
-        sandbox: true,
-        preload: path.resolve(getSourceDirectory(), 'preload.js'),
-      },
-    });
-
-    ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
-
-    ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
-      return checkmime(filepath);
-    });
-
-    ipcMain.handle('dirname', (_e: Event, filepath: string) => {
-      const dir = path.dirname(filepath);
-      return dir;
-    });
-
-    ipcMain.handle('readdir', async (e: Event, dir: string) => {
-      const list = await fs.promises
-        .readdir(dir, { withFileTypes: true })
-        .then((dirents) =>
-          dirents
-            .filter((dirent) => dirent.isFile())
-            .map(({ name }) => path.join(dir, name))
-            .filter((item) => !path.basename(item).startsWith(dotfiles))
-            .filter((item) => checkmime(item))
-            .sort(natsort({ insensitive: true }))
-        )
-        .catch((err) => console.log(err));
-
-      return list;
-    });
-
-    ipcMain.handle('open-dialog', async () => {
-      if (win) {
-        const filepath = await dialog
-          .showOpenDialog(win, {
-            properties: ['openFile'],
-            title: i18next.t('dialogTitle'),
-            filters: [
-              {
-                name: i18next.t('dialogName'),
-                extensions: [
-                  'bmp',
-                  'gif',
-                  'ico',
-                  'jpg',
-                  'jpeg',
-                  'apng',
-                  'png',
-                  'svg',
-                  'webp',
-                ],
-              },
-            ],
-          })
-          .then((result) => {
-            if (result.canceled) return;
-            if (path.basename(result.filePaths[0]).startsWith(dotfiles)) return;
-
-            return result.filePaths[0];
-          })
-          .catch((err): void => console.log(err));
-
-        return filepath;
-      }
-    });
-
-    ipcMain.handle('move-to-trash', (_e: Event, filepath: string) => {
-      const result = shell.moveItemToTrash(filepath);
-      return result;
-    });
-
-    ipcMain.handle('update-title', (_e: Event, filepath: string) => {
-      win?.setTitle(path.basename(filepath));
-    });
-
-    if (isDev) {
-      loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
-      win.webContents.openDevTools({ mode: 'detach' });
-    }
-
-    const menu = createMenu(win);
-    Menu.setApplicationMenu(menu);
-    win.loadFile('dist/index.html');
-
-    win.once('ready-to-show', (): void => win?.show());
-
-    win.webContents.once('did-finish-load', () => {
-      if (!isDarwin && !isDev && process.argv.length >= 2) {
-        const filepath = process.argv[process.argv.length - 1];
-
-        if (path.basename(filepath).startsWith('._')) return;
-
-        win?.webContents.send('menu-open', filepath);
-      }
-
-      if (isDarwin && openfile) {
-        win?.webContents.send('menu-open', openfile);
-        openfile = null;
-      }
-    });
-
-    win.once('closed', () => {
-      win = null;
-    });
-
-    if (isDarwin) autoUpdater.checkForUpdatesAndNotify();
-    windowState.manage(win);
-  });
-
-  app.on('open-file', (e, filepath) => {
-    e.preventDefault();
-
-    if (path.basename(filepath).startsWith('.')) return;
-
-    win?.webContents.send('menu-open', filepath);
+    createWindow();
   });
 
   app.setAboutPanelOptions({
@@ -235,32 +264,6 @@ if (!gotTheLock && !isDarwin) {
     applicationVersion: app.getVersion(),
     version: process.versions['electron'],
     copyright: 'Copyright (C) 2020 sprout2000.',
-  });
-
-  autoUpdater.once('error', (_e, err) => {
-    log.info(`Error in auto-updater: ${err}`);
-  });
-
-  autoUpdater.once('update-downloaded', async () => {
-    log.info(`Update downloaded...`);
-
-    if (win) {
-      await dialog
-        .showMessageBox(win, {
-          type: 'info',
-          buttons: ['Restart', 'Cancel'],
-          defaultId: 0,
-          cancelId: 1,
-          title: 'Update Downloaded',
-          message: 'Update downloaded',
-          detail:
-            'We have finished downloading the latest updates.\nDo you want to install the updates now?',
-        })
-        .then((result) => {
-          result.response === 0 && autoUpdater.quitAndInstall();
-        })
-        .catch((err) => log.info(`Error in showMessageBox: ${err}`));
-    }
   });
 
   app.allowRendererProcessReuse = true;

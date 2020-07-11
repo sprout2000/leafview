@@ -85,9 +85,11 @@ const App: React.FC = () => {
   const onDrop = async (e: React.DragEvent<HTMLDivElement>): Promise<void> => {
     preventDefault(e);
 
+    const macOS = window.navigator.userAgent.includes('Mac OS X');
+
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
-      if (file.name.startsWith('.')) return;
+      if (file.name.startsWith(macOS ? '.' : '._')) return;
 
       const mime = await myAPI.mimecheck(file.path);
       if (mime) {
