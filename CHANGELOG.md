@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/sprout2000/leafview/compare/v0.2.11...v0.3.0) (2020-07-11)
+
+
+### Bug Fixes
+
+* argv issues on 'second-instance' ([c090f9c](https://github.com/sprout2000/leafview/commit/c090f9cd97d147d6e2e6c27d94c0c7404c3950e3))
+* do not allow to drop dotfiles ([89d9f4e](https://github.com/sprout2000/leafview/commit/89d9f4ee9fc6eebd531cfa2c7e677c2b1e79bf80))
+
 ### [0.2.11](https://github.com/sprout2000/leafview/compare/v0.2.10...v0.2.11) (2020-07-08)
 
 ### [0.2.10](https://github.com/sprout2000/leafview/compare/v0.2.9...v0.2.10) (2020-07-04)
