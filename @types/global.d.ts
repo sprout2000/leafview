@@ -15,7 +15,7 @@ export interface Sandbox {
 
   moveToTrash: (filepath: string) => Promise<boolean>;
 
-  openDialog: () => Promise<string | void>;
+  openDialog: () => Promise<string | void | undefined>;
 
   updateTitle: (filepath: string) => Promise<void>;
 
