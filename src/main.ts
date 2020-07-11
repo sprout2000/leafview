@@ -186,7 +186,7 @@ const createWindow = () => {
       mainWindow.focus();
 
       if (argv.length >= 4) {
-        const filepath = process.argv[process.argv.length - 1];
+        const filepath = argv[argv.length - 1];
         if (path.basename(filepath).startsWith(dotfiles)) return;
 
         mainWindow.webContents.send('menu-open', filepath);
