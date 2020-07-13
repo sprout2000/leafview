@@ -18,17 +18,17 @@
       "version": "detect"
     }
   },
+  "plugins": ["react-hooks", "react", "@typescript-eslint", "prettier"],
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-    "prettier/react"
+    "prettier/react",
+    "prettier/@typescript-eslint"
   ],
-  "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -43,7 +43,6 @@
     {
       "files": ["*.js"],
       "rules": {
-        "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/explicit-function-return-type": "off"
       }
