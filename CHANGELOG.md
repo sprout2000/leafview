@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/sprout2000/leafview/compare/v0.3.0...v0.3.1) (2020-07-13)
+
+
+### Bug Fixes
+
+* CI build failure ([c222db4](https://github.com/sprout2000/leafview/commit/c222db4d93487b8c00294d0e1633a0b3a0f7779d))
+* type for openDialog ([afc5b8c](https://github.com/sprout2000/leafview/commit/afc5b8c6fcd8c4b298af69c6e09c34caca121cc6))
+* versioning failure ([9c0f46d](https://github.com/sprout2000/leafview/commit/9c0f46d1f741e9d3b3691aeaa667fcb971218fbc))
+
 ## [0.3.0](https://github.com/sprout2000/leafview/compare/v0.2.11...v0.3.0) (2020-07-11)
 
 
