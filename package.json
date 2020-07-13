@@ -106,6 +106,6 @@
     "standard-version": "^8.0.1"
   },
   "resolutions": {
-    "yargs-parser": "^18.1.2"
+    "lodash": "^4.17.19"
   }
 }
