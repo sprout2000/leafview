@@ -4,15 +4,15 @@
     "module": "ES2015",
     "lib": ["DOM", "ES2015"],
     "jsx": "react",
-    "sourceMap": true,
     "strict": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
       "*": ["@types/*"]
-    },
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true
+    }
   }
 }
