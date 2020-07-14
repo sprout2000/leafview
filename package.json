@@ -106,6 +106,6 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "gh-pages": "^3.1.0",
     "prettier": "^2.0.5",
-    "standard-version": "^8.0.1"
+    "standard-version": "^8.0.2"
   }
 }
