@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -24,6 +25,9 @@ const main = {
       },
     ],
   },
+  optimization: {
+    minimizer: [new TerserWebpackPlugin()],
+  },
   devtool: isDev ? 'inline-source-map' : false,
 };
 
@@ -47,6 +51,9 @@ const preload = {
         loader: 'ts-loader',
       },
     ],
+  },
+  optimization: {
+    minimizer: [new TerserWebpackPlugin()],
   },
   devtool: isDev ? 'inline-source-map' : false,
 };
@@ -94,6 +101,9 @@ const renderer = {
   ],
   performance: {
     hints: false,
+  },
+  optimization: {
+    minimizer: [new TerserWebpackPlugin()],
   },
   devtool: isDev ? 'inline-source-map' : false,
 };
