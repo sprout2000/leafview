@@ -69,6 +69,7 @@ const createWindow = () => {
     height: windowState.height,
     minWidth: 800,
     minHeight: isDarwin ? 558 : 562,
+    autoHideMenuBar: isDarwin ? false : true,
     show: false,
     backgroundColor: nativeTheme.shouldUseDarkColors ? '#242424' : '#f8f8f8',
     webPreferences: {
