@@ -1,9 +1,8 @@
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/52094761/83928161-b67afd00-a7c9-11ea-99c4-190121bfaf6f.png">
-  <h1>LeafView</h1>
-  <strong>An image viewer for minimalists.</strong>
-  <img width="912" alt="2020-04-13 15 07 43" src="https://user-images.githubusercontent.com/52094761/79097565-037abe00-7d9b-11ea-9f38-5a9e995792d8.png">
-</div>
+# <img src="https://user-images.githubusercontent.com/52094761/83928161-b67afd00-a7c9-11ea-99c4-190121bfaf6f.png"> LeafView
+
+**Secure image viewer for minimalists.**
+
+<img width="912" alt="2020-04-13 15 07 43" src="https://user-images.githubusercontent.com/52094761/79097565-037abe00-7d9b-11ea-9f38-5a9e995792d8.png">
 
 [![GitHub CI](https://github.com/sprout2000/leafview/workflows/GitHub%20CI/badge.svg)](https://github.com/sprout2000/leafview/actions?query=workflow%3A%22GitHub+CI%22)
 [![GitHub license](https://img.shields.io/github/license/sprout2000/leafview)](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
@@ -52,7 +51,7 @@ $ yarn install && yarn package
 
 ## Download
 
-### macOS
+### macOS (x64)
 
 You can download the latest version of LeafView from the releases page here:  
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
@@ -67,15 +66,17 @@ You can download the latest version of LeafView from [Microsoft Store](https://w
 
 Key | Function | Platform
 :---: | :--- | :---
-<kbd>J</kbd> | Next Image | Both
-<kbd>K</kbd> | Previous Image | Both
-<kbd>+</kbd> | Zoom In | Both
-<kbd>-</kbd> | Zoom Out | Both
-<kbd>0</kbd> | Reset Zoom | Both
-<kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan | Both
+<kbd>J</kbd> | Next Image | -
+<kbd>K</kbd> | Previous Image | -
+<kbd>+</kbd> | Zoom In | -
+<kbd>-</kbd> | Zoom Out | -
+<kbd>0</kbd> | Reset Zoom | -
+<kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan | -
 <kbd>Command</kbd>+<kbd>Control</kbd>+<kbd>F</kbd> | Toggle Fullscreen | macOS
-<kbd>F11</kbd> | Toggle Fullscreen | Windows
+<kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> | Toggle Developer Tools | macOS
 <kbd>Alt</kbd> | Show/Hide Menu Bar | Windows
+<kbd>F11</kbd> | Toggle Fullscreen | Windows
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd> | Toggle Developer Tools | Windows
 
 ### Mouse Operations
 
