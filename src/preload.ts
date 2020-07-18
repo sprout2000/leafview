@@ -16,10 +16,10 @@ contextBridge.exposeInMainWorld('myAPI', {
     await ipcRenderer.invoke('move-to-trash', filepath),
 
   openDialog: async (): Promise<string | void | undefined> =>
-    ipcRenderer.invoke('open-dialog'),
+    await ipcRenderer.invoke('open-dialog'),
 
   updateTitle: async (filepath: string): Promise<void> =>
-    ipcRenderer.invoke('update-title', filepath),
+    await ipcRenderer.invoke('update-title', filepath),
 
   menuNext: (listener: () => Promise<void>) =>
     ipcRenderer.on('menu-next', listener),
