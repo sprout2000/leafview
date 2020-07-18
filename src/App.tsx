@@ -1,6 +1,5 @@
 import React, { useRef, useCallback, useState, useEffect } from 'react';
 import { UAParser } from 'ua-parser-js';
-import ResizeDetector from 'react-resize-detector';
 
 import { Howl } from 'howler';
 import Audio from './audio/trash.mp3';
@@ -10,6 +9,7 @@ import 'leaflet/dist/leaflet.css';
 
 import { Bottom, Container, GlobalStyle, View } from './styles';
 
+import ElementResizeListener from './ElementResizeListener';
 import Float from './Float';
 import empty from './empty.png';
 
@@ -26,61 +26,69 @@ const App: React.FC = () => {
     return ua.getOS().name === 'Mac OS';
   };
 
-  const draw = useCallback((): void => {
-    const node = mapRef.current;
+  const draw = useCallback(
+    (width: number, height: number): void => {
+      const node = mapRef.current;
 
-    if (node) {
-      const img = new Image();
-      img.onload = (): void => {
-        let zoom = 1;
-        if (img.width > node.clientWidth || img.height > node.clientHeight) {
-          const zoomX = node.clientWidth / img.width;
-          const zoomY = node.clientHeight / img.height;
-          zoomX >= zoomY ? (zoom = zoomY) : (zoom = zoomX);
-        }
+      if (node) {
+        const img = new Image();
+        img.onload = (): void => {
+          let zoom = 1;
+          if (img.width > width || img.height > height) {
+            const zoomX = width / img.width;
+            const zoomY = height / img.height;
+            zoomX >= zoomY ? (zoom = zoomY) : (zoom = zoomX);
+          }
 
-        const bounds = new L.LatLngBounds([
-          [img.height * zoom, 0],
-          [0, img.width * zoom],
-        ]);
+          const bounds = new L.LatLngBounds([
+            [img.height * zoom, 0],
+            [0, img.width * zoom],
+          ]);
 
-        if (mapObj.current) {
-          mapObj.current.off();
-          mapObj.current.remove();
-        }
+          if (mapObj.current) {
+            mapObj.current.off();
+            mapObj.current.remove();
+          }
 
-        mapObj.current = L.map(node, {
-          maxBounds: bounds,
-          crs: L.CRS.Simple,
-          preferCanvas: true,
-          zoomDelta: 0.3,
-          zoomSnap: isDarwin() ? 0.3 : 0,
-          doubleClickZoom: false,
-          zoomControl: false,
-          attributionControl: false,
-        }).fitBounds(bounds);
+          mapObj.current = L.map(node, {
+            maxBounds: bounds,
+            crs: L.CRS.Simple,
+            preferCanvas: true,
+            zoomDelta: 0.3,
+            zoomSnap: isDarwin() ? 0.3 : 0,
+            doubleClickZoom: false,
+            zoomControl: false,
+            attributionControl: false,
+          }).fitBounds(bounds);
 
-        mapObj.current.on('dblclick', () => {
-          const center = bounds.getCenter();
-          if (mapObj.current) mapObj.current.setView(center, 0);
-        });
+          mapObj.current.on('dblclick', () => {
+            const center = bounds.getCenter();
+            if (mapObj.current) mapObj.current.setView(center, 0);
+          });
 
-        if (img.width < node.clientWidth && img.height < node.clientHeight) {
-          const center = bounds.getCenter();
-          mapObj.current.setView(center, 0, { animate: false });
-        }
+          if (img.width < node.clientWidth && img.height < node.clientHeight) {
+            const center = bounds.getCenter();
+            mapObj.current.setView(center, 0, { animate: false });
+          }
 
-        L.imageOverlay(img.src, bounds).addTo(mapObj.current);
+          L.imageOverlay(img.src, bounds).addTo(mapObj.current);
 
-        node.blur();
-        node.focus();
-      };
+          node.blur();
+          node.focus();
+        };
 
-      img.src = url;
+        img.src = url;
+      }
+    },
+    [url]
+  );
+
+  const onResize = useCallback(() => {
+    if (mapRef.current) {
+      const elemRect = mapRef.current.getBoundingClientRect();
+      draw(elemRect.width, elemRect.height);
     }
-  }, [url]);
-
-  const onResize = (): void => draw();
+  }, [draw]);
 
   const preventDefault = (e: React.DragEvent<HTMLDivElement>): void => {
     e.preventDefault();
@@ -269,7 +277,7 @@ const App: React.FC = () => {
     updateTitle(title);
   }, [url]);
 
-  useEffect(() => draw(), [draw]);
+  useEffect(() => onResize(), [onResize]);
 
   return (
     <React.Fragment>
@@ -289,7 +297,7 @@ const App: React.FC = () => {
           />
         </Bottom>
         <View init={url === empty} ref={mapRef}>
-          <ResizeDetector handleWidth handleHeight onResize={onResize} />
+          <ElementResizeListener onResize={onResize} />
         </View>
       </Container>
     </React.Fragment>
