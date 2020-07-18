@@ -20,12 +20,12 @@ const ElementResizeListener: React.FC<Props> = ({ onResize }) => {
     });
   }, []);
 
-  const onLoad = useCallback(() => {
+  const onLoad = () => {
     const obj = objectRef.current;
     if (obj && obj.contentDocument && obj.contentDocument.defaultView) {
       obj.contentDocument.defaultView.addEventListener('resize', _onResize);
     }
-  }, [_onResize]);
+  };
 
   useEffect(() => {
     const obj = objectRef.current;
