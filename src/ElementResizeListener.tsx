@@ -42,7 +42,6 @@ const ElementResizeListener: React.FC<Props> = ({ onResize }) => {
 
   return (
     <object
-      aria-label="resize-listener"
       onLoad={onLoad}
       ref={objectRef}
       tabIndex={-1}
