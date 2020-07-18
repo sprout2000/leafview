@@ -1,17 +1,12 @@
-import React, { useCallback, useRef, useEffect, RefObject } from 'react';
+import React, { useCallback, useRef, useEffect } from 'react';
 
 interface Props {
   onResize: (event: Event) => void;
 }
 
-//
-// I used this as reference
-// http://www.backalleycoder.com/2013/03/18/cross-browser-event-based-element-resize-detection/
-//
-
 const ElementResizeListener: React.FC<Props> = ({ onResize }) => {
   const rafRef = useRef(0);
-  const objectRef: RefObject<HTMLObjectElement> = useRef(null);
+  const objectRef: React.RefObject<HTMLObjectElement> = useRef(null);
   const onResizeRef = useRef(onResize);
 
   onResizeRef.current = onResize;
