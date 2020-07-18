@@ -1,9 +1,6 @@
 import React, { useRef, useCallback, useState, useEffect } from 'react';
 import { UAParser } from 'ua-parser-js';
 
-import { Howl } from 'howler';
-import Audio from './audio/trash.mp3';
-
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -183,11 +180,6 @@ const App: React.FC = () => {
       setUrl(empty);
       return;
     } else {
-      const sound = new Howl({
-        src: [Audio],
-      });
-      sound.play();
-
       const newList = await myAPI.readdir(dir);
       if (!newList || newList.length === 0) {
         setUrl(empty);
