@@ -6,7 +6,6 @@ import 'leaflet/dist/leaflet.css';
 
 import { Bottom, Container, GlobalStyle, View } from './styles';
 
-import ElementResizeListener from './ElementResizeListener';
 import Float from './Float';
 import empty from './empty.png';
 
@@ -79,13 +78,6 @@ const App: React.FC = () => {
     },
     [url]
   );
-
-  const onResize = useCallback(() => {
-    if (mapRef.current) {
-      const elemRect = mapRef.current.getBoundingClientRect();
-      draw(elemRect.width, elemRect.height);
-    }
-  }, [draw]);
 
   const preventDefault = (e: React.DragEvent<HTMLDivElement>): void => {
     e.preventDefault();
@@ -269,7 +261,17 @@ const App: React.FC = () => {
     updateTitle(title);
   }, [url]);
 
-  useEffect(() => onResize(), [onResize]);
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver((entries) => {
+      draw(entries[0].contentRect.width, entries[0].contentRect.height);
+    });
+
+    if (mapRef.current) resizeObserver.observe(mapRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [draw]);
 
   return (
     <React.Fragment>
@@ -288,9 +290,7 @@ const App: React.FC = () => {
             remove={remove}
           />
         </Bottom>
-        <View init={url === empty} ref={mapRef}>
-          <ElementResizeListener onResize={onResize} />
-        </View>
+        <View init={url === empty} ref={mapRef} />
       </Container>
     </React.Fragment>
   );
