@@ -62,7 +62,7 @@ const App: React.FC = () => {
             if (mapObj.current) mapObj.current.setView(center, 0);
           });
 
-          if (img.width < node.clientWidth && img.height < node.clientHeight) {
+          if (img.width < width && img.height < height) {
             const center = bounds.getCenter();
             mapObj.current.setView(center, 0, { animate: false });
           }
@@ -263,7 +263,10 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
-      draw(entries[0].contentRect.width, entries[0].contentRect.height);
+      const width = entries[0].contentRect.width;
+      const height = entries[0].contentRect.height;
+
+      draw(width, height);
     });
 
     if (mapRef.current) resizeObserver.observe(mapRef.current);
