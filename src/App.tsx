@@ -62,7 +62,7 @@ const App: React.FC = () => {
             if (mapObj.current) mapObj.current.setView(center, 0);
           });
 
-          if (img.width < node.clientWidth && img.height < node.clientHeight) {
+          if (img.width < width && img.height < height) {
             const center = bounds.getCenter();
             mapObj.current.setView(center, 0, { animate: false });
           }
