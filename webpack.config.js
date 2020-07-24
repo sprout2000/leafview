@@ -5,68 +5,10 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 
 /** @type import('webpack').Configuration */
-const main = {
+const base = {
   mode: isDev ? 'development' : 'production',
-  target: 'electron-main',
-  resolve: {
-    extensions: ['.js', '.ts', '.json'],
-  },
-  entry: './src/main.ts',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        loader: 'ts-loader',
-      },
-    ],
-  },
-  optimization: {
-    minimizer: [new TerserWebpackPlugin()],
-  },
-  devtool: isDev ? 'inline-source-map' : false,
-};
-
-/** @type import('webpack').Configuration */
-const preload = {
-  mode: isDev ? 'development' : 'production',
-  target: 'electron-preload',
-  resolve: {
-    extensions: ['.js', '.ts', '.json'],
-  },
-  entry: './src/preload.ts',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'preload.js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        loader: 'ts-loader',
-      },
-    ],
-  },
-  optimization: {
-    minimizer: [new TerserWebpackPlugin()],
-  },
-  devtool: isDev ? 'inline-source-map' : false,
-};
-
-/** @type import('webpack').Configuration */
-const renderer = {
-  mode: isDev ? 'development' : 'production',
-  target: 'web',
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
-  },
-  entry: {
-    renderer: './src/index.tsx',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -89,6 +31,37 @@ const renderer = {
       },
     ],
   },
+  optimization: {
+    minimizer: [new TerserWebpackPlugin()],
+  },
+  devtool: isDev ? 'inline-source-map' : false,
+};
+
+/** @type import('webpack').Configuration */
+const main = {
+  ...base,
+  target: 'electron-main',
+  entry: {
+    main: './src/main.ts',
+  },
+};
+
+/** @type import('webpack').Configuration */
+const preload = {
+  ...base,
+  target: 'electron-preload',
+  entry: {
+    preload: './src/preload.ts',
+  },
+};
+
+/** @type import('webpack').Configuration */
+const renderer = {
+  ...base,
+  target: 'web',
+  entry: {
+    renderer: './src/index.tsx',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -97,10 +70,6 @@ const renderer = {
   performance: {
     hints: false,
   },
-  optimization: {
-    minimizer: [new TerserWebpackPlugin()],
-  },
-  devtool: isDev ? 'inline-source-map' : false,
 };
 
 module.exports = [main, preload, renderer];
