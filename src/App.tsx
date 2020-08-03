@@ -20,6 +20,22 @@ const App: React.FC = () => {
     return ua.getOS().name === 'Mac OS';
   };
 
+  const getZoom = (
+    imgWidth: number,
+    width: number,
+    imgHeight: number,
+    height: number
+  ) => {
+    if (imgWidth > width || imgHeight > height) {
+      const zoomX = width / imgWidth;
+      const zoomY = height / imgHeight;
+
+      return zoomX >= zoomY ? zoomY : zoomX;
+    } else {
+      return 1;
+    }
+  };
+
   const draw = useCallback(
     (width: number, height: number): void => {
       const node = mapRef.current;
@@ -27,12 +43,7 @@ const App: React.FC = () => {
       if (node) {
         const img = new Image();
         img.onload = (): void => {
-          let zoom = 1;
-          if (img.width > width || img.height > height) {
-            const zoomX = width / img.width;
-            const zoomY = height / img.height;
-            zoomX >= zoomY ? (zoom = zoomY) : (zoom = zoomX);
-          }
+          const zoom = getZoom(img.width, width, img.height, height);
 
           const bounds = new L.LatLngBounds([
             [img.height * zoom, 0],
@@ -250,11 +261,7 @@ const App: React.FC = () => {
   }, [onMenuOpen]);
 
   useEffect(() => {
-    let title = 'LeafView';
-
-    if (url !== empty) {
-      title = url;
-    }
+    const title = url !== empty ? url : 'LeafView';
 
     updateTitle(title);
   }, [url]);
