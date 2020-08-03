@@ -4,8 +4,6 @@ import { UAParser } from 'ua-parser-js';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import { Bottom, Container, GlobalStyle, View } from './styles';
-
 import Float from './Float';
 import empty from './empty.png';
 
@@ -277,25 +275,23 @@ const App: React.FC = () => {
   }, [draw]);
 
   return (
-    <React.Fragment>
-      <GlobalStyle />
-      <Container
-        onDragEnter={preventDefault}
-        onDragOver={preventDefault}
-        onDragLeave={preventDefault}
-        onDrop={onDrop}
-        onKeyDown={onKeyDown}>
-        <Bottom>
-          <Float
-            onClickOpen={onClickOpen}
-            prev={prev}
-            next={next}
-            remove={remove}
-          />
-        </Bottom>
-        <View init={url === empty} ref={mapRef} />
-      </Container>
-    </React.Fragment>
+    <div
+      className="container"
+      onDragEnter={preventDefault}
+      onDragOver={preventDefault}
+      onDragLeave={preventDefault}
+      onDrop={onDrop}
+      onKeyDown={onKeyDown}>
+      <div className="bottom">
+        <Float
+          onClickOpen={onClickOpen}
+          prev={prev}
+          next={next}
+          remove={remove}
+        />
+      </div>
+      <div className={url === empty ? 'view init' : 'view'} ref={mapRef} />
+    </div>
   );
 };
 
