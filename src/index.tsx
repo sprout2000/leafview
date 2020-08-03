@@ -6,6 +6,7 @@ import en from './locales/en.json';
 import ja from './locales/ja.json';
 
 import App from './App';
+import './styles.scss';
 
 const locale =
   (window.navigator.languages && window.navigator.languages[0]) ||
