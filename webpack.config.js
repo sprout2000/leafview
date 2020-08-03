@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -22,12 +23,30 @@ const base = {
         loader: 'ts-loader',
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.s?css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: isDev,
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: isDev,
+            },
+          },
+        ],
       },
       {
         test: /\.(bmp|ico|gif|jpe?g|png|svg|ttf|eot|woff?2?)$/,
-        loader: 'url-loader',
+        loader: 'file-loader',
+        options: {
+          name: 'images/[name].[ext]',
+        },
       },
     ],
   },
@@ -66,6 +85,7 @@ const renderer = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+    new MiniCssExtractPlugin(),
   ],
   performance: {
     hints: false,
