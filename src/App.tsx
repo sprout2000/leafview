@@ -4,7 +4,7 @@ import { UAParser } from 'ua-parser-js';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import Float from './Float';
+import { Float } from './Float';
 import empty from './empty.png';
 
 const { myAPI } = window;
