@@ -16,7 +16,7 @@ interface Props {
   remove: () => Promise<void>;
 }
 
-const Float: React.FC<Props> = (props) => {
+export const Float: React.FC<Props> = (props) => {
   return (
     <div className="toolbar">
       <div className="controls">
@@ -43,5 +43,3 @@ const Float: React.FC<Props> = (props) => {
     </div>
   );
 };
-
-export default Float;
