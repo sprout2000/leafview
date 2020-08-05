@@ -94,19 +94,17 @@ const createWindow = () => {
   });
 
   ipcMain.handle('readdir', async (_e: Event, dir: string) => {
-    const list = await fs.promises
+    return await fs.promises
       .readdir(dir, { withFileTypes: true })
       .then((dirents) =>
         dirents
           .filter((dirent) => dirent.isFile())
-          .map(({ name }) => path.join(dir, name))
-          .filter((item) => !path.basename(item).startsWith(dotfiles))
+          .filter(({ name }) => !name.startsWith(dotfiles))
+          .map(({ name }) => path.resolve(dir, name))
           .filter((item) => checkmime(item))
           .sort(natsort({ insensitive: true }))
       )
       .catch((err) => console.log(err));
-
-    return list;
   });
 
   ipcMain.handle('open-dialog', async () => {
