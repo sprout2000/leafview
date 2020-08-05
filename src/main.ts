@@ -46,7 +46,7 @@ const getResourceDirectory = () => {
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
 };
 
-const checkmime = (filepath: string): boolean => {
+const checkmime = (filepath: string) => {
   const mimetype = mime.lookup(filepath);
 
   return !mimetype || !mimetype.match(/bmp|ico|gif|jpeg|png|svg|webp/)
@@ -89,28 +89,25 @@ const createWindow = () => {
   });
 
   ipcMain.handle('dirname', (_e: Event, filepath: string) => {
-    const dir = path.dirname(filepath);
-    return dir;
+    return path.dirname(filepath);
   });
 
   ipcMain.handle('readdir', async (_e: Event, dir: string) => {
-    const list = await fs.promises
+    return await fs.promises
       .readdir(dir, { withFileTypes: true })
       .then((dirents) =>
         dirents
           .filter((dirent) => dirent.isFile())
-          .map(({ name }) => path.join(dir, name))
-          .filter((item) => !path.basename(item).startsWith(dotfiles))
+          .filter(({ name }) => !name.startsWith(dotfiles))
+          .map(({ name }) => path.resolve(dir, name))
           .filter((item) => checkmime(item))
           .sort(natsort({ insensitive: true }))
       )
       .catch((err) => console.log(err));
-
-    return list;
   });
 
   ipcMain.handle('open-dialog', async () => {
-    const filepath = await dialog
+    return await dialog
       .showOpenDialog(mainWindow, {
         properties: ['openFile'],
         title: i18next.t('dialogTitle'),
@@ -137,14 +134,11 @@ const createWindow = () => {
 
         return result.filePaths[0];
       })
-      .catch((err): void => console.log(err));
-
-    return filepath;
+      .catch((err) => console.log(err));
   });
 
   ipcMain.handle('move-to-trash', (_e: Event, filepath: string) => {
-    const result = shell.moveItemToTrash(filepath);
-    return result;
+    return shell.moveItemToTrash(filepath);
   });
 
   ipcMain.handle('update-title', (_e: Event, filepath: string) => {
