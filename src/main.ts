@@ -46,7 +46,7 @@ const getResourceDirectory = () => {
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
 };
 
-const checkmime = (filepath: string): boolean => {
+const checkmime = (filepath: string) => {
   const mimetype = mime.lookup(filepath);
 
   return !mimetype || !mimetype.match(/bmp|ico|gif|jpeg|png|svg|webp/)
@@ -134,7 +134,7 @@ const createWindow = () => {
 
         return result.filePaths[0];
       })
-      .catch((err): void => console.log(err));
+      .catch((err) => console.log(err));
   });
 
   ipcMain.handle('move-to-trash', (_e: Event, filepath: string) => {
