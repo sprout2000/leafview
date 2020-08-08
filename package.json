@@ -1,7 +1,7 @@
 {
   "name": "leafview",
   "productName": "LeafView",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "main": "dist/main.js",
   "description": "Secure image viewer for minimalists based on leaflet.js",
   "author": {
