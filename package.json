@@ -43,7 +43,7 @@
     "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=false node scripts/build-unsign.js",
     "package:appx": "node scripts/build.js",
     "deploy": "gh-pages -d public",
-    "preinstall": "npx only-allow-yarn"
+    "preinstall": "npx only-allow yarn"
   },
   "dependencies": {
     "electron-log": "^4.2.4",
