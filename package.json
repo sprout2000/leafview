@@ -42,8 +42,7 @@
     "prepackage:appx": "run-s clean build:prod",
     "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=false node scripts/build-unsign.js",
     "package:appx": "node scripts/build.js",
-    "deploy": "gh-pages -d public",
-    "preinstall": "npx only-allow yarn"
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "electron-log": "^4.2.4",
@@ -62,14 +61,14 @@
     "@types/electron-load-devtool": "^1.2.0",
     "@types/leaflet": "^1.5.17",
     "@types/mime-types": "^2.1.0",
-    "@types/node": "^14.6.0",
-    "@types/react": "^16.9.46",
+    "@types/node": "^14.6.2",
+    "@types/react": "^16.9.48",
     "@types/react-dom": "^16.9.8",
     "@types/resize-observer-browser": "^0.1.3",
     "@types/ua-parser-js": "^0.7.33",
     "@types/webpack": "^4.41.21",
     "cross-env": "^7.0.2",
-    "css-loader": "^4.2.1",
+    "css-loader": "^4.2.2",
     "dotenv": "^8.2.0",
     "electron": "^8.5.0",
     "electron-builder": "^22.8.0",
@@ -77,26 +76,26 @@
     "electron-notarize": "^1.0.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
-    "mini-css-extract-plugin": "^0.10.0",
+    "mini-css-extract-plugin": "^0.11.0",
     "node-sass": "^4.14.1",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
-    "sass-loader": "^9.0.3",
+    "sass-loader": "^10.0.1",
     "terser-webpack-plugin": "^4.1.0",
-    "ts-loader": "^8.0.2",
-    "typescript": "^3.9.7",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^3.9.1",
-    "@typescript-eslint/parser": "^3.9.1",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
     "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "gh-pages": "^3.1.0",
-    "prettier": "^2.0.5"
+    "prettier": "^2.1.1"
   }
 }
