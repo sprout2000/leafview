@@ -55,7 +55,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
-    "ua-parser-js": "^0.7.21"
+    "ua-parser-js": "^0.7.22"
   },
   "devDependencies": {
     "@types/electron-load-devtool": "^1.2.0",
