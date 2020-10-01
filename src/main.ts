@@ -20,6 +20,7 @@ import natsort from 'natsort';
 
 import en from './locales/en.json';
 import ja from './locales/ja.json';
+import cs from './locales/cs.json';
 import createMenu from './menu';
 
 console.log = log.log;
@@ -248,6 +249,7 @@ if (!gotTheLock && !isDarwin) {
       resources: {
         en: { translation: en },
         ja: { translation: ja },
+        cs: { translation: cs },
       },
     });
 

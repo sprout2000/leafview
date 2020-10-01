@@ -35,7 +35,7 @@ builder
         applicationId: 'sprout2000.LeafView',
         backgroundColor: '#1d3557',
         displayName: 'LeafView',
-        languages: ['EN-US', 'JA-JP'],
+        languages: ['EN-US', 'JA-JP', 'CS-CZ'],
         identityName: process.env.IDENTITY_NAME,
         publisher: process.env.PUBLISHER,
         publisherDisplayName: 'sprout2000',
