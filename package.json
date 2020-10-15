@@ -68,7 +68,7 @@
     "@types/ua-parser-js": "^0.7.33",
     "@types/webpack": "^4.41.22",
     "cross-env": "^7.0.2",
-    "css-loader": "^4.3.0",
+    "css-loader": "^5.0.0",
     "dotenv": "^8.2.0",
     "electron": "^8.5.2",
     "electron-builder": "^22.9.1",
