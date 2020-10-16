@@ -41,8 +41,7 @@
     "prepackage": "run-s clean build:prod",
     "prepackage:appx": "run-s clean build:prod",
     "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=false node scripts/build-unsign.js",
-    "package:appx": "node scripts/build.js",
-    "deploy": "gh-pages -d public"
+    "package:appx": "node scripts/build.js"
   },
   "dependencies": {
     "electron-log": "^4.2.4",
@@ -61,8 +60,8 @@
     "@types/electron-load-devtool": "^1.2.0",
     "@types/leaflet": "^1.5.19",
     "@types/mime-types": "^2.1.0",
-    "@types/node": "^14.11.8",
-    "@types/react": "^16.9.52",
+    "@types/node": "^14.11.10",
+    "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "@types/resize-observer-browser": "^0.1.4",
     "@types/ua-parser-js": "^0.7.33",
@@ -91,10 +90,9 @@
     "@typescript-eslint/eslint-plugin": "^4.4.1",
     "@typescript-eslint/parser": "^4.4.1",
     "eslint": "^7.11.0",
-    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
-    "gh-pages": "^3.1.0",
     "prettier": "^2.1.2"
   }
 }
