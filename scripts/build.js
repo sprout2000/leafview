@@ -56,6 +56,7 @@ builder
               CFBundleTypeName: 'ImageFile',
               CFBundleTypeRole: 'Viewer',
               LSItemContentTypes: [
+                'com.google.webp',
                 'com.microsoft.bmp',
                 'com.microsoft.ico',
                 'com.compuserve.gif',
