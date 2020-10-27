@@ -25,7 +25,7 @@
     "cross-platform"
   ],
   "engines": {
-    "node": "12.x"
+    "node": "14.x"
   },
   "os": [
     "win32",
