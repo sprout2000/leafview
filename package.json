@@ -46,7 +46,7 @@
     "package:appx": "node scripts/build.js"
   },
   "dependencies": {
-    "electron-log": "^4.2.4",
+    "electron-log": "^4.3.0",
     "electron-updater": "^4.3.5",
     "electron-window-state": "^5.0.3",
     "i18next": "^19.8.3",
