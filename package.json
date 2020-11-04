@@ -46,7 +46,7 @@
     "package:appx": "node scripts/build.js"
   },
   "dependencies": {
-    "electron-log": "^4.2.4",
+    "electron-log": "^4.3.0",
     "electron-updater": "^4.3.5",
     "electron-window-state": "^5.0.3",
     "i18next": "^19.8.3",
@@ -81,16 +81,16 @@
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "sass": "^1.28.0",
-    "sass-loader": "^10.0.3",
+    "sass-loader": "^10.0.5",
     "terser-webpack-plugin": "^4.2.3",
-    "ts-loader": "^8.0.5",
+    "ts-loader": "^8.0.8",
     "typescript": "^4.0.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.4.1",
-    "@typescript-eslint/parser": "^4.4.1",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-react": "^7.21.4",
