@@ -213,7 +213,7 @@ const createWindow = () => {
     await dialog
       .showMessageBox(mainWindow, {
         type: 'info',
-        buttons: ['Restart', 'Cancel'],
+        buttons: ['Install', 'Not now'],
         defaultId: 0,
         cancelId: 1,
         title: 'Update Downloaded',
