@@ -10,7 +10,7 @@ import {
 import path from 'path';
 import i18next from 'i18next';
 
-const createMenu = (win: BrowserWindow): Menu => {
+export const createMenu = (win: BrowserWindow): Menu => {
   const darwin = process.platform === 'darwin';
   const dotfiles = darwin ? '.' : '._';
 
@@ -227,5 +227,3 @@ const createMenu = (win: BrowserWindow): Menu => {
   const menu = Menu.buildFromTemplate(template);
   return menu;
 };
-
-export default createMenu;

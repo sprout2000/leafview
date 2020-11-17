@@ -19,7 +19,7 @@ import mime from 'mime-types';
 import natsort from 'natsort';
 
 import { setLocales } from './setLocales';
-import createMenu from './menu';
+import { createMenu } from './createMenu';
 
 console.log = log.log;
 autoUpdater.logger = log;
