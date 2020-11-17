@@ -20,6 +20,6 @@
   "support": "Support URL...",
   "hide": "Hide LeafView",
   "hideOthers": "Hide Others",
-  "unhide": "Unhide All",
+  "unhide": "Show All",
   "quit": "Quit LeafView"
 }
