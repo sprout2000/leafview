@@ -7,8 +7,6 @@
   "view": "表示(&V)",
   "next": "次の画像",
   "prev": "前の画像",
-  "toggleSidebar": "サイドバーのトグル",
-  "toggleToolbar": "ツールバーのトグル",
   "toggleFullscreen": "フルスクリーンのトグル",
   "toggleDevtools": "開発者ツールのトグル",
   "window": "ウィンドウ(&W)",

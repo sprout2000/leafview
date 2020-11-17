@@ -7,8 +7,6 @@
   "view": "&View",
   "next": "Next image",
   "prev": "Prev image",
-  "toggleSidebar": "Toggle Sidebar",
-  "toggleToolbar": "Toggle Toolbar",
   "toggleFullscreen": "Toggle Fullscreen",
   "toggleDevtools": "Toggle Developer Tools",
   "window": "&Window",
