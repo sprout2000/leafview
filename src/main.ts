@@ -18,10 +18,8 @@ import path from 'path';
 import mime from 'mime-types';
 import natsort from 'natsort';
 
-import en from './locales/en.json';
-import ja from './locales/ja.json';
-import cs from './locales/cs.json';
-import createMenu from './menu';
+import { setLocales } from './setLocales';
+import { createMenu } from './createMenu';
 
 console.log = log.log;
 autoUpdater.logger = log;
@@ -243,16 +241,7 @@ if (!gotTheLock && !isDarwin) {
 
   app.whenReady().then(() => {
     const locale = app.getLocale();
-    i18next.init({
-      lng: locale,
-      fallbackLng: 'en',
-      resources: {
-        en: { translation: en },
-        ja: { translation: ja },
-        cs: { translation: cs },
-      },
-    });
-
+    setLocales(locale);
     createWindow();
   });
 

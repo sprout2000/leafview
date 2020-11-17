@@ -51,6 +51,32 @@ _Note that you will need to have [Node.js](https://nodejs.org), [Git](https://gi
 
 _And you might also need to have some build tools (ex. [Microsoft Build Tools](https://www.microsoft.com/en-us/download/details.aspx?id=48159), [Xcode](https://apps.apple.com/app/xcode/id497799835)) installed._
 
+## Contribution
+
+I need more locale files.  
+When you translate the menu into your language, please send me the locale file as a pull request.
+
+- Create `{your_LANG}.json` in `src/locales`.
+- And then add your locale to `src/setLocales.ts` like:
+
+```diff
+  import en from './locales/en.json';
+  import ja from './locales/ja.json';
++ import cs from './locales/cs.json';
+
+ export const setLocales = (locale: string): void => {
+   i18next.init({
+     lng: locale,
+     fallbackLng: 'en',
+     resources: {
+       en: { translation: en },
+       ja: { translation: ja },
++      cs: { translation: cs },
+     },
+   });
+ };
+```
+
 ## Download
 
 ### macOS (x64)
