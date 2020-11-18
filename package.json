@@ -62,7 +62,7 @@
     "@types/electron-load-devtool": "^1.2.0",
     "@types/leaflet": "^1.5.19",
     "@types/mime-types": "^2.1.0",
-    "@types/node": "^14.14.7",
+    "@types/node": "^14.14.8",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
     "@types/resize-observer-browser": "^0.1.4",
@@ -71,7 +71,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^5.0.1",
     "dotenv": "^8.2.0",
-    "electron": "^8.5.3",
+    "electron": "^8.5.4",
     "electron-builder": "^22.9.1",
     "electron-load-devtool": "^1.2.0",
     "electron-notarize": "^1.0.0",
@@ -89,8 +89,8 @@
     "webpack-cli": "^3.3.12"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.8.0",
-    "@typescript-eslint/parser": "^4.8.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-react": "^7.21.4",
