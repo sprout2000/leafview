@@ -1823,7 +1823,7 @@ electron-window-state@^5.0.3:
     jsonfile "^4.0.0"
     mkdirp "^0.5.1"
 
-electron@^8.5.3:
+electron@^8.5.4:
   version "8.5.4"
   resolved "https://registry.yarnpkg.com/electron/-/electron-8.5.4.tgz#6037abc0bb87705869a13f4d909f551ae041d3f3"
   integrity sha512-cA0VLeeSQzILYcNqYcHSMfvpecnfgrMLY4bPRNuk1mPHdHpQ5pd9KO/mESNQJyrY+7lakpF+oC8X1+tby2LJ/Q==
