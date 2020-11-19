@@ -73,6 +73,7 @@ const createWindow = () => {
     webPreferences: {
       enableRemoteModule: false,
       nodeIntegration: false,
+      worldSafeExecuteJavaScript: true,
       contextIsolation: true,
       safeDialogs: true,
       sandbox: true,
