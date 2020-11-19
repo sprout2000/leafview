@@ -63,7 +63,7 @@
   "devDependencies": {
     "@types/leaflet": "^1.5.19",
     "@types/mime-types": "^2.1.0",
-    "@types/node": "^14.14.8",
+    "@types/node": "^14.14.9",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
     "@types/resize-observer-browser": "^0.1.4",
@@ -72,7 +72,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^5.0.1",
     "dotenv": "^8.2.0",
-    "electron": "^11.0.1",
+    "electron": "^11.0.2",
     "electron-builder": "^22.9.1",
     "electron-notarize": "^1.0.0",
     "file-loader": "^6.2.0",
@@ -85,7 +85,7 @@
     "sass-loader": "^10.1.0",
     "terser-webpack-plugin": "^4.2.3",
     "ts-loader": "^8.0.11",
-    "typescript": "^4.0.3",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
