@@ -251,6 +251,5 @@ if (!gotTheLock && !isDarwin) {
     copyright: 'Copyright (C) 2020 sprout2000.',
   });
 
-  app.allowRendererProcessReuse = true;
   app.once('window-all-closed', () => app.exit());
 }
