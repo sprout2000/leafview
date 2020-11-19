@@ -10,7 +10,6 @@ import {
 import { autoUpdater } from 'electron-updater';
 import i18next from 'i18next';
 import stateKeeper from 'electron-window-state';
-import loadDevtool from 'electron-load-devtool';
 import log from 'electron-log';
 
 import fs from 'fs';
@@ -74,6 +73,7 @@ const createWindow = () => {
     webPreferences: {
       enableRemoteModule: false,
       nodeIntegration: false,
+      worldSafeExecuteJavaScript: true,
       contextIsolation: true,
       safeDialogs: true,
       sandbox: true,
@@ -151,7 +151,6 @@ const createWindow = () => {
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
   if (isDev) {
-    loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
     mainWindow.webContents.openDevTools({ mode: 'detach' });
   }
 
@@ -252,6 +251,5 @@ if (!gotTheLock && !isDarwin) {
     copyright: 'Copyright (C) 2020 sprout2000.',
   });
 
-  app.allowRendererProcessReuse = true;
   app.once('window-all-closed', () => app.exit());
 }
