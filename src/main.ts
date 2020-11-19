@@ -10,7 +10,6 @@ import {
 import { autoUpdater } from 'electron-updater';
 import i18next from 'i18next';
 import stateKeeper from 'electron-window-state';
-import loadDevtool from 'electron-load-devtool';
 import log from 'electron-log';
 
 import fs from 'fs';
@@ -151,7 +150,6 @@ const createWindow = () => {
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
   if (isDev) {
-    loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
     mainWindow.webContents.openDevTools({ mode: 'detach' });
   }
 
