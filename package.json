@@ -34,12 +34,12 @@
     "darwin"
   ],
   "scripts": {
-    "dev": "run-p devtools start",
-    "start": "run-s clean build serve",
+    "start": "run-p devtools build",
+    "build": "run-s clean build:dev serve",
     "serve": "electron .",
     "devtools": "react-devtools",
     "clean": "rimraf dist release",
-    "build": "cross-env NODE_ENV=\"development\" webpack --progress",
+    "build:dev": "cross-env NODE_ENV=\"development\" webpack --progress",
     "build:prod": "cross-env NODE_ENV=\"production\" webpack --progress",
     "release": "node scripts/build.js",
     "prepackage": "run-s clean build:prod",
