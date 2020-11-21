@@ -43,7 +43,7 @@ builder
       },
       mac: {
         appId: process.env.APP_BUNDLE_ID,
-        artifactName: '${productName}-${version}-x64.${ext}',
+        artifactName: '${productName}-${version}-${platform}-x64.${ext}',
         category: 'public.app-category.photography',
         target: 'default',
         icon: 'assets/icon.icns',
