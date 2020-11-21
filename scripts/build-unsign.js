@@ -33,7 +33,7 @@ builder
         createDesktopShortcut: false,
         createStartMenuShortcut: true,
         installerIcon: 'assets/installer.ico',
-        artifactName: '${productName}-${version}-installer.${ext}',
+        artifactName: '${productName}-${version}-${platform}-installer.${ext}',
       },
       mac: {
         category: 'public.app-category.photography',
