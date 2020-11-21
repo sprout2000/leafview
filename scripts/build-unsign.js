@@ -1,9 +1,14 @@
+const os = require('os');
 const builder = require('electron-builder');
+
+const arch = os.arch();
 
 builder
   .build({
     config: {
       productName: 'LeafView',
+      artifactName:
+        '${productName}-${version}-${platform}-' + `${arch}` + '.${ext}',
       copyright: 'Copyright (C) 2020 sprout2000.',
       files: ['dist/**/*'],
       directories: {
@@ -12,7 +17,6 @@ builder
       asar: true,
       asarUnpack: ['dist/preload.js'],
       win: {
-        artifactName: '${productName}-${version}-${platform}.${ext}',
         icon: 'assets/icon.ico',
         target: ['nsis'],
         publisherName: 'sprout2000',
@@ -29,10 +33,9 @@ builder
         createDesktopShortcut: false,
         createStartMenuShortcut: true,
         installerIcon: 'assets/installer.ico',
-        artifactName: '${productName}-${version}-installer.${ext}',
+        artifactName: '${productName}-${version}-${platform}-installer.${ext}',
       },
       mac: {
-        artifactName: '${productName}-${version}-${platform}-x64.${ext}',
         category: 'public.app-category.photography',
         target: ['dmg'],
         icon: 'assets/icon.icns',

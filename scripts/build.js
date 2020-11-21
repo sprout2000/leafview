@@ -1,10 +1,15 @@
 require('dotenv').config();
 const builder = require('electron-builder');
 
+const os = require('os');
+const arch = os.arch();
+
 builder
   .build({
     config: {
       productName: 'LeafView',
+      artifactName:
+        '${productName}-${version}-${platform}-' + `${arch}` + '.${ext}',
       copyright: 'Copyright (C) 2020 sprout2000.',
       files: ['dist/**/*'],
       publish: [
@@ -20,7 +25,6 @@ builder
       asar: true,
       asarUnpack: ['dist/preload.js'],
       win: {
-        artifactName: '${productName}-${version}-${platform}.${ext}',
         icon: 'assets/icon.ico',
         target: ['appx'],
         publisherName: 'sprout2000',
@@ -43,7 +47,6 @@ builder
       },
       mac: {
         appId: process.env.APP_BUNDLE_ID,
-        artifactName: '${productName}-${version}-${platform}-x64.${ext}',
         category: 'public.app-category.photography',
         target: 'default',
         icon: 'assets/icon.icns',
