@@ -4,7 +4,7 @@ on:
     tags:
       - 'v*'
 jobs:
-  build:
+  build_on_intel:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@master
