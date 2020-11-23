@@ -31,7 +31,8 @@
   },
   "os": [
     "win32",
-    "darwin"
+    "darwin",
+    "linux"
   ],
   "scripts": {
     "start": "run-p devtools build",
