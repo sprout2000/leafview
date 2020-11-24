@@ -2,7 +2,7 @@ const os = require('os');
 const builder = require('electron-builder');
 
 const arch = os.arch();
-const isSur = parseFloat(os.release()) >= 20.1;
+const isSur = os.platform() === 'darwin' && parseInt(os.release()) >= 20;
 
 builder
   .build({
