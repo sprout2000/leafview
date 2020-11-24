@@ -87,6 +87,10 @@ body,
     background-color: transparent;
     cursor: grab;
 
+    &:active {
+      cursor: grabbing;
+    }
+
     &.init {
       cursor: default;
     }
