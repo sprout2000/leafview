@@ -62,6 +62,7 @@ builder
           ],
           NSRequiresAquaSystemAppearance: false,
         },
+        identity: null,
       },
       dmg: {
         icon: 'assets/dmg.icns',
