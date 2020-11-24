@@ -2,6 +2,7 @@ const os = require('os');
 const builder = require('electron-builder');
 
 const arch = os.arch();
+const isSur = parseFloat(os.release()) >= 20.1;
 
 builder
   .build({
@@ -38,7 +39,7 @@ builder
       mac: {
         category: 'public.app-category.photography',
         target: ['dmg'],
-        icon: 'assets/icon.icns',
+        icon: isSur ? 'assets/icon-sur.icns' : 'assets/icon.icns',
         extendInfo: {
           CFBundleName: 'LeafView',
           CFBundleDisplayName: 'LeafView',
