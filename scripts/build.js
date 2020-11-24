@@ -3,6 +3,7 @@ const builder = require('electron-builder');
 
 const os = require('os');
 const arch = os.arch();
+const isSur = os.platform() === 'darwin' && parseInt(os.release()) >= 20;
 
 builder
   .build({
@@ -49,7 +50,7 @@ builder
         appId: process.env.APP_BUNDLE_ID,
         category: 'public.app-category.photography',
         target: 'default',
-        icon: 'assets/icon.icns',
+        icon: isSur ? 'assets/icon-sur.icns' : 'assets/icon.icns',
         extendInfo: {
           CFBundleName: 'LeafView',
           CFBundleDisplayName: 'LeafView',
