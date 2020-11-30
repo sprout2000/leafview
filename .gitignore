@@ -6,5 +6,6 @@ npm-*.log
 yarn-*.log
 parent.plist
 gh-pages
+CSC_KEY_LINK
 .env
 .DS_Store
