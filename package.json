@@ -70,7 +70,7 @@
     "@types/resize-observer-browser": "^0.1.4",
     "@types/ua-parser-js": "^0.7.33",
     "@types/webpack": "^4.41.25",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
     "dotenv": "^8.2.0",
     "electron": "^11.0.3",
