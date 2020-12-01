@@ -58,7 +58,7 @@
     "natsort": "^2.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-icons": "^3.11.0",
+    "react-icons": "^4.1.0",
     "ua-parser-js": "^0.7.22"
   },
   "devDependencies": {
