@@ -58,8 +58,7 @@
     "natsort": "^2.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-icons": "^4.1.0",
-    "ua-parser-js": "^0.7.22"
+    "react-icons": "^4.1.0"
   },
   "devDependencies": {
     "@types/leaflet": "^1.5.19",
@@ -68,7 +67,6 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/resize-observer-browser": "^0.1.4",
-    "@types/ua-parser-js": "^0.7.33",
     "@types/webpack": "^4.41.25",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
