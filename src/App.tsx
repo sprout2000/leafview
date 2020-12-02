@@ -1,5 +1,4 @@
 import React, { useRef, useCallback, useState, useEffect } from 'react';
-import { UAParser } from 'ua-parser-js';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -14,11 +13,6 @@ const App: React.FC = () => {
 
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
-
-  const isDarwin = () => {
-    const ua = new UAParser();
-    return ua.getOS().name === 'Mac OS';
-  };
 
   const getZoom = (
     imgWidth: number,
@@ -38,6 +32,7 @@ const App: React.FC = () => {
 
   const draw = useCallback(
     (width: number, height: number): void => {
+      const isDarwin = window.navigator.userAgent.includes('Mac OS');
       const node = mapRef.current;
 
       if (node) {
@@ -60,7 +55,7 @@ const App: React.FC = () => {
             crs: L.CRS.Simple,
             preferCanvas: true,
             zoomDelta: 0.3,
-            zoomSnap: isDarwin() ? 0.3 : 0,
+            zoomSnap: isDarwin ? 0.3 : 0,
             doubleClickZoom: false,
             zoomControl: false,
             attributionControl: false,
@@ -98,7 +93,9 @@ const App: React.FC = () => {
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
-      if (file.name.startsWith(isDarwin() ? '.' : '._')) return;
+      const isDarwin = window.navigator.userAgent.includes('Mac OS');
+
+      if (file.name.startsWith(isDarwin ? '.' : '._')) return;
 
       const mime = await myAPI.mimecheck(file.path);
       if (mime) {
