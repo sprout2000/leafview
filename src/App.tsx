@@ -32,7 +32,6 @@ const App: React.FC = () => {
 
   const draw = useCallback(
     (width: number, height: number): void => {
-      const isDarwin = window.navigator.userAgent.includes('Mac OS');
       const node = mapRef.current;
 
       if (node) {
@@ -55,7 +54,7 @@ const App: React.FC = () => {
             crs: L.CRS.Simple,
             preferCanvas: true,
             zoomDelta: 0.3,
-            zoomSnap: isDarwin ? 0.3 : 0,
+            zoomSnap: 0.3,
             doubleClickZoom: false,
             zoomControl: false,
             attributionControl: false,
