@@ -91,11 +91,11 @@
   "optionalDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.8.2",
     "@typescript-eslint/parser": "^4.8.2",
-    "eslint": "^7.14.0",
+    "eslint": "^7.15.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
     "prettier": "^2.2.0",
-    "react-devtools": "^4.10.0"
+    "react-devtools": "^4.10.1"
   }
 }
