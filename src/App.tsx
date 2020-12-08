@@ -215,7 +215,7 @@ const App: React.FC = () => {
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
     if (url === empty) return;
 
-    if (e.keyCode === 48) {
+    if (e.key === '0') {
       if (mapObj.current) mapObj.current.setZoom(0);
     }
   };
