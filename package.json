@@ -61,7 +61,6 @@
     "react-icons": "^4.1.0"
   },
   "devDependencies": {
-    "@types/html-webpack-plugin": "^3.2.4",
     "@types/leaflet": "^1.5.19",
     "@types/mime-types": "^2.1.0",
     "@types/mini-css-extract-plugin": "^1.2.1",
