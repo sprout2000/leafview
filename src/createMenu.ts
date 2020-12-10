@@ -132,7 +132,7 @@ export const createMenu = (win: BrowserWindow): Menu => {
           { type: 'separator' },
           {
             label: i18next.t('toggleDevtools'),
-            accelerator: 'Ctrl+Alt+I',
+            accelerator: 'Ctrl+Shift+I',
             click: (): void => {
               if (win.webContents.isDevToolsOpened()) {
                 win.webContents.closeDevTools();
