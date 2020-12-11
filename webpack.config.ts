@@ -3,6 +3,7 @@ import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserWebpackPlugin from 'terser-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -50,7 +51,7 @@ const base: Configuration = {
     ],
   },
   optimization: {
-    minimizer: [new TerserWebpackPlugin()],
+    minimizer: [new TerserWebpackPlugin(), new CssMinimizerWebpackPlugin()],
   },
   stats: 'none',
   devtool: isDev ? 'inline-source-map' : false,

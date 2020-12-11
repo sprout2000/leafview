@@ -61,6 +61,7 @@
     "react-icons": "^4.1.0"
   },
   "devDependencies": {
+    "@types/css-minimizer-webpack-plugin": "^1.1.1",
     "@types/leaflet": "^1.5.19",
     "@types/mime-types": "^2.1.0",
     "@types/mini-css-extract-plugin": "^1.2.1",
@@ -71,6 +72,7 @@
     "@types/terser-webpack-plugin": "^5.0.2",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
+    "css-minimizer-webpack-plugin": "^1.1.5",
     "dotenv": "^8.2.0",
     "electron": "^11.0.4",
     "electron-builder": "^22.9.1",
