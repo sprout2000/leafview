@@ -44,11 +44,11 @@
     "build:dev": "cross-env NODE_ENV=\"development\" webpack --progress",
     "build:prod": "cross-env NODE_ENV=\"production\" webpack --progress",
     "build:soft": "cross-env NODE_ENV=\"softboot\" webpack --progress",
-    "release": "node scripts/build.js",
+    "release": "ts-node scripts/build.ts",
     "prepackage": "run-s clean build:prod",
     "prepackage:appx": "run-s clean build:prod",
-    "package": "node scripts/build-unsign.js",
-    "package:appx": "node scripts/build.js"
+    "package": "ts-node scripts/build-unsign.ts",
+    "package:appx": "ts-node scripts/build.ts"
   },
   "dependencies": {
     "electron-log": "^4.3.0",
