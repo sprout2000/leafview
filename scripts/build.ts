@@ -83,6 +83,6 @@ build({
       icon: 'assets/dmg.icns',
       sign: false,
     },
-    afterSign: 'scripts/notarize.js',
+    afterSign: 'scripts/notarize.ts',
   },
 }).catch((err) => console.log(err));
