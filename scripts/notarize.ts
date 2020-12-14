@@ -1,7 +1,10 @@
+import dotenv from 'dotenv';
 import { AfterPackContext } from 'electron-builder';
 import { notarize } from 'electron-notarize';
 
-exports.default = async function notarizing(context: AfterPackContext) {
+const notarizing = async (context: AfterPackContext): Promise<void> => {
+  dotenv.config();
+
   const { electronPlatformName, appOutDir } = context;
   if (electronPlatformName !== 'darwin') {
     return;
@@ -17,3 +20,5 @@ exports.default = async function notarizing(context: AfterPackContext) {
     ascProvider: process.env.ASC_PROVIDER,
   });
 };
+
+export default notarizing;
