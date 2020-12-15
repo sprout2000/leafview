@@ -2,7 +2,6 @@ import os from 'os';
 import dotenv from 'dotenv';
 import { build } from 'electron-builder';
 
-const arch = os.arch();
 const isSur = os.platform() === 'darwin' && parseInt(os.release()) >= 20;
 
 dotenv.config();
@@ -10,8 +9,7 @@ dotenv.config();
 build({
   config: {
     productName: 'LeafView',
-    artifactName:
-      '${productName}-${version}-${platform}-' + `${arch}` + '.${ext}',
+    artifactName: '${productName}-${version}-${platform}.${ext}',
     copyright: 'Copyright (C) 2020 sprout2000.',
     files: ['dist/**/*'],
     publish: [

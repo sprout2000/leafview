@@ -51,7 +51,7 @@
     "package:appx": "ts-node scripts/build.ts"
   },
   "dependencies": {
-    "electron-log": "^4.3.0",
+    "electron-log": "^4.3.1",
     "electron-updater": "^4.3.5",
     "electron-window-state": "^5.0.3",
     "i18next": "^19.8.4",
@@ -93,8 +93,8 @@
     "webpack-cli": "^4.2.0"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.9.1",
-    "@typescript-eslint/parser": "^4.9.1",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-react": "^7.21.4",
