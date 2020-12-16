@@ -25,7 +25,7 @@
     "cross-platform"
   ],
   "engines": {
-    "node": ">=12.16",
+    "node": ">=14",
     "npm": "please_use_yarn_instead",
     "yarn": ">=1.22"
   },
@@ -37,18 +37,16 @@
   "scripts": {
     "start": "run-p devtools build",
     "build": "run-s clean build:dev serve",
-    "devel": "run-s clean build:soft serve",
     "serve": "electron .",
     "devtools": "react-devtools",
     "clean": "rimraf dist release",
     "build:dev": "cross-env NODE_ENV=\"development\" webpack --progress",
-    "build:prod": "cross-env NODE_ENV=\"production\" webpack --progress",
-    "build:soft": "cross-env NODE_ENV=\"softboot\" webpack --progress",
-    "release": "ts-node scripts/build.ts",
-    "prepackage": "run-s clean build:prod",
-    "prepackage:appx": "run-s clean build:prod",
-    "package": "ts-node scripts/build-unsign.ts",
-    "package:appx": "ts-node scripts/build.ts"
+    "build:prod": "cross-env NODE_ENV=\"production\" webpack",
+    "release": "run-s build:prod package:sign",
+    "package": "run-s build:prod package:unsign",
+    "package:appx": "run-s build:prod package:sign",
+    "package:sign": "ts-node scripts/build.ts",
+    "package:unsign": "ts-node scripts/build-unsign.ts"
   },
   "dependencies": {
     "electron-log": "^4.3.1",

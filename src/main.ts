@@ -150,10 +150,6 @@ const createWindow = () => {
 
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
-  if (isDev) {
-    mainWindow.webContents.openDevTools({ mode: 'detach' });
-  }
-
   mainWindow.webContents.once('did-finish-load', () => {
     if (!isDarwin && !isDev && process.argv.length >= 2) {
       const filepath = process.argv[process.argv.length - 1];
