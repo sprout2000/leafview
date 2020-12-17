@@ -1,7 +1,4 @@
-import os from 'os';
 import { build } from 'electron-builder';
-
-const isSur = os.platform() === 'darwin' && parseInt(os.release()) >= 20;
 
 build({
   config: {
@@ -36,7 +33,7 @@ build({
     mac: {
       category: 'public.app-category.photography',
       target: ['dmg'],
-      icon: isSur ? 'assets/icon-sur.icns' : 'assets/icon.icns',
+      icon: 'assets/icon.icns',
       extendInfo: {
         CFBundleName: 'LeafView',
         CFBundleDisplayName: 'LeafView',
