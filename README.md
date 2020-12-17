@@ -19,15 +19,16 @@
 
 ## Security
 
-| API                | Value   |
-| :----------------- | :------ |
-| default-src (CSP)  | `self`  |
-| script-src (CSP)   | `self`  |
-| nodeIntegration    | `false` |
-| enableRemoteModule | `false` |
-| contextIsolation   | `true`  |
-| safeDialogs        | `true`  |
-| sandbox            | `true`  |
+| API                        | Value   |
+| :------------------------- | :------ |
+| default-src (CSP)          | `self`  |
+| script-src (CSP)           | `self`  |
+| nodeIntegration            | `false` |
+| enableRemoteModule         | `false` |
+| worldSafeExecuteJavaScript | `true`  |
+| contextIsolation           | `true`  |
+| safeDialogs                | `true`  |
+| sandbox                    | `true`  |
 
 ## Supported Image Formats
 
