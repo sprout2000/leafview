@@ -1,8 +1,5 @@
-import os from 'os';
 import dotenv from 'dotenv';
 import { build } from 'electron-builder';
-
-const isSur = os.platform() === 'darwin' && parseInt(os.release()) >= 20;
 
 dotenv.config();
 
@@ -49,7 +46,7 @@ build({
       appId: process.env.APP_BUNDLE_ID,
       category: 'public.app-category.photography',
       target: 'default',
-      icon: isSur ? 'assets/icon-sur.icns' : 'assets/icon.icns',
+      icon: 'assets/icon.icns',
       extendInfo: {
         CFBundleName: 'LeafView',
         CFBundleDisplayName: 'LeafView',
