@@ -42,11 +42,11 @@
     "clean": "rimraf dist release",
     "build:dev": "cross-env NODE_ENV=\"development\" webpack --progress",
     "build:prod": "cross-env NODE_ENV=\"production\" webpack",
-    "release": "run-s build:prod package:sign",
-    "package": "run-s build:prod package:unsign",
-    "package:appx": "run-s build:prod package:sign",
-    "package:sign": "ts-node scripts/build.ts",
-    "package:unsign": "ts-node scripts/build-unsign.ts"
+    "release": "ts-node scripts/build.ts",
+    "prepackage": "run-s clean build:prod",
+    "package": "ts-node scripts/build-unsign.ts",
+    "prepackage:appx": "run-s clean build:prod",
+    "package:appx": "ts-node scripts/build.ts"
   },
   "dependencies": {
     "electron-log": "^4.3.1",
@@ -93,8 +93,8 @@
   "optionalDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
-    "eslint": "^7.15.0",
-    "eslint-config-prettier": "^7.0.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
     "prettier": "^2.2.0",
