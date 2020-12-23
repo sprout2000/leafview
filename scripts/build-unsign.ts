@@ -3,7 +3,6 @@ import { build } from 'electron-builder';
 build({
   config: {
     productName: 'LeafView',
-    artifactName: '${productName}-${version}-${platform}.${ext}',
     copyright: 'Copyright (C) 2020 sprout2000.',
     files: ['dist/**/*'],
     directories: {
@@ -60,6 +59,7 @@ build({
     },
     dmg: {
       icon: 'assets/dmg.icns',
+      artifactName: '${productName}-${version}-${platform}-${arch}.${ext}',
     },
   },
 }).catch((err) => console.log(err));
