@@ -35,18 +35,19 @@
     "linux"
   ],
   "scripts": {
-    "start": "run-p devtools build",
-    "build": "run-s clean build:dev serve",
+    "start": "run-p devtools serve",
+    "preserve": "run-s clean build",
     "serve": "electron .",
     "devtools": "react-devtools",
     "clean": "rimraf dist release",
-    "build:dev": "cross-env NODE_ENV=\"development\" webpack --progress",
+    "build": "cross-env NODE_ENV=\"development\" webpack --progress",
     "build:prod": "cross-env NODE_ENV=\"production\" webpack",
-    "release": "ts-node scripts/build.ts",
     "prepackage": "run-s clean build:prod",
     "package": "ts-node scripts/build-unsign.ts",
+    "prepackage:arm64": "run-s clean build:prod",
+    "package:arm64": "ts-node scripts/build.ts",
     "prepackage:appx": "run-s clean build:prod",
-    "package:appx": "ts-node scripts/build.ts"
+    "package:appx": "ts-node scripts/build-appx.ts"
   },
   "dependencies": {
     "electron-log": "^4.3.1",
