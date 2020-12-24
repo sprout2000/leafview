@@ -52,6 +52,17 @@ _Note that you will need to have [Node.js](https://nodejs.org), [Git](https://gi
 
 _And you might also need to have some build tools (ex. [Microsoft Build Tools](https://www.microsoft.com/en-us/download/details.aspx?id=48159), [Xcode](https://apps.apple.com/app/xcode/id497799835)) installed._
 
+## Download
+
+### macOS (x64, arm64)
+
+You can download the latest version of LeafView from the releases page here:  
+[https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
+
+### Windows10
+
+You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
+
 ## Contribution
 
 I need more locale files.  
@@ -77,17 +88,6 @@ When you translate the menu into your language, please send me the locale file a
    });
  };
 ```
-
-## Download
-
-### macOS (x64)
-
-You can download the latest version of LeafView from the releases page here:  
-[https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
-
-### Windows10
-
-You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
 
 ## Usage
 
