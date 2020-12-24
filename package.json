@@ -44,8 +44,8 @@
     "build:prod": "cross-env NODE_ENV=\"production\" webpack",
     "prepackage": "run-s clean build:prod",
     "package": "ts-node scripts/build-unsign.ts",
-    "prepackage:arm64": "run-s clean build:prod",
-    "package:arm64": "ts-node scripts/build.ts",
+    "prepackage:darwin": "run-s clean build:prod",
+    "package:darwin": "ts-node scripts/build.ts",
     "prepackage:appx": "run-s clean build:prod",
     "package:appx": "ts-node scripts/build-appx.ts"
   },
