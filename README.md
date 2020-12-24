@@ -17,6 +17,32 @@
 - Memory-Friendly
 - Auto Update (_macOS_)
 
+## Usage
+
+### Keyboard Shortcuts
+
+|                                     Key                                     | Function               | Platform |
+| :-------------------------------------------------------------------------: | :--------------------- | :------- |
+|                                <kbd>J</kbd>                                 | Next Image             | -        |
+|                                <kbd>K</kbd>                                 | Previous Image         | -        |
+|                                <kbd>+</kbd>                                 | Zoom In                | -        |
+|                                <kbd>-</kbd>                                 | Zoom Out               | -        |
+|                                <kbd>0</kbd>                                 | Reset Zoom             | -        |
+| <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan                    | -        |
+|             <kbd>Command</kbd>+<kbd>Control</kbd>+<kbd>F</kbd>              | Toggle Fullscreen      | macOS    |
+|              <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd>              | Toggle Developer Tools | macOS    |
+|                               <kbd>Alt</kbd>                                | Show/Hide Menu Bar     | Windows  |
+|                               <kbd>F11</kbd>                                | Toggle Fullscreen      | Windows  |
+|                 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>                 | Toggle Developer Tools | Windows  |
+
+### Mouse Operations
+
+|    Mouse     | Function    |
+| :----------: | :---------- |
+|     drag     | pan         |
+| double click | reset zoom  |
+|    wheel     | zoom in/out |
+
 ## Security
 
 | API                        | Value   |
@@ -88,32 +114,6 @@ When you translate the menu into your language, please send me the locale file a
    });
  };
 ```
-
-## Usage
-
-### Keyboard Shortcuts
-
-|                                     Key                                     | Function               | Platform |
-| :-------------------------------------------------------------------------: | :--------------------- | :------- |
-|                                <kbd>J</kbd>                                 | Next Image             | -        |
-|                                <kbd>K</kbd>                                 | Previous Image         | -        |
-|                                <kbd>+</kbd>                                 | Zoom In                | -        |
-|                                <kbd>-</kbd>                                 | Zoom Out               | -        |
-|                                <kbd>0</kbd>                                 | Reset Zoom             | -        |
-| <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan                    | -        |
-|             <kbd>Command</kbd>+<kbd>Control</kbd>+<kbd>F</kbd>              | Toggle Fullscreen      | macOS    |
-|              <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd>              | Toggle Developer Tools | macOS    |
-|                               <kbd>Alt</kbd>                                | Show/Hide Menu Bar     | Windows  |
-|                               <kbd>F11</kbd>                                | Toggle Fullscreen      | Windows  |
-|                 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>                 | Toggle Developer Tools | Windows  |
-
-### Mouse Operations
-
-|    Mouse     | Function    |
-| :----------: | :---------- |
-|     drag     | pan         |
-| double click | reset zoom  |
-|    wheel     | zoom in/out |
 
 ## License
 
