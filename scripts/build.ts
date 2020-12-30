@@ -20,7 +20,7 @@ build({
       category: 'public.app-category.photography',
       target: {
         target: 'default',
-        arch: 'universal',
+        arch: ['x64', 'arm64', 'universal'],
       },
       icon: 'assets/icon.icns',
       extendInfo: {
