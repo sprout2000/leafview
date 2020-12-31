@@ -1,20 +1,24 @@
-name: GitHub Pages
+name: GitHub CI
 
 on:
   push:
     tags:
-      - 'v*'
+      - v*
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out
-        uses: actions/checkout@v2
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@master
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@master
         with:
-          node-version: '12.x'
+          node-version: '14.x'
+      - name: Install
+        run: yarn install --frozen-lockfile --ignore-optional
+      - name: Build
+        run: yarn build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
