@@ -55,7 +55,7 @@
     "electron-window-state": "^5.0.3",
     "i18next": "^19.8.4",
     "leaflet": "^1.7.1",
-    "mime-types": "^2.1.27",
+    "mime-types": "^2.1.28",
     "natsort": "^2.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
