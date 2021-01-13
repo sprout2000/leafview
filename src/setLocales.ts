@@ -5,6 +5,8 @@ import ja from './locales/ja.json';
 /** Merge the pull request sent by PetrTodorov. */
 /** https://github.com/sprout2000/leafview/pull/68 */
 import cs from './locales/cs.json';
+/** Merge the pull request sent by DrDeee. */
+/** https://github.com/sprout2000/leafview/pull/166 */
 import de from './locales/de.json';
 
 export const setLocales = (locale: string): void => {
