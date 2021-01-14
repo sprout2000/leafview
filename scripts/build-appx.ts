@@ -31,7 +31,7 @@ build({
       backgroundColor: '#1d3557',
       displayName: 'LeafView',
       showNameOnTiles: true,
-      languages: ['EN-US', 'JA-JP', 'CS-CZ'],
+      languages: ['EN-US', 'JA-JP', 'CS-CZ', 'DE-DE'],
       identityName: process.env.IDENTITY_NAME,
       publisher: process.env.PUBLISHER,
       publisherDisplayName: 'sprout2000',
