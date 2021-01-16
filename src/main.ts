@@ -244,7 +244,7 @@ if (!gotTheLock && !isDarwin) {
     applicationName: app.name,
     applicationVersion: app.getVersion(),
     version: process.versions['electron'],
-    copyright: 'Copyright (C) 2020 sprout2000.',
+    copyright: 'Copyright (C) 2020-2021 sprout2000.',
   });
 
   app.once('window-all-closed', () => app.exit());
