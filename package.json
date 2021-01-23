@@ -35,8 +35,8 @@
     "linux"
   ],
   "scripts": {
-    "start": "run-p devtools serve",
-    "preserve": "run-s clean build",
+    "dev": "run-p devtools start",
+    "start": "run-s clean build serve",
     "serve": "electron .",
     "devtools": "react-devtools",
     "clean": "rimraf dist release",
