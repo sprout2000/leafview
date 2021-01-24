@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2015",
     "module": "ES2015",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
     "lib": ["DOM", "ES2015"],
     "jsx": "react",
