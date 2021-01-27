@@ -8,6 +8,8 @@ import cs from './locales/cs.json';
 /** Merge the pull request sent by DrDeee. */
 /** https://github.com/sprout2000/leafview/pull/166 */
 import de from './locales/de.json';
+/** Merge the pull request sent by singuerinc */
+/** https://github.com/sprout2000/leafview/pull/178 */
 import es from './locales/es.json';
 
 export const setLocales = (locale: string): void => {
