@@ -9,6 +9,7 @@
   "prev": "前の画像",
   "toggleFullscreen": "フルスクリーンのトグル",
   "toggleDevtools": "開発者ツールのトグル",
+  "toggleMenubar": "メニューバーのトグル",
   "window": "ウィンドウ(&W)",
   "minimize": "最小化",
   "maximize": "最大化",

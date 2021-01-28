@@ -55,7 +55,7 @@ const checkmime = (filepath: string) => {
 const createWindow = () => {
   const windowState = stateKeeper({
     defaultWidth: 800,
-    defaultHeight: isDarwin ? 558 : 560,
+    defaultHeight: isDarwin ? 558 : 602,
   });
 
   const dotfiles = isDarwin ? '.' : '._';
@@ -66,8 +66,7 @@ const createWindow = () => {
     width: windowState.width,
     height: windowState.height,
     minWidth: 800,
-    minHeight: isDarwin ? 558 : 560,
-    autoHideMenuBar: isDarwin ? false : true,
+    minHeight: isDarwin ? 558 : 602,
     show: false,
     backgroundColor: nativeTheme.shouldUseDarkColors ? '#1e1e23' : '#f8f8f8',
     webPreferences: {
