@@ -55,7 +55,7 @@ const checkmime = (filepath: string) => {
 const createWindow = () => {
   const windowState = stateKeeper({
     defaultWidth: 800,
-    defaultHeight: isDarwin ? 558 : 560,
+    defaultHeight: isDarwin ? 558 : 602,
   });
 
   const dotfiles = isDarwin ? '.' : '._';
