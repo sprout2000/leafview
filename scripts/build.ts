@@ -7,7 +7,7 @@ build({
   config: {
     productName: 'LeafView',
     artifactName: '${productName}-${version}-${platform}-${arch}.${ext}',
-    copyright: 'Copyright (C) 2020 sprout2000.',
+    copyright: 'Copyright (C) 2020-2021 sprout2000.',
     files: ['dist/**/*'],
     directories: {
       buildResources: 'assets',
