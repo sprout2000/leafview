@@ -106,6 +106,13 @@ export const createMenu = (win: BrowserWindow): Menu => {
               win.isMaximized() ? win.unmaximize() : win.maximize();
             },
           },
+          {
+            label: i18next.t('toggleMenubar'),
+            accelerator: 'Ctrl+T',
+            click: (): void => {
+              win.setMenuBarVisibility(!win.menuBarVisible);
+            },
+          },
           { type: 'separator' },
           {
             label: i18next.t('close'),
