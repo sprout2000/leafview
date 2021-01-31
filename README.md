@@ -33,7 +33,7 @@
 |              <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd>              | Toggle Developer Tools | macOS    |
 |                        <kbd>Ctrl</kbd>+<kbd>T</kbd>                         | Show/Hide Menu Bar     | Windows  |
 |                               <kbd>F11</kbd>                                | Toggle Fullscreen      | Windows  |
-|                 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>                 | Toggle Developer Tools | Windows  |
+|                <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>                | Toggle Developer Tools | Windows  |
 
 ### Mouse Operations
 
