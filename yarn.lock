@@ -5086,7 +5086,7 @@ webpack-sources@^2.1.1:
     source-list-map "^2.0.1"
     source-map "^0.6.1"
 
-webpack@^5.1.0, webpack@^5.18.0:
+webpack@^5.1.0:
   version "5.18.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.18.0.tgz#bbcf13094aa0da0534d513f27d7ee72d74e499c6"
   integrity sha512-RmiP/iy6ROvVe/S+u0TrvL/oOmvP+2+Bs8MWjvBwwY/j82Q51XJyDJ75m0QAGntL1Wx6B//Xc0+4VPP/hlNHmw==
@@ -5110,6 +5110,35 @@ webpack@^5.1.0, webpack@^5.18.0:
     mime-types "^2.1.27"
     neo-async "^2.6.2"
     pkg-dir "^5.0.0"
+    schema-utils "^3.0.0"
+    tapable "^2.1.1"
+    terser-webpack-plugin "^5.1.1"
+    watchpack "^2.0.0"
+    webpack-sources "^2.1.1"
+
+webpack@^5.20.0:
+  version "5.20.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.20.0.tgz#7225c2e780f4332aef18e0b323b8b3ec01e16d66"
+  integrity sha512-k7X/+gisrvirr4bzv8JVLzy2RhWiVzd3gA9qzS5je3lwqYrMc5F549vLOk34BoNkkUp4SIpt1rQp48pTxBMXvA==
+  dependencies:
+    "@types/eslint-scope" "^3.7.0"
+    "@types/estree" "^0.0.46"
+    "@webassemblyjs/ast" "1.11.0"
+    "@webassemblyjs/wasm-edit" "1.11.0"
+    "@webassemblyjs/wasm-parser" "1.11.0"
+    acorn "^8.0.4"
+    browserslist "^4.14.5"
+    chrome-trace-event "^1.0.2"
+    enhanced-resolve "^5.7.0"
+    es-module-lexer "^0.3.26"
+    eslint-scope "^5.1.1"
+    events "^3.2.0"
+    glob-to-regexp "^0.4.1"
+    graceful-fs "^4.2.4"
+    json-parse-better-errors "^1.0.2"
+    loader-runner "^4.2.0"
+    mime-types "^2.1.27"
+    neo-async "^2.6.2"
     schema-utils "^3.0.0"
     tapable "^2.1.1"
     terser-webpack-plugin "^5.1.1"
