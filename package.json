@@ -53,7 +53,7 @@
     "electron-log": "^4.3.1",
     "electron-updater": "^4.3.5",
     "electron-window-state": "^5.0.3",
-    "i18next": "^19.8.5",
+    "i18next": "^19.8.7",
     "leaflet": "^1.7.1",
     "mime-types": "^2.1.28",
     "natsort": "^2.0.2",
