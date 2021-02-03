@@ -57,7 +57,7 @@
     "@types/mime-types": "^2.1.0",
     "@types/mini-css-extract-plugin": "^1.2.2",
     "@types/node": "^14.14.22",
-    "@types/react": "^17.0.0",
+    "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
     "@types/resize-observer-browser": "^0.1.5",
     "@types/terser-webpack-plugin": "^5.0.2",
