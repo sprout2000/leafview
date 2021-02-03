@@ -24,16 +24,6 @@
     "zoom",
     "cross-platform"
   ],
-  "engines": {
-    "node": ">=14",
-    "npm": "please_use_yarn_instead",
-    "yarn": ">=1.22"
-  },
-  "os": [
-    "win32",
-    "darwin",
-    "linux"
-  ],
   "scripts": {
     "dev": "run-p devtools start",
     "start": "run-s clean build serve",
