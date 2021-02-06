@@ -1,15 +1,14 @@
 {
   "name": "leafview",
   "productName": "LeafView",
+  "description": "An image viewer based on leaflet.js",
   "version": "0.6.8",
-  "main": "dist/main.js",
-  "description": "Secure image viewer for minimalists based on leaflet.js",
+  "license": "MIT",
   "author": {
     "name": "sprout2000",
     "url": "https://github.com/sprout2000"
   },
   "homepage": "https://sprout2000.github.io/leafview/",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:sprout2000/leafview.git"
@@ -24,6 +23,7 @@
     "zoom",
     "cross-platform"
   ],
+  "main": "dist/main.js",
   "scripts": {
     "dev": "run-p devtools start",
     "start": "run-s clean build serve",
