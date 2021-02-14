@@ -32,12 +32,9 @@
     "clean": "rimraf dist release",
     "build": "cross-env NODE_ENV=\"development\" webpack --progress",
     "build:prod": "cross-env NODE_ENV=\"production\" webpack --progress",
+    "release": "ts-node scripts/build.ts",
     "prepackage": "run-s clean build:prod",
-    "package": "ts-node scripts/build-unsign.ts",
-    "prepackage:darwin": "run-s clean build:prod",
-    "package:darwin": "ts-node scripts/build.ts",
-    "prepackage:appx": "run-s clean build:prod",
-    "package:appx": "ts-node scripts/build-appx.ts"
+    "package": "ts-node scripts/build-unsign.ts"
   },
   "dependencies": {
     "electron-log": "^4.3.1",
