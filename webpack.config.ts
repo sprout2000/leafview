@@ -61,7 +61,7 @@ const main: Configuration = {
   ...base,
   target: 'electron-main',
   entry: {
-    main: path.join(__dirname, 'src', 'main.ts'),
+    main: './src/main.ts',
   },
 };
 
@@ -69,7 +69,7 @@ const preload: Configuration = {
   ...base,
   target: 'electron-preload',
   entry: {
-    preload: path.join(__dirname, 'src', 'preload.ts'),
+    preload: './src/preload.ts',
   },
 };
 
@@ -77,19 +77,15 @@ const renderer: Configuration = {
   ...base,
   target: 'web',
   entry: {
-    renderer: path.join(__dirname, 'src', 'index.tsx'),
+    renderer: './src/index.tsx',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(
-        __dirname,
-        'src',
-        isDev ? 'index.dev.html' : 'index.html'
-      ),
-      filename: 'index.html',
+      template: isDev ? './src/index.dev.html' : './src/index.html',
+      minify: !isDev,
       inject: 'body',
+      filename: 'index.html',
       scriptLoading: 'blocking',
-      minify: true,
     }),
     new MiniCssExtractPlugin(),
   ],

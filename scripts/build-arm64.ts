@@ -6,15 +6,9 @@ dotenv.config();
 build({
   config: {
     productName: 'LeafView',
-    artifactName: '${productName}-${version}-${platform}-x64.${ext}',
+    artifactName: '${productName}-${version}-${platform}-${arch}.${ext}',
     copyright: 'Copyright (C) 2020-2021 sprout2000.',
     files: ['dist/**/*'],
-    publish: [
-      {
-        provider: 'github',
-        releaseType: 'release',
-      },
-    ],
     directories: {
       buildResources: 'assets',
       output: 'release',
@@ -26,7 +20,7 @@ build({
       category: 'public.app-category.photography',
       target: {
         target: 'default',
-        arch: ['x64'],
+        arch: ['arm64'],
       },
       icon: 'assets/icon.icns',
       extendInfo: {
