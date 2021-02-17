@@ -1733,9 +1733,9 @@ electron-publish@22.10.4:
     mime "^2.4.7"
 
 electron-to-chromium@^1.3.649:
-  version "1.3.665"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.665.tgz#6d0937376f6a919c0f289202c4be77790a6175e5"
-  integrity sha512-LIjx1JheOz7LM8DMEQ2tPnbBzJ4nVG1MKutsbEMLnJfwfVdPIsyagqfLp56bOWhdBrYGXWHaTayYkllIU2TauA==
+  version "1.3.666"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.666.tgz#59f3ce1e45b860a0ebe439b72664354efbb8bc62"
+  integrity sha512-/mP4HFQ0fKIX4sXltG6kfcoGrfNDZwCIyWbH2SIcVaa9u7Rm0HKjambiHNg5OEruicTl9s1EwbERLwxZwk19aw==
 
 electron-updater@^4.3.5:
   version "4.3.5"
@@ -2495,10 +2495,10 @@ human-signals@^2.1.0:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
-i18next@^19.8.7:
-  version "19.8.7"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.8.7.tgz#ef023e353974d1b1453e8b6331bd9fb7cba427df"
-  integrity sha512-ezo1gb7QO4OQ5gQCdZMUxopwQSoqpRp6whdEjm1grxMSmkGj1NJ+kYS0UQd4NnpPIVqsgqTQ2L2eqSQYQ+U3Fw==
+i18next@^19.8.8:
+  version "19.8.8"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.8.8.tgz#9347cdd2063f0b03670e24c3165f0c4b997ccbd3"
+  integrity sha512-GCwSImEZYqUKgb1gUfIw/LMeItpcypdMOhjlHovI7qyBuaIHR8P7z9mfBuxlyl3yDuRnAsAcJv0iynDh71SQ4g==
   dependencies:
     "@babel/runtime" "^7.12.0"
 
