@@ -8,4 +8,5 @@ parent.plist
 gh-pages
 CSC_KEY_LINK
 .env
+.cache
 .DS_Store
