@@ -54,12 +54,13 @@ const base: Configuration = {
     minimize: !isDev,
     minimizer: [new TerserWebpackPlugin(), new CssMinimizerWebpackPlugin()],
   },
-  cache: isDev
-    ? {
-        type: 'filesystem',
-        cacheDirectory: path.resolve(__dirname, '.cache'),
-      }
-    : false,
+  cache: {
+    type: 'filesystem',
+    cacheDirectory: path.resolve(__dirname, '.cache'),
+  },
+  performance: {
+    hints: false,
+  },
   stats: 'errors-only',
   devtool: isDev ? 'inline-source-map' : false,
 };
