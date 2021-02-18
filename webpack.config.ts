@@ -60,7 +60,7 @@ const base: Configuration = {
         cacheDirectory: path.resolve(__dirname, '.cache'),
       }
     : false,
-  stats: 'none',
+  stats: 'errors-only',
   devtool: isDev ? 'inline-source-map' : false,
 };
 
