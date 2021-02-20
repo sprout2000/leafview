@@ -25,7 +25,6 @@
   ],
   "main": "dist/main.js",
   "scripts": {
-    "dev": "run-p devtools start",
     "start": "run-s clean build serve",
     "serve": "electron .",
     "devtools": "react-devtools",
