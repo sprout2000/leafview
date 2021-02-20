@@ -1,17 +1,19 @@
 import {
-  BrowserWindow,
   app,
   Menu,
+  shell,
   ipcMain,
   dialog,
-  shell,
+  session,
   nativeTheme,
+  BrowserWindow,
 } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import i18next from 'i18next';
 import stateKeeper from 'electron-window-state';
 import log from 'electron-log';
 
+import os from 'os';
 import fs from 'fs';
 import path from 'path';
 import mime from 'mime-types';
@@ -35,6 +37,11 @@ process.once('uncaughtException', (err) => {
 const gotTheLock = app.requestSingleInstanceLock();
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
+
+const extPath = path.join(
+  os.homedir(),
+  '/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.10.1_0'
+);
 
 let openfile: string | null = null;
 
@@ -145,8 +152,12 @@ const createWindow = () => {
 
   const menu = createMenu(mainWindow);
   Menu.setApplicationMenu(menu);
-  mainWindow.loadFile('dist/index.html');
 
+  if (isDev) {
+    mainWindow.webContents.openDevTools({ mode: 'detach' });
+  }
+
+  mainWindow.loadFile('dist/index.html');
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
   mainWindow.webContents.once('did-finish-load', () => {
@@ -233,9 +244,16 @@ if (!gotTheLock && !isDarwin) {
     });
   });
 
-  app.whenReady().then(() => {
+  app.whenReady().then(async () => {
     const locale = app.getLocale();
     setLocales(locale);
+
+    if (isDev) {
+      await session.defaultSession.loadExtension(extPath, {
+        allowFileAccess: true,
+      });
+    }
+
     createWindow();
   });
 

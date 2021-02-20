@@ -89,7 +89,7 @@ const renderer: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: isDev ? './src/index.dev.html' : './src/index.html',
+      template: './src/index.html',
       minify: !isDev,
       inject: 'body',
       filename: 'index.html',
