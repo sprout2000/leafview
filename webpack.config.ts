@@ -1,7 +1,6 @@
 import path from 'path';
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import TerserWebpackPlugin from 'terser-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin';
 
@@ -52,7 +51,7 @@ const base: Configuration = {
   },
   optimization: {
     minimize: !isDev,
-    minimizer: [new TerserWebpackPlugin(), new CssMinimizerWebpackPlugin()],
+    minimizer: [new CssMinimizerWebpackPlugin()],
   },
   cache: {
     type: 'filesystem',
@@ -62,7 +61,7 @@ const base: Configuration = {
     hints: false,
   },
   stats: 'errors-only',
-  devtool: isDev ? 'inline-source-map' : false,
+  devtool: isDev ? 'inline-source-map' : undefined,
 };
 
 const main: Configuration = {
