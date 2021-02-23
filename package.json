@@ -37,6 +37,17 @@
     "prepackage": "run-s clean build:prod",
     "package": "ts-node scripts/build-unsign.ts"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "yarn lint:eslint",
+      "yarn lint:prettier"
+    ]
+  },
   "dependencies": {
     "electron-log": "^4.3.2",
     "electron-updater": "^4.3.5",
@@ -86,6 +97,8 @@
     "eslint-config-prettier": "^8.0.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
     "prettier": "^2.2.1"
   }
 }
