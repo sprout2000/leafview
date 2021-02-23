@@ -7,5 +7,5 @@
     "source.fixAll.eslint": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "extensions.showRecommendationsOnlyOnDemand": false
+  "extensions.ignoreRecommendations": false
 }
