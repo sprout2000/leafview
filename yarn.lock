@@ -1811,9 +1811,9 @@ electron-publish@22.10.5:
     mime "^2.5.0"
 
 electron-to-chromium@^1.3.649:
-  version "1.3.672"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.672.tgz#3a6e335016dab4bc584d5292adc4f98f54541f6a"
-  integrity sha512-gFQe7HBb0lbOMqK2GAS5/1F+B0IMdYiAgB9OT/w1F4M7lgJK2aNOMNOM622aEax+nS1cTMytkiT0uMOkbtFmHw==
+  version "1.3.673"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.673.tgz#b4f81c930b388f962b7eba20d0483299aaa40913"
+  integrity sha512-ms+QR2ckfrrpEAjXweLx6kNCbpAl66DcW//3BZD4BV5KhUgr0RZRce1ON/9J3QyA3JO28nzgb5Xv8DnPr05ILg==
 
 electron-updater@^4.3.5:
   version "4.3.5"
@@ -4826,19 +4826,19 @@ string.prototype.padend@^3.0.0:
     es-abstract "^1.18.0-next.2"
 
 string.prototype.trimend@^1.0.1, string.prototype.trimend@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/string.prototype.trimend/-/string.prototype.trimend-1.0.3.tgz#a22bd53cca5c7cf44d7c9d5c732118873d6cd18b"
-  integrity sha512-ayH0pB+uf0U28CtjlLvL7NaohvR1amUvVZk+y3DYb0Ey2PUV5zPkkKy9+U1ndVEIXO8hNg18eIv9Jntbii+dKw==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/string.prototype.trimend/-/string.prototype.trimend-1.0.4.tgz#e75ae90c2942c63504686c18b287b4a0b1a45f80"
+  integrity sha512-y9xCjw1P23Awk8EvTpcyL2NIr1j7wJ39f+k6lvRnSMz+mz9CGz9NYPelDk42kOz6+ql8xjfK8oYzy3jAP5QU5A==
   dependencies:
-    call-bind "^1.0.0"
+    call-bind "^1.0.2"
     define-properties "^1.1.3"
 
 string.prototype.trimstart@^1.0.1, string.prototype.trimstart@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/string.prototype.trimstart/-/string.prototype.trimstart-1.0.3.tgz#9b4cb590e123bb36564401d59824298de50fd5aa"
-  integrity sha512-oBIBUy5lea5tt0ovtOFiEQaBkoBBkyJhZXzJYrSmDo5IUUqbOPvVezuRs/agBIdZ2p2Eo1FD6bD9USyBLfl3xg==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/string.prototype.trimstart/-/string.prototype.trimstart-1.0.4.tgz#b36399af4ab2999b4c9c648bd7a3fb2bb26feeed"
+  integrity sha512-jh6e984OBfvxS50tdY2nRZnoC5/mLFKOREQfw8t5yytkoUsJRNxvI/E39qu1sD0OtWI3OC0XgKSmcWwziwYuZw==
   dependencies:
-    call-bind "^1.0.0"
+    call-bind "^1.0.2"
     define-properties "^1.1.3"
 
 string_decoder@^1.1.1:
