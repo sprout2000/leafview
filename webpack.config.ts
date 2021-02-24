@@ -54,10 +54,8 @@ const base: Configuration = {
     minimize: !isDev,
     minimizer: [new TerserWebpackPlugin(), new CssMinimizerWebpackPlugin()],
   },
-  performance: {
-    hints: false,
-  },
   stats: 'errors-only',
+  performance: { hints: false },
   devtool: isDev ? 'inline-source-map' : undefined,
 };
 
@@ -84,6 +82,7 @@ const renderer: Configuration = {
     renderer: './src/index.tsx',
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       minify: !isDev,
@@ -91,7 +90,6 @@ const renderer: Configuration = {
       filename: 'index.html',
       scriptLoading: 'blocking',
     }),
-    new MiniCssExtractPlugin(),
   ],
 };
 
