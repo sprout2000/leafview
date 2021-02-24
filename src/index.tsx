@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { setLocales } from './setLocales';
 
 import App from './App';
-import './styles.scss';
+import './index.scss';
 
 const locale =
   (window.navigator.languages && window.navigator.languages[0]) ||

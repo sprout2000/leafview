@@ -79,7 +79,7 @@ const renderer: Configuration = {
   ...base,
   target: 'web',
   entry: {
-    renderer: './src/index.tsx',
+    index: './src/index.tsx',
   },
   plugins: [
     new MiniCssExtractPlugin(),
