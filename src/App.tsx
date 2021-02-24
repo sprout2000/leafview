@@ -263,12 +263,14 @@ const App: React.FC = () => {
   }, [url]);
 
   useEffect(() => {
-    const resizeObserver = new ResizeObserver((entries) => {
-      const width = entries[0].contentRect.width;
-      const height = entries[0].contentRect.height;
+    const resizeObserver = new ResizeObserver(
+      (entries: ResizeObserverEntry[]) => {
+        const width = entries[0].contentRect.width;
+        const height = entries[0].contentRect.height;
 
-      draw(width, height);
-    });
+        draw(width, height);
+      }
+    );
 
     if (mapRef.current) resizeObserver.observe(mapRef.current);
 
