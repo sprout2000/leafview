@@ -72,8 +72,6 @@ const createWindow = () => {
     show: false,
     backgroundColor: nativeTheme.shouldUseDarkColors ? '#1e1e23' : '#f8f8f8',
     webPreferences: {
-      enableRemoteModule: false,
-      nodeIntegration: false,
       worldSafeExecuteJavaScript: true,
       contextIsolation: true,
       safeDialogs: true,
