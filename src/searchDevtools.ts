@@ -2,7 +2,7 @@ import os from 'os';
 import fs from 'fs';
 import path from 'path';
 
-export const searchDevtools = async (): Promise<void | string[]> => {
+export const searchDevtools = async (): Promise<string | void | undefined> => {
   const isWin32 = os.platform() === 'win32';
   const isDarwin = os.platform() === 'darwin';
 
@@ -19,6 +19,7 @@ export const searchDevtools = async (): Promise<void | string[]> => {
       dirents
         .filter((dirent) => dirent.isDirectory())
         .map(({ name }) => path.resolve(extPath, name))
+        .shift()
     )
     .catch((err) => console.log(err));
 };

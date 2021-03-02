@@ -242,10 +242,10 @@ if (!gotTheLock && !isDarwin) {
     setLocales(locale);
 
     if (isDev) {
-      const extPaths = await searchDevtools();
+      const extPath = await searchDevtools();
 
-      if (extPaths) {
-        await session.defaultSession.loadExtension(extPaths[0], {
+      if (extPath) {
+        await session.defaultSession.loadExtension(extPath, {
           allowFileAccess: true,
         });
       }
