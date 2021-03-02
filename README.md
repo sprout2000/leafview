@@ -48,7 +48,6 @@
 | API                        | Value   |
 | :------------------------- | :------ |
 | default-src (CSP)          | `self`  |
-| script-src (CSP)           | `self`  |
 | nodeIntegration            | `false` |
 | enableRemoteModule         | `false` |
 | worldSafeExecuteJavaScript | `true`  |
