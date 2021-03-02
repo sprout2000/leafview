@@ -13,7 +13,6 @@ import i18next from 'i18next';
 import stateKeeper from 'electron-window-state';
 import log from 'electron-log';
 
-import os from 'os';
 import fs from 'fs';
 import path from 'path';
 import mime from 'mime-types';
@@ -21,6 +20,7 @@ import natsort from 'natsort';
 
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
+import { searchDevtools } from './searchDevtools';
 
 console.log = log.log;
 autoUpdater.logger = log;
@@ -242,12 +242,7 @@ if (!gotTheLock && !isDarwin) {
     setLocales(locale);
 
     if (isDev) {
-      const extPath = path.join(
-        os.homedir(),
-        isDarwin
-          ? '/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.10.1_0'
-          : '\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\fmkadmapgofadopljbjfkapdkoienihi\\4.10.1_0'
-      );
+      const extPath = await searchDevtools();
       await session.defaultSession.loadExtension(extPath, {
         allowFileAccess: true,
       });
