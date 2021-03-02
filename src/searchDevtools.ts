@@ -6,12 +6,14 @@ export const searchDevtools = async (): Promise<string | void | undefined> => {
   const isWin32 = os.platform() === 'win32';
   const isDarwin = os.platform() === 'darwin';
 
+  const reactDevtools = '/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi';
+
   const extDir = isDarwin
-    ? '/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi'
+    ? '/Library/Application Support/Google/Chrome'
     : isWin32
-    ? '/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi'
-    : '/.config/google-chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi';
-  const extPath = path.join(os.homedir(), extDir);
+    ? '/AppData/Local/Google/Chrome/User Data'
+    : '/.config/google-chrome';
+  const extPath = path.join(os.homedir(), extDir, reactDevtools);
 
   return await fs.promises
     .readdir(extPath, { withFileTypes: true })
