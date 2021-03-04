@@ -34,6 +34,7 @@
     "lint:eslint": "eslint . --ext .ts,.tsx --fix",
     "lint:prettier": "prettier --write .",
     "lint-staged": "lint-staged",
+    "prerelease": "run-s clean build:prod",
     "release": "ts-node scripts/build.ts",
     "prepackage": "run-s clean build:prod",
     "package": "ts-node scripts/build-unsign.ts",
