@@ -16,13 +16,13 @@ jobs:
         run: yarn install --frozen-lockfile --ignore-optional
       - name: Build
         run: yarn build:prod
-      - name: Release
-        env:
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
-          APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
-          ASC_PROVIDER: ${{ secrets.ASC_PROVIDER }}
-          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-          CSC_LINK: ${{ secrets.CSC_LINK }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn release
+      # - name: Release
+      #   env:
+      #     APPLE_ID: ${{ secrets.APPLE_ID }}
+      #     APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+      #     APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
+      #     ASC_PROVIDER: ${{ secrets.ASC_PROVIDER }}
+      #     CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+      #     CSC_LINK: ${{ secrets.CSC_LINK }}
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: yarn release
