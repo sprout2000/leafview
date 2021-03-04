@@ -9,12 +9,6 @@ build({
     artifactName: '${productName}-${version}-${platform}-x64.${ext}',
     copyright: 'Copyright (C) 2020-2021 sprout2000.',
     files: ['dist/**/*'],
-    publish: [
-      {
-        provider: 'github',
-        releaseType: 'release',
-      },
-    ],
     directories: {
       buildResources: 'assets',
       output: 'release',
@@ -26,7 +20,7 @@ build({
       category: 'public.app-category.photography',
       target: {
         target: 'default',
-        arch: ['x64'],
+        arch: ['x64', 'arm64'],
       },
       icon: 'assets/icon.icns',
       extendInfo: {
