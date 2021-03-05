@@ -63,7 +63,7 @@ export const createMenu = (win: BrowserWindow): Menu => {
         { type: 'separator' },
         {
           label: darwin ? i18next.t('close') : i18next.t('quit'),
-          accelerator: darwin ? 'Cmd+W' : 'Ctrl+Q',
+          accelerator: darwin ? 'Cmd+W' : 'Alt+F4',
           role: darwin ? 'close' : 'quit',
         },
       ],
