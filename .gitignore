@@ -2,6 +2,7 @@ node_modules/
 dist/
 build/
 release/
+coverage/
 npm-*.log
 yarn-*.log
 parent.plist
