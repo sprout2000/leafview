@@ -14,6 +14,8 @@ jobs:
           node-version: 14.x
       - name: Install
         run: yarn install --frozen-lockfile --ignore-optional
+      - name: Test
+        run: yarn test
       - name: Build
         run: yarn build:prod
       # - name: Release
