@@ -22,21 +22,34 @@ export const Float: React.FC<Props> = (props) => {
       <div className="controls">
         <div
           className="icon"
+          data-testid="open"
           title={i18next.t('open')}
           onClick={props.onClickOpen}>
           <AiOutlineFolderOpen size="2rem" />
         </div>
       </div>
       <div className="arrows">
-        <div className="icon" title={i18next.t('prev')} onClick={props.prev}>
+        <div
+          className="icon"
+          data-testid="prev"
+          title={i18next.t('prev')}
+          onClick={props.prev}>
           <AiOutlineLeftCircle size="2rem" />
         </div>
-        <div className="icon" title={i18next.t('next')} onClick={props.next}>
+        <div
+          className="icon"
+          data-testid="next"
+          title={i18next.t('next')}
+          onClick={props.next}>
           <AiOutlineRightCircle size="2rem" />
         </div>
       </div>
       <div className="trash">
-        <div className="icon" title={i18next.t('trash')} onClick={props.remove}>
+        <div
+          className="icon"
+          data-testid="trash"
+          title={i18next.t('trash')}
+          onClick={props.remove}>
           <AiOutlineDelete size="2rem" />
         </div>
       </div>
