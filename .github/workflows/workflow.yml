@@ -16,8 +16,8 @@ jobs:
         run: yarn install --frozen-lockfile --ignore-optional
       - name: Test
         run: yarn test
-      - name: Build
-        run: yarn build:prod
+      # - name: Build
+      # run: yarn build:prod
       # - name: Release
       #   env:
       #     APPLE_ID: ${{ secrets.APPLE_ID }}
