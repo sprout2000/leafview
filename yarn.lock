@@ -846,10 +846,15 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
-"@types/node@*", "@types/node@^14.14.34", "@types/node@^14.6.2":
+"@types/node@*", "@types/node@^14.6.2":
   version "14.14.34"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.34.tgz#07935194fc049069a1c56c0c274265abeddf88da"
   integrity sha512-dBPaxocOK6UVyvhbnpFIj2W+S+1cBTkHQbFQfeeJhoKFbzYcVUGHvddeWPSucKATb3F0+pgDq0i6ghEaZjsugA==
+
+"@types/node@^14.14.35":
+  version "14.14.35"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.35.tgz#42c953a4e2b18ab931f72477e7012172f4ffa313"
+  integrity sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -2326,10 +2331,10 @@ css-declaration-sorter@^4.0.1:
     postcss "^7.0.1"
     timsort "^0.3.0"
 
-css-loader@^5.1.2:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-5.1.2.tgz#b93dba498ec948b543b49d4fab5017205d4f5c3e"
-  integrity sha512-T7vTXHSx0KrVEg/xjcl7G01RcVXpcw4OELwDPvkr7izQNny85A84dK3dqrczuEfBcu7Yg7mdTjJLSTibRUoRZg==
+css-loader@^5.1.3:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-5.1.3.tgz#87f6fc96816b20debe3cf682f85c7e56a963d0d1"
+  integrity sha512-CoPZvyh8sLiGARK3gqczpfdedbM74klGWurF2CsNZ2lhNaXdLIUks+3Mfax3WBeRuHoglU+m7KG/+7gY6G4aag==
   dependencies:
     camelcase "^6.2.0"
     cssesc "^3.0.0"
@@ -2344,10 +2349,10 @@ css-loader@^5.1.2:
     schema-utils "^3.0.0"
     semver "^7.3.4"
 
-css-minimizer-webpack-plugin@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/css-minimizer-webpack-plugin/-/css-minimizer-webpack-plugin-1.2.0.tgz#3e9d75f6bcc16f1eb84d56ebfee124d1e1f2e1c5"
-  integrity sha512-XU4+PXw7QKAlRGU+fB386YiczAAPtk0kVsB/Qf2nX8GJaOXgTsk/PST8YBExeoD299wheG//MCCKlCD5fykb7Q==
+css-minimizer-webpack-plugin@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/css-minimizer-webpack-plugin/-/css-minimizer-webpack-plugin-1.3.0.tgz#d867b4a54ca9920125b30263505e8cca72bc8cf1"
+  integrity sha512-jFa0Siplmfef4ndKglpVaduY47oHQwioAOEGK0f0vAX0s+vc+SmP6cCMoc+8Adau5600RnOEld5VVdC8CQau7w==
   dependencies:
     cacache "^15.0.5"
     cssnano "^4.1.10"
