@@ -8,7 +8,7 @@ import empty from './empty.png';
 
 const { myAPI } = window;
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   const [url, setUrl] = useState(empty);
 
   const mapRef = useRef<HTMLDivElement>(null);
@@ -299,5 +299,3 @@ const App: React.FC = () => {
     </div>
   );
 };
-
-export default App;
