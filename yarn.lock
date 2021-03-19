@@ -666,10 +666,10 @@
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
 
-"@testing-library/user-event@^13.0.1":
-  version "13.0.1"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.0.1.tgz#a1c0727ca3eefa6f9bd0ccce98d02770e6446e8f"
-  integrity sha512-7n3Y5Vohib6yVFW60JlCvQOqBDIlE1SRyo78nmoHwePAg3SVhnfyOI30RYNj3yFF7qy7e0uVlewzTyvNxyJjEA==
+"@testing-library/user-event@^13.0.6":
+  version "13.0.6"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.0.6.tgz#06ace823532775251b864212b6b1405c9c46c06d"
+  integrity sha512-61Rv1/9pr7rCilwnQ+uLdiaCBFSQp2GRmF2PHrX6gIy0mWqnR43p5pMJAdMA7PZ3JUN+8YyN5S2d1fq9DyYnYw==
   dependencies:
     "@babel/runtime" "^7.12.5"
 
@@ -716,14 +716,14 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/css-minimizer-webpack-plugin@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@types/css-minimizer-webpack-plugin/-/css-minimizer-webpack-plugin-1.1.1.tgz#7a31852db8892d45019964d489087c70b0f422eb"
-  integrity sha512-Xh3r1elahxDpRpD/ooPHoxqkJptaWAXsWJOVFvtGTEqt2o8tkv1Ea4LyZb0f++vP6JLg1IzxU5C/Kck8aN/oLQ==
+"@types/css-minimizer-webpack-plugin@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@types/css-minimizer-webpack-plugin/-/css-minimizer-webpack-plugin-1.1.2.tgz#1718a4586f0d4215e12410076db6d599aad07d00"
+  integrity sha512-uCjV7BHvwcQwC2m4qrInlWtCN36JyHHDXhqLViEsZKofruCm3PzXNqhzilO+VsYCACwiFIl0eMcxtH/HrZpYrA==
   dependencies:
     "@types/cssnano" "*"
     "@types/webpack" "*"
-    postcss "7.0.32"
+    postcss "^7.0.32"
 
 "@types/cssnano@*":
   version "4.0.0"
@@ -6222,19 +6222,10 @@ postcss-value-parser@^4.0.2, postcss-value-parser@^4.1.0:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.1.0.tgz#443f6a20ced6481a2bda4fa8532a6e55d789a2cb"
   integrity sha512-97DXOFbQJhk71ne5/Mt6cOu6yxsSfM0QGQyl0L25Gca4yGWEGJaig7l7gbCX623VqTBNGLRLaVUCnNkcedlRSQ==
 
-"postcss@5 - 7", postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.27:
+"postcss@5 - 7", postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.27, postcss@^7.0.32:
   version "7.0.35"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.35.tgz#d2be00b998f7f211d8a276974079f2e92b970e24"
   integrity sha512-3QT8bBJeX/S5zKTTjTCIjRF3If4avAT6kqxcASlTWEtAFCb9NH0OUxNDfgZSWdP5fJnBYCMEWkIFfWeugjzYMg==
-  dependencies:
-    chalk "^2.4.2"
-    source-map "^0.6.1"
-    supports-color "^6.1.0"
-
-postcss@7.0.32:
-  version "7.0.32"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.32.tgz#4310d6ee347053da3433db2be492883d62cec59d"
-  integrity sha512-03eXong5NLnNCD05xscnGKGDZ98CyzoqPSMjOe6SuoQY7Z2hIj0Ld1g/O/UQRuOle2aRtiIRDg9tDcTGAkLfKw==
   dependencies:
     chalk "^2.4.2"
     source-map "^0.6.1"
