@@ -114,7 +114,7 @@ export const App: React.FC = () => {
     }
 
     const list = await myAPI.readdir(dir);
-    if (!list || list.length === 0 || !list.includes(url)) {
+    if (!list || list.length === 0) {
       setUrl(empty);
       return;
     }
@@ -122,7 +122,7 @@ export const App: React.FC = () => {
     if (list.length === 1) return;
 
     const index = list.indexOf(url);
-    if (index === list.length - 1) {
+    if (index === list.length - 1 || index === -1) {
       setUrl(list[0]);
     } else {
       setUrl(list[index + 1]);
@@ -139,7 +139,7 @@ export const App: React.FC = () => {
     }
 
     const list = await myAPI.readdir(dir);
-    if (!list || list.length === 0 || !list.includes(url)) {
+    if (!list || list.length === 0) {
       setUrl(empty);
       return;
     }
@@ -149,6 +149,8 @@ export const App: React.FC = () => {
     const index = list.indexOf(url);
     if (index === 0) {
       setUrl(list[list.length - 1]);
+    } else if (index === -1) {
+      setUrl(list[0]);
     } else {
       setUrl(list[index - 1]);
     }
