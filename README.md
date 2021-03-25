@@ -9,7 +9,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/sprout2000/leafview)](https://github.com/sprout2000/leafview/stargazers)
 ![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/sprout2000/leafview)
 
-## Features
+## 👍 Features
 
 - Pan & WheelZoom
 - Fast
@@ -17,9 +17,9 @@
 - Memory-Friendly
 - Auto Update (_macOS_)
 
-## Usage
+## 📗 Usage
 
-### Keyboard Shortcuts
+### ⌨️ Keyboard Shortcuts
 
 |                                     Key                                     | Function               | Platform |
 | :-------------------------------------------------------------------------: | :--------------------- | :------- |
@@ -35,7 +35,7 @@
 |                               <kbd>F11</kbd>                                | Toggle Fullscreen      | Windows  |
 |                <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>                | Toggle Developer Tools | Windows  |
 
-### Mouse Operations
+### 🖱️ Mouse Operations
 
 |    Mouse     | Function    |
 | :----------: | :---------- |
@@ -43,7 +43,7 @@
 | double click | reset zoom  |
 |    wheel     | zoom in/out |
 
-## Security
+## 🔒 Security
 
 | API                        | Value   |
 | :------------------------- | :------ |
@@ -55,7 +55,7 @@
 | safeDialogs                | `true`  |
 | sandbox                    | `true`  |
 
-## Supported Image Formats
+## 🌈 Supported Image Formats
 
 - `bmp` (com.microsoft.bmp)
 - `ico` (com.microsoft.ico)
@@ -65,7 +65,7 @@
 - `svg` (public.svg-image)
 - `webp` (com.google.webp)
 
-## Build and Install
+## 🛠️ Build and Install
 
 ```
 $ git clone git@github.com:sprout2000/leafview.git
@@ -77,18 +77,18 @@ _Note that you will need to have [Node.js](https://nodejs.org) and [Git](https:/
 
 _And you might also need to have some build tools (ex. [Microsoft Build Tools](https://www.microsoft.com/en-us/download/details.aspx?id=48159), [Xcode](https://apps.apple.com/app/xcode/id497799835)) installed._
 
-## Download
+## ✨ Download
 
-### macOS (x64, arm64)
+###  macOS (x64, arm64)
 
 You can download the latest version of LeafView from the releases page here:  
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
-### Windows10
+### 🖥️ Windows10
 
 You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
 
-## Contribution
+## 🍻 Contribution
 
 I need more locale files.  
 When you translate the menu into your language, please send me the locale file as a pull request.
@@ -114,6 +114,6 @@ When you translate the menu into your language, please send me the locale file a
  };
 ```
 
-## License
+## 🏛️ License
 
 [MIT](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
