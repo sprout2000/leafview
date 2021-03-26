@@ -195,32 +195,34 @@ const createWindow = () => {
     mainWindow.webContents.send('menu-open', filepath);
   });
 
-  if (isDarwin) autoUpdater.checkForUpdatesAndNotify();
+  if (isDarwin) {
+    autoUpdater.checkForUpdatesAndNotify();
 
-  autoUpdater.once('error', (_e, err) => {
-    log.info(`Error in auto-updater: ${err}`);
-  });
+    autoUpdater.once('error', (_e, err) => {
+      log.info(`Error in auto-updater: ${err}`);
+    });
 
-  autoUpdater.once('update-downloaded', async () => {
-    log.info(`Update downloaded...`);
+    autoUpdater.once('update-downloaded', async () => {
+      log.info(`Update downloaded...`);
 
-    await dialog
-      .showMessageBox(mainWindow, {
-        type: 'info',
-        buttons: ['Install', 'Not now'],
-        defaultId: 0,
-        cancelId: 1,
-        title: 'Update Downloaded',
-        message: 'Update downloaded',
-        detail:
-          'We have finished downloading the latest updates.\n' +
-          'Do you want to install the updates now?',
-      })
-      .then((result) => {
-        result.response === 0 && autoUpdater.quitAndInstall();
-      })
-      .catch((err) => log.info(`Error in showMessageBox: ${err}`));
-  });
+      await dialog
+        .showMessageBox(mainWindow, {
+          type: 'info',
+          buttons: ['Install', 'Not now'],
+          defaultId: 0,
+          cancelId: 1,
+          title: 'Update Downloaded',
+          message: 'Update downloaded',
+          detail:
+            'We have finished downloading the latest updates.\n' +
+            'Do you want to install the updates now?',
+        })
+        .then((result) => {
+          result.response === 0 && autoUpdater.quitAndInstall();
+        })
+        .catch((err) => log.info(`Error in showMessageBox: ${err}`));
+    });
+  }
 
   windowState.manage(mainWindow);
 };
