@@ -147,8 +147,8 @@ const createWindow = () => {
   Menu.setApplicationMenu(menu);
 
   if (isDev) mainWindow.webContents.openDevTools({ mode: 'detach' });
-  mainWindow.loadFile('dist/index.html');
 
+  mainWindow.loadFile('dist/index.html');
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
   mainWindow.webContents.once('did-finish-load', () => {
