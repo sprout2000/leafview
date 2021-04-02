@@ -14,8 +14,9 @@ import es from './locales/es.json';
 /** Merge the pull request sent by nukeop */
 /** https://github.com/sprout2000/leafview/pull/214 */
 import pl from './locales/pl.json';
-
-import ru from './locales/ru.json'
+/** Merge the pull request sent by kitt3911 */
+/** https://github.com/sprout2000/leafview/pull/215 */
+import ru from './locales/ru.json';
 
 export const setLocales = (locale: string): void => {
   i18next.init({
