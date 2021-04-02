@@ -11,6 +11,8 @@ import de from './locales/de.json';
 /** Merge the pull request sent by singuerinc */
 /** https://github.com/sprout2000/leafview/pull/178 */
 import es from './locales/es.json';
+/** Merge the pull request sent by nukeop */
+/** https://github.com/sprout2000/leafview/pull/214 */
 import pl from './locales/pl.json';
 
 export const setLocales = (locale: string): void => {
