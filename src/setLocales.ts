@@ -15,6 +15,8 @@ import es from './locales/es.json';
 /** https://github.com/sprout2000/leafview/pull/214 */
 import pl from './locales/pl.json';
 
+import ru from './locales/ru.json'
+
 export const setLocales = (locale: string): void => {
   i18next.init({
     lng: locale,
@@ -26,6 +28,7 @@ export const setLocales = (locale: string): void => {
       de: { translation: de },
       es: { translation: es },
       pl: { translation: pl },
+      ru: { translation: ru },
     },
   });
 };
