@@ -79,7 +79,7 @@ _And you might also need to have some build tools (ex. [Microsoft Build Tools](h
 
 ## ✨ Download
 
-###  macOS (x64, arm64)
+### 💻 macOS (x64, arm64)
 
 You can download the latest version of LeafView from the releases page here:  
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
