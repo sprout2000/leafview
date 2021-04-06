@@ -40,12 +40,6 @@ const isDev = process.env.NODE_ENV === 'development';
 
 let openfile: string | null = null;
 
-const getResourceDirectory = () => {
-  return process.env.NODE_ENV === 'development'
-    ? path.join(process.cwd(), 'dist')
-    : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
-};
-
 const checkmime = (filepath: string) => {
   const mimetype = mime.lookup(filepath);
 
@@ -76,7 +70,7 @@ const createWindow = () => {
       contextIsolation: true,
       safeDialogs: true,
       sandbox: true,
-      preload: path.resolve(getResourceDirectory(), 'preload.js'),
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
 
