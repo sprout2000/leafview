@@ -13,8 +13,6 @@ build({
       buildResources: 'assets',
       output: 'release',
     },
-    asar: true,
-    asarUnpack: ['dist/preload.js'],
     mac: {
       appId: process.env.APP_BUNDLE_ID,
       category: 'public.app-category.photography',
