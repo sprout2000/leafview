@@ -13,14 +13,14 @@ export const searchDevtools = async (): Promise<string | void | undefined> => {
     : isWin32
     ? '/AppData/Local/Google/Chrome/User Data'
     : '/.config/google-chrome';
-  const extPath = path.join(os.homedir(), extDir, reactDevtools);
+  const dirPath = path.join(os.homedir(), extDir, reactDevtools);
 
   return await fs.promises
-    .readdir(extPath, { withFileTypes: true })
+    .readdir(dirPath, { withFileTypes: true })
     .then((dirents) =>
       dirents
         .filter((dirent) => dirent.isDirectory())
-        .map(({ name }) => path.resolve(extPath, name))
+        .map(({ name }) => path.resolve(dirPath, name))
         .shift()
     )
     .catch((err) => console.log(err));
