@@ -189,7 +189,7 @@ const createWindow = () => {
     mainWindow.webContents.send('menu-open', filepath);
   });
 
-  if (isDarwin) {
+  if (isDarwin && !isDev) {
     autoUpdater.checkForUpdatesAndNotify();
 
     autoUpdater.once('error', (_e, err) => {
