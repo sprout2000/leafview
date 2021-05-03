@@ -9,7 +9,7 @@ import empty from './empty.png';
 const { myAPI } = window;
 
 export const App: React.FC = () => {
-  const [url, setUrl] = useState(empty);
+  const [url, setUrl] = useState<string>(empty);
 
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
