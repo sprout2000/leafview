@@ -24,6 +24,10 @@
     "cross-platform"
   ],
   "main": "dist/main.js",
+  "engines": {
+    "node": ">=14.0.0 <16.0.0",
+    "npm": "please_use_yarn_instead"
+  },
   "scripts": {
     "start": "run-s clean build serve",
     "serve": "electron .",
