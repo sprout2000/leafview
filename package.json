@@ -32,6 +32,7 @@
     "start": "run-s clean build serve",
     "serve": "electron .",
     "clean": "rimraf dist release",
+    "clean:prod": "rimraf node_modules dist release",
     "build": "cross-env NODE_ENV=\"development\" webpack --progress",
     "build:prod": "cross-env NODE_ENV=\"production\" webpack --progress",
     "build:unsign": "ts-node scripts/build-unsign.ts",
@@ -40,9 +41,10 @@
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --ext .ts,.tsx --fix",
     "lint:prettier": "prettier --write .",
-    "package": "run-s clean build:prod build:unsign",
-    "package:appx": "run-s clean build:prod build:appx",
-    "package:darwin": "run-s clean build:prod build:darwin"
+    "ci": "yarn install --ignore-optional --frozen-lockfile",
+    "package": "run-s clean:prod ci build:prod build:unsign",
+    "package:appx": "run-s clean:prod ci build:prod build:appx",
+    "package:darwin": "run-s clean:prod ci build:prod build:darwin"
   },
   "dependencies": {
     "electron-log": "^4.3.4",
