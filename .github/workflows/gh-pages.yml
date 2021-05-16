@@ -1,9 +1,8 @@
 name: GitHub Pages
 
 on:
-  push:
-    tags:
-      - v*
+  schedule:
+      - cron: 0 6 * * 4
 
 jobs:
   build:
