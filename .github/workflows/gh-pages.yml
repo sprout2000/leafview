@@ -2,7 +2,7 @@ name: GitHub Pages
 
 on:
   schedule:
-      - cron: 0 6 * * 4
+      - cron: 0 7 * * 1
 
 jobs:
   build:
