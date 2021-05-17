@@ -65,6 +65,18 @@
 - `svg` (public.svg-image)
 - `webp` (com.google.webp)
 
+## 📚 Supported Languages
+
+| Language         | Code |
+| :--------------- | :--: |
+| English 🇺🇸 🇬🇧 🌐 | `en` |
+| 日本語 🇯🇵        | `ja` |
+| Čeština 🇨🇿       | `cs` |
+| Deutsch 🇩🇪 🇨🇭 🇦🇹 | `de` |
+| Español 🇪🇸 🇲🇽    | `es` |
+| Polski 🇵🇱        | `pl` |
+| Русский 🇷🇺       | `ru` |
+
 ## 🛠️ Build and Install
 
 ```
