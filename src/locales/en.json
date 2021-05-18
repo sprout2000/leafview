@@ -10,6 +10,7 @@
   "toggleFullscreen": "Toggle Fullscreen",
   "toggleDevtools": "Toggle Developer Tools",
   "toggleMenubar": "Toggle Menubar",
+  "toggleDarkmode": "Toggle Dark Mode",
   "window": "Window",
   "minimize": "Minimize",
   "maximize": "Maximize",

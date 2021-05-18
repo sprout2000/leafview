@@ -8,9 +8,10 @@ import {
   nativeTheme,
   BrowserWindow,
 } from 'electron';
+
+import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
 import i18next from 'i18next';
-import stateKeeper from 'electron-window-state';
 import log from 'electron-log';
 
 import fs from 'fs';
@@ -21,6 +22,7 @@ import natsort from 'natsort';
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 import { searchDevtools } from './searchDevtools';
+import { TypedStore } from './TypedStore';
 
 console.log = log.log;
 autoUpdater.logger = log;
@@ -38,6 +40,16 @@ const gotTheLock = app.requestSingleInstanceLock();
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
+const store = new Store<TypedStore>({
+  defaults: {
+    darkmode: nativeTheme.shouldUseDarkColors,
+    x: undefined,
+    y: undefined,
+    width: 800,
+    height: isDarwin ? 558 : 602,
+  },
+});
+
 let openfile: string | null = null;
 
 const checkmime = (filepath: string) => {
@@ -49,22 +61,17 @@ const checkmime = (filepath: string) => {
 };
 
 const createWindow = () => {
-  const windowState = stateKeeper({
-    defaultWidth: 800,
-    defaultHeight: isDarwin ? 558 : 602,
-  });
-
   const dotfiles = isDarwin ? '.' : '._';
 
   const mainWindow = new BrowserWindow({
-    x: windowState.x,
-    y: windowState.y,
-    width: windowState.width,
-    height: windowState.height,
+    x: store.get('x'),
+    y: store.get('y'),
+    width: store.get('width'),
+    height: store.get('height'),
     minWidth: 800,
     minHeight: isDarwin ? 558 : 602,
     show: false,
-    backgroundColor: nativeTheme.shouldUseDarkColors ? '#1e1e23' : '#f8f8f8',
+    backgroundColor: store.get('darkmode') ? '#1e1e23' : '#f8f8f8',
     webPreferences: {
       worldSafeExecuteJavaScript: true,
       contextIsolation: true,
@@ -73,6 +80,12 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+
+  if (store.get('darkmode')) {
+    nativeTheme.themeSource = 'dark';
+  } else {
+    nativeTheme.themeSource = 'light';
+  }
 
   ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
 
@@ -137,7 +150,7 @@ const createWindow = () => {
     mainWindow.setTitle(path.basename(filepath));
   });
 
-  const menu = createMenu(mainWindow);
+  const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
 
   if (isDev) mainWindow.webContents.openDevTools({ mode: 'detach' });
@@ -218,7 +231,11 @@ const createWindow = () => {
     });
   }
 
-  windowState.manage(mainWindow);
+  mainWindow.once('close', () => {
+    const darkmode = store.get('darkmode', nativeTheme.shouldUseDarkColors);
+    const { x, y, width, height } = mainWindow.getBounds();
+    store.set({ x, y, width, height, darkmode });
+  });
 };
 
 if (!gotTheLock && !isDarwin) {

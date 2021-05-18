@@ -10,6 +10,7 @@
   "toggleFullscreen": "Cambiar a pantalla completa",
   "toggleDevtools": "Mostrar/Ocultar Developer Tools",
   "toggleMenubar": "Alternar la barra de menús",
+  "toggleDarkmode": "Toggle Dark Mode",
   "window": "Ventana",
   "minimize": "Minimizar",
   "maximize": "Maximizar",

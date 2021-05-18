@@ -10,6 +10,7 @@
   "toggleFullscreen": "Переключить на полный экран",
   "toggleDevtools": "Включить инструменты разработчика",
   "toggleMenubar": "Переключить меню",
+  "toggleDarkmode": "Toggle Dark Mode",
   "window": "Окно",
   "minimize": "Уменьшить",
   "maximize": "Увеличить",

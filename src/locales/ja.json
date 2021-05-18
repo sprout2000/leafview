@@ -10,6 +10,7 @@
   "toggleFullscreen": "フルスクリーンのトグル",
   "toggleDevtools": "開発者ツールのトグル",
   "toggleMenubar": "メニューバーのトグル",
+  "toggleDarkmode": "ダークモードのトグル",
   "window": "ウィンドウ",
   "minimize": "最小化",
   "maximize": "最大化",

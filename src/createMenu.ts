@@ -5,12 +5,19 @@ import {
   Menu,
   MenuItemConstructorOptions,
   shell,
+  nativeTheme,
 } from 'electron';
+import Store from 'electron-store';
+
+import { TypedStore } from './TypedStore';
 
 import path from 'path';
 import i18next from 'i18next';
 
-export const createMenu = (win: BrowserWindow): Menu => {
+export const createMenu = (
+  win: BrowserWindow,
+  store: Store<TypedStore>
+): Menu => {
   const darwin = process.platform === 'darwin';
   const dotfiles = darwin ? '.' : '._';
 
@@ -113,6 +120,22 @@ export const createMenu = (win: BrowserWindow): Menu => {
               win.setMenuBarVisibility(!win.menuBarVisible);
             },
           },
+          {
+            label: i18next.t('toggleDarkmode'),
+            type: 'checkbox',
+            id: 'darkmode',
+            accelerator: 'Ctrl+D',
+            click: () => {
+              if (nativeTheme.shouldUseDarkColors) {
+                nativeTheme.themeSource = 'light';
+                store.set('darkmode', false);
+              } else {
+                nativeTheme.themeSource = 'dark';
+                store.set('darkmode', true);
+              }
+            },
+            checked: nativeTheme.shouldUseDarkColors,
+          },
           { type: 'separator' },
           {
             label: i18next.t('close'),
@@ -164,6 +187,23 @@ export const createMenu = (win: BrowserWindow): Menu => {
             label: i18next.t('zoom'),
             accelerator: 'Cmd+L',
             role: 'zoom',
+          },
+          { type: 'separator' },
+          {
+            label: i18next.t('toggleDarkmode'),
+            type: 'checkbox',
+            id: 'darkmode',
+            accelerator: 'Cmd+D',
+            click: () => {
+              if (nativeTheme.shouldUseDarkColors) {
+                nativeTheme.themeSource = 'light';
+                store.set('darkmode', false);
+              } else {
+                nativeTheme.themeSource = 'dark';
+                store.set('darkmode', true);
+              }
+            },
+            checked: nativeTheme.shouldUseDarkColors,
           },
           { type: 'separator' },
           {
