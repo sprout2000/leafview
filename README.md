@@ -29,9 +29,11 @@
 |                                <kbd>-</kbd>                                 | Zoom Out               | -        |
 |                                <kbd>0</kbd>                                 | Reset Zoom             | -        |
 | <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan                    | -        |
+|                       <kbd>Command</kbd>+<kbd>D</kbd>                       | Toggle Dark Mode       | macOS    |
 |             <kbd>Command</kbd>+<kbd>Control</kbd>+<kbd>F</kbd>              | Toggle Fullscreen      | macOS    |
 |              <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd>              | Toggle Developer Tools | macOS    |
 |                        <kbd>Ctrl</kbd>+<kbd>T</kbd>                         | Show/Hide Menu Bar     | Windows  |
+|                        <kbd>Ctrl</kbd>+<kbd>D</kbd>                         | Toggle Dark Mode       | Windows  |
 |                               <kbd>F11</kbd>                                | Toggle Fullscreen      | Windows  |
 |                <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>                | Toggle Developer Tools | Windows  |
 
