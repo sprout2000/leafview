@@ -3,6 +3,18 @@
   padding: 0;
 }
 
+@media (prefers-color-scheme: dark) {
+  .container {
+    background: #1e1e23;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .container {
+    background: #f8f8f8;
+  }
+}
+
 @mixin Icon {
   width: 48px;
   height: 48px;
