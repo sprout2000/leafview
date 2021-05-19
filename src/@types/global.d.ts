@@ -13,7 +13,7 @@ export interface Sandbox {
 
   readdir: (dirpath: string) => Promise<void | string[]>;
 
-  moveToTrash: (filepath: string) => Promise<boolean>;
+  moveToTrash: (filepath: string) => Promise<void>;
 
   openDialog: () => Promise<string | void | undefined>;
 

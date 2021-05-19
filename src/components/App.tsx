@@ -173,23 +173,18 @@ export const App: React.FC = () => {
 
     const index = list.indexOf(url);
 
-    const result = await myAPI.moveToTrash(url);
+    await myAPI.moveToTrash(url);
+    const newList = await myAPI.readdir(dir);
 
-    if (!result) {
+    if (!newList || newList.length === 0) {
       setUrl(empty);
       return;
-    } else {
-      const newList = await myAPI.readdir(dir);
-      if (!newList || newList.length === 0) {
-        setUrl(empty);
-        return;
-      }
+    }
 
-      if (index > newList.length - 1) {
-        setUrl(newList[0]);
-      } else {
-        setUrl(newList[index]);
-      }
+    if (index > newList.length - 1) {
+      setUrl(newList[0]);
+    } else {
+      setUrl(newList[index]);
     }
   }, [url]);
 
