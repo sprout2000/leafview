@@ -41,10 +41,9 @@
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --ext .ts,.tsx --fix",
     "lint:prettier": "prettier --write .",
-    "ci": "yarn install --ignore-optional --frozen-lockfile",
-    "package": "run-s clean:prod ci build:prod build:unsign",
-    "package:appx": "run-s clean:prod ci build:prod build:appx",
-    "package:darwin": "run-s clean:prod ci build:prod build:darwin"
+    "package": "run-s clean build:prod build:unsign",
+    "package:appx": "run-s clean build:prod build:appx",
+    "package:darwin": "run-s clean build:prod build:darwin"
   },
   "dependencies": {
     "electron-log": "^4.3.4",
