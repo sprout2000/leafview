@@ -84,7 +84,7 @@
 ```
 $ git clone git@github.com:sprout2000/leafview.git
 $ cd leafview
-$ npm ci && npm run package
+$ npm ci --no-optional && npm run package
 ```
 
 You will find the installer in `release` directory.
