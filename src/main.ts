@@ -71,7 +71,7 @@ const createWindow = () => {
     minWidth: 800,
     minHeight: isDarwin ? 558 : 602,
     show: false,
-    backgroundColor: store.get('darkmode') ? '#1e1e23' : '#f8f8f8',
+    backgroundColor: store.get('darkmode') ? '#1e1e23' : '#dddddd',
     webPreferences: {
       worldSafeExecuteJavaScript: true,
       contextIsolation: true,
