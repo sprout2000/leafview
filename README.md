@@ -84,19 +84,12 @@
 ```
 $ git clone git@github.com:sprout2000/leafview.git
 $ cd leafview
-
-// on Windows10
-$ yarn install && yarn package
-
-// on macOS
-$ yarn add -D dmg-license && yarn package
+$ npm ci && npm run package
 ```
 
 You will find the installer in `release` directory.
 
-_Note that you will need to have [Node.js](https://nodejs.org/en/), [Git](https://git-scm.com/) and [Yarn](https://yarnpkg.com/) installed._
-
-_And you might also need to have some build tools (ex. [Microsoft Build Tools](https://www.microsoft.com/en-us/download/details.aspx?id=48159), [Xcode](https://apps.apple.com/app/xcode/id497799835)) installed._
+**Note:** _You will need to have [Node.js](https://nodejs.org/en/) and [Git](https://git-scm.com/) installed._
 
 ## ✨ Download
 
