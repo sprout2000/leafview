@@ -84,7 +84,12 @@
 ```
 $ git clone git@github.com:sprout2000/leafview.git
 $ cd leafview
+
+// on Windows10
 $ yarn install && yarn package
+
+// on macOS
+$ yarn add -D dmg-license && yarn package
 ```
 
 You will find the installer in `release` directory.
