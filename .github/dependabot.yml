@@ -5,19 +5,19 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: 'npm' # See documentation for possible values
+    directory: '/' # Location of package manifests
     schedule:
-      interval: "daily"
-      timezone: "Asia/Tokyo"
+      interval: 'daily'
+      timezone: 'Asia/Tokyo'
     allow:
-      - dependency-name: "@types/*"
-      - dependency-name: "electron"
-      - dependency-name: "electron-log"
-      - dependency-name: "electron-store"
-      - dependency-name: "electron-updater"
-      - dependency-name: "i18next"
-      - dependency-name: "leaflet"
-      - dependency-name: "mime-types"
-      - dependency-name: "natsort"
-      - dependency-name: "react*"
+      - dependency-name: '@types/*'
+      - dependency-name: 'electron'
+      - dependency-name: 'electron-log'
+      - dependency-name: 'electron-store'
+      - dependency-name: 'electron-updater'
+      - dependency-name: 'i18next'
+      - dependency-name: 'leaflet'
+      - dependency-name: 'mime-types'
+      - dependency-name: 'natsort'
+      - dependency-name: 'react*'
