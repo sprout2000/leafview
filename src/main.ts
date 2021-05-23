@@ -52,12 +52,50 @@ const store = new Store<TypedStore>({
 
 let openfile: string | null = null;
 
+const filepathToUint8Array = async (filepath: string) => {
+  const buffer = await fs.promises.readFile(filepath, null);
+  return new Uint8Array(buffer);
+};
+
+const motionAsDataURL = async (filepath: string, motionStart: number) => {
+  const buffer = await fs.promises.readFile(filepath, null);
+  const array = new Uint8Array(buffer);
+  if (motionStart === null || motionStart === undefined) {
+    motionStart = await motionPhotoStart(array);
+  }
+  if (motionStart < 0) {
+    return null;
+  }
+  const motionBuffer = Buffer.from(array.subarray(motionStart));
+  return 'data:video/mp4;base64,' + motionBuffer.toString('base64');
+};
+
+const motionPhotoStart = async (data: string | Uint8Array) => {
+  if (typeof data === 'string') {
+    const mimetype = mime.lookup(data);
+    if (!mimetype || mimetype !== 'image/jpeg') {
+      return -1;
+    }
+
+    data = await filepathToUint8Array(data);
+  }
+  for (var i = 0; i < data.length; i++) {
+    if (
+      data[i + 4] == 0x66 &&
+      data[i + 5] == 0x74 &&
+      data[i + 6] == 0x79 &&
+      data[i + 7] == 0x70
+    ) {
+      return i;
+    }
+  }
+  return -1;
+};
+
 const checkmime = (filepath: string) => {
   const mimetype = mime.lookup(filepath);
 
-  return !mimetype || !mimetype.match(/bmp|ico|gif|jpeg|png|svg|webp/)
-    ? false
-    : true;
+  return mimetype && mimetype.match(/bmp|ico|gif|jpeg|png|svg|webp/);
 };
 
 const createWindow = () => {
@@ -92,6 +130,17 @@ const createWindow = () => {
   ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
     return checkmime(filepath);
   });
+
+  ipcMain.handle('motion-check', async (_e: Event, filepath: string) => {
+    return await motionPhotoStart(filepath);
+  });
+
+  ipcMain.handle(
+    'motion-as-data-url',
+    async (_e: Event, filepath: string, motionStart: number) => {
+      return await motionAsDataURL(filepath, motionStart);
+    }
+  );
 
   ipcMain.handle('dirname', (_e: Event, filepath: string) => {
     return path.dirname(filepath);

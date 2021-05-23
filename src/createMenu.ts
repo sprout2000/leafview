@@ -90,6 +90,15 @@ export const createMenu = (
         },
         { type: 'separator' },
         {
+          label: i18next.t('play'),
+          click: (): void => win.webContents.send('menu-play'),
+        },
+        {
+          label: i18next.t('pause'),
+          click: (): void => win.webContents.send('menu-pause'),
+        },
+        { type: 'separator' },
+        {
           label: i18next.t('toggleFullscreen'),
           role: 'togglefullscreen',
         },

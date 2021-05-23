@@ -7,6 +7,8 @@
   "view": "View",
   "next": "Next image",
   "prev": "Prev image",
+  "play": "Play",
+  "pause": "Pause",
   "toggleFullscreen": "Toggle Fullscreen",
   "toggleDevtools": "Toggle Developer Tools",
   "toggleMenubar": "Toggle Menubar",
