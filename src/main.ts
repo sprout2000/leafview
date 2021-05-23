@@ -40,6 +40,9 @@ const gotTheLock = app.requestSingleInstanceLock();
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
+const motionPattern1 = [0x66, 0x74, 0x79, 0x70];
+const motionPattern2 = [0x6d, 0x70, 0x34, 0x32];
+
 const store = new Store<TypedStore>({
   defaults: {
     darkmode: nativeTheme.shouldUseDarkColors,
@@ -82,6 +85,22 @@ const motionAsDataURL = async (filepath: string, motionStart: number) => {
   return 'data:video/mp4;base64,' + motionBuffer.toString('base64');
 };
 
+const bytePatternIndex = (data: Uint8Array, pattern: number[], start = 0) => {
+  for (var i = start; i < data.length; i++) {
+    let found = true;
+    for (var j = 0; j < pattern.length; j++) {
+      if (data[i + j] !== pattern[j]) {
+        found = false;
+        break;
+      }
+    }
+    if (found) {
+      return i;
+    }
+  }
+  return -1;
+};
+
 const motionPhotoStart = async (data: string | Uint8Array) => {
   if (typeof data === 'string') {
     const mimetype = mime.lookup(data);
@@ -92,17 +111,20 @@ const motionPhotoStart = async (data: string | Uint8Array) => {
 
     data = await filepathToUint8Array(data);
   }
-  for (var i = 0; i < data.length; i++) {
-    if (
-      data[i + 4] == 0x66 &&
-      data[i + 5] == 0x74 &&
-      data[i + 6] == 0x79 &&
-      data[i + 7] == 0x70
-    ) {
+
+  const patternFound = bytePatternIndex(data, motionPattern1);
+  if (patternFound > -1) {
+    const secondPatternFound = bytePatternIndex(
+      data,
+      motionPattern2,
+      patternFound + 4
+    );
+    if (secondPatternFound > -1) {
       toggleMotionMenuItem(true);
-      return i;
+      return patternFound - 4;
     }
   }
+
   toggleMotionMenuItem(false);
   return -1;
 };
