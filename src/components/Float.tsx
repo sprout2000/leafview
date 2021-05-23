@@ -5,6 +5,7 @@ import {
   AiOutlineLeftCircle,
   AiOutlineRightCircle,
   AiOutlineDelete,
+  AiOutlinePlayCircle,
 } from 'react-icons/ai';
 
 import i18next from 'i18next';
@@ -12,8 +13,10 @@ import i18next from 'i18next';
 interface Props {
   onClickOpen: () => Promise<void>;
   prev: () => Promise<void>;
+  motion: () => Promise<void>;
   next: () => Promise<void>;
   remove: () => Promise<void>;
+  motionEnabled: boolean;
 }
 
 export const Float = (props: Props): JSX.Element => {
@@ -44,6 +47,17 @@ export const Float = (props: Props): JSX.Element => {
           <AiOutlineRightCircle size="2rem" />
         </div>
       </div>
+      {props.motionEnabled ? (
+        <div className="motion">
+          <div
+            className="icon"
+            data-testid="motion"
+            title={i18next.t('motion')}
+            onClick={props.motion}>
+            <AiOutlinePlayCircle size="2rem" />
+          </div>
+        </div>
+      ) : null}
       <div className="trash">
         <div
           className="icon"

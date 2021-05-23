@@ -52,6 +52,18 @@ const store = new Store<TypedStore>({
 
 let openfile: string | null = null;
 
+const toggleMotionMenuItem = (enabled: boolean) => {
+  const menu = Menu.getApplicationMenu();
+  if (!menu) {
+    return;
+  }
+  const item = menu.getMenuItemById('motion');
+  if (!item) {
+    return;
+  }
+  item.enabled = enabled;
+};
+
 const filepathToUint8Array = async (filepath: string) => {
   const buffer = await fs.promises.readFile(filepath, null);
   return new Uint8Array(buffer);
@@ -74,6 +86,7 @@ const motionPhotoStart = async (data: string | Uint8Array) => {
   if (typeof data === 'string') {
     const mimetype = mime.lookup(data);
     if (!mimetype || mimetype !== 'image/jpeg') {
+      toggleMotionMenuItem(false);
       return -1;
     }
 
@@ -86,9 +99,11 @@ const motionPhotoStart = async (data: string | Uint8Array) => {
       data[i + 6] == 0x79 &&
       data[i + 7] == 0x70
     ) {
+      toggleMotionMenuItem(true);
       return i;
     }
   }
+  toggleMotionMenuItem(false);
   return -1;
 };
 

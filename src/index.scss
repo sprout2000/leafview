@@ -82,6 +82,13 @@ body,
         }
       }
 
+      .motion {
+        display: flex;
+        .icon {
+          @include Icon();
+        }
+      }
+
       .trash {
         width: 96px;
         display: flex;

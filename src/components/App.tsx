@@ -215,16 +215,10 @@ export const App: React.FC = () => {
     }
   }, [url]);
 
-  const play = useCallback(async (): Promise<void> => {
+  const motion = useCallback(async (): Promise<void> => {
     if (!motionUrl) return;
 
-    setPlayVideo(true);
-  }, [motionUrl, playVideo]);
-
-  const pause = useCallback(async (): Promise<void> => {
-    if (!motionUrl) return;
-
-    setPlayVideo(false);
+    setPlayVideo(!playVideo);
   }, [motionUrl, playVideo]);
 
   const remove = useCallback(async (): Promise<void> => {
@@ -316,20 +310,12 @@ export const App: React.FC = () => {
   }, [prev]);
 
   useEffect(() => {
-    myAPI.menuPlay(play);
+    myAPI.menuMotion(motion);
 
     return (): void => {
-      myAPI.removeMenuPlay();
+      myAPI.removeMenuMotion();
     };
-  }, [play]);
-
-  useEffect(() => {
-    myAPI.menuPause(pause);
-
-    return (): void => {
-      myAPI.removeMenuPause();
-    };
-  }, [pause]);
+  }, [motion]);
 
   useEffect(() => {
     myAPI.menuRemove(remove);
@@ -382,8 +368,10 @@ export const App: React.FC = () => {
         <Float
           onClickOpen={onClickOpen}
           prev={prev}
+          motion={motion}
           next={next}
           remove={remove}
+          motionEnabled={motionUrl !== null}
         />
       </div>
       <div className={url === empty ? 'view init' : 'view'} ref={mapRef} />

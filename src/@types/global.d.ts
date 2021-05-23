@@ -29,11 +29,8 @@ export interface Sandbox {
   menuPrev: (listener: () => Promise<void>) => Electron.IpcRenderer;
   removeMenuPrev: () => Electron.IpcRenderer;
 
-  menuPlay: (listener: () => Promise<void>) => Electron.IpcRenderer;
-  removeMenuPlay: () => Electron.IpcRenderer;
-
-  menuPause: (listener: () => Promise<void>) => Electron.IpcRenderer;
-  removeMenuPause: () => Electron.IpcRenderer;
+  menuMotion: (listener: () => Promise<void>) => Electron.IpcRenderer;
+  removeMenuMotion: () => Electron.IpcRenderer;
 
   menuRemove: (listener: () => Promise<void>) => Electron.IpcRenderer;
   removeMenuRemove: () => Electron.IpcRenderer;

@@ -38,13 +38,9 @@ contextBridge.exposeInMainWorld('myAPI', {
     ipcRenderer.on('menu-prev', listener),
   removeMenuPrev: () => ipcRenderer.removeAllListeners('menu-prev'),
 
-  menuPlay: (listener: () => Promise<void>) =>
-    ipcRenderer.on('menu-play', listener),
-  removeMenuPlay: () => ipcRenderer.removeAllListeners('menu-play'),
-
-  menuPause: (listener: () => Promise<void>) =>
-    ipcRenderer.on('menu-pause', listener),
-  removeMenuPause: () => ipcRenderer.removeAllListeners('menu-pause'),
+  menuMotion: (listener: () => Promise<void>) =>
+    ipcRenderer.on('menu-motion', listener),
+  removeMenuMotion: () => ipcRenderer.removeAllListeners('menu-motion'),
 
   menuRemove: (listener: () => Promise<void>) =>
     ipcRenderer.on('menu-remove', listener),
