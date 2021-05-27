@@ -128,6 +128,17 @@ When you translate the menu into your language, please send me the locale file a
  };
 ```
 
+## 🎉 Contributors
+
+Special Thanks to:
+
+- @guaycuru #228
+- @kitt3911 #215
+- @nukeop #214
+- @singuerinc #178
+- @DrDeee #166
+- @PetrTodorov #68
+
 ## 🏛️ License
 
 [MIT](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
