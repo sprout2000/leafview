@@ -130,14 +130,14 @@ When you translate the menu into your language, please send me the locale file a
 
 ## 🎉 Contributors
 
-Special Thanks to:
+**Special Thanks to:**
 
-- @guaycuru #228
-- @kitt3911 #215
-- @nukeop #214
-- @singuerinc #178
-- @DrDeee #166
-- @PetrTodorov #68
+- [@guaycuru](https://github.com/guaycuru) [#228](https://github.com/sprout2000/leafview/pull/228)
+- [@kitt3911](https://github.com/kitt3911) [#215](https://github.com/sprout2000/leafview/pull/215)
+- [@nukeop](https://github.com/nukeop) [#214](https://github.com/sprout2000/leafview/pull/214)
+- [@singuerinc](https://github.com/singuerinc) [#178](https://github.com/sprout2000/leafview/pull/178)
+- [@DrDeee](https://github.com/DrDeee) [#166](https://github.com/sprout2000/leafview/pull/166)
+- [@PetrTodorov](https://github.com/PetrTodorov) [#68](https://github.com/sprout2000/leafview/pull/68)
 
 ## 🏛️ License
 
