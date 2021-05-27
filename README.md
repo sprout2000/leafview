@@ -132,7 +132,7 @@ When you translate the menu into your language, please send me the locale file a
 
 **Special Thanks to:**
 
-- [@guaycuru](https://github.com/guaycuru) [#228](https://github.com/sprout2000/leafview/pull/228)
+- [@guaycuru](https://github.com/guaycuru) [#228](https://github.com/sprout2000/leafview/pull/228), [#232](https://github.com/sprout2000/leafview/pull/232)
 - [@kitt3911](https://github.com/kitt3911) [#215](https://github.com/sprout2000/leafview/pull/215)
 - [@nukeop](https://github.com/nukeop) [#214](https://github.com/sprout2000/leafview/pull/214)
 - [@singuerinc](https://github.com/singuerinc) [#178](https://github.com/sprout2000/leafview/pull/178)
