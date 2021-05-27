@@ -17,6 +17,9 @@ import pl from './locales/pl.json';
 /** Merge the pull request sent by kitt3911 */
 /** https://github.com/sprout2000/leafview/pull/215 */
 import ru from './locales/ru.json';
+/** Merge the pull request sent by guaycuru */
+/** https://github.com/sprout2000/leafview/pull/232 */
+import pt from './locales/pt.json';
 
 export const setLocales = (locale: string): void => {
   i18next.init({
@@ -34,6 +37,9 @@ export const setLocales = (locale: string): void => {
       'es-419': { translation: es },
       pl: { translation: pl },
       ru: { translation: ru },
+      pt: { translation: pt },
+      'pt-PT': { translation: pt },
+      'pt-BR': { translation: pt },
     },
   });
 };
