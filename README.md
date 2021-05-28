@@ -106,7 +106,7 @@ You can download the latest version of LeafView from [Microsoft Store](https://w
 ## 🍻 Contribution
 
 I need more locale files.  
-When you have translated the menu into your language, could you please send me the locale file as a pull request?
+When you have translated the menu into your language, could you please send me the locale file as a [pull request](https://github.com/sprout2000/leafview/pulls)?
 
 1. Create `{your_LANG}.json` in `src/locales`.
 2. Then import the locale file into `src/setLocales.ts` as follows:
