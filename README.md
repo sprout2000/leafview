@@ -88,7 +88,7 @@ $ cd leafview
 $ yarn install && yarn package
 ```
 
-You will find the installer in `release` directory.
+You will find the installer in the `release` directory.
 
 **Note:** _You will need to have [Node.js](https://nodejs.org/en/), [Git](https://git-scm.com/) and [yarn](https://yarnpkg.com/) installed._
 
