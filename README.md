@@ -85,12 +85,12 @@
 ```
 $ git clone git@github.com:sprout2000/leafview.git
 $ cd leafview
-$ yarn install && yarn package
+$ npm install && npm run package
 ```
 
 You will find the installer in the `release` directory.
 
-**Note:** _You will need to have [Node.js](https://nodejs.org/en/), [Git](https://git-scm.com/) and [yarn](https://yarnpkg.com/) installed._
+**Note:** _You will need to have [Node.js](https://nodejs.org/en/) and [Git](https://git-scm.com/) installed._
 
 ## ✨ Download
 
