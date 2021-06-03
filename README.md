@@ -134,6 +134,7 @@ When you have translated the menu into your language, could you please send me t
 
 **Special Thanks to:**
 
+- [@ArcherGu](https://github.com/ArcherGu) [#235](https://github.com/sprout2000/leafview/pull/235)
 - [@guaycuru](https://github.com/guaycuru) [#228](https://github.com/sprout2000/leafview/pull/228), [#232](https://github.com/sprout2000/leafview/pull/232)
 - [@kitt3911](https://github.com/kitt3911) [#215](https://github.com/sprout2000/leafview/pull/215)
 - [@nukeop](https://github.com/nukeop) [#214](https://github.com/sprout2000/leafview/pull/214)
