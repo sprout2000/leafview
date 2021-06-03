@@ -20,6 +20,8 @@ import ru from './locales/ru.json';
 /** Merge the pull request sent by guaycuru */
 /** https://github.com/sprout2000/leafview/pull/232 */
 import pt from './locales/pt.json';
+/** Merge the pull request sent by ArcherGu */
+/** https://github.com/sprout2000/leafview/pull/235 */
 import zh_CN from './locales/zh_cn.json';
 
 export const setLocales = (locale: string): void => {
@@ -42,6 +44,7 @@ export const setLocales = (locale: string): void => {
       'pt-PT': { translation: pt },
       'pt-BR': { translation: pt },
       zh: { translation: zh_CN },
+      'zh-CN': { translation: zh_CN },
     },
   });
 };
