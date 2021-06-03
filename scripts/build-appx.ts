@@ -43,6 +43,7 @@ build({
         'ru-RU',
         'pt-BR',
         'pt-PT',
+        'zh-CN',
       ],
       identityName: process.env.IDENTITY_NAME,
       publisher: process.env.PUBLISHER,
