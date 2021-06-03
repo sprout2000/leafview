@@ -9,7 +9,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/sprout2000/leafview)](https://github.com/sprout2000/leafview/stargazers)
 ![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/sprout2000/leafview)
 
-## 👍 Features
+## :thumbsup: Features
 
 - Pan & WheelZoom
 - Fast
@@ -17,9 +17,9 @@
 - Memory-Friendly
 - Auto Update (_macOS_)
 
-## 📗 Usage
+## :green_book: Usage
 
-### ⌨️ Keyboard Shortcuts
+### :computer: Keyboard Shortcuts
 
 |                                     Key                                     | Function               | Platform |
 | :-------------------------------------------------------------------------: | :--------------------- | :------- |
@@ -37,7 +37,7 @@
 |                               <kbd>F11</kbd>                                | Toggle Fullscreen      | Windows  |
 |                <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>                | Toggle Developer Tools | Windows  |
 
-### 🖱️ Mouse Operations
+### :computer: Mouse Operations
 
 |    Mouse     | Function    |
 | :----------: | :---------- |
@@ -45,7 +45,7 @@
 | double click | reset zoom  |
 |    wheel     | zoom in/out |
 
-## 🔒 Security
+## :closed_lock_with_key: Security
 
 | API                        | Value   |
 | :------------------------- | :------ |
@@ -57,7 +57,7 @@
 | safeDialogs                | `true`  |
 | sandbox                    | `true`  |
 
-## 🌈 Supported Image Formats
+## :rainbow: Supported Image Formats
 
 - `bmp` (com.microsoft.bmp)
 - `ico` (com.microsoft.ico)
@@ -67,21 +67,21 @@
 - `svg` (public.svg-image)
 - `webp` (com.google.webp)
 
-## 📚 Supported Languages
+## :books: Supported Languages
 
-| Language         |  Code   |
-| :--------------- | :-----: |
-| English 🇺🇸 🇬🇧 🌐 |  `en`   |
-| 日本語 🇯🇵        |  `ja`   |
-| Čeština 🇨🇿       |  `cs`   |
-| Deutsch 🇩🇪 🇨🇭 🇦🇹 |  `de`   |
-| Español 🇪🇸 🇲🇽    |  `es`   |
-| Polski 🇵🇱        |  `pl`   |
-| Русский 🇷🇺       |  `ru`   |
-| Português 🇵🇹 🇧🇷  |  `pt`   |
-| 简体中文 🇨🇳      | `zh_CN` |
+| Language                           |  Code   |
+| :--------------------------------- | :-----: |
+| English :us: :uk: :earth_americas: |  `en`   |
+| 日本語 :jp:                        |  `ja`   |
+| Čeština 🇨🇿                         |  `cs`   |
+| Deutsch :de:                       |  `de`   |
+| Español :es:                       |  `es`   |
+| Polski 🇵🇱                          |  `pl`   |
+| Русский :ru:                       |  `ru`   |
+| Português 🇵🇹 🇧🇷                    |  `pt`   |
+| 简体中文 :cn:                      | `zh_CN` |
 
-## 🛠️ Build and Install
+## :wrench: Build and Install
 
 ```
 $ git clone git@github.com:sprout2000/leafview.git
@@ -93,18 +93,18 @@ You will find the installer in the `release` directory.
 
 **Note:** _You will need to have [Node.js](https://nodejs.org/en/) and [Git](https://git-scm.com/) installed._
 
-## ✨ Download
+## :gift: Download
 
-### 💻 macOS (x64, arm64)
+### :computer: macOS (x64, arm64)
 
 You can download the latest version of LeafView from the releases page here:  
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
-### 🖥️ Windows10
+### :computer: Windows10
 
 You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
 
-## 🍻 Contribution
+## :beers: Contribution
 
 I need more locale files.  
 When you have translated the menu into your language, could you please send me the locale file as a [pull request](https://github.com/sprout2000/leafview/pulls)?
@@ -130,7 +130,7 @@ When you have translated the menu into your language, could you please send me t
  };
 ```
 
-## 🎉 Contributors
+## :tada: Contributors
 
 **Special Thanks to:**
 
@@ -142,6 +142,6 @@ When you have translated the menu into your language, could you please send me t
 - [@DrDeee](https://github.com/DrDeee) [#166](https://github.com/sprout2000/leafview/pull/166)
 - [@PetrTodorov](https://github.com/PetrTodorov) [#68](https://github.com/sprout2000/leafview/pull/68)
 
-## 🏛️ License
+## :copyright: License
 
 [MIT](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
