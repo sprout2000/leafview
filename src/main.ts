@@ -269,9 +269,11 @@ if (!gotTheLock && !isDarwin) {
 
   app.setAboutPanelOptions({
     applicationName: app.name,
-    applicationVersion: app.getVersion(),
-    version: process.versions['electron'],
-    copyright: 'Copyright (C) 2020-2021 sprout2000.',
+    applicationVersion: isDarwin
+      ? app.getVersion()
+      : `v${app.getVersion()} (electron@${process.versions['electron']})`,
+    version: `electron@${process.versions['electron']}`,
+    copyright: 'Copyright 2020-2021 sprout2000, contributors',
   });
 
   app.once('window-all-closed', () => app.exit());
