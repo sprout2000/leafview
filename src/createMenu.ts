@@ -155,12 +155,17 @@ export const createMenu = (
       click: async (): Promise<void> =>
         shell.openExternal('https://github.com/sprout2000/leafview/#readme'),
     },
-    {
-      label: i18next.t('about'),
-      accelerator: 'CmdOrCtrl+I',
-      click: (): void => app.showAboutPanel(),
-    },
   ];
+
+  const aboutItem: MenuItemConstructorOptions = {
+    label: i18next.t('about'),
+    accelerator: 'CmdOrCtrl+I',
+    click: (): void => app.showAboutPanel(),
+  };
+
+  if (!isDarwin) {
+    helpSub.push(aboutItem);
+  }
 
   if (process.env.NODE_ENV === 'development') {
     helpSub.push(
@@ -197,11 +202,7 @@ export const createMenu = (
     template.unshift({
       label: 'LeafView',
       submenu: [
-        {
-          label: i18next.t('about'),
-          accelerator: 'Cmd+I',
-          role: 'about',
-        },
+        aboutItem,
         { type: 'separator' },
         {
           label: i18next.t('hide'),
