@@ -12,7 +12,7 @@ const notarizing = async (context: AfterPackContext): Promise<void> => {
 
   const appName = context.packager.appInfo.productFilename;
 
-  return await notarize({
+  return notarize({
     appBundleId: process.env.APP_BUNDLE_ID as string,
     appPath: `${appOutDir}/${appName}.app`,
     appleId: process.env.APPLE_ID as string,
