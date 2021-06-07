@@ -18,14 +18,144 @@ export const createMenu = (
   win: BrowserWindow,
   store: Store<TypedStore>
 ): Menu => {
-  const darwin = process.platform === 'darwin';
-  const dotfiles = darwin ? '.' : '._';
+  const isDarwin = process.platform === 'darwin';
+  const dotfiles = isDarwin ? '.' : '._';
+
+  const fileSub: MenuItemConstructorOptions = {
+    label: i18next.t('file'),
+    submenu: [
+      {
+        label: i18next.t('open'),
+        accelerator: 'CmdOrCtrl+O',
+        click: async (): Promise<void> => {
+          await dialog
+            .showOpenDialog(win, {
+              properties: ['openFile'],
+              title: i18next.t('dialogTitle'),
+              filters: [
+                {
+                  name: i18next.t('dialogName'),
+                  extensions: [
+                    'bmp',
+                    'gif',
+                    'ico',
+                    'jpg',
+                    'jpeg',
+                    'png',
+                    'svg',
+                    'webp',
+                  ],
+                },
+              ],
+            })
+            .then((result): void => {
+              if (result.canceled) return;
+
+              if (path.basename(result.filePaths[0]).startsWith(dotfiles)) {
+                return;
+              }
+
+              win.webContents.send('menu-open', result.filePaths[0]);
+            })
+            .catch((err): void => console.log(err));
+        },
+      },
+      { type: 'separator' },
+      {
+        label: i18next.t('trash'),
+        accelerator: 'Delete',
+        click: (): void => win.webContents.send('menu-remove'),
+      },
+      { type: 'separator' },
+      {
+        label: isDarwin ? i18next.t('close') : i18next.t('quit'),
+        accelerator: isDarwin ? 'Cmd+W' : 'Alt+F4',
+        role: isDarwin ? 'close' : 'quit',
+      },
+    ],
+  };
+
+  const viewSub: MenuItemConstructorOptions = {
+    label: i18next.t('view'),
+    submenu: [
+      {
+        label: i18next.t('next'),
+        accelerator: 'J',
+        click: (): void => win.webContents.send('menu-next'),
+      },
+      {
+        label: i18next.t('prev'),
+        accelerator: 'K',
+        click: (): void => win.webContents.send('menu-prev'),
+      },
+      { type: 'separator' },
+      {
+        label: i18next.t('toggleFullscreen'),
+        role: 'togglefullscreen',
+      },
+    ],
+  };
+
+  const windowSub: MenuItemConstructorOptions[] = [
+    {
+      label: i18next.t('minimize'),
+      role: 'minimize',
+    },
+    {
+      label: i18next.t('maximize'),
+      accelerator: 'Ctrl+L',
+      click: (): void => {
+        win.isMaximized() ? win.unmaximize() : win.maximize();
+      },
+    },
+  ];
+
+  const toggleMenubar: MenuItemConstructorOptions = {
+    label: i18next.t('toggleMenubar'),
+    accelerator: 'Ctrl+T',
+    click: (): void => {
+      win.setMenuBarVisibility(!win.menuBarVisible);
+    },
+  };
+
+  const toggleDarkmode: MenuItemConstructorOptions = {
+    label: i18next.t('toggleDarkmode'),
+    type: 'checkbox',
+    id: 'darkmode',
+    accelerator: 'CmdOrCtrl+D',
+    click: () => {
+      if (nativeTheme.shouldUseDarkColors) {
+        nativeTheme.themeSource = 'light';
+        store.set('darkmode', false);
+      } else {
+        nativeTheme.themeSource = 'dark';
+        store.set('darkmode', true);
+      }
+    },
+    checked: nativeTheme.shouldUseDarkColors,
+  };
+
+  if (!isDarwin) {
+    windowSub.push(toggleMenubar, toggleDarkmode);
+  } else {
+    windowSub.push(
+      { type: 'separator' },
+      toggleDarkmode,
+      { type: 'separator' },
+      {
+        label: i18next.t('bringAllToFront'),
+        role: 'front',
+      }
+    );
+  }
 
   const helpSub: MenuItemConstructorOptions[] = [
     {
       label: i18next.t('support'),
       click: async (): Promise<void> =>
-        shell.openExternal('https://github.com/sprout2000/leafview/#readme'),
+        await shell.openExternal(
+          'https://github.com/sprout2000/leafview/#readme'
+        ),
     },
     {
       label: i18next.t('about'),
@@ -39,7 +169,7 @@ export const createMenu = (
       { type: 'separator' },
       {
         label: i18next.t('toggleDevtools'),
-        accelerator: darwin ? 'Cmd+Option+I' : 'Ctrl+Shift+I',
+        accelerator: isDarwin ? 'Cmd+Option+I' : 'Ctrl+Shift+I',
         click: (): void => {
           if (win.webContents.isDevToolsOpened()) {
             win.webContents.closeDevTools();
@@ -52,180 +182,20 @@ export const createMenu = (
   }
 
   const template: MenuItemConstructorOptions[] = [
+    fileSub,
+    viewSub,
     {
-      label: i18next.t('file'),
-      submenu: [
-        {
-          label: i18next.t('open'),
-          accelerator: 'CmdOrCtrl+O',
-          click: async (): Promise<void> => {
-            await dialog
-              .showOpenDialog(win, {
-                properties: ['openFile'],
-                title: i18next.t('dialogTitle'),
-                filters: [
-                  {
-                    name: i18next.t('dialogName'),
-                    extensions: [
-                      'bmp',
-                      'gif',
-                      'ico',
-                      'jpg',
-                      'jpeg',
-                      'png',
-                      'svg',
-                      'webp',
-                    ],
-                  },
-                ],
-              })
-              .then((result): void => {
-                if (result.canceled) return;
-
-                if (path.basename(result.filePaths[0]).startsWith(dotfiles)) {
-                  return;
-                }
-
-                win.webContents.send('menu-open', result.filePaths[0]);
-              })
-              .catch((err): void => console.log(err));
-          },
-        },
-        { type: 'separator' },
-        {
-          label: i18next.t('trash'),
-          accelerator: 'Delete',
-          click: (): void => win.webContents.send('menu-remove'),
-        },
-        { type: 'separator' },
-        {
-          label: darwin ? i18next.t('close') : i18next.t('quit'),
-          accelerator: darwin ? 'Cmd+W' : 'Alt+F4',
-          role: darwin ? 'close' : 'quit',
-        },
-      ],
+      label: i18next.t('window'),
+      submenu: windowSub,
     },
     {
-      label: i18next.t('view'),
-      submenu: [
-        {
-          label: i18next.t('next'),
-          accelerator: 'J',
-          click: (): void => win.webContents.send('menu-next'),
-        },
-        {
-          label: i18next.t('prev'),
-          accelerator: 'K',
-          click: (): void => win.webContents.send('menu-prev'),
-        },
-        { type: 'separator' },
-        {
-          label: i18next.t('toggleFullscreen'),
-          role: 'togglefullscreen',
-        },
-      ],
+      label: i18next.t('help'),
+      role: 'help',
+      submenu: helpSub,
     },
   ];
 
-  if (!darwin) {
-    template.push(
-      {
-        label: i18next.t('window'),
-        submenu: [
-          {
-            label: i18next.t('minimize'),
-            role: 'minimize',
-          },
-          {
-            label: i18next.t('maximize'),
-            accelerator: 'Ctrl+L',
-            click: (): void => {
-              win.isMaximized() ? win.unmaximize() : win.maximize();
-            },
-          },
-          {
-            label: i18next.t('toggleMenubar'),
-            accelerator: 'Ctrl+T',
-            click: (): void => {
-              win.setMenuBarVisibility(!win.menuBarVisible);
-            },
-          },
-          {
-            label: i18next.t('toggleDarkmode'),
-            type: 'checkbox',
-            id: 'darkmode',
-            accelerator: 'Ctrl+D',
-            click: () => {
-              if (nativeTheme.shouldUseDarkColors) {
-                nativeTheme.themeSource = 'light';
-                store.set('darkmode', false);
-              } else {
-                nativeTheme.themeSource = 'dark';
-                store.set('darkmode', true);
-              }
-            },
-            checked: nativeTheme.shouldUseDarkColors,
-          },
-          { type: 'separator' },
-          {
-            label: i18next.t('close'),
-            role: 'close',
-          },
-        ],
-      },
-      {
-        label: i18next.t('help'),
-        role: 'help',
-        submenu: helpSub,
-      }
-    );
-  }
-
-  if (darwin) {
-    template.push(
-      {
-        label: i18next.t('window'),
-        submenu: [
-          {
-            label: i18next.t('minimize'),
-            role: 'minimize',
-          },
-          {
-            label: i18next.t('zoom'),
-            accelerator: 'Cmd+L',
-            role: 'zoom',
-          },
-          { type: 'separator' },
-          {
-            label: i18next.t('toggleDarkmode'),
-            type: 'checkbox',
-            id: 'darkmode',
-            accelerator: 'Cmd+D',
-            click: () => {
-              if (nativeTheme.shouldUseDarkColors) {
-                nativeTheme.themeSource = 'light';
-                store.set('darkmode', false);
-              } else {
-                nativeTheme.themeSource = 'dark';
-                store.set('darkmode', true);
-              }
-            },
-            checked: nativeTheme.shouldUseDarkColors,
-          },
-          { type: 'separator' },
-          {
-            label: i18next.t('bringAllToFront'),
-            role: 'front',
-          },
-        ],
-      },
-      {
-        label: i18next.t('help'),
-        role: 'help',
-        submenu: helpSub,
-      }
-    );
-
+  if (isDarwin) {
     template.unshift({
       label: 'LeafView',
       submenu: [
