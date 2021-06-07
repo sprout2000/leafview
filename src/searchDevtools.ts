@@ -15,7 +15,7 @@ export const searchDevtools = async (): Promise<string | void | undefined> => {
     : '/.config/google-chrome';
   const dirPath = path.join(os.homedir(), extDir, reactDevtools);
 
-  return await fs.promises
+  return fs.promises
     .readdir(dirPath, { withFileTypes: true })
     .then((dirents) =>
       dirents
