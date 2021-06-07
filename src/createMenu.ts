@@ -25,7 +25,9 @@ export const createMenu = (
     {
       label: i18next.t('support'),
       click: async (): Promise<void> =>
-        await shell.openExternal('https://github.com/sprout2000/leafview'),
+        await shell.openExternal(
+          'https://github.com/sprout2000/leafview/#readme'
+        ),
     },
     {
       label: i18next.t('about'),
