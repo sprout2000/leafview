@@ -2,24 +2,24 @@ import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('myAPI', {
   mimecheck: async (filepath: string): Promise<boolean> =>
-    await ipcRenderer.invoke('mime-check', filepath),
+    ipcRenderer.invoke('mime-check', filepath),
 
   history: (filepath: string) => ipcRenderer.send('file-history', filepath),
 
   dirname: async (filepath: string): Promise<string> =>
-    await ipcRenderer.invoke('dirname', filepath),
+    ipcRenderer.invoke('dirname', filepath),
 
   readdir: async (dirpath: string): Promise<void | string[]> =>
-    await ipcRenderer.invoke('readdir', dirpath),
+    ipcRenderer.invoke('readdir', dirpath),
 
   moveToTrash: async (filepath: string): Promise<boolean> =>
-    await ipcRenderer.invoke('move-to-trash', filepath),
+    ipcRenderer.invoke('move-to-trash', filepath),
 
   openDialog: async (): Promise<string | void | undefined> =>
-    await ipcRenderer.invoke('open-dialog'),
+    ipcRenderer.invoke('open-dialog'),
 
   updateTitle: async (filepath: string): Promise<void> =>
-    await ipcRenderer.invoke('update-title', filepath),
+    ipcRenderer.invoke('update-title', filepath),
 
   menuNext: (listener: () => Promise<void>) =>
     ipcRenderer.on('menu-next', listener),
