@@ -50,6 +50,6 @@ build({
       icon: 'assets/dmg.icns',
       sign: false,
     },
-    afterSign: 'scripts/notarize.ts',
+    afterSign: 'scripts/notarizing.ts',
   },
 }).catch((err) => console.log(err));
