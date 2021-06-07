@@ -98,7 +98,7 @@ const createWindow = () => {
   });
 
   ipcMain.handle('readdir', async (_e: Event, dir: string) => {
-    return await fs.promises
+    return fs.promises
       .readdir(dir, { withFileTypes: true })
       .then((dirents) =>
         dirents
@@ -112,7 +112,7 @@ const createWindow = () => {
   });
 
   ipcMain.handle('open-dialog', async () => {
-    return await dialog
+    return dialog
       .showOpenDialog(mainWindow, {
         properties: ['openFile'],
         title: i18next.t('dialogTitle'),
