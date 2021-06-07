@@ -21,6 +21,36 @@ export const createMenu = (
   const darwin = process.platform === 'darwin';
   const dotfiles = darwin ? '.' : '._';
 
+  const helpSub: MenuItemConstructorOptions[] = [
+    {
+      label: i18next.t('support'),
+      click: async (): Promise<void> =>
+        await shell.openExternal('https://github.com/sprout2000/leafview'),
+    },
+    {
+      label: i18next.t('about'),
+      accelerator: 'CmdOrCtrl+I',
+      click: (): void => app.showAboutPanel(),
+    },
+  ];
+
+  if (process.env.NODE_ENV === 'development') {
+    helpSub.push(
+      { type: 'separator' },
+      {
+        label: i18next.t('toggleDevtools'),
+        accelerator: darwin ? 'Cmd+Option+I' : 'Ctrl+Shift+I',
+        click: (): void => {
+          if (win.webContents.isDevToolsOpened()) {
+            win.webContents.closeDevTools();
+          } else {
+            win.webContents.openDevTools({ mode: 'detach' });
+          }
+        },
+      }
+    );
+  }
+
   const template: MenuItemConstructorOptions[] = [
     {
       label: i18next.t('file'),
@@ -146,30 +176,7 @@ export const createMenu = (
       {
         label: i18next.t('help'),
         role: 'help',
-        submenu: [
-          {
-            label: i18next.t('support'),
-            click: async (): Promise<void> =>
-              await shell.openExternal('https://sprout2000.github.io/leafview'),
-          },
-          {
-            label: i18next.t('about'),
-            accelerator: 'Ctrl+I',
-            click: (): void => app.showAboutPanel(),
-          },
-          { type: 'separator' },
-          {
-            label: i18next.t('toggleDevtools'),
-            accelerator: 'Ctrl+Shift+I',
-            click: (): void => {
-              if (win.webContents.isDevToolsOpened()) {
-                win.webContents.closeDevTools();
-              } else {
-                win.webContents.openDevTools({ mode: 'detach' });
-              }
-            },
-          },
-        ],
+        submenu: helpSub,
       }
     );
   }
@@ -215,27 +222,7 @@ export const createMenu = (
       {
         label: i18next.t('help'),
         role: 'help',
-        submenu: [
-          {
-            label: i18next.t('support'),
-            click: async (): Promise<void> =>
-              await shell.openExternal(
-                'https://github.com/sprout2000/leafview#readme'
-              ),
-          },
-          { type: 'separator' },
-          {
-            label: i18next.t('toggleDevtools'),
-            accelerator: 'Cmd+Option+I',
-            click: (): void => {
-              if (win.webContents.isDevToolsOpened()) {
-                win.webContents.closeDevTools();
-              } else {
-                win.webContents.openDevTools({ mode: 'detach' });
-              }
-            },
-          },
-        ],
+        submenu: helpSub,
       }
     );
 
