@@ -202,7 +202,7 @@ const createWindow = () => {
     mainWindow.webContents.send('menu-open', filepath);
   });
 
-  if (isDarwin && !isDev) {
+  if (isDarwin) {
     autoUpdater.checkForUpdatesAndNotify();
 
     autoUpdater.once('error', (_e, err) => {
@@ -215,17 +215,22 @@ const createWindow = () => {
       await dialog
         .showMessageBox(mainWindow, {
           type: 'info',
-          buttons: ['Install', 'Not now'],
+          buttons: ['Restart', 'Not now'],
           defaultId: 0,
           cancelId: 1,
           title: 'Update Downloaded',
           message: 'Update downloaded',
           detail:
             'We have finished downloading the latest updates.\n' +
-            'Do you want to install the updates now?',
+            'Would you like to install the update and restart now?',
         })
         .then((result) => {
-          result.response === 0 && autoUpdater.quitAndInstall();
+          if (result.response === 0) {
+            autoUpdater.quitAndInstall();
+          } else {
+            log.info('The installation of the update has been cancelled...');
+            return;
+          }
         })
         .catch((err) => log.info(`Error in showMessageBox: ${err}`));
     });
