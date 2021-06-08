@@ -103,7 +103,7 @@ export const createMenu = (
     },
     {
       label: i18next.t('maximize'),
-      accelerator: 'Ctrl+L',
+      accelerator: 'CmdOrCtrl+L',
       click: (): void => {
         win.isMaximized() ? win.unmaximize() : win.maximize();
       },
