@@ -229,7 +229,6 @@ const createWindow = () => {
             autoUpdater.quitAndInstall();
           } else {
             log.info('The installation of the update has been cancelled...');
-            return;
           }
         })
         .catch((err) => log.info(`Error in showMessageBox: ${err}`));
