@@ -22,10 +22,10 @@ export const createMenu = (
   const dotfiles = isDarwin ? '.' : '._';
 
   const fileSub: MenuItemConstructorOptions = {
-    label: i18next.t('file'),
+    label: i18next.t('File'),
     submenu: [
       {
-        label: i18next.t('open'),
+        label: i18next.t('Open...'),
         accelerator: 'CmdOrCtrl+O',
         click: async (): Promise<void> => {
           await dialog
@@ -62,13 +62,13 @@ export const createMenu = (
       },
       { type: 'separator' },
       {
-        label: i18next.t('trash'),
+        label: i18next.t('Move to Trash'),
         accelerator: 'Delete',
         click: (): void => win.webContents.send('menu-remove'),
       },
       { type: 'separator' },
       {
-        label: isDarwin ? i18next.t('close') : i18next.t('quit'),
+        label: isDarwin ? i18next.t('Close') : i18next.t('Quit'),
         accelerator: isDarwin ? 'Cmd+W' : 'Alt+F4',
         role: isDarwin ? 'close' : 'quit',
       },
@@ -76,21 +76,21 @@ export const createMenu = (
   };
 
   const viewSub: MenuItemConstructorOptions = {
-    label: i18next.t('view'),
+    label: i18next.t('View'),
     submenu: [
       {
-        label: i18next.t('next'),
+        label: i18next.t('Next Image'),
         accelerator: 'J',
         click: (): void => win.webContents.send('menu-next'),
       },
       {
-        label: i18next.t('prev'),
+        label: i18next.t('Prev Image'),
         accelerator: 'K',
         click: (): void => win.webContents.send('menu-prev'),
       },
       { type: 'separator' },
       {
-        label: i18next.t('toggleFullscreen'),
+        label: i18next.t('Toggle Fullscreen'),
         role: 'togglefullscreen',
       },
     ],
@@ -98,11 +98,11 @@ export const createMenu = (
 
   const windowSub: MenuItemConstructorOptions[] = [
     {
-      label: i18next.t('minimize'),
+      label: i18next.t('Minimize'),
       role: 'minimize',
     },
     {
-      label: i18next.t('maximize'),
+      label: i18next.t('Maximize'),
       accelerator: 'CmdOrCtrl+L',
       click: (): void => {
         win.isMaximized() ? win.unmaximize() : win.maximize();
@@ -111,7 +111,7 @@ export const createMenu = (
   ];
 
   const toggleMenubar: MenuItemConstructorOptions = {
-    label: i18next.t('toggleMenubar'),
+    label: i18next.t('Toggle Menubar'),
     accelerator: 'Ctrl+T',
     click: (): void => {
       win.setMenuBarVisibility(!win.menuBarVisible);
@@ -119,7 +119,7 @@ export const createMenu = (
   };
 
   const toggleDarkmode: MenuItemConstructorOptions = {
-    label: i18next.t('toggleDarkmode'),
+    label: i18next.t('Toggle Dark Mode'),
     type: 'checkbox',
     id: 'darkmode',
     accelerator: 'CmdOrCtrl+D',
@@ -142,7 +142,7 @@ export const createMenu = (
       toggleDarkmode,
       { type: 'separator' },
       {
-        label: i18next.t('close'),
+        label: i18next.t('Close'),
         role: 'close',
       }
     );
@@ -152,7 +152,7 @@ export const createMenu = (
       toggleDarkmode,
       { type: 'separator' },
       {
-        label: i18next.t('bringAllToFront'),
+        label: i18next.t('Bring All to Front'),
         role: 'front',
       }
     );
@@ -160,14 +160,14 @@ export const createMenu = (
 
   const helpSub: MenuItemConstructorOptions[] = [
     {
-      label: i18next.t('support'),
+      label: i18next.t('Support URL...'),
       click: async (): Promise<void> =>
         shell.openExternal('https://github.com/sprout2000/leafview/#readme'),
     },
   ];
 
   const aboutItem: MenuItemConstructorOptions = {
-    label: i18next.t('about'),
+    label: i18next.t(isDarwin ? 'About LeafView' : 'About'),
     accelerator: 'CmdOrCtrl+I',
     click: (): void => app.showAboutPanel(),
   };
@@ -180,7 +180,7 @@ export const createMenu = (
     helpSub.push(
       { type: 'separator' },
       {
-        label: i18next.t('toggleDevtools'),
+        label: i18next.t('Toggle Developer Tools'),
         accelerator: isDarwin ? 'Cmd+Option+I' : 'Ctrl+Shift+I',
         click: (): void => {
           if (win.webContents.isDevToolsOpened()) {
@@ -197,11 +197,11 @@ export const createMenu = (
     fileSub,
     viewSub,
     {
-      label: i18next.t('window'),
+      label: i18next.t('Window'),
       submenu: windowSub,
     },
     {
-      label: i18next.t('help'),
+      label: i18next.t('Help'),
       role: 'help',
       submenu: helpSub,
     },
@@ -214,20 +214,20 @@ export const createMenu = (
         aboutItem,
         { type: 'separator' },
         {
-          label: i18next.t('hide'),
+          label: i18next.t('Hide LeafView'),
           role: 'hide',
         },
         {
-          label: i18next.t('hideOthers'),
+          label: i18next.t('Hide Others'),
           role: 'hideOthers',
         },
         {
-          label: i18next.t('unhide'),
+          label: i18next.t('Show All'),
           role: 'unhide',
         },
         { type: 'separator' },
         {
-          label: i18next.t('quit'),
+          label: i18next.t('Quit LeafView'),
           role: 'quit',
         },
       ],
