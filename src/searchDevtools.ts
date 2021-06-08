@@ -8,12 +8,16 @@ export const searchDevtools = async (): Promise<string | void | undefined> => {
 
   const reactDevtools = '/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi';
 
-  const extDir = isDarwin
-    ? '/Library/Application Support/Google/Chrome'
-    : isWin32
-    ? '/AppData/Local/Google/Chrome/User Data'
-    : '/.config/google-chrome';
-  const dirPath = path.join(os.homedir(), extDir, reactDevtools);
+  const getExtDir = () => {
+    if (isDarwin) {
+      return '/Library/Application Support/Google/Chrome';
+    }
+    return isWin32
+      ? '/AppData/Local/Google/Chrome/User Data'
+      : '/.config/google-chrome';
+  };
+
+  const dirPath = path.join(os.homedir(), getExtDir(), reactDevtools);
 
   return fs.promises
     .readdir(dirPath, { withFileTypes: true })
