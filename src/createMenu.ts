@@ -136,7 +136,16 @@ export const createMenu = (
   };
 
   if (!isDarwin) {
-    windowSub.push(toggleMenubar, toggleDarkmode);
+    windowSub.push(
+      { type: 'separator' },
+      toggleMenubar,
+      toggleDarkmode,
+      { type: 'separator' },
+      {
+        label: i18next.t('close'),
+        role: 'close',
+      }
+    );
   } else {
     windowSub.push(
       { type: 'separator' },
