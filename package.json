@@ -68,7 +68,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
     "dotenv": "^10.0.0",
-    "electron": "^13.1.1",
+    "electron": "^13.1.2",
     "electron-builder": "^22.11.5",
     "electron-notarize": "^1.0.0",
     "html-webpack-plugin": "^5.3.1",
