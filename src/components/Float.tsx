@@ -22,8 +22,7 @@ export const Float = (props: Props): JSX.Element => {
       <div className="controls">
         <div
           className="icon"
-          data-testid="open"
-          title={i18next.t('open')}
+          title={i18next.t('Open...')}
           onClick={props.onClickOpen}>
           <AiOutlineFolderOpen size="2rem" />
         </div>
@@ -31,15 +30,13 @@ export const Float = (props: Props): JSX.Element => {
       <div className="arrows">
         <div
           className="icon"
-          data-testid="prev"
-          title={i18next.t('prev')}
+          title={i18next.t('Prev Image')}
           onClick={props.prev}>
           <AiOutlineLeftCircle size="2rem" />
         </div>
         <div
           className="icon"
-          data-testid="next"
-          title={i18next.t('next')}
+          title={i18next.t('Next Image')}
           onClick={props.next}>
           <AiOutlineRightCircle size="2rem" />
         </div>
@@ -47,8 +44,7 @@ export const Float = (props: Props): JSX.Element => {
       <div className="trash">
         <div
           className="icon"
-          data-testid="trash"
-          title={i18next.t('trash')}
+          title={i18next.t('Move to Trash')}
           onClick={props.remove}>
           <AiOutlineDelete size="2rem" />
         </div>
