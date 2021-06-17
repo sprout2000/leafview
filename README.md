@@ -145,4 +145,4 @@ When you have translated the menu into your language, could you please send me t
 
 ## :copyright: License
 
-[MIT](https://github.com/sprout2000/leafview/blob/master/LICENSE.md) © 2020-2021 sprout2000, contributors
+[MIT](https://github.com/sprout2000/leafview/blob/master/LICENSE.md) © 2020-2021 sprout2000 and other contributors
