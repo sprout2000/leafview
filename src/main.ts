@@ -73,10 +73,8 @@ const createWindow = () => {
     show: false,
     backgroundColor: store.get('darkmode') ? '#1e1e23' : '#dddddd',
     webPreferences: {
-      worldSafeExecuteJavaScript: true,
-      contextIsolation: true,
-      safeDialogs: true,
       sandbox: true,
+      safeDialogs: true,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
