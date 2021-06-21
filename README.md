@@ -143,6 +143,10 @@ When you have translated the menu into your language, could you please send me t
 - [@DrDeee](https://github.com/DrDeee) [#166](https://github.com/sprout2000/leafview/pull/166)
 - [@PetrTodorov](https://github.com/PetrTodorov) [#68](https://github.com/sprout2000/leafview/pull/68)
 
+## Notes for Ubuntu 20.04 users
+
+_see [UBUNTU.md](https://github.com/sprout2000/leafview/blob/main/UBUNTU.md)._
+
 ## :copyright: License
 
 [MIT](https://github.com/sprout2000/leafview/blob/master/LICENSE.md) © 2020-2021 sprout2000 and other contributors
