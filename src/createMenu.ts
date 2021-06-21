@@ -22,6 +22,13 @@ export const createMenu = (
   const isDarwin = process.platform === 'darwin';
   const dotfiles = isDarwin ? '.' : '._';
 
+  const closeAccelerator = () => {
+    if (isDarwin) {
+      return 'Cmd+W';
+    }
+    return isLinux ? 'Ctrl+Q' : 'Alt+F4';
+  };
+
   const fileSub: MenuItemConstructorOptions = {
     label: i18next.t('File'),
     submenu: [
@@ -70,7 +77,7 @@ export const createMenu = (
       { type: 'separator' },
       {
         label: isDarwin ? i18next.t('Close') : i18next.t('Quit'),
-        accelerator: isDarwin ? 'Cmd+W' : isLinux ? 'Ctrl+Q' : 'Alt+F4',
+        accelerator: closeAccelerator(),
         role: isDarwin ? 'close' : 'quit',
       },
     ],
