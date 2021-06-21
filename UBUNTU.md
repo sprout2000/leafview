@@ -28,12 +28,12 @@ $ npm -v
 7.18.1
 
 # Clone this repo.
-$ git clone git@github.com:sprout2000/elephicon.git
+$ git clone git@github.com:sprout2000/leafview.git
 
 # And then build this project
-$ cd elephicon
+$ cd leafview
 
 $ npm install && npm run package
 ```
 
-You will find the AppImage in `release/Elephicon-0.18.x-linux-x64/`.
+You will find the AppImage in `release/LeafView-0.11.x-linux-x64/`.
