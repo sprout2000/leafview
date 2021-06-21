@@ -14,7 +14,7 @@ build({
       publisherName: 'sprout2000',
       fileAssociations: [
         {
-          ext: ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'ico', 'svg', 'webp'],
+          ext: ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'ico', 'webp'],
           description: 'Image files',
         },
       ],

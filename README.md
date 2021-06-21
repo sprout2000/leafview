@@ -65,7 +65,6 @@
 - `gif` (com.compuserve.gif)
 - `jpg` (public.jpeg)
 - `png` (public.png)
-- `svg` (public.svg-image)
 - `webp` (com.google.webp)
 
 ## :books: Supported Languages
