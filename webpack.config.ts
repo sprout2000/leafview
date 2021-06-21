@@ -1,6 +1,7 @@
 import path from 'path';
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -74,22 +75,32 @@ const preload: Configuration = {
   },
 };
 
+const plugins: Configuration['plugins'] = [
+  new MiniCssExtractPlugin(),
+  new HtmlWebpackPlugin({
+    template: './src/index.html',
+    minify: !isDev,
+    inject: 'body',
+    filename: 'index.html',
+    scriptLoading: 'blocking',
+  }),
+];
+
+if (process.platform === 'linux') {
+  plugins.push(
+    new CopyWebpackPlugin({
+      patterns: [{ from: './src/icon.png', to: '.' }],
+    })
+  );
+}
+
 const renderer: Configuration = {
   ...base,
   target: 'web',
   entry: {
     index: './src/index.tsx',
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      minify: !isDev,
-      inject: 'body',
-      filename: 'index.html',
-      scriptLoading: 'blocking',
-    }),
-  ],
+  plugins: plugins,
 };
 
 export default [main, preload, renderer];

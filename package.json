@@ -57,6 +57,7 @@
     "react-icons": "^4.2.0"
   },
   "devDependencies": {
+    "@types/copy-webpack-plugin": "^8.0.0",
     "@types/leaflet": "^1.7.3",
     "@types/mime-types": "^2.1.0",
     "@types/mini-css-extract-plugin": "^1.4.3",
@@ -64,6 +65,7 @@
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.8",
     "@types/resize-observer-browser": "^0.1.5",
+    "copy-webpack-plugin": "^9.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
     "dotenv": "^10.0.0",

@@ -37,6 +37,7 @@ process.once('uncaughtException', (err) => {
 });
 
 const gotTheLock = app.requestSingleInstanceLock();
+const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -68,6 +69,7 @@ const createWindow = () => {
     y: store.get('y'),
     width: store.get('width'),
     height: store.get('height'),
+    icon: isLinux ? path.join(__dirname, 'icon.png') : undefined,
     minWidth: 800,
     minHeight: isDarwin ? 558 : 602,
     show: false,

@@ -59,5 +59,8 @@ build({
       icon: 'assets/dmg.icns',
       artifactName: '${productName}-${version}-${platform}-${arch}.${ext}',
     },
+    linux: {
+      target: ['AppImage'],
+    },
   },
 }).catch((err) => console.log(err));
