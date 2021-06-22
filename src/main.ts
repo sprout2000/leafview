@@ -56,7 +56,7 @@ let openfile: string | null = null;
 const checkmime = (filepath: string) => {
   const mimetype = mime.lookup(filepath);
 
-  return !mimetype || !mimetype.match(/bmp|ico|gif|jpeg|png|webp/)
+  return !mimetype || !mimetype.match(/bmp|ico|gif|jpeg|png|svg|webp/)
     ? false
     : true;
 };
@@ -127,6 +127,7 @@ const createWindow = () => {
               'jpeg',
               'apng',
               'png',
+              'svg',
               'webp',
             ],
           },

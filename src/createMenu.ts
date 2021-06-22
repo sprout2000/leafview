@@ -50,6 +50,7 @@ export const createMenu = (
                     'jpg',
                     'jpeg',
                     'png',
+                    'svg',
                     'webp',
                   ],
                 },
