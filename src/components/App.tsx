@@ -1,4 +1,4 @@
-import { useRef, useCallback, useState, useEffect } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -217,6 +217,11 @@ export const App = (): JSX.Element => {
     }
   };
 
+  const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    myAPI.contextMenu();
+  };
+
   const updateTitle = async (filepath: string): Promise<void> => {
     await myAPI.updateTitle(filepath);
   };
@@ -279,6 +284,7 @@ export const App = (): JSX.Element => {
   return (
     <div
       className="container"
+      onContextMenu={onContextMenu}
       onDragEnter={preventDefault}
       onDragOver={preventDefault}
       onDragLeave={preventDefault}

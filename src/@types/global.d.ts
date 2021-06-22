@@ -9,6 +9,8 @@ export interface Sandbox {
 
   history: (filepath: string) => void;
 
+  contextMenu: () => void;
+
   dirname: (filepath: string) => Promise<string>;
 
   readdir: (dirpath: string) => Promise<void | string[]>;

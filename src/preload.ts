@@ -6,6 +6,8 @@ contextBridge.exposeInMainWorld('myAPI', {
 
   history: (filepath: string) => ipcRenderer.send('file-history', filepath),
 
+  contextMenu: () => ipcRenderer.send('show-context-menu'),
+
   dirname: async (filepath: string): Promise<string> =>
     ipcRenderer.invoke('dirname', filepath),
 
