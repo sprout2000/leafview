@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState, useEffect } from 'react';
+import { useRef, useCallback, useState, useEffect } from 'react';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -8,7 +8,7 @@ import empty from './empty.png';
 
 const { myAPI } = window;
 
-export const App: React.FC = () => {
+export const App = (): JSX.Element => {
   const [url, setUrl] = useState<string>(empty);
 
   const mapRef = useRef<HTMLDivElement>(null);
