@@ -82,18 +82,6 @@
 | Português 🇵🇹 🇧🇷                    |  `pt`   |
 | 简体中文 :cn:                      | `zh_CN` |
 
-## :wrench: Build and Install
-
-```
-$ git clone git@github.com:sprout2000/leafview.git
-$ cd leafview
-$ npm install && npm run package
-```
-
-You will find the installer in the `release` directory.
-
-**Note:** _You will need to have [Node.js](https://nodejs.org/en/) and [Git](https://git-scm.com/) installed._
-
 ## :gift: Download
 
 ### :computer: macOS (x64, arm64)
