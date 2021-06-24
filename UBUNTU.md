@@ -1,7 +1,7 @@
 # Notes for Ubuntu 20.04 users
 
 The node installed on ubuntu 20.04 is v12.x, but this app does not support node@12.
-So you will need to have node@14.17+ and npm@7.15+ installed.
+So you will need to have node@14.x installed.
 
 ## How?
 
@@ -19,13 +19,6 @@ $ sudo apt-get install -y nodejs
 
 $ node -v
 v14.17.1
-$ npm -v
-6.14.13
-
-# Update your npm
-$ sudo npm i -g npm
-$ npm -v
-7.18.1
 
 # Clone this repo.
 $ git clone git@github.com:sprout2000/leafview.git
