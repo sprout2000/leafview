@@ -86,7 +86,7 @@ const plugins: Configuration['plugins'] = [
   }),
 ];
 
-if (process.platform === 'linux') {
+if (process.platform === 'linux' || process.platform === 'win32') {
   plugins.push(
     new CopyWebpackPlugin({
       patterns: [{ from: './src/icon.png', to: '.' }],
