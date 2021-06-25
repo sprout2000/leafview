@@ -24,7 +24,7 @@
     "cross-platform"
   ],
   "engines": {
-    "node": ">=14.17.0"
+    "node": ">=14"
   },
   "main": "dist/main.js",
   "scripts": {
