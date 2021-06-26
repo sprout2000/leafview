@@ -5,7 +5,7 @@
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "lib": ["DOM", "ES2020"],
-    "jsx": "react-jsx",
+    "jsx": "react",
     "strict": true,
     "sourceMap": true,
     "skipLibCheck": true,
