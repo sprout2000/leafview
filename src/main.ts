@@ -279,9 +279,9 @@ if (!gotTheLock && !isDarwin) {
     applicationName: app.name,
     applicationVersion: isDarwin
       ? app.getVersion()
-      : `v${app.getVersion()} (electron@${process.versions['electron']})`,
-    version: `electron@${process.versions['electron']}`,
-    copyright: 'Copyright 2020-2021 sprout2000 and other contributors.',
+      : `v${app.getVersion()} (${process.versions['electron']})`,
+    version: `${process.versions['electron']}`,
+    copyright: '© 2020-2021 sprout2000 and other contributors.',
     iconPath: path.join(__dirname, 'icon.png'),
   });
 
