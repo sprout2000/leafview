@@ -3,7 +3,7 @@ import { build } from 'electron-builder';
 build({
   config: {
     productName: 'LeafView',
-    copyright: 'Copyright (C) 2020-2021 sprout2000.',
+    copyright: '© 2020 sprout2000 and other contributors.',
     files: ['dist/**/*'],
     directories: {
       output: 'release',
