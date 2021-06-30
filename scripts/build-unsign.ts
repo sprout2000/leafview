@@ -3,6 +3,7 @@ import { build } from 'electron-builder';
 build({
   config: {
     productName: 'LeafView',
+    artifactName: '${productName}-${version}-${platform}-${arch}.${ext}',
     copyright: '© 2020 sprout2000 and other contributors.',
     files: ['dist/**/*'],
     directories: {
@@ -10,7 +11,7 @@ build({
     },
     win: {
       icon: 'assets/icon.ico',
-      target: ['nsis'],
+      target: ['nsis', 'zip'],
       publisherName: 'sprout2000',
       fileAssociations: [
         {
@@ -25,7 +26,8 @@ build({
       createDesktopShortcut: false,
       createStartMenuShortcut: true,
       installerIcon: 'assets/installer.ico',
-      artifactName: '${productName}-${version}-${platform}-installer.${ext}',
+      artifactName:
+        '${productName}-${version}-${platform}-${arch}-installer.${ext}',
     },
     mac: {
       category: 'public.app-category.photography',
