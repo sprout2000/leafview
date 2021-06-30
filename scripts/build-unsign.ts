@@ -62,7 +62,8 @@ build({
       artifactName: '${productName}-${version}-${platform}-${arch}.${ext}',
     },
     linux: {
-      target: ['AppImage'],
+      target: ['AppImage', 'zip'],
+      category: 'Graphics',
     },
   },
 }).catch((err) => console.log(err));
