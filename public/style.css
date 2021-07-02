@@ -19,7 +19,7 @@ a {
   background-color: #ffffff;
   width: 80vw;
   border-radius: 10px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.6));
 }
 
@@ -31,7 +31,7 @@ a {
 .title {
   color: #33415c;
   font-size: 48px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 100;
 }
 
@@ -39,7 +39,7 @@ a {
   margin-top: 1em;
   color: #33415c;
   font-size: 24px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 100;
   line-height: 1.5em;
 }
@@ -72,7 +72,7 @@ a {
 
 .download {
   margin-left: 1em;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
 
@@ -84,7 +84,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 100;
 }
 
@@ -102,7 +102,7 @@ a {
 }
 
 h3 {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
 
@@ -110,7 +110,7 @@ h3 {
   width: 80%;
   max-width: 640px;
   margin-bottom: 1em;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 100;
 }
 
@@ -122,7 +122,7 @@ h3 {
 .footer {
   background-color: rgb(26, 207, 139);
   color: #ffffff;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 100;
   text-align: center;
   padding: 4em;
@@ -132,12 +132,12 @@ h3 {
 
 .size {
   color: #a8dadc;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
 
 .issues {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 100;
   text-decoration: underline;
 }
