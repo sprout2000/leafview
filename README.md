@@ -75,12 +75,12 @@
 | :--------------------------------- | :-----: |
 | English :us: :uk: :earth_americas: |  `en`   |
 | 日本語 :jp:                        |  `ja`   |
-| Čeština 🇨🇿                         |  `cs`   |
+| Čeština :czech_republic:           |  `cs`   |
 | Deutsch :de:                       |  `de`   |
-| Español :es:                       |  `es`   |
-| Polski 🇵🇱                          |  `pl`   |
+| Español :es: :mexico: :argentina:  |  `es`   |
+| Polski :poland:                    |  `pl`   |
 | Русский :ru:                       |  `ru`   |
-| Português 🇵🇹 🇧🇷                    |  `pt`   |
+| Português :portugal: :brazil:      |  `pt`   |
 | 简体中文 :cn:                      | `zh_CN` |
 
 ## :gift: Download
