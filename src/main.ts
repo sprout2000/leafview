@@ -85,7 +85,7 @@ const createWindow = () => {
   nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
 
   if (!isDarwin) {
-    store.get('menubar')
+    store.get('menubar', true)
       ? mainWindow.setMenuBarVisibility(true)
       : mainWindow.setMenuBarVisibility(false);
   }
