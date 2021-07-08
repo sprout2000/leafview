@@ -43,6 +43,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 const store = new Store<TypedStore>({
   defaults: {
+    menubar: true,
     darkmode: nativeTheme.shouldUseDarkColors,
     x: undefined,
     y: undefined,
@@ -81,10 +82,12 @@ const createWindow = () => {
     },
   });
 
-  if (store.get('darkmode')) {
-    nativeTheme.themeSource = 'dark';
-  } else {
-    nativeTheme.themeSource = 'light';
+  nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
+
+  if (!isDarwin) {
+    store.get('menubar')
+      ? mainWindow.setMenuBarVisibility(true)
+      : mainWindow.setMenuBarVisibility(false);
   }
 
   ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));

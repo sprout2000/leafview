@@ -122,7 +122,13 @@ export const createMenu = (
     label: i18next.t('Toggle Menubar'),
     accelerator: 'Ctrl+T',
     click: (): void => {
-      win.setMenuBarVisibility(!win.menuBarVisible);
+      if (win.menuBarVisible) {
+        store.set('menubar', false);
+        win.setMenuBarVisibility(false);
+      } else {
+        store.set('menubar', true);
+        win.setMenuBarVisibility(true);
+      }
     },
   };
 
