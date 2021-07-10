@@ -1,6 +1,6 @@
 # Notes for Ubuntu 20.04 users
 
-Since the version of Node.js installed on Ubuntu 20.04 is `v12.20`, you will need to downgrade [electron-builder](https://github.com/electron-userland/electron-builder) to `v22.10.5`.
+Since the version of [Node.js](https://nodejs.org/) installed on [Ubuntu 20.04](https://ubuntu.com/download/desktop) is `v12.20`, you will need to downgrade [electron-builder](https://github.com/electron-userland/electron-builder) to `v22.10.5`.
 
 ## How?
 
@@ -11,7 +11,7 @@ $ git clone git@github.com:sprout2000/leafview.git
 # And then build this project
 $ cd leafview
 
-$ npm install electron-builder@22.10.5 --save-dev
+$ npm install electron-builder@22.10.5 --save-dev && npm install
 $ npm run package
 ```
 
