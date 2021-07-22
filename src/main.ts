@@ -19,10 +19,10 @@ import path from 'path';
 import mime from 'mime-types';
 import natsort from 'natsort';
 
-import { setLocales } from './setLocales';
+import { setLocales } from './lib/setLocales';
 import { createMenu } from './createMenu';
 import { searchDevtools } from './searchDevtools';
-import { TypedStore } from './TypedStore';
+import { TypedStore } from './lib/TypedStore';
 
 console.log = log.log;
 autoUpdater.logger = log;
@@ -40,6 +40,22 @@ const gotTheLock = app.requestSingleInstanceLock();
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
+
+/// #if DEBUG
+const execPath =
+  process.platform === 'win32'
+    ? '../node_modules/electron/dist/electron.exe'
+    : '../node_modules/.bin/electron';
+
+if (isDev) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('electron-reload')(__dirname, {
+    electron: path.resolve(__dirname, execPath),
+    forceHardReset: true,
+    hardResetMethod: 'exit',
+  });
+}
+/// #endif
 
 const store = new Store<TypedStore>({
   defaults: {

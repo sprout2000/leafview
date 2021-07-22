@@ -9,7 +9,7 @@ import {
 } from 'electron';
 import Store from 'electron-store';
 
-import { TypedStore } from './TypedStore';
+import { TypedStore } from './lib/TypedStore';
 
 import path from 'path';
 import i18next from 'i18next';
