@@ -101,6 +101,13 @@ export const createMenu = (
         label: i18next.t('Toggle Fullscreen'),
         role: 'togglefullscreen',
       },
+      /// #if DEBUG
+      { type: 'separator' },
+      {
+        label: 'Toggle Developer Tools',
+        role: 'toggleDevTools',
+      },
+      /// #endif
     ],
   };
 
