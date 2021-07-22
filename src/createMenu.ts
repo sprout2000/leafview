@@ -83,33 +83,33 @@ export const createMenu = (
     ],
   };
 
-  const viewSub: MenuItemConstructorOptions = {
-    label: i18next.t('View'),
-    submenu: [
-      {
-        label: i18next.t('Next Image'),
-        accelerator: 'J',
-        click: (): void => win.webContents.send('menu-next'),
-      },
-      {
-        label: i18next.t('Prev Image'),
-        accelerator: 'K',
-        click: (): void => win.webContents.send('menu-prev'),
-      },
-      { type: 'separator' },
-      {
-        label: i18next.t('Toggle Fullscreen'),
-        role: 'togglefullscreen',
-      },
-      /// #if DEBUG
+  const viewSub: MenuItemConstructorOptions[] = [
+    {
+      label: i18next.t('Next Image'),
+      accelerator: 'J',
+      click: (): void => win.webContents.send('menu-next'),
+    },
+    {
+      label: i18next.t('Prev Image'),
+      accelerator: 'K',
+      click: (): void => win.webContents.send('menu-prev'),
+    },
+    { type: 'separator' },
+    {
+      label: i18next.t('Toggle Fullscreen'),
+      role: 'togglefullscreen',
+    },
+  ];
+
+  if (process.env.NODE_ENV === 'development') {
+    viewSub.push(
       { type: 'separator' },
       {
         label: 'Toggle Developer Tools',
         role: 'toggleDevTools',
-      },
-      /// #endif
-    ],
-  };
+      }
+    );
+  }
 
   const windowSub: MenuItemConstructorOptions[] = [
     {
@@ -216,7 +216,10 @@ export const createMenu = (
 
   const template: MenuItemConstructorOptions[] = [
     fileSub,
-    viewSub,
+    {
+      label: i18next.t('View'),
+      submenu: viewSub,
+    },
     {
       label: i18next.t('Window'),
       submenu: windowSub,
