@@ -76,32 +76,25 @@ const preload: Configuration = {
   },
 };
 
-const plugins: Configuration['plugins'] = [
-  new MiniCssExtractPlugin(),
-  new HtmlWebpackPlugin({
-    template: './src/web/index.html',
-    minify: true,
-    inject: 'body',
-    filename: 'index.html',
-    scriptLoading: 'blocking',
-  }),
-];
-
-if (process.platform === 'linux' || process.platform === 'win32') {
-  plugins.push(
-    new CopyWebpackPlugin({
-      patterns: [{ from: './src/icon.png', to: '.' }],
-    })
-  );
-}
-
 const renderer: Configuration = {
   ...base,
   target: 'web',
   entry: {
     index: './src/web/index.tsx',
   },
-  plugins: plugins,
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/web/index.html',
+      minify: true,
+      inject: 'body',
+      filename: 'index.html',
+      scriptLoading: 'blocking',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: './src/icon.png', to: '.' }],
+    }),
+  ],
 };
 
 export default [main, preload, renderer];
