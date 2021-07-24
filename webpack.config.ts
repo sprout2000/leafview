@@ -71,7 +71,7 @@ const config: Configuration = {
   stats: 'errors-only',
   performance: { hints: false },
   optimization: { minimize: false },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
 };
 
 export default config;
