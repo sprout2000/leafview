@@ -40,7 +40,7 @@ $ sudo apt install yarn
 
 ```bash
 # Clone this repo.
-$ git clone git@github.com:sprout2000/elephicon.git
+$ git clone git@github.com:sprout2000/leafview.git
 
 # And then build this project
 $ cd elephicon
@@ -48,4 +48,4 @@ $ cd elephicon
 $ yarn install && yarn package
 ```
 
-You will find the AppImage in `release/Elephicon-1.x-linux-x64/`.
+You will find the AppImage in `release/LeafView-1.x-linux-x64/`.
