@@ -13,10 +13,7 @@
 ## :thumbsup: Features
 
 - Pan & WheelZoom
-- Fast
-- Secure
-- Memory-Friendly
-- Auto Update (_macOS_)
+- Auto Update
 
 ## :green_book: Usage
 
