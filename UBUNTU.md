@@ -43,7 +43,7 @@ $ sudo apt install yarn
 $ git clone git@github.com:sprout2000/leafview.git
 
 # And then build this project
-$ cd elephicon
+$ cd leafview
 
 $ yarn install && yarn package
 ```
