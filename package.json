@@ -2,7 +2,7 @@
   "name": "leafview",
   "productName": "LeafView",
   "description": "An image viewer based on leaflet.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "author": {
     "name": "sprout2000",
