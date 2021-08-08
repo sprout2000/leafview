@@ -100,5 +100,8 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.3.2",
     "wait-on": "^6.0.0"
+  },
+  "resolutions": {
+    "electron-builder/dmg-builder/dmg-license/plist/xmldom": "github:xmldom/xmldom#0.7.0"
   }
 }
