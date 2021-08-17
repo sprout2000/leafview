@@ -289,7 +289,8 @@ export const App = (): JSX.Element => {
       onDragOver={preventDefault}
       onDragLeave={preventDefault}
       onDrop={onDrop}
-      onKeyDown={onKeyDown}>
+      onKeyDown={onKeyDown}
+    >
       <div className="bottom">
         <Float
           onClickOpen={onClickOpen}
