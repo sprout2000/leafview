@@ -11,6 +11,7 @@
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "explorer.openEditors.visible": 0,
+  "extensions.ignoreRecommendations": false,
   "files.insertFinalNewline": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
