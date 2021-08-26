@@ -23,6 +23,9 @@
     "zoom",
     "cross-platform"
   ],
+  "engines": {
+    "node": ">=12.13"
+  },
   "main": "dist/main.js",
   "scripts": {
     "start": "run-s clean build serve",
