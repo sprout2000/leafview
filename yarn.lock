@@ -4551,9 +4551,9 @@ xmlbuilder@^9.0.7:
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-9.0.7.tgz#132ee63d2ec5565c557e20f4c22df9aca686b10d"
   integrity sha1-Ey7mPS7FVlxVfiD0wi35rKaGsQ0=
 
-xmldom@^0.6.0, "xmldom@github:xmldom/xmldom#0.7.0":
-  version "0.7.0"
-  resolved "https://codeload.github.com/xmldom/xmldom/tar.gz/c568938641cc1f121cef5b4df80fcfda1e489b6e"
+xmldom@^0.6.0, "xmldom@github:xmldom/xmldom":
+  version "0.7.2"
+  resolved "https://codeload.github.com/xmldom/xmldom/tar.gz/64647d18ad1905206d3d68dba8a8f8a0b4af6089"
 
 y18n@^5.0.5:
   version "5.0.8"

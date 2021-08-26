@@ -101,6 +101,6 @@
     "wait-on": "^6.0.0"
   },
   "resolutions": {
-    "electron-builder/dmg-builder/dmg-license/plist/xmldom": "github:xmldom/xmldom#0.7.0"
+    "electron-builder/dmg-builder/dmg-license/plist/xmldom": "github:xmldom/xmldom"
   }
 }
