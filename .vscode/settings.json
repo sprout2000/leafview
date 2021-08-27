@@ -3,21 +3,8 @@
     "source.fixAll": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "'Cascadia Code', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 14,
   "editor.formatOnSave": true,
-  "editor.glyphMargin": false,
-  "editor.minimap.enabled": false,
-  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
-  "explorer.openEditors.visible": 0,
   "extensions.ignoreRecommendations": false,
-  "files.insertFinalNewline": true,
-  "git.autofetch": true,
-  "git.enableSmartCommit": true,
-  "terminal.integrated.fontSize": 15,
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.settings.editor": "json",
-  "workbench.startupEditor": "none"
+  "files.insertFinalNewline": true
 }
