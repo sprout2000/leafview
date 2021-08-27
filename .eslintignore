@@ -5,3 +5,4 @@ build/
 public/
 release/
 coverage/
+.yarn/
