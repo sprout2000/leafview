@@ -52,7 +52,7 @@
     "electron-log": "^4.4.1",
     "electron-store": "^8.0.0",
     "electron-updater": "^4.3.9",
-    "i18next": "^20.4.0",
+    "i18next": "^20.6.0",
     "leaflet": "^1.7.1",
     "mime-types": "^2.1.32",
     "natsort": "^2.0.2",
