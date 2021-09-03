@@ -49,3 +49,20 @@ $ yarn install && yarn package
 ```
 
 You will find the AppImage in `release/LeafView-1.x-linux-x64/`.
+
+### 4. Create Leafview Ubuntu menu entry
+
+```bash
+$ cat > ~/.local/share/applications/leafview.desktop <<- EOF
+[Desktop Entry]
+Name=LeafView
+Exec=$(pwd)/release/LeafView-1.1.0-linux-x86_64.AppImage --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=leafview
+StartupWMClass=LeafView
+X-AppImage-Version=1.1.0
+Comment=Secure image viewer for minimalists based on leaflet.js
+Categories=Utility;
+EOF
+```
