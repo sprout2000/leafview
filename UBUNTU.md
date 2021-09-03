@@ -22,7 +22,7 @@ $ sudo bash nodesource_setup.sh
 $ sudo apt install nodejs
 ```
 
-### 2. Install yarn v1.22.x
+### 2. Install yarn v1.22.x:
 
 ```bash
 # Activate the Yarn repository.
@@ -40,7 +40,7 @@ $ sudo apt install yarn
 
 ```bash
 # Clone this repo.
-$ git clone git@github.com:sprout2000/leafview.git
+$ git clone https://github.com/sprout2000/leafview.git
 
 # And then build this project
 $ cd leafview
