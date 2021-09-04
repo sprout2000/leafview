@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/52094761/83928161-b67afd00-a7c9-11ea-99c4-190121bfaf6f.png"> LeafView
+# ![artwork](https://user-images.githubusercontent.com/52094761/132089381-b19789f3-4f41-47a1-8579-1d62d3f87027.png) LeafView
 
 **An image viewer for minimalists.**
 
