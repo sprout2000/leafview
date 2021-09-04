@@ -81,7 +81,7 @@
 
 ### :desktop_computer: macOS (x64, arm64)
 
-You can download the latest version of LeafView from the releases page here:  
+You can download the latest version of LeafView from the releases page here:
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
 ### :computer: Windows10
@@ -90,7 +90,7 @@ You can download the latest version of LeafView from [Microsoft Store](https://w
 
 ## :beers: Contribution
 
-I need more locale files.  
+I need more locale files.
 When you have translated the menu into your language, could you please send me the locale file as a [pull request](https://github.com/sprout2000/leafview/pulls)?
 
 1. Create `{your_LANG}.json` in `src/locales`.
@@ -133,5 +133,5 @@ _see [UBUNTU.md](https://github.com/sprout2000/leafview/blob/main/UBUNTU.md)._
 
 ## :copyright: License
 
-Copyright (c) 2020 sprout2000 and other contributors  
+Copyright (c) 2020 sprout2000 and other contributors
 [MIT](https://github.com/sprout2000/leafview/blob/master/LICENSE.md) Licensed
