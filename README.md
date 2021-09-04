@@ -17,7 +17,7 @@
 
 ## :green_book: Usage
 
-### :computer: Keyboard Shortcuts
+### :keyboard: Keyboard Shortcuts
 
 |                                     Key                                     | Function           | Platform |
 | :-------------------------------------------------------------------------: | :----------------- | :------- |
@@ -33,7 +33,7 @@
 |                        <kbd>Ctrl</kbd>+<kbd>D</kbd>                         | Toggle Dark Mode   | Windows  |
 |                               <kbd>F11</kbd>                                | Toggle Fullscreen  | Windows  |
 
-### :computer: Mouse Operations
+### :computer_mouse: Mouse Operations
 
 |    Mouse     | Function    |
 | :----------: | :---------- |
@@ -63,7 +63,7 @@
 - `svg` (public.svg-image)
 - `webp` (com.google.webp)
 
-## :books: Supported Languages
+## :globe_with_meridians: Supported Languages
 
 | Language                           |  Code   |
 | :--------------------------------- | :-----: |
@@ -77,9 +77,9 @@
 | Português :portugal: :brazil:      |  `pt`   |
 | 简体中文 :cn:                      | `zh_CN` |
 
-## :gift: Download
+## :inbox_tray: Download
 
-### :computer: macOS (x64, arm64)
+### :desktop_computer: macOS (x64, arm64)
 
 You can download the latest version of LeafView from the releases page here:  
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
