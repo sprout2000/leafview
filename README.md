@@ -134,4 +134,3 @@ _see [UBUNTU.md](https://github.com/sprout2000/leafview/blob/main/UBUNTU.md)._
 ## :copyright: License
 
 Copyright (c) 2020 sprout2000 and other contributors
-[MIT](https://github.com/sprout2000/leafview/blob/master/LICENSE.md) Licensed
