@@ -1,6 +1,6 @@
 # ![artwork](https://user-images.githubusercontent.com/52094761/132089381-b19789f3-4f41-47a1-8579-1d62d3f87027.png) LeafView
 
-**A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).**
+A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
 <img width="858" alt="2021-09-04-18 07 52" src="https://user-images.githubusercontent.com/52094761/132089196-226ef3a8-188e-4f24-9406-8e27fbd16544.png">
 
