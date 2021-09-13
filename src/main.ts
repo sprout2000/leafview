@@ -90,7 +90,7 @@ const createWindow = () => {
     minWidth: 800,
     minHeight: isDarwin ? 558 : 602,
     show: false,
-    backgroundColor: store.get('darkmode') ? '#1e1e23' : '#dddddd',
+    backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       sandbox: true,
       safeDialogs: true,
