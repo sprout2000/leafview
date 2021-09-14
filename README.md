@@ -2,7 +2,7 @@
 
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
-<img width="858" alt="2021-09-04-18 07 52" src="https://user-images.githubusercontent.com/52094761/132089196-226ef3a8-188e-4f24-9406-8e27fbd16544.png">
+<img width="864" alt="2021-09-14-172602" src="https://user-images.githubusercontent.com/52094761/133223244-41292db5-6995-461e-8335-a6b1fb07e955.png">
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sprout2000_leafview&metric=alert_status)](https://sonarcloud.io/dashboard?id=sprout2000_leafview)
 [![GitHub CI](https://github.com/sprout2000/leafview/workflows/GitHub%20CI/badge.svg)](https://github.com/sprout2000/leafview/actions?query=workflow%3A%22GitHub+CI%22)
