@@ -37,6 +37,7 @@ process.once('uncaughtException', (err) => {
 });
 
 const gotTheLock = app.requestSingleInstanceLock();
+const isWin32 = process.platform === 'win32';
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
@@ -90,7 +91,9 @@ const createWindow = () => {
     minWidth: 800,
     minHeight: isDarwin ? 558 : 602,
     show: false,
-    backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
+    frame: isWin32 ? false : true,
+    autoHideMenuBar: true,
+    backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#e6e6e6',
     webPreferences: {
       sandbox: true,
       safeDialogs: true,
@@ -107,6 +110,20 @@ const createWindow = () => {
   }
 
   ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
+
+  ipcMain.handle('minimize', () => mainWindow.minimize());
+  ipcMain.handle('maximize', () => mainWindow.maximize());
+  ipcMain.handle('restore', () => mainWindow.unmaximize());
+  ipcMain.handle('close', () => mainWindow.close());
+
+  mainWindow.on('maximize', () => mainWindow.webContents.send('maximized'));
+  mainWindow.on('unmaximize', () => mainWindow.webContents.send('unMaximized'));
+  mainWindow.on('resized', () => {
+    if (mainWindow.isMaximized()) return;
+    mainWindow.webContents.send('resized');
+  });
+  mainWindow.on('focus', () => mainWindow.webContents.send('get-focus'));
+  mainWindow.on('blur', () => mainWindow.webContents.send('get-blur'));
 
   ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
     return checkmime(filepath);

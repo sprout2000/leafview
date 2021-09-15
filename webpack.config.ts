@@ -65,7 +65,10 @@ const config: Configuration = {
       minify: false,
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: './assets/icon.png', to: '.' }],
+      patterns: [
+        { from: './assets/icon.png', to: '.' },
+        { from: './assets/title_icon.png', to: '.' },
+      ],
     }),
   ],
   stats: 'errors-only',
