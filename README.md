@@ -4,7 +4,6 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 
 <img width="864" alt="2021-09-14-172602" src="https://user-images.githubusercontent.com/52094761/133223244-41292db5-6995-461e-8335-a6b1fb07e955.png">
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sprout2000_leafview&metric=alert_status)](https://sonarcloud.io/dashboard?id=sprout2000_leafview)
 [![GitHub CI](https://github.com/sprout2000/leafview/workflows/GitHub%20CI/badge.svg)](https://github.com/sprout2000/leafview/actions?query=workflow%3A%22GitHub+CI%22)
 [![GitHub license](https://img.shields.io/github/license/sprout2000/leafview)](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
 [![GitHub stars](https://img.shields.io/github/stars/sprout2000/leafview)](https://github.com/sprout2000/leafview/stargazers)
