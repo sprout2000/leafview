@@ -145,7 +145,7 @@ $titlebar-height: 36px;
   height: 100%;
   overflow: hidden;
   padding-top: 1px;
-  // user-select: none;
+  user-select: none;
   // position: relative;
 
   .titlebar {
@@ -177,6 +177,7 @@ $titlebar-height: 36px;
       display: flex;
       justify-content: center;
       align-items: center;
+      user-select: none;
     }
 
     .controls {
