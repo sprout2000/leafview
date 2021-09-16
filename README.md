@@ -27,10 +27,9 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 |                                <kbd>-</kbd>                                 | Zoom Out          | -        |
 |                                <kbd>0</kbd>                                 | Reset Zoom        | -        |
 | <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan               | -        |
-|                       <kbd>Command</kbd>+<kbd>D</kbd>                       | Toggle Dark Mode  | macOS    |
 |             <kbd>Command</kbd>+<kbd>Control</kbd>+<kbd>F</kbd>              | Toggle Fullscreen | macOS    |
+|                       <kbd>Command</kbd>+<kbd>D</kbd>                       | Toggle Dark Mode  | macOS    |
 |                        <kbd>Ctrl</kbd>+<kbd>D</kbd>                         | Toggle Dark Mode  | Windows  |
-|                               <kbd>F11</kbd>                                | Toggle Fullscreen | Windows  |
 
 ### :computer_mouse: Mouse Operations
 
