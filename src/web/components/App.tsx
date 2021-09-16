@@ -235,20 +235,20 @@ export const App = (): JSX.Element => {
   };
 
   const onMinimize = async () => {
-    await myAPI.minimize();
+    await myAPI.minimizeWindow();
   };
 
   const onMaximize = async () => {
     setMaximized(!maximized);
-    await myAPI.maximize();
+    await myAPI.maximizeWindow();
   };
 
   const onRestore = async () => {
     setMaximized(!maximized);
-    await myAPI.restore();
+    await myAPI.restoreWindow();
   };
 
-  const onClose = async () => await myAPI.close();
+  const onClose = async () => await myAPI.closeWindow();
 
   const updateTitle = async (filepath: string): Promise<void> => {
     await myAPI.updateTitle(filepath);

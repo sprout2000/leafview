@@ -90,10 +90,10 @@ const createWindow = () => {
 
   ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
 
-  ipcMain.handle('minimize', () => mainWindow.minimize());
-  ipcMain.handle('maximize', () => mainWindow.maximize());
-  ipcMain.handle('restore', () => mainWindow.unmaximize());
-  ipcMain.handle('close', () => mainWindow.close());
+  ipcMain.handle('minimize-window', () => mainWindow.minimize());
+  ipcMain.handle('maximize-window', () => mainWindow.maximize());
+  ipcMain.handle('restore-window', () => mainWindow.unmaximize());
+  ipcMain.handle('close-window', () => mainWindow.close());
 
   mainWindow.on('maximize', () => mainWindow.webContents.send('maximized'));
   mainWindow.on('unmaximize', () => mainWindow.webContents.send('unMaximized'));
