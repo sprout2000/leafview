@@ -65,7 +65,7 @@ const store = new Store<TypedStore>({
     x: undefined,
     y: undefined,
     width: 800,
-    height: isDarwin ? 558 : 576,
+    height: isDarwin ? 558 : 578,
   },
 });
 
@@ -89,7 +89,7 @@ const createWindow = () => {
     height: store.get('height'),
     icon: isLinux ? path.join(__dirname, 'icon.png') : undefined,
     minWidth: 800,
-    minHeight: isDarwin ? 558 : 576,
+    minHeight: isDarwin ? 558 : 578,
     show: false,
     frame: isWin32 ? false : true,
     autoHideMenuBar: true,
