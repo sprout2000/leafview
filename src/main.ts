@@ -42,22 +42,6 @@ const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
-/// #if DEBUG
-const execPath =
-  process.platform === 'win32'
-    ? '../node_modules/electron/dist/electron.exe'
-    : '../node_modules/.bin/electron';
-
-if (isDev) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  require('electron-reload')(__dirname, {
-    electron: path.resolve(__dirname, execPath),
-    forceHardReset: true,
-    hardResetMethod: 'exit',
-  });
-}
-/// #endif
-
 const store = new Store<TypedStore>({
   defaults: {
     menubar: true,
@@ -103,12 +87,6 @@ const createWindow = () => {
   });
 
   nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
-
-  if (!isDarwin) {
-    store.get('menubar', true)
-      ? mainWindow.setMenuBarVisibility(true)
-      : mainWindow.setMenuBarVisibility(false);
-  }
 
   ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
 

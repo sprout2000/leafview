@@ -4,18 +4,16 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const config: Configuration = {
-  mode: 'development',
-  target: 'web',
+const isDev = process.env.NODE_ENV === 'development';
+
+const base: Configuration = {
+  mode: isDev ? 'development' : 'production',
   node: {
     __dirname: false,
     __filename: false,
   },
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
-  },
-  entry: {
-    app: './src/web/index.tsx',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -28,7 +26,7 @@ const config: Configuration = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: 'ts-loader',
+        loader: 'ts-loader',
       },
       {
         test: /\.s?css$/,
@@ -37,14 +35,14 @@ const config: Configuration = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
+              sourceMap: isDev,
               importLoaders: 1,
             },
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
+              sourceMap: isDev,
             },
           },
         ],
@@ -55,14 +53,42 @@ const config: Configuration = {
       },
     ],
   },
+  stats: 'errors-only',
+  performance: { hints: false },
+  optimization: { minimize: !isDev },
+  devtool: isDev ? 'inline-source-map' : undefined,
+};
+
+const main: Configuration = {
+  ...base,
+  target: 'electron-main',
+  entry: {
+    main: './src/main.ts',
+  },
+};
+
+const preload: Configuration = {
+  ...base,
+  target: 'electron-preload',
+  entry: {
+    preload: './src/preload.ts',
+  },
+};
+
+const renderer: Configuration = {
+  ...base,
+  target: 'web',
+  entry: {
+    index: './src/web/index.tsx',
+  },
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/web/index.html',
+      minify: !isDev,
+      inject: 'body',
       filename: 'index.html',
       scriptLoading: 'blocking',
-      inject: 'body',
-      minify: false,
+      template: './src/web/index.html',
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -71,10 +97,6 @@ const config: Configuration = {
       ],
     }),
   ],
-  stats: 'errors-only',
-  performance: { hints: false },
-  optimization: { minimize: false },
-  devtool: 'source-map',
 };
 
-export default config;
+export default [main, preload, renderer];
