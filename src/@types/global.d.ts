@@ -35,10 +35,10 @@ export interface Sandbox {
 
   contextMenu: () => void;
 
-  closeWindow: () => Promise<void>;
-  restoreWindow: () => Promise<void>;
-  maximizeWindow: () => Promise<void>;
-  minimizeWindow: () => Promise<void>;
+  windowClose: () => Promise<void>;
+  windowRestore: () => Promise<void>;
+  windowMaximize: () => Promise<void>;
+  windowMinimize: () => Promise<void>;
 
   resized: (listener: () => Promise<void>) => Electron.IpcRenderer;
   removeResized: () => Electron.IpcRenderer;

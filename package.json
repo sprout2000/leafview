@@ -35,27 +35,23 @@
     "build:prod": "cross-env NODE_ENV=\"production\" webpack --progress",
     "build:unsign": "ts-node scripts/build-unsign.ts",
     "build:appx": "ts-node scripts/build-appx.ts",
-    "build:darwin": "ts-node scripts/build.ts",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --ext .ts,.tsx --fix",
     "lint:prettier": "prettier --write .",
     "package": "run-s clean build:prod build:unsign",
     "package:appx": "run-s clean build:prod build:appx",
-    "package:darwin": "run-s clean build:prod build:darwin",
     "prepare": "git config --local core.hooksPath .githooks"
   },
   "dependencies": {
     "electron-log": "^4.4.1",
     "electron-store": "^8.0.1",
-    "electron-updater": "^4.3.9",
     "i18next": "^20.6.1",
     "leaflet": "^1.7.1",
     "mime-types": "^2.1.32",
     "natsort": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
-    "ua-parser-js": "^0.7.28"
+    "react-icons": "^4.2.0"
   },
   "devDependencies": {
     "@types/copy-webpack-plugin": "^8.0.1",
@@ -66,7 +62,6 @@
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
     "@types/resize-observer-browser": "^0.1.6",
-    "@types/ua-parser-js": "^0.7.36",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.2.0",

@@ -39,10 +39,10 @@ contextBridge.exposeInMainWorld('myAPI', {
     ipcRenderer.on('menu-open', listener),
   removeMenuOpen: () => ipcRenderer.removeAllListeners('menu-open'),
 
-  closeWindow: async () => ipcRenderer.invoke('close-window'),
-  minimizeWindow: async () => ipcRenderer.invoke('minimize-window'),
-  maximizeWindow: async () => ipcRenderer.invoke('maximize-window'),
-  restoreWindow: async () => ipcRenderer.invoke('restore-window'),
+  windowClose: async () => ipcRenderer.invoke('window-close'),
+  windowMinimize: async () => ipcRenderer.invoke('window-minimize'),
+  windowMaximize: async () => ipcRenderer.invoke('window-maximize'),
+  windowRestore: async () => ipcRenderer.invoke('window-restore'),
 
   resized: (listener: () => Promise<void>) =>
     ipcRenderer.on('resized', listener),

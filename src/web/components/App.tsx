@@ -1,5 +1,4 @@
 import React, { useRef, useCallback, useState, useEffect } from 'react';
-import UAParser from 'ua-parser-js';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -14,11 +13,6 @@ export const App = (): JSX.Element => {
   const [url, setUrl] = useState<string>(empty);
   const [maximized, setMaximized] = useState(false);
   const [blur, setBlur] = useState(false);
-
-  const isWin32 = () => {
-    const ua = new UAParser();
-    return ua.getOS().name === 'Windows';
-  };
 
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
@@ -228,27 +222,25 @@ export const App = (): JSX.Element => {
   };
 
   const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isWin32()) return;
-
     e.preventDefault();
     myAPI.contextMenu();
   };
 
   const onMinimize = async () => {
-    await myAPI.minimizeWindow();
+    await myAPI.windowMinimize();
   };
 
   const onMaximize = async () => {
     setMaximized(!maximized);
-    await myAPI.maximizeWindow();
+    await myAPI.windowMaximize();
   };
 
   const onRestore = async () => {
     setMaximized(!maximized);
-    await myAPI.restoreWindow();
+    await myAPI.windowRestore();
   };
 
-  const onClose = async () => await myAPI.closeWindow();
+  const onClose = async () => await myAPI.windowClose();
 
   const updateTitle = async (filepath: string): Promise<void> => {
     await myAPI.updateTitle(filepath);
@@ -359,89 +351,87 @@ export const App = (): JSX.Element => {
       onDrop={onDrop}
       onKeyDown={onKeyDown}
     >
-      {isWin32() && (
-        <div
-          className={blur ? 'titlebar blur' : 'titlebar'}
-          onDoubleClick={(e) => e.preventDefault()}
-        >
-          <div className="title-icon">
-            <img src="title_icon.png" />
+      <div
+        className={blur ? 'titlebar blur' : 'titlebar'}
+        onDoubleClick={(e) => e.preventDefault()}
+      >
+        <div className="title-icon">
+          <img src="title_icon.png" />
+        </div>
+        <div className={blur ? 'title-container blur' : 'title-container'}>
+          <p>{url === empty ? 'LeafView' : url.match(/[ \w-]+\..*$/)}</p>
+        </div>
+        <div className="controls">
+          <div
+            className={blur ? 'button-container blur' : 'button-container'}
+            onClick={onMinimize}
+          >
+            <svg
+              width="10"
+              height="1"
+              viewBox="0 0 10 1"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="10" height="1" fill="black" />
+            </svg>
           </div>
-          <div className={blur ? 'title-container blur' : 'title-container'}>
-            <p>{url === empty ? 'LeafView' : url.match(/[ \w-]+\..*$/)}</p>
-          </div>
-          <div className="controls">
+          {maximized ? (
             <div
               className={blur ? 'button-container blur' : 'button-container'}
-              onClick={onMinimize}
+              onClick={onRestore}
             >
               <svg
                 width="10"
-                height="1"
-                viewBox="0 0 10 1"
+                height="10"
+                viewBox="0 0 10 10"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect width="10" height="1" fill="black" />
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M9 1H3V2H2V1V0H3H9H10V1V7V8H9H8V7H9V1Z"
+                  fill="black"
+                />
+                <rect x="0.5" y="2.5" width="7" height="7" stroke="black" />
               </svg>
             </div>
-            {maximized ? (
-              <div
-                className={blur ? 'button-container blur' : 'button-container'}
-                onClick={onRestore}
-              >
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M9 1H3V2H2V1V0H3H9H10V1V7V8H9H8V7H9V1Z"
-                    fill="black"
-                  />
-                  <rect x="0.5" y="2.5" width="7" height="7" stroke="black" />
-                </svg>
-              </div>
-            ) : (
-              <div
-                className={blur ? 'button-container blur' : 'button-container'}
-                onClick={onMaximize}
-              >
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect x="0.5" y="0.5" width="9" height="9" stroke="black" />
-                </svg>
-              </div>
-            )}
+          ) : (
             <div
-              className={
-                blur ? 'button-container close blur' : 'button-container close'
-              }
-              onClick={onClose}
+              className={blur ? 'button-container blur' : 'button-container'}
+              onClick={onMaximize}
             >
               <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M1 11L11 1" className="close" />
-                <path d="M1 1L11 11" className="close" />
+                <rect x="0.5" y="0.5" width="9" height="9" stroke="black" />
               </svg>
             </div>
+          )}
+          <div
+            className={
+              blur ? 'button-container close blur' : 'button-container close'
+            }
+            onClick={onClose}
+          >
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1 11L11 1" className="close" />
+              <path d="M1 1L11 11" className="close" />
+            </svg>
           </div>
         </div>
-      )}
+      </div>
       <div className="bottom">
         <Float
           onClickOpen={onClickOpen}
@@ -450,10 +440,7 @@ export const App = (): JSX.Element => {
           remove={remove}
         />
       </div>
-      <div
-        className={isWin32() ? 'content-win32' : 'content'}
-        onContextMenu={onContextMenu}
-      >
+      <div className={'content-win32'} onContextMenu={onContextMenu}>
         <div className={url === empty ? 'view init' : 'view'} ref={mapRef} />
       </div>
     </div>

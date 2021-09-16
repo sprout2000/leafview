@@ -10,7 +10,6 @@ import {
 } from 'electron';
 
 import Store from 'electron-store';
-import { autoUpdater } from 'electron-updater';
 import i18next from 'i18next';
 import log from 'electron-log';
 
@@ -25,7 +24,6 @@ import { searchDevtools } from './searchDevtools';
 import { TypedStore } from './lib/TypedStore';
 
 console.log = log.log;
-autoUpdater.logger = log;
 log.info('App starting...');
 
 process.once('uncaughtException', (err) => {
@@ -37,9 +35,6 @@ process.once('uncaughtException', (err) => {
 });
 
 const gotTheLock = app.requestSingleInstanceLock();
-const isWin32 = process.platform === 'win32';
-const isLinux = process.platform === 'linux';
-const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
 const store = new Store<TypedStore>({
@@ -49,11 +44,9 @@ const store = new Store<TypedStore>({
     x: undefined,
     y: undefined,
     width: 800,
-    height: isDarwin ? 558 : 578,
+    height: 578,
   },
 });
-
-let openfile: string | null = null;
 
 const checkmime = (filepath: string) => {
   const mimetype = mime.lookup(filepath);
@@ -64,20 +57,19 @@ const checkmime = (filepath: string) => {
 };
 
 const createWindow = () => {
-  const dotfiles = isDarwin ? '.' : '._';
+  const dotfiles = '._';
 
   const mainWindow = new BrowserWindow({
     x: store.get('x'),
     y: store.get('y'),
     width: store.get('width'),
     height: store.get('height'),
-    icon: isLinux ? path.join(__dirname, 'icon.png') : undefined,
     minWidth: 800,
-    minHeight: isDarwin ? 558 : 578,
+    minHeight: 578,
     show: false,
     autoHideMenuBar: true,
-    frame: isWin32 ? false : true,
-    fullscreenable: isWin32 ? false : true,
+    frame: false,
+    fullscreenable: false,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#e6e6e6',
     webPreferences: {
       sandbox: true,
@@ -90,10 +82,10 @@ const createWindow = () => {
 
   ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
 
-  ipcMain.handle('minimize-window', () => mainWindow.minimize());
-  ipcMain.handle('maximize-window', () => mainWindow.maximize());
-  ipcMain.handle('restore-window', () => mainWindow.unmaximize());
-  ipcMain.handle('close-window', () => mainWindow.close());
+  ipcMain.handle('window-minimize', () => mainWindow.minimize());
+  ipcMain.handle('window-maximize', () => mainWindow.maximize());
+  ipcMain.handle('window-restore', () => mainWindow.unmaximize());
+  ipcMain.handle('window-close', () => mainWindow.close());
 
   mainWindow.on('maximize', () => mainWindow.webContents.send('maximized'));
   mainWindow.on('unmaximize', () => mainWindow.webContents.send('unMaximized'));
@@ -168,7 +160,6 @@ const createWindow = () => {
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
   ipcMain.on('show-context-menu', () => {
-    if (isDarwin || mainWindow.menuBarVisible) return;
     menu.popup();
   });
 
@@ -178,81 +169,23 @@ const createWindow = () => {
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
   mainWindow.webContents.once('did-finish-load', () => {
-    if (!isDarwin && !isDev && process.argv.length >= 2) {
-      const filepath = process.argv[process.argv.length - 1];
-      if (path.basename(filepath).startsWith(dotfiles)) return;
-
-      mainWindow.webContents.send('menu-open', filepath);
-    }
-
-    if (isDarwin && openfile) {
-      if (path.basename(openfile).startsWith(dotfiles)) {
-        openfile = null;
-        return;
-      }
-
-      mainWindow.webContents.send('menu-open', openfile);
-      openfile = null;
-    }
-  });
-
-  if (!isDarwin) {
-    app.on('second-instance', (_e, argv) => {
-      if (mainWindow.isMinimized()) mainWindow.restore();
-      mainWindow.focus();
-
-      if (argv.length >= 4) {
-        const filepath = argv[argv.length - 1];
-        if (path.basename(filepath).startsWith(dotfiles)) return;
-
-        mainWindow.webContents.send('menu-open', filepath);
-      }
-    });
-  }
-
-  app.on('open-file', (e, filepath) => {
-    e.preventDefault();
-
-    if (mainWindow.isMinimized()) mainWindow.restore();
-    mainWindow.focus();
-
+    const filepath = process.argv[process.argv.length - 1];
     if (path.basename(filepath).startsWith(dotfiles)) return;
 
     mainWindow.webContents.send('menu-open', filepath);
   });
 
-  if (isDarwin) {
-    autoUpdater.checkForUpdatesAndNotify();
+  app.on('second-instance', (_e, argv) => {
+    if (mainWindow.isMinimized()) mainWindow.restore();
+    mainWindow.focus();
 
-    autoUpdater.once('error', (_e, err) => {
-      log.info(`Error in auto-updater: ${err}`);
-    });
+    if (argv.length >= 4) {
+      const filepath = argv[argv.length - 1];
+      if (path.basename(filepath).startsWith(dotfiles)) return;
 
-    autoUpdater.once('update-downloaded', async () => {
-      log.info(`Update downloaded...`);
-
-      await dialog
-        .showMessageBox(mainWindow, {
-          type: 'info',
-          buttons: ['Restart', 'Not now'],
-          defaultId: 0,
-          cancelId: 1,
-          title: 'Update Downloaded',
-          message: 'Update downloaded',
-          detail:
-            'We have finished downloading the latest updates.\n' +
-            'Would you like to install the update and restart now?',
-        })
-        .then((result) => {
-          if (result.response === 0) {
-            autoUpdater.quitAndInstall();
-          } else {
-            log.info('The installation of the update has been cancelled...');
-          }
-        })
-        .catch((err) => log.info(`Error in showMessageBox: ${err}`));
-    });
-  }
+      mainWindow.webContents.send('menu-open', filepath);
+    }
+  });
 
   mainWindow.once('close', () => {
     const menubar = store.get('menubar', true);
@@ -262,16 +195,9 @@ const createWindow = () => {
   });
 };
 
-if (!gotTheLock && !isDarwin) {
+if (!gotTheLock) {
   app.exit();
 } else {
-  app.once('will-finish-launching', () => {
-    app.once('open-file', (e, filepath) => {
-      e.preventDefault();
-      openfile = filepath;
-    });
-  });
-
   app.whenReady().then(async () => {
     const locale = app.getLocale();
     setLocales(locale);
@@ -290,16 +216,13 @@ if (!gotTheLock && !isDarwin) {
 
     createWindow();
   });
-
-  app.setAboutPanelOptions({
-    applicationName: app.name,
-    applicationVersion: isDarwin
-      ? app.getVersion()
-      : `v${app.getVersion()} (${process.versions['electron']})`,
-    version: process.versions['electron'],
-    copyright: '© 2020 sprout2000 and other contributors',
-    iconPath: path.join(__dirname, 'icon.png'),
-  });
-
-  app.once('window-all-closed', () => app.exit());
 }
+
+app.setAboutPanelOptions({
+  applicationName: app.name,
+  applicationVersion: `v${app.getVersion()} (${process.versions['electron']})`,
+  copyright: '© 2020 sprout2000 and other contributors',
+  iconPath: path.join(__dirname, 'icon.png'),
+});
+
+app.once('window-all-closed', () => app.exit());
