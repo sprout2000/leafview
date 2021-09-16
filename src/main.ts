@@ -91,8 +91,9 @@ const createWindow = () => {
     minWidth: 800,
     minHeight: isDarwin ? 558 : 578,
     show: false,
-    frame: isWin32 ? false : true,
     autoHideMenuBar: true,
+    frame: isWin32 ? false : true,
+    fullscreenable: isWin32 ? false : true,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#e6e6e6',
     webPreferences: {
       sandbox: true,
