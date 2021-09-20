@@ -71,7 +71,7 @@
     "@types/resize-observer-browser": "^0.1.6",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
-    "css-loader": "^6.2.0",
+    "css-loader": "^6.3.0",
     "dotenv": "^10.0.0",
     "electron": "^14.0.1",
     "electron-builder": "^22.11.7",
