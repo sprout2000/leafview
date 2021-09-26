@@ -1,4 +1,5 @@
-$titlebar-height: 36px;
+$titlebar-height: 24px;
+$button-container-width: 46px;
 
 @mixin view {
   height: 100%;
@@ -186,12 +187,12 @@ $titlebar-height: 36px;
       position: absolute;
       top: 0;
       right: 0;
-      height: 36px;
+      height: $titlebar-height;
       display: flex;
       flex-direction: row;
 
       .button-container {
-        width: 46px;
+        width: $button-container-width;
         height: 100%;
         display: flex;
         align-items: center;
