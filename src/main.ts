@@ -37,6 +37,20 @@ process.once('uncaughtException', (err) => {
 const gotTheLock = app.requestSingleInstanceLock();
 const isDev = process.env.NODE_ENV === 'development';
 
+const execPath =
+  process.platform === 'win32'
+    ? '../node_modules/electron/dist/electron.exe'
+    : '../node_modules/.bin/electron';
+
+if (isDev) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('electron-reload')(__dirname, {
+    electron: path.resolve(__dirname, execPath),
+    forceHardReset: true,
+    hardResetMethod: 'exit',
+  });
+}
+
 const store = new Store<TypedStore>({
   defaults: {
     menubar: true,
