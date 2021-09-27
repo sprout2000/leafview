@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css';
 
 import { Float } from './Float';
 import empty from './empty.png';
+import './App.scss';
 
 const { myAPI } = window;
 
