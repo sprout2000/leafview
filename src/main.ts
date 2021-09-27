@@ -37,6 +37,7 @@ process.once('uncaughtException', (err) => {
 const gotTheLock = app.requestSingleInstanceLock();
 const isDev = process.env.NODE_ENV === 'development';
 
+/// #if DEBUG
 if (isDev) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('electron-reload')(__dirname, {
@@ -48,6 +49,7 @@ if (isDev) {
     hardResetMethod: 'exit',
   });
 }
+/// #endif
 
 const store = new Store<TypedStore>({
   defaults: {
