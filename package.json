@@ -101,6 +101,9 @@
     "wait-on": "^6.0.0"
   },
   "resolutions": {
-    "electron-builder/dmg-builder/dmg-license/plist/xmldom": "github:xmldom/xmldom"
+    "electron-builder/dmg-builder/dmg-license/cli-truncate/string-width/strip-ansi/ansi-regex": "^5.0.1",
+    "electron-builder/dmg-builder/dmg-license/plist/xmldom": "github:xmldom/xmldom",
+    "electron-builder/update-notifier/boxen/ansi-align/string-width/strip-ansi/ansi-regex": "^5.0.1",
+    "html-webpack-plugin/pretty-error/renderkid/strip-ansi/ansi-regex": "^5.0.1"
   }
 }
