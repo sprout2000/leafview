@@ -37,15 +37,13 @@ process.once('uncaughtException', (err) => {
 const gotTheLock = app.requestSingleInstanceLock();
 const isDev = process.env.NODE_ENV === 'development';
 
-const execPath =
-  process.platform === 'win32'
-    ? '../node_modules/electron/dist/electron.exe'
-    : '../node_modules/.bin/electron';
-
 if (isDev) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('electron-reload')(__dirname, {
-    electron: path.resolve(__dirname, execPath),
+    electron: path.resolve(
+      __dirname,
+      '../node_modules/electron/dist/electron.exe'
+    ),
     forceHardReset: true,
     hardResetMethod: 'exit',
   });
@@ -53,7 +51,6 @@ if (isDev) {
 
 const store = new Store<TypedStore>({
   defaults: {
-    menubar: true,
     darkmode: nativeTheme.shouldUseDarkColors,
     x: undefined,
     y: undefined,
@@ -81,8 +78,8 @@ const createWindow = () => {
     minWidth: 800,
     minHeight: 578,
     show: false,
-    autoHideMenuBar: true,
     frame: false,
+    autoHideMenuBar: true,
     fullscreenable: false,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#e6e6e6',
     webPreferences: {
@@ -96,10 +93,10 @@ const createWindow = () => {
 
   ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
 
-  ipcMain.handle('window-minimize', () => mainWindow.minimize());
-  ipcMain.handle('window-maximize', () => mainWindow.maximize());
-  ipcMain.handle('window-restore', () => mainWindow.unmaximize());
-  ipcMain.handle('window-close', () => mainWindow.close());
+  ipcMain.handle('minimize-window', () => mainWindow.minimize());
+  ipcMain.handle('maximize-window', () => mainWindow.maximize());
+  ipcMain.handle('restore-window', () => mainWindow.unmaximize());
+  ipcMain.handle('close-window', () => mainWindow.close());
 
   mainWindow.on('maximize', () => mainWindow.webContents.send('maximized'));
   mainWindow.on('unmaximize', () => mainWindow.webContents.send('unMaximized'));
@@ -183,10 +180,12 @@ const createWindow = () => {
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
   mainWindow.webContents.once('did-finish-load', () => {
-    const filepath = process.argv[process.argv.length - 1];
-    if (path.basename(filepath).startsWith(dotfiles)) return;
+    if (!isDev && process.argv.length >= 2) {
+      const filepath = process.argv[process.argv.length - 1];
+      if (path.basename(filepath).startsWith(dotfiles)) return;
 
-    mainWindow.webContents.send('menu-open', filepath);
+      mainWindow.webContents.send('menu-open', filepath);
+    }
   });
 
   app.on('second-instance', (_e, argv) => {
@@ -202,10 +201,9 @@ const createWindow = () => {
   });
 
   mainWindow.once('close', () => {
-    const menubar = store.get('menubar', true);
     const darkmode = store.get('darkmode', nativeTheme.shouldUseDarkColors);
     const { x, y, width, height } = mainWindow.getBounds();
-    store.set({ x, y, width, height, darkmode, menubar });
+    store.set({ x, y, width, height, darkmode });
   });
 };
 
@@ -230,13 +228,15 @@ if (!gotTheLock) {
 
     createWindow();
   });
+
+  app.setAboutPanelOptions({
+    applicationName: app.name,
+    applicationVersion: `v${app.getVersion()} (${
+      process.versions['electron']
+    })`,
+    copyright: '© 2020 sprout2000 and other contributors',
+    iconPath: path.join(__dirname, 'icon.png'),
+  });
+
+  app.once('window-all-closed', () => app.exit());
 }
-
-app.setAboutPanelOptions({
-  applicationName: app.name,
-  applicationVersion: `v${app.getVersion()} (${process.versions['electron']})`,
-  copyright: '© 2020 sprout2000 and other contributors',
-  iconPath: path.join(__dirname, 'icon.png'),
-});
-
-app.once('window-all-closed', () => app.exit());

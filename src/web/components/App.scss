@@ -1,5 +1,4 @@
-$titlebar-height: 24px;
-$button-container-width: 46px;
+$titlebar-height: 25px;
 
 @mixin view {
   height: 100%;
@@ -165,8 +164,7 @@ $button-container-width: 46px;
       text-overflow: ellipsis;
       text-align: center;
       font-family: sans-serif;
-      font-weight: bold;
-      font-size: 12px;
+      font-size: 11px;
       user-select: none;
     }
 
@@ -192,7 +190,7 @@ $button-container-width: 46px;
       flex-direction: row;
 
       .button-container {
-        width: $button-container-width;
+        width: 46px;
         height: 100%;
         display: flex;
         align-items: center;
@@ -261,17 +259,8 @@ $button-container-width: 46px;
     }
   }
 
-  .content-win32 {
-    height: calc(100% - #{$titlebar-height});
-    overflow: hidden;
-
-    .view {
-      @include view();
-    }
-  }
-
   .content {
-    height: 100%;
+    height: calc(100% - #{$titlebar-height});
     overflow: hidden;
 
     .view {

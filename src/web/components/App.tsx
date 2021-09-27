@@ -227,20 +227,20 @@ export const App = (): JSX.Element => {
   };
 
   const onMinimize = async () => {
-    await myAPI.windowMinimize();
+    await myAPI.minimizeWindow();
   };
 
   const onMaximize = async () => {
     setMaximized(!maximized);
-    await myAPI.windowMaximize();
+    await myAPI.maximizeWindow();
   };
 
   const onRestore = async () => {
     setMaximized(!maximized);
-    await myAPI.windowRestore();
+    await myAPI.restoreWindow();
   };
 
-  const onClose = async () => await myAPI.windowClose();
+  const onClose = async () => await myAPI.closeWindow();
 
   const updateTitle = async (filepath: string): Promise<void> => {
     await myAPI.updateTitle(filepath);
@@ -440,7 +440,7 @@ export const App = (): JSX.Element => {
           remove={remove}
         />
       </div>
-      <div className={'content-win32'} onContextMenu={onContextMenu}>
+      <div className="content" onContextMenu={onContextMenu}>
         <div className={url === empty ? 'view init' : 'view'} ref={mapRef} />
       </div>
     </div>

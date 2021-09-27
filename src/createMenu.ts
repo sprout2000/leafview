@@ -1,4 +1,5 @@
 import {
+  app,
   dialog,
   BrowserWindow,
   Menu,
@@ -46,6 +47,11 @@ export const createMenu = (
       click: async (): Promise<void> =>
         shell.openExternal('https://github.com/sprout2000/leafview/#readme'),
     },
+    {
+      label: i18next.t('About'),
+      accelerator: 'Ctrl+I',
+      click: (): void => app.showAboutPanel(),
+    },
   ];
 
   if (process.env.NODE_ENV === 'development') {
@@ -71,7 +77,7 @@ export const createMenu = (
       submenu: [
         {
           label: i18next.t('Open...'),
-          accelerator: 'CmdOrCtrl+O',
+          accelerator: 'Ctrl+O',
           click: async (): Promise<void> => {
             await dialog
               .showOpenDialog(win, {
@@ -96,7 +102,7 @@ export const createMenu = (
               .then((result): void => {
                 if (result.canceled) return;
 
-                if (path.basename(result.filePaths[0]).startsWith('.')) {
+                if (path.basename(result.filePaths[0]).startsWith('._')) {
                   return;
                 }
 
@@ -132,7 +138,7 @@ export const createMenu = (
         },
         {
           label: i18next.t('Maximize'),
-          accelerator: 'CmdOrCtrl+L',
+          accelerator: 'Ctrl+L',
           click: (): void => {
             win.isMaximized() ? win.unmaximize() : win.maximize();
           },
@@ -142,7 +148,7 @@ export const createMenu = (
           label: i18next.t('Toggle Dark Mode'),
           type: 'checkbox',
           id: 'darkmode',
-          accelerator: 'CmdOrCtrl+D',
+          accelerator: 'Ctrl+D',
           click: () => {
             if (nativeTheme.shouldUseDarkColors) {
               nativeTheme.themeSource = 'light';
