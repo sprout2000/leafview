@@ -23,6 +23,9 @@ import pt from '../locales/pt.json';
 /** Merge the pull request sent by ArcherGu */
 /** https://github.com/sprout2000/leafview/pull/235 */
 import zh_CN from '../locales/zh_cn.json';
+/** Merge the pull request sent by SuhaibAtef */
+/** https://github.com/sprout2000/leafview/pull/274 */
+import ar from '../locales/ar.json';
 
 export const setLocales = (locale: string): void => {
   i18next.init({
@@ -45,6 +48,7 @@ export const setLocales = (locale: string): void => {
       'pt-BR': { translation: pt },
       zh: { translation: zh_CN },
       'zh-CN': { translation: zh_CN },
+      ar: { translation: ar },
     },
   });
 };
