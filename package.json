@@ -33,7 +33,7 @@
     "dev": "run-p dev:*",
     "dev:electron": "wait-on ./dist/index.html && cross-env NODE_ENV=\"development\" electron .",
     "dev:tsc": "tsc -w -p tsconfig.main.json",
-    "dev:webpack": "webpack --watch",
+    "dev:webpack": "webpack --watch --progress",
     "serve": "electron .",
     "clean": "rimraf dist release",
     "build": "webpack --config webpack.config.prod.ts --progress",
