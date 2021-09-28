@@ -40,11 +40,13 @@
     "build:prod": "cross-env NODE_ENV=\"production\" webpack --config webpack.config.prod.ts --progress",
     "build:unsign": "ts-node scripts/build-unsign.ts",
     "build:appx": "ts-node scripts/build-appx.ts",
+    "build:darwin": "ts-node scripts/build.ts",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint --fix .",
     "lint:prettier": "prettier --write .",
     "package": "run-s clean build:prod build:unsign",
     "package:appx": "run-s clean build:prod build:appx",
+    "package:darwin": "run-s clean build:prod build:appx",
     "prepare": "git config --local core.hooksPath .githooks"
   },
   "dependencies": {
