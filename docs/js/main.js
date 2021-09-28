@@ -10,5 +10,6 @@ var link3 = document.getElementById('download-link-3');
 var ua = navigator.userAgent;
 if (ua.includes('Windows NT')) {
   link.href = 'https://www.microsoft.com/en-us/p/leafview/9p870thx6217';
+  link2.href = 'https://www.microsoft.com/en-us/p/leafview/9p870thx6217';
   link3.href = 'https://www.microsoft.com/en-us/p/leafview/9p870thx6217';
 }
