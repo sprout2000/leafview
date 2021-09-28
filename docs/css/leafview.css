@@ -1,0 +1,148 @@
+body {
+  background-color: #151515;
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.table {
+  background-color: #292929 !important;
+  color: white !important;
+  border: 1px solid #aaa;
+}
+
+tr:nth-child(even) {
+  background-color: #212121;
+}
+
+.table thead td,
+.table thead th {
+  color: white !important;
+}
+
+.table td,
+.table th {
+  border: 1px solid #aaa;
+  border-width: 1px 0 1px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.intvbutton {
+  font-family: Lato;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+.intvbutton {
+  font-weight: 300;
+}
+
+.changelogheading {
+  font-size: 4rem;
+}
+@media screen and (min-width: 769px), print {
+  .changelogheading {
+    font-size: 6.5rem;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+}
+
+.changelogsubheading {
+  font-size: 2rem;
+}
+@media screen and (min-width: 769px), print {
+  .changelogsubheading {
+    left: 0rem;
+    top: 1rem;
+    position: absolute;
+  }
+}
+
+.log {
+  color: #e2e2e2;
+  margin-left: 1rem;
+}
+.log ul {
+  list-style-type: disc;
+}
+
+.firstsection,
+.nonaltsection,
+.altsection {
+  position: relative;
+}
+
+.firstsection {
+  background-color: #151515;
+  z-index: 3;
+}
+
+.nonaltsection {
+  box-shadow: 0em 0em 1em #000;
+  background-color: #212121;
+  z-index: 2;
+}
+
+.altsection {
+  background-color: #292929;
+  z-index: 1;
+}
+
+.window {
+  background-image: linear-gradient(
+      rgba(21, 21, 21, 0.5),
+      rgba(21, 21, 21, 0.5)
+    ),
+    url('../images/background.jpg');
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.leafviewbutton {
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  min-width: 20rem;
+  max-height: 4.5rem;
+}
+
+.leafviewtitle {
+  font-weight: 300;
+  font-size: 6rem;
+}
+
+.cylinder {
+  display: inline-block;
+  list-style: none;
+  padding: 0px;
+  height: 10rem;
+  perspective-origin: left;
+  perspective: 30rem;
+}
+
+.cylinder li {
+  height: 2.5rem;
+  padding: 0px;
+  margin: 0px;
+  font-weight: 300;
+  font-family: Lato, 'Open Sans', sans-serif;
+  font-size: 2.5rem;
+  transform-origin: left center;
+  cursor: pointer;
+}
+
+.downloadsitelogo {
+  max-width: 50%;
+  min-height: 8rem;
+}
+
+/*# sourceMappingURL=leafview.css.map */
