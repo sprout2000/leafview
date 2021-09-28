@@ -4,4 +4,3 @@ build/
 release/
 coverage/
 .yarn/
-*.md
