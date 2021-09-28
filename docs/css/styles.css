@@ -12,7 +12,7 @@
 .delete,
 .modal-close,
 .button,
-.intvbutton,
+.leafbutton,
 .file,
 .breadcrumb,
 .pagination-previous,
@@ -149,7 +149,7 @@
 }
 
 .button.is-loading::after,
-.is-loading.intvbutton::after,
+.is-loading.leafbutton::after,
 .loader,
 .select.is-loading::after,
 .control.is-loading::after {
@@ -209,7 +209,7 @@
 }
 
 .button,
-.intvbutton,
+.leafbutton,
 .input,
 .textarea,
 .select select,
@@ -238,7 +238,7 @@
   vertical-align: top;
 }
 .button:focus,
-.intvbutton:focus,
+.leafbutton:focus,
 .input:focus,
 .textarea:focus,
 .select select:focus,
@@ -249,7 +249,7 @@
 .pagination-link:focus,
 .pagination-ellipsis:focus,
 .is-focused.button,
-.is-focused.intvbutton,
+.is-focused.leafbutton,
 .is-focused.input,
 .is-focused.textarea,
 .select select.is-focused,
@@ -260,7 +260,7 @@
 .is-focused.pagination-link,
 .is-focused.pagination-ellipsis,
 .button:active,
-.intvbutton:active,
+.leafbutton:active,
 .input:active,
 .textarea:active,
 .select select:active,
@@ -271,7 +271,7 @@
 .pagination-link:active,
 .pagination-ellipsis:active,
 .is-active.button,
-.is-active.intvbutton,
+.is-active.leafbutton,
 .is-active.input,
 .is-active.textarea,
 .select select.is-active,
@@ -284,7 +284,7 @@
   outline: none;
 }
 .button[disabled],
-.intvbutton[disabled],
+.leafbutton[disabled],
 .input[disabled],
 .textarea[disabled],
 .select select[disabled],
@@ -295,7 +295,7 @@
 .pagination-link[disabled],
 .pagination-ellipsis[disabled],
 fieldset[disabled] .button,
-fieldset[disabled] .intvbutton,
+fieldset[disabled] .leafbutton,
 fieldset[disabled] .input,
 fieldset[disabled] .textarea,
 fieldset[disabled] .select select,
@@ -547,7 +547,7 @@ a.box:active {
 }
 
 .button,
-.intvbutton {
+.leafbutton {
   background-color: white;
   border-color: #dbdbdb;
   border-width: 1px;
@@ -562,1706 +562,1706 @@ a.box:active {
   white-space: nowrap;
 }
 .button strong,
-.intvbutton strong {
+.leafbutton strong {
   color: inherit;
 }
 .button .icon,
-.intvbutton .icon,
+.leafbutton .icon,
 .button .icon.is-small,
-.intvbutton .icon.is-small,
+.leafbutton .icon.is-small,
 .button .icon.is-medium,
-.intvbutton .icon.is-medium,
+.leafbutton .icon.is-medium,
 .button .icon.is-large,
-.intvbutton .icon.is-large {
+.leafbutton .icon.is-large {
   height: 1.5em;
   width: 1.5em;
 }
 .button .icon:first-child:not(:last-child),
-.intvbutton .icon:first-child:not(:last-child) {
+.leafbutton .icon:first-child:not(:last-child) {
   margin-left: calc(-0.5em - 1px);
   margin-right: 0.25em;
 }
 .button .icon:last-child:not(:first-child),
-.intvbutton .icon:last-child:not(:first-child) {
+.leafbutton .icon:last-child:not(:first-child) {
   margin-left: 0.25em;
   margin-right: calc(-0.5em - 1px);
 }
 .button .icon:first-child:last-child,
-.intvbutton .icon:first-child:last-child {
+.leafbutton .icon:first-child:last-child {
   margin-left: calc(-0.5em - 1px);
   margin-right: calc(-0.5em - 1px);
 }
 .button:hover,
-.intvbutton:hover,
+.leafbutton:hover,
 .button.is-hovered,
-.is-hovered.intvbutton {
+.is-hovered.leafbutton {
   border-color: #b5b5b5;
   color: #209cee;
 }
 .button:focus,
-.intvbutton:focus,
+.leafbutton:focus,
 .button.is-focused,
-.is-focused.intvbutton {
+.is-focused.leafbutton {
   border-color: #3273dc;
   color: #363636;
 }
 .button:focus:not(:active),
-.intvbutton:focus:not(:active),
+.leafbutton:focus:not(:active),
 .button.is-focused:not(:active),
-.is-focused.intvbutton:not(:active) {
+.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
 }
 .button:active,
-.intvbutton:active,
+.leafbutton:active,
 .button.is-active,
-.is-active.intvbutton {
+.is-active.leafbutton {
   border-color: #4a4a4a;
   color: #363636;
 }
 .button.is-text,
-.is-text.intvbutton {
+.is-text.leafbutton {
   background-color: transparent;
   border-color: transparent;
   color: white;
   text-decoration: underline;
 }
 .button.is-text:hover,
-.is-text.intvbutton:hover,
+.is-text.leafbutton:hover,
 .button.is-text.is-hovered,
-.is-text.is-hovered.intvbutton,
+.is-text.is-hovered.leafbutton,
 .button.is-text:focus,
-.is-text.intvbutton:focus,
+.is-text.leafbutton:focus,
 .button.is-text.is-focused,
-.is-text.is-focused.intvbutton {
+.is-text.is-focused.leafbutton {
   background-color: whitesmoke;
   color: #363636;
 }
 .button.is-text:active,
-.is-text.intvbutton:active,
+.is-text.leafbutton:active,
 .button.is-text.is-active,
-.is-text.is-active.intvbutton {
+.is-text.is-active.leafbutton {
   background-color: #e8e8e8;
   color: #363636;
 }
 .button.is-text[disabled],
-.is-text.intvbutton[disabled],
+.is-text.leafbutton[disabled],
 fieldset[disabled] .button.is-text,
-fieldset[disabled] .is-text.intvbutton {
+fieldset[disabled] .is-text.leafbutton {
   background-color: transparent;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-white,
-.is-white.intvbutton {
+.is-white.leafbutton {
   background-color: white;
   border-color: transparent;
   color: #0a0a0a;
 }
 .button.is-white:hover,
-.is-white.intvbutton:hover,
+.is-white.leafbutton:hover,
 .button.is-white.is-hovered,
-.is-white.is-hovered.intvbutton {
+.is-white.is-hovered.leafbutton {
   background-color: #f9f9f9;
   border-color: transparent;
   color: #0a0a0a;
 }
 .button.is-white:focus,
-.is-white.intvbutton:focus,
+.is-white.leafbutton:focus,
 .button.is-white.is-focused,
-.is-white.is-focused.intvbutton {
+.is-white.is-focused.leafbutton {
   border-color: transparent;
   color: #0a0a0a;
 }
 .button.is-white:focus:not(:active),
-.is-white.intvbutton:focus:not(:active),
+.is-white.leafbutton:focus:not(:active),
 .button.is-white.is-focused:not(:active),
-.is-white.is-focused.intvbutton:not(:active) {
+.is-white.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.25);
 }
 .button.is-white:active,
-.is-white.intvbutton:active,
+.is-white.leafbutton:active,
 .button.is-white.is-active,
-.is-white.is-active.intvbutton {
+.is-white.is-active.leafbutton {
   background-color: #f2f2f2;
   border-color: transparent;
   color: #0a0a0a;
 }
 .button.is-white[disabled],
-.is-white.intvbutton[disabled],
+.is-white.leafbutton[disabled],
 fieldset[disabled] .button.is-white,
-fieldset[disabled] .is-white.intvbutton {
+fieldset[disabled] .is-white.leafbutton {
   background-color: white;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-white.is-inverted,
-.is-white.intvbutton {
+.is-white.leafbutton {
   background-color: #0a0a0a;
   color: white;
 }
 .button.is-white.is-inverted:hover,
-.is-white.intvbutton:hover,
+.is-white.leafbutton:hover,
 .button.is-white.is-inverted.is-hovered,
-.is-white.is-hovered.intvbutton {
+.is-white.is-hovered.leafbutton {
   background-color: black;
 }
 .button.is-white.is-inverted[disabled],
-.is-white.intvbutton[disabled],
+.is-white.leafbutton[disabled],
 fieldset[disabled] .button.is-white.is-inverted,
-fieldset[disabled] .is-white.intvbutton {
+fieldset[disabled] .is-white.leafbutton {
   background-color: #0a0a0a;
   border-color: transparent;
   box-shadow: none;
   color: white;
 }
 .button.is-white.is-loading::after,
-.is-white.is-loading.intvbutton::after {
+.is-white.is-loading.leafbutton::after {
   border-color: transparent transparent #0a0a0a #0a0a0a !important;
 }
 .button.is-white.is-outlined,
-.is-white.intvbutton {
+.is-white.leafbutton {
   background-color: transparent;
   border-color: white;
   color: white;
 }
 .button.is-white.is-outlined:hover,
-.is-white.intvbutton:hover,
+.is-white.leafbutton:hover,
 .button.is-white.is-outlined.is-hovered,
-.is-white.is-hovered.intvbutton,
+.is-white.is-hovered.leafbutton,
 .button.is-white.is-outlined:focus,
-.is-white.intvbutton:focus,
+.is-white.leafbutton:focus,
 .button.is-white.is-outlined.is-focused,
-.is-white.is-focused.intvbutton {
+.is-white.is-focused.leafbutton {
   background-color: white;
   border-color: white;
   color: #0a0a0a;
 }
 .button.is-white.is-outlined.is-loading::after,
-.is-white.is-loading.intvbutton::after {
+.is-white.is-loading.leafbutton::after {
   border-color: transparent transparent white white !important;
 }
 .button.is-white.is-outlined.is-loading:hover::after,
-.is-white.is-loading.intvbutton:hover::after,
+.is-white.is-loading.leafbutton:hover::after,
 .button.is-white.is-outlined.is-loading.is-hovered::after,
-.is-white.is-loading.is-hovered.intvbutton::after,
+.is-white.is-loading.is-hovered.leafbutton::after,
 .button.is-white.is-outlined.is-loading:focus::after,
-.is-white.is-loading.intvbutton:focus::after,
+.is-white.is-loading.leafbutton:focus::after,
 .button.is-white.is-outlined.is-loading.is-focused::after,
-.is-white.is-loading.is-focused.intvbutton::after {
+.is-white.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #0a0a0a #0a0a0a !important;
 }
 .button.is-white.is-outlined[disabled],
-.is-white.intvbutton[disabled],
+.is-white.leafbutton[disabled],
 fieldset[disabled] .button.is-white.is-outlined,
-fieldset[disabled] .is-white.intvbutton {
+fieldset[disabled] .is-white.leafbutton {
   background-color: transparent;
   border-color: white;
   box-shadow: none;
   color: white;
 }
 .button.is-white.is-inverted.is-outlined,
-.is-white.intvbutton {
+.is-white.leafbutton {
   background-color: transparent;
   border-color: #0a0a0a;
   color: #0a0a0a;
 }
 .button.is-white.is-inverted.is-outlined:hover,
-.is-white.intvbutton:hover,
+.is-white.leafbutton:hover,
 .button.is-white.is-inverted.is-outlined.is-hovered,
-.is-white.is-hovered.intvbutton,
+.is-white.is-hovered.leafbutton,
 .button.is-white.is-inverted.is-outlined:focus,
-.is-white.intvbutton:focus,
+.is-white.leafbutton:focus,
 .button.is-white.is-inverted.is-outlined.is-focused,
-.is-white.is-focused.intvbutton {
+.is-white.is-focused.leafbutton {
   background-color: #0a0a0a;
   color: white;
 }
 .button.is-white.is-inverted.is-outlined.is-loading:hover::after,
-.is-white.is-loading.intvbutton:hover::after,
+.is-white.is-loading.leafbutton:hover::after,
 .button.is-white.is-inverted.is-outlined.is-loading.is-hovered::after,
-.is-white.is-loading.is-hovered.intvbutton::after,
+.is-white.is-loading.is-hovered.leafbutton::after,
 .button.is-white.is-inverted.is-outlined.is-loading:focus::after,
-.is-white.is-loading.intvbutton:focus::after,
+.is-white.is-loading.leafbutton:focus::after,
 .button.is-white.is-inverted.is-outlined.is-loading.is-focused::after,
-.is-white.is-loading.is-focused.intvbutton::after {
+.is-white.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent white white !important;
 }
 .button.is-white.is-inverted.is-outlined[disabled],
-.is-white.intvbutton[disabled],
+.is-white.leafbutton[disabled],
 fieldset[disabled] .button.is-white.is-inverted.is-outlined,
-fieldset[disabled] .is-white.intvbutton {
+fieldset[disabled] .is-white.leafbutton {
   background-color: transparent;
   border-color: #0a0a0a;
   box-shadow: none;
   color: #0a0a0a;
 }
 .button.is-black,
-.is-black.intvbutton {
+.is-black.leafbutton {
   background-color: #0a0a0a;
   border-color: transparent;
   color: white;
 }
 .button.is-black:hover,
-.is-black.intvbutton:hover,
+.is-black.leafbutton:hover,
 .button.is-black.is-hovered,
-.is-black.is-hovered.intvbutton {
+.is-black.is-hovered.leafbutton {
   background-color: #040404;
   border-color: transparent;
   color: white;
 }
 .button.is-black:focus,
-.is-black.intvbutton:focus,
+.is-black.leafbutton:focus,
 .button.is-black.is-focused,
-.is-black.is-focused.intvbutton {
+.is-black.is-focused.leafbutton {
   border-color: transparent;
   color: white;
 }
 .button.is-black:focus:not(:active),
-.is-black.intvbutton:focus:not(:active),
+.is-black.leafbutton:focus:not(:active),
 .button.is-black.is-focused:not(:active),
-.is-black.is-focused.intvbutton:not(:active) {
+.is-black.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(10, 10, 10, 0.25);
 }
 .button.is-black:active,
-.is-black.intvbutton:active,
+.is-black.leafbutton:active,
 .button.is-black.is-active,
-.is-black.is-active.intvbutton {
+.is-black.is-active.leafbutton {
   background-color: black;
   border-color: transparent;
   color: white;
 }
 .button.is-black[disabled],
-.is-black.intvbutton[disabled],
+.is-black.leafbutton[disabled],
 fieldset[disabled] .button.is-black,
-fieldset[disabled] .is-black.intvbutton {
+fieldset[disabled] .is-black.leafbutton {
   background-color: #0a0a0a;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-black.is-inverted,
-.is-black.intvbutton {
+.is-black.leafbutton {
   background-color: white;
   color: #0a0a0a;
 }
 .button.is-black.is-inverted:hover,
-.is-black.intvbutton:hover,
+.is-black.leafbutton:hover,
 .button.is-black.is-inverted.is-hovered,
-.is-black.is-hovered.intvbutton {
+.is-black.is-hovered.leafbutton {
   background-color: #f2f2f2;
 }
 .button.is-black.is-inverted[disabled],
-.is-black.intvbutton[disabled],
+.is-black.leafbutton[disabled],
 fieldset[disabled] .button.is-black.is-inverted,
-fieldset[disabled] .is-black.intvbutton {
+fieldset[disabled] .is-black.leafbutton {
   background-color: white;
   border-color: transparent;
   box-shadow: none;
   color: #0a0a0a;
 }
 .button.is-black.is-loading::after,
-.is-black.is-loading.intvbutton::after {
+.is-black.is-loading.leafbutton::after {
   border-color: transparent transparent white white !important;
 }
 .button.is-black.is-outlined,
-.is-black.intvbutton {
+.is-black.leafbutton {
   background-color: transparent;
   border-color: #0a0a0a;
   color: #0a0a0a;
 }
 .button.is-black.is-outlined:hover,
-.is-black.intvbutton:hover,
+.is-black.leafbutton:hover,
 .button.is-black.is-outlined.is-hovered,
-.is-black.is-hovered.intvbutton,
+.is-black.is-hovered.leafbutton,
 .button.is-black.is-outlined:focus,
-.is-black.intvbutton:focus,
+.is-black.leafbutton:focus,
 .button.is-black.is-outlined.is-focused,
-.is-black.is-focused.intvbutton {
+.is-black.is-focused.leafbutton {
   background-color: #0a0a0a;
   border-color: #0a0a0a;
   color: white;
 }
 .button.is-black.is-outlined.is-loading::after,
-.is-black.is-loading.intvbutton::after {
+.is-black.is-loading.leafbutton::after {
   border-color: transparent transparent #0a0a0a #0a0a0a !important;
 }
 .button.is-black.is-outlined.is-loading:hover::after,
-.is-black.is-loading.intvbutton:hover::after,
+.is-black.is-loading.leafbutton:hover::after,
 .button.is-black.is-outlined.is-loading.is-hovered::after,
-.is-black.is-loading.is-hovered.intvbutton::after,
+.is-black.is-loading.is-hovered.leafbutton::after,
 .button.is-black.is-outlined.is-loading:focus::after,
-.is-black.is-loading.intvbutton:focus::after,
+.is-black.is-loading.leafbutton:focus::after,
 .button.is-black.is-outlined.is-loading.is-focused::after,
-.is-black.is-loading.is-focused.intvbutton::after {
+.is-black.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent white white !important;
 }
 .button.is-black.is-outlined[disabled],
-.is-black.intvbutton[disabled],
+.is-black.leafbutton[disabled],
 fieldset[disabled] .button.is-black.is-outlined,
-fieldset[disabled] .is-black.intvbutton {
+fieldset[disabled] .is-black.leafbutton {
   background-color: transparent;
   border-color: #0a0a0a;
   box-shadow: none;
   color: #0a0a0a;
 }
 .button.is-black.is-inverted.is-outlined,
-.is-black.intvbutton {
+.is-black.leafbutton {
   background-color: transparent;
   border-color: white;
   color: white;
 }
 .button.is-black.is-inverted.is-outlined:hover,
-.is-black.intvbutton:hover,
+.is-black.leafbutton:hover,
 .button.is-black.is-inverted.is-outlined.is-hovered,
-.is-black.is-hovered.intvbutton,
+.is-black.is-hovered.leafbutton,
 .button.is-black.is-inverted.is-outlined:focus,
-.is-black.intvbutton:focus,
+.is-black.leafbutton:focus,
 .button.is-black.is-inverted.is-outlined.is-focused,
-.is-black.is-focused.intvbutton {
+.is-black.is-focused.leafbutton {
   background-color: white;
   color: #0a0a0a;
 }
 .button.is-black.is-inverted.is-outlined.is-loading:hover::after,
-.is-black.is-loading.intvbutton:hover::after,
+.is-black.is-loading.leafbutton:hover::after,
 .button.is-black.is-inverted.is-outlined.is-loading.is-hovered::after,
-.is-black.is-loading.is-hovered.intvbutton::after,
+.is-black.is-loading.is-hovered.leafbutton::after,
 .button.is-black.is-inverted.is-outlined.is-loading:focus::after,
-.is-black.is-loading.intvbutton:focus::after,
+.is-black.is-loading.leafbutton:focus::after,
 .button.is-black.is-inverted.is-outlined.is-loading.is-focused::after,
-.is-black.is-loading.is-focused.intvbutton::after {
+.is-black.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #0a0a0a #0a0a0a !important;
 }
 .button.is-black.is-inverted.is-outlined[disabled],
-.is-black.intvbutton[disabled],
+.is-black.leafbutton[disabled],
 fieldset[disabled] .button.is-black.is-inverted.is-outlined,
-fieldset[disabled] .is-black.intvbutton {
+fieldset[disabled] .is-black.leafbutton {
   background-color: transparent;
   border-color: white;
   box-shadow: none;
   color: white;
 }
 .button.is-light,
-.is-light.intvbutton {
+.is-light.leafbutton {
   background-color: whitesmoke;
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-light:hover,
-.is-light.intvbutton:hover,
+.is-light.leafbutton:hover,
 .button.is-light.is-hovered,
-.is-light.is-hovered.intvbutton {
+.is-light.is-hovered.leafbutton {
   background-color: #eeeeee;
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-light:focus,
-.is-light.intvbutton:focus,
+.is-light.leafbutton:focus,
 .button.is-light.is-focused,
-.is-light.is-focused.intvbutton {
+.is-light.is-focused.leafbutton {
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-light:focus:not(:active),
-.is-light.intvbutton:focus:not(:active),
+.is-light.leafbutton:focus:not(:active),
 .button.is-light.is-focused:not(:active),
-.is-light.is-focused.intvbutton:not(:active) {
+.is-light.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(245, 245, 245, 0.25);
 }
 .button.is-light:active,
-.is-light.intvbutton:active,
+.is-light.leafbutton:active,
 .button.is-light.is-active,
-.is-light.is-active.intvbutton {
+.is-light.is-active.leafbutton {
   background-color: #e8e8e8;
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-light[disabled],
-.is-light.intvbutton[disabled],
+.is-light.leafbutton[disabled],
 fieldset[disabled] .button.is-light,
-fieldset[disabled] .is-light.intvbutton {
+fieldset[disabled] .is-light.leafbutton {
   background-color: whitesmoke;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-light.is-inverted,
-.is-light.intvbutton {
+.is-light.leafbutton {
   background-color: rgba(0, 0, 0, 0.7);
   color: whitesmoke;
 }
 .button.is-light.is-inverted:hover,
-.is-light.intvbutton:hover,
+.is-light.leafbutton:hover,
 .button.is-light.is-inverted.is-hovered,
-.is-light.is-hovered.intvbutton {
+.is-light.is-hovered.leafbutton {
   background-color: rgba(0, 0, 0, 0.7);
 }
 .button.is-light.is-inverted[disabled],
-.is-light.intvbutton[disabled],
+.is-light.leafbutton[disabled],
 fieldset[disabled] .button.is-light.is-inverted,
-fieldset[disabled] .is-light.intvbutton {
+fieldset[disabled] .is-light.leafbutton {
   background-color: rgba(0, 0, 0, 0.7);
   border-color: transparent;
   box-shadow: none;
   color: whitesmoke;
 }
 .button.is-light.is-loading::after,
-.is-light.is-loading.intvbutton::after {
+.is-light.is-loading.leafbutton::after {
   border-color: transparent transparent rgba(0, 0, 0, 0.7) rgba(0, 0, 0, 0.7) !important;
 }
 .button.is-light.is-outlined,
-.is-light.intvbutton {
+.is-light.leafbutton {
   background-color: transparent;
   border-color: whitesmoke;
   color: whitesmoke;
 }
 .button.is-light.is-outlined:hover,
-.is-light.intvbutton:hover,
+.is-light.leafbutton:hover,
 .button.is-light.is-outlined.is-hovered,
-.is-light.is-hovered.intvbutton,
+.is-light.is-hovered.leafbutton,
 .button.is-light.is-outlined:focus,
-.is-light.intvbutton:focus,
+.is-light.leafbutton:focus,
 .button.is-light.is-outlined.is-focused,
-.is-light.is-focused.intvbutton {
+.is-light.is-focused.leafbutton {
   background-color: whitesmoke;
   border-color: whitesmoke;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-light.is-outlined.is-loading::after,
-.is-light.is-loading.intvbutton::after {
+.is-light.is-loading.leafbutton::after {
   border-color: transparent transparent whitesmoke whitesmoke !important;
 }
 .button.is-light.is-outlined.is-loading:hover::after,
-.is-light.is-loading.intvbutton:hover::after,
+.is-light.is-loading.leafbutton:hover::after,
 .button.is-light.is-outlined.is-loading.is-hovered::after,
-.is-light.is-loading.is-hovered.intvbutton::after,
+.is-light.is-loading.is-hovered.leafbutton::after,
 .button.is-light.is-outlined.is-loading:focus::after,
-.is-light.is-loading.intvbutton:focus::after,
+.is-light.is-loading.leafbutton:focus::after,
 .button.is-light.is-outlined.is-loading.is-focused::after,
-.is-light.is-loading.is-focused.intvbutton::after {
+.is-light.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent rgba(0, 0, 0, 0.7) rgba(0, 0, 0, 0.7) !important;
 }
 .button.is-light.is-outlined[disabled],
-.is-light.intvbutton[disabled],
+.is-light.leafbutton[disabled],
 fieldset[disabled] .button.is-light.is-outlined,
-fieldset[disabled] .is-light.intvbutton {
+fieldset[disabled] .is-light.leafbutton {
   background-color: transparent;
   border-color: whitesmoke;
   box-shadow: none;
   color: whitesmoke;
 }
 .button.is-light.is-inverted.is-outlined,
-.is-light.intvbutton {
+.is-light.leafbutton {
   background-color: transparent;
   border-color: rgba(0, 0, 0, 0.7);
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-light.is-inverted.is-outlined:hover,
-.is-light.intvbutton:hover,
+.is-light.leafbutton:hover,
 .button.is-light.is-inverted.is-outlined.is-hovered,
-.is-light.is-hovered.intvbutton,
+.is-light.is-hovered.leafbutton,
 .button.is-light.is-inverted.is-outlined:focus,
-.is-light.intvbutton:focus,
+.is-light.leafbutton:focus,
 .button.is-light.is-inverted.is-outlined.is-focused,
-.is-light.is-focused.intvbutton {
+.is-light.is-focused.leafbutton {
   background-color: rgba(0, 0, 0, 0.7);
   color: whitesmoke;
 }
 .button.is-light.is-inverted.is-outlined.is-loading:hover::after,
-.is-light.is-loading.intvbutton:hover::after,
+.is-light.is-loading.leafbutton:hover::after,
 .button.is-light.is-inverted.is-outlined.is-loading.is-hovered::after,
-.is-light.is-loading.is-hovered.intvbutton::after,
+.is-light.is-loading.is-hovered.leafbutton::after,
 .button.is-light.is-inverted.is-outlined.is-loading:focus::after,
-.is-light.is-loading.intvbutton:focus::after,
+.is-light.is-loading.leafbutton:focus::after,
 .button.is-light.is-inverted.is-outlined.is-loading.is-focused::after,
-.is-light.is-loading.is-focused.intvbutton::after {
+.is-light.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent whitesmoke whitesmoke !important;
 }
 .button.is-light.is-inverted.is-outlined[disabled],
-.is-light.intvbutton[disabled],
+.is-light.leafbutton[disabled],
 fieldset[disabled] .button.is-light.is-inverted.is-outlined,
-fieldset[disabled] .is-light.intvbutton {
+fieldset[disabled] .is-light.leafbutton {
   background-color: transparent;
   border-color: rgba(0, 0, 0, 0.7);
   box-shadow: none;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-dark,
-.is-dark.intvbutton {
+.is-dark.leafbutton {
   background-color: #363636;
   border-color: transparent;
   color: #fff;
 }
 .button.is-dark:hover,
-.is-dark.intvbutton:hover,
+.is-dark.leafbutton:hover,
 .button.is-dark.is-hovered,
-.is-dark.is-hovered.intvbutton {
+.is-dark.is-hovered.leafbutton {
   background-color: #2f2f2f;
   border-color: transparent;
   color: #fff;
 }
 .button.is-dark:focus,
-.is-dark.intvbutton:focus,
+.is-dark.leafbutton:focus,
 .button.is-dark.is-focused,
-.is-dark.is-focused.intvbutton {
+.is-dark.is-focused.leafbutton {
   border-color: transparent;
   color: #fff;
 }
 .button.is-dark:focus:not(:active),
-.is-dark.intvbutton:focus:not(:active),
+.is-dark.leafbutton:focus:not(:active),
 .button.is-dark.is-focused:not(:active),
-.is-dark.is-focused.intvbutton:not(:active) {
+.is-dark.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(54, 54, 54, 0.25);
 }
 .button.is-dark:active,
-.is-dark.intvbutton:active,
+.is-dark.leafbutton:active,
 .button.is-dark.is-active,
-.is-dark.is-active.intvbutton {
+.is-dark.is-active.leafbutton {
   background-color: #292929;
   border-color: transparent;
   color: #fff;
 }
 .button.is-dark[disabled],
-.is-dark.intvbutton[disabled],
+.is-dark.leafbutton[disabled],
 fieldset[disabled] .button.is-dark,
-fieldset[disabled] .is-dark.intvbutton {
+fieldset[disabled] .is-dark.leafbutton {
   background-color: #363636;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-dark.is-inverted,
-.is-dark.intvbutton {
+.is-dark.leafbutton {
   background-color: #fff;
   color: #363636;
 }
 .button.is-dark.is-inverted:hover,
-.is-dark.intvbutton:hover,
+.is-dark.leafbutton:hover,
 .button.is-dark.is-inverted.is-hovered,
-.is-dark.is-hovered.intvbutton {
+.is-dark.is-hovered.leafbutton {
   background-color: #f2f2f2;
 }
 .button.is-dark.is-inverted[disabled],
-.is-dark.intvbutton[disabled],
+.is-dark.leafbutton[disabled],
 fieldset[disabled] .button.is-dark.is-inverted,
-fieldset[disabled] .is-dark.intvbutton {
+fieldset[disabled] .is-dark.leafbutton {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #363636;
 }
 .button.is-dark.is-loading::after,
-.is-dark.is-loading.intvbutton::after {
+.is-dark.is-loading.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-dark.is-outlined,
-.is-dark.intvbutton {
+.is-dark.leafbutton {
   background-color: transparent;
   border-color: #363636;
   color: #363636;
 }
 .button.is-dark.is-outlined:hover,
-.is-dark.intvbutton:hover,
+.is-dark.leafbutton:hover,
 .button.is-dark.is-outlined.is-hovered,
-.is-dark.is-hovered.intvbutton,
+.is-dark.is-hovered.leafbutton,
 .button.is-dark.is-outlined:focus,
-.is-dark.intvbutton:focus,
+.is-dark.leafbutton:focus,
 .button.is-dark.is-outlined.is-focused,
-.is-dark.is-focused.intvbutton {
+.is-dark.is-focused.leafbutton {
   background-color: #363636;
   border-color: #363636;
   color: #fff;
 }
 .button.is-dark.is-outlined.is-loading::after,
-.is-dark.is-loading.intvbutton::after {
+.is-dark.is-loading.leafbutton::after {
   border-color: transparent transparent #363636 #363636 !important;
 }
 .button.is-dark.is-outlined.is-loading:hover::after,
-.is-dark.is-loading.intvbutton:hover::after,
+.is-dark.is-loading.leafbutton:hover::after,
 .button.is-dark.is-outlined.is-loading.is-hovered::after,
-.is-dark.is-loading.is-hovered.intvbutton::after,
+.is-dark.is-loading.is-hovered.leafbutton::after,
 .button.is-dark.is-outlined.is-loading:focus::after,
-.is-dark.is-loading.intvbutton:focus::after,
+.is-dark.is-loading.leafbutton:focus::after,
 .button.is-dark.is-outlined.is-loading.is-focused::after,
-.is-dark.is-loading.is-focused.intvbutton::after {
+.is-dark.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-dark.is-outlined[disabled],
-.is-dark.intvbutton[disabled],
+.is-dark.leafbutton[disabled],
 fieldset[disabled] .button.is-dark.is-outlined,
-fieldset[disabled] .is-dark.intvbutton {
+fieldset[disabled] .is-dark.leafbutton {
   background-color: transparent;
   border-color: #363636;
   box-shadow: none;
   color: #363636;
 }
 .button.is-dark.is-inverted.is-outlined,
-.is-dark.intvbutton {
+.is-dark.leafbutton {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 .button.is-dark.is-inverted.is-outlined:hover,
-.is-dark.intvbutton:hover,
+.is-dark.leafbutton:hover,
 .button.is-dark.is-inverted.is-outlined.is-hovered,
-.is-dark.is-hovered.intvbutton,
+.is-dark.is-hovered.leafbutton,
 .button.is-dark.is-inverted.is-outlined:focus,
-.is-dark.intvbutton:focus,
+.is-dark.leafbutton:focus,
 .button.is-dark.is-inverted.is-outlined.is-focused,
-.is-dark.is-focused.intvbutton {
+.is-dark.is-focused.leafbutton {
   background-color: #fff;
   color: #363636;
 }
 .button.is-dark.is-inverted.is-outlined.is-loading:hover::after,
-.is-dark.is-loading.intvbutton:hover::after,
+.is-dark.is-loading.leafbutton:hover::after,
 .button.is-dark.is-inverted.is-outlined.is-loading.is-hovered::after,
-.is-dark.is-loading.is-hovered.intvbutton::after,
+.is-dark.is-loading.is-hovered.leafbutton::after,
 .button.is-dark.is-inverted.is-outlined.is-loading:focus::after,
-.is-dark.is-loading.intvbutton:focus::after,
+.is-dark.is-loading.leafbutton:focus::after,
 .button.is-dark.is-inverted.is-outlined.is-loading.is-focused::after,
-.is-dark.is-loading.is-focused.intvbutton::after {
+.is-dark.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #363636 #363636 !important;
 }
 .button.is-dark.is-inverted.is-outlined[disabled],
-.is-dark.intvbutton[disabled],
+.is-dark.leafbutton[disabled],
 fieldset[disabled] .button.is-dark.is-inverted.is-outlined,
-fieldset[disabled] .is-dark.intvbutton {
+fieldset[disabled] .is-dark.leafbutton {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 .button.is-primary,
-.intvbutton {
+.leafbutton {
   background-color: #00d1b2;
   border-color: transparent;
   color: #fff;
 }
 .button.is-primary:hover,
-.intvbutton:hover,
+.leafbutton:hover,
 .button.is-primary.is-hovered,
-.is-hovered.intvbutton {
+.is-hovered.leafbutton {
   background-color: #00c4a7;
   border-color: transparent;
   color: #fff;
 }
 .button.is-primary:focus,
-.intvbutton:focus,
+.leafbutton:focus,
 .button.is-primary.is-focused,
-.is-focused.intvbutton {
+.is-focused.leafbutton {
   border-color: transparent;
   color: #fff;
 }
 .button.is-primary:focus:not(:active),
-.intvbutton:focus:not(:active),
+.leafbutton:focus:not(:active),
 .button.is-primary.is-focused:not(:active),
-.is-focused.intvbutton:not(:active) {
+.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
 }
 .button.is-primary:active,
-.intvbutton:active,
+.leafbutton:active,
 .button.is-primary.is-active,
-.is-active.intvbutton {
+.is-active.leafbutton {
   background-color: #00b89c;
   border-color: transparent;
   color: #fff;
 }
 .button.is-primary[disabled],
-.intvbutton[disabled],
+.leafbutton[disabled],
 fieldset[disabled] .button.is-primary,
-fieldset[disabled] .intvbutton {
+fieldset[disabled] .leafbutton {
   background-color: #00d1b2;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-primary.is-inverted,
-.intvbutton {
+.leafbutton {
   background-color: #fff;
   color: #00d1b2;
 }
 .button.is-primary.is-inverted:hover,
-.intvbutton:hover,
+.leafbutton:hover,
 .button.is-primary.is-inverted.is-hovered,
-.is-hovered.intvbutton {
+.is-hovered.leafbutton {
   background-color: #f2f2f2;
 }
 .button.is-primary.is-inverted[disabled],
-.intvbutton[disabled],
+.leafbutton[disabled],
 fieldset[disabled] .button.is-primary.is-inverted,
-fieldset[disabled] .intvbutton {
+fieldset[disabled] .leafbutton {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #00d1b2;
 }
 .button.is-primary.is-loading::after,
-.is-loading.intvbutton::after {
+.is-loading.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-primary.is-outlined,
-.intvbutton {
+.leafbutton {
   background-color: transparent;
   border-color: #00d1b2;
   color: #00d1b2;
 }
 .button.is-primary.is-outlined:hover,
-.intvbutton:hover,
+.leafbutton:hover,
 .button.is-primary.is-outlined.is-hovered,
-.is-hovered.intvbutton,
+.is-hovered.leafbutton,
 .button.is-primary.is-outlined:focus,
-.intvbutton:focus,
+.leafbutton:focus,
 .button.is-primary.is-outlined.is-focused,
-.is-focused.intvbutton {
+.is-focused.leafbutton {
   background-color: #00d1b2;
   border-color: #00d1b2;
   color: #fff;
 }
 .button.is-primary.is-outlined.is-loading::after,
-.is-loading.intvbutton::after {
+.is-loading.leafbutton::after {
   border-color: transparent transparent #00d1b2 #00d1b2 !important;
 }
 .button.is-primary.is-outlined.is-loading:hover::after,
-.is-loading.intvbutton:hover::after,
+.is-loading.leafbutton:hover::after,
 .button.is-primary.is-outlined.is-loading.is-hovered::after,
-.is-loading.is-hovered.intvbutton::after,
+.is-loading.is-hovered.leafbutton::after,
 .button.is-primary.is-outlined.is-loading:focus::after,
-.is-loading.intvbutton:focus::after,
+.is-loading.leafbutton:focus::after,
 .button.is-primary.is-outlined.is-loading.is-focused::after,
-.is-loading.is-focused.intvbutton::after {
+.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-primary.is-outlined[disabled],
-.intvbutton[disabled],
+.leafbutton[disabled],
 fieldset[disabled] .button.is-primary.is-outlined,
-fieldset[disabled] .intvbutton {
+fieldset[disabled] .leafbutton {
   background-color: transparent;
   border-color: #00d1b2;
   box-shadow: none;
   color: #00d1b2;
 }
 .button.is-primary.is-inverted.is-outlined,
-.intvbutton {
+.leafbutton {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 .button.is-primary.is-inverted.is-outlined:hover,
-.intvbutton:hover,
+.leafbutton:hover,
 .button.is-primary.is-inverted.is-outlined.is-hovered,
-.is-hovered.intvbutton,
+.is-hovered.leafbutton,
 .button.is-primary.is-inverted.is-outlined:focus,
-.intvbutton:focus,
+.leafbutton:focus,
 .button.is-primary.is-inverted.is-outlined.is-focused,
-.is-focused.intvbutton {
+.is-focused.leafbutton {
   background-color: #fff;
   color: #00d1b2;
 }
 .button.is-primary.is-inverted.is-outlined.is-loading:hover::after,
-.is-loading.intvbutton:hover::after,
+.is-loading.leafbutton:hover::after,
 .button.is-primary.is-inverted.is-outlined.is-loading.is-hovered::after,
-.is-loading.is-hovered.intvbutton::after,
+.is-loading.is-hovered.leafbutton::after,
 .button.is-primary.is-inverted.is-outlined.is-loading:focus::after,
-.is-loading.intvbutton:focus::after,
+.is-loading.leafbutton:focus::after,
 .button.is-primary.is-inverted.is-outlined.is-loading.is-focused::after,
-.is-loading.is-focused.intvbutton::after {
+.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #00d1b2 #00d1b2 !important;
 }
 .button.is-primary.is-inverted.is-outlined[disabled],
-.intvbutton[disabled],
+.leafbutton[disabled],
 fieldset[disabled] .button.is-primary.is-inverted.is-outlined,
-fieldset[disabled] .intvbutton {
+fieldset[disabled] .leafbutton {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 .button.is-primary.is-light,
-.is-light.intvbutton {
+.is-light.leafbutton {
   background-color: #ebfffc;
   color: #00947e;
 }
 .button.is-primary.is-light:hover,
-.is-light.intvbutton:hover,
+.is-light.leafbutton:hover,
 .button.is-primary.is-light.is-hovered,
-.is-light.is-hovered.intvbutton {
+.is-light.is-hovered.leafbutton {
   background-color: #defffa;
   border-color: transparent;
   color: #00947e;
 }
 .button.is-primary.is-light:active,
-.is-light.intvbutton:active,
+.is-light.leafbutton:active,
 .button.is-primary.is-light.is-active,
-.is-light.is-active.intvbutton {
+.is-light.is-active.leafbutton {
   background-color: #d1fff8;
   border-color: transparent;
   color: #00947e;
 }
 .button.is-link,
-.is-link.intvbutton {
+.is-link.leafbutton {
   background-color: #3273dc;
   border-color: transparent;
   color: #fff;
 }
 .button.is-link:hover,
-.is-link.intvbutton:hover,
+.is-link.leafbutton:hover,
 .button.is-link.is-hovered,
-.is-link.is-hovered.intvbutton {
+.is-link.is-hovered.leafbutton {
   background-color: #276cda;
   border-color: transparent;
   color: #fff;
 }
 .button.is-link:focus,
-.is-link.intvbutton:focus,
+.is-link.leafbutton:focus,
 .button.is-link.is-focused,
-.is-link.is-focused.intvbutton {
+.is-link.is-focused.leafbutton {
   border-color: transparent;
   color: #fff;
 }
 .button.is-link:focus:not(:active),
-.is-link.intvbutton:focus:not(:active),
+.is-link.leafbutton:focus:not(:active),
 .button.is-link.is-focused:not(:active),
-.is-link.is-focused.intvbutton:not(:active) {
+.is-link.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
 }
 .button.is-link:active,
-.is-link.intvbutton:active,
+.is-link.leafbutton:active,
 .button.is-link.is-active,
-.is-link.is-active.intvbutton {
+.is-link.is-active.leafbutton {
   background-color: #2366d1;
   border-color: transparent;
   color: #fff;
 }
 .button.is-link[disabled],
-.is-link.intvbutton[disabled],
+.is-link.leafbutton[disabled],
 fieldset[disabled] .button.is-link,
-fieldset[disabled] .is-link.intvbutton {
+fieldset[disabled] .is-link.leafbutton {
   background-color: #3273dc;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-link.is-inverted,
-.is-link.intvbutton {
+.is-link.leafbutton {
   background-color: #fff;
   color: #3273dc;
 }
 .button.is-link.is-inverted:hover,
-.is-link.intvbutton:hover,
+.is-link.leafbutton:hover,
 .button.is-link.is-inverted.is-hovered,
-.is-link.is-hovered.intvbutton {
+.is-link.is-hovered.leafbutton {
   background-color: #f2f2f2;
 }
 .button.is-link.is-inverted[disabled],
-.is-link.intvbutton[disabled],
+.is-link.leafbutton[disabled],
 fieldset[disabled] .button.is-link.is-inverted,
-fieldset[disabled] .is-link.intvbutton {
+fieldset[disabled] .is-link.leafbutton {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #3273dc;
 }
 .button.is-link.is-loading::after,
-.is-link.is-loading.intvbutton::after {
+.is-link.is-loading.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-link.is-outlined,
-.is-link.intvbutton {
+.is-link.leafbutton {
   background-color: transparent;
   border-color: #3273dc;
   color: #3273dc;
 }
 .button.is-link.is-outlined:hover,
-.is-link.intvbutton:hover,
+.is-link.leafbutton:hover,
 .button.is-link.is-outlined.is-hovered,
-.is-link.is-hovered.intvbutton,
+.is-link.is-hovered.leafbutton,
 .button.is-link.is-outlined:focus,
-.is-link.intvbutton:focus,
+.is-link.leafbutton:focus,
 .button.is-link.is-outlined.is-focused,
-.is-link.is-focused.intvbutton {
+.is-link.is-focused.leafbutton {
   background-color: #3273dc;
   border-color: #3273dc;
   color: #fff;
 }
 .button.is-link.is-outlined.is-loading::after,
-.is-link.is-loading.intvbutton::after {
+.is-link.is-loading.leafbutton::after {
   border-color: transparent transparent #3273dc #3273dc !important;
 }
 .button.is-link.is-outlined.is-loading:hover::after,
-.is-link.is-loading.intvbutton:hover::after,
+.is-link.is-loading.leafbutton:hover::after,
 .button.is-link.is-outlined.is-loading.is-hovered::after,
-.is-link.is-loading.is-hovered.intvbutton::after,
+.is-link.is-loading.is-hovered.leafbutton::after,
 .button.is-link.is-outlined.is-loading:focus::after,
-.is-link.is-loading.intvbutton:focus::after,
+.is-link.is-loading.leafbutton:focus::after,
 .button.is-link.is-outlined.is-loading.is-focused::after,
-.is-link.is-loading.is-focused.intvbutton::after {
+.is-link.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-link.is-outlined[disabled],
-.is-link.intvbutton[disabled],
+.is-link.leafbutton[disabled],
 fieldset[disabled] .button.is-link.is-outlined,
-fieldset[disabled] .is-link.intvbutton {
+fieldset[disabled] .is-link.leafbutton {
   background-color: transparent;
   border-color: #3273dc;
   box-shadow: none;
   color: #3273dc;
 }
 .button.is-link.is-inverted.is-outlined,
-.is-link.intvbutton {
+.is-link.leafbutton {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 .button.is-link.is-inverted.is-outlined:hover,
-.is-link.intvbutton:hover,
+.is-link.leafbutton:hover,
 .button.is-link.is-inverted.is-outlined.is-hovered,
-.is-link.is-hovered.intvbutton,
+.is-link.is-hovered.leafbutton,
 .button.is-link.is-inverted.is-outlined:focus,
-.is-link.intvbutton:focus,
+.is-link.leafbutton:focus,
 .button.is-link.is-inverted.is-outlined.is-focused,
-.is-link.is-focused.intvbutton {
+.is-link.is-focused.leafbutton {
   background-color: #fff;
   color: #3273dc;
 }
 .button.is-link.is-inverted.is-outlined.is-loading:hover::after,
-.is-link.is-loading.intvbutton:hover::after,
+.is-link.is-loading.leafbutton:hover::after,
 .button.is-link.is-inverted.is-outlined.is-loading.is-hovered::after,
-.is-link.is-loading.is-hovered.intvbutton::after,
+.is-link.is-loading.is-hovered.leafbutton::after,
 .button.is-link.is-inverted.is-outlined.is-loading:focus::after,
-.is-link.is-loading.intvbutton:focus::after,
+.is-link.is-loading.leafbutton:focus::after,
 .button.is-link.is-inverted.is-outlined.is-loading.is-focused::after,
-.is-link.is-loading.is-focused.intvbutton::after {
+.is-link.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #3273dc #3273dc !important;
 }
 .button.is-link.is-inverted.is-outlined[disabled],
-.is-link.intvbutton[disabled],
+.is-link.leafbutton[disabled],
 fieldset[disabled] .button.is-link.is-inverted.is-outlined,
-fieldset[disabled] .is-link.intvbutton {
+fieldset[disabled] .is-link.leafbutton {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 .button.is-link.is-light,
-.is-link.is-light.intvbutton {
+.is-link.is-light.leafbutton {
   background-color: #eef3fc;
   color: #2160c4;
 }
 .button.is-link.is-light:hover,
-.is-link.is-light.intvbutton:hover,
+.is-link.is-light.leafbutton:hover,
 .button.is-link.is-light.is-hovered,
-.is-link.is-light.is-hovered.intvbutton {
+.is-link.is-light.is-hovered.leafbutton {
   background-color: #e3ecfa;
   border-color: transparent;
   color: #2160c4;
 }
 .button.is-link.is-light:active,
-.is-link.is-light.intvbutton:active,
+.is-link.is-light.leafbutton:active,
 .button.is-link.is-light.is-active,
-.is-link.is-light.is-active.intvbutton {
+.is-link.is-light.is-active.leafbutton {
   background-color: #d8e4f8;
   border-color: transparent;
   color: #2160c4;
 }
 .button.is-info,
-.is-info.intvbutton {
+.is-info.leafbutton {
   background-color: #3298dc;
   border-color: transparent;
   color: #fff;
 }
 .button.is-info:hover,
-.is-info.intvbutton:hover,
+.is-info.leafbutton:hover,
 .button.is-info.is-hovered,
-.is-info.is-hovered.intvbutton {
+.is-info.is-hovered.leafbutton {
   background-color: #2793da;
   border-color: transparent;
   color: #fff;
 }
 .button.is-info:focus,
-.is-info.intvbutton:focus,
+.is-info.leafbutton:focus,
 .button.is-info.is-focused,
-.is-info.is-focused.intvbutton {
+.is-info.is-focused.leafbutton {
   border-color: transparent;
   color: #fff;
 }
 .button.is-info:focus:not(:active),
-.is-info.intvbutton:focus:not(:active),
+.is-info.leafbutton:focus:not(:active),
 .button.is-info.is-focused:not(:active),
-.is-info.is-focused.intvbutton:not(:active) {
+.is-info.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(50, 152, 220, 0.25);
 }
 .button.is-info:active,
-.is-info.intvbutton:active,
+.is-info.leafbutton:active,
 .button.is-info.is-active,
-.is-info.is-active.intvbutton {
+.is-info.is-active.leafbutton {
   background-color: #238cd1;
   border-color: transparent;
   color: #fff;
 }
 .button.is-info[disabled],
-.is-info.intvbutton[disabled],
+.is-info.leafbutton[disabled],
 fieldset[disabled] .button.is-info,
-fieldset[disabled] .is-info.intvbutton {
+fieldset[disabled] .is-info.leafbutton {
   background-color: #3298dc;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-info.is-inverted,
-.is-info.intvbutton {
+.is-info.leafbutton {
   background-color: #fff;
   color: #3298dc;
 }
 .button.is-info.is-inverted:hover,
-.is-info.intvbutton:hover,
+.is-info.leafbutton:hover,
 .button.is-info.is-inverted.is-hovered,
-.is-info.is-hovered.intvbutton {
+.is-info.is-hovered.leafbutton {
   background-color: #f2f2f2;
 }
 .button.is-info.is-inverted[disabled],
-.is-info.intvbutton[disabled],
+.is-info.leafbutton[disabled],
 fieldset[disabled] .button.is-info.is-inverted,
-fieldset[disabled] .is-info.intvbutton {
+fieldset[disabled] .is-info.leafbutton {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #3298dc;
 }
 .button.is-info.is-loading::after,
-.is-info.is-loading.intvbutton::after {
+.is-info.is-loading.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-info.is-outlined,
-.is-info.intvbutton {
+.is-info.leafbutton {
   background-color: transparent;
   border-color: #3298dc;
   color: #3298dc;
 }
 .button.is-info.is-outlined:hover,
-.is-info.intvbutton:hover,
+.is-info.leafbutton:hover,
 .button.is-info.is-outlined.is-hovered,
-.is-info.is-hovered.intvbutton,
+.is-info.is-hovered.leafbutton,
 .button.is-info.is-outlined:focus,
-.is-info.intvbutton:focus,
+.is-info.leafbutton:focus,
 .button.is-info.is-outlined.is-focused,
-.is-info.is-focused.intvbutton {
+.is-info.is-focused.leafbutton {
   background-color: #3298dc;
   border-color: #3298dc;
   color: #fff;
 }
 .button.is-info.is-outlined.is-loading::after,
-.is-info.is-loading.intvbutton::after {
+.is-info.is-loading.leafbutton::after {
   border-color: transparent transparent #3298dc #3298dc !important;
 }
 .button.is-info.is-outlined.is-loading:hover::after,
-.is-info.is-loading.intvbutton:hover::after,
+.is-info.is-loading.leafbutton:hover::after,
 .button.is-info.is-outlined.is-loading.is-hovered::after,
-.is-info.is-loading.is-hovered.intvbutton::after,
+.is-info.is-loading.is-hovered.leafbutton::after,
 .button.is-info.is-outlined.is-loading:focus::after,
-.is-info.is-loading.intvbutton:focus::after,
+.is-info.is-loading.leafbutton:focus::after,
 .button.is-info.is-outlined.is-loading.is-focused::after,
-.is-info.is-loading.is-focused.intvbutton::after {
+.is-info.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-info.is-outlined[disabled],
-.is-info.intvbutton[disabled],
+.is-info.leafbutton[disabled],
 fieldset[disabled] .button.is-info.is-outlined,
-fieldset[disabled] .is-info.intvbutton {
+fieldset[disabled] .is-info.leafbutton {
   background-color: transparent;
   border-color: #3298dc;
   box-shadow: none;
   color: #3298dc;
 }
 .button.is-info.is-inverted.is-outlined,
-.is-info.intvbutton {
+.is-info.leafbutton {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 .button.is-info.is-inverted.is-outlined:hover,
-.is-info.intvbutton:hover,
+.is-info.leafbutton:hover,
 .button.is-info.is-inverted.is-outlined.is-hovered,
-.is-info.is-hovered.intvbutton,
+.is-info.is-hovered.leafbutton,
 .button.is-info.is-inverted.is-outlined:focus,
-.is-info.intvbutton:focus,
+.is-info.leafbutton:focus,
 .button.is-info.is-inverted.is-outlined.is-focused,
-.is-info.is-focused.intvbutton {
+.is-info.is-focused.leafbutton {
   background-color: #fff;
   color: #3298dc;
 }
 .button.is-info.is-inverted.is-outlined.is-loading:hover::after,
-.is-info.is-loading.intvbutton:hover::after,
+.is-info.is-loading.leafbutton:hover::after,
 .button.is-info.is-inverted.is-outlined.is-loading.is-hovered::after,
-.is-info.is-loading.is-hovered.intvbutton::after,
+.is-info.is-loading.is-hovered.leafbutton::after,
 .button.is-info.is-inverted.is-outlined.is-loading:focus::after,
-.is-info.is-loading.intvbutton:focus::after,
+.is-info.is-loading.leafbutton:focus::after,
 .button.is-info.is-inverted.is-outlined.is-loading.is-focused::after,
-.is-info.is-loading.is-focused.intvbutton::after {
+.is-info.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #3298dc #3298dc !important;
 }
 .button.is-info.is-inverted.is-outlined[disabled],
-.is-info.intvbutton[disabled],
+.is-info.leafbutton[disabled],
 fieldset[disabled] .button.is-info.is-inverted.is-outlined,
-fieldset[disabled] .is-info.intvbutton {
+fieldset[disabled] .is-info.leafbutton {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 .button.is-info.is-light,
-.is-info.is-light.intvbutton {
+.is-info.is-light.leafbutton {
   background-color: #eef6fc;
   color: #1d72aa;
 }
 .button.is-info.is-light:hover,
-.is-info.is-light.intvbutton:hover,
+.is-info.is-light.leafbutton:hover,
 .button.is-info.is-light.is-hovered,
-.is-info.is-light.is-hovered.intvbutton {
+.is-info.is-light.is-hovered.leafbutton {
   background-color: #e3f1fa;
   border-color: transparent;
   color: #1d72aa;
 }
 .button.is-info.is-light:active,
-.is-info.is-light.intvbutton:active,
+.is-info.is-light.leafbutton:active,
 .button.is-info.is-light.is-active,
-.is-info.is-light.is-active.intvbutton {
+.is-info.is-light.is-active.leafbutton {
   background-color: #d8ebf8;
   border-color: transparent;
   color: #1d72aa;
 }
 .button.is-success,
-.is-success.intvbutton {
+.is-success.leafbutton {
   background-color: #48c774;
   border-color: transparent;
   color: #fff;
 }
 .button.is-success:hover,
-.is-success.intvbutton:hover,
+.is-success.leafbutton:hover,
 .button.is-success.is-hovered,
-.is-success.is-hovered.intvbutton {
+.is-success.is-hovered.leafbutton {
   background-color: #3ec46d;
   border-color: transparent;
   color: #fff;
 }
 .button.is-success:focus,
-.is-success.intvbutton:focus,
+.is-success.leafbutton:focus,
 .button.is-success.is-focused,
-.is-success.is-focused.intvbutton {
+.is-success.is-focused.leafbutton {
   border-color: transparent;
   color: #fff;
 }
 .button.is-success:focus:not(:active),
-.is-success.intvbutton:focus:not(:active),
+.is-success.leafbutton:focus:not(:active),
 .button.is-success.is-focused:not(:active),
-.is-success.is-focused.intvbutton:not(:active) {
+.is-success.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(72, 199, 116, 0.25);
 }
 .button.is-success:active,
-.is-success.intvbutton:active,
+.is-success.leafbutton:active,
 .button.is-success.is-active,
-.is-success.is-active.intvbutton {
+.is-success.is-active.leafbutton {
   background-color: #3abb67;
   border-color: transparent;
   color: #fff;
 }
 .button.is-success[disabled],
-.is-success.intvbutton[disabled],
+.is-success.leafbutton[disabled],
 fieldset[disabled] .button.is-success,
-fieldset[disabled] .is-success.intvbutton {
+fieldset[disabled] .is-success.leafbutton {
   background-color: #48c774;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-success.is-inverted,
-.is-success.intvbutton {
+.is-success.leafbutton {
   background-color: #fff;
   color: #48c774;
 }
 .button.is-success.is-inverted:hover,
-.is-success.intvbutton:hover,
+.is-success.leafbutton:hover,
 .button.is-success.is-inverted.is-hovered,
-.is-success.is-hovered.intvbutton {
+.is-success.is-hovered.leafbutton {
   background-color: #f2f2f2;
 }
 .button.is-success.is-inverted[disabled],
-.is-success.intvbutton[disabled],
+.is-success.leafbutton[disabled],
 fieldset[disabled] .button.is-success.is-inverted,
-fieldset[disabled] .is-success.intvbutton {
+fieldset[disabled] .is-success.leafbutton {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #48c774;
 }
 .button.is-success.is-loading::after,
-.is-success.is-loading.intvbutton::after {
+.is-success.is-loading.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-success.is-outlined,
-.is-success.intvbutton {
+.is-success.leafbutton {
   background-color: transparent;
   border-color: #48c774;
   color: #48c774;
 }
 .button.is-success.is-outlined:hover,
-.is-success.intvbutton:hover,
+.is-success.leafbutton:hover,
 .button.is-success.is-outlined.is-hovered,
-.is-success.is-hovered.intvbutton,
+.is-success.is-hovered.leafbutton,
 .button.is-success.is-outlined:focus,
-.is-success.intvbutton:focus,
+.is-success.leafbutton:focus,
 .button.is-success.is-outlined.is-focused,
-.is-success.is-focused.intvbutton {
+.is-success.is-focused.leafbutton {
   background-color: #48c774;
   border-color: #48c774;
   color: #fff;
 }
 .button.is-success.is-outlined.is-loading::after,
-.is-success.is-loading.intvbutton::after {
+.is-success.is-loading.leafbutton::after {
   border-color: transparent transparent #48c774 #48c774 !important;
 }
 .button.is-success.is-outlined.is-loading:hover::after,
-.is-success.is-loading.intvbutton:hover::after,
+.is-success.is-loading.leafbutton:hover::after,
 .button.is-success.is-outlined.is-loading.is-hovered::after,
-.is-success.is-loading.is-hovered.intvbutton::after,
+.is-success.is-loading.is-hovered.leafbutton::after,
 .button.is-success.is-outlined.is-loading:focus::after,
-.is-success.is-loading.intvbutton:focus::after,
+.is-success.is-loading.leafbutton:focus::after,
 .button.is-success.is-outlined.is-loading.is-focused::after,
-.is-success.is-loading.is-focused.intvbutton::after {
+.is-success.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-success.is-outlined[disabled],
-.is-success.intvbutton[disabled],
+.is-success.leafbutton[disabled],
 fieldset[disabled] .button.is-success.is-outlined,
-fieldset[disabled] .is-success.intvbutton {
+fieldset[disabled] .is-success.leafbutton {
   background-color: transparent;
   border-color: #48c774;
   box-shadow: none;
   color: #48c774;
 }
 .button.is-success.is-inverted.is-outlined,
-.is-success.intvbutton {
+.is-success.leafbutton {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 .button.is-success.is-inverted.is-outlined:hover,
-.is-success.intvbutton:hover,
+.is-success.leafbutton:hover,
 .button.is-success.is-inverted.is-outlined.is-hovered,
-.is-success.is-hovered.intvbutton,
+.is-success.is-hovered.leafbutton,
 .button.is-success.is-inverted.is-outlined:focus,
-.is-success.intvbutton:focus,
+.is-success.leafbutton:focus,
 .button.is-success.is-inverted.is-outlined.is-focused,
-.is-success.is-focused.intvbutton {
+.is-success.is-focused.leafbutton {
   background-color: #fff;
   color: #48c774;
 }
 .button.is-success.is-inverted.is-outlined.is-loading:hover::after,
-.is-success.is-loading.intvbutton:hover::after,
+.is-success.is-loading.leafbutton:hover::after,
 .button.is-success.is-inverted.is-outlined.is-loading.is-hovered::after,
-.is-success.is-loading.is-hovered.intvbutton::after,
+.is-success.is-loading.is-hovered.leafbutton::after,
 .button.is-success.is-inverted.is-outlined.is-loading:focus::after,
-.is-success.is-loading.intvbutton:focus::after,
+.is-success.is-loading.leafbutton:focus::after,
 .button.is-success.is-inverted.is-outlined.is-loading.is-focused::after,
-.is-success.is-loading.is-focused.intvbutton::after {
+.is-success.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #48c774 #48c774 !important;
 }
 .button.is-success.is-inverted.is-outlined[disabled],
-.is-success.intvbutton[disabled],
+.is-success.leafbutton[disabled],
 fieldset[disabled] .button.is-success.is-inverted.is-outlined,
-fieldset[disabled] .is-success.intvbutton {
+fieldset[disabled] .is-success.leafbutton {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 .button.is-success.is-light,
-.is-success.is-light.intvbutton {
+.is-success.is-light.leafbutton {
   background-color: #effaf3;
   color: #257942;
 }
 .button.is-success.is-light:hover,
-.is-success.is-light.intvbutton:hover,
+.is-success.is-light.leafbutton:hover,
 .button.is-success.is-light.is-hovered,
-.is-success.is-light.is-hovered.intvbutton {
+.is-success.is-light.is-hovered.leafbutton {
   background-color: #e6f7ec;
   border-color: transparent;
   color: #257942;
 }
 .button.is-success.is-light:active,
-.is-success.is-light.intvbutton:active,
+.is-success.is-light.leafbutton:active,
 .button.is-success.is-light.is-active,
-.is-success.is-light.is-active.intvbutton {
+.is-success.is-light.is-active.leafbutton {
   background-color: #dcf4e4;
   border-color: transparent;
   color: #257942;
 }
 .button.is-warning,
-.is-warning.intvbutton {
+.is-warning.leafbutton {
   background-color: #ffdd57;
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-warning:hover,
-.is-warning.intvbutton:hover,
+.is-warning.leafbutton:hover,
 .button.is-warning.is-hovered,
-.is-warning.is-hovered.intvbutton {
+.is-warning.is-hovered.leafbutton {
   background-color: #ffdb4a;
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-warning:focus,
-.is-warning.intvbutton:focus,
+.is-warning.leafbutton:focus,
 .button.is-warning.is-focused,
-.is-warning.is-focused.intvbutton {
+.is-warning.is-focused.leafbutton {
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-warning:focus:not(:active),
-.is-warning.intvbutton:focus:not(:active),
+.is-warning.leafbutton:focus:not(:active),
 .button.is-warning.is-focused:not(:active),
-.is-warning.is-focused.intvbutton:not(:active) {
+.is-warning.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(255, 221, 87, 0.25);
 }
 .button.is-warning:active,
-.is-warning.intvbutton:active,
+.is-warning.leafbutton:active,
 .button.is-warning.is-active,
-.is-warning.is-active.intvbutton {
+.is-warning.is-active.leafbutton {
   background-color: #ffd83d;
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-warning[disabled],
-.is-warning.intvbutton[disabled],
+.is-warning.leafbutton[disabled],
 fieldset[disabled] .button.is-warning,
-fieldset[disabled] .is-warning.intvbutton {
+fieldset[disabled] .is-warning.leafbutton {
   background-color: #ffdd57;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-warning.is-inverted,
-.is-warning.intvbutton {
+.is-warning.leafbutton {
   background-color: rgba(0, 0, 0, 0.7);
   color: #ffdd57;
 }
 .button.is-warning.is-inverted:hover,
-.is-warning.intvbutton:hover,
+.is-warning.leafbutton:hover,
 .button.is-warning.is-inverted.is-hovered,
-.is-warning.is-hovered.intvbutton {
+.is-warning.is-hovered.leafbutton {
   background-color: rgba(0, 0, 0, 0.7);
 }
 .button.is-warning.is-inverted[disabled],
-.is-warning.intvbutton[disabled],
+.is-warning.leafbutton[disabled],
 fieldset[disabled] .button.is-warning.is-inverted,
-fieldset[disabled] .is-warning.intvbutton {
+fieldset[disabled] .is-warning.leafbutton {
   background-color: rgba(0, 0, 0, 0.7);
   border-color: transparent;
   box-shadow: none;
   color: #ffdd57;
 }
 .button.is-warning.is-loading::after,
-.is-warning.is-loading.intvbutton::after {
+.is-warning.is-loading.leafbutton::after {
   border-color: transparent transparent rgba(0, 0, 0, 0.7) rgba(0, 0, 0, 0.7) !important;
 }
 .button.is-warning.is-outlined,
-.is-warning.intvbutton {
+.is-warning.leafbutton {
   background-color: transparent;
   border-color: #ffdd57;
   color: #ffdd57;
 }
 .button.is-warning.is-outlined:hover,
-.is-warning.intvbutton:hover,
+.is-warning.leafbutton:hover,
 .button.is-warning.is-outlined.is-hovered,
-.is-warning.is-hovered.intvbutton,
+.is-warning.is-hovered.leafbutton,
 .button.is-warning.is-outlined:focus,
-.is-warning.intvbutton:focus,
+.is-warning.leafbutton:focus,
 .button.is-warning.is-outlined.is-focused,
-.is-warning.is-focused.intvbutton {
+.is-warning.is-focused.leafbutton {
   background-color: #ffdd57;
   border-color: #ffdd57;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-warning.is-outlined.is-loading::after,
-.is-warning.is-loading.intvbutton::after {
+.is-warning.is-loading.leafbutton::after {
   border-color: transparent transparent #ffdd57 #ffdd57 !important;
 }
 .button.is-warning.is-outlined.is-loading:hover::after,
-.is-warning.is-loading.intvbutton:hover::after,
+.is-warning.is-loading.leafbutton:hover::after,
 .button.is-warning.is-outlined.is-loading.is-hovered::after,
-.is-warning.is-loading.is-hovered.intvbutton::after,
+.is-warning.is-loading.is-hovered.leafbutton::after,
 .button.is-warning.is-outlined.is-loading:focus::after,
-.is-warning.is-loading.intvbutton:focus::after,
+.is-warning.is-loading.leafbutton:focus::after,
 .button.is-warning.is-outlined.is-loading.is-focused::after,
-.is-warning.is-loading.is-focused.intvbutton::after {
+.is-warning.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent rgba(0, 0, 0, 0.7) rgba(0, 0, 0, 0.7) !important;
 }
 .button.is-warning.is-outlined[disabled],
-.is-warning.intvbutton[disabled],
+.is-warning.leafbutton[disabled],
 fieldset[disabled] .button.is-warning.is-outlined,
-fieldset[disabled] .is-warning.intvbutton {
+fieldset[disabled] .is-warning.leafbutton {
   background-color: transparent;
   border-color: #ffdd57;
   box-shadow: none;
   color: #ffdd57;
 }
 .button.is-warning.is-inverted.is-outlined,
-.is-warning.intvbutton {
+.is-warning.leafbutton {
   background-color: transparent;
   border-color: rgba(0, 0, 0, 0.7);
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-warning.is-inverted.is-outlined:hover,
-.is-warning.intvbutton:hover,
+.is-warning.leafbutton:hover,
 .button.is-warning.is-inverted.is-outlined.is-hovered,
-.is-warning.is-hovered.intvbutton,
+.is-warning.is-hovered.leafbutton,
 .button.is-warning.is-inverted.is-outlined:focus,
-.is-warning.intvbutton:focus,
+.is-warning.leafbutton:focus,
 .button.is-warning.is-inverted.is-outlined.is-focused,
-.is-warning.is-focused.intvbutton {
+.is-warning.is-focused.leafbutton {
   background-color: rgba(0, 0, 0, 0.7);
   color: #ffdd57;
 }
 .button.is-warning.is-inverted.is-outlined.is-loading:hover::after,
-.is-warning.is-loading.intvbutton:hover::after,
+.is-warning.is-loading.leafbutton:hover::after,
 .button.is-warning.is-inverted.is-outlined.is-loading.is-hovered::after,
-.is-warning.is-loading.is-hovered.intvbutton::after,
+.is-warning.is-loading.is-hovered.leafbutton::after,
 .button.is-warning.is-inverted.is-outlined.is-loading:focus::after,
-.is-warning.is-loading.intvbutton:focus::after,
+.is-warning.is-loading.leafbutton:focus::after,
 .button.is-warning.is-inverted.is-outlined.is-loading.is-focused::after,
-.is-warning.is-loading.is-focused.intvbutton::after {
+.is-warning.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #ffdd57 #ffdd57 !important;
 }
 .button.is-warning.is-inverted.is-outlined[disabled],
-.is-warning.intvbutton[disabled],
+.is-warning.leafbutton[disabled],
 fieldset[disabled] .button.is-warning.is-inverted.is-outlined,
-fieldset[disabled] .is-warning.intvbutton {
+fieldset[disabled] .is-warning.leafbutton {
   background-color: transparent;
   border-color: rgba(0, 0, 0, 0.7);
   box-shadow: none;
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-warning.is-light,
-.is-warning.is-light.intvbutton {
+.is-warning.is-light.leafbutton {
   background-color: #fffbeb;
   color: #947600;
 }
 .button.is-warning.is-light:hover,
-.is-warning.is-light.intvbutton:hover,
+.is-warning.is-light.leafbutton:hover,
 .button.is-warning.is-light.is-hovered,
-.is-warning.is-light.is-hovered.intvbutton {
+.is-warning.is-light.is-hovered.leafbutton {
   background-color: #fff8de;
   border-color: transparent;
   color: #947600;
 }
 .button.is-warning.is-light:active,
-.is-warning.is-light.intvbutton:active,
+.is-warning.is-light.leafbutton:active,
 .button.is-warning.is-light.is-active,
-.is-warning.is-light.is-active.intvbutton {
+.is-warning.is-light.is-active.leafbutton {
   background-color: #fff6d1;
   border-color: transparent;
   color: #947600;
 }
 .button.is-danger,
-.is-danger.intvbutton {
+.is-danger.leafbutton {
   background-color: #f14668;
   border-color: transparent;
   color: #fff;
 }
 .button.is-danger:hover,
-.is-danger.intvbutton:hover,
+.is-danger.leafbutton:hover,
 .button.is-danger.is-hovered,
-.is-danger.is-hovered.intvbutton {
+.is-danger.is-hovered.leafbutton {
   background-color: #f03a5f;
   border-color: transparent;
   color: #fff;
 }
 .button.is-danger:focus,
-.is-danger.intvbutton:focus,
+.is-danger.leafbutton:focus,
 .button.is-danger.is-focused,
-.is-danger.is-focused.intvbutton {
+.is-danger.is-focused.leafbutton {
   border-color: transparent;
   color: #fff;
 }
 .button.is-danger:focus:not(:active),
-.is-danger.intvbutton:focus:not(:active),
+.is-danger.leafbutton:focus:not(:active),
 .button.is-danger.is-focused:not(:active),
-.is-danger.is-focused.intvbutton:not(:active) {
+.is-danger.is-focused.leafbutton:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(241, 70, 104, 0.25);
 }
 .button.is-danger:active,
-.is-danger.intvbutton:active,
+.is-danger.leafbutton:active,
 .button.is-danger.is-active,
-.is-danger.is-active.intvbutton {
+.is-danger.is-active.leafbutton {
   background-color: #ef2e55;
   border-color: transparent;
   color: #fff;
 }
 .button.is-danger[disabled],
-.is-danger.intvbutton[disabled],
+.is-danger.leafbutton[disabled],
 fieldset[disabled] .button.is-danger,
-fieldset[disabled] .is-danger.intvbutton {
+fieldset[disabled] .is-danger.leafbutton {
   background-color: #f14668;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-danger.is-inverted,
-.is-danger.intvbutton {
+.is-danger.leafbutton {
   background-color: #fff;
   color: #f14668;
 }
 .button.is-danger.is-inverted:hover,
-.is-danger.intvbutton:hover,
+.is-danger.leafbutton:hover,
 .button.is-danger.is-inverted.is-hovered,
-.is-danger.is-hovered.intvbutton {
+.is-danger.is-hovered.leafbutton {
   background-color: #f2f2f2;
 }
 .button.is-danger.is-inverted[disabled],
-.is-danger.intvbutton[disabled],
+.is-danger.leafbutton[disabled],
 fieldset[disabled] .button.is-danger.is-inverted,
-fieldset[disabled] .is-danger.intvbutton {
+fieldset[disabled] .is-danger.leafbutton {
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
   color: #f14668;
 }
 .button.is-danger.is-loading::after,
-.is-danger.is-loading.intvbutton::after {
+.is-danger.is-loading.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-danger.is-outlined,
-.is-danger.intvbutton {
+.is-danger.leafbutton {
   background-color: transparent;
   border-color: #f14668;
   color: #f14668;
 }
 .button.is-danger.is-outlined:hover,
-.is-danger.intvbutton:hover,
+.is-danger.leafbutton:hover,
 .button.is-danger.is-outlined.is-hovered,
-.is-danger.is-hovered.intvbutton,
+.is-danger.is-hovered.leafbutton,
 .button.is-danger.is-outlined:focus,
-.is-danger.intvbutton:focus,
+.is-danger.leafbutton:focus,
 .button.is-danger.is-outlined.is-focused,
-.is-danger.is-focused.intvbutton {
+.is-danger.is-focused.leafbutton {
   background-color: #f14668;
   border-color: #f14668;
   color: #fff;
 }
 .button.is-danger.is-outlined.is-loading::after,
-.is-danger.is-loading.intvbutton::after {
+.is-danger.is-loading.leafbutton::after {
   border-color: transparent transparent #f14668 #f14668 !important;
 }
 .button.is-danger.is-outlined.is-loading:hover::after,
-.is-danger.is-loading.intvbutton:hover::after,
+.is-danger.is-loading.leafbutton:hover::after,
 .button.is-danger.is-outlined.is-loading.is-hovered::after,
-.is-danger.is-loading.is-hovered.intvbutton::after,
+.is-danger.is-loading.is-hovered.leafbutton::after,
 .button.is-danger.is-outlined.is-loading:focus::after,
-.is-danger.is-loading.intvbutton:focus::after,
+.is-danger.is-loading.leafbutton:focus::after,
 .button.is-danger.is-outlined.is-loading.is-focused::after,
-.is-danger.is-loading.is-focused.intvbutton::after {
+.is-danger.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-danger.is-outlined[disabled],
-.is-danger.intvbutton[disabled],
+.is-danger.leafbutton[disabled],
 fieldset[disabled] .button.is-danger.is-outlined,
-fieldset[disabled] .is-danger.intvbutton {
+fieldset[disabled] .is-danger.leafbutton {
   background-color: transparent;
   border-color: #f14668;
   box-shadow: none;
   color: #f14668;
 }
 .button.is-danger.is-inverted.is-outlined,
-.is-danger.intvbutton {
+.is-danger.leafbutton {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
 }
 .button.is-danger.is-inverted.is-outlined:hover,
-.is-danger.intvbutton:hover,
+.is-danger.leafbutton:hover,
 .button.is-danger.is-inverted.is-outlined.is-hovered,
-.is-danger.is-hovered.intvbutton,
+.is-danger.is-hovered.leafbutton,
 .button.is-danger.is-inverted.is-outlined:focus,
-.is-danger.intvbutton:focus,
+.is-danger.leafbutton:focus,
 .button.is-danger.is-inverted.is-outlined.is-focused,
-.is-danger.is-focused.intvbutton {
+.is-danger.is-focused.leafbutton {
   background-color: #fff;
   color: #f14668;
 }
 .button.is-danger.is-inverted.is-outlined.is-loading:hover::after,
-.is-danger.is-loading.intvbutton:hover::after,
+.is-danger.is-loading.leafbutton:hover::after,
 .button.is-danger.is-inverted.is-outlined.is-loading.is-hovered::after,
-.is-danger.is-loading.is-hovered.intvbutton::after,
+.is-danger.is-loading.is-hovered.leafbutton::after,
 .button.is-danger.is-inverted.is-outlined.is-loading:focus::after,
-.is-danger.is-loading.intvbutton:focus::after,
+.is-danger.is-loading.leafbutton:focus::after,
 .button.is-danger.is-inverted.is-outlined.is-loading.is-focused::after,
-.is-danger.is-loading.is-focused.intvbutton::after {
+.is-danger.is-loading.is-focused.leafbutton::after {
   border-color: transparent transparent #f14668 #f14668 !important;
 }
 .button.is-danger.is-inverted.is-outlined[disabled],
-.is-danger.intvbutton[disabled],
+.is-danger.leafbutton[disabled],
 fieldset[disabled] .button.is-danger.is-inverted.is-outlined,
-fieldset[disabled] .is-danger.intvbutton {
+fieldset[disabled] .is-danger.leafbutton {
   background-color: transparent;
   border-color: #fff;
   box-shadow: none;
   color: #fff;
 }
 .button.is-danger.is-light,
-.is-danger.is-light.intvbutton {
+.is-danger.is-light.leafbutton {
   background-color: #feecf0;
   color: #cc0f35;
 }
 .button.is-danger.is-light:hover,
-.is-danger.is-light.intvbutton:hover,
+.is-danger.is-light.leafbutton:hover,
 .button.is-danger.is-light.is-hovered,
-.is-danger.is-light.is-hovered.intvbutton {
+.is-danger.is-light.is-hovered.leafbutton {
   background-color: #fde0e6;
   border-color: transparent;
   color: #cc0f35;
 }
 .button.is-danger.is-light:active,
-.is-danger.is-light.intvbutton:active,
+.is-danger.is-light.leafbutton:active,
 .button.is-danger.is-light.is-active,
-.is-danger.is-light.is-active.intvbutton {
+.is-danger.is-light.is-active.leafbutton {
   background-color: #fcd4dc;
   border-color: transparent;
   color: #cc0f35;
 }
 .button.is-small,
-.is-small.intvbutton {
+.is-small.leafbutton {
   border-radius: 2px;
   font-size: 0.75rem;
 }
 .button.is-normal,
-.is-normal.intvbutton {
+.is-normal.leafbutton {
   font-size: 1rem;
 }
 .button.is-medium,
-.is-medium.intvbutton {
+.is-medium.leafbutton {
   font-size: 1.25rem;
 }
 .button.is-large,
-.is-large.intvbutton {
+.is-large.leafbutton {
   font-size: 1.5rem;
 }
 .button[disabled],
-.intvbutton[disabled],
+.leafbutton[disabled],
 fieldset[disabled] .button,
-fieldset[disabled] .intvbutton {
+fieldset[disabled] .leafbutton {
   background-color: white;
   border-color: #dbdbdb;
   box-shadow: none;
   opacity: 0.5;
 }
 .button.is-fullwidth,
-.is-fullwidth.intvbutton {
+.is-fullwidth.leafbutton {
   display: flex;
   width: 100%;
 }
 .button.is-loading,
-.is-loading.intvbutton {
+.is-loading.leafbutton {
   color: transparent !important;
   pointer-events: none;
 }
 .button.is-loading::after,
-.is-loading.intvbutton::after {
+.is-loading.leafbutton::after {
   position: absolute;
   left: calc(50% - (1em / 2));
   top: calc(50% - (1em / 2));
   position: absolute !important;
 }
 .button.is-static,
-.is-static.intvbutton {
+.is-static.leafbutton {
   background-color: whitesmoke;
   border-color: #dbdbdb;
   color: #7a7a7a;
@@ -2269,7 +2269,7 @@ fieldset[disabled] .intvbutton {
   pointer-events: none;
 }
 .button.is-rounded,
-.is-rounded.intvbutton {
+.is-rounded.leafbutton {
   border-radius: 290486px;
   padding-left: calc(1em + 0.25em);
   padding-right: calc(1em + 0.25em);
@@ -2282,11 +2282,11 @@ fieldset[disabled] .intvbutton {
   justify-content: flex-start;
 }
 .buttons .button,
-.buttons .intvbutton {
+.buttons .leafbutton {
   margin-bottom: 0.5rem;
 }
 .buttons .button:not(:last-child):not(.is-fullwidth),
-.buttons .intvbutton:not(:last-child):not(.is-fullwidth) {
+.buttons .leafbutton:not(:last-child):not(.is-fullwidth) {
   margin-right: 0.5rem;
 }
 .buttons:last-child {
@@ -2296,65 +2296,65 @@ fieldset[disabled] .intvbutton {
   margin-bottom: 1rem;
 }
 .buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large),
-.buttons.are-small .intvbutton:not(.is-normal):not(.is-medium):not(.is-large) {
+.buttons.are-small .leafbutton:not(.is-normal):not(.is-medium):not(.is-large) {
   border-radius: 2px;
   font-size: 0.75rem;
 }
 .buttons.are-medium .button:not(.is-small):not(.is-normal):not(.is-large),
-.buttons.are-medium .intvbutton:not(.is-small):not(.is-normal):not(.is-large) {
+.buttons.are-medium .leafbutton:not(.is-small):not(.is-normal):not(.is-large) {
   font-size: 1.25rem;
 }
 .buttons.are-large .button:not(.is-small):not(.is-normal):not(.is-medium),
-.buttons.are-large .intvbutton:not(.is-small):not(.is-normal):not(.is-medium) {
+.buttons.are-large .leafbutton:not(.is-small):not(.is-normal):not(.is-medium) {
   font-size: 1.5rem;
 }
 .buttons.has-addons .button:not(:first-child),
-.buttons.has-addons .intvbutton:not(:first-child) {
+.buttons.has-addons .leafbutton:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
 .buttons.has-addons .button:not(:last-child),
-.buttons.has-addons .intvbutton:not(:last-child) {
+.buttons.has-addons .leafbutton:not(:last-child) {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   margin-right: -1px;
 }
 .buttons.has-addons .button:last-child,
-.buttons.has-addons .intvbutton:last-child {
+.buttons.has-addons .leafbutton:last-child {
   margin-right: 0;
 }
 .buttons.has-addons .button:hover,
-.buttons.has-addons .intvbutton:hover,
+.buttons.has-addons .leafbutton:hover,
 .buttons.has-addons .button.is-hovered,
-.buttons.has-addons .is-hovered.intvbutton {
+.buttons.has-addons .is-hovered.leafbutton {
   z-index: 2;
 }
 .buttons.has-addons .button:focus,
-.buttons.has-addons .intvbutton:focus,
+.buttons.has-addons .leafbutton:focus,
 .buttons.has-addons .button.is-focused,
-.buttons.has-addons .is-focused.intvbutton,
+.buttons.has-addons .is-focused.leafbutton,
 .buttons.has-addons .button:active,
-.buttons.has-addons .intvbutton:active,
+.buttons.has-addons .leafbutton:active,
 .buttons.has-addons .button.is-active,
-.buttons.has-addons .is-active.intvbutton,
+.buttons.has-addons .is-active.leafbutton,
 .buttons.has-addons .button.is-selected,
-.buttons.has-addons .is-selected.intvbutton {
+.buttons.has-addons .is-selected.leafbutton {
   z-index: 3;
 }
 .buttons.has-addons .button:focus:hover,
-.buttons.has-addons .intvbutton:focus:hover,
+.buttons.has-addons .leafbutton:focus:hover,
 .buttons.has-addons .button.is-focused:hover,
-.buttons.has-addons .is-focused.intvbutton:hover,
+.buttons.has-addons .is-focused.leafbutton:hover,
 .buttons.has-addons .button:active:hover,
-.buttons.has-addons .intvbutton:active:hover,
+.buttons.has-addons .leafbutton:active:hover,
 .buttons.has-addons .button.is-active:hover,
-.buttons.has-addons .is-active.intvbutton:hover,
+.buttons.has-addons .is-active.leafbutton:hover,
 .buttons.has-addons .button.is-selected:hover,
-.buttons.has-addons .is-selected.intvbutton:hover {
+.buttons.has-addons .is-selected.leafbutton:hover {
   z-index: 4;
 }
 .buttons.has-addons .button.is-expanded,
-.buttons.has-addons .is-expanded.intvbutton {
+.buttons.has-addons .is-expanded.leafbutton {
   flex-grow: 1;
   flex-shrink: 1;
 }
@@ -2362,7 +2362,7 @@ fieldset[disabled] .intvbutton {
   justify-content: center;
 }
 .buttons.is-centered:not(.has-addons) .button:not(.is-fullwidth),
-.buttons.is-centered:not(.has-addons) .intvbutton:not(.is-fullwidth) {
+.buttons.is-centered:not(.has-addons) .leafbutton:not(.is-fullwidth) {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
@@ -2370,7 +2370,7 @@ fieldset[disabled] .intvbutton {
   justify-content: flex-end;
 }
 .buttons.is-right:not(.has-addons) .button:not(.is-fullwidth),
-.buttons.is-right:not(.has-addons) .intvbutton:not(.is-fullwidth) {
+.buttons.is-right:not(.has-addons) .leafbutton:not(.is-fullwidth) {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
@@ -2750,7 +2750,7 @@ fieldset[disabled] .intvbutton {
   position: relative;
   padding: 1.25rem 2.5rem 1.25rem 1.5rem;
 }
-.notification a:not(.button):not(.intvbutton):not(.dropdown-item) {
+.notification a:not(.button):not(.leafbutton):not(.dropdown-item) {
   color: currentColor;
   text-decoration: underline;
 }
@@ -2791,12 +2791,12 @@ fieldset[disabled] .intvbutton {
   color: #fff;
 }
 .notification.is-primary,
-.notification.intvbutton {
+.notification.leafbutton {
   background-color: #00d1b2;
   color: #fff;
 }
 .notification.is-primary.is-light,
-.notification.is-light.intvbutton {
+.notification.is-light.leafbutton {
   background-color: #ebfffc;
   color: #00947e;
 }
@@ -2914,19 +2914,19 @@ fieldset[disabled] .intvbutton {
   background-image: linear-gradient(to right, #363636 30%, #ededed 30%);
 }
 .progress.is-primary::-webkit-progress-value,
-.progress.intvbutton::-webkit-progress-value {
+.progress.leafbutton::-webkit-progress-value {
   background-color: #00d1b2;
 }
 .progress.is-primary::-moz-progress-bar,
-.progress.intvbutton::-moz-progress-bar {
+.progress.leafbutton::-moz-progress-bar {
   background-color: #00d1b2;
 }
 .progress.is-primary::-ms-fill,
-.progress.intvbutton::-ms-fill {
+.progress.leafbutton::-ms-fill {
   background-color: #00d1b2;
 }
 .progress.is-primary:indeterminate,
-.progress.intvbutton:indeterminate {
+.progress.leafbutton:indeterminate {
   background-image: linear-gradient(to right, #00d1b2 30%, #ededed 30%);
 }
 .progress.is-link::-webkit-progress-value {
@@ -3064,9 +3064,9 @@ fieldset[disabled] .intvbutton {
   color: #fff;
 }
 .table td.is-primary,
-.table td.intvbutton,
+.table td.leafbutton,
 .table th.is-primary,
-.table th.intvbutton {
+.table th.leafbutton {
   background-color: #00d1b2;
   border-color: #00d1b2;
   color: #fff;
@@ -3288,12 +3288,12 @@ fieldset[disabled] .intvbutton {
   color: #fff;
 }
 .tag:not(body).is-primary,
-.tag.intvbutton:not(body) {
+.tag.leafbutton:not(body) {
   background-color: #00d1b2;
   color: #fff;
 }
 .tag:not(body).is-primary.is-light,
-.tag.intvbutton:not(body).is-light {
+.tag.leafbutton:not(body).is-light {
   background-color: #ebfffc;
   color: #00947e;
 }
@@ -3696,27 +3696,27 @@ fieldset[disabled] .select select:-ms-input-placeholder,
   box-shadow: 0 0 0 0.125em rgba(54, 54, 54, 0.25);
 }
 .is-primary.input,
-.input.intvbutton,
+.input.leafbutton,
 .is-primary.textarea,
-.textarea.intvbutton {
+.textarea.leafbutton {
   border-color: #00d1b2;
 }
 .is-primary.input:focus,
-.input.intvbutton:focus,
+.input.leafbutton:focus,
 .is-primary.textarea:focus,
-.textarea.intvbutton:focus,
+.textarea.leafbutton:focus,
 .is-primary.is-focused.input,
-.is-focused.input.intvbutton,
+.is-focused.input.leafbutton,
 .is-primary.is-focused.textarea,
-.is-focused.textarea.intvbutton,
+.is-focused.textarea.leafbutton,
 .is-primary.input:active,
-.input.intvbutton:active,
+.input.leafbutton:active,
 .is-primary.textarea:active,
-.textarea.intvbutton:active,
+.textarea.leafbutton:active,
 .is-primary.is-active.input,
-.is-active.input.intvbutton,
+.is-active.input.leafbutton,
 .is-primary.is-active.textarea,
-.is-active.textarea.intvbutton {
+.is-active.textarea.leafbutton {
   box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
 }
 .is-link.input,
@@ -3984,27 +3984,27 @@ fieldset[disabled] .select select:hover {
   box-shadow: 0 0 0 0.125em rgba(54, 54, 54, 0.25);
 }
 .select.is-primary:not(:hover)::after,
-.select.intvbutton:not(:hover)::after {
+.select.leafbutton:not(:hover)::after {
   border-color: #00d1b2;
 }
 .select.is-primary select,
-.select.intvbutton select {
+.select.leafbutton select {
   border-color: #00d1b2;
 }
 .select.is-primary select:hover,
-.select.intvbutton select:hover,
+.select.leafbutton select:hover,
 .select.is-primary select.is-hovered,
-.select.intvbutton select.is-hovered {
+.select.leafbutton select.is-hovered {
   border-color: #00b89c;
 }
 .select.is-primary select:focus,
-.select.intvbutton select:focus,
+.select.leafbutton select:focus,
 .select.is-primary select.is-focused,
-.select.intvbutton select.is-focused,
+.select.leafbutton select.is-focused,
 .select.is-primary select:active,
-.select.intvbutton select:active,
+.select.leafbutton select:active,
 .select.is-primary select.is-active,
-.select.intvbutton select.is-active {
+.select.leafbutton select.is-active {
   box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
 }
 .select.is-link:not(:hover)::after {
@@ -4222,31 +4222,31 @@ fieldset[disabled] .select select:hover {
   color: #fff;
 }
 .file.is-primary .file-cta,
-.file.intvbutton .file-cta {
+.file.leafbutton .file-cta {
   background-color: #00d1b2;
   border-color: transparent;
   color: #fff;
 }
 .file.is-primary:hover .file-cta,
-.file.intvbutton:hover .file-cta,
+.file.leafbutton:hover .file-cta,
 .file.is-primary.is-hovered .file-cta,
-.file.is-hovered.intvbutton .file-cta {
+.file.is-hovered.leafbutton .file-cta {
   background-color: #00c4a7;
   border-color: transparent;
   color: #fff;
 }
 .file.is-primary:focus .file-cta,
-.file.intvbutton:focus .file-cta,
+.file.leafbutton:focus .file-cta,
 .file.is-primary.is-focused .file-cta,
-.file.is-focused.intvbutton .file-cta {
+.file.is-focused.leafbutton .file-cta {
   border-color: transparent;
   box-shadow: 0 0 0.5em rgba(0, 209, 178, 0.25);
   color: #fff;
 }
 .file.is-primary:active .file-cta,
-.file.intvbutton:active .file-cta,
+.file.leafbutton:active .file-cta,
 .file.is-primary.is-active .file-cta,
-.file.is-active.intvbutton .file-cta {
+.file.is-active.leafbutton .file-cta {
   background-color: #00b89c;
   border-color: transparent;
   color: #fff;
@@ -4559,7 +4559,7 @@ fieldset[disabled] .select select:hover {
   color: #363636;
 }
 .help.is-primary,
-.help.intvbutton {
+.help.leafbutton {
   color: #00d1b2;
 }
 .help.is-link {
@@ -4590,29 +4590,29 @@ fieldset[disabled] .select select:hover {
   margin-right: -1px;
 }
 .field.has-addons .control:not(:first-child):not(:last-child) .button,
-.field.has-addons .control:not(:first-child):not(:last-child) .intvbutton,
+.field.has-addons .control:not(:first-child):not(:last-child) .leafbutton,
 .field.has-addons .control:not(:first-child):not(:last-child) .input,
 .field.has-addons .control:not(:first-child):not(:last-child) .select select {
   border-radius: 0;
 }
 .field.has-addons .control:first-child:not(:only-child) .button,
-.field.has-addons .control:first-child:not(:only-child) .intvbutton,
+.field.has-addons .control:first-child:not(:only-child) .leafbutton,
 .field.has-addons .control:first-child:not(:only-child) .input,
 .field.has-addons .control:first-child:not(:only-child) .select select {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
 .field.has-addons .control:last-child:not(:only-child) .button,
-.field.has-addons .control:last-child:not(:only-child) .intvbutton,
+.field.has-addons .control:last-child:not(:only-child) .leafbutton,
 .field.has-addons .control:last-child:not(:only-child) .input,
 .field.has-addons .control:last-child:not(:only-child) .select select {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
 .field.has-addons .control .button:not([disabled]):hover,
-.field.has-addons .control .intvbutton:not([disabled]):hover,
+.field.has-addons .control .leafbutton:not([disabled]):hover,
 .field.has-addons .control .button:not([disabled]).is-hovered,
-.field.has-addons .control .intvbutton:not([disabled]).is-hovered,
+.field.has-addons .control .leafbutton:not([disabled]).is-hovered,
 .field.has-addons .control .input:not([disabled]):hover,
 .field.has-addons .control .input:not([disabled]).is-hovered,
 .field.has-addons .control .select select:not([disabled]):hover,
@@ -4620,13 +4620,13 @@ fieldset[disabled] .select select:hover {
   z-index: 2;
 }
 .field.has-addons .control .button:not([disabled]):focus,
-.field.has-addons .control .intvbutton:not([disabled]):focus,
+.field.has-addons .control .leafbutton:not([disabled]):focus,
 .field.has-addons .control .button:not([disabled]).is-focused,
-.field.has-addons .control .intvbutton:not([disabled]).is-focused,
+.field.has-addons .control .leafbutton:not([disabled]).is-focused,
 .field.has-addons .control .button:not([disabled]):active,
-.field.has-addons .control .intvbutton:not([disabled]):active,
+.field.has-addons .control .leafbutton:not([disabled]):active,
 .field.has-addons .control .button:not([disabled]).is-active,
-.field.has-addons .control .intvbutton:not([disabled]).is-active,
+.field.has-addons .control .leafbutton:not([disabled]).is-active,
 .field.has-addons .control .input:not([disabled]):focus,
 .field.has-addons .control .input:not([disabled]).is-focused,
 .field.has-addons .control .input:not([disabled]):active,
@@ -4638,13 +4638,13 @@ fieldset[disabled] .select select:hover {
   z-index: 3;
 }
 .field.has-addons .control .button:not([disabled]):focus:hover,
-.field.has-addons .control .intvbutton:not([disabled]):focus:hover,
+.field.has-addons .control .leafbutton:not([disabled]):focus:hover,
 .field.has-addons .control .button:not([disabled]).is-focused:hover,
-.field.has-addons .control .intvbutton:not([disabled]).is-focused:hover,
+.field.has-addons .control .leafbutton:not([disabled]).is-focused:hover,
 .field.has-addons .control .button:not([disabled]):active:hover,
-.field.has-addons .control .intvbutton:not([disabled]):active:hover,
+.field.has-addons .control .leafbutton:not([disabled]):active:hover,
 .field.has-addons .control .button:not([disabled]).is-active:hover,
-.field.has-addons .control .intvbutton:not([disabled]).is-active:hover,
+.field.has-addons .control .leafbutton:not([disabled]).is-active:hover,
 .field.has-addons .control .input:not([disabled]):focus:hover,
 .field.has-addons .control .input:not([disabled]).is-focused:hover,
 .field.has-addons .control .input:not([disabled]):active:hover,
@@ -5277,7 +5277,7 @@ button.dropdown-item.is-active {
 .message strong {
   color: currentColor;
 }
-.message a:not(.button):not(.intvbutton):not(.tag):not(.dropdown-item) {
+.message a:not(.button):not(.leafbutton):not(.tag):not(.dropdown-item) {
   color: currentColor;
   text-decoration: underline;
 }
@@ -5331,16 +5331,16 @@ button.dropdown-item.is-active {
   border-color: #363636;
 }
 .message.is-primary,
-.message.intvbutton {
+.message.leafbutton {
   background-color: #ebfffc;
 }
 .message.is-primary .message-header,
-.message.intvbutton .message-header {
+.message.leafbutton .message-header {
   background-color: #00d1b2;
   color: #fff;
 }
 .message.is-primary .message-body,
-.message.intvbutton .message-body {
+.message.leafbutton .message-body {
   border-color: #00d1b2;
   color: #00947e;
 }
@@ -5521,7 +5521,7 @@ button.dropdown-item.is-active {
   border-top: 1px solid #dbdbdb;
 }
 .modal-card-foot .button:not(:last-child),
-.modal-card-foot .intvbutton:not(:last-child) {
+.modal-card-foot .leafbutton:not(:last-child) {
   margin-right: 0.5em;
 }
 
@@ -5781,94 +5781,94 @@ button.dropdown-item.is-active {
   }
 }
 .navbar.is-primary,
-.navbar.intvbutton {
+.navbar.leafbutton {
   background-color: #00d1b2;
   color: #fff;
 }
 .navbar.is-primary .navbar-brand > .navbar-item,
-.navbar.intvbutton .navbar-brand > .navbar-item,
+.navbar.leafbutton .navbar-brand > .navbar-item,
 .navbar.is-primary .navbar-brand .navbar-link,
-.navbar.intvbutton .navbar-brand .navbar-link {
+.navbar.leafbutton .navbar-brand .navbar-link {
   color: #fff;
 }
 .navbar.is-primary .navbar-brand > a.navbar-item:focus,
-.navbar.intvbutton .navbar-brand > a.navbar-item:focus,
+.navbar.leafbutton .navbar-brand > a.navbar-item:focus,
 .navbar.is-primary .navbar-brand > a.navbar-item:hover,
-.navbar.intvbutton .navbar-brand > a.navbar-item:hover,
+.navbar.leafbutton .navbar-brand > a.navbar-item:hover,
 .navbar.is-primary .navbar-brand > a.navbar-item.is-active,
-.navbar.intvbutton .navbar-brand > a.navbar-item.is-active,
+.navbar.leafbutton .navbar-brand > a.navbar-item.is-active,
 .navbar.is-primary .navbar-brand .navbar-link:focus,
-.navbar.intvbutton .navbar-brand .navbar-link:focus,
+.navbar.leafbutton .navbar-brand .navbar-link:focus,
 .navbar.is-primary .navbar-brand .navbar-link:hover,
-.navbar.intvbutton .navbar-brand .navbar-link:hover,
+.navbar.leafbutton .navbar-brand .navbar-link:hover,
 .navbar.is-primary .navbar-brand .navbar-link.is-active,
-.navbar.intvbutton .navbar-brand .navbar-link.is-active {
+.navbar.leafbutton .navbar-brand .navbar-link.is-active {
   background-color: #00b89c;
   color: #fff;
 }
 .navbar.is-primary .navbar-brand .navbar-link::after,
-.navbar.intvbutton .navbar-brand .navbar-link::after {
+.navbar.leafbutton .navbar-brand .navbar-link::after {
   border-color: #fff;
 }
 .navbar.is-primary .navbar-burger,
-.navbar.intvbutton .navbar-burger {
+.navbar.leafbutton .navbar-burger {
   color: #fff;
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-primary .navbar-start > .navbar-item,
-  .navbar.intvbutton .navbar-start > .navbar-item,
+  .navbar.leafbutton .navbar-start > .navbar-item,
   .navbar.is-primary .navbar-start .navbar-link,
-  .navbar.intvbutton .navbar-start .navbar-link,
+  .navbar.leafbutton .navbar-start .navbar-link,
   .navbar.is-primary .navbar-end > .navbar-item,
-  .navbar.intvbutton .navbar-end > .navbar-item,
+  .navbar.leafbutton .navbar-end > .navbar-item,
   .navbar.is-primary .navbar-end .navbar-link,
-  .navbar.intvbutton .navbar-end .navbar-link {
+  .navbar.leafbutton .navbar-end .navbar-link {
     color: #fff;
   }
   .navbar.is-primary .navbar-start > a.navbar-item:focus,
-  .navbar.intvbutton .navbar-start > a.navbar-item:focus,
+  .navbar.leafbutton .navbar-start > a.navbar-item:focus,
   .navbar.is-primary .navbar-start > a.navbar-item:hover,
-  .navbar.intvbutton .navbar-start > a.navbar-item:hover,
+  .navbar.leafbutton .navbar-start > a.navbar-item:hover,
   .navbar.is-primary .navbar-start > a.navbar-item.is-active,
-  .navbar.intvbutton .navbar-start > a.navbar-item.is-active,
+  .navbar.leafbutton .navbar-start > a.navbar-item.is-active,
   .navbar.is-primary .navbar-start .navbar-link:focus,
-  .navbar.intvbutton .navbar-start .navbar-link:focus,
+  .navbar.leafbutton .navbar-start .navbar-link:focus,
   .navbar.is-primary .navbar-start .navbar-link:hover,
-  .navbar.intvbutton .navbar-start .navbar-link:hover,
+  .navbar.leafbutton .navbar-start .navbar-link:hover,
   .navbar.is-primary .navbar-start .navbar-link.is-active,
-  .navbar.intvbutton .navbar-start .navbar-link.is-active,
+  .navbar.leafbutton .navbar-start .navbar-link.is-active,
   .navbar.is-primary .navbar-end > a.navbar-item:focus,
-  .navbar.intvbutton .navbar-end > a.navbar-item:focus,
+  .navbar.leafbutton .navbar-end > a.navbar-item:focus,
   .navbar.is-primary .navbar-end > a.navbar-item:hover,
-  .navbar.intvbutton .navbar-end > a.navbar-item:hover,
+  .navbar.leafbutton .navbar-end > a.navbar-item:hover,
   .navbar.is-primary .navbar-end > a.navbar-item.is-active,
-  .navbar.intvbutton .navbar-end > a.navbar-item.is-active,
+  .navbar.leafbutton .navbar-end > a.navbar-item.is-active,
   .navbar.is-primary .navbar-end .navbar-link:focus,
-  .navbar.intvbutton .navbar-end .navbar-link:focus,
+  .navbar.leafbutton .navbar-end .navbar-link:focus,
   .navbar.is-primary .navbar-end .navbar-link:hover,
-  .navbar.intvbutton .navbar-end .navbar-link:hover,
+  .navbar.leafbutton .navbar-end .navbar-link:hover,
   .navbar.is-primary .navbar-end .navbar-link.is-active,
-  .navbar.intvbutton .navbar-end .navbar-link.is-active {
+  .navbar.leafbutton .navbar-end .navbar-link.is-active {
     background-color: #00b89c;
     color: #fff;
   }
   .navbar.is-primary .navbar-start .navbar-link::after,
-  .navbar.intvbutton .navbar-start .navbar-link::after,
+  .navbar.leafbutton .navbar-start .navbar-link::after,
   .navbar.is-primary .navbar-end .navbar-link::after,
-  .navbar.intvbutton .navbar-end .navbar-link::after {
+  .navbar.leafbutton .navbar-end .navbar-link::after {
     border-color: #fff;
   }
   .navbar.is-primary .navbar-item.has-dropdown:focus .navbar-link,
-  .navbar.intvbutton .navbar-item.has-dropdown:focus .navbar-link,
+  .navbar.leafbutton .navbar-item.has-dropdown:focus .navbar-link,
   .navbar.is-primary .navbar-item.has-dropdown:hover .navbar-link,
-  .navbar.intvbutton .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.leafbutton .navbar-item.has-dropdown:hover .navbar-link,
   .navbar.is-primary .navbar-item.has-dropdown.is-active .navbar-link,
-  .navbar.intvbutton .navbar-item.has-dropdown.is-active .navbar-link {
+  .navbar.leafbutton .navbar-item.has-dropdown.is-active .navbar-link {
     background-color: #00b89c;
     color: #fff;
   }
   .navbar.is-primary .navbar-dropdown a.navbar-item.is-active,
-  .navbar.intvbutton .navbar-dropdown a.navbar-item.is-active {
+  .navbar.leafbutton .navbar-dropdown a.navbar-item.is-active {
     background-color: #00d1b2;
     color: #fff;
   }
@@ -6836,16 +6836,16 @@ a.navbar-item.is-active,
   color: #363636;
 }
 .panel.is-primary .panel-heading,
-.panel.intvbutton .panel-heading {
+.panel.leafbutton .panel-heading {
   background-color: #00d1b2;
   color: #fff;
 }
 .panel.is-primary .panel-tabs a.is-active,
-.panel.intvbutton .panel-tabs a.is-active {
+.panel.leafbutton .panel-tabs a.is-active {
   border-bottom-color: #00d1b2;
 }
 .panel.is-primary .panel-block.is-active .panel-icon,
-.panel.intvbutton .panel-block.is-active .panel-icon {
+.panel.leafbutton .panel-block.is-active .panel-icon {
   color: #00d1b2;
 }
 .panel.is-link .panel-heading {
@@ -10837,7 +10837,7 @@ a.has-text-danger-dark:focus {
   color: #0a0a0a;
 }
 .hero.is-white
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-white strong {
   color: inherit;
 }
@@ -10847,7 +10847,7 @@ a.has-text-danger-dark:focus {
 .hero.is-white .subtitle {
   color: rgba(10, 10, 10, 0.9);
 }
-.hero.is-white .subtitle a:not(.button):not(.intvbutton),
+.hero.is-white .subtitle a:not(.button):not(.leafbutton),
 .hero.is-white .subtitle strong {
   color: #0a0a0a;
 }
@@ -10911,7 +10911,7 @@ a.has-text-danger-dark:focus {
   color: white;
 }
 .hero.is-black
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-black strong {
   color: inherit;
 }
@@ -10921,7 +10921,7 @@ a.has-text-danger-dark:focus {
 .hero.is-black .subtitle {
   color: rgba(255, 255, 255, 0.9);
 }
-.hero.is-black .subtitle a:not(.button):not(.intvbutton),
+.hero.is-black .subtitle a:not(.button):not(.leafbutton),
 .hero.is-black .subtitle strong {
   color: white;
 }
@@ -10990,7 +10990,7 @@ a.has-text-danger-dark:focus {
   color: rgba(0, 0, 0, 0.7);
 }
 .hero.is-light
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-light strong {
   color: inherit;
 }
@@ -11000,7 +11000,7 @@ a.has-text-danger-dark:focus {
 .hero.is-light .subtitle {
   color: rgba(0, 0, 0, 0.9);
 }
-.hero.is-light .subtitle a:not(.button):not(.intvbutton),
+.hero.is-light .subtitle a:not(.button):not(.leafbutton),
 .hero.is-light .subtitle strong {
   color: rgba(0, 0, 0, 0.7);
 }
@@ -11069,7 +11069,7 @@ a.has-text-danger-dark:focus {
   color: #fff;
 }
 .hero.is-dark
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-dark strong {
   color: inherit;
 }
@@ -11079,7 +11079,7 @@ a.has-text-danger-dark:focus {
 .hero.is-dark .subtitle {
   color: rgba(255, 255, 255, 0.9);
 }
-.hero.is-dark .subtitle a:not(.button):not(.intvbutton),
+.hero.is-dark .subtitle a:not(.button):not(.leafbutton),
 .hero.is-dark .subtitle strong {
   color: #fff;
 }
@@ -11144,94 +11144,94 @@ a.has-text-danger-dark:focus {
   }
 }
 .hero.is-primary,
-.hero.intvbutton {
+.hero.leafbutton {
   background-color: #00d1b2;
   color: #fff;
 }
 .hero.is-primary
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
-.hero.intvbutton
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+.hero.leafbutton
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-primary strong,
-.hero.intvbutton strong {
+.hero.leafbutton strong {
   color: inherit;
 }
 .hero.is-primary .title,
-.hero.intvbutton .title {
+.hero.leafbutton .title {
   color: #fff;
 }
 .hero.is-primary .subtitle,
-.hero.intvbutton .subtitle {
+.hero.leafbutton .subtitle {
   color: rgba(255, 255, 255, 0.9);
 }
-.hero.is-primary .subtitle a:not(.button):not(.intvbutton),
-.hero.intvbutton .subtitle a:not(.button):not(.intvbutton),
+.hero.is-primary .subtitle a:not(.button):not(.leafbutton),
+.hero.leafbutton .subtitle a:not(.button):not(.leafbutton),
 .hero.is-primary .subtitle strong,
-.hero.intvbutton .subtitle strong {
+.hero.leafbutton .subtitle strong {
   color: #fff;
 }
 @media screen and (max-width: 1023px) {
   .hero.is-primary .navbar-menu,
-  .hero.intvbutton .navbar-menu {
+  .hero.leafbutton .navbar-menu {
     background-color: #00d1b2;
   }
 }
 .hero.is-primary .navbar-item,
-.hero.intvbutton .navbar-item,
+.hero.leafbutton .navbar-item,
 .hero.is-primary .navbar-link,
-.hero.intvbutton .navbar-link {
+.hero.leafbutton .navbar-link {
   color: rgba(255, 255, 255, 0.7);
 }
 .hero.is-primary a.navbar-item:hover,
-.hero.intvbutton a.navbar-item:hover,
+.hero.leafbutton a.navbar-item:hover,
 .hero.is-primary a.navbar-item.is-active,
-.hero.intvbutton a.navbar-item.is-active,
+.hero.leafbutton a.navbar-item.is-active,
 .hero.is-primary .navbar-link:hover,
-.hero.intvbutton .navbar-link:hover,
+.hero.leafbutton .navbar-link:hover,
 .hero.is-primary .navbar-link.is-active,
-.hero.intvbutton .navbar-link.is-active {
+.hero.leafbutton .navbar-link.is-active {
   background-color: #00b89c;
   color: #fff;
 }
 .hero.is-primary .tabs a,
-.hero.intvbutton .tabs a {
+.hero.leafbutton .tabs a {
   color: #fff;
   opacity: 0.9;
 }
 .hero.is-primary .tabs a:hover,
-.hero.intvbutton .tabs a:hover {
+.hero.leafbutton .tabs a:hover {
   opacity: 1;
 }
 .hero.is-primary .tabs li.is-active a,
-.hero.intvbutton .tabs li.is-active a {
+.hero.leafbutton .tabs li.is-active a {
   opacity: 1;
 }
 .hero.is-primary .tabs.is-boxed a,
-.hero.intvbutton .tabs.is-boxed a,
+.hero.leafbutton .tabs.is-boxed a,
 .hero.is-primary .tabs.is-toggle a,
-.hero.intvbutton .tabs.is-toggle a {
+.hero.leafbutton .tabs.is-toggle a {
   color: #fff;
 }
 .hero.is-primary .tabs.is-boxed a:hover,
-.hero.intvbutton .tabs.is-boxed a:hover,
+.hero.leafbutton .tabs.is-boxed a:hover,
 .hero.is-primary .tabs.is-toggle a:hover,
-.hero.intvbutton .tabs.is-toggle a:hover {
+.hero.leafbutton .tabs.is-toggle a:hover {
   background-color: rgba(10, 10, 10, 0.1);
 }
 .hero.is-primary .tabs.is-boxed li.is-active a,
-.hero.intvbutton .tabs.is-boxed li.is-active a,
+.hero.leafbutton .tabs.is-boxed li.is-active a,
 .hero.is-primary .tabs.is-boxed li.is-active a:hover,
-.hero.intvbutton .tabs.is-boxed li.is-active a:hover,
+.hero.leafbutton .tabs.is-boxed li.is-active a:hover,
 .hero.is-primary .tabs.is-toggle li.is-active a,
-.hero.intvbutton .tabs.is-toggle li.is-active a,
+.hero.leafbutton .tabs.is-toggle li.is-active a,
 .hero.is-primary .tabs.is-toggle li.is-active a:hover,
-.hero.intvbutton .tabs.is-toggle li.is-active a:hover {
+.hero.leafbutton .tabs.is-toggle li.is-active a:hover {
   background-color: #fff;
   border-color: #fff;
   color: #00d1b2;
 }
 .hero.is-primary.is-bold,
-.hero.is-bold.intvbutton {
+.hero.is-bold.leafbutton {
   background-image: linear-gradient(
     141deg,
     #009e6c 0%,
@@ -11241,7 +11241,7 @@ a.has-text-danger-dark:focus {
 }
 @media screen and (max-width: 768px) {
   .hero.is-primary.is-bold .navbar-menu,
-  .hero.is-bold.intvbutton .navbar-menu {
+  .hero.is-bold.leafbutton .navbar-menu {
     background-image: linear-gradient(
       141deg,
       #009e6c 0%,
@@ -11255,7 +11255,7 @@ a.has-text-danger-dark:focus {
   color: #fff;
 }
 .hero.is-link
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-link strong {
   color: inherit;
 }
@@ -11265,7 +11265,7 @@ a.has-text-danger-dark:focus {
 .hero.is-link .subtitle {
   color: rgba(255, 255, 255, 0.9);
 }
-.hero.is-link .subtitle a:not(.button):not(.intvbutton),
+.hero.is-link .subtitle a:not(.button):not(.leafbutton),
 .hero.is-link .subtitle strong {
   color: #fff;
 }
@@ -11334,7 +11334,7 @@ a.has-text-danger-dark:focus {
   color: #fff;
 }
 .hero.is-info
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-info strong {
   color: inherit;
 }
@@ -11344,7 +11344,7 @@ a.has-text-danger-dark:focus {
 .hero.is-info .subtitle {
   color: rgba(255, 255, 255, 0.9);
 }
-.hero.is-info .subtitle a:not(.button):not(.intvbutton),
+.hero.is-info .subtitle a:not(.button):not(.leafbutton),
 .hero.is-info .subtitle strong {
   color: #fff;
 }
@@ -11413,7 +11413,7 @@ a.has-text-danger-dark:focus {
   color: #fff;
 }
 .hero.is-success
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-success strong {
   color: inherit;
 }
@@ -11423,7 +11423,7 @@ a.has-text-danger-dark:focus {
 .hero.is-success .subtitle {
   color: rgba(255, 255, 255, 0.9);
 }
-.hero.is-success .subtitle a:not(.button):not(.intvbutton),
+.hero.is-success .subtitle a:not(.button):not(.leafbutton),
 .hero.is-success .subtitle strong {
   color: #fff;
 }
@@ -11492,7 +11492,7 @@ a.has-text-danger-dark:focus {
   color: rgba(0, 0, 0, 0.7);
 }
 .hero.is-warning
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-warning strong {
   color: inherit;
 }
@@ -11502,7 +11502,7 @@ a.has-text-danger-dark:focus {
 .hero.is-warning .subtitle {
   color: rgba(0, 0, 0, 0.9);
 }
-.hero.is-warning .subtitle a:not(.button):not(.intvbutton),
+.hero.is-warning .subtitle a:not(.button):not(.leafbutton),
 .hero.is-warning .subtitle strong {
   color: rgba(0, 0, 0, 0.7);
 }
@@ -11571,7 +11571,7 @@ a.has-text-danger-dark:focus {
   color: #fff;
 }
 .hero.is-danger
-  a:not(.button):not(.intvbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+  a:not(.button):not(.leafbutton):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-danger strong {
   color: inherit;
 }
@@ -11581,7 +11581,7 @@ a.has-text-danger-dark:focus {
 .hero.is-danger .subtitle {
   color: rgba(255, 255, 255, 0.9);
 }
-.hero.is-danger .subtitle a:not(.button):not(.intvbutton),
+.hero.is-danger .subtitle a:not(.button):not(.leafbutton),
 .hero.is-danger .subtitle strong {
   color: #fff;
 }
@@ -11702,11 +11702,11 @@ a.has-text-danger-dark:focus {
 }
 @media screen and (max-width: 768px) {
   .hero-buttons .button,
-  .hero-buttons .intvbutton {
+  .hero-buttons .leafbutton {
     display: flex;
   }
   .hero-buttons .button:not(:last-child),
-  .hero-buttons .intvbutton:not(:last-child) {
+  .hero-buttons .leafbutton:not(:last-child) {
     margin-bottom: 0.75rem;
   }
 }
@@ -11716,7 +11716,7 @@ a.has-text-danger-dark:focus {
     justify-content: center;
   }
   .hero-buttons .button:not(:last-child),
-  .hero-buttons .intvbutton:not(:last-child) {
+  .hero-buttons .leafbutton:not(:last-child) {
     margin-right: 1.5rem;
   }
 }
@@ -11767,52 +11767,52 @@ code {
   background-color: #181818;
 }
 
-.intvfooter {
+.leaffooter {
   text-align: center;
   color: #525252;
   font-size: 0.8em;
   padding-bottom: 0.5em;
 }
 
-.intvbutton {
+.leafbutton {
   transition: 0.2s;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
-.intvbutton:hover,
-.intvbutton:focus {
+.leafbutton:hover,
+.leafbutton:focus {
   color: #0e141c;
   border-color: #ffffff;
 }
-.intvbutton:active {
+.leafbutton:active {
   color: #ffffff;
   border-color: #ffffff;
   background-color: #ffffff;
 }
-.intvbutton:focus:not(:active) {
+.leafbutton:focus:not(:active) {
   box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.25);
 }
 
-.intvshadow {
+.leafshadow {
   box-shadow: 0em 0.5em 1em #000;
 }
 
-a:hover .intvhighlight {
+a:hover .leafhighlight {
   color: black;
   background-color: white;
   box-shadow: 0em 0em 0.5em white;
 }
 
-a:hover .intvnohighlight {
+a:hover .leafnohighlight {
   color: white;
 }
 
-a:hover:active .intvhighlight,
-a:hover:active .intvnohighlight {
+a:hover:active .leafhighlight,
+a:hover:active .leafnohighlight {
   color: white;
 }
 
-.intvhighlight {
+.leafhighlight {
   background-color: white;
   color: #0e141c;
   padding-left: 0.2rem;
@@ -11822,17 +11822,17 @@ a:hover:active .intvnohighlight {
   transition: 0.2s;
 }
 
-.intvnohighlight {
+.leafnohighlight {
   padding-left: 0.2rem;
   padding-right: 0.2rem;
   font-weight: 600;
   transition: 0.2s;
 }
 
-.intvoverlay {
+.leafoverlay {
   background: rgba(14, 20, 28, 0.75);
   -webkit-backdrop-filter: saturate(100%) blur(20px);
   backdrop-filter: saturate(100%) blur(20px);
 }
 
-/*# sourceMappingURL=intvstyle.css.map */
+/*# sourceMappingURL=leafstyle.css.map */
