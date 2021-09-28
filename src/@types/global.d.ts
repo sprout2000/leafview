@@ -9,6 +9,8 @@ export interface Sandbox {
 
   history: (filepath: string) => void;
 
+  contextMenu: () => void;
+
   dirname: (filepath: string) => Promise<string>;
 
   readdir: (dirpath: string) => Promise<void | string[]>;
@@ -32,26 +34,4 @@ export interface Sandbox {
     listener: (_e: Event, filepath: string) => Promise<void>
   ) => Electron.IpcRenderer;
   removeMenuOpen: () => Electron.IpcRenderer;
-
-  contextMenu: () => void;
-
-  closeWindow: () => Promise<void>;
-  restoreWindow: () => Promise<void>;
-  maximizeWindow: () => Promise<void>;
-  minimizeWindow: () => Promise<void>;
-
-  resized: (listener: () => Promise<void>) => Electron.IpcRenderer;
-  removeResized: () => Electron.IpcRenderer;
-
-  maximized: (listener: () => Promise<void>) => Electron.IpcRenderer;
-  removeMaximized: () => Electron.IpcRenderer;
-
-  unMaximized: (listener: () => Promise<void>) => Electron.IpcRenderer;
-  removeUnMaximized: () => Electron.IpcRenderer;
-
-  getFocus: (listener: () => Promise<void>) => Electron.IpcRenderer;
-  removeGetFocus: () => Electron.IpcRenderer;
-
-  getBlur: (listener: () => Promise<void>) => Electron.IpcRenderer;
-  removeGetBlur: () => Electron.IpcRenderer;
 }

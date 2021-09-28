@@ -10,6 +10,7 @@ import {
 } from 'electron';
 
 import Store from 'electron-store';
+import { autoUpdater } from 'electron-updater';
 import i18next from 'i18next';
 import log from 'electron-log';
 
@@ -24,6 +25,7 @@ import { searchDevtools } from './searchDevtools';
 import { TypedStore } from './lib/TypedStore';
 
 console.log = log.log;
+autoUpdater.logger = log;
 log.info('App starting...');
 
 process.once('uncaughtException', (err) => {
@@ -35,16 +37,20 @@ process.once('uncaughtException', (err) => {
 });
 
 const gotTheLock = app.requestSingleInstanceLock();
+const isLinux = process.platform === 'linux';
+const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
 /// #if DEBUG
+const execPath =
+  process.platform === 'win32'
+    ? '../node_modules/electron/dist/electron.exe'
+    : '../node_modules/.bin/electron';
+
 if (isDev) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('electron-reload')(__dirname, {
-    electron: path.resolve(
-      __dirname,
-      '../node_modules/electron/dist/electron.exe'
-    ),
+    electron: path.resolve(__dirname, execPath),
     forceHardReset: true,
     hardResetMethod: 'exit',
   });
@@ -53,13 +59,16 @@ if (isDev) {
 
 const store = new Store<TypedStore>({
   defaults: {
+    menubar: true,
     darkmode: nativeTheme.shouldUseDarkColors,
     x: undefined,
     y: undefined,
     width: 800,
-    height: 578,
+    height: isDarwin ? 558 : 602,
   },
 });
+
+let openfile: string | null = null;
 
 const checkmime = (filepath: string) => {
   const mimetype = mime.lookup(filepath);
@@ -70,20 +79,18 @@ const checkmime = (filepath: string) => {
 };
 
 const createWindow = () => {
-  const dotfiles = '._';
+  const dotfiles = isDarwin ? '.' : '._';
 
   const mainWindow = new BrowserWindow({
     x: store.get('x'),
     y: store.get('y'),
     width: store.get('width'),
     height: store.get('height'),
+    icon: isLinux ? path.join(__dirname, 'icon.png') : undefined,
     minWidth: 800,
-    minHeight: 578,
+    minHeight: isDarwin ? 558 : 602,
     show: false,
-    frame: false,
-    autoHideMenuBar: true,
-    fullscreenable: false,
-    backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#e6e6e6',
+    backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       sandbox: true,
       safeDialogs: true,
@@ -93,21 +100,13 @@ const createWindow = () => {
 
   nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
 
+  if (!isDarwin) {
+    store.get('menubar', true)
+      ? mainWindow.setMenuBarVisibility(true)
+      : mainWindow.setMenuBarVisibility(false);
+  }
+
   ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
-
-  ipcMain.handle('minimize-window', () => mainWindow.minimize());
-  ipcMain.handle('maximize-window', () => mainWindow.maximize());
-  ipcMain.handle('restore-window', () => mainWindow.unmaximize());
-  ipcMain.handle('close-window', () => mainWindow.close());
-
-  mainWindow.on('maximize', () => mainWindow.webContents.send('maximized'));
-  mainWindow.on('unmaximize', () => mainWindow.webContents.send('unMaximized'));
-  mainWindow.on('resized', () => {
-    if (mainWindow.isMaximized()) return;
-    mainWindow.webContents.send('resized');
-  });
-  mainWindow.on('focus', () => mainWindow.webContents.send('get-focus'));
-  mainWindow.on('blur', () => mainWindow.webContents.send('get-blur'));
 
   ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
     return checkmime(filepath);
@@ -173,6 +172,7 @@ const createWindow = () => {
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
   ipcMain.on('show-context-menu', () => {
+    if (isDarwin || mainWindow.menuBarVisible) return;
     menu.popup();
   });
 
@@ -182,36 +182,100 @@ const createWindow = () => {
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
   mainWindow.webContents.once('did-finish-load', () => {
-    if (!isDev && process.argv.length >= 2) {
+    if (!isDarwin && !isDev && process.argv.length >= 2) {
       const filepath = process.argv[process.argv.length - 1];
       if (path.basename(filepath).startsWith(dotfiles)) return;
 
       mainWindow.webContents.send('menu-open', filepath);
     }
-  });
 
-  app.on('second-instance', (_e, argv) => {
-    if (mainWindow.isMinimized()) mainWindow.restore();
-    mainWindow.focus();
+    if (isDarwin && openfile) {
+      if (path.basename(openfile).startsWith(dotfiles)) {
+        openfile = null;
+        return;
+      }
 
-    if (argv.length >= 4) {
-      const filepath = argv[argv.length - 1];
-      if (path.basename(filepath).startsWith(dotfiles)) return;
-
-      mainWindow.webContents.send('menu-open', filepath);
+      mainWindow.webContents.send('menu-open', openfile);
+      openfile = null;
     }
   });
 
+  if (!isDarwin) {
+    app.on('second-instance', (_e, argv) => {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+
+      if (argv.length >= 4) {
+        const filepath = argv[argv.length - 1];
+        if (path.basename(filepath).startsWith(dotfiles)) return;
+
+        mainWindow.webContents.send('menu-open', filepath);
+      }
+    });
+  }
+
+  app.on('open-file', (e, filepath) => {
+    e.preventDefault();
+
+    if (mainWindow.isMinimized()) mainWindow.restore();
+    mainWindow.focus();
+
+    if (path.basename(filepath).startsWith(dotfiles)) return;
+
+    mainWindow.webContents.send('menu-open', filepath);
+  });
+
+  if (isDarwin) {
+    autoUpdater.checkForUpdatesAndNotify();
+
+    autoUpdater.once('error', (_e, err) => {
+      log.info(`Error in auto-updater: ${err}`);
+    });
+
+    autoUpdater.once('update-downloaded', async () => {
+      log.info(`Update downloaded...`);
+
+      await dialog
+        .showMessageBox(mainWindow, {
+          type: 'info',
+          buttons: ['Restart', 'Not now'],
+          defaultId: 0,
+          cancelId: 1,
+          title: 'Update Downloaded',
+          message: 'Update downloaded',
+          detail:
+            'We have finished downloading the latest updates.\n' +
+            'Would you like to install the update and restart now?',
+        })
+        .then((result) => {
+          if (result.response === 0) {
+            autoUpdater.quitAndInstall();
+          } else {
+            log.info('The installation of the update has been cancelled...');
+          }
+        })
+        .catch((err) => log.info(`Error in showMessageBox: ${err}`));
+    });
+  }
+
   mainWindow.once('close', () => {
+    const menubar = store.get('menubar', true);
     const darkmode = store.get('darkmode', nativeTheme.shouldUseDarkColors);
     const { x, y, width, height } = mainWindow.getBounds();
-    store.set({ x, y, width, height, darkmode });
+    store.set({ x, y, width, height, darkmode, menubar });
   });
 };
 
-if (!gotTheLock) {
+if (!gotTheLock && !isDarwin) {
   app.exit();
 } else {
+  app.once('will-finish-launching', () => {
+    app.once('open-file', (e, filepath) => {
+      e.preventDefault();
+      openfile = filepath;
+    });
+  });
+
   app.whenReady().then(async () => {
     const locale = app.getLocale();
     setLocales(locale);
@@ -233,9 +297,10 @@ if (!gotTheLock) {
 
   app.setAboutPanelOptions({
     applicationName: app.name,
-    applicationVersion: `v${app.getVersion()} (${
-      process.versions['electron']
-    })`,
+    applicationVersion: isDarwin
+      ? app.getVersion()
+      : `v${app.getVersion()} (${process.versions['electron']})`,
+    version: process.versions['electron'],
     copyright: '© 2020 sprout2000 and other contributors',
     iconPath: path.join(__dirname, 'icon.png'),
   });

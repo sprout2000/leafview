@@ -41,15 +41,13 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 
 ## :closed_lock_with_key: Security
 
-| API                        | Value   |
-| :------------------------- | :------ |
-| default-src (CSP)          | `self`  |
-| nodeIntegration            | `false` |
-| enableRemoteModule         | `false` |
-| worldSafeExecuteJavaScript | `true`  |
-| contextIsolation           | `true`  |
-| safeDialogs                | `true`  |
-| sandbox                    | `true`  |
+| API               | Value   |
+| :---------------- | :------ |
+| default-src (CSP) | `self`  |
+| nodeIntegration   | `false` |
+| contextIsolation  | `true`  |
+| safeDialogs       | `true`  |
+| sandbox           | `true`  |
 
 ## :rainbow: Supported Image Formats
 
