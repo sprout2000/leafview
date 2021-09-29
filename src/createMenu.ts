@@ -193,23 +193,6 @@ export const createMenu = (
     helpSub.push(aboutItem);
   }
 
-  if (process.env.NODE_ENV === 'development') {
-    helpSub.push(
-      { type: 'separator' },
-      {
-        label: i18next.t('Toggle Developer Tools'),
-        accelerator: isDarwin ? 'Cmd+Option+I' : 'Ctrl+Shift+I',
-        click: (): void => {
-          if (win.webContents.isDevToolsOpened()) {
-            win.webContents.closeDevTools();
-          } else {
-            win.webContents.openDevTools({ mode: 'detach' });
-          }
-        },
-      }
-    );
-  }
-
   const template: MenuItemConstructorOptions[] = [
     fileSub,
     {
