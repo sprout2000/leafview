@@ -37,7 +37,6 @@ process.once('uncaughtException', (err) => {
 });
 
 const gotTheLock = app.requestSingleInstanceLock();
-const isWin32 = process.platform === 'win32';
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
@@ -60,6 +59,7 @@ if (isDev) {
 
 const store = new Store<TypedStore>({
   defaults: {
+    menubar: true,
     darkmode: nativeTheme.shouldUseDarkColors,
     x: undefined,
     y: undefined,
@@ -90,8 +90,6 @@ const createWindow = () => {
     minWidth: 800,
     minHeight: isDarwin ? 558 : 602,
     show: false,
-    frame: isWin32 ? false : true,
-    fullscreenable: isWin32 ? false : true,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       sandbox: true,
@@ -102,25 +100,13 @@ const createWindow = () => {
 
   nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
 
-  ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
-
-  if (isWin32) {
-    ipcMain.handle('minimize-window', () => mainWindow.minimize());
-    ipcMain.handle('maximize-window', () => mainWindow.maximize());
-    ipcMain.handle('restore-window', () => mainWindow.unmaximize());
-    ipcMain.handle('close-window', () => mainWindow.close());
-
-    mainWindow.on('maximize', () => mainWindow.webContents.send('maximized'));
-    mainWindow.on('unmaximize', () =>
-      mainWindow.webContents.send('unMaximized')
-    );
-    mainWindow.on('resized', () => {
-      if (mainWindow.isMaximized()) return;
-      mainWindow.webContents.send('resized');
-    });
-    mainWindow.on('focus', () => mainWindow.webContents.send('get-focus'));
-    mainWindow.on('blur', () => mainWindow.webContents.send('get-blur'));
+  if (!isDarwin) {
+    store.get('menubar', true)
+      ? mainWindow.setMenuBarVisibility(true)
+      : mainWindow.setMenuBarVisibility(false);
   }
+
+  ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
 
   ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
     return checkmime(filepath);
@@ -185,12 +171,10 @@ const createWindow = () => {
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
-
-  if (isWin32) {
-    ipcMain.on('show-context-menu', () => {
-      menu.popup();
-    });
-  }
+  ipcMain.on('show-context-menu', () => {
+    if (isDarwin || mainWindow.menuBarVisible) return;
+    menu.popup();
+  });
 
   if (isDev) mainWindow.webContents.openDevTools({ mode: 'detach' });
 
@@ -275,9 +259,10 @@ const createWindow = () => {
   }
 
   mainWindow.once('close', () => {
+    const menubar = store.get('menubar', true);
     const darkmode = store.get('darkmode', nativeTheme.shouldUseDarkColors);
     const { x, y, width, height } = mainWindow.getBounds();
-    store.set({ x, y, width, height, darkmode });
+    store.set({ x, y, width, height, darkmode, menubar });
   });
 };
 

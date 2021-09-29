@@ -1,4 +1,3 @@
-import { UAParser } from 'ua-parser-js';
 import React, { useRef, useCallback, useState, useEffect } from 'react';
 
 import L from 'leaflet';
@@ -6,17 +5,11 @@ import 'leaflet/dist/leaflet.css';
 
 import { Float } from './Float';
 import empty from './empty.png';
-import './App.scss';
 
 const { myAPI } = window;
 
-const ua = new UAParser();
-const isWin32 = ua.getOS().name === 'Windows';
-
 export const App = (): JSX.Element => {
   const [url, setUrl] = useState<string>(empty);
-  const [maximized, setMaximized] = useState(false);
-  const [blur, setBlur] = useState(false);
 
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
@@ -226,35 +219,8 @@ export const App = (): JSX.Element => {
   };
 
   const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isWin32) return;
-
     e.preventDefault();
     myAPI.contextMenu();
-  };
-
-  const onMinimize = async () => {
-    if (!isWin32) return;
-
-    await myAPI.minimizeWindow();
-  };
-
-  const onMaximize = async () => {
-    if (!isWin32) return;
-
-    setMaximized(!maximized);
-    await myAPI.maximizeWindow();
-  };
-
-  const onRestore = async () => {
-    if (!isWin32) return;
-
-    setMaximized(!maximized);
-    await myAPI.restoreWindow();
-  };
-
-  const onClose = async () => {
-    if (!isWin32) return;
-    await myAPI.closeWindow();
   };
 
   const updateTitle = async (filepath: string): Promise<void> => {
@@ -294,51 +260,6 @@ export const App = (): JSX.Element => {
   }, [onMenuOpen]);
 
   useEffect(() => {
-    if (!isWin32) return;
-    myAPI.resized(async () => setMaximized(false));
-
-    return () => {
-      myAPI.removeResized();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isWin32) return;
-    myAPI.getFocus(async () => setBlur(false));
-
-    return () => {
-      myAPI.removeGetFocus();
-    };
-  }, [blur]);
-
-  useEffect(() => {
-    if (!isWin32) return;
-    myAPI.getBlur(async () => setBlur(true));
-
-    return () => {
-      myAPI.removeGetBlur();
-    };
-  });
-
-  useEffect(() => {
-    if (!isWin32) return;
-    myAPI.maximized(async () => setMaximized(true));
-
-    return () => {
-      myAPI.removeMaximized();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isWin32) return;
-    myAPI.unMaximized(async () => setMaximized(false));
-
-    return () => {
-      myAPI.removeUnMaximized();
-    };
-  }, []);
-
-  useEffect(() => {
     const title = url !== empty ? url : 'LeafView';
 
     updateTitle(title);
@@ -371,89 +292,6 @@ export const App = (): JSX.Element => {
       onDrop={onDrop}
       onKeyDown={onKeyDown}
     >
-      {isWin32 && (
-        <div
-          className={blur ? 'titlebar blur' : 'titlebar'}
-          onDoubleClick={(e) => e.preventDefault()}
-        >
-          <div className="title-icon">
-            <img src="title_icon.png" />
-          </div>
-          <div className={blur ? 'title-container blur' : 'title-container'}>
-            <p>{url === empty ? 'LeafView' : url.match(/[ \w-]+\..*$/)}</p>
-          </div>
-          <div className="controls">
-            <div
-              className={blur ? 'button-container blur' : 'button-container'}
-              onClick={onMinimize}
-            >
-              <svg
-                width="10"
-                height="1"
-                viewBox="0 0 10 1"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="10" height="1" fill="black" />
-              </svg>
-            </div>
-            {maximized ? (
-              <div
-                className={blur ? 'button-container blur' : 'button-container'}
-                onClick={onRestore}
-              >
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M9 1H3V2H2V1V0H3H9H10V1V7V8H9H8V7H9V1Z"
-                    fill="black"
-                  />
-                  <rect x="0.5" y="2.5" width="7" height="7" stroke="black" />
-                </svg>
-              </div>
-            ) : (
-              <div
-                className={blur ? 'button-container blur' : 'button-container'}
-                onClick={onMaximize}
-              >
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect x="0.5" y="0.5" width="9" height="9" stroke="black" />
-                </svg>
-              </div>
-            )}
-            <div
-              className={
-                blur ? 'button-container close blur' : 'button-container close'
-              }
-              onClick={onClose}
-            >
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M1 11L11 1" className="close" />
-                <path d="M1 1L11 11" className="close" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      )}
       <div className="bottom">
         <Float
           onClickOpen={onClickOpen}
@@ -462,9 +300,7 @@ export const App = (): JSX.Element => {
           remove={remove}
         />
       </div>
-      <div className={isWin32 ? 'content-win32' : 'content'}>
-        <div className={url === empty ? 'view init' : 'view'} ref={mapRef} />
-      </div>
+      <div className={url === empty ? 'view init' : 'view'} ref={mapRef} />
     </div>
   );
 };

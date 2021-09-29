@@ -94,17 +94,12 @@ export const createMenu = (
       accelerator: 'K',
       click: (): void => win.webContents.send('menu-prev'),
     },
+    { type: 'separator' },
+    {
+      label: i18next.t('Toggle Fullscreen'),
+      role: 'togglefullscreen',
+    },
   ];
-
-  if (isDarwin) {
-    viewSub.push(
-      { type: 'separator' },
-      {
-        label: i18next.t('Toggle Fullscreen'),
-        role: 'togglefullscreen',
-      }
-    );
-  }
 
   if (process.env.NODE_ENV === 'development') {
     viewSub.push(
@@ -130,6 +125,20 @@ export const createMenu = (
     },
   ];
 
+  const toggleMenubar: MenuItemConstructorOptions = {
+    label: i18next.t('Toggle Menubar'),
+    accelerator: 'Ctrl+T',
+    click: (): void => {
+      if (win.menuBarVisible) {
+        store.set('menubar', false);
+        win.setMenuBarVisibility(false);
+      } else {
+        store.set('menubar', true);
+        win.setMenuBarVisibility(true);
+      }
+    },
+  };
+
   const toggleDarkmode: MenuItemConstructorOptions = {
     label: i18next.t('Toggle Dark Mode'),
     type: 'checkbox',
@@ -150,6 +159,7 @@ export const createMenu = (
   if (!isDarwin) {
     windowSub.push(
       { type: 'separator' },
+      toggleMenubar,
       toggleDarkmode,
       { type: 'separator' },
       {

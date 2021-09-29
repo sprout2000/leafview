@@ -1,128 +1,12 @@
-$titlebar-height: 36px;
-
-@mixin view {
-  height: 100%;
-  z-index: 0;
-  background-color: transparent;
-  cursor: grab;
-
-  &:active {
-    cursor: grabbing;
-  }
-
-  &.init {
-    cursor: default;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   .container {
     background: #1e1e1e;
-
-    .titlebar {
-      background-color: #3c3d3d;
-
-      &.blur {
-        background-color: #323233;
-      }
-
-      .title-container {
-        color: #cacaca;
-        &.blur {
-          color: #8e8e8e;
-        }
-      }
-
-      .controls {
-        .button-container {
-          path {
-            fill: #cacaca;
-          }
-          rect {
-            stroke: #cacaca;
-          }
-
-          &.blur {
-            path {
-              fill: #8e8e8e;
-            }
-            rect {
-              stroke: #8e8e8e;
-            }
-          }
-
-          &.close {
-            path {
-              stroke: #cacaca;
-            }
-
-            &.blur {
-              path {
-                stroke: #8e8e8e;
-              }
-            }
-          }
-
-          &:hover {
-            background-color: #505050;
-          }
-        }
-      }
-    }
   }
 }
 
 @media (prefers-color-scheme: light) {
   .container {
     background: #e6e6e6;
-
-    .titlebar {
-      background-color: #ffffff;
-
-      .title-container {
-        color: black;
-        font-size: 12px;
-        &.blur {
-          color: #999999;
-        }
-      }
-
-      .controls {
-        .button-container {
-          path {
-            fill: black;
-          }
-          rect {
-            stroke: black;
-          }
-
-          &.blur {
-            path {
-              fill: #999999;
-            }
-            rect {
-              stroke: #999999;
-            }
-          }
-
-          &.close {
-            path {
-              stroke: black;
-            }
-
-            &.blur {
-              path {
-                stroke: #999999;
-              }
-            }
-          }
-
-          &:hover {
-            background-color: #e6e6e6;
-          }
-        }
-      }
-    }
   }
 }
 
@@ -141,77 +25,11 @@ $titlebar-height: 36px;
   }
 }
 
-html,
-body,
-#root {
-  height: 100%;
-}
-
 .container {
   height: 100%;
   overflow: hidden;
   user-select: none;
   // position: relative;
-
-  .titlebar {
-    top: 0;
-    left: 0;
-    height: $titlebar-height;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-app-region: drag;
-
-    .title-container {
-      overflow: hidden;
-      white-space: nowrap;
-      width: 340px;
-      text-overflow: ellipsis;
-      text-align: center;
-      font-family: sans-serif;
-      font-size: 11px;
-      user-select: none;
-    }
-
-    .title-icon {
-      -webkit-app-regiton: no-drag;
-      position: absolute;
-      top: 0;
-      left: 6px;
-      height: $titlebar-height;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      user-select: none;
-    }
-
-    .controls {
-      -webkit-app-region: no-drag;
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: $titlebar-height;
-      display: flex;
-      flex-direction: row;
-
-      .button-container {
-        width: 46px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &.close {
-          &:hover {
-            background-color: #e81123;
-            path {
-              stroke: white;
-            }
-          }
-        }
-      }
-    }
-  }
 
   .bottom {
     position: absolute;
@@ -264,21 +82,18 @@ body,
     }
   }
 
-  .content-win32 {
-    height: calc(100% - #{$titlebar-height});
-    overflow: hidden;
-
-    .view {
-      @include view();
-    }
-  }
-
-  .content {
+  .view {
     height: 100%;
-    overflow: hidden;
+    z-index: 0;
+    background-color: transparent;
+    cursor: grab;
 
-    .view {
-      @include view();
+    &:active {
+      cursor: grabbing;
+    }
+
+    &.init {
+      cursor: default;
     }
   }
 }
