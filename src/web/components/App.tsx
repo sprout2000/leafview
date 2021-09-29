@@ -2,6 +2,7 @@ import { useRef, useCallback, useState, useEffect } from 'react';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import './App.scss';
 
 import { Float } from './Float';
 import empty from './empty.png';
