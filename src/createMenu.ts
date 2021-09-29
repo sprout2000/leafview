@@ -94,12 +94,17 @@ export const createMenu = (
       accelerator: 'K',
       click: (): void => win.webContents.send('menu-prev'),
     },
-    { type: 'separator' },
-    {
-      label: i18next.t('Toggle Fullscreen'),
-      role: 'togglefullscreen',
-    },
   ];
+
+  if (isDarwin) {
+    viewSub.push(
+      { type: 'separator' },
+      {
+        label: i18next.t('Toggle Fullscreen'),
+        role: 'togglefullscreen',
+      }
+    );
+  }
 
   if (process.env.NODE_ENV === 'development') {
     viewSub.push(
