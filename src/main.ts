@@ -19,6 +19,7 @@ import path from 'path';
 import mime from 'mime-types';
 import natsort from 'natsort';
 
+import { TypedStore } from './TypedStore';
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 import { searchDevtools } from './searchDevtools';

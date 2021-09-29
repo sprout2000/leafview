@@ -1,4 +1,4 @@
-declare type TypedStore = {
+export type TypedStore = {
   menubar: boolean;
   darkmode: boolean;
   x: number | undefined;
