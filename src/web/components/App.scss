@@ -274,6 +274,9 @@ body,
   }
 
   .content {
+    height: 100%;
+    overflow: hidden;
+
     .view {
       @include view();
     }
