@@ -60,7 +60,6 @@ if (isDev) {
 
 const store = new Store<TypedStore>({
   defaults: {
-    menubar: true,
     darkmode: nativeTheme.shouldUseDarkColors,
     x: undefined,
     y: undefined,
@@ -275,10 +274,9 @@ const createWindow = () => {
   }
 
   mainWindow.once('close', () => {
-    const menubar = store.get('menubar', true);
     const darkmode = store.get('darkmode', nativeTheme.shouldUseDarkColors);
     const { x, y, width, height } = mainWindow.getBounds();
-    store.set({ x, y, width, height, darkmode, menubar });
+    store.set({ x, y, width, height, darkmode });
   });
 };
 
