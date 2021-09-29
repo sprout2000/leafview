@@ -294,6 +294,7 @@ export const App = (): JSX.Element => {
   }, [onMenuOpen]);
 
   useEffect(() => {
+    if (!isWin32) return;
     myAPI.resized(async () => setMaximized(false));
 
     return () => {
@@ -302,6 +303,7 @@ export const App = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
+    if (!isWin32) return;
     myAPI.getFocus(async () => setBlur(false));
 
     return () => {
@@ -310,6 +312,7 @@ export const App = (): JSX.Element => {
   }, [blur]);
 
   useEffect(() => {
+    if (!isWin32) return;
     myAPI.getBlur(async () => setBlur(true));
 
     return () => {
@@ -318,6 +321,7 @@ export const App = (): JSX.Element => {
   });
 
   useEffect(() => {
+    if (!isWin32) return;
     myAPI.maximized(async () => setMaximized(true));
 
     return () => {
@@ -326,6 +330,7 @@ export const App = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
+    if (!isWin32) return;
     myAPI.unMaximized(async () => setMaximized(false));
 
     return () => {
