@@ -19,10 +19,9 @@ import path from 'path';
 import mime from 'mime-types';
 import natsort from 'natsort';
 
-import { setLocales } from './lib/setLocales';
+import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 import { searchDevtools } from './searchDevtools';
-import { TypedStore } from './lib/TypedStore';
 
 console.log = log.log;
 autoUpdater.logger = log;

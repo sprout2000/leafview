@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 
-import { setLocales } from '../lib/setLocales';
+import { setLocales } from '../setLocales';
 
 import { App } from './components/App';
 import './index.scss';
