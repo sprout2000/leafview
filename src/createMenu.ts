@@ -18,16 +18,8 @@ export const createMenu = (
   win: BrowserWindow,
   store: Store<TypedStore>
 ): Menu => {
-  const isLinux = process.platform === 'linux';
   const isDarwin = process.platform === 'darwin';
   const dotfiles = isDarwin ? '.' : '._';
-
-  const closeAccelerator = () => {
-    if (isDarwin) {
-      return 'Cmd+W';
-    }
-    return isLinux ? 'Ctrl+Q' : 'Alt+F4';
-  };
 
   const fileSub: MenuItemConstructorOptions = {
     label: i18next.t('File'),
@@ -77,7 +69,7 @@ export const createMenu = (
       { type: 'separator' },
       {
         label: isDarwin ? i18next.t('Close') : i18next.t('Quit'),
-        accelerator: closeAccelerator(),
+        accelerator: isDarwin ? 'Cmd+W' : 'Alt+F4',
         role: isDarwin ? 'close' : 'quit',
       },
     ],
@@ -98,6 +90,7 @@ export const createMenu = (
     {
       label: i18next.t('Toggle Fullscreen'),
       role: 'togglefullscreen',
+      accelerator: isDarwin ? 'Cmd+Ctrl+F' : 'F11',
     },
   ];
 
@@ -106,7 +99,8 @@ export const createMenu = (
       { type: 'separator' },
       {
         label: 'Toggle Developer Tools',
-        role: 'toggleDevTools',
+        click: () => win.webContents.openDevTools({ mode: 'detach' }),
+        accelerator: isDarwin ? 'Cmd+Option+I' : 'Ctrl+Shift+I',
       }
     );
   }
@@ -115,6 +109,7 @@ export const createMenu = (
     {
       label: i18next.t('Minimize'),
       role: 'minimize',
+      accelerator: 'CmdOrCtrl+M',
     },
     {
       label: i18next.t('Maximize'),
@@ -165,6 +160,7 @@ export const createMenu = (
       {
         label: i18next.t('Close'),
         role: 'close',
+        accelerator: 'Ctrl+W',
       }
     );
   } else {
