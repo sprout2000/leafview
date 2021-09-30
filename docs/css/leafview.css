@@ -101,7 +101,7 @@ h3,
       rgba(21, 21, 21, 0.5),
       rgba(21, 21, 21, 0.5)
     ),
-    url('../images/background.jpg');
+    url('../images/background.webp');
   background-attachment: fixed;
   background-position: 50% 50%;
   background-size: cover;
