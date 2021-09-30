@@ -46,7 +46,6 @@ build({
         'zh-CN',
         'ar-DZ',
         'ar-EG',
-        'ar-SA',
         'ar-MA',
         'ar-TN',
       ],
