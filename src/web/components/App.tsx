@@ -1,6 +1,8 @@
 import { useRef, useCallback, useState, useEffect } from 'react';
 
 import L from 'leaflet';
+import UAParser from 'ua-parser-js';
+
 import 'leaflet/dist/leaflet.css';
 import './App.scss';
 
@@ -8,6 +10,9 @@ import { Float } from './Float';
 import empty from './empty.png';
 
 const { myAPI } = window;
+
+const ua = new UAParser();
+const isWin32 = ua.getOS.name === 'Windows';
 
 export const App = (): JSX.Element => {
   const [url, setUrl] = useState<string>(empty);
@@ -220,6 +225,8 @@ export const App = (): JSX.Element => {
   };
 
   const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isWin32) return;
+
     e.preventDefault();
     myAPI.contextMenu();
   };
