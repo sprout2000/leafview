@@ -44,6 +44,7 @@ build({
         'pt-BR',
         'pt-PT',
         'zh-CN',
+        'zh-TW',
         'ar-DZ',
         'ar-EG',
         'ar-MA',
