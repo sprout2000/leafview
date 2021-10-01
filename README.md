@@ -74,6 +74,7 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 | Русский :ru:                       |  `ru`   |
 | Português :portugal: :brazil:      |  `pt`   |
 | 简体中文 :cn:                      | `zh_CN` |
+| 繁体中文 :taiwan:                  | `zh_TW` |
 | Arabic (Standard)                  |  `ar`   |
 
 ## :inbox_tray: Download
