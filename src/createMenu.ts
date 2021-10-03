@@ -98,7 +98,13 @@ export const createMenu = (
       { type: 'separator' },
       {
         label: 'Toggle Developer Tools',
-        click: () => win.webContents.openDevTools({ mode: 'detach' }),
+        click: () => {
+          if (win.webContents.isDevToolsOpened()) {
+            win.webContents.closeDevTools();
+          } else {
+            win.webContents.openDevTools({ mode: 'detach' });
+          }
+        },
         accelerator: isDarwin ? 'Cmd+Option+I' : 'Ctrl+Shift+I',
       }
     );
