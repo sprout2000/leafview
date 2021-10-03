@@ -9,7 +9,7 @@ import { Float } from './Float';
 import empty from './empty.png';
 
 const { myAPI } = window;
-const isDarwin = window.navigator.userAgent.includes('Mac OS X');
+const isDarwin = navigator.userAgentData.platform === 'macOS';
 
 export const App = (): JSX.Element => {
   const [url, setUrl] = useState<string>(empty);
