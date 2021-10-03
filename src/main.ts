@@ -171,10 +171,13 @@ const createWindow = () => {
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
-  ipcMain.on('show-context-menu', () => {
-    if (isDarwin || mainWindow.menuBarVisible) return;
-    menu.popup();
-  });
+
+  if (isDarwin) {
+    ipcMain.on('show-context-menu', () => {
+      if (mainWindow.menuBarVisible) return;
+      menu.popup();
+    });
+  }
 
   if (isDev) mainWindow.webContents.openDevTools({ mode: 'detach' });
 
