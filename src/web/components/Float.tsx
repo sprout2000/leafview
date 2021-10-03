@@ -1,11 +1,5 @@
-import {
-  AiOutlineFolderOpen,
-  AiOutlineLeftCircle,
-  AiOutlineRightCircle,
-  AiOutlineDelete,
-} from 'react-icons/ai';
-
 import i18next from 'i18next';
+import { FaFolderOpen, FaPlay, FaTrash } from 'react-icons/fa';
 
 interface Props {
   onClickOpen: () => Promise<void>;
@@ -23,7 +17,7 @@ export const Float = (props: Props): JSX.Element => {
           title={i18next.t('Open...')}
           onClick={props.onClickOpen}
         >
-          <AiOutlineFolderOpen size="2rem" />
+          <FaFolderOpen size="1.5rem" />
         </div>
       </div>
       <div className="arrows">
@@ -32,14 +26,14 @@ export const Float = (props: Props): JSX.Element => {
           title={i18next.t('Prev Image')}
           onClick={props.prev}
         >
-          <AiOutlineLeftCircle size="2rem" />
+          <FaPlay size="1.5rem" className="reverse" />
         </div>
         <div
           className="icon"
           title={i18next.t('Next Image')}
           onClick={props.next}
         >
-          <AiOutlineRightCircle size="2rem" />
+          <FaPlay size="1.5rem" />
         </div>
       </div>
       <div className="trash">
@@ -48,7 +42,7 @@ export const Float = (props: Props): JSX.Element => {
           title={i18next.t('Move to Trash')}
           onClick={props.remove}
         >
-          <AiOutlineDelete size="2rem" />
+          <FaTrash size="1.5rem" />
         </div>
       </div>
     </div>

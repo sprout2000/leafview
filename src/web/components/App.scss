@@ -23,6 +23,10 @@
   &:active {
     color: rgb(255, 255, 255);
   }
+
+  .reverse {
+    transform: scaleX(-1);
+  }
 }
 
 .container {
@@ -51,12 +55,12 @@
       height: 60px;
       align-items: center;
       padding: 0 24px;
-      border-radius: 6px;
+      border-radius: 30px;
       background-color: rgba(0, 0, 0, 0.7);
       user-select: none;
 
       .controls {
-        width: 96px;
+        width: 70px;
         display: flex;
         justify-content: flex-start;
         .icon {
@@ -72,7 +76,7 @@
       }
 
       .trash {
-        width: 96px;
+        width: 70px;
         display: flex;
         justify-content: flex-end;
         .icon {
