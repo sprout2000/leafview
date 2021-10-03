@@ -172,7 +172,7 @@ const createWindow = () => {
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
 
-  if (isDarwin) {
+  if (!isDarwin) {
     ipcMain.on('show-context-menu', () => {
       if (mainWindow.menuBarVisible) return;
       menu.popup();
