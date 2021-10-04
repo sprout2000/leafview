@@ -128,7 +128,7 @@ const createWindow = () => {
           .filter((item) => checkmime(item))
           .sort(natsort({ insensitive: true }))
       )
-      .catch((err) => console.log(err));
+      .catch((err) => log.error(err));
   });
 
   ipcMain.handle('open-dialog', async () => {
@@ -159,7 +159,7 @@ const createWindow = () => {
 
         return result.filePaths[0];
       })
-      .catch((err) => console.log(err));
+      .catch((err) => log.error(err));
   });
 
   ipcMain.handle('move-to-trash', (_e: Event, filepath: string) => {
@@ -258,7 +258,7 @@ const createWindow = () => {
             log.info('The installation of the update has been cancelled...');
           }
         })
-        .catch((err) => log.info(`Error in showMessageBox: ${err}`));
+        .catch((err) => log.error(`Error in showMessageBox: ${err}`));
     });
   }
 
@@ -291,8 +291,8 @@ if (!gotTheLock && !isDarwin) {
           .loadExtension(extPath, {
             allowFileAccess: true,
           })
-          .then(() => console.log('React Devtools loaded...'))
-          .catch((err) => console.log(err));
+          .then(() => log.info('React Devtools loaded...'))
+          .catch((err) => log.error(err));
       }
     }
 
