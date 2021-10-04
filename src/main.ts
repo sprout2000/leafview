@@ -59,12 +59,12 @@ if (isDev) {
 
 const store = new Store<TypedStore>({
   defaults: {
-    menubar: true,
-    darkmode: nativeTheme.shouldUseDarkColors,
+    width: 600,
+    height: 400,
     x: undefined,
     y: undefined,
-    width: 800,
-    height: isDarwin ? 558 : 602,
+    menubar: true,
+    darkmode: nativeTheme.shouldUseDarkColors,
   },
 });
 
@@ -82,14 +82,14 @@ const createWindow = () => {
   const dotfiles = isDarwin ? '.' : '._';
 
   const mainWindow = new BrowserWindow({
+    show: false,
+    minWidth: 600,
+    minHeight: 400,
     x: store.get('x'),
     y: store.get('y'),
     width: store.get('width'),
     height: store.get('height'),
     icon: isLinux ? path.join(__dirname, 'icon.png') : undefined,
-    minWidth: 800,
-    minHeight: isDarwin ? 558 : 602,
-    show: false,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       sandbox: true,
