@@ -9,10 +9,10 @@ import {
   BrowserWindow,
 } from 'electron';
 
-import Store from 'electron-store';
-import { autoUpdater } from 'electron-updater';
 import i18next from 'i18next';
 import log from 'electron-log';
+import Store from 'electron-store';
+import { autoUpdater } from 'electron-updater';
 
 import fs from 'fs';
 import path from 'path';
@@ -36,10 +36,11 @@ process.once('uncaughtException', (err) => {
   app.exit();
 });
 
-const gotTheLock = app.requestSingleInstanceLock();
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
+
+const gotTheLock = app.requestSingleInstanceLock();
 
 /// #if DEBUG
 const execPath =
