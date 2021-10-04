@@ -9,14 +9,15 @@ import {
   BrowserWindow,
 } from 'electron';
 
-import i18next from 'i18next';
 import log from 'electron-log';
 import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
 
 import fs from 'fs';
 import path from 'path';
+
 import mime from 'mime-types';
+import i18next from 'i18next';
 import natsort from 'natsort';
 
 import { TypedStore } from './TypedStore';
@@ -101,6 +102,9 @@ const createWindow = () => {
 
   nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
 
+  const menu = createMenu(mainWindow, store);
+  Menu.setApplicationMenu(menu);
+
   if (!isDarwin) {
     store.get('menubar', true)
       ? mainWindow.setMenuBarVisibility(true)
@@ -169,9 +173,6 @@ const createWindow = () => {
   ipcMain.handle('update-title', (_e: Event, filepath: string) => {
     mainWindow.setTitle(path.basename(filepath));
   });
-
-  const menu = createMenu(mainWindow, store);
-  Menu.setApplicationMenu(menu);
 
   if (!isDarwin) {
     ipcMain.on('show-context-menu', () => {
