@@ -96,7 +96,6 @@ export const App = (): JSX.Element => {
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
-      const isDarwin = window.navigator.userAgent.includes('Mac OS');
 
       if (file.name.startsWith(isDarwin ? '.' : '._')) return;
 
