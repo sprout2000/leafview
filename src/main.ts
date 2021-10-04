@@ -36,7 +36,6 @@ process.once('uncaughtException', (err) => {
   app.exit();
 });
 
-const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -90,8 +89,8 @@ const createWindow = () => {
     y: store.get('y'),
     width: store.get('width'),
     height: store.get('height'),
+    icon: path.join(__dirname, 'icon.png'),
     fullscreenable: isDarwin ? false : true,
-    icon: isLinux ? path.join(__dirname, 'icon.png') : undefined,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       sandbox: true,
