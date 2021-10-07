@@ -12,7 +12,7 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 
 ## :thumbsup: Features
 
-- Pan & WheelZoom
+- Pan & Wheel Zoom
 - Auto Update
 
 ## :green_book: Usage
@@ -27,18 +27,21 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 |                                <kbd>-</kbd>                                 | Zoom Out          | -        |
 |                                <kbd>0</kbd>                                 | Reset Zoom        | -        |
 | <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan               | -        |
+|                       <kbd>Command</kbd>+<kbd>I</kbd>                       | About LeafView    | macOS    |
 |                       <kbd>Command</kbd>+<kbd>D</kbd>                       | Toggle Dark Mode  | macOS    |
+|                        <kbd>Ctrl</kbd>+<kbd>I</kbd>                         | About LeafView    | Windows  |
 |                        <kbd>Ctrl</kbd>+<kbd>D</kbd>                         | Toggle Dark Mode  | Windows  |
 |                               <kbd>F11</kbd>                                | Toggle Fullscreen | Windows  |
 |                        <kbd>Ctrl</kbd>+<kbd>T</kbd>                         | Toggle Menu bar   | Windows  |
 
 ### :computer_mouse: Mouse Operations
 
-|    Mouse     | Function    |
-| :----------: | :---------- |
-|     drag     | pan         |
-| double click | reset zoom  |
-|    wheel     | zoom in/out |
+|    Mouse     | Function                             |
+| :----------: | :----------------------------------- |
+|     Drag     | Pan                                  |
+|    Wheel     | Zoom in/out                          |
+| Double click | Reset zoom                           |
+| Right click  | Show the context menu when available |
 
 ## :closed_lock_with_key: Security
 
