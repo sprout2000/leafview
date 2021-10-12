@@ -60,8 +60,8 @@ if (isDev) {
 
 const store = new Store<TypedStore>({
   defaults: {
-    width: 600,
-    height: 400,
+    width: 800,
+    height: 600,
     x: undefined,
     y: undefined,
     menubar: true,
@@ -84,8 +84,8 @@ const createWindow = () => {
 
   const mainWindow = new BrowserWindow({
     show: false,
-    minWidth: 600,
-    minHeight: 400,
+    minWidth: 800,
+    minHeight: 600,
     x: store.get('x'),
     y: store.get('y'),
     width: store.get('width'),
