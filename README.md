@@ -8,12 +8,23 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 [![GitHub license](https://img.shields.io/github/license/sprout2000/leafview)](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
 [![GitHub all releases](https://img.shields.io/github/downloads/sprout2000/leafview/total)](https://github.com/sprout2000/leafview/releases)
 [![GitHub stars](https://img.shields.io/github/stars/sprout2000/leafview)](https://github.com/sprout2000/leafview/stargazers)
-![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/sprout2000/leafview)
 
 ## :thumbsup: Features
 
 - Pan & Wheel Zoom
+- Browse the images in a folder
 - Auto Update
+
+## :inbox_tray: Download
+
+### :desktop_computer: macOS (x64, arm64)
+
+You can download the latest version of LeafView from the releases page here:
+[https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
+
+### :computer: Windows 10, 11
+
+You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
 
 ## :green_book: Usage
 
@@ -27,9 +38,7 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 |                                <kbd>-</kbd>                                 | Zoom Out          | -        |
 |                                <kbd>0</kbd>                                 | Reset Zoom        | -        |
 | <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | pan               | -        |
-|                       <kbd>Command</kbd>+<kbd>I</kbd>                       | About LeafView    | macOS    |
 |                       <kbd>Command</kbd>+<kbd>D</kbd>                       | Toggle Dark Mode  | macOS    |
-|                        <kbd>Ctrl</kbd>+<kbd>I</kbd>                         | About LeafView    | Windows  |
 |                        <kbd>Ctrl</kbd>+<kbd>D</kbd>                         | Toggle Dark Mode  | Windows  |
 |                               <kbd>F11</kbd>                                | Toggle Fullscreen | Windows  |
 |                        <kbd>Ctrl</kbd>+<kbd>T</kbd>                         | Toggle Menu bar   | Windows  |
@@ -53,16 +62,6 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 | safeDialogs       | `true`  |
 | sandbox           | `true`  |
 
-## :rainbow: Supported Image Formats
-
-- `bmp` (com.microsoft.bmp)
-- `ico` (com.microsoft.ico)
-- `gif` (com.compuserve.gif)
-- `jpg` (public.jpeg)
-- `png` (public.png)
-- `svg` (public.svg-image)
-- `webp` (com.google.webp)
-
 ## :globe_with_meridians: Supported Languages
 
 | Language                           |  Code   |
@@ -79,21 +78,10 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 | 繁体中文 :taiwan:                  | `zh_TW` |
 | Arabic (Standard)                  |  `ar`   |
 
-## :inbox_tray: Download
-
-### :desktop_computer: macOS (x64, arm64)
-
-You can download the latest version of LeafView from the releases page here:
-[https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
-
-### :computer: Windows10
-
-You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
-
 ## :beers: Contribution
 
-I need more locale files.
-When you have translated the menu into your language, could you please send me the locale file as a [pull request](https://github.com/sprout2000/leafview/pulls)?
+We need more locale files.
+When you have translated the menu into your language, could you please send us the locale file as a [pull request](https://github.com/sprout2000/leafview/pulls)?
 
 1. Create `{your_LANG}.json` in `src/locales`.
 2. Then import the locale file into `src/setLocales.ts` as follows:
@@ -129,10 +117,6 @@ When you have translated the menu into your language, could you please send me t
 - [@singuerinc](https://github.com/singuerinc) [#178](https://github.com/sprout2000/leafview/pull/178)
 - [@DrDeee](https://github.com/DrDeee) [#166](https://github.com/sprout2000/leafview/pull/166)
 - [@PetrTodorov](https://github.com/PetrTodorov) [#68](https://github.com/sprout2000/leafview/pull/68)
-
-## :notes: Notes for Ubuntu 20.04 users
-
-_see [UBUNTU.md](https://github.com/sprout2000/leafview/blob/main/UBUNTU.md)._
 
 ## :copyright: License
 
