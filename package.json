@@ -58,7 +58,8 @@
     "natsort": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "ua-parser-js": "^0.7.28"
   },
   "devDependencies": {
     "@types/copy-webpack-plugin": "^8.0.1",
@@ -69,6 +70,7 @@
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
     "@types/resize-observer-browser": "^0.1.6",
+    "@types/ua-parser-js": "^0.7.36",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.4.0",

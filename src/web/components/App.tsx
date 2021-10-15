@@ -1,4 +1,5 @@
 import { useRef, useCallback, useState, useEffect } from 'react';
+import { UAParser } from 'ua-parser-js';
 
 import L from 'leaflet';
 
@@ -9,7 +10,7 @@ import { Float } from './Float';
 import empty from './empty.png';
 
 const { myAPI } = window;
-const isDarwin = navigator.userAgentData.platform === 'macOS';
+const isDarwin = new UAParser().getOS().name === 'Mac OS';
 
 export const App = (): JSX.Element => {
   const [url, setUrl] = useState<string>(empty);
