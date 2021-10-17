@@ -1,4 +1,4 @@
-# ![Icon](https://user-images.githubusercontent.com/52094761/135820594-4325016b-b12b-4220-abb6-363b2a1002b9.png) LeafView
+# LeafView
 
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
