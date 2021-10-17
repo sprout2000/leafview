@@ -37,8 +37,10 @@ process.once('uncaughtException', (err) => {
   app.exit();
 });
 
-const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
+
+const isLinux = process.platform === 'linux';
+const isDarwin = process.platform === 'darwin';
 
 const gotTheLock = app.requestSingleInstanceLock();
 
@@ -90,7 +92,7 @@ const createWindow = () => {
     y: store.get('y'),
     width: store.get('width'),
     height: store.get('height'),
-    icon: path.join(__dirname, 'icon.png'),
+    icon: path.join(__dirname, isLinux ? 'icon_linux.png' : 'icon.png'),
     fullscreenable: isDarwin ? false : true,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
@@ -307,7 +309,7 @@ if (!gotTheLock && !isDarwin) {
       : `v${app.getVersion()} (${process.versions['electron']})`,
     version: process.versions['electron'],
     copyright: '© 2020 sprout2000 and other contributors',
-    iconPath: path.join(__dirname, 'icon.png'),
+    iconPath: path.join(__dirname, isLinux ? 'icon_linux.png' : 'icon.png'),
   });
 
   app.once('window-all-closed', () => app.exit());

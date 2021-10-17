@@ -6,6 +6,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const isDev = process.env.NODE_ENV === 'development';
 
+const isLinux = process.platform === 'linux';
+const isDarwin = process.platform === 'darwin';
+
 const base: Configuration = {
   mode: isDev ? 'development' : 'production',
   node: {
@@ -94,7 +97,14 @@ const renderer: Configuration = {
       scriptLoading: 'blocking',
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: './assets/icon.png', to: '.' }],
+      patterns: isDarwin
+        ? []
+        : [
+            {
+              from: isLinux ? './assets/icon_linux.png' : './assets/icon.png',
+              to: '.',
+            },
+          ],
     }),
   ],
 };
