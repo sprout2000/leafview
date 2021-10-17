@@ -66,7 +66,6 @@ const store = new Store<TypedStore>({
     height: 600,
     x: undefined,
     y: undefined,
-    menubar: true,
     darkmode: nativeTheme.shouldUseDarkColors,
   },
 });
@@ -92,8 +91,9 @@ const createWindow = () => {
     y: store.get('y'),
     width: store.get('width'),
     height: store.get('height'),
-    icon: path.join(__dirname, isLinux ? 'icon_linux.png' : 'icon.png'),
+    autoHideMenuBar: true,
     fullscreenable: isDarwin ? false : true,
+    icon: path.join(__dirname, isLinux ? 'icon_linux.png' : 'icon.png'),
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       sandbox: true,
@@ -106,12 +106,6 @@ const createWindow = () => {
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
-
-  if (!isDarwin) {
-    store.get('menubar', true)
-      ? mainWindow.setMenuBarVisibility(true)
-      : mainWindow.setMenuBarVisibility(false);
-  }
 
   ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
 
@@ -266,10 +260,9 @@ const createWindow = () => {
   }
 
   mainWindow.once('close', () => {
-    const menubar = store.get('menubar', true);
     const darkmode = store.get('darkmode', nativeTheme.shouldUseDarkColors);
     const { x, y, width, height } = mainWindow.getBounds();
-    store.set({ x, y, width, height, darkmode, menubar });
+    store.set({ x, y, width, height, darkmode });
   });
 };
 

@@ -115,76 +115,6 @@ export const createMenu = (
     );
   }
 
-  const windowSub: MenuItemConstructorOptions[] = [
-    {
-      label: i18next.t('Minimize'),
-      role: 'minimize',
-      accelerator: 'CmdOrCtrl+M',
-    },
-    {
-      label: i18next.t('Maximize'),
-      accelerator: 'CmdOrCtrl+L',
-      click: (): void => {
-        win.isMaximized() ? win.unmaximize() : win.maximize();
-      },
-    },
-  ];
-
-  const toggleMenubar: MenuItemConstructorOptions = {
-    label: i18next.t('Toggle Menubar'),
-    accelerator: 'Ctrl+T',
-    click: (): void => {
-      if (win.menuBarVisible) {
-        store.set('menubar', false);
-        win.setMenuBarVisibility(false);
-      } else {
-        store.set('menubar', true);
-        win.setMenuBarVisibility(true);
-      }
-    },
-  };
-
-  const toggleDarkmode: MenuItemConstructorOptions = {
-    label: i18next.t('Toggle Dark Mode'),
-    type: 'checkbox',
-    id: 'darkmode',
-    accelerator: 'CmdOrCtrl+D',
-    click: () => {
-      if (nativeTheme.shouldUseDarkColors) {
-        nativeTheme.themeSource = 'light';
-        store.set('darkmode', false);
-      } else {
-        nativeTheme.themeSource = 'dark';
-        store.set('darkmode', true);
-      }
-    },
-    checked: nativeTheme.shouldUseDarkColors,
-  };
-
-  if (!isDarwin) {
-    windowSub.push(
-      { type: 'separator' },
-      toggleMenubar,
-      toggleDarkmode,
-      { type: 'separator' },
-      {
-        label: i18next.t('Close'),
-        role: 'close',
-        accelerator: 'Ctrl+W',
-      }
-    );
-  } else {
-    windowSub.push(
-      { type: 'separator' },
-      toggleDarkmode,
-      { type: 'separator' },
-      {
-        label: i18next.t('Bring All to Front'),
-        role: 'front',
-      }
-    );
-  }
-
   const helpSub: MenuItemConstructorOptions[] = [
     {
       label: i18next.t('Support URL...'),
@@ -211,7 +141,48 @@ export const createMenu = (
     },
     {
       label: i18next.t('Window'),
-      submenu: windowSub,
+      submenu: [
+        {
+          label: i18next.t('Minimize'),
+          role: 'minimize',
+          accelerator: 'CmdOrCtrl+M',
+        },
+        {
+          label: i18next.t('Maximize'),
+          accelerator: 'CmdOrCtrl+L',
+          click: (): void => {
+            win.isMaximized() ? win.unmaximize() : win.maximize();
+          },
+        },
+        { type: 'separator' },
+        {
+          label: i18next.t('Toggle Dark Mode'),
+          type: 'checkbox',
+          id: 'darkmode',
+          accelerator: 'CmdOrCtrl+D',
+          click: () => {
+            if (nativeTheme.shouldUseDarkColors) {
+              nativeTheme.themeSource = 'light';
+              store.set('darkmode', false);
+            } else {
+              nativeTheme.themeSource = 'dark';
+              store.set('darkmode', true);
+            }
+          },
+          checked: nativeTheme.shouldUseDarkColors,
+        },
+        { type: 'separator' },
+        isDarwin
+          ? {
+              label: i18next.t('Bring All to Front'),
+              role: 'front',
+            }
+          : {
+              label: i18next.t('Close'),
+              role: 'close',
+              accelerator: 'Ctrl+W',
+            },
+      ],
     },
     {
       label: i18next.t('Help'),
