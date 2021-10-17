@@ -41,6 +41,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
+const initHeight = isLinux ? 480 : isDarwin ? 508 : 480;
 
 const gotTheLock = app.requestSingleInstanceLock();
 
@@ -63,7 +64,7 @@ if (isDev) {
 const store = new Store<TypedStore>({
   defaults: {
     width: 768,
-    height: isLinux ? 480 : 432,
+    height: initHeight,
     x: undefined,
     y: undefined,
     darkmode: nativeTheme.shouldUseDarkColors,
@@ -86,7 +87,7 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     show: false,
     minWidth: 768,
-    minHeight: isLinux ? 480 : 432,
+    minHeight: initHeight,
     x: store.get('x'),
     y: store.get('y'),
     width: store.get('width'),
