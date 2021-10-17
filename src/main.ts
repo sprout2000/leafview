@@ -41,7 +41,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
-const initHeight = isLinux ? 480 : isDarwin ? 508 : 480;
+const initHeight = isLinux ? 480 : isDarwin ? 508 : 509;
 
 const gotTheLock = app.requestSingleInstanceLock();
 
