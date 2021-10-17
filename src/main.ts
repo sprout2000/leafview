@@ -62,8 +62,8 @@ if (isDev) {
 
 const store = new Store<TypedStore>({
   defaults: {
-    width: 800,
-    height: 600,
+    width: 768,
+    height: isLinux ? 480 : 432,
     x: undefined,
     y: undefined,
     darkmode: nativeTheme.shouldUseDarkColors,
@@ -85,8 +85,8 @@ const createWindow = () => {
 
   const mainWindow = new BrowserWindow({
     show: false,
-    minWidth: 800,
-    minHeight: 600,
+    minWidth: 768,
+    minHeight: isLinux ? 480 : 432,
     x: store.get('x'),
     y: store.get('y'),
     width: store.get('width'),
