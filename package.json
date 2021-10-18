@@ -17,14 +17,10 @@
     "url": "https://github.com/sprout2000/leafview/issues"
   },
   "keywords": [
-    "image-viewer",
-    "electron",
-    "pan",
-    "zoom",
-    "cross-platform"
+    "image-viewer"
   ],
   "engines": {
-    "node": ">=12.13"
+    "node": ">=12.13.1"
   },
   "main": "dist/main.js",
   "scripts": {
