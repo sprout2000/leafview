@@ -41,7 +41,6 @@ You can download the latest version of LeafView from [Microsoft Store](https://w
 |                       <kbd>Command</kbd>+<kbd>D</kbd>                       | Toggle Dark Mode  | macOS    |
 |                        <kbd>Ctrl</kbd>+<kbd>D</kbd>                         | Toggle Dark Mode  | Windows  |
 |                               <kbd>F11</kbd>                                | Toggle Fullscreen | Windows  |
-|                        <kbd>Ctrl</kbd>+<kbd>T</kbd>                         | Toggle Menu bar   | Windows  |
 
 ### :computer_mouse: Mouse Operations
 
