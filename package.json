@@ -74,6 +74,7 @@
     "electron": "^15.2.0",
     "electron-builder": "^22.13.1",
     "electron-notarize": "^1.1.1",
+    "electron-search-devtools": "^1.4.8",
     "html-webpack-plugin": "^5.4.0",
     "ifdef-loader": "^2.3.0",
     "mini-css-extract-plugin": "^2.4.2",

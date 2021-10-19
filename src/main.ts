@@ -12,6 +12,7 @@ import {
 import log from 'electron-log';
 import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
+import { searchDevtools } from 'electron-search-devtools';
 
 import fs from 'fs';
 import path from 'path';
@@ -23,7 +24,6 @@ import natsort from 'natsort';
 import { TypedStore } from './TypedStore';
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
-import { searchDevtools } from './searchDevtools';
 
 console.log = log.log;
 autoUpdater.logger = log;
@@ -282,7 +282,9 @@ if (!gotTheLock && !isDarwin) {
     setLocales(locale);
 
     if (isDev) {
-      const extPath = await searchDevtools();
+      const extPath = await searchDevtools('REACT', {
+        browser: isLinux ? 'chromium-snap' : 'google-chrome',
+      });
       if (extPath) {
         await session.defaultSession
           .loadExtension(extPath, {
