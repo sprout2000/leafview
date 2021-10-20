@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const isLinux = process.platform === 'linux';
+const isDarwin = process.platform === 'darwin';
 
 const config: Configuration = {
   mode: 'development',
@@ -57,28 +57,39 @@ const config: Configuration = {
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      template: './src/web/index.html',
-      filename: 'index.html',
-      scriptLoading: 'blocking',
-      inject: 'body',
-      minify: false,
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: isLinux ? './assets/icon_linux.png' : './assets/icon.png',
-          to: '.',
-        },
+  plugins: isDarwin
+    ? [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+          template: './src/web/index.html',
+          filename: 'index.html',
+          scriptLoading: 'blocking',
+          inject: 'body',
+          minify: false,
+        }),
+      ]
+    : [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+          template: './src/web/index.html',
+          filename: 'index.html',
+          scriptLoading: 'blocking',
+          inject: 'body',
+          minify: false,
+        }),
+        new CopyWebpackPlugin({
+          patterns: [
+            {
+              from: './assets/icon.png',
+              to: '.',
+            },
+          ],
+        }),
       ],
-    }),
-  ],
   stats: 'errors-only',
+  devtool: 'source-map',
   performance: { hints: false },
   optimization: { minimize: false },
-  devtool: 'source-map',
 };
 
 export default config;

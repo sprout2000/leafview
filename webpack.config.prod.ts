@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const isLinux = process.platform === 'linux';
+const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
 
 const base: Configuration = {
@@ -85,24 +85,35 @@ const renderer: Configuration = {
   entry: {
     index: './src/web/index.tsx',
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      template: './src/web/index.html',
-      minify: !isDev,
-      inject: 'body',
-      filename: 'index.html',
-      scriptLoading: 'blocking',
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: isLinux ? './assets/icon_linux.png' : './assets/icon.png',
-          to: '.',
-        },
+  plugins: isDarwin
+    ? [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+          template: './src/web/index.html',
+          minify: !isDev,
+          inject: 'body',
+          filename: 'index.html',
+          scriptLoading: 'blocking',
+        }),
+      ]
+    : [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+          template: './src/web/index.html',
+          minify: !isDev,
+          inject: 'body',
+          filename: 'index.html',
+          scriptLoading: 'blocking',
+        }),
+        new CopyWebpackPlugin({
+          patterns: [
+            {
+              from: './assets/icon.png',
+              to: '.',
+            },
+          ],
+        }),
       ],
-    }),
-  ],
 };
 
 export default [main, preload, renderer];
