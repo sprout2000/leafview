@@ -95,7 +95,6 @@ const createWindow = () => {
     autoHideMenuBar: true,
     fullscreenable: isDarwin ? false : true,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
-    icon: path.join(__dirname, isLinux ? 'icon_linux.png' : 'icon.png'),
     webPreferences: {
       sandbox: true,
       safeDialogs: true,
