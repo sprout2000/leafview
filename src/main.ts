@@ -41,9 +41,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
-
 const initHeight = isLinux ? 480 : isDarwin ? 508 : 509;
-const iconPath = path.join(__dirname, isLinux ? 'icon_linux.png' : 'icon.png');
 
 const gotTheLock = app.requestSingleInstanceLock();
 
@@ -89,7 +87,6 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     show: false,
     minWidth: 768,
-    icon: iconPath,
     minHeight: initHeight,
     x: store.get('x'),
     y: store.get('y'),
@@ -98,6 +95,7 @@ const createWindow = () => {
     autoHideMenuBar: true,
     fullscreenable: isDarwin ? false : true,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
+    icon: path.join(__dirname, isLinux ? 'icon_linux.png' : 'icon.png'),
     webPreferences: {
       sandbox: true,
       safeDialogs: true,
@@ -301,12 +299,12 @@ if (!gotTheLock && !isDarwin) {
   });
 
   app.setAboutPanelOptions({
-    iconPath: iconPath,
     applicationName: app.name,
     applicationVersion: isDarwin
       ? app.getVersion()
       : `v${app.getVersion()} (${process.versions['electron']})`,
     version: process.versions['electron'],
+    iconPath: path.join('assets/icon.png'),
     copyright: '© 2020 sprout2000 and other contributors',
   });
 

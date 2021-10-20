@@ -17,6 +17,7 @@ export const createMenu = (
   win: BrowserWindow,
   store: Store<TypedStore>
 ): Menu => {
+  const isWin32 = process.platform === 'win32';
   const isDarwin = process.platform === 'darwin';
   const dotfiles = isDarwin ? '.' : '._';
 
@@ -129,7 +130,7 @@ export const createMenu = (
     click: (): void => app.showAboutPanel(),
   };
 
-  if (!isDarwin) {
+  if (isWin32) {
     helpSub.push(aboutItem);
   }
 
