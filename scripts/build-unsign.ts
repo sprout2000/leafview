@@ -62,7 +62,7 @@ build({
       artifactName: '${productName}-${version}-${platform}-${arch}.${ext}',
     },
     linux: {
-      target: ['AppImage', 'zip'],
+      target: ['AppImage'],
       category: 'Graphics',
     },
   },
