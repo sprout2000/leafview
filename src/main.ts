@@ -305,7 +305,7 @@ if (!gotTheLock && !isDarwin) {
       : `v${app.getVersion()} (${process.versions['electron']})`,
     version: process.versions['electron'],
     copyright: '© 2020 sprout2000 and other contributors',
-    iconPath: path.join(__dirname, isLinux ? 'icon_linux.png' : 'icon.png'),
+    iconPath: isLinux ? undefined : path.join(__dirname, 'icon.png'),
   });
 
   app.once('window-all-closed', () => app.exit());
