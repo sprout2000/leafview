@@ -62,6 +62,7 @@ build({
       artifactName: '${productName}-${version}-${platform}-${arch}.${ext}',
     },
     linux: {
+      icon: 'assets/icon_linux.icns',
       target: ['AppImage'],
       category: 'Graphics',
     },
