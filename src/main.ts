@@ -93,6 +93,7 @@ const createWindow = () => {
     width: store.get('width'),
     height: store.get('height'),
     autoHideMenuBar: true,
+    icon: isDarwin ? undefined : path.join(__dirname, 'icon.ico'),
     fullscreenable: isDarwin ? false : true,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
