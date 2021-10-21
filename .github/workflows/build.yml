@@ -2,8 +2,8 @@ name: GitHub CI
 
 on:
   push:
-    tags:
-      - 'v*'
+    # tags:
+    # - 'v*'
 
 jobs:
   build:
@@ -19,5 +19,3 @@ jobs:
         run: yarn install --ignore-optional --frozen-lockfile
       - name: Build
         run: yarn package
-      - name: Release
-        uses: softprops/action-gh-release@master
