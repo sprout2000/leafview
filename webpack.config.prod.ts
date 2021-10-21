@@ -111,10 +111,6 @@ const renderer: Configuration = {
               from: './assets/icon.png',
               to: '.',
             },
-            {
-              from: './assets/icon.ico',
-              to: '.',
-            },
           ],
         }),
       ],
