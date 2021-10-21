@@ -206,7 +206,11 @@ const createWindow = () => {
       if (mainWindow.isMinimized()) mainWindow.restore();
       mainWindow.focus();
 
-      if (argv.length >= 4) {
+      if (isLinux && argv.length >= 3) {
+        const filepath = argv[argv.length - 1];
+
+        mainWindow.webContents.send('menu-open', filepath);
+      } else if (argv.length >= 4) {
         const filepath = argv[argv.length - 1];
         if (path.basename(filepath).startsWith(dotfiles)) return;
 
