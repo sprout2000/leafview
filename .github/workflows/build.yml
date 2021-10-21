@@ -1,0 +1,23 @@
+name: GitHub CI
+
+on:
+  push:
+    # tags:
+    # - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repositry
+        uses: actions/checkout@master
+      - name: Setup Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: 14.x
+      - name: Install
+        run: yarn install --ignore-optional --frozen-lockfile
+      - name: Build
+        run: yarn package
+      - name: Release
+        uses: softprops/action-gh-release@master
