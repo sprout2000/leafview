@@ -59,10 +59,10 @@ build({
     },
     dmg: {
       icon: 'assets/dmg.icns',
-      artifactName: '${productName}-${version}-${platform}-${arch}.${ext}',
     },
     linux: {
-      icon: 'assets/icon_linux.icns',
+      artifactName: '${productName}-${version}-${platform}-x64.${ext}',
+      icon: 'assets/linux.icns',
       target: ['AppImage'],
       category: 'Graphics',
     },

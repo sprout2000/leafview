@@ -17,17 +17,9 @@ build({
       output: 'release',
     },
     linux: {
-      icon: 'assets/icon_linux.icns',
+      icon: 'assets/linux.icns',
       target: ['AppImage'],
       category: 'Graphics',
-      desktop: {
-        Name: '$productNamess',
-        Comment: 'An image viewer for minimalist.',
-        Icon: 'assets/icon_linux.icns',
-        Terminal: false,
-        Type: 'Application',
-        Categories: 'Graphicss',
-      },
     },
   },
 }).catch((err) => console.log(err));
