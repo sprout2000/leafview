@@ -2,7 +2,7 @@
 
 ## Introduction
 
-On Ubuntu 20.04, you will need to install [Node.js](https://nodejs.org/) v14.x and [yarn](https://yarnpkg.com/) v1.22.x.
+To build this app from source, you will need [Node.js](https://nodejs.org/) v14.x and [Yarn](https://yarnpkg.com/) v1.22.x installed.
 
 ## How?
 
@@ -45,11 +45,9 @@ $ git clone https://github.com/sprout2000/leafview.git
 # And then build this project
 $ cd leafview
 
-$ yarn install && yarn package
+$ yarn install
+$ yarn build:prod
+$ yarn ts-node ./scripts/build-ubuntu.ts
 ```
 
-You will find the AppImage in `release/LeafView-1.x-linux-x64/`.
-
-### 4. Integrate LeafView into your system
-
-You will need to have [AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher/wiki/Install-on-Ubuntu-or-Debian) installed to integrate AppImage into your system.
+You will find the AppImage in `release` directory.
