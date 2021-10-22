@@ -83,6 +83,10 @@ const config: Configuration = {
               from: './assets/icon.png',
               to: '.',
             },
+            {
+              from: './assets/linux.png',
+              to: '.',
+            },
           ],
         }),
       ],
