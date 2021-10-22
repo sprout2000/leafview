@@ -3,6 +3,7 @@ dist/
 build/
 release/
 coverage/
+squashfs-root/
 npm-*.log
 yarn-*.log
 parent.plist
