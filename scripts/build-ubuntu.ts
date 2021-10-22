@@ -18,7 +18,7 @@ build({
     },
     linux: {
       icon: 'assets/icon_linux.icns',
-      target: ['AppImage'],
+      target: ['AppImage', 'zip'],
       category: 'Graphics',
     },
   },
