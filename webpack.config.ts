@@ -79,14 +79,8 @@ const config: Configuration = {
         }),
         new CopyWebpackPlugin({
           patterns: [
-            {
-              from: './assets/icon.png',
-              to: '.',
-            },
-            {
-              from: './assets/linux.png',
-              to: '.',
-            },
+            { from: './assets/icon.png', to: '.' },
+            { from: './assets/linux.png', to: '.' },
           ],
         }),
       ],
