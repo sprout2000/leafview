@@ -282,9 +282,7 @@ if (!gotTheLock && !isDarwin) {
     setLocales(locale);
 
     if (isDev) {
-      const extPath = await searchDevtools('REACT', {
-        browser: isLinux ? 'chromium-snap' : 'google-chrome',
-      });
+      const extPath = await searchDevtools('REACT');
       if (extPath) {
         await session.defaultSession
           .loadExtension(extPath, {
