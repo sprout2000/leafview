@@ -118,11 +118,11 @@ When you have translated the menu into your language, could you please send us t
 - [@DrDeee](https://github.com/DrDeee) [#166](https://github.com/sprout2000/leafview/pull/166)
 - [@PetrTodorov](https://github.com/PetrTodorov) [#68](https://github.com/sprout2000/leafview/pull/68)
 
-## :copyright: License
-
-Copyright (c) 2020 sprout2000 and other contributors
-
 ## :vertical_traffic_light: Privacy Policy
 
 - LeafView and the developers do NOT collect any personal information or privacy-related information about the user.
 - LeafView and the developers do NOT collect the information of files opened by LeafView.
+
+## :copyright: License
+
+Copyright (c) 2020 sprout2000 and other contributors
