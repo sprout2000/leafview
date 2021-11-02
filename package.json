@@ -19,7 +19,7 @@
     "image-viewer"
   ],
   "engines": {
-    "node": ">=14"
+    "node": ">=14.17"
   },
   "main": "dist/main.js",
   "scripts": {
