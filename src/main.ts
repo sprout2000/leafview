@@ -173,7 +173,6 @@ const createWindow = () => {
 
   if (!isDarwin) {
     ipcMain.on('show-context-menu', () => {
-      if (mainWindow.menuBarVisible) return;
       menu.popup();
     });
   }
