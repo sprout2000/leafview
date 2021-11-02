@@ -69,7 +69,7 @@ export const createMenu = (
       { type: 'separator' },
       {
         label: isDarwin ? i18next.t('Close') : i18next.t('Quit'),
-        accelerator: isDarwin ? 'Cmd+W' : 'Alt+F4',
+        accelerator: isDarwin ? 'Cmd+W' : isWin32 ? 'Alt+F4' : 'Ctrl+Q',
         role: isDarwin ? 'close' : 'quit',
       },
     ],
