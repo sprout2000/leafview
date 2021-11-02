@@ -130,7 +130,7 @@ export const createMenu = (
     click: (): void => app.showAboutPanel(),
   };
 
-  if (isWin32) {
+  if (!isDarwin) {
     helpSub.push(aboutItem);
   }
 
