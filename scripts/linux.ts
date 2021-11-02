@@ -13,7 +13,7 @@ build({
       },
     ],
     directories: {
-      buildResources: 'asset',
+      buildResources: 'assets',
       output: 'release',
     },
     linux: {
