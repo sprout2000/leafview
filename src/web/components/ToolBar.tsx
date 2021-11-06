@@ -1,6 +1,8 @@
 import i18next from 'i18next';
 import { FaFolderOpen, FaPlay, FaTrash } from 'react-icons/fa';
 
+import './ToolBar.scss';
+
 interface Props {
   onClickOpen: () => Promise<void>;
   prev: () => Promise<void>;

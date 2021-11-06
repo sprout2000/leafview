@@ -1,0 +1,57 @@
+@mixin Icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(199, 199, 204);
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    color: rgb(255, 255, 255);
+  }
+
+  .reverse {
+    transform: scaleX(-1);
+  }
+}
+
+.container {
+  .bottom {
+    .toolbar {
+      display: flex;
+      height: 60px;
+      align-items: center;
+      padding: 0 24px;
+      border-radius: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      user-select: none;
+
+      .controls {
+        width: 70px;
+        display: flex;
+        justify-content: flex-start;
+        .icon {
+          @include Icon();
+        }
+      }
+
+      .arrows {
+        display: flex;
+        .icon {
+          @include Icon();
+        }
+      }
+
+      .trash {
+        width: 70px;
+        display: flex;
+        justify-content: flex-end;
+        .icon {
+          @include Icon();
+        }
+      }
+    }
+  }
+}
