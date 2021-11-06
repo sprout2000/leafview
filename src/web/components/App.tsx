@@ -6,7 +6,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './App.scss';
 
-import { Float } from './Float';
+import { ToolBar } from './ToolBar';
 import empty from './empty.png';
 
 const { myAPI } = window;
@@ -298,7 +298,7 @@ export const App = (): JSX.Element => {
       onKeyDown={onKeyDown}
     >
       <div className="bottom">
-        <Float
+        <ToolBar
           onClickOpen={onClickOpen}
           prev={prev}
           next={next}

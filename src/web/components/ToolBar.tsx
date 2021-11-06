@@ -8,7 +8,7 @@ interface Props {
   remove: () => Promise<void>;
 }
 
-export const Float = (props: Props): JSX.Element => {
+export const ToolBar = (props: Props): JSX.Element => {
   return (
     <div className="toolbar">
       <div className="controls">
