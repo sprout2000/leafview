@@ -99,6 +99,25 @@ export const createMenu = (
     );
   }
 
+  if (isDarwin || isWin32) {
+    viewSub.push({
+      label: i18next.t('Toggle Dark Mode'),
+      type: 'checkbox',
+      id: 'darkmode',
+      accelerator: 'CmdOrCtrl+D',
+      click: () => {
+        if (nativeTheme.shouldUseDarkColors) {
+          nativeTheme.themeSource = 'light';
+          store.set('darkmode', false);
+        } else {
+          nativeTheme.themeSource = 'dark';
+          store.set('darkmode', true);
+        }
+      },
+      checked: nativeTheme.shouldUseDarkColors,
+    });
+  }
+
   if (process.env.NODE_ENV === 'development') {
     viewSub.push(
       { type: 'separator' },
@@ -154,23 +173,6 @@ export const createMenu = (
           click: (): void => {
             win.isMaximized() ? win.unmaximize() : win.maximize();
           },
-        },
-        { type: 'separator' },
-        {
-          label: i18next.t('Toggle Dark Mode'),
-          type: 'checkbox',
-          id: 'darkmode',
-          accelerator: 'CmdOrCtrl+D',
-          click: () => {
-            if (nativeTheme.shouldUseDarkColors) {
-              nativeTheme.themeSource = 'light';
-              store.set('darkmode', false);
-            } else {
-              nativeTheme.themeSource = 'dark';
-              store.set('darkmode', true);
-            }
-          },
-          checked: nativeTheme.shouldUseDarkColors,
         },
         { type: 'separator' },
         isDarwin
