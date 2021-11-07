@@ -13,7 +13,7 @@ interface Props {
 export const ToolBar = (props: Props): JSX.Element => {
   return (
     <div className="toolbar">
-      <div className="controls">
+      <div className="folder">
         <div
           className="icon"
           title={i18next.t('Open...')}
