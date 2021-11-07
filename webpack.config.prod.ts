@@ -4,8 +4,10 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const isDarwin = process.platform === 'darwin';
 const isDev = process.env.NODE_ENV === 'development';
+
+const isLinux = process.platform === 'linux';
+const isDarwin = process.platform === 'darwin';
 
 const base: Configuration = {
   mode: isDev ? 'development' : 'production',
@@ -107,8 +109,10 @@ const renderer: Configuration = {
         }),
         new CopyWebpackPlugin({
           patterns: [
-            { from: './assets/icon.png', to: '.' },
-            { from: './assets/linux.png', to: '.' },
+            {
+              from: isLinux ? './assets/linux.png' : './assets/icon.png',
+              to: './images',
+            },
           ],
         }),
       ],
