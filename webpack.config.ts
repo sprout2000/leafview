@@ -82,7 +82,7 @@ const config: Configuration = {
           patterns: [
             {
               from: isLinux ? './assets/linux.png' : './assets/icon.png',
-              to: './images',
+              to: './images/logo.png',
             },
           ],
         }),

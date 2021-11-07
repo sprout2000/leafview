@@ -300,10 +300,7 @@ if (!gotTheLock && !isDarwin) {
       ? app.getVersion()
       : `v${app.getVersion()} (${process.versions['electron']})`,
     version: process.versions['electron'],
-    iconPath: path.join(
-      __dirname,
-      isLinux ? 'images/linux.png' : 'images/icon.png'
-    ),
+    iconPath: path.join(__dirname, 'images/logo.png'),
     copyright: '© 2020 sprout2000 and other contributors',
   });
 
