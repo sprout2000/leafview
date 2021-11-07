@@ -45,6 +45,12 @@ const initHeight = isLinux ? 480 : isDarwin ? 508 : 509;
 
 const gotTheLock = app.requestSingleInstanceLock();
 
+const getResourceDirectory = () => {
+  return isDev
+    ? path.join(process.cwd(), 'dist')
+    : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
+};
+
 /// #if DEBUG
 const execPath =
   process.platform === 'win32'
@@ -94,6 +100,9 @@ const createWindow = () => {
     height: store.get('height'),
     autoHideMenuBar: true,
     fullscreenable: isDarwin ? false : true,
+    icon: isLinux
+      ? path.join(getResourceDirectory(), 'images/logo.png')
+      : undefined,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       sandbox: true,
@@ -299,7 +308,9 @@ if (!gotTheLock && !isDarwin) {
       ? app.getVersion()
       : `v${app.getVersion()} (${process.versions['electron']})`,
     version: process.versions['electron'],
-    iconPath: path.join(__dirname, 'images/logo.png'),
+    iconPath: isLinux
+      ? path.resolve(getResourceDirectory(), 'images/logo.png')
+      : path.join(__dirname, 'images/logo.png'),
     copyright: '© 2020 sprout2000 and other contributors',
   });
 

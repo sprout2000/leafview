@@ -61,6 +61,7 @@ build({
       icon: 'assets/dmg.icns',
     },
     linux: {
+      asarUnpack: ['dist/images/logo.png'],
       artifactName: '${productName}-${version}-${platform}-x64.${ext}',
       icon: 'assets/linux.icns',
       target: ['AppImage'],
