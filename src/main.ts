@@ -145,7 +145,6 @@ const createWindow = () => {
               'ico',
               'jpg',
               'jpeg',
-              'apng',
               'png',
               'svg',
               'webp',
