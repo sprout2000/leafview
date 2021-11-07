@@ -94,7 +94,6 @@ const createWindow = () => {
     height: store.get('height'),
     autoHideMenuBar: true,
     fullscreenable: isDarwin ? false : true,
-    icon: isLinux ? path.join(__dirname, 'linux.png') : undefined,
     backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       sandbox: true,
