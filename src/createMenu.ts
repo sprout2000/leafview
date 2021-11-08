@@ -86,17 +86,15 @@ export const createMenu = (
       accelerator: 'K',
       click: (): void => win.webContents.send('menu-prev'),
     },
+    { type: 'separator' },
   ];
 
   if (!isDarwin) {
-    viewSub.push(
-      { type: 'separator' },
-      {
-        label: i18next.t('Toggle Fullscreen'),
-        role: 'togglefullscreen',
-        accelerator: isDarwin ? 'Cmd+Ctrl+F' : 'F11',
-      }
-    );
+    viewSub.push({
+      label: i18next.t('Toggle Fullscreen'),
+      role: 'togglefullscreen',
+      accelerator: isDarwin ? 'Cmd+Ctrl+F' : 'F11',
+    });
   }
 
   if (isDarwin || isWin32) {
@@ -116,23 +114,6 @@ export const createMenu = (
       },
       checked: nativeTheme.shouldUseDarkColors,
     });
-  }
-
-  if (process.env.NODE_ENV === 'development') {
-    viewSub.push(
-      { type: 'separator' },
-      {
-        label: 'Toggle Developer Tools',
-        click: () => {
-          if (win.webContents.isDevToolsOpened()) {
-            win.webContents.closeDevTools();
-          } else {
-            win.webContents.openDevTools({ mode: 'detach' });
-          }
-        },
-        accelerator: isDarwin ? 'Cmd+Option+I' : 'Ctrl+Shift+I',
-      }
-    );
   }
 
   const helpSub: MenuItemConstructorOptions[] = [
@@ -173,6 +154,18 @@ export const createMenu = (
           click: (): void => {
             win.isMaximized() ? win.unmaximize() : win.maximize();
           },
+        },
+        { type: 'separator' },
+        {
+          label: i18next.t('Toggle Developer Tools'),
+          click: () => {
+            if (win.webContents.isDevToolsOpened()) {
+              win.webContents.closeDevTools();
+            } else {
+              win.webContents.openDevTools({ mode: 'detach' });
+            }
+          },
+          accelerator: isDarwin ? 'Cmd+Option+I' : 'Ctrl+Shift+I',
         },
         { type: 'separator' },
         isDarwin
