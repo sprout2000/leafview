@@ -98,5 +98,9 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.4.1",
     "wait-on": "^6.0.0"
+  },
+  "resolutions": {
+    "electron-builder/dmg-builder/dmg-license/cli-truncate/string-width/strip-ansi/ansi-regex": "^5.0.1",
+    "electron-builder/dmg-builder/dmg-license/iconv-corefoundation/cli-truncate/string-width/strip-ansi/ansi-regex": "^5.0.1"
   }
 }
