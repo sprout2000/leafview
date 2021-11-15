@@ -306,8 +306,8 @@ if (!gotTheLock && !isDarwin) {
     applicationName: app.name,
     applicationVersion: isDarwin
       ? app.getVersion()
-      : `v${app.getVersion()} (Electron v${process.versions['electron']})`,
-    version: `Electron v${process.versions['electron']}`,
+      : `v${app.getVersion()} (${process.versions['electron']})`,
+    version: process.versions['electron'],
     iconPath: isLinux
       ? path.resolve(getResourceDirectory(), 'images/logo.png')
       : path.join(__dirname, 'images/logo.png'),
