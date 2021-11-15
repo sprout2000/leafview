@@ -233,7 +233,7 @@ const createWindow = () => {
     mainWindow.webContents.send('menu-open', filepath);
   });
 
-  if (isDarwin) {
+  if ((isDarwin || isLinux) && !isDev) {
     autoUpdater.checkForUpdatesAndNotify();
 
     autoUpdater.once('error', (_e, err) => {
