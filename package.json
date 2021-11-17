@@ -23,7 +23,7 @@
   },
   "main": "dist/main.js",
   "scripts": {
-    "start": "run-s clean build serve",
+    "start": "run-s clean build:prod serve",
     "predev": "rimraf dist",
     "dev": "run-p dev:*",
     "dev:electron": "wait-on ./dist/index.html && cross-env NODE_ENV=\"development\" electron .",
