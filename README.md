@@ -124,8 +124,8 @@ When you have translated the menu into your language, could you please send us t
 
 ## :vertical_traffic_light: Privacy Policy
 
-- LeafView and the developers do NOT collect any personal information or privacy-related information about the user.
-- LeafView and the developers do NOT collect the information of files opened by LeafView.
+- LeafView and the developers do _NOT_ collect any personal information or privacy-related information about the user.
+- LeafView and the developers do _NOT_ collect the information of files opened by LeafView.
 
 ## :copyright: License
 
