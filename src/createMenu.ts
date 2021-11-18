@@ -82,9 +82,21 @@ export const createMenu = (
       click: (): void => win.webContents.send('menu-next'),
     },
     {
+      label: 'Next Image (invisible)',
+      accelerator: 'CmdOrCtrl+N',
+      click: (): void => win.webContents.send('menu-next'),
+      visible: false,
+    },
+    {
       label: i18next.t('Prev Image'),
       accelerator: 'K',
       click: (): void => win.webContents.send('menu-prev'),
+    },
+    {
+      label: 'Prev Image (invisible)',
+      accelerator: 'CmdOrCtrl+P',
+      click: (): void => win.webContents.send('menu-prev'),
+      visible: false,
     },
     { type: 'separator' },
   ];
