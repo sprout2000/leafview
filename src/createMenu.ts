@@ -105,7 +105,7 @@ export const createMenu = (
     viewSub.push({
       label: i18next.t('Toggle Fullscreen'),
       role: 'togglefullscreen',
-      accelerator: isDarwin ? 'Cmd+Ctrl+F' : 'F11',
+      accelerator: 'F11',
     });
   }
 
