@@ -38,8 +38,10 @@ see [LINUX.md](https://github.com/sprout2000/leafview/blob/main/LINUX.md#notes-f
 
 |                                     Key                                     | Function          | Platform |
 | :-------------------------------------------------------------------------: | :---------------- | :------- |
-|                                <kbd>J</kbd>                                 | Next Image        | -        |
-|                                <kbd>K</kbd>                                 | Previous Image    | -        |
+|               <kbd>J</kbd> or <kbd>Command</kbd>+<kbd>N</kbd>               | Next Image        | macOS    |
+|               <kbd>K</kbd> or <kbd>Command</kbd>+<kbd>P</kbd>               | Previous Image    | macOS    |
+|                <kbd>J</kbd> or <kbd>Ctrl</kbd>+<kbd>N</kbd>                 | Next Image        | Windows  |
+|                <kbd>K</kbd> or <kbd>Ctrl</kbd>+<kbd>P</kbd>                 | Previous Image    | Windows  |
 |                                <kbd>+</kbd>                                 | Zoom In           | -        |
 |                                <kbd>-</kbd>                                 | Zoom Out          | -        |
 |                                <kbd>0</kbd>                                 | Reset Zoom        | -        |
