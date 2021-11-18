@@ -11,7 +11,7 @@ build({
     },
     win: {
       icon: 'assets/icon.ico',
-      target: ['nsis', 'zip'],
+      target: ['nsis'],
       publisherName: 'sprout2000',
       fileAssociations: [
         {
@@ -64,7 +64,7 @@ build({
       asarUnpack: ['dist/images/logo.png'],
       artifactName: '${productName}-${version}-${platform}-x64.${ext}',
       icon: 'assets/linux.icns',
-      target: ['AppImage', 'zip'],
+      target: ['AppImage'],
       category: 'Graphics',
     },
   },
