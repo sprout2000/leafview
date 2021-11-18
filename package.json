@@ -40,7 +40,7 @@
     "lint": "run-s lint:*",
     "lint:eslint": "eslint --fix .",
     "lint:prettier": "prettier --write .",
-    "release": "run-s build:prod build:linux",
+    "release": "ts-node scripts/linux.ts",
     "package": "run-s clean build:prod build:unsign",
     "package:appx": "run-s clean build:prod build:appx",
     "package:darwin": "run-s clean build:prod build:darwin",
