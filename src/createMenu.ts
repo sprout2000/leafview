@@ -88,6 +88,12 @@ export const createMenu = (
       visible: false,
     },
     {
+      label: 'Next Image (invisible)',
+      accelerator: 'CmdOrCtrl+Right',
+      click: (): void => win.webContents.send('menu-next'),
+      visible: false,
+    },
+    {
       label: i18next.t('Prev Image'),
       accelerator: 'K',
       click: (): void => win.webContents.send('menu-prev'),
@@ -95,6 +101,12 @@ export const createMenu = (
     {
       label: 'Prev Image (invisible)',
       accelerator: 'CmdOrCtrl+P',
+      click: (): void => win.webContents.send('menu-prev'),
+      visible: false,
+    },
+    {
+      label: 'Prev Image (invisible)',
+      accelerator: 'CmdOrCtrl+Left',
       click: (): void => win.webContents.send('menu-prev'),
       visible: false,
     },
