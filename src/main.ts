@@ -43,8 +43,6 @@ const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const initHeight = isLinux ? 480 : isDarwin ? 508 : 509;
 
-const gotTheLock = app.requestSingleInstanceLock();
-
 const getResourceDirectory = () => {
   return isDev
     ? path.join(process.cwd(), 'dist')
@@ -208,20 +206,6 @@ const createWindow = () => {
     }
   });
 
-  if (!isDarwin) {
-    app.on('second-instance', (_e, argv) => {
-      if (mainWindow.isMinimized()) mainWindow.restore();
-      mainWindow.focus();
-
-      if (argv.length >= 3) {
-        const filepath = argv[argv.length - 1];
-        if (path.basename(filepath).startsWith(dotfiles)) return;
-
-        mainWindow.webContents.send('menu-open', filepath);
-      }
-    });
-  }
-
   app.on('open-file', (e, filepath) => {
     e.preventDefault();
 
@@ -273,46 +257,42 @@ const createWindow = () => {
   });
 };
 
-if (!gotTheLock && !isDarwin) {
-  app.exit();
-} else {
-  app.once('will-finish-launching', () => {
-    app.once('open-file', (e, filepath) => {
-      e.preventDefault();
-      openfile = filepath;
-    });
+app.once('will-finish-launching', () => {
+  app.once('open-file', (e, filepath) => {
+    e.preventDefault();
+    openfile = filepath;
   });
+});
 
-  app.whenReady().then(async () => {
-    const locale = app.getLocale();
-    setLocales(locale);
+app.whenReady().then(async () => {
+  const locale = app.getLocale();
+  setLocales(locale);
 
-    if (isDev) {
-      const extPath = await searchDevtools('REACT');
-      if (extPath) {
-        await session.defaultSession
-          .loadExtension(extPath, {
-            allowFileAccess: true,
-          })
-          .then(() => log.info('React Devtools loaded...'))
-          .catch((err) => log.error(err));
-      }
+  if (isDev) {
+    const extPath = await searchDevtools('REACT');
+    if (extPath) {
+      await session.defaultSession
+        .loadExtension(extPath, {
+          allowFileAccess: true,
+        })
+        .then(() => log.info('React Devtools loaded...'))
+        .catch((err) => log.error(err));
     }
+  }
 
-    createWindow();
-  });
+  createWindow();
+});
 
-  app.setAboutPanelOptions({
-    applicationName: app.name,
-    applicationVersion: isDarwin
-      ? app.getVersion()
-      : `v${app.getVersion()} (${process.versions['electron']})`,
-    version: process.versions['electron'],
-    iconPath: isLinux
-      ? path.resolve(getResourceDirectory(), 'images/logo.png')
-      : path.join(__dirname, 'images/logo.png'),
-    copyright: '© 2020 sprout2000 and other contributors',
-  });
+app.setAboutPanelOptions({
+  applicationName: app.name,
+  applicationVersion: isDarwin
+    ? app.getVersion()
+    : `v${app.getVersion()} (${process.versions['electron']})`,
+  version: process.versions['electron'],
+  iconPath: isLinux
+    ? path.resolve(getResourceDirectory(), 'images/logo.png')
+    : path.join(__dirname, 'images/logo.png'),
+  copyright: '© 2020 sprout2000 and other contributors',
+});
 
-  app.once('window-all-closed', () => app.exit());
-}
+app.once('window-all-closed', () => app.exit());
