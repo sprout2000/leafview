@@ -3,4 +3,4 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'monthly'
+      - cron: '0 0 1 1,4,7,10 *'
