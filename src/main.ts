@@ -206,16 +206,18 @@ const createWindow = () => {
     }
   });
 
-  app.on('open-file', (e, filepath) => {
-    e.preventDefault();
+  if (isDarwin) {
+    app.on('open-file', (e, filepath) => {
+      e.preventDefault();
 
-    if (mainWindow.isMinimized()) mainWindow.restore();
-    mainWindow.focus();
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
 
-    if (path.basename(filepath).startsWith(dotfiles)) return;
+      if (path.basename(filepath).startsWith(dotfiles)) return;
 
-    mainWindow.webContents.send('menu-open', filepath);
-  });
+      mainWindow.webContents.send('menu-open', filepath);
+    });
+  }
 
   if ((isDarwin || isLinux) && !isDev) {
     autoUpdater.checkForUpdatesAndNotify();
