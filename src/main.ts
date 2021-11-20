@@ -230,23 +230,19 @@ const createWindow = () => {
       await dialog
         .showMessageBox(mainWindow, {
           type: 'info',
-          buttons: ['Restart', 'Not now'],
-          defaultId: 0,
-          cancelId: 1,
-          title: 'Update Downloaded',
-          message: 'Update downloaded',
+          buttons: ['Install', 'Not now'],
+          title: 'Update',
+          message: 'Update downloaded.',
           detail:
-            'We have finished downloading the latest updates.\n' +
-            'Would you like to install the update and restart now?',
+            'The update has been downloaded.\n' +
+            'Do you want to install the update now?',
         })
         .then((result) => {
           if (result.response === 0) {
             autoUpdater.quitAndInstall();
-          } else {
-            log.info('The installation of the update has been cancelled...');
           }
         })
-        .catch((err) => log.error(`Error in showMessageBox: ${err}`));
+        .catch((err) => log.info(`Error in 'update-downloaded': ${err}`));
     });
   }
 
