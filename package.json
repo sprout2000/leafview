@@ -44,7 +44,7 @@
     "package": "run-s clean build:prod build:unsign",
     "package:appx": "run-s clean build:prod build:appx",
     "package:darwin": "run-s clean build:prod build:darwin",
-    "prepare": "git config --local core.hooksPath .githooks"
+    "prepare": "git config --local core.hooksPath hooks"
   },
   "dependencies": {
     "electron-log": "^4.4.1",

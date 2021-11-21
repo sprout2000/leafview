@@ -1,0 +1,12 @@
+#!/bin/sh
+
+command=$(ps -ocommand= -p $PPID)
+
+if [[  $command =~ 'force|\-f' ]] ; then
+  read -rp 'Are you sure you want to do a force push? (y/N):' input < /dev/tty
+  if [ "${input}" = "y" ]; then
+    echo "do force push"
+  else
+    exit 1;
+  fi
+fi
