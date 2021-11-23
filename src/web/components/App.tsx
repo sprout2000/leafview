@@ -222,8 +222,6 @@ export const App = (): JSX.Element => {
   };
 
   const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isDarwin) return;
-
     e.preventDefault();
     myAPI.contextMenu();
   };

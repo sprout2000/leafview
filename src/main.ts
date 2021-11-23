@@ -176,11 +176,9 @@ const createWindow = () => {
     mainWindow.setTitle(path.basename(filepath));
   });
 
-  if (!isDarwin) {
-    ipcMain.on('show-context-menu', () => {
-      menu.popup();
-    });
-  }
+  ipcMain.on('show-context-menu', () => {
+    menu.popup();
+  });
 
   if (isDev) mainWindow.webContents.openDevTools({ mode: 'detach' });
 
