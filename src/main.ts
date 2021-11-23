@@ -21,7 +21,7 @@ import mime from 'mime-types';
 import i18next from 'i18next';
 import natsort from 'natsort';
 
-import { TypedStore } from './TypedStore';
+import { StoreType } from './StoreType';
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 
@@ -65,7 +65,8 @@ if (isDev) {
 }
 /// #endif
 
-const store = new Store<TypedStore>({
+const store = new Store<StoreType>({
+  configFileMode: 0o666,
   defaults: {
     width: 768,
     height: initHeight,

@@ -11,11 +11,11 @@ import Store from 'electron-store';
 
 import path from 'path';
 import i18next from 'i18next';
-import { TypedStore } from './TypedStore';
+import { StoreType } from './StoreType';
 
 export const createMenu = (
   win: BrowserWindow,
-  store: Store<TypedStore>
+  store: Store<StoreType>
 ): Menu => {
   const isWin32 = process.platform === 'win32';
   const isDarwin = process.platform === 'darwin';

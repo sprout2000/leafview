@@ -1,4 +1,4 @@
-export type TypedStore = {
+export type StoreType = {
   darkmode: boolean;
   x: number | undefined;
   y: number | undefined;
