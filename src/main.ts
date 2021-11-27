@@ -21,7 +21,6 @@ import mime from 'mime-types';
 import i18next from 'i18next';
 import natsort from 'natsort';
 
-import { StoreType } from './StoreType';
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 

@@ -11,7 +11,6 @@ import Store from 'electron-store';
 
 import path from 'path';
 import i18next from 'i18next';
-import { StoreType } from './StoreType';
 
 export const createMenu = (
   win: BrowserWindow,

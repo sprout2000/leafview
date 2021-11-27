@@ -1,4 +1,4 @@
-export type StoreType = {
+declare type StoreType = {
   darkmode: boolean;
   x: number | undefined;
   y: number | undefined;
