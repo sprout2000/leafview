@@ -50,7 +50,7 @@
     "electron-log": "^4.4.1",
     "electron-store": "^8.0.1",
     "electron-updater": "^4.6.1",
-    "i18next": "^21.5.3",
+    "i18next": "^21.5.4",
     "leaflet": "^1.7.1",
     "mime-types": "^2.1.34",
     "natsort": "^2.0.3",
@@ -91,8 +91,8 @@
     "webpack-cli": "^4.9.1"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
     "electron-reload": "^2.0.0-alpha.1",
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
