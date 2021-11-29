@@ -28,7 +28,7 @@ import zh_CN from './locales/zh_cn.json';
 /** https://github.com/sprout2000/leafview/pull/274 */
 import ar from './locales/ar.json';
 
-export const setLocales = (locale: string): void => {
+export const setLocales = (locale: string) => {
   i18next.init({
     lng: locale,
     fallbackLng: 'en',
