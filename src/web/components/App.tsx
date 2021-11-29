@@ -12,7 +12,7 @@ import empty from './empty.png';
 const { myAPI } = window;
 const isDarwin = new UAParser().getOS().name === 'Mac OS';
 
-export const App = (): JSX.Element => {
+export const App = () => {
   const [url, setUrl] = useState<string>(empty);
 
   const mapRef = useRef<HTMLDivElement>(null);
@@ -35,12 +35,12 @@ export const App = (): JSX.Element => {
   };
 
   const draw = useCallback(
-    (width: number, height: number): void => {
+    (width: number, height: number) => {
       const node = mapRef.current;
 
       if (node) {
         const img = new Image();
-        img.onload = (): void => {
+        img.onload = () => {
           const zoom = getZoom(img.width, width, img.height, height);
 
           const bounds = new L.LatLngBounds([
@@ -87,13 +87,13 @@ export const App = (): JSX.Element => {
     [url]
   );
 
-  const preventDefault = (e: React.DragEvent<HTMLDivElement>): void => {
+  const onPrevent = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
   };
 
-  const onDrop = async (e: React.DragEvent<HTMLDivElement>): Promise<void> => {
-    preventDefault(e);
+  const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
+    onPrevent(e);
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
@@ -108,7 +108,7 @@ export const App = (): JSX.Element => {
     }
   };
 
-  const next = useCallback(async (): Promise<void> => {
+  const onNext = useCallback(async () => {
     if (url === empty) return;
 
     const dir = await myAPI.dirname(url);
@@ -133,7 +133,7 @@ export const App = (): JSX.Element => {
     }
   }, [url]);
 
-  const prev = useCallback(async (): Promise<void> => {
+  const onPrev = useCallback(async () => {
     if (url === empty) return;
 
     const dir = await myAPI.dirname(url);
@@ -160,7 +160,7 @@ export const App = (): JSX.Element => {
     }
   }, [url]);
 
-  const remove = useCallback(async (): Promise<void> => {
+  const onRemove = useCallback(async () => {
     if (url === empty) return;
 
     const dir = await myAPI.dirname(url);
@@ -192,7 +192,7 @@ export const App = (): JSX.Element => {
     }
   }, [url]);
 
-  const onClickOpen = async (): Promise<void> => {
+  const onClickOpen = async () => {
     const filepath = await myAPI.openDialog();
     if (!filepath) return;
 
@@ -213,7 +213,7 @@ export const App = (): JSX.Element => {
     }
   }, []);
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (url === empty) return;
 
     if (e.key === '0') {
@@ -226,38 +226,38 @@ export const App = (): JSX.Element => {
     myAPI.contextMenu();
   };
 
-  const updateTitle = async (filepath: string): Promise<void> => {
+  const updateTitle = async (filepath: string) => {
     await myAPI.updateTitle(filepath);
   };
 
   useEffect(() => {
-    myAPI.menuNext(next);
+    myAPI.menuNext(onNext);
 
-    return (): void => {
+    return () => {
       myAPI.removeMenuNext();
     };
-  }, [next]);
+  }, [onNext]);
 
   useEffect(() => {
-    myAPI.menuPrev(prev);
+    myAPI.menuPrev(onPrev);
 
-    return (): void => {
+    return () => {
       myAPI.removeMenuPrev();
     };
-  }, [prev]);
+  }, [onPrev]);
 
   useEffect(() => {
-    myAPI.menuRemove(remove);
+    myAPI.menuRemove(onRemove);
 
-    return (): void => {
+    return () => {
       myAPI.removeMenuRemove();
     };
-  }, [remove]);
+  }, [onRemove]);
 
   useEffect(() => {
     myAPI.menuOpen(onMenuOpen);
 
-    return (): void => {
+    return () => {
       myAPI.removeMenuOpen();
     };
   }, [onMenuOpen]);
@@ -288,19 +288,19 @@ export const App = (): JSX.Element => {
   return (
     <div
       className="container"
-      onContextMenu={onContextMenu}
-      onDragEnter={preventDefault}
-      onDragOver={preventDefault}
-      onDragLeave={preventDefault}
       onDrop={onDrop}
       onKeyDown={onKeyDown}
+      onDragOver={onPrevent}
+      onDragEnter={onPrevent}
+      onDragLeave={onPrevent}
+      onContextMenu={onContextMenu}
     >
       <div className="bottom">
         <ToolBar
+          onPrev={onPrev}
+          onNext={onNext}
+          onRemove={onRemove}
           onClickOpen={onClickOpen}
-          prev={prev}
-          next={next}
-          remove={remove}
         />
       </div>
       <div className={url === empty ? 'view init' : 'view'} ref={mapRef} />

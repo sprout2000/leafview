@@ -4,10 +4,10 @@ import { FaFolderOpen, FaPlay, FaTrash } from 'react-icons/fa';
 import './ToolBar.scss';
 
 interface Props {
+  onPrev: () => Promise<void>;
+  onNext: () => Promise<void>;
+  onRemove: () => Promise<void>;
   onClickOpen: () => Promise<void>;
-  prev: () => Promise<void>;
-  next: () => Promise<void>;
-  remove: () => Promise<void>;
 }
 
 export const ToolBar = (props: Props): JSX.Element => {
@@ -26,14 +26,14 @@ export const ToolBar = (props: Props): JSX.Element => {
         <div
           className="icon"
           title={i18next.t('Prev Image')}
-          onClick={props.prev}
+          onClick={props.onPrev}
         >
           <FaPlay size="1.5rem" className="reverse" />
         </div>
         <div
           className="icon"
           title={i18next.t('Next Image')}
-          onClick={props.next}
+          onClick={props.onNext}
         >
           <FaPlay size="1.5rem" />
         </div>
@@ -42,7 +42,7 @@ export const ToolBar = (props: Props): JSX.Element => {
         <div
           className="icon"
           title={i18next.t('Move to Trash')}
-          onClick={props.remove}
+          onClick={props.onRemove}
         >
           <FaTrash size="1.5rem" />
         </div>
