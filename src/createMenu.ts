@@ -12,10 +12,7 @@ import Store from 'electron-store';
 import path from 'path';
 import i18next from 'i18next';
 
-export const createMenu = (
-  win: BrowserWindow,
-  store: Store<StoreType>
-): Menu => {
+export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   const isWin32 = process.platform === 'win32';
   const isDarwin = process.platform === 'darwin';
   const dotfiles = isDarwin ? '.' : '._';
@@ -26,7 +23,7 @@ export const createMenu = (
       {
         label: i18next.t('Open...'),
         accelerator: 'CmdOrCtrl+O',
-        click: async (): Promise<void> => {
+        click: async () => {
           await dialog
             .showOpenDialog(win, {
               properties: ['openFile'],
@@ -47,7 +44,7 @@ export const createMenu = (
                 },
               ],
             })
-            .then((result): void => {
+            .then((result) => {
               if (result.canceled) return;
 
               if (path.basename(result.filePaths[0]).startsWith(dotfiles)) {
@@ -56,14 +53,14 @@ export const createMenu = (
 
               win.webContents.send('menu-open', result.filePaths[0]);
             })
-            .catch((err): void => console.log(err));
+            .catch((err) => console.log(err));
         },
       },
       { type: 'separator' },
       {
         label: i18next.t('Move to Trash'),
         accelerator: 'Delete',
-        click: (): void => win.webContents.send('menu-remove'),
+        click: () => win.webContents.send('menu-remove'),
       },
       { type: 'separator' },
       {
@@ -78,35 +75,35 @@ export const createMenu = (
     {
       label: i18next.t('Next Image'),
       accelerator: 'J',
-      click: (): void => win.webContents.send('menu-next'),
+      click: () => win.webContents.send('menu-next'),
     },
     {
       label: 'Next Image (invisible)',
       accelerator: 'CmdOrCtrl+N',
-      click: (): void => win.webContents.send('menu-next'),
+      click: () => win.webContents.send('menu-next'),
       visible: false,
     },
     {
       label: 'Next Image (invisible)',
       accelerator: 'CmdOrCtrl+Right',
-      click: (): void => win.webContents.send('menu-next'),
+      click: () => win.webContents.send('menu-next'),
       visible: false,
     },
     {
       label: i18next.t('Prev Image'),
       accelerator: 'K',
-      click: (): void => win.webContents.send('menu-prev'),
+      click: () => win.webContents.send('menu-prev'),
     },
     {
       label: 'Prev Image (invisible)',
       accelerator: 'CmdOrCtrl+P',
-      click: (): void => win.webContents.send('menu-prev'),
+      click: () => win.webContents.send('menu-prev'),
       visible: false,
     },
     {
       label: 'Prev Image (invisible)',
       accelerator: 'CmdOrCtrl+Left',
-      click: (): void => win.webContents.send('menu-prev'),
+      click: () => win.webContents.send('menu-prev'),
       visible: false,
     },
     { type: 'separator' },
@@ -142,7 +139,7 @@ export const createMenu = (
   const helpSub: MenuItemConstructorOptions[] = [
     {
       label: i18next.t('Support URL...'),
-      click: async (): Promise<void> =>
+      click: async () =>
         shell.openExternal('https://github.com/sprout2000/leafview/#readme'),
     },
   ];
@@ -150,7 +147,7 @@ export const createMenu = (
   const aboutItem: MenuItemConstructorOptions = {
     label: i18next.t(isDarwin ? 'About LeafView' : 'About'),
     accelerator: 'CmdOrCtrl+I',
-    click: (): void => app.showAboutPanel(),
+    click: () => app.showAboutPanel(),
   };
 
   if (!isDarwin) {
@@ -174,7 +171,7 @@ export const createMenu = (
         {
           label: i18next.t('Maximize'),
           accelerator: 'CmdOrCtrl+L',
-          click: (): void => {
+          click: () => {
             win.isMaximized() ? win.unmaximize() : win.maximize();
           },
         },
