@@ -18,15 +18,10 @@ export const App = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
 
-  const getZoom = (
-    imgWidth: number,
-    width: number,
-    imgHeight: number,
-    height: number
-  ) => {
-    if (imgWidth > width || imgHeight > height) {
-      const zoomX = width / imgWidth;
-      const zoomY = height / imgHeight;
+  const getZoom = (iw: number, w: number, ih: number, h: number) => {
+    if (iw > w || ih > h) {
+      const zoomX = w / iw;
+      const zoomY = h / ih;
 
       return zoomX >= zoomY ? zoomY : zoomX;
     } else {
