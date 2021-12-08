@@ -37,10 +37,8 @@ process.once('uncaughtException', (err) => {
 });
 
 const isDev = process.env.NODE_ENV === 'development';
-
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
-const initHeight = isLinux ? 480 : isDarwin ? 508 : 509;
 
 const getResourceDirectory = () => {
   return isDev
@@ -68,10 +66,10 @@ const store = new Store<StoreType>({
   configFileMode: 0o666,
   defaults: {
     width: 768,
-    height: initHeight,
+    height: isLinux ? 480 : 508,
     x: undefined,
     y: undefined,
-    darkmode: nativeTheme.shouldUseDarkColors,
+    darkmode: false,
   },
 });
 
@@ -87,11 +85,13 @@ const checkmime = (filepath: string) => {
 
 const createWindow = () => {
   const dotfiles = isDarwin ? '.' : '._';
+  nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
+  log.info(`themeSource: ${nativeTheme.themeSource}`);
 
   const mainWindow = new BrowserWindow({
     show: false,
     minWidth: 768,
-    minHeight: initHeight,
+    minHeight: isLinux ? 480 : 508,
     x: store.get('x'),
     y: store.get('y'),
     width: store.get('width'),
@@ -101,15 +101,13 @@ const createWindow = () => {
     icon: isLinux
       ? path.join(getResourceDirectory(), 'images/logo.png')
       : undefined,
-    backgroundColor: store.get('darkmode') ? '#1e1e1e' : '#f6f6f6',
+    backgroundColor: nativeTheme.shouldUseDarkColors ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       sandbox: true,
       safeDialogs: true,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
-
-  nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
