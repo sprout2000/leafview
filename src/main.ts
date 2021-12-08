@@ -85,8 +85,6 @@ const checkmime = (filepath: string) => {
 
 const createWindow = () => {
   const dotfiles = isDarwin ? '.' : '._';
-  nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
-  log.info(`themeSource: ${nativeTheme.themeSource}`);
 
   const mainWindow = new BrowserWindow({
     show: false,
@@ -108,6 +106,14 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+
+  if (isLinux) {
+    nativeTheme.themeSource = nativeTheme.shouldUseDarkColors
+      ? 'dark'
+      : 'light';
+  } else {
+    nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
+  }
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
