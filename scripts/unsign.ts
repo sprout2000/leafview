@@ -65,7 +65,7 @@ build({
       asarUnpack: ['dist/images/logo.png'],
       artifactName: '${productName}-${version}-${platform}-x64.${ext}',
       icon: 'assets/linux.icns',
-      target: ['AppImage', 'deb', 'rpm'],
+      target: ['deb', 'rpm'],
       category: 'Graphics',
       fileAssociations: [
         {
