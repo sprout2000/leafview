@@ -7,6 +7,7 @@ build({
     copyright: '© 2020 sprout2000 and other contributors.',
     files: ['dist/**/*'],
     directories: {
+      buildResources: 'assets',
       output: 'release',
     },
     win: {
@@ -64,7 +65,7 @@ build({
       asarUnpack: ['dist/images/logo.png'],
       artifactName: '${productName}-${version}-${platform}-x64.${ext}',
       icon: 'assets/linux.icns',
-      target: ['AppImage'],
+      target: ['AppImage', 'deb', 'zip'],
       category: 'Graphics',
     },
   },

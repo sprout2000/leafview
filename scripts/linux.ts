@@ -6,20 +6,20 @@ build({
     artifactName: '${productName}-${version}-${platform}-x64.${ext}',
     copyright: '© 2020 sprout2000 and other contributors.',
     files: ['dist/**/*'],
+    directories: {
+      buildResources: 'assets',
+      output: 'release',
+    },
     publish: [
       {
         provider: 'github',
         releaseType: 'release',
       },
     ],
-    directories: {
-      buildResources: 'assets',
-      output: 'release',
-    },
     linux: {
       asarUnpack: ['dist/images/logo.png'],
       icon: 'assets/linux.icns',
-      target: ['AppImage', 'zip'],
+      target: ['AppImage', 'deb', 'zip'],
       category: 'Graphics',
     },
   },
