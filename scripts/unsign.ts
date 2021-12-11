@@ -65,8 +65,14 @@ build({
       asarUnpack: ['dist/images/logo.png'],
       artifactName: '${productName}-${version}-${platform}-x64.${ext}',
       icon: 'assets/linux.icns',
-      target: ['AppImage', 'deb', 'zip'],
+      target: ['AppImage', 'deb', 'rpm'],
       category: 'Graphics',
+      fileAssociations: [
+        {
+          ext: ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'ico', 'svg', 'webp'],
+          description: 'Image files',
+        },
+      ],
     },
   },
 }).catch((err) => console.log(err));
