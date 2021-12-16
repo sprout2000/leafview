@@ -67,7 +67,6 @@
     "@types/node": "^17.0.0",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
-    "@types/resize-observer-browser": "^0.1.6",
     "@types/ua-parser-js": "^0.7.36",
     "copy-webpack-plugin": "^10.2.0",
     "cross-env": "^7.0.3",
