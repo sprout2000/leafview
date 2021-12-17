@@ -1,16 +1,14 @@
 import { useRef, useCallback, useState, useEffect } from 'react';
-import { UAParser } from 'ua-parser-js';
 
 import L from 'leaflet';
-
 import 'leaflet/dist/leaflet.css';
-import './App.scss';
 
 import { ToolBar } from './ToolBar';
 import empty from './empty.png';
 
+import './App.scss';
+
 const { myAPI } = window;
-const isDarwin = new UAParser().getOS().name === 'Mac OS';
 
 export const App = () => {
   const [url, setUrl] = useState<string>(empty);
@@ -93,7 +91,7 @@ export const App = () => {
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
 
-      if (file.name.startsWith(isDarwin ? '.' : '._')) return;
+      if (file.name.startsWith('.')) return;
 
       const mime = await myAPI.mimecheck(file.path);
       if (mime) {
