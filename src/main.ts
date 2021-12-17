@@ -65,8 +65,8 @@ if (isDev) {
 const store = new Store<StoreType>({
   configFileMode: 0o666,
   defaults: {
-    width: 768,
-    height: isLinux ? 480 : 508,
+    width: 600,
+    height: 400,
     x: undefined,
     y: undefined,
     darkmode: false,
@@ -88,8 +88,8 @@ const createWindow = () => {
 
   const mainWindow = new BrowserWindow({
     show: false,
-    minWidth: 768,
-    minHeight: isLinux ? 480 : 508,
+    minWidth: 600,
+    minHeight: 400,
     x: store.get('x'),
     y: store.get('y'),
     width: store.get('width'),
