@@ -21,12 +21,6 @@ build({
       icon: 'assets/linux.icns',
       target: ['AppImage', 'deb', 'zip'],
       category: 'Graphics',
-      fileAssociations: [
-        {
-          ext: ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'ico', 'svg', 'webp'],
-          description: 'Image files',
-        },
-      ],
     },
   },
 }).catch((err) => console.log(err));
