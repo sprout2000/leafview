@@ -62,16 +62,19 @@ build({
       icon: 'assets/dmg.icns',
     },
     linux: {
+      category: 'Graphics',
+      icon: 'assets/linux.icns',
+      target: ['AppImage', 'deb', 'rpm'],
       asarUnpack: ['dist/images/logo.png'],
       artifactName: '${productName}-${version}-${platform}-x64.${ext}',
-      icon: 'assets/linux.icns',
-      target: ['deb', 'rpm'],
-      category: 'Graphics',
-      fileAssociations: [
-        {
-          ext: ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'ico', 'svg', 'webp'],
-          description: 'Image files',
-        },
+      mimeTypes: [
+        'image/bmp',
+        'image/gif',
+        'image/png',
+        'image/jpeg',
+        'image/webp',
+        'image/svg+xml',
+        'image/vnd.microsoft.icon',
       ],
     },
   },

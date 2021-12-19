@@ -17,10 +17,19 @@ build({
       },
     ],
     linux: {
-      asarUnpack: ['dist/images/logo.png'],
-      icon: 'assets/linux.icns',
-      target: ['AppImage', 'deb', 'rpm', 'zip'],
       category: 'Graphics',
+      icon: 'assets/linux.icns',
+      asarUnpack: ['dist/images/logo.png'],
+      target: ['zip', 'AppImage', 'deb', 'rpm'],
+      mimeTypes: [
+        'image/bmp',
+        'image/gif',
+        'image/png',
+        'image/jpeg',
+        'image/webp',
+        'image/svg+xml',
+        'image/vnd.microsoft.icon',
+      ],
     },
   },
 }).catch((err) => console.log(err));
