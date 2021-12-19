@@ -1,10 +1,10 @@
 declare global {
   interface Window {
-    myAPI: Sandbox;
+    myAPI: IElectronAPI;
   }
 }
 
-export interface Sandbox {
+export interface IElectronAPI {
   mimecheck: (filepath: string) => Promise<boolean>;
 
   history: (filepath: string) => void;
