@@ -19,7 +19,7 @@ build({
     linux: {
       asarUnpack: ['dist/images/logo.png'],
       icon: 'assets/linux.icns',
-      target: ['AppImage', 'deb', 'zip'],
+      target: ['AppImage', 'deb', 'rpm', 'zip'],
       category: 'Graphics',
     },
   },
