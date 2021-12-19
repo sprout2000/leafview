@@ -40,6 +40,9 @@ const isDev = process.env.NODE_ENV === 'development';
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 
+const initWidth = 640;
+const initHeight = 440;
+
 const getResourceDirectory = () => {
   return isDev
     ? path.join(process.cwd(), 'dist')
@@ -65,8 +68,8 @@ if (isDev) {
 const store = new Store<StoreType>({
   configFileMode: 0o666,
   defaults: {
-    width: 800,
-    height: 600,
+    width: initWidth,
+    height: initHeight,
     x: undefined,
     y: undefined,
     darkmode: false,
@@ -88,8 +91,8 @@ const createWindow = () => {
 
   const mainWindow = new BrowserWindow({
     show: false,
-    minWidth: 800,
-    minHeight: 600,
+    minWidth: initWidth,
+    minHeight: initHeight,
     x: store.get('x'),
     y: store.get('y'),
     width: store.get('width'),
