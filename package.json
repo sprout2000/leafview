@@ -40,9 +40,9 @@
     "lint:eslint": "eslint --fix .",
     "lint:prettier": "prettier --write .",
     "release": "ts-node scripts/linux.ts",
-    "package": "run-s clean build:prod build:unsign",
-    "package:appx": "run-s clean build:prod build:appx",
-    "package:darwin": "run-s clean build:prod build:darwin",
+    "package": "run-s clean build build:unsign",
+    "package:appx": "run-s clean build build:appx",
+    "package:darwin": "run-s clean build build:darwin",
     "prepare": "git config --local core.hooksPath hooks"
   },
   "dependencies": {
