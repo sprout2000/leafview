@@ -28,6 +28,8 @@ You can download the latest version of LeafView from the releases page here:
 
 You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
 
+<a href='https://www.microsoft.com/store/apps/9P870THX6217'><img width="160px" src='https://developer.microsoft.com/en-us/store/badges/images/English_get-it-from-MS.png' alt='Badge'/></a>
+
 ### :penguin: Linux
 
 see [LINUX.md](https://github.com/sprout2000/leafview/blob/main/LINUX.md#notes-for-linux-users).
