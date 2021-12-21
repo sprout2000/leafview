@@ -8,9 +8,7 @@
     "jsx": "react-jsx",
     "strict": true,
     "sourceMap": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true
+    "resolveJsonModule": true
   },
   "ts-node": {
     "compilerOptions": {
