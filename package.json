@@ -34,13 +34,13 @@
     "start": "run-s clean build serve",
     "build": "cross-env NODE_ENV=\"production\" webpack --progress",
     "build:unsign": "cross-env UNSIGN=true ts-node scripts/build.ts",
-    "build:release": "ts-node scripts/build.ts",
+    "build:darwin": "ts-node scripts/build.ts",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint --fix .",
     "lint:prettier": "prettier --write .",
     "release": "ts-node scripts/build.ts",
     "package": "run-s clean build build:unsign",
-    "package:release": "run-s clean build build:release",
+    "package:darwin": "run-s clean build build:darwin",
     "prepare": "git config --local core.hooksPath hooks"
   },
   "dependencies": {
