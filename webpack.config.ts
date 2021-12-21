@@ -34,7 +34,7 @@ const common: Configuration = {
       {
         test: /\.s?css$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          { loader: MiniCssExtractPlugin.loader },
           {
             loader: 'css-loader',
             options: {
@@ -44,9 +44,7 @@ const common: Configuration = {
           },
           {
             loader: 'sass-loader',
-            options: {
-              sourceMap: isDev,
-            },
+            options: { sourceMap: isDev },
           },
         ],
       },
