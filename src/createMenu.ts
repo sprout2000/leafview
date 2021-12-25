@@ -27,10 +27,10 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
           await dialog
             .showOpenDialog(win, {
               properties: ['openFile'],
-              title: i18next.t('dialogTitle'),
+              title: i18next.t('Select an image'),
               filters: [
                 {
-                  name: i18next.t('dialogName'),
+                  name: i18next.t('Image files'),
                   extensions: [
                     'bmp',
                     'gif',

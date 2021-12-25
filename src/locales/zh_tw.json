@@ -1,8 +1,8 @@
 {
   "File": "文件",
   "Open...": "打開...",
-  "dialogTitle": "選擇一張圖片",
-  "dialogName": "圖片文件",
+  "Select an image": "選擇一張圖片",
+  "Image files": "圖片文件",
   "Move to Trash": "刪除",
   "View": "顯示",
   "Next Image": "下一張圖片",

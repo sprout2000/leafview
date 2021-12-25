@@ -149,10 +149,10 @@ const createWindow = () => {
     return dialog
       .showOpenDialog(mainWindow, {
         properties: ['openFile'],
-        title: i18next.t('dialogTitle'),
+        title: i18next.t('Select an image'),
         filters: [
           {
-            name: i18next.t('dialogName'),
+            name: i18next.t('Image files'),
             extensions: [
               'bmp',
               'gif',

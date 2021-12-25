@@ -1,8 +1,8 @@
 {
   "File": "文件",
   "Open...": "打开...",
-  "dialogTitle": "选择一张图片",
-  "dialogName": "图片文件",
+  "Select an image": "选择一张图片",
+  "Image files": "图片文件",
   "Move to Trash": "删除",
   "View": "显示",
   "Next Image": "下一张图片",
