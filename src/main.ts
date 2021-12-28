@@ -88,10 +88,10 @@ const createWindow = () => {
 
   const mainWindow = new BrowserWindow({
     show: false,
-    minWidth: initWidth,
-    minHeight: initHeight,
     x: store.get('x'),
     y: store.get('y'),
+    minWidth: initWidth,
+    minHeight: initHeight,
     width: store.get('width'),
     height: store.get('height'),
     autoHideMenuBar: true,
