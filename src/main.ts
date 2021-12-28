@@ -271,12 +271,9 @@ app.whenReady().then(async () => {
   if (isDev) {
     const extPath = await searchDevtools('REACT');
     if (extPath) {
-      await session.defaultSession
-        .loadExtension(extPath, {
-          allowFileAccess: true,
-        })
-        .then(() => log.info('React Devtools loaded...'))
-        .catch((err) => log.error(err));
+      await session.defaultSession.loadExtension(extPath, {
+        allowFileAccess: true,
+      });
     }
   }
 
