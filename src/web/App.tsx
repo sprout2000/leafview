@@ -80,13 +80,13 @@ export const App = () => {
     [url]
   );
 
-  const onPrevent = (e: React.DragEvent<HTMLDivElement>) => {
+  const preventDefault = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
   };
 
   const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
-    onPrevent(e);
+    preventDefault(e);
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
@@ -283,9 +283,9 @@ export const App = () => {
       className="container"
       onDrop={onDrop}
       onKeyDown={onKeyDown}
-      onDragOver={onPrevent}
-      onDragEnter={onPrevent}
-      onDragLeave={onPrevent}
+      onDragOver={preventDefault}
+      onDragEnter={preventDefault}
+      onDragLeave={preventDefault}
       onContextMenu={onContextMenu}
     >
       <div className="bottom">
