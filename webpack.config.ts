@@ -15,6 +15,7 @@ const common: Configuration = {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
   },
+  externals: ['fsevents'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: './',
@@ -26,10 +27,7 @@ const common: Configuration = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'ts-loader' },
-          { loader: 'ifdef-loader', options: { DEBUG: isDev } },
-        ],
+        loader: 'ts-loader',
       },
       {
         test: /\.s?css$/,

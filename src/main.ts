@@ -49,7 +49,6 @@ const getResourceDirectory = () => {
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
 };
 
-/// #if DEBUG
 if (isDev) {
   const execPath =
     process.platform === 'win32'
@@ -63,7 +62,6 @@ if (isDev) {
     hardResetMethod: 'exit',
   });
 }
-/// #endif
 
 const store = new Store<StoreType>({
   configFileMode: 0o666,
