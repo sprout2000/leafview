@@ -36,20 +36,20 @@ process.once('uncaughtException', (err) => {
   app.exit();
 });
 
-const isDev = process.env.NODE_ENV === 'development';
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
+const isDevelop = process.env.NODE_ENV === 'development';
 
 const initWidth = 640;
 const initHeight = 440;
 
 const getResourceDirectory = () => {
-  return isDev
+  return isDevelop
     ? path.join(process.cwd(), 'dist')
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
 };
 
-if (isDev) {
+if (isDevelop) {
   const execPath =
     process.platform === 'win32'
       ? '../node_modules/electron/dist/electron.exe'
@@ -182,13 +182,13 @@ const createWindow = () => {
     menu.popup();
   });
 
-  if (isDev) mainWindow.webContents.openDevTools({ mode: 'detach' });
+  if (isDevelop) mainWindow.webContents.openDevTools({ mode: 'detach' });
 
   mainWindow.loadFile('dist/index.html');
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
   mainWindow.webContents.once('did-finish-load', () => {
-    if (!isDarwin && !isDev && process.argv.length >= 2) {
+    if (!isDarwin && !isDevelop && process.argv.length >= 2) {
       const filepath = process.argv[process.argv.length - 1];
       if (path.basename(filepath).startsWith(dotfiles)) return;
 
@@ -219,7 +219,7 @@ const createWindow = () => {
     });
   }
 
-  if ((isDarwin || isLinux) && !isDev) {
+  if ((isDarwin || isLinux) && !isDevelop) {
     autoUpdater.checkForUpdatesAndNotify();
 
     autoUpdater.once('error', (_e, err) => {
@@ -266,7 +266,7 @@ app.whenReady().then(async () => {
   const locale = app.getLocale();
   setLocales(locale);
 
-  if (isDev) {
+  if (isDevelop) {
     const extPath = await searchDevtools('REACT');
     if (extPath) {
       await session.defaultSession.loadExtension(extPath, {
