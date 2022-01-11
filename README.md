@@ -45,7 +45,7 @@ see [LINUX.md](https://github.com/sprout2000/leafview/blob/main/LINUX.md#notes-f
 |                                         <kbd>+</kbd>                                         | Zoom In                            |
 |                                         <kbd>-</kbd>                                         | Zoom Out                           |
 |                                         <kbd>0</kbd>                                         | Reset Zoom                         |
-|         <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd>          | pan                                |
+|         <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd>          | Pan                                |
 |                              <kbd>CmdOrCtrl</kbd>+<kbd>D</kbd>                               | Toggle Dark Mode (_except Linux_)  |
 |                                        <kbd>F11</kbd>                                        | Toggle Fullscreen (_except macOS_) |
 
