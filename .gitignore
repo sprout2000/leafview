@@ -1,14 +1,7 @@
 node_modules/
 dist/
-build/
 release/
-coverage/
-squashfs-root/
 npm-*.log
 yarn-*.log
-parent.plist
-gh-pages
-CSC_KEY_LINK
 .env
-.cache
 .DS_Store
