@@ -47,7 +47,7 @@ build({
     },
     appx: {
       applicationId: 'sprout2000.LeafView',
-      backgroundColor: '#1d3557',
+      backgroundColor: '#005fb8',
       displayName: 'LeafView',
       showNameOnTiles: true,
       languages: [
