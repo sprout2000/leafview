@@ -1,6 +1,4 @@
 node_modules/
 dist/
-build/
 release/
-coverage/
-.yarn/
+pnpm-lock.yaml
