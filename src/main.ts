@@ -14,8 +14,8 @@ import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
 import { searchDevtools } from 'electron-search-devtools';
 
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 import mime from 'mime-types';
 import i18next from 'i18next';

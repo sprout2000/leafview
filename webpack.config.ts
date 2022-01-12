@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
