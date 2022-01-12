@@ -1,4 +1,4 @@
 node_modules/
 dist/
 release/
-pnpm-lock.yaml
+yarn.lock
