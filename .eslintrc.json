@@ -18,7 +18,7 @@
       "jsx": true
     }
   },
-  "plugins": ["unicorn", "react-hooks", "react", "@typescript-eslint"],
+  "plugins": ["react-hooks", "react", "@typescript-eslint"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -29,7 +29,6 @@
   ],
   "rules": {
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off",
-    "unicorn/prefer-node-protocol": ["error", { "checkRequire": true }]
+    "react/react-in-jsx-scope": "off"
   }
 }
