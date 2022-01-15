@@ -60,7 +60,7 @@ export const App = () => {
 
           mapObj.current.on('dblclick', () => {
             const center = bounds.getCenter();
-            if (mapObj.current) mapObj.current.setView(center, 0);
+            mapObj.current && mapObj.current.setView(center, 0);
           });
 
           if (img.width < width && img.height < height) {
@@ -210,7 +210,7 @@ export const App = () => {
     if (url === empty) return;
 
     if (e.key === '0') {
-      if (mapObj.current) mapObj.current.setZoom(0);
+      mapObj.current && mapObj.current.setZoom(0);
     }
   };
 
@@ -271,7 +271,7 @@ export const App = () => {
       }
     );
 
-    if (mapRef.current) resizeObserver.observe(mapRef.current);
+    mapRef.current && resizeObserver.observe(mapRef.current);
 
     return () => {
       resizeObserver.disconnect();
