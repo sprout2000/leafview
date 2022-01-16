@@ -77,8 +77,9 @@ const store = new Store<StoreType>({
 let openfile: string | null = null;
 
 const checkmime = (filepath: string) => {
+  const regexp = new RegExp(/bmp|ico|gif|jpeg|png|svg|webp/);
   const mimetype = mime.lookup(filepath);
-  return mimetype && mimetype.match(/bmp|ico|gif|jpeg|png|svg|webp/);
+  return mimetype && regexp.test(mimetype) ? true : false;
 };
 
 const createWindow = () => {
