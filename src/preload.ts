@@ -14,7 +14,7 @@ contextBridge.exposeInMainWorld('myAPI', {
   readdir: async (dirpath: string): Promise<void | string[]> =>
     ipcRenderer.invoke('readdir', dirpath),
 
-  moveToTrash: async (filepath: string): Promise<boolean> =>
+  moveToTrash: async (filepath: string): Promise<void> =>
     ipcRenderer.invoke('move-to-trash', filepath),
 
   openDialog: async (): Promise<string | void | undefined> =>
