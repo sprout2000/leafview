@@ -60,13 +60,14 @@ see [LINUX.md](https://github.com/sprout2000/leafview/blob/main/LINUX.md#notes-f
 
 ## :closed_lock_with_key: Security
 
-| API               | Value   |
-| :---------------- | :------ |
-| default-src (CSP) | `self`  |
-| nodeIntegration   | `false` |
-| contextIsolation  | `true`  |
-| safeDialogs       | `true`  |
-| sandbox           | `true`  |
+| API                | Value   |
+| :----------------- | :------ |
+| default-src (CSP)  | `self`  |
+| nodeIntegration    | `false` |
+| enableRemoteModule | `false` |
+| contextIsolation   | `true`  |
+| safeDialogs        | `true`  |
+| sandbox            | `true`  |
 
 ## :globe_with_meridians: Supported Languages
 
