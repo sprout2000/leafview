@@ -11,7 +11,6 @@ import {
 
 import log from 'electron-log';
 import Store from 'electron-store';
-import electronReload from 'electron-reload';
 import { autoUpdater } from 'electron-updater';
 import { searchDevtools } from 'electron-search-devtools';
 
@@ -56,7 +55,8 @@ if (isDevelop) {
       ? '../node_modules/electron/dist/electron.exe'
       : '../node_modules/.bin/electron';
 
-  electronReload(__dirname, {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('electron-reload')(__dirname, {
     electron: path.resolve(__dirname, execPath),
     forceHardReset: true,
     hardResetMethod: 'exit',
