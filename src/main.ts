@@ -183,11 +183,6 @@ const createWindow = () => {
     menu.popup();
   });
 
-  if (isDevelop) mainWindow.webContents.openDevTools({ mode: 'detach' });
-
-  mainWindow.loadFile('dist/index.html');
-  mainWindow.once('ready-to-show', () => mainWindow.show());
-
   mainWindow.webContents.once('did-finish-load', () => {
     if (!isDarwin && !isDevelop && process.argv.length >= 2) {
       const filepath = process.argv[process.argv.length - 1];
@@ -254,6 +249,11 @@ const createWindow = () => {
     const { x, y, width, height } = mainWindow.getBounds();
     store.set({ x, y, width, height, darkmode });
   });
+
+  if (isDevelop) mainWindow.webContents.openDevTools({ mode: 'detach' });
+
+  mainWindow.loadFile('dist/index.html');
+  mainWindow.once('ready-to-show', () => mainWindow.show());
 };
 
 app.once('will-finish-launching', () => {
