@@ -1582,10 +1582,10 @@ electron-reload@^2.0.0-alpha.1:
   dependencies:
     chokidar "^3.5.2"
 
-electron-search-devtools@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/electron-search-devtools/-/electron-search-devtools-1.5.2.tgz#3e5a832aba9abbfeec75b9cd96ab9478eab290e0"
-  integrity sha512-+HOM3VLPUW8LznPzJC/d2sZxUruGzD+X03NfsE0iDhXlPBaDg3KxhwCCQVXh5tIrJIAImLQBlyikbgQPHGchQA==
+electron-search-devtools@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/electron-search-devtools/-/electron-search-devtools-1.5.3.tgz#bd1d5c9053f50c63bdf6318135fd2f8f866d6430"
+  integrity sha512-LWSMhQvYZCS49aWoCk+ZzoYp6vhNvaXWUM7gzafphidlWSGuQvwteBqaTYAH7F65Xscz0EnkM5ZXg6OFyHAdfQ==
 
 electron-store@^8.0.1:
   version "8.0.1"
