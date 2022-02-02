@@ -8,22 +8,18 @@ You can contribute to this repository very easily!
 
 2. Create `{your_LANG}.json` in `src/locales`.
 
-```sh
-% tree src
-
-src
-├── @types
-├── createMenu.ts
-├── locales
-│   ├── cs.json
-│   ├── en.json
-│   └── ja.json
-├── main.ts
-├── preload.ts
-├── setLocales.ts
-└── web
-
-3 directories, 26 files
+```diff
+  src
+  ├── @types
+  ├── createMenu.ts
+  ├── locales
++ │   ├── cs.json
+  │   ├── en.json
+  │   └── ja.json
+  ├── main.ts
+  ├── preload.ts
+  ├── setLocales.ts
+  └── web
 ```
 
 3. Import the locale into `src/setLocales.ts` as follows:
@@ -33,17 +29,17 @@ src
   import ja from './locales/ja.json';
 + import cs from './locales/cs.json';
 
- export const setLocales = (locale: string): void => {
-   i18next.init({
-     lng: locale,
-     fallbackLng: 'en',
-     resources: {
-       en: { translation: en },
-       ja: { translation: ja },
-+      cs: { translation: cs },
-     },
-   });
- };
+  export const setLocales = (locale: string): void => {
+    i18next.init({
+      lng: locale,
+      fallbackLng: 'en',
+      resources: {
+        en: { translation: en },
+        ja: { translation: ja },
++       cs: { translation: cs },
+      },
+    });
+  };
 ```
 
 4. Send the [pull request](https://github.com/sprout2000/leafview/pulls) to this repo.
