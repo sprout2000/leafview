@@ -13,15 +13,6 @@
     "type": "git",
     "url": "git@github.com:sprout2000/leafview.git"
   },
-  "bugs": {
-    "url": "https://github.com/sprout2000/leafview/issues"
-  },
-  "keywords": [
-    "image-viewer"
-  ],
-  "engines": {
-    "node": ">=14.17"
-  },
   "main": "dist/main.js",
   "scripts": {
     "predev": "rimraf dist",
