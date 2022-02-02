@@ -3,7 +3,6 @@
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
 <img width="780" alt="2021-10-29-095018" src="https://user-images.githubusercontent.com/52094761/139355323-1be87ae2-f23b-4c69-b64f-909e81a06d58.png">
-<!-- <img width="800" alt="2021-10-18-080803" src="https://user-images.githubusercontent.com/52094761/137648261-1f5dcea8-c455-44aa-8f13-71400d37f82e.png"> -->
 
 [![GitHub CI](https://github.com/sprout2000/leafview/actions/workflows/release.yml/badge.svg)](https://github.com/sprout2000/leafview/actions/workflows/release.yml)
 [![GitHub license](https://img.shields.io/github/license/sprout2000/leafview)](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
@@ -82,32 +81,6 @@ see [LINUX.md](https://github.com/sprout2000/leafview/blob/main/LINUX.md#notes-f
 | 简体中文 :cn:                      | `zh_CN` |
 | 繁体中文 :taiwan:                  | `zh_TW` |
 | Arabic (Standard)                  |  `ar`   |
-
-## :beers: Contribution
-
-We need more locale files.
-When you have translated the menu into your language, could you please send us the locale file as a [pull request](https://github.com/sprout2000/leafview/pulls)?
-
-1. Create `{your_LANG}.json` in `src/locales`.
-2. Then import the locale file into `src/setLocales.ts` as follows:
-
-```diff
-  import en from './locales/en.json';
-  import ja from './locales/ja.json';
-+ import cs from './locales/cs.json';
-
- export const setLocales = (locale: string): void => {
-   i18next.init({
-     lng: locale,
-     fallbackLng: 'en',
-     resources: {
-       en: { translation: en },
-       ja: { translation: ja },
-+      cs: { translation: cs },
-     },
-   });
- };
-```
 
 ## :tada: Contributors
 
