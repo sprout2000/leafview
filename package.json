@@ -49,7 +49,7 @@
   "devDependencies": {
     "@types/leaflet": "^1.7.9",
     "@types/mime-types": "^2.1.1",
-    "@types/node": "^17.0.16",
+    "@types/node": "^17.0.17",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "copy-webpack-plugin": "^10.2.4",
@@ -70,7 +70,7 @@
     "ts-loader": "^9.2.6",
     "ts-node": "^10.5.0",
     "typescript": "4.5.5",
-    "wait-on": "^6.0.0",
+    "wait-on": "^6.0.1",
     "webpack": "^5.68.0",
     "webpack-cli": "^4.9.2"
   },
