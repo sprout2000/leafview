@@ -18,12 +18,12 @@ jobs:
           node-version: 16.x
 
       - name: Install
-        run: yarn install --ignore-optional --frozen-lockfile
+        run: npm install
 
       - name: Build
-        run: yarn build
+        run: npm run build
 
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn release
+        run: npm run release
