@@ -19,7 +19,6 @@ import path from 'node:path';
 
 import mime from 'mime-types';
 import i18next from 'i18next';
-import natsort from 'natsort';
 
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
@@ -135,7 +134,7 @@ const createWindow = () => {
           .filter(({ name }) => !name.startsWith(dotfiles))
           .map(({ name }) => path.resolve(dir, name))
           .filter((item) => checkmime(item))
-          .sort(natsort({ insensitive: true }))
+          .sort()
       )
       .catch((err) => log.error(err));
   });
