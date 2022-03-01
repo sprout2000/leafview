@@ -23,7 +23,7 @@ build({
       category: 'Graphics',
       icon: 'assets/linux.icns',
       asarUnpack: ['dist/images/logo.png'],
-      target: ['zip', 'AppImage', 'deb', 'rpm'],
+      target: ['zip', 'AppImage'],
       mimeTypes: [
         'image/bmp',
         'image/gif',
