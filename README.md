@@ -5,10 +5,11 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 <img width="780" alt="2021-10-29-095018" src="https://user-images.githubusercontent.com/52094761/139355323-1be87ae2-f23b-4c69-b64f-909e81a06d58.png">
 
 [![GitHub CI](https://github.com/sprout2000/leafview/actions/workflows/release.yml/badge.svg)](https://github.com/sprout2000/leafview/actions/workflows/release.yml)
-[![GitHub license](https://img.shields.io/github/license/sprout2000/leafview)](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
+![GitHub Release Date](https://img.shields.io/github/release-date/sprout2000/leafview)
 [![GitHub all releases](https://img.shields.io/github/downloads/sprout2000/leafview/total)](https://github.com/sprout2000/leafview/releases)
+![GitHub contributors](https://img.shields.io/github/contributors/sprout2000/leafview)
 [![GitHub stars](https://img.shields.io/github/stars/sprout2000/leafview)](https://github.com/sprout2000/leafview/stargazers)
-[![Twitter](https://img.shields.io/twitter/url?style=flat-square&url=https%3A%2F%2Fgithub.com%2Fsprout2000%2Fleafview)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fsprout2000%2Fleafview)
+[![GitHub license](https://img.shields.io/github/license/sprout2000/leafview)](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
 
 ## :thumbsup: Features
 
