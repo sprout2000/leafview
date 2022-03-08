@@ -106,13 +106,13 @@ export const App = () => {
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
-      setUrl(empty);
+      window.location.reload();
       return;
     }
 
     const list = await myAPI.readdir(dir);
     if (!list || list.length === 0) {
-      setUrl(empty);
+      window.location.reload();
       return;
     }
 
@@ -131,13 +131,13 @@ export const App = () => {
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
-      setUrl(empty);
+      window.location.reload();
       return;
     }
 
     const list = await myAPI.readdir(dir);
     if (!list || list.length === 0) {
-      setUrl(empty);
+      window.location.reload();
       return;
     }
 
@@ -158,13 +158,13 @@ export const App = () => {
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
-      setUrl(empty);
+      window.location.reload();
       return;
     }
 
     const list = await myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
-      setUrl(empty);
+      window.location.reload();
       return;
     }
 
@@ -174,7 +174,7 @@ export const App = () => {
     const newList = await myAPI.readdir(dir);
 
     if (!newList || newList.length === 0) {
-      setUrl(empty);
+      window.location.reload();
       return;
     }
 
