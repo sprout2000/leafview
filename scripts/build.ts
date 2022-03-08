@@ -36,7 +36,7 @@ build({
     },
     win: {
       icon: 'assets/icon.ico',
-      target: ['appx', 'nsis'],
+      target: ['zip', 'nsis'],
       publisherName: 'sprout2000',
       fileAssociations: [
         {
@@ -44,27 +44,6 @@ build({
           description: 'Image files',
         },
       ],
-    },
-    appx: {
-      applicationId: 'sprout2000.LeafView',
-      backgroundColor: '#ffffff',
-      displayName: 'LeafView',
-      showNameOnTiles: true,
-      languages: [
-        'en-US',
-        'ja-JP',
-        'cs-CZ',
-        'de-DE',
-        'es-ES',
-        'pl-PL',
-        'ru-RU',
-        'pt-PT',
-        'zh-CN',
-        'zh-TW',
-      ],
-      identityName: process.env.IDENTITY_NAME,
-      publisher: process.env.PUBLISHER,
-      publisherDisplayName: 'sprout2000',
     },
     nsis: {
       oneClick: false,
@@ -76,7 +55,6 @@ build({
         '${productName}-${version}-${platform}-${arch}-installer.${ext}',
     },
     mac: {
-      identity: process.env.UNSIGN && null,
       appId: process.env.APP_BUNDLE_ID,
       category: 'public.app-category.photography',
       target: {
@@ -113,6 +91,6 @@ build({
       icon: 'assets/dmg.icns',
       sign: false,
     },
-    afterSign: process.env.UNSIGN ? undefined : 'scripts/notarize.ts',
+    afterSign: 'scripts/notarize.ts',
   },
 }).catch((err) => console.log(err));
