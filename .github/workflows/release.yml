@@ -7,7 +7,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
     steps:
       - name: Check out Git repositry
         uses: actions/checkout@master
@@ -18,7 +22,7 @@ jobs:
           node-version: 16.x
 
       - name: Install
-        run: npm install
+        run: npm install --no-optional
 
       - name: Build
         run: npm run build
