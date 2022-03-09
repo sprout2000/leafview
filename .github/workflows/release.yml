@@ -7,10 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
+    runs-on: macos-latest
 
     steps:
       - name: Check out Git repositry
@@ -22,7 +19,7 @@ jobs:
           node-version: 16.x
 
       - name: Install
-        run: npm install --no-optional
+        run: npm install
 
       - name: Build
         run: npm run build
@@ -30,4 +27,10 @@ jobs:
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+          APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
+          ASC_PROVIDER: ${{ secrets.ASC_PROVIDER }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          CSC_LINK: ${{ secrets.CSC_LINK }}
         run: npm run release
