@@ -1,4 +1,4 @@
-# :beers: Adding Locales
+# :scroll: Adding Locales
 
 You can contribute to this repository very easily!
 
