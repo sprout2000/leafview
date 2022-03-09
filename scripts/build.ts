@@ -13,12 +13,6 @@ build({
       buildResources: 'assets',
       output: 'release',
     },
-    publish: [
-      {
-        provider: 'github',
-        releaseType: 'release',
-      },
-    ],
     linux: {
       category: 'Graphics',
       icon: 'assets/linux.icns',
@@ -60,6 +54,10 @@ build({
       target: {
         target: 'default',
         arch: ['x64', 'arm64'],
+      },
+      publish: {
+        provider: 'github',
+        releaseType: 'release',
       },
       icon: 'assets/icon.icns',
       extendInfo: {
