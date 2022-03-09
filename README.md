@@ -65,19 +65,19 @@ see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md#how-to-
 
 ## :globe_with_meridians: Supported Languages
 
-| Language                           |  Code   |
-| :--------------------------------- | :-----: |
-| English :us: :uk: :earth_americas: |  `en`   |
-| 日本語 :jp:                        |  `ja`   |
-| Čeština :czech_republic:           |  `cs`   |
-| Deutsch :de:                       |  `de`   |
-| Español :es: :mexico: :argentina:  |  `es`   |
-| Polski :poland:                    |  `pl`   |
-| Русский :ru:                       |  `ru`   |
-| Português :portugal: :brazil:      |  `pt`   |
-| 简体中文 :cn:                      | `zh_CN` |
-| 繁体中文 :taiwan:                  | `zh_TW` |
-| Arabic (Standard)                  |  `ar`   |
+| Language                               |  Code   |
+| :------------------------------------- | :-----: |
+| English :us: :uk: :earth_americas:     |  `en`   |
+| 日本語 :jp:                            |  `ja`   |
+| 繁体中文 :taiwan:                      | `zh_TW` |
+| Čeština :czech_republic:               |  `cs`   |
+| Deutsch :de: :austria: :switzerland:   |  `de`   |
+| Español :es: :mexico: :argentina: :us: |  `es`   |
+| Polski :poland:                        |  `pl`   |
+| Русский :ru:                           |  `ru`   |
+| Português :portugal: :brazil:          |  `pt`   |
+| 简体中文 :cn:                          | `zh_CN` |
+| اللغة العربية                          |  `ar`   |
 
 ## :tada: Contributors
 
