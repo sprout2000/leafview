@@ -93,11 +93,6 @@ see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md#how-to-
 - [@DrDeee](https://github.com/DrDeee) [#166](https://github.com/sprout2000/leafview/pull/166)
 - [@PetrTodorov](https://github.com/PetrTodorov) [#68](https://github.com/sprout2000/leafview/pull/68)
 
-## :vertical_traffic_light: Privacy Policy
-
-- LeafView and the developers do _NOT_ collect any personal information or privacy-related information about the user.
-- LeafView and the developers do _NOT_ collect the information of files opened by LeafView.
-
 ## :copyright: License
 
 Copyright (c) 2020 sprout2000 and other contributors
