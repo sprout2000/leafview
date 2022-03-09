@@ -19,20 +19,14 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 
 ## :inbox_tray: Download
 
-### :desktop_computer: macOS (x64, arm64)
+### :desktop_computer: macOS
 
 You can download the latest version of LeafView from the releases page here:
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
-### :computer: Windows 10, 11
+### :penguin: Linux and Windows10+
 
-You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
-
-<a href='https://www.microsoft.com/store/apps/9P870THX6217'><img width="160px" src='https://developer.microsoft.com/en-us/store/badges/images/English_get-it-from-MS.png' alt='Badge'/></a>
-
-### :penguin: Linux
-
-see [LINUX.md](https://github.com/sprout2000/leafview/blob/main/LINUX.md#notes-for-linux-users).
+see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md#how-to-build).
 
 ## :green_book: Usage
 
