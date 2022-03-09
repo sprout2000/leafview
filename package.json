@@ -28,7 +28,7 @@
     "lint": "run-s lint:*",
     "lint:eslint": "eslint --fix .",
     "lint:prettier": "prettier --write .",
-    "release": "run-s build build:package",
+    "release": "ts-node scripts/build.ts",
     "package": "run-s clean build build:package",
     "prepare": "git config --local core.hooksPath .githooks"
   },
