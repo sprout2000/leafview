@@ -2,7 +2,7 @@
 
 ```sh
 # clone this repo
-$ git clone https://github.com/sprout2000/leafview.git
+$ git clone -b v1.x https://github.com/sprout2000/leafview.git
 
 # install dependencies and build
 $ cd leafview
