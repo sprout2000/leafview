@@ -2,9 +2,9 @@
 
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
-<img width="640" src="https://user-images.githubusercontent.com/52094761/156723625-9eed907c-1d5f-4549-9e80-9b35c314e61f.png">
+<img width="640" src="https://user-images.githubusercontent.com/52094761/157586637-4b2deb8e-a1f7-46ef-9f24-d0efeb6a97a8.png">
 
-_(Image from [Pixabay](https://pixabay.com/ja/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1568646) by [Myriams-Fotos](https://pixabay.com/ja/users/myriams-fotos-1627417/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1568646))_
+_Image by <a href="https://pixabay.com/users/myriams-fotos-1627417/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1568646">Myriams-Fotos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1568646">Pixabay</a>_
 
 [![GitHub CI](https://github.com/sprout2000/leafview/actions/workflows/electron.yml/badge.svg)](https://github.com/sprout2000/leafview/actions/workflows/electron.yml)
 ![GitHub Release Date](https://img.shields.io/github/release-date/sprout2000/leafview)
