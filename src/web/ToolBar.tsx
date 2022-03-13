@@ -1,13 +1,17 @@
 import i18next from 'i18next';
-import { FaFolderOpen, FaPlay, FaTrash } from 'react-icons/fa';
+
+import { FolderOpen } from './FolderOpen';
+import { ArrowLeft } from './ArrowLeft';
+import { ArrowRight } from './ArrowRight';
+import { Trash } from './Trash';
 
 import './ToolBar.scss';
 
 interface Props {
+  onClickOpen: () => void;
   onPrev: () => Promise<void>;
   onNext: () => Promise<void>;
   onRemove: () => Promise<void>;
-  onClickOpen: () => Promise<void>;
 }
 
 export const ToolBar = (props: Props): JSX.Element => {
@@ -19,7 +23,7 @@ export const ToolBar = (props: Props): JSX.Element => {
           title={i18next.t('Open...')}
           onClick={props.onClickOpen}
         >
-          <FaFolderOpen size="1.5rem" />
+          <FolderOpen />
         </div>
       </div>
       <div className="arrows">
@@ -28,14 +32,14 @@ export const ToolBar = (props: Props): JSX.Element => {
           title={i18next.t('Prev Image')}
           onClick={props.onPrev}
         >
-          <FaPlay size="1.5rem" className="reverse" />
+          <ArrowLeft />
         </div>
         <div
           className="icon"
           title={i18next.t('Next Image')}
           onClick={props.onNext}
         >
-          <FaPlay size="1.5rem" />
+          <ArrowRight />
         </div>
       </div>
       <div className="trash">
@@ -44,7 +48,7 @@ export const ToolBar = (props: Props): JSX.Element => {
           title={i18next.t('Move to Trash')}
           onClick={props.onRemove}
         >
-          <FaTrash size="1.5rem" />
+          <Trash />
         </div>
       </div>
     </div>
