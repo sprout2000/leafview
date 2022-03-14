@@ -6,7 +6,7 @@ A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Ele
 
 _Image by <a href="https://pixabay.com/users/myriams-fotos-1627417/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1568646">Myriams-Fotos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1568646">Pixabay</a>_
 
-[![GitHub CI](https://github.com/sprout2000/leafview/actions/workflows/electron.yml/badge.svg)](https://github.com/sprout2000/leafview/actions/workflows/electron.yml)
+[![GitHub CI](https://github.com/sprout2000/leafview/actions/workflows/release.yml/badge.svg)](https://github.com/sprout2000/leafview/actions/workflows/release.yml)
 ![GitHub Release Date](https://img.shields.io/github/release-date/sprout2000/leafview)
 [![GitHub all releases](https://img.shields.io/github/downloads/sprout2000/leafview/total)](https://github.com/sprout2000/leafview/releases)
 ![GitHub contributors](https://img.shields.io/github/contributors/sprout2000/leafview)
