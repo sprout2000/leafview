@@ -52,7 +52,6 @@ const common: Configuration = {
       },
     ],
   },
-  watch: isDev,
   stats: 'errors-only',
   performance: { hints: false },
   optimization: { minimize: !isDev },
@@ -104,5 +103,4 @@ const renderer: Configuration = {
   ],
 };
 
-const config = isDev ? renderer : [main, preload, renderer];
-export default config;
+export default [main, preload, renderer];
