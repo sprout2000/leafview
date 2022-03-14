@@ -29,8 +29,7 @@
     "lint:eslint": "eslint --fix .",
     "lint:prettier": "prettier --write .",
     "release": "ts-node scripts/build.ts",
-    "package": "run-s clean build build:package",
-    "prepare": "git config --local core.hooksPath hooks"
+    "package": "run-s clean build build:package"
   },
   "dependencies": {
     "electron-log": "^4.4.6",
