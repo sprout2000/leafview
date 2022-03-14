@@ -1,9 +1,9 @@
 import i18next from 'i18next';
 
-import { FolderOpen } from './FolderOpen';
-import { ArrowLeft } from './ArrowLeft';
-import { ArrowRight } from './ArrowRight';
-import { Trash } from './Trash';
+import { FolderOpen } from './icons/FolderOpen';
+import { ArrowLeft } from './icons/ArrowLeft';
+import { ArrowRight } from './icons/ArrowRight';
+import { Trash } from './icons/Trash';
 
 import './ToolBar.scss';
 
