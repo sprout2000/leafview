@@ -4,7 +4,6 @@ import {
   shell,
   ipcMain,
   dialog,
-  session,
   nativeTheme,
   BrowserWindow,
 } from 'electron';
@@ -12,7 +11,6 @@ import {
 import log from 'electron-log';
 import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
-import { searchDevtools } from 'electron-search-devtools';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -47,18 +45,6 @@ const getResourceDirectory = () => {
     ? path.join(process.cwd(), 'dist')
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
 };
-
-if (isDevelop) {
-  const execPath =
-    process.platform === 'win32'
-      ? '../node_modules/electron/dist/electron.exe'
-      : '../node_modules/.bin/electron';
-
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  require('electron-reload')(__dirname, {
-    electron: path.resolve(__dirname, execPath),
-  });
-}
 
 const store = new Store<StoreType>({
   configFileMode: 0o666,
@@ -264,16 +250,6 @@ app.once('will-finish-launching', () => {
 app.whenReady().then(async () => {
   const locale = app.getLocale();
   setLocales(locale);
-
-  if (isDevelop) {
-    const extPath = await searchDevtools('REACT');
-    if (extPath) {
-      await session.defaultSession.loadExtension(extPath, {
-        allowFileAccess: true,
-      });
-    }
-  }
-
   createWindow();
 });
 
