@@ -16,7 +16,7 @@
   "main": "dist/main.js",
   "scripts": {
     "serve": "electron .",
-    "start": "run-s clean build:dev serve",
+    "start": "run-s build:dev serve",
     "build": "cross-env NODE_ENV=\"production\" webpack",
     "build:dev": "cross-env NODE_ENV=\"development\" webpack --progress",
     "build:package": "ts-node scripts/build.ts",
@@ -42,6 +42,7 @@
     "copy-webpack-plugin": "^10.2.4",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
+    "dotenv": "^16.0.0",
     "electron": "^17.1.2",
     "electron-builder": "^22.14.13",
     "electron-notarize": "^1.1.1",
