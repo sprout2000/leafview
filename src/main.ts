@@ -2,8 +2,9 @@ import {
   app,
   Menu,
   shell,
-  ipcMain,
   dialog,
+  ipcMain,
+  session,
   nativeTheme,
   BrowserWindow,
 } from 'electron';
@@ -11,6 +12,7 @@ import {
 import log from 'electron-log';
 import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
+import { searchDevtools } from 'electron-search-devtools';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -251,6 +253,15 @@ app.whenReady().then(async () => {
   const locale = app.getLocale();
   setLocales(locale);
   createWindow();
+
+  if (isDevelop) {
+    const devtools = await searchDevtools('REACT');
+    if (devtools) {
+      await session.defaultSession.loadExtension(devtools, {
+        allowFileAccess: true,
+      });
+    }
+  }
 });
 
 app.setAboutPanelOptions({
