@@ -1,7 +1,6 @@
 import path from 'node:path';
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -47,7 +46,7 @@ const common: Configuration = {
         ],
       },
       {
-        test: /\.(bmp|ico|gif|jpe?g|png|svg|ttf|eot|woff?2?)$/,
+        test: /\.png$/,
         type: 'asset/resource',
       },
     ],
@@ -84,21 +83,8 @@ const renderer: Configuration = {
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: './src/web/index.html',
-      minify: !isDev,
       inject: 'body',
-      filename: 'index.html',
-      scriptLoading: 'blocking',
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from:
-            process.platform === 'linux'
-              ? './assets/linux.png'
-              : './assets/icon.png',
-          to: './images/logo.png',
-        },
-      ],
+      minify: !isDev,
     }),
   ],
 };
