@@ -21,14 +21,8 @@ _Image by <a href="https://pixabay.com/users/myriams-fotos-1627417/?utm_source=l
 
 ## :inbox_tray: Download
 
-### :desktop_computer: macOS
-
 You can download the latest version of LeafView from the releases page here:
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
-
-### :penguin: Linux and Windows10+
-
-see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md#how-to-build).
 
 ## :green_book: Usage
 
