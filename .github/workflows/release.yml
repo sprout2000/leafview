@@ -19,10 +19,10 @@ jobs:
           node-version: 16.x
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install
 
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Release
         env:
@@ -33,4 +33,4 @@ jobs:
           ASC_PROVIDER: ${{ secrets.ASC_PROVIDER }}
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
           CSC_LINK: ${{ secrets.CSC_LINK }}
-        run: npm run release
+        run: yarn release
