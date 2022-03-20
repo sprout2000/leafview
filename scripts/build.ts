@@ -54,6 +54,9 @@ build({
       icon: 'assets/dmg.icns',
       sign: false,
     },
-    afterSign: 'scripts/notarize.ts',
+    afterSign:
+      process.env.NODE_ENV === 'development'
+        ? undefined
+        : 'scripts/notarize.ts',
   },
 }).catch((err) => console.log(err));
