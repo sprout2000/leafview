@@ -52,7 +52,7 @@ You can download the latest version of LeafView from the releases page here:
 # clone this repo.
 $ git clone https://github.com/sprout2000/leafview.git
 
-# instal dependencies
+# install dependencies
 $ cd leafview
 $ npm install
 
