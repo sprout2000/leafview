@@ -46,6 +46,25 @@ You can download the latest version of LeafView from the releases page here:
 | Double click | Reset zoom                           |
 | Right click  | Show the context menu when available |
 
+## :hammer_and_wrench: Development
+
+```sh
+# clone this repo.
+$ git clone https://github.com/sprout2000/leafview.git
+
+# instal dependencies
+$ cd leafview
+$ npm install
+
+# on development
+$ npm start
+
+# on release
+$ npm run package
+```
+
+_NOTE: You will need to have [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en/) installed._
+
 ## :closed_lock_with_key: Security
 
 | API                     | Value              |
