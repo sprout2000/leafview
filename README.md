@@ -60,10 +60,10 @@ $ npm install
 $ npm start
 
 # on production
-$ npm run package
+$ npm run build && npm run package
 ```
 
-_NOTE: You will need to have [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en/) installed._
+_NOTE: You will need to have [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en/) installed on macOS._
 
 ## :closed_lock_with_key: Security
 
