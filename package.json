@@ -16,7 +16,7 @@
     "start": "NODE_ENV=\"development\" webpack --progress && electron .",
     "build": "NODE_ENV=\"production\" webpack --progress",
     "release": "ts-node scripts/build.ts",
-    "package": "CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts"
+    "package": "NODE_ENV=\"development\" CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts"
   },
   "dependencies": {
     "electron-log": "^4.4.6",
