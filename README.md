@@ -59,7 +59,7 @@ $ npm install
 # on development
 $ npm start
 
-# on release
+# on production
 $ npm run package
 ```
 
