@@ -26,7 +26,7 @@ You can download the latest version of LeafView from the releases page here:
 
 ### for Windows users
 
-see [BUILD.md]().
+see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md).
 
 ## :green_book: Usage
 
