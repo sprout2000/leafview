@@ -13,6 +13,7 @@ build({
       buildResources: 'assets',
       output: 'release',
     },
+    asarUnpack: ['dist/images/logo.png'],
     publish: {
       provider: 'github',
       releaseType: 'release',
@@ -20,7 +21,6 @@ build({
     linux: {
       category: 'Graphics',
       icon: 'assets/linux.icns',
-      asarUnpack: ['dist/images/logo.png'],
       target: ['AppImage'],
       mimeTypes: [
         'image/bmp',
@@ -70,8 +70,8 @@ build({
       sign: false,
     },
     afterSign:
-      process.env.NODE_ENV === 'development'
-        ? undefined
+      process.env.CSC_IDENTITY_AUTO_DISCOVERY === 'false'
+        ? null
         : 'scripts/notarize.ts',
   },
 }).catch((err) => console.log(err));
