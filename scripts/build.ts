@@ -13,16 +13,31 @@ build({
       buildResources: 'assets',
       output: 'release',
     },
+    publish: {
+      provider: 'github',
+      releaseType: 'release',
+    },
+    linux: {
+      category: 'Graphics',
+      icon: 'assets/linux.icns',
+      asarUnpack: ['dist/images/logo.png'],
+      target: ['AppImage'],
+      mimeTypes: [
+        'image/bmp',
+        'image/gif',
+        'image/png',
+        'image/jpeg',
+        'image/webp',
+        'image/svg+xml',
+        'image/vnd.microsoft.icon',
+      ],
+    },
     mac: {
       appId: process.env.APP_BUNDLE_ID,
       category: 'public.app-category.photography',
       target: {
         target: 'default',
         arch: ['x64', 'arm64'],
-      },
-      publish: {
-        provider: 'github',
-        releaseType: 'release',
       },
       icon: 'assets/icon.icns',
       extendInfo: {
