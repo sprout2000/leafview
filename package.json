@@ -13,10 +13,10 @@
   },
   "main": "dist/main.js",
   "scripts": {
-    "start": "NODE_ENV=\"development\" webpack --progress && electron .",
-    "build": "NODE_ENV=\"production\" webpack",
+    "start": "cross-env NODE_ENV=\"development\" webpack --progress && electron .",
+    "build": "cross-env NODE_ENV=\"production\" webpack",
     "release": "ts-node scripts/build.ts",
-    "package": "CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts"
+    "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts"
   },
   "dependencies": {
     "electron-log": "^4.4.6",
@@ -35,6 +35,7 @@
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "copy-webpack-plugin": "^10.2.4",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "dotenv": "^16.0.0",
     "electron": "^17.2.0",
