@@ -32,6 +32,26 @@ build({
         'image/vnd.microsoft.icon',
       ],
     },
+    win: {
+      icon: 'assets/icon.ico',
+      target: ['zip', 'nsis'],
+      publisherName: 'sprout2000',
+      fileAssociations: [
+        {
+          ext: ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'ico', 'svg', 'webp'],
+          description: 'Image files',
+        },
+      ],
+    },
+    nsis: {
+      oneClick: false,
+      perMachine: false,
+      createDesktopShortcut: false,
+      createStartMenuShortcut: true,
+      installerIcon: 'assets/installer.ico',
+      artifactName:
+        '${productName}-${version}-${platform}-${arch}-installer.${ext}',
+    },
     mac: {
       appId: process.env.APP_BUNDLE_ID,
       category: 'public.app-category.photography',
