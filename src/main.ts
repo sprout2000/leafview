@@ -35,10 +35,17 @@ process.once('uncaughtException', (err) => {
   app.exit();
 });
 
+const isLinux = process.platform === 'linux';
 const isDevelop = process.env.NODE_ENV === 'development';
 
 const initWidth = 640;
 const initHeight = 440;
+
+const getResourceDirectory = () => {
+  return isDevelop
+    ? path.join(process.cwd(), 'dist')
+    : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
+};
 
 const store = new Store<StoreType>({
   configFileMode: 0o666,
@@ -71,6 +78,9 @@ const createWindow = () => {
     height: store.get('height'),
     autoHideMenuBar: true,
     fullscreenable: false,
+    icon: isLinux
+      ? path.join(getResourceDirectory(), 'images/logo.png')
+      : undefined,
     backgroundColor: nativeTheme.shouldUseDarkColors ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       sandbox: true,
@@ -239,8 +249,13 @@ app.whenReady().then(async () => {
 
 app.setAboutPanelOptions({
   applicationName: app.name,
-  applicationVersion: app.getVersion(),
+  applicationVersion: isLinux
+    ? `v${app.getVersion()} (${process.versions['electron']})`
+    : app.getVersion(),
   version: process.versions['electron'],
+  iconPath: isLinux
+    ? path.resolve(getResourceDirectory(), 'images/logo.png')
+    : path.join(__dirname, 'images/logo.png'),
   copyright: '© 2020 sprout2000 and other contributors',
 });
 
