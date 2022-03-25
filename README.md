@@ -24,6 +24,10 @@ _Image by <a href="https://pixabay.com/users/myriams-fotos-1627417/?utm_source=l
 You can download the latest version of LeafView from the releases page here:
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
+### for Windows users
+
+see [BUILD.md]().
+
 ## :green_book: Usage
 
 ### :keyboard: Keyboard Shortcuts
@@ -45,25 +49,6 @@ You can download the latest version of LeafView from the releases page here:
 |    Wheel     | Zoom in/out                          |
 | Double click | Reset zoom                           |
 | Right click  | Show the context menu when available |
-
-## :hammer_and_wrench: Development
-
-```sh
-# clone this repo.
-$ git clone https://github.com/sprout2000/leafview.git
-
-# install dependencies
-$ cd leafview
-$ npm install
-
-# on development
-$ npm start
-
-# on production
-$ npm run build && npm run package
-```
-
-_NOTE: You will need to have [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en/) installed on macOS or GNU/Linux._
 
 ## :closed_lock_with_key: Security
 
