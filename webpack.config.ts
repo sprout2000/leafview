@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -85,6 +86,17 @@ const renderer: Configuration = {
       template: './src/web/index.html',
       inject: 'body',
       minify: !isDev,
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from:
+            process.platform === 'linux'
+              ? './assets/linux.png'
+              : './assets/icon.png',
+          to: './images/logo.png',
+        },
+      ],
     }),
   ],
 };
