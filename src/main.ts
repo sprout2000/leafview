@@ -253,9 +253,7 @@ app.setAboutPanelOptions({
     ? `v${app.getVersion()} (${process.versions['electron']})`
     : app.getVersion(),
   version: process.versions['electron'],
-  iconPath: isLinux
-    ? path.resolve(getResourceDirectory(), 'images/logo.png')
-    : path.join(__dirname, 'images/logo.png'),
+  iconPath: path.resolve(getResourceDirectory(), 'images/logo.png'),
   copyright: '© 2020 sprout2000 and other contributors',
 });
 
