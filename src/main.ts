@@ -36,6 +36,7 @@ process.once('uncaughtException', (err) => {
 });
 
 const isLinux = process.platform === 'linux';
+const isDarwin = process.platform === 'darwin';
 const isDevelop = process.env.NODE_ENV === 'development';
 
 const initWidth = 640;
@@ -68,6 +69,8 @@ const checkmime = (filepath: string) => {
 };
 
 const createWindow = () => {
+  const dotfiles = isDarwin ? '.' : '._';
+
   const mainWindow = new BrowserWindow({
     show: false,
     x: store.get('x'),
@@ -77,7 +80,7 @@ const createWindow = () => {
     width: store.get('width'),
     height: store.get('height'),
     autoHideMenuBar: true,
-    fullscreenable: false,
+    fullscreenable: isDarwin ? false : true,
     icon: isLinux
       ? path.join(getResourceDirectory(), 'images/logo.png')
       : undefined,
@@ -89,8 +92,13 @@ const createWindow = () => {
     },
   });
 
-  const dotfiles = '.';
-  nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
+  if (isLinux) {
+    nativeTheme.themeSource = nativeTheme.shouldUseDarkColors
+      ? 'dark'
+      : 'light';
+  } else {
+    nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
+  }
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
@@ -162,7 +170,14 @@ const createWindow = () => {
   });
 
   mainWindow.webContents.once('did-finish-load', () => {
-    if (openfile) {
+    if (!isDarwin && !isDevelop && process.argv.length >= 2) {
+      const filepath = process.argv[process.argv.length - 1];
+      if (path.basename(filepath).startsWith(dotfiles)) return;
+
+      mainWindow.webContents.send('menu-open', filepath);
+    }
+
+    if (isDarwin && openfile) {
       if (path.basename(openfile).startsWith(dotfiles)) {
         openfile = null;
         return;
@@ -173,18 +188,20 @@ const createWindow = () => {
     }
   });
 
-  app.on('open-file', (e, filepath) => {
-    e.preventDefault();
+  if (isDarwin) {
+    app.on('open-file', (e, filepath) => {
+      e.preventDefault();
 
-    if (mainWindow.isMinimized()) mainWindow.restore();
-    mainWindow.focus();
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
 
-    if (path.basename(filepath).startsWith(dotfiles)) return;
+      if (path.basename(filepath).startsWith(dotfiles)) return;
 
-    mainWindow.webContents.send('menu-open', filepath);
-  });
+      mainWindow.webContents.send('menu-open', filepath);
+    });
+  }
 
-  if (!isDevelop) {
+  if ((isDarwin || isLinux) && !isDevelop) {
     autoUpdater.checkForUpdatesAndNotify();
 
     autoUpdater.once('error', (_e, err) => {
@@ -235,23 +252,23 @@ app.once('will-finish-launching', () => {
 app.whenReady().then(async () => {
   const locale = app.getLocale();
   setLocales(locale);
-  createWindow();
 
   if (isDevelop) {
     const devtools = await searchDevtools('REACT');
-    if (devtools) {
-      await session.defaultSession.loadExtension(devtools, {
+    devtools &&
+      (await session.defaultSession.loadExtension(devtools, {
         allowFileAccess: true,
-      });
-    }
+      }));
   }
+
+  createWindow();
 });
 
 app.setAboutPanelOptions({
   applicationName: app.name,
-  applicationVersion: isLinux
-    ? `v${app.getVersion()} (${process.versions['electron']})`
-    : app.getVersion(),
+  applicationVersion: isDarwin
+    ? app.getVersion()
+    : `v${app.getVersion()} (${process.versions['electron']})`,
   version: process.versions['electron'],
   iconPath: path.resolve(getResourceDirectory(), 'images/logo.png'),
   copyright: '© 2020 sprout2000 and other contributors',
