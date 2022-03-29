@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import { setLocales } from '../setLocales';
 
@@ -12,9 +12,11 @@ const locale =
 
 setLocales(locale);
 
-ReactDOM.render(
+const root = document.getElementById('root');
+const app = root && createRoot(root);
+
+app?.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
