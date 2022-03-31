@@ -140,7 +140,7 @@ You can easily contribute to this repository by providing translation files.
   };
 ```
 
-4. Send the [pull request](https://github.com/sprout2000/leafview/pulls) to this repo.
+3. And then please send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
 
 ## :tada: Contributors
 
