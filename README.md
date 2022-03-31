@@ -50,17 +50,6 @@ see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md).
 | Double click | Reset zoom                           |
 | Right click  | Show the context menu when available |
 
-## :closed_lock_with_key: Security
-
-| API                     | Value              |
-| :---------------------- | :----------------- |
-| Content-Security-Policy | `default-src self` |
-| nodeIntegration         | `false`            |
-| enableRemoteModule      | `false`            |
-| contextIsolation        | `true`             |
-| safeDialogs             | `true`             |
-| sandbox                 | `true`             |
-
 ## :globe_with_meridians: Supported Languages
 
 | Language                               |  Code   |
@@ -76,6 +65,82 @@ see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md).
 | Português :portugal: :brazil:          |  `pt`   |
 | 简体中文 :cn:                          | `zh_CN` |
 | اللغة العربية                          |  `ar`   |
+
+## :scroll: Contributing
+
+You can easily contribute to this repository by providing translation files.
+
+1. Create `{your_LANG}.json` in `src/locales`.
+
+```diff
+  src
+  ├── @types
+  ├── createMenu.ts
+  ├── locales
++ │   ├── cs.json
+  │   ├── en.json
+  │   └── ja.json
+  ├── main.ts
+  ├── preload.ts
+  ├── setLocales.ts
+  └── web
+```
+
+`src/locales/cs.json`:
+
+```json
+{
+  "File": "Soubor",
+  "Open...": "Otevřít...",
+  "Select an image": "Vybrat obrázek",
+  "Image files": "Soubory obrázku",
+  "Move to Trash": "Přesunout do koše",
+  "View": "Zobrazit",
+  "Next Image": "Následující obrázek",
+  "Prev Image": "Předchozí obrázek",
+  "Toggle Fullscreen": "Celá obrazovka",
+  "Toggle Developer Tools": "Zobrazit nástroje pro vývojáře",
+  "Toggle Menubar": "Přepnout lištu nabídek",
+  "Toggle Dark Mode": "Přepínání tmavého režimu",
+  "Window": "Okno",
+  "Minimize": "Minimalizovat",
+  "Maximize": "Maximalizovat",
+  "Zoom": "Přiblížit",
+  "Bring All to Front": "Přenést vše do popředí",
+  "Close": "Storno",
+  "Help": "Nápověda",
+  "About": "O aplikaci LeafView",
+  "About LeafView": "O aplikaci LeafView",
+  "Support URL...": "URL podpory...",
+  "Hide LeafView": "Skrýt LeafView",
+  "Hide Others": "Skrýt ostatní",
+  "Show All": "Zobrazit vše",
+  "Quit": "Ukončit LeafView",
+  "Quit LeafView": "Ukončit LeafView"
+}
+```
+
+2. Import the locale into `src/setLocales.ts` as follows:
+
+```diff
+  import en from './locales/en.json';
+  import ja from './locales/ja.json';
++ import cs from './locales/cs.json';
+
+  export const setLocales = (locale: string): void => {
+    i18next.init({
+      lng: locale,
+      fallbackLng: 'en',
+      resources: {
+        en: { translation: en },
+        ja: { translation: ja },
++       cs: { translation: cs },
+      },
+    });
+  };
+```
+
+4. Send the [pull request](https://github.com/sprout2000/leafview/pulls) to this repo.
 
 ## :tada: Contributors
 
