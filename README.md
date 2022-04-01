@@ -120,7 +120,7 @@ You can easily contribute to this repository by providing translation files.
 }
 ```
 
-2. Import the locale into `src/setLocales.ts` as follows:
+2. Import the locale into [src/setLocales.ts](https://github.com/sprout2000/leafview/blob/main/src/setLocales.ts) as follows:
 
 ```diff
   import en from './locales/en.json';
