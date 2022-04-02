@@ -44,7 +44,7 @@
     "electron-search-devtools": "^1.6.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
-    "sass": "^1.49.10",
+    "sass": "^1.49.11",
     "sass-loader": "^12.6.0",
     "ts-loader": "^9.2.8",
     "ts-node": "^10.7.0",
