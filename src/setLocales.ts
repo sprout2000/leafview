@@ -27,6 +27,8 @@ import zh_CN from './locales/zh_cn.json';
 /** Merge the pull request sent by SuhaibAtef */
 /** https://github.com/sprout2000/leafview/pull/274 */
 import ar from './locales/ar.json';
+/** Merge the pull request sent by Levminer */
+/** https://github.com/sprout2000/leafview/pull/305 */
 import hu from './locales/hu.json';
 
 export const setLocales = (locale: string) => {
