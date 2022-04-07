@@ -65,6 +65,7 @@ see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md).
 | Português :portugal: :brazil:          |  `pt`   |
 | 简体中文 :cn:                          | `zh_CN` |
 | اللغة العربية                          |  `ar`   |
+| Magyar nyelv :hungary:                 |  `hu`   |
 
 ## :scroll: Contributing
 
@@ -146,6 +147,7 @@ You can easily contribute to this repository by providing translation files.
 
 **Special Thanks to:**
 
+- [@Levminer](https://github.com/Levminer) [#305](https://github.com/sprout2000/leafview/pull/305)
 - [@SuhaibAtef](https://github.com/SuhaibAtef) [#274](https://github.com/sprout2000/leafview/pull/274)
 - [@mwoz123](https://github.com/mwoz123) [#260](https://github.com/sprout2000/leafview/pull/260), [#261](https://github.com/sprout2000/leafview/pull/261)
 - [@ArcherGu](https://github.com/ArcherGu) [#235](https://github.com/sprout2000/leafview/pull/235)
