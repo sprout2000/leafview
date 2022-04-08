@@ -16,16 +16,19 @@ export const App = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
 
-  const getZoom = (iw: number, w: number, ih: number, h: number) => {
-    if (iw > w || ih > h) {
-      const zoomX = w / iw;
-      const zoomY = h / ih;
+  const getZoom = useCallback(
+    (iw: number, w: number, ih: number, h: number) => {
+      if (iw > w || ih > h) {
+        const zoomX = w / iw;
+        const zoomY = h / ih;
 
-      return zoomX >= zoomY ? zoomY : zoomX;
-    } else {
-      return 1;
-    }
-  };
+        return zoomX >= zoomY ? zoomY : zoomX;
+      } else {
+        return 1;
+      }
+    },
+    []
+  );
 
   const draw = useCallback(
     (width: number, height: number) => {
@@ -77,7 +80,7 @@ export const App = () => {
         img.src = url;
       }
     },
-    [url]
+    [url, getZoom]
   );
 
   const preventDefault = (e: React.DragEvent<HTMLDivElement>) => {
@@ -185,7 +188,7 @@ export const App = () => {
     }
   }, [url]);
 
-  const onClickOpen = async () => {
+  const onClickOpen = useCallback(async () => {
     const filepath = await myAPI.openDialog();
     if (!filepath) return;
 
@@ -194,7 +197,7 @@ export const App = () => {
       setUrl(filepath);
       myAPI.history(filepath);
     }
-  };
+  }, []);
 
   const onMenuOpen = useCallback(async (_e: Event, filepath: string) => {
     if (!filepath) return;
