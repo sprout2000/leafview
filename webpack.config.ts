@@ -83,9 +83,9 @@ const renderer: Configuration = {
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/web/index.html',
       inject: 'body',
-      minify: !isDev,
+      scriptLoading: 'blocking',
+      template: './src/web/index.ejs',
     }),
     new CopyWebpackPlugin({
       patterns: [
