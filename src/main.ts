@@ -39,8 +39,8 @@ const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDevelop = process.env.NODE_ENV === 'development';
 
-const initWidth = 640;
-const initHeight = 440;
+const initWidth = 800;
+const initHeight = 528;
 
 const getResourceDirectory = () => {
   return isDevelop
