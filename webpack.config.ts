@@ -85,7 +85,7 @@ const renderer: Configuration = {
     new HtmlWebpackPlugin({
       inject: 'body',
       scriptLoading: 'blocking',
-      template: './src/web/index.ejs',
+      template: './src/web/index.html',
     }),
     new CopyWebpackPlugin({
       patterns: [
