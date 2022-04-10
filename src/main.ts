@@ -39,6 +39,7 @@ const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDevelop = process.env.NODE_ENV === 'development';
 
+/// #if DEBUG
 if (isDevelop) {
   const execPath =
     process.platform === 'win32'
@@ -50,6 +51,7 @@ if (isDevelop) {
     electron: path.resolve(__dirname, execPath),
   });
 }
+/// #endif
 
 const initWidth = 800;
 const initHeight = 528;

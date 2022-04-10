@@ -50,6 +50,7 @@
     "electron-notarize": "^1.2.1",
     "electron-search-devtools": "^1.6.2",
     "html-webpack-plugin": "^5.5.0",
+    "ifdef-loader": "^2.3.2",
     "mini-css-extract-plugin": "^2.6.0",
     "sass": "^1.50.0",
     "sass-loader": "^12.6.0",
