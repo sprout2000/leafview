@@ -24,9 +24,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Uninstall optional dependencies
-        run: npm run build:remove
-
       - name: Build
         run: npm run build
 

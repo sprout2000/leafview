@@ -23,7 +23,7 @@
     "release": "ts-node scripts/build.ts",
     "package": "run-s build build:builder",
     "prepare": "git config --local core.hooksPath .githooks",
-    "build:remove": "npm r eslint prettier eslint-config-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react eslint-plugin-react-hooks wait-on electron-reload npm-run-all rimraf --no-save"
+    "prebuild": "npm r eslint prettier eslint-config-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react eslint-plugin-react-hooks wait-on electron-reload npm-run-all rimraf --no-save"
   },
   "dependencies": {
     "electron-log": "^4.4.6",
