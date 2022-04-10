@@ -13,10 +13,15 @@
   },
   "main": "dist/main.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=\"development\" webpack --progress && electron .",
+    "dev": "run-p dev:*",
     "build": "cross-env NODE_ENV=\"production\" webpack",
+    "predev": "rimraf dist",
+    "dev:tsc": "tsc -w -p tsconfig.main.json",
+    "dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
+    "dev:electron": "wait-on ./dist/index.html && cross-env NODE_ENV=\"development\" electron .",
+    "build:builder": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts",
     "release": "ts-node scripts/build.ts",
-    "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts"
+    "package": "run-s build build:builder"
   },
   "dependencies": {
     "electron-log": "^4.4.6",
@@ -55,10 +60,14 @@
   "optionalDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
+    "electron-reload": "^2.0.0-alpha.1",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
-    "prettier": "^2.6.2"
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
+    "wait-on": "^6.0.1"
   }
 }

@@ -1,18 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "ES2020",
+    "module": "ES2020",
     "esModuleInterop": true,
     "moduleResolution": "Node",
-    "lib": ["DOM", "ESNext"],
+    "lib": ["DOM", "ES2020"],
+    "resolveJsonModule": true,
     "jsx": "react-jsx",
-    "strict": true,
-    "sourceMap": true,
-    "resolveJsonModule": true
+    "strict": true
   },
   "ts-node": {
     "compilerOptions": {
-      "target": "ES2015",
+      "target": "ES2020",
       "module": "CommonJS"
     }
   }
