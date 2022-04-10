@@ -22,7 +22,10 @@ jobs:
           node-version: 16.x
 
       - name: Install dependencies
-        run: sh -e ./scripts/install.sh
+        run: npm install
+
+      - name: Uninstall optional dependencies
+        run: npm build:remove
 
       - name: Build
         run: npm run build
