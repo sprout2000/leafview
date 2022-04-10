@@ -21,7 +21,8 @@
     "dev:electron": "wait-on ./dist/index.html && cross-env NODE_ENV=\"development\" electron .",
     "build:builder": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts",
     "release": "ts-node scripts/build.ts",
-    "package": "run-s build build:builder"
+    "package": "run-s build build:builder",
+    "prepare": "git config --local core.hooksPath .githooks"
   },
   "dependencies": {
     "electron-log": "^4.4.6",
