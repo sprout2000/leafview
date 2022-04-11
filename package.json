@@ -29,7 +29,7 @@
     "electron-log": "^4.4.6",
     "electron-store": "^8.0.1",
     "electron-updater": "^5.0.1",
-    "i18next": "^21.6.15",
+    "i18next": "^21.6.16",
     "leaflet": "^1.7.1",
     "mime-types": "^2.1.35",
     "react": "^18.0.0",
@@ -61,8 +61,8 @@
     "webpack-cli": "^4.9.2"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.18.0",
-    "@typescript-eslint/parser": "^5.18.0",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
     "electron-reload": "^2.0.0-alpha.1",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
