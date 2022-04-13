@@ -263,16 +263,20 @@ app.once('will-finish-launching', () => {
   });
 });
 
-app.whenReady().then(async () => {
+app.whenReady().then(() => {
   const locale = app.getLocale();
   setLocales(locale);
 
   if (isDevelop) {
-    const devtools = await searchDevtools('REACT');
-    devtools &&
-      (await session.defaultSession.loadExtension(devtools, {
-        allowFileAccess: true,
-      }));
+    searchDevtools('REACT')
+      .then((devtools) => {
+        if (devtools) {
+          session.defaultSession.loadExtension(devtools, {
+            allowFileAccess: true,
+          });
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   createWindow();
