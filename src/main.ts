@@ -250,7 +250,16 @@ const createWindow = () => {
     store.set({ x, y, width, height, darkmode });
   });
 
-  if (isDevelop) mainWindow.webContents.openDevTools({ mode: 'detach' });
+  if (isDevelop) {
+    searchDevtools('REACT')
+      .then((devtools) => {
+        session.defaultSession.loadExtension(devtools, {
+          allowFileAccess: true,
+        });
+      })
+      .catch((err) => console.log(err));
+    mainWindow.webContents.openDevTools({ mode: 'detach' });
+  }
 
   mainWindow.loadFile('dist/index.html');
   mainWindow.once('ready-to-show', () => mainWindow.show());
@@ -266,18 +275,6 @@ app.once('will-finish-launching', () => {
 app.whenReady().then(() => {
   const locale = app.getLocale();
   setLocales(locale);
-
-  if (isDevelop) {
-    searchDevtools('REACT')
-      .then((devtools) => {
-        if (devtools) {
-          session.defaultSession.loadExtension(devtools, {
-            allowFileAccess: true,
-          });
-        }
-      })
-      .catch((err) => console.log(err));
-  }
 
   createWindow();
 });
