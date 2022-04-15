@@ -37,27 +37,24 @@ process.once('uncaughtException', (err) => {
 
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
-const isDevelop = process.env.NODE_ENV === 'development';
 
 /// #if DEBUG
-if (isDevelop) {
-  const execPath =
-    process.platform === 'win32'
-      ? '../node_modules/electron/dist/electron.exe'
-      : '../node_modules/.bin/electron';
+const execPath =
+  process.platform === 'win32'
+    ? '../node_modules/electron/dist/electron.exe'
+    : '../node_modules/.bin/electron';
 
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  require('electron-reload')(__dirname, {
-    electron: path.resolve(__dirname, execPath),
-  });
-}
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('electron-reload')(__dirname, {
+  electron: path.resolve(__dirname, execPath),
+});
 /// #endif
 
 const initWidth = 800;
 const initHeight = 528;
 
 const getResourceDirectory = () => {
-  return isDevelop
+  return process.env.NODE_ENV === 'development'
     ? path.join(process.cwd(), 'dist')
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
 };
@@ -184,7 +181,7 @@ const createWindow = () => {
   });
 
   mainWindow.webContents.once('did-finish-load', () => {
-    if (!isDarwin && !isDevelop && process.argv.length >= 2) {
+    if (!isDarwin && process.argv.length >= 2) {
       const filepath = process.argv[process.argv.length - 1];
       if (path.basename(filepath).startsWith(dotfiles)) return;
 
@@ -215,7 +212,7 @@ const createWindow = () => {
     });
   }
 
-  if ((isDarwin || isLinux) && !isDevelop) {
+  if (isDarwin || isLinux) {
     autoUpdater.checkForUpdatesAndNotify();
 
     autoUpdater.once('error', (_e, err) => {
@@ -250,16 +247,16 @@ const createWindow = () => {
     store.set({ x, y, width, height, darkmode });
   });
 
-  if (isDevelop) {
-    searchDevtools('REACT')
-      .then((devtools) => {
-        session.defaultSession.loadExtension(devtools, {
-          allowFileAccess: true,
-        });
-      })
-      .catch((err) => console.log(err));
-    mainWindow.webContents.openDevTools({ mode: 'detach' });
-  }
+  /// #if DEBUG
+  searchDevtools('REACT')
+    .then((devtools) => {
+      session.defaultSession.loadExtension(devtools, {
+        allowFileAccess: true,
+      });
+    })
+    .catch((err) => console.log(err));
+  mainWindow.webContents.openDevTools({ mode: 'detach' });
+  /// #endif
 
   mainWindow.loadFile('dist/index.html');
   mainWindow.once('ready-to-show', () => mainWindow.show());
