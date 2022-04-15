@@ -46,7 +46,7 @@
     "css-loader": "^6.7.1",
     "dotenv": "^16.0.0",
     "electron": "^18.0.4",
-    "electron-builder": "^22.5.1",
+    "electron-builder": "^23.0.3",
     "electron-notarize": "^1.2.1",
     "electron-search-devtools": "^1.7.4",
     "html-webpack-plugin": "^5.5.0",
