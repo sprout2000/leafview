@@ -36,6 +36,7 @@ export const App = () => {
 
       if (node) {
         const img = new Image();
+
         img.onload = () => {
           const zoom = getZoom(img.width, width, img.height, height);
 
@@ -44,10 +45,8 @@ export const App = () => {
             [0, img.width * zoom],
           ]);
 
-          if (mapObj.current) {
-            mapObj.current.off();
-            mapObj.current.remove();
-          }
+          mapObj.current?.off();
+          mapObj.current?.remove();
 
           mapObj.current = L.map(node, {
             maxBounds: bounds,
@@ -62,13 +61,11 @@ export const App = () => {
           }).fitBounds(bounds);
 
           mapObj.current.on('dblclick', () => {
-            const center = bounds.getCenter();
-            mapObj.current && mapObj.current.setView(center, 0);
+            mapObj.current?.setView(bounds.getCenter(), 0);
           });
 
           if (img.width < width && img.height < height) {
-            const center = bounds.getCenter();
-            mapObj.current.setView(center, 0, { animate: false });
+            mapObj.current.setView(bounds.getCenter(), 0, { animate: false });
           }
 
           L.imageOverlay(img.src, bounds).addTo(mapObj.current);
