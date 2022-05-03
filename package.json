@@ -53,7 +53,7 @@
     "mini-css-extract-plugin": "^2.6.0",
     "sass": "^1.51.0",
     "sass-loader": "^12.6.0",
-    "ts-loader": "^9.2.9",
+    "ts-loader": "^9.3.0",
     "ts-node": "^10.7.0",
     "typescript": "4.6.4",
     "webpack": "^5.72.0",
