@@ -4,14 +4,12 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { ToolBar } from './ToolBar';
-import empty from './empty.png';
-
 import './App.scss';
 
 const { myAPI } = window;
 
 export const App = () => {
-  const [url, setUrl] = useState<string>(empty);
+  const [url, setUrl] = useState('');
 
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
@@ -102,7 +100,7 @@ export const App = () => {
   };
 
   const onNext = useCallback(async () => {
-    if (url === empty) return;
+    if (!url) return;
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
@@ -127,7 +125,7 @@ export const App = () => {
   }, [url]);
 
   const onPrev = useCallback(async () => {
-    if (url === empty) return;
+    if (!url) return;
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
@@ -154,7 +152,7 @@ export const App = () => {
   }, [url]);
 
   const onRemove = useCallback(async () => {
-    if (url === empty) return;
+    if (!url) return;
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
@@ -207,7 +205,7 @@ export const App = () => {
   }, []);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (url === empty) return;
+    if (!url) return;
 
     if (e.key === '0') {
       mapObj.current && mapObj.current.setZoom(0);
@@ -256,7 +254,7 @@ export const App = () => {
   }, [onMenuOpen]);
 
   useEffect(() => {
-    const title = url !== empty ? url : 'LeafView';
+    const title = !url ? 'Leafview' : url;
 
     updateTitle(title);
   }, [url]);
@@ -291,7 +289,7 @@ export const App = () => {
           onClickOpen={onClickOpen}
         />
       </div>
-      <div className={url === empty ? 'view init' : 'view'} ref={mapRef} />
+      <div className={!url ? 'view init' : 'view'} ref={mapRef} />
     </div>
   );
 };
