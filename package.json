@@ -28,7 +28,7 @@
     "electron-log": "^4.4.7",
     "electron-store": "^8.0.1",
     "electron-updater": "^5.0.1",
-    "i18next": "^21.7.1",
+    "i18next": "^21.8.0",
     "leaflet": "^1.8.0",
     "mime-types": "^2.1.35",
     "react": "^18.1.0",
