@@ -59,7 +59,7 @@ see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md).
 | Deutsch       |  `de`   |
 | English       |  `en`   |
 | Español       |  `es`   |
-| Magyar nyelv  |  `hu`   |
+| Magyar        |  `hu`   |
 | 日本語        |  `ja`   |
 | Polski        |  `pl`   |
 | Português     |  `pt`   |
