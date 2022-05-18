@@ -52,20 +52,14 @@ see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md).
 
 ## :globe_with_meridians: Supported Languages
 
-| Language      |  Code   |
-| :------------ | :-----: |
-| اللغة العربية |  `ar`   |
-| Čeština       |  `cs`   |
-| Deutsch       |  `de`   |
-| English       |  `en`   |
-| Español       |  `es`   |
-| Magyar        |  `hu`   |
-| 日本語        |  `ja`   |
-| Polski        |  `pl`   |
-| Português     |  `pt`   |
-| Русский       |  `ru`   |
-| 简体中文      | `zh_CN` |
-| 繁体中文      | `zh_TW` |
+| Language      | Code | Language  |  Code   |
+| :------------ | :--: | :-------- | :-----: |
+| اللغة العربية | `ar` | 日本語    |  `ja`   |
+| Čeština       | `cs` | Polski    |  `pl`   |
+| Deutsch       | `de` | Português |  `pt`   |
+| English       | `en` | Русский   |  `ru`   |
+| Español       | `es` | 简体中文  | `zh_CN` |
+| Magyar        | `hu` | 繁体中文  | `zh_TW` |
 
 ## :scroll: Contributing
 
