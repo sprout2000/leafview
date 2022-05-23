@@ -205,11 +205,8 @@ export const App = () => {
   }, []);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!url) return;
-
-    if (e.key === '0') {
-      mapObj.current && mapObj.current.setZoom(0);
-    }
+    if (!url || e.key !== '0') return;
+    mapObj.current?.setZoom(0);
   };
 
   const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
