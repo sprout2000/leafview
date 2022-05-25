@@ -5,14 +5,12 @@ import {
   Menu,
   MenuItemConstructorOptions,
   shell,
-  nativeTheme,
 } from 'electron';
-import Store from 'electron-store';
 
 import path from 'node:path';
 import i18next from 'i18next';
 
-export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
+export const createMenu = (win: BrowserWindow) => {
   const isWin32 = process.platform === 'win32';
   const isDarwin = process.platform === 'darwin';
   const dotfiles = isDarwin ? '.' : '._';
@@ -114,25 +112,6 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       label: i18next.t('Toggle Fullscreen'),
       role: 'togglefullscreen',
       accelerator: 'F11',
-    });
-  }
-
-  if (isDarwin || isWin32) {
-    viewSub.push({
-      label: i18next.t('Toggle Dark Mode'),
-      type: 'checkbox',
-      id: 'darkmode',
-      accelerator: 'CmdOrCtrl+D',
-      click: () => {
-        if (nativeTheme.shouldUseDarkColors) {
-          nativeTheme.themeSource = 'light';
-          store.set('darkmode', false);
-        } else {
-          nativeTheme.themeSource = 'dark';
-          store.set('darkmode', true);
-        }
-      },
-      checked: nativeTheme.shouldUseDarkColors,
     });
   }
 
