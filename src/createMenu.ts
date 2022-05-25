@@ -148,8 +148,7 @@ export const createMenu = (win: BrowserWindow) => {
           accelerator: 'CmdOrCtrl+M',
         },
         {
-          label: i18next.t('Maximize'),
-          accelerator: 'CmdOrCtrl+L',
+          label: i18next.t('Zoom'),
           click: () => {
             win.isMaximized() ? win.unmaximize() : win.maximize();
           },
