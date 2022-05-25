@@ -37,6 +37,7 @@ process.once('uncaughtException', (err) => {
 
 const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
+const isDevelop = process.env.NODE_ENV === 'development';
 
 /// #if DEBUG
 const execPath =
@@ -226,16 +227,16 @@ const createWindow = () => {
     });
   }
 
-  /// #if DEBUG
-  searchDevtools('REACT')
-    .then((devtools) => {
-      session.defaultSession.loadExtension(devtools, {
-        allowFileAccess: true,
-      });
-    })
-    .catch((err) => console.log(err));
-  mainWindow.webContents.openDevTools({ mode: 'detach' });
-  /// #endif
+  if (isDevelop) {
+    searchDevtools('REACT')
+      .then((devtools) => {
+        session.defaultSession.loadExtension(devtools, {
+          allowFileAccess: true,
+        });
+      })
+      .catch((err) => console.log(err));
+    mainWindow.webContents.openDevTools({ mode: 'detach' });
+  }
 
   windowState.manage(mainWindow);
   mainWindow.loadFile('dist/index.html');
