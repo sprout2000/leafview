@@ -93,6 +93,7 @@ const createWindow = () => {
     webPreferences: {
       sandbox: true,
       safeDialogs: true,
+      devTools: isDevelop,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
