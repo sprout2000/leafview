@@ -24,10 +24,6 @@ _Image by <a href="https://pixabay.com/users/myriams-fotos-1627417/?utm_source=l
 You can download the latest version of LeafView from the releases page here:
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
-### for Windows users
-
-see [BUILD.md](https://github.com/sprout2000/leafview/blob/main/BUILD.md).
-
 ## :green_book: Usage
 
 ### :keyboard: Keyboard Shortcuts
