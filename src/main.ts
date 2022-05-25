@@ -10,8 +10,8 @@ import {
 } from 'electron';
 
 import log from 'electron-log';
-import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
+import windowStateKeeper from 'electron-window-state';
 import { searchDevtools } from 'electron-search-devtools';
 
 import fs from 'node:fs';
@@ -59,17 +59,6 @@ const getResourceDirectory = () => {
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
 };
 
-const store = new Store<StoreType>({
-  configFileMode: 0o666,
-  defaults: {
-    width: initWidth,
-    height: initHeight,
-    x: undefined,
-    y: undefined,
-    darkmode: false,
-  },
-});
-
 let openfile: string | null = null;
 
 const checkmime = (filepath: string) => {
@@ -81,15 +70,19 @@ const checkmime = (filepath: string) => {
 
 const createWindow = () => {
   const dotfiles = isDarwin ? '.' : '._';
+  const windowState = windowStateKeeper({
+    defaultWidth: initWidth,
+    defaultHeight: initHeight,
+  });
 
   const mainWindow = new BrowserWindow({
     show: false,
-    x: store.get('x'),
-    y: store.get('y'),
+    x: windowState.x,
+    y: windowState.y,
     minWidth: initWidth,
     minHeight: initHeight,
-    width: store.get('width'),
-    height: store.get('height'),
+    width: windowState.width,
+    height: windowState.height,
     autoHideMenuBar: true,
     fullscreenable: isDarwin ? false : true,
     icon: isLinux
@@ -103,15 +96,7 @@ const createWindow = () => {
     },
   });
 
-  if (isLinux) {
-    nativeTheme.themeSource = nativeTheme.shouldUseDarkColors
-      ? 'dark'
-      : 'light';
-  } else {
-    nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
-  }
-
-  const menu = createMenu(mainWindow, store);
+  const menu = createMenu(mainWindow);
   Menu.setApplicationMenu(menu);
 
   ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
@@ -241,12 +226,6 @@ const createWindow = () => {
     });
   }
 
-  mainWindow.once('close', () => {
-    const darkmode = store.get('darkmode', nativeTheme.shouldUseDarkColors);
-    const { x, y, width, height } = mainWindow.getBounds();
-    store.set({ x, y, width, height, darkmode });
-  });
-
   /// #if DEBUG
   searchDevtools('REACT')
     .then((devtools) => {
@@ -258,6 +237,7 @@ const createWindow = () => {
   mainWindow.webContents.openDevTools({ mode: 'detach' });
   /// #endif
 
+  windowState.manage(mainWindow);
   mainWindow.loadFile('dist/index.html');
   mainWindow.once('ready-to-show', () => mainWindow.show());
 };
