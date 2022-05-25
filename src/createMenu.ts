@@ -154,18 +154,6 @@ export const createMenu = (win: BrowserWindow) => {
           },
         },
         { type: 'separator' },
-        {
-          label: i18next.t('Toggle Developer Tools'),
-          click: () => {
-            if (win.webContents.isDevToolsOpened()) {
-              win.webContents.closeDevTools();
-            } else {
-              win.webContents.openDevTools({ mode: 'detach' });
-            }
-          },
-          accelerator: isDarwin ? 'Cmd+Option+I' : 'Ctrl+Shift+I',
-        },
-        { type: 'separator' },
         isDarwin
           ? {
               label: i18next.t('Bring All to Front'),
