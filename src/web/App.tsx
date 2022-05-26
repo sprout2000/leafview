@@ -252,7 +252,6 @@ export const App = () => {
 
   useEffect(() => {
     const title = !url ? 'Leafview' : url;
-
     updateTitle(title);
   }, [url]);
 
