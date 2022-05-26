@@ -260,12 +260,14 @@ export const App = () => {
     const resizeObserver = new ResizeObserver((entries) => {
       const width = entries[0].contentRect.width;
       const height = entries[0].contentRect.height;
-
       draw(width, height);
     });
+
     mapRef.current && resizeObserver.observe(mapRef.current);
 
-    return () => resizeObserver.disconnect();
+    return () => {
+      resizeObserver.disconnect();
+    };
   }, [draw]);
 
   return (
