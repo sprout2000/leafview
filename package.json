@@ -14,15 +14,16 @@
   "main": "dist/main.js",
   "scripts": {
     "dev": "run-p dev:*",
-    "build": "cross-env NODE_ENV=\"production\" webpack",
-    "predev": "rimraf dist",
+    "dev:vite": "vite build --mode dev",
     "dev:tsc": "tsc -w -p tsconfig.main.json",
-    "dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
-    "dev:electron": "wait-on ./dist/index.html && cross-env NODE_ENV=\"development\" electron .",
+    "dev:electron": "wait-on dist/main.js && cross-env NODE_ENV=\"development\" electron .",
+    "build": "run-s build:*",
+    "build:vite": "tsc && vite build",
+    "build:esbuild": "tsx ./esbuild.ts",
+    "preview": "electron .",
     "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts",
     "release": "ts-node scripts/build.ts",
-    "prepare": "git config --local core.hooksPath .githooks",
-    "prebuild": "npm r eslint prettier eslint-config-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react eslint-plugin-react-hooks wait-on electron-reload npm-run-all rimraf --no-save"
+    "prebuild": "npm r @typescript-eslint/eslint-plugin @typescript-eslint/parser electron-reload eslint eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks prettier wait-on"
   },
   "dependencies": {
     "electron-log": "^4.4.7",
