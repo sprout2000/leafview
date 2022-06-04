@@ -85,7 +85,7 @@ const createWindow = () => {
     width: windowState.width,
     height: windowState.height,
     autoHideMenuBar: true,
-    fullscreenable: isDarwin ? false : true,
+    fullscreenable: !isDarwin,
     icon: isLinux
       ? path.join(getResourceDirectory(), 'images/logo.png')
       : undefined,
