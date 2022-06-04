@@ -19,11 +19,10 @@ export const App = () => {
       if (iw > w || ih > h) {
         const zoomX = w / iw;
         const zoomY = h / ih;
-
         return zoomX >= zoomY ? zoomY : zoomX;
-      } else {
-        return 1;
       }
+
+      return 1;
     },
     []
   );
