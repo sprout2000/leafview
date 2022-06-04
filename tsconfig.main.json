@@ -1,10 +1,8 @@
 {
+  "extends": ".",
   "compilerOptions": {
     "module": "CommonJS",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "sourceMap": true,
     "outDir": "dist"
   },
-  "include": ["src/*.ts"]
+  "include": ["src/*.ts", "src/@types/*.d.ts"]
 }

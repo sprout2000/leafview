@@ -39,18 +39,16 @@ const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDevelop = process.env.NODE_ENV === 'development';
 
-/// #if NODE_ENV !== 'production'
-if (isDevelop) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  require('electron-reload')(__dirname, {
-    electron: path.resolve(
-      __dirname,
-      process.platform === 'win32'
-        ? '../node_modules/electron/dist/electron.exe'
-        : '../node_modules/.bin/electron'
-    ),
-  });
-}
+/// #if DEBUG
+const execPath =
+  process.platform === 'win32'
+    ? '../node_modules/electron/dist/electron.exe'
+    : '../node_modules/.bin/electron';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('electron-reload')(__dirname, {
+  electron: path.resolve(__dirname, execPath),
+});
 /// #endif
 
 const initWidth = 800;
@@ -87,7 +85,7 @@ const createWindow = () => {
     width: windowState.width,
     height: windowState.height,
     autoHideMenuBar: true,
-    fullscreenable: !isDarwin,
+    fullscreenable: isDarwin ? false : true,
     icon: isLinux
       ? path.join(getResourceDirectory(), 'images/logo.png')
       : undefined,
