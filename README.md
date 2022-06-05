@@ -148,6 +148,6 @@ You can easily contribute to this repository by providing translation files.
 - [@DrDeee](https://github.com/DrDeee) [#166](https://github.com/sprout2000/leafview/pull/166)
 - [@PetrTodorov](https://github.com/PetrTodorov) [#68](https://github.com/sprout2000/leafview/pull/68)
 
-## :copyright: License
+## :copyright: Copyright
 
 Copyright (c) 2020 sprout2000 and other contributors
