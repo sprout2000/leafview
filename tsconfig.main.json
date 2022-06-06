@@ -1,8 +1,11 @@
 {
-  "extends": ".",
   "compilerOptions": {
     "module": "CommonJS",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
     "outDir": "dist"
   },
-  "include": ["src/*.ts", "src/@types/*.d.ts"]
+  "include": ["src/*.ts"]
 }
