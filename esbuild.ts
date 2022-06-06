@@ -2,7 +2,7 @@ import { build } from 'esbuild';
 import ifdefPlugin from 'esbuild-ifdef';
 
 build({
-  entryPoints: ['src/main.ts', 'src/preload.ts'],
+  entryPoints: ['src-main/main.ts', 'src-main/preload.ts'],
   outdir: 'dist',
   bundle: true,
   minify: true,

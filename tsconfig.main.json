@@ -7,5 +7,5 @@
     "sourceMap": true,
     "outDir": "dist"
   },
-  "include": ["src/*.ts"]
+  "include": ["src-main"]
 }

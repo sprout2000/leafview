@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "node_modules/electron"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
