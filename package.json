@@ -22,7 +22,7 @@
     "build:vite": "tsc && vite build",
     "build:esbuild": "tsx ./esbuild.ts",
     "preview": "electron .",
-    "release": "ts-node scripts/build.ts",
+    "release": "tsx scripts/build.ts",
     "prebuild": "npm r --no-save @typescript-eslint/eslint-plugin @typescript-eslint/parser electron-reload eslint eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks prettier rimraf wait-on",
     "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=\"false\" tsx ./scripts/build.ts"
   },
