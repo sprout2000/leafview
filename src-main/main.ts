@@ -39,17 +39,17 @@ const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDevelop = process.env.NODE_ENV === 'development';
 
-/// #if DEBUG
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('electron-reload')(__dirname, {
-  electron: path.resolve(
-    __dirname,
-    process.platform === 'win32'
-      ? '../node_modules/electron/dist/electron.exe'
-      : '../node_modules/.bin/electron'
-  ),
-});
-/// #endif
+if (isDevelop) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('electron-reload')(__dirname, {
+    electron: path.resolve(
+      __dirname,
+      process.platform === 'win32'
+        ? '../node_modules/electron/dist/electron.exe'
+        : '../node_modules/.bin/electron'
+    ),
+  });
+}
 
 const initWidth = 800;
 const initHeight = 528;
