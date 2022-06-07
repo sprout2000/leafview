@@ -15,7 +15,7 @@
   "scripts": {
     "predev": "rimraf dist",
     "dev": "run-p dev:*",
-    "dev:vite": "vite build --mode dev",
+    "dev:vite": "tsc && vite build --mode dev",
     "dev:esbuild": "cross-env NODE_ENV=\"development\" tsx ./esbuild.ts",
     "dev:electron": "wait-on dist/index.html && cross-env NODE_ENV=\"development\" electron .",
     "build": "run-s build:*",
