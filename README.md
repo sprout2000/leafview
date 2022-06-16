@@ -36,6 +36,7 @@ You can download the latest version of LeafView from the releases page here:
 |                                <kbd>-</kbd>                                 | Zoom Out       |
 |                                <kbd>0</kbd>                                 | Reset Zoom     |
 | <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | Pan            |
+|                       <kbd>Fn</kbd>+<kbd>Delete</kbd>                       | Move to Trash  |
 
 ### :computer_mouse: Mouse Operations
 
