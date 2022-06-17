@@ -20,6 +20,7 @@
     "dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
     "dev:electron": "wait-on ./dist/index.html && cross-env NODE_ENV=\"development\" electron .",
     "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts",
+    "lint": "eslint --fix . && prettier --write .",
     "release": "ts-node scripts/build.ts",
     "prebuild": "npm r eslint prettier eslint-config-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react eslint-plugin-react-hooks wait-on electron-reload npm-run-all rimraf --no-save"
   },
