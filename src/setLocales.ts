@@ -30,6 +30,9 @@ import ar from './locales/ar.json';
 /** Merge the pull request sent by Levminer */
 /** https://github.com/sprout2000/leafview/pull/305 */
 import hu from './locales/hu.json';
+/** Merge the pull request sent by BackSpace54 */
+/** https://github.com/sprout2000/leafview/pull/312 */
+import fr from './locales/fr.json';
 
 export const setLocales = (locale: string) => {
   i18next.init({
@@ -55,6 +58,11 @@ export const setLocales = (locale: string) => {
       'zh-TW': { translation: zh_TW },
       ar: { translation: ar },
       hu: { translation: hu },
+      fr: { translation: fr },
+      'fr-FR': { translation: fr },
+      'fr-BE': { translation: fr },
+      'fr-CA': { translation: fr },
+      'fr-CH': { translation: fr },
     },
   });
 };
