@@ -79,40 +79,6 @@ You can easily contribute to this repository by providing translation files.
   └── web
 ```
 
-`src/locales/cs.json`:
-
-```json
-{
-  "File": "Soubor",
-  "Open...": "Otevřít...",
-  "Select an image": "Vybrat obrázek",
-  "Image files": "Soubory obrázku",
-  "Move to Trash": "Přesunout do koše",
-  "View": "Zobrazit",
-  "Next Image": "Následující obrázek",
-  "Prev Image": "Předchozí obrázek",
-  "Toggle Fullscreen": "Celá obrazovka",
-  "Toggle Developer Tools": "Zobrazit nástroje pro vývojáře",
-  "Toggle Menubar": "Přepnout lištu nabídek",
-  "Toggle Dark Mode": "Přepínání tmavého režimu",
-  "Window": "Okno",
-  "Minimize": "Minimalizovat",
-  "Maximize": "Maximalizovat",
-  "Zoom": "Přiblížit",
-  "Bring All to Front": "Přenést vše do popředí",
-  "Close": "Storno",
-  "Help": "Nápověda",
-  "About": "O aplikaci LeafView",
-  "About LeafView": "O aplikaci LeafView",
-  "Support URL...": "URL podpory...",
-  "Hide LeafView": "Skrýt LeafView",
-  "Hide Others": "Skrýt ostatní",
-  "Show All": "Zobrazit vše",
-  "Quit": "Ukončit LeafView",
-  "Quit LeafView": "Ukončit LeafView"
-}
-```
-
 2. Import the locale into [src/setLocales.ts](https://github.com/sprout2000/leafview/blob/main/src/setLocales.ts) as follows:
 
 ```diff
