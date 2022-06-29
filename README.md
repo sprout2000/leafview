@@ -49,15 +49,13 @@ You can download the latest version of LeafView from the releases page here:
 
 ## :globe_with_meridians: Supported Languages
 
-| Language      | Code | Language  |  Code   |
-| :------------ | :--: | :-------- | :-----: |
-| اللغة العربية | `ar` | 日本語    |  `ja`   |
-| Čeština       | `cs` | Polski    |  `pl`   |
-| Deutsch       | `de` | Português |  `pt`   |
-| English       | `en` | Русский   |  `ru`   |
-| Español       | `es` | 简体中文  | `zh_CN` |
-| Français      | `fr` | 繁体中文  | `zh_TW` |
-| Magyar        | `hu` |
+| Language      | Code |     | Language  | Code |     | Language |  Code   |
+| :------------ | :--: | :-: | :-------- | :--: | :-: | :------- | :-----: |
+| اللغة العربية | `ar` |     | Français  | `fr` |     | Русский  |  `ru`   |
+| Čeština       | `cs` |     | Magyar    | `hu` |     | 简体中文 | `zh_CN` |
+| Deutsch       | `de` |     | 日本語    | `ja` |     | 繁体中文 | `zh_TW` |
+| English       | `en` |     | Polski    | `pl` |     |
+| Español       | `es` |     | Português | `pt` |     |
 
 ## :scroll: Contributing
 
