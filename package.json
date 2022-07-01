@@ -61,8 +61,8 @@
     "webpack-cli": "^4.10.0"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.30.0",
-    "@typescript-eslint/parser": "^5.30.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.3",
+    "@typescript-eslint/parser": "^5.30.3",
     "electron-reload": "^2.0.0-alpha.1",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
