@@ -91,7 +91,6 @@ const createWindow = () => {
       : undefined,
     backgroundColor: nativeTheme.shouldUseDarkColors ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
-      sandbox: true,
       safeDialogs: true,
       devTools: isDevelop,
       preload: path.join(__dirname, 'preload.js'),
