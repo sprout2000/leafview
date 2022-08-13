@@ -38,7 +38,7 @@
   "devDependencies": {
     "@types/leaflet": "^1.7.11",
     "@types/mime-types": "^2.1.1",
-    "@types/node": "^18.7.1",
+    "@types/node": "^18.7.2",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "copy-webpack-plugin": "^11.0.0",
