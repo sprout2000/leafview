@@ -15,7 +15,6 @@ _Image by <a href="https://pixabay.com/users/myriams-fotos-1627417/?utm_source=l
 
 - Pan & Wheel Zoom
 - Browse the images in a folder
-- Auto Update
 
 ## :inbox_tray: Download
 
@@ -38,12 +37,11 @@ You can download the latest version of LeafView from the releases page here:
 
 ### :computer_mouse: Mouse Operations
 
-|    Mouse     | Function                             |
-| :----------: | :----------------------------------- |
-|     Drag     | Pan                                  |
-|    Wheel     | Zoom in/out                          |
-| Double click | Reset zoom                           |
-| Right click  | Show the context menu when available |
+|    Mouse     | Function    |
+| :----------: | :---------- |
+|     Drag     | Pan         |
+|    Wheel     | Zoom in/out |
+| Double click | Reset zoom  |
 
 ## :globe_with_meridians: Supported Languages
 
