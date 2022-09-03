@@ -9,8 +9,6 @@ import {
   BrowserWindow,
 } from 'electron';
 
-import log from 'electron-log';
-import { autoUpdater } from 'electron-updater';
 import windowStateKeeper from 'electron-window-state';
 import { searchDevtools } from 'electron-search-devtools';
 
@@ -23,19 +21,6 @@ import i18next from 'i18next';
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 
-console.log = log.log;
-autoUpdater.logger = log;
-log.info('App starting...');
-
-process.once('uncaughtException', (err) => {
-  log.error('electron:uncaughtException');
-  log.error(err.name);
-  log.error(err.message);
-  log.error(err.stack);
-  app.exit();
-});
-
-const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDevelop = process.env.NODE_ENV === 'development';
 
@@ -86,9 +71,7 @@ const createWindow = () => {
     height: windowState.height,
     autoHideMenuBar: true,
     fullscreenable: isDarwin ? false : true,
-    icon: isLinux
-      ? path.join(getResourceDirectory(), 'images/logo.png')
-      : undefined,
+    icon: path.join(getResourceDirectory(), 'images/logo.png'),
     backgroundColor: nativeTheme.shouldUseDarkColors ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
       safeDialogs: true,
@@ -121,7 +104,7 @@ const createWindow = () => {
           .filter((item) => checkmime(item))
           .sort()
       )
-      .catch((err) => log.error(err));
+      .catch((err) => console.log(err));
   });
 
   ipcMain.handle('open-dialog', async () => {
@@ -151,7 +134,7 @@ const createWindow = () => {
 
         return result.filePaths[0];
       })
-      .catch((err) => log.error(err));
+      .catch((err) => console.log(err));
   });
 
   ipcMain.handle('move-to-trash', (_e: Event, filepath: string) => {
@@ -195,35 +178,6 @@ const createWindow = () => {
       if (path.basename(filepath).startsWith(dotfiles)) return;
 
       mainWindow.webContents.send('menu-open', filepath);
-    });
-  }
-
-  if (isDarwin || isLinux) {
-    autoUpdater.checkForUpdatesAndNotify();
-
-    autoUpdater.once('error', (_e, err) => {
-      log.info(`Error in auto-updater: ${err}`);
-    });
-
-    autoUpdater.once('update-downloaded', async () => {
-      log.info(`Update downloaded...`);
-
-      await dialog
-        .showMessageBox(mainWindow, {
-          type: 'info',
-          buttons: ['Restart', 'Later'],
-          title: 'Update',
-          message: 'Update',
-          detail:
-            'A new version has been downloaded.\n' +
-            'Restart the application to apply the updates.',
-        })
-        .then((result) => {
-          if (result.response === 0) {
-            autoUpdater.quitAndInstall();
-          }
-        })
-        .catch((err) => log.info(`Error in 'update-downloaded': ${err}`));
     });
   }
 
