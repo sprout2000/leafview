@@ -85,10 +85,6 @@ build({
         gatekeeperAssess: false,
       },
     },
-    dmg: {
-      icon: 'assets/dmg.icns',
-      sign: false,
-    },
     afterSign:
       process.env.CSC_IDENTITY_AUTO_DISCOVERY === 'false'
         ? null
