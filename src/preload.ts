@@ -4,10 +4,6 @@ contextBridge.exposeInMainWorld('myAPI', {
   mimecheck: async (filepath: string): Promise<boolean> =>
     ipcRenderer.invoke('mime-check', filepath),
 
-  history: (filepath: string) => ipcRenderer.send('file-history', filepath),
-
-  contextMenu: () => ipcRenderer.send('show-context-menu'),
-
   dirname: async (filepath: string): Promise<string> =>
     ipcRenderer.invoke('dirname', filepath),
 

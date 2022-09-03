@@ -83,8 +83,6 @@ const createWindow = () => {
   const menu = createMenu(mainWindow);
   Menu.setApplicationMenu(menu);
 
-  ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
-
   ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
     return checkmime(filepath);
   });
@@ -143,10 +141,6 @@ const createWindow = () => {
 
   ipcMain.handle('update-title', (_e: Event, filepath: string) => {
     mainWindow.setTitle(path.basename(filepath));
-  });
-
-  ipcMain.on('show-context-menu', () => {
-    menu.popup();
   });
 
   mainWindow.webContents.once('did-finish-load', () => {
