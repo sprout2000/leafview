@@ -11,7 +11,7 @@ import path from 'node:path';
 import i18next from 'i18next';
 import Store from 'electron-store';
 
-const localeList = [
+const localeList: Locale[] = [
   'ar',
   'cs',
   'de',
@@ -28,7 +28,7 @@ const localeList = [
   'zh-TW',
 ];
 
-const translate = (locale: string) => {
+const translate = (locale: Locale) => {
   switch (locale) {
     case 'ar':
       return 'اللغة العربية';
