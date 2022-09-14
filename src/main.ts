@@ -9,7 +9,7 @@ import {
   BrowserWindow,
 } from 'electron';
 
-import windowStateKeeper from 'electron-window-state';
+import Store from 'electron-store';
 import { searchDevtools } from 'electron-search-devtools';
 
 import fs from 'node:fs';
@@ -20,6 +20,19 @@ import i18next from 'i18next';
 
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
+
+const initWidth = 800;
+const initHeight = 528;
+
+const store = new Store<StoreType>({
+  configFileMode: 0o666,
+  defaults: {
+    x: undefined,
+    y: undefined,
+    width: initWidth,
+    height: initHeight,
+  },
+});
 
 const isDarwin = process.platform === 'darwin';
 const isDevelop = process.env.NODE_ENV === 'development';
@@ -35,9 +48,6 @@ require('electron-reload')(__dirname, {
   electron: path.resolve(__dirname, execPath),
 });
 /// #endif
-
-const initWidth = 800;
-const initHeight = 528;
 
 const getResourceDirectory = () => {
   return process.env.NODE_ENV === 'development'
@@ -56,19 +66,15 @@ const checkmime = (filepath: string) => {
 
 const createWindow = () => {
   const dotfiles = isDarwin ? '.' : '._';
-  const windowState = windowStateKeeper({
-    defaultWidth: initWidth,
-    defaultHeight: initHeight,
-  });
 
   const mainWindow = new BrowserWindow({
     show: false,
-    x: windowState.x,
-    y: windowState.y,
+    x: store.get('x'),
+    y: store.get('y'),
     minWidth: initWidth,
     minHeight: initHeight,
-    width: windowState.width,
-    height: windowState.height,
+    width: store.get('width'),
+    height: store.get('height'),
     autoHideMenuBar: true,
     fullscreenable: isDarwin ? false : true,
     icon: path.join(getResourceDirectory(), 'images/logo.png'),
@@ -80,7 +86,7 @@ const createWindow = () => {
     },
   });
 
-  const menu = createMenu(mainWindow);
+  const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
 
   ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
@@ -186,9 +192,16 @@ const createWindow = () => {
     mainWindow.webContents.openDevTools({ mode: 'detach' });
   }
 
-  windowState.manage(mainWindow);
   mainWindow.loadFile('dist/index.html');
   mainWindow.once('ready-to-show', () => mainWindow.show());
+
+  mainWindow.once('close', () => {
+    const bounds = mainWindow.getBounds();
+    store.set('width', bounds.width);
+    store.set('height', bounds.height);
+    store.set('x', bounds.x);
+    store.set('y', bounds.y);
+  });
 };
 
 app.once('will-finish-launching', () => {
@@ -199,8 +212,9 @@ app.once('will-finish-launching', () => {
 });
 
 app.whenReady().then(() => {
-  const locale = app.getLocale();
+  const locale = store.get('language') || app.getLocale();
   setLocales(locale);
+  store.set('language', locale);
 
   createWindow();
 });

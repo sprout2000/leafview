@@ -24,7 +24,7 @@
     "prebuild": "npm r @typescript-eslint/eslint-plugin @typescript-eslint/parser electron-reload eslint eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks prettier rimraf wait-on --no-save"
   },
   "dependencies": {
-    "electron-window-state": "^5.0.3",
+    "electron-store": "^8.1.0",
     "i18next": "^21.9.1",
     "leaflet": "^1.8.0",
     "mime-types": "^2.1.35",
