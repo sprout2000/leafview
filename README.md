@@ -31,6 +31,12 @@ You can also get the latest version via [winget](https://github.com/microsoft/wi
 winget install sprout2000.LeafView
 ```
 
+Or you can upgrade:
+
+```sh
+winget upgrade sprout2000.LeafView
+```
+
 ## :green_book: Usage
 
 ### :keyboard: Keyboard Shortcuts
