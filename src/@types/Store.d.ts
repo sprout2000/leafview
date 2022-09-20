@@ -1,4 +1,5 @@
 declare type StoreType = {
+  ask: boolean;
   x: number | undefined;
   y: number | undefined;
   width: number | undefined;

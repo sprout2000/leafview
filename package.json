@@ -2,7 +2,7 @@
   "name": "leafview",
   "productName": "LeafView",
   "description": "A minimalist image viewer based on Leaflet.js and Electron.",
-  "version": "2.1.4",
+  "version": "1.11.4",
   "license": "MIT",
   "author": {
     "name": "sprout2000"
@@ -24,7 +24,9 @@
     "prebuild": "npm r --no-save @typescript-eslint/eslint-plugin @typescript-eslint/parser electron-reload eslint eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks npm-run-all prettier rimraf wait-on"
   },
   "dependencies": {
+    "electron-log": "^4.4.8",
     "electron-store": "^8.1.0",
+    "electron-updater": "^5.2.1",
     "i18next": "^21.9.2",
     "leaflet": "^1.8.0",
     "mime-types": "^2.1.35",

@@ -10,6 +10,8 @@ import {
 } from 'electron';
 
 import Store from 'electron-store';
+import log from 'electron-log';
+import { autoUpdater } from 'electron-updater';
 import { searchDevtools } from 'electron-search-devtools';
 
 import fs from 'node:fs';
@@ -21,12 +23,16 @@ import i18next from 'i18next';
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 
+console.log = log.log;
+log.info('App starting...');
+
 const initWidth = 800;
 const initHeight = 528;
 
 const store = new Store<StoreType>({
   configFileMode: 0o666,
   defaults: {
+    ask: true,
     x: undefined,
     y: undefined,
     width: initWidth,
@@ -190,6 +196,50 @@ const createWindow = () => {
       })
       .catch((err) => console.log(err));
     mainWindow.webContents.openDevTools({ mode: 'detach' });
+  }
+
+  if (isDarwin || process.platform === 'linux') {
+    autoUpdater.logger = log;
+    autoUpdater.autoDownload = false;
+
+    if (store.get('ask')) autoUpdater.checkForUpdates();
+
+    autoUpdater.on('update-available', () => {
+      dialog
+        .showMessageBox(mainWindow, {
+          message: 'Found Updates',
+          detail: 'A new version is available.\nDo you want to update now?',
+          buttons: ['Not now', 'Yes'],
+          defaultId: 1,
+          cancelId: 0,
+          checkboxLabel: "Don't ask me again.",
+        })
+        .then((result) => {
+          if (result.response === 1) {
+            log.info('User chose to update...');
+            autoUpdater.downloadUpdate();
+          } else {
+            log.info('User refused to update...');
+            if (result.checkboxChecked) {
+              log.info('User rejected the update notification.');
+              store.set('ask', false);
+            }
+          }
+        });
+    });
+
+    autoUpdater.on('update-downloaded', () => {
+      log.info('Updates downloaded...');
+      dialog
+        .showMessageBox(mainWindow, {
+          message: 'Install Updates',
+          detail: 'Updates downloaded.\nPlease restart LeafView...',
+        })
+        .then(() => {
+          setImmediate(() => autoUpdater.quitAndInstall());
+        })
+        .catch((err) => log.info(`Updater Error: ${err}`));
+    });
   }
 
   mainWindow.loadFile('dist/index.html');
