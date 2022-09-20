@@ -228,6 +228,10 @@ const createWindow = () => {
         });
     });
 
+    autoUpdater.on('update-not-available', () => {
+      log.info('No updates available.');
+    });
+
     autoUpdater.on('update-downloaded', () => {
       log.info('Updates downloaded...');
       dialog
