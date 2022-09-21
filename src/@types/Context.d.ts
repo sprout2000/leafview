@@ -7,10 +7,6 @@ declare global {
 export interface IElectronAPI {
   mimecheck: (filepath: string) => Promise<boolean>;
 
-  history: (filepath: string) => void;
-
-  contextMenu: () => void;
-
   dirname: (filepath: string) => Promise<string>;
 
   readdir: (dirpath: string) => Promise<void | string[]>;

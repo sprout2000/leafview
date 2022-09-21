@@ -9,9 +9,9 @@ import {
   BrowserWindow,
 } from 'electron';
 
+import Store from 'electron-store';
 import log from 'electron-log';
 import { autoUpdater } from 'electron-updater';
-import windowStateKeeper from 'electron-window-state';
 import { searchDevtools } from 'electron-search-devtools';
 
 import fs from 'node:fs';
@@ -24,18 +24,22 @@ import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 
 console.log = log.log;
-autoUpdater.logger = log;
 log.info('App starting...');
 
-process.once('uncaughtException', (err) => {
-  log.error('electron:uncaughtException');
-  log.error(err.name);
-  log.error(err.message);
-  log.error(err.stack);
-  app.exit();
+const initWidth = 800;
+const initHeight = 528;
+
+const store = new Store<StoreType>({
+  configFileMode: 0o666,
+  defaults: {
+    ask: true,
+    x: undefined,
+    y: undefined,
+    width: initWidth,
+    height: initHeight,
+  },
 });
 
-const isLinux = process.platform === 'linux';
 const isDarwin = process.platform === 'darwin';
 const isDevelop = process.env.NODE_ENV === 'development';
 
@@ -50,9 +54,6 @@ require('electron-reload')(__dirname, {
   electron: path.resolve(__dirname, execPath),
 });
 /// #endif
-
-const initWidth = 800;
-const initHeight = 528;
 
 const getResourceDirectory = () => {
   return process.env.NODE_ENV === 'development'
@@ -71,37 +72,28 @@ const checkmime = (filepath: string) => {
 
 const createWindow = () => {
   const dotfiles = isDarwin ? '.' : '._';
-  const windowState = windowStateKeeper({
-    defaultWidth: initWidth,
-    defaultHeight: initHeight,
-  });
 
   const mainWindow = new BrowserWindow({
     show: false,
-    x: windowState.x,
-    y: windowState.y,
+    x: store.get('x'),
+    y: store.get('y'),
     minWidth: initWidth,
     minHeight: initHeight,
-    width: windowState.width,
-    height: windowState.height,
+    width: store.get('width'),
+    height: store.get('height'),
     autoHideMenuBar: true,
     fullscreenable: isDarwin ? false : true,
-    icon: isLinux
-      ? path.join(getResourceDirectory(), 'images/logo.png')
-      : undefined,
+    icon: path.join(getResourceDirectory(), 'images/logo.png'),
     backgroundColor: nativeTheme.shouldUseDarkColors ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
-      sandbox: true,
       safeDialogs: true,
       devTools: isDevelop,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
 
-  const menu = createMenu(mainWindow);
+  const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
-
-  ipcMain.on('file-history', (_e, arg) => app.addRecentDocument(arg));
 
   ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
     return checkmime(filepath);
@@ -122,7 +114,7 @@ const createWindow = () => {
           .filter((item) => checkmime(item))
           .sort()
       )
-      .catch((err) => log.error(err));
+      .catch((err) => console.log(err));
   });
 
   ipcMain.handle('open-dialog', async () => {
@@ -152,7 +144,7 @@ const createWindow = () => {
 
         return result.filePaths[0];
       })
-      .catch((err) => log.error(err));
+      .catch((err) => console.log(err));
   });
 
   ipcMain.handle('move-to-trash', (_e: Event, filepath: string) => {
@@ -161,10 +153,6 @@ const createWindow = () => {
 
   ipcMain.handle('update-title', (_e: Event, filepath: string) => {
     mainWindow.setTitle(path.basename(filepath));
-  });
-
-  ipcMain.on('show-context-menu', () => {
-    menu.popup();
   });
 
   mainWindow.webContents.once('did-finish-load', () => {
@@ -199,35 +187,6 @@ const createWindow = () => {
     });
   }
 
-  if (isDarwin || isLinux) {
-    autoUpdater.checkForUpdatesAndNotify();
-
-    autoUpdater.once('error', (_e, err) => {
-      log.info(`Error in auto-updater: ${err}`);
-    });
-
-    autoUpdater.once('update-downloaded', async () => {
-      log.info(`Update downloaded...`);
-
-      await dialog
-        .showMessageBox(mainWindow, {
-          type: 'info',
-          buttons: ['Restart', 'Later'],
-          title: 'Update',
-          message: 'Update',
-          detail:
-            'A new version has been downloaded.\n' +
-            'Restart the application to apply the updates.',
-        })
-        .then((result) => {
-          if (result.response === 0) {
-            autoUpdater.quitAndInstall();
-          }
-        })
-        .catch((err) => log.info(`Error in 'update-downloaded': ${err}`));
-    });
-  }
-
   if (isDevelop) {
     searchDevtools('REACT')
       .then((devtools) => {
@@ -239,9 +198,61 @@ const createWindow = () => {
     mainWindow.webContents.openDevTools({ mode: 'detach' });
   }
 
-  windowState.manage(mainWindow);
+  if (isDarwin || process.platform === 'linux') {
+    autoUpdater.logger = log;
+    autoUpdater.autoDownload = false;
+
+    if (store.get('ask')) autoUpdater.checkForUpdates();
+
+    autoUpdater.on('update-available', () => {
+      dialog
+        .showMessageBox(mainWindow, {
+          message: 'Found Updates',
+          detail: 'A new version is available.\nDo you want to update now?',
+          buttons: ['Not now', 'Yes'],
+          defaultId: 1,
+          cancelId: 0,
+          checkboxLabel: "Don't ask me again.",
+        })
+        .then((result) => {
+          if (result.response === 1) {
+            log.info('User chose to update...');
+            autoUpdater.downloadUpdate();
+          } else {
+            log.info('User refused to update...');
+            if (result.checkboxChecked) {
+              log.info('User rejected the update notification.');
+              store.set('ask', false);
+            }
+          }
+        });
+    });
+
+    autoUpdater.on('update-not-available', () => {
+      log.info('No updates available.');
+    });
+
+    autoUpdater.on('update-downloaded', () => {
+      log.info('Updates downloaded...');
+      dialog
+        .showMessageBox(mainWindow, {
+          message: 'Install Updates',
+          detail: 'Updates downloaded.\nPlease restart LeafView...',
+        })
+        .then(() => {
+          setImmediate(() => autoUpdater.quitAndInstall());
+        })
+        .catch((err) => log.info(`Updater Error: ${err}`));
+    });
+  }
+
   mainWindow.loadFile('dist/index.html');
   mainWindow.once('ready-to-show', () => mainWindow.show());
+
+  mainWindow.once('close', () => {
+    const { x, y, width, height } = mainWindow.getBounds();
+    store.set({ x, y, width, height });
+  });
 };
 
 app.once('will-finish-launching', () => {
@@ -252,8 +263,9 @@ app.once('will-finish-launching', () => {
 });
 
 app.whenReady().then(() => {
-  const locale = app.getLocale();
+  const locale = store.get('language') || app.getLocale();
   setLocales(locale);
+  store.set('language', locale);
 
   createWindow();
 });

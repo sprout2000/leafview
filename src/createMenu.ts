@@ -9,8 +9,59 @@ import {
 
 import path from 'node:path';
 import i18next from 'i18next';
+import Store from 'electron-store';
 
-export const createMenu = (win: BrowserWindow) => {
+const localeList: Locale[] = [
+  'ar',
+  'cs',
+  'de',
+  'en',
+  'es',
+  'fr',
+  'hu',
+  'ja',
+  'pl',
+  'pt',
+  'ru',
+  'tr',
+  'zh-CN',
+  'zh-TW',
+];
+
+const translate = (locale: Locale) => {
+  switch (locale) {
+    case 'ar':
+      return 'اللغة العربية';
+    case 'cs':
+      return 'Čeština';
+    case 'de':
+      return 'Deutsch';
+    case 'en':
+      return 'English';
+    case 'es':
+      return 'Español';
+    case 'fr':
+      return 'Français';
+    case 'hu':
+      return 'Magyar';
+    case 'ja':
+      return '日本語';
+    case 'pl':
+      return 'Polski';
+    case 'pt':
+      return 'Português';
+    case 'ru':
+      return 'Русский';
+    case 'zh-CN':
+      return '简体中文';
+    case 'zh-TW':
+      return '繁体中文';
+    default:
+      return 'English';
+  }
+};
+
+export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   const isWin32 = process.platform === 'win32';
   const isDarwin = process.platform === 'darwin';
   const dotfiles = isDarwin ? '.' : '._';
@@ -69,6 +120,24 @@ export const createMenu = (win: BrowserWindow) => {
     ],
   };
 
+  const langSub: MenuItemConstructorOptions[] = [];
+
+  localeList.map((locale) => {
+    langSub.push({
+      label: translate(locale),
+      type: 'radio',
+      id: `language-${locale}`,
+      click: () => {
+        store.set('language', locale);
+        dialog.showMessageBox(win, {
+          message: i18next.t('Warning'),
+          type: 'warning',
+        });
+      },
+      checked: store.get('language') === locale,
+    });
+  });
+
   const viewSub: MenuItemConstructorOptions[] = [
     {
       label: i18next.t('Next Image'),
@@ -103,6 +172,11 @@ export const createMenu = (win: BrowserWindow) => {
       accelerator: 'CmdOrCtrl+Left',
       click: () => win.webContents.send('menu-prev'),
       visible: false,
+    },
+    { type: 'separator' },
+    {
+      label: i18next.t('Language'),
+      submenu: langSub,
     },
     { type: 'separator' },
   ];

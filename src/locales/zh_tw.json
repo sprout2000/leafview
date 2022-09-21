@@ -25,5 +25,7 @@
   "Hide Others": "隱藏其他",
   "Show All": "全部顯示",
   "Quit": "退出",
-  "Quit LeafView": "退出 LeafView"
+  "Quit LeafView": "退出 LeafView",
+  "Language": "語言",
+  "Warning": "要轉換語言，請重新啟動 LeafView。"
 }

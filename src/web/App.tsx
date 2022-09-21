@@ -91,10 +91,7 @@ export const App = () => {
       if (file.name.startsWith('.')) return;
 
       const mime = await myAPI.mimecheck(file.path);
-      if (mime) {
-        setUrl(file.path);
-        myAPI.history(file.path);
-      }
+      if (mime) setUrl(file.path);
     }
   };
 
@@ -187,30 +184,19 @@ export const App = () => {
     if (!filepath) return;
 
     const mime = await myAPI.mimecheck(filepath);
-    if (mime) {
-      setUrl(filepath);
-      myAPI.history(filepath);
-    }
+    if (mime) setUrl(filepath);
   }, []);
 
   const onMenuOpen = useCallback(async (_e: Event, filepath: string) => {
     if (!filepath) return;
 
     const mime = await myAPI.mimecheck(filepath);
-    if (mime) {
-      setUrl(filepath);
-      myAPI.history(filepath);
-    }
+    if (mime) setUrl(filepath);
   }, []);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (!url || e.key !== '0') return;
     mapObj.current?.setZoom(0);
-  };
-
-  const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    myAPI.contextMenu();
   };
 
   const updateTitle = async (filepath: string) => {
@@ -276,7 +262,6 @@ export const App = () => {
       onDragOver={preventDefault}
       onDragEnter={preventDefault}
       onDragLeave={preventDefault}
-      onContextMenu={onContextMenu}
     >
       <div className="bottom">
         <ToolBar

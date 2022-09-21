@@ -1,0 +1,15 @@
+declare type Locale =
+  | 'ar'
+  | 'cs'
+  | 'de'
+  | 'en'
+  | 'es'
+  | 'fr'
+  | 'hu'
+  | 'ja'
+  | 'pl'
+  | 'pt'
+  | 'ru'
+  | 'tr'
+  | 'zh-CN'
+  | 'zh-TW';

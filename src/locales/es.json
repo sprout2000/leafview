@@ -25,5 +25,7 @@
   "Hide Others": "Ocultar Otras",
   "Show All": "Mostrar todas",
   "Quit": "Cerrar LeafView",
-  "Quit LeafView": "Cerrar LeafView"
+  "Quit LeafView": "Cerrar LeafView",
+  "Language": "Language",
+  "Warning": "To change the language, please restart LeafView."
 }
