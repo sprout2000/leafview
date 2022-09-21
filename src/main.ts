@@ -9,8 +9,8 @@ import {
   BrowserWindow,
 } from 'electron';
 
-import Store from 'electron-store';
 import log from 'electron-log';
+import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
 import { searchDevtools } from 'electron-search-devtools';
 
