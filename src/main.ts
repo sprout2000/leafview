@@ -250,11 +250,8 @@ const createWindow = () => {
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
   mainWindow.once('close', () => {
-    const bounds = mainWindow.getBounds();
-    store.set('width', bounds.width);
-    store.set('height', bounds.height);
-    store.set('x', bounds.x);
-    store.set('y', bounds.y);
+    const { x, y, width, height } = mainWindow.getBounds();
+    store.set({ x, y, width, height });
   });
 };
 
