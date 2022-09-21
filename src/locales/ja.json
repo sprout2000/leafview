@@ -30,7 +30,7 @@
   "Warning": "言語を切り換えるには LeafView を再起動してください。",
   "Update Notification": "アップデート通知",
   "A new version is available.": "新しいバージョンを利用できます。",
-  "Do you want to update now?": "いますぐダウンロードしますか？",
+  "Do you want to download it now?": "いますぐダウンロードしますか？",
   "No update notifications required.": "アップデートの通知は不要です。",
   "Not now": "今はまだ",
   "Yes": "はい",
