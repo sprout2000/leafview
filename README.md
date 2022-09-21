@@ -15,6 +15,7 @@ _Image by <a href="https://pixabay.com/users/myriams-fotos-1627417/?utm_source=l
 
 - Pan & Wheel Zoom
 - Browse the images in a folder
+- Auto update _(macOS / Linux)_
 
 ## :inbox_tray: Download
 
