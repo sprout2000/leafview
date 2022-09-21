@@ -212,7 +212,7 @@ const createWindow = () => {
             i18next.t('A new version is available.') +
             '\n' +
             i18next.t('Do you want to download it now?'),
-          buttons: [i18next.t('Not now'), i18next.t('Yes')],
+          buttons: [i18next.t('Not now'), 'OK'],
           defaultId: 1,
           cancelId: 0,
           checkboxLabel: i18next.t('No update notifications required.'),
