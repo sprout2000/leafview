@@ -27,5 +27,14 @@
   "Quit": "終了",
   "Quit LeafView": "LeafView を終了",
   "Language": "言語",
-  "Warning": "言語を切り換えるには LeafView を再起動してください。"
+  "Warning": "言語を切り換えるには LeafView を再起動してください。",
+  "Update Notification": "アップデート通知",
+  "A new version is available.": "新しいバージョンを利用できます。",
+  "Do you want to update now?": "いますぐダウンロードしますか？",
+  "No update notifications required.": "アップデートの通知は不要です。",
+  "Not now": "今はまだ",
+  "Yes": "はい",
+  "Install Updates": "アップデートのインストール",
+  "Updates downloaded.": "アップデートがダウンロードされました。",
+  "Please restart LeafView...": "LeafView を再起動して下さい。"
 }
