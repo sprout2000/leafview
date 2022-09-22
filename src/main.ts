@@ -207,15 +207,13 @@ const createWindow = () => {
     autoUpdater.on('update-available', () => {
       dialog
         .showMessageBox(mainWindow, {
-          message: i18next.t('Update Notification'),
+          message: 'Update Notification',
           detail:
-            i18next.t('A new version is available.') +
-            '\n' +
-            i18next.t('Do you want to download it now?'),
-          buttons: [i18next.t('Not now'), 'OK'],
+            'A new version is available.\nDo you want to download it now?',
+          buttons: ['Not now', 'OK'],
           defaultId: 1,
           cancelId: 0,
-          checkboxLabel: i18next.t('No update notifications required.'),
+          checkboxLabel: 'No update notifications required.',
         })
         .then((result) => {
           if (result.response === 1) {
@@ -239,11 +237,8 @@ const createWindow = () => {
       log.info('Updates downloaded...');
       dialog
         .showMessageBox(mainWindow, {
-          message: i18next.t('Install Updates'),
-          detail:
-            i18next.t('Updates downloaded.') +
-            '\n' +
-            i18next.t('Please restart LeafView...'),
+          message: 'Install Updates',
+          detail: 'Updates downloaded.\nPlease restart LeafView...',
         })
         .then(() => {
           setImmediate(() => autoUpdater.quitAndInstall());

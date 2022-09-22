@@ -130,8 +130,8 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       click: () => {
         store.set('language', locale);
         dialog.showMessageBox(win, {
-          message: i18next.t('Warning'),
-          type: 'warning',
+          message: 'To change the language, please restart LeafView.',
+          type: 'info',
         });
       },
       checked: store.get('language') === locale,
@@ -175,7 +175,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     },
     { type: 'separator' },
     {
-      label: i18next.t('Language'),
+      label: 'Language',
       submenu: langSub,
     },
     { type: 'separator' },

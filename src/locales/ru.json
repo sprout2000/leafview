@@ -25,15 +25,5 @@
   "Hide Others": "Скрыть прочее",
   "Show All": "Показать всё",
   "Quit": "Выйти из LeafView",
-  "Quit LeafView": "Выйти из LeafView",
-  "Language": "Language",
-  "Warning": "To change the language, please restart LeafView.",
-  "Update Notification": "Update Notification",
-  "A new version is available.": "A new version is available.",
-  "Do you want to download it now?": "Do you want to download it now?",
-  "No update notifications required.": "No update notifications required.",
-  "Not now": "Not now",
-  "Install Updates": "Install Updates",
-  "Updates downloaded.": "Updates downloaded.",
-  "Please restart LeafView...": "Please restart LeafView..."
+  "Quit LeafView": "Выйти из LeafView"
 }
