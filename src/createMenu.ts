@@ -62,7 +62,6 @@ const translate = (locale: Locale) => {
 };
 
 export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
-  const isWin32 = process.platform === 'win32';
   const isDarwin = process.platform === 'darwin';
   const dotfiles = isDarwin ? '.' : '._';
 
@@ -113,9 +112,9 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       },
       { type: 'separator' },
       {
-        label: isDarwin ? i18next.t('Close') : i18next.t('Quit'),
-        accelerator: isDarwin ? 'Cmd+W' : isWin32 ? 'Alt+F4' : 'Ctrl+Q',
-        role: isDarwin ? 'close' : 'quit',
+        label: i18next.t('Close'),
+        accelerator: isDarwin ? 'Cmd+W' : 'Alt+F4',
+        role: 'close',
       },
     ],
   };
@@ -131,7 +130,6 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         store.set('language', locale);
         dialog.showMessageBox(win, {
           message: 'To change the language, please restart LeafView.',
-          type: 'info',
         });
       },
       checked: store.get('language') === locale,
@@ -178,15 +176,17 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       label: 'Language',
       submenu: langSub,
     },
-    { type: 'separator' },
   ];
 
   if (!isDarwin) {
-    viewSub.push({
-      label: i18next.t('Toggle Fullscreen'),
-      role: 'togglefullscreen',
-      accelerator: 'F11',
-    });
+    viewSub.push(
+      { type: 'separator' },
+      {
+        label: i18next.t('Toggle Fullscreen'),
+        role: 'togglefullscreen',
+        accelerator: 'F11',
+      }
+    );
   }
 
   const helpSub: MenuItemConstructorOptions[] = [
@@ -203,7 +203,20 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     click: () => app.showAboutPanel(),
   };
 
-  if (!isDarwin) {
+  if (process.platform === 'linux') {
+    helpSub.push(
+      {
+        label: 'Automatic update',
+        type: 'checkbox',
+        checked: store.get('ask'),
+        click: () => store.set('ask', !store.get('ask')),
+      },
+      { type: 'separator' },
+      aboutItem
+    );
+  }
+
+  if (process.platform === 'win32') {
     helpSub.push(aboutItem);
   }
 
@@ -264,6 +277,13 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         {
           label: i18next.t('Show All'),
           role: 'unhide',
+        },
+        { type: 'separator' },
+        {
+          label: 'Automatic update',
+          type: 'checkbox',
+          checked: store.get('ask'),
+          click: () => store.set('ask', !store.get('ask')),
         },
         { type: 'separator' },
         {
