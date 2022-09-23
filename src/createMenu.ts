@@ -144,7 +144,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     },
     {
       label: 'Next Image (invisible)',
-      accelerator: 'CmdOrCtrl+N',
+      accelerator: 'Ctrl+N',
       click: () => win.webContents.send('menu-next'),
       visible: false,
     },
@@ -161,7 +161,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     },
     {
       label: 'Prev Image (invisible)',
-      accelerator: 'CmdOrCtrl+P',
+      accelerator: 'Ctrl+P',
       click: () => win.webContents.send('menu-prev'),
       visible: false,
     },
