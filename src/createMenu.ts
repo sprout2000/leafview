@@ -174,10 +174,6 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     },
     { type: 'separator' },
     {
-      label: i18next.t('Language'),
-      submenu: langSub,
-    },
-    {
       label: i18next.t('Toggle Dark Mode'),
       type: 'checkbox',
       checked: store.get('darkmode'),
@@ -185,6 +181,10 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         nativeTheme.themeSource = store.get('darkmode') ? 'light' : 'dark';
         store.set('darkmode', !store.get('darkmode'));
       },
+    },
+    {
+      label: i18next.t('Language'),
+      submenu: langSub,
     },
   ];
 
