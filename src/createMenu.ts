@@ -175,6 +175,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     { type: 'separator' },
     {
       label: i18next.t('Toggle Dark Mode'),
+      accelerator: 'CmdOrCtrl+T',
       type: 'checkbox',
       checked: store.get('darkmode'),
       click: () => {
