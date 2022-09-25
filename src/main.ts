@@ -37,7 +37,7 @@ const store = new Store<StoreType>({
     y: undefined,
     width: initWidth,
     height: initHeight,
-    darkmode: false,
+    darkmode: nativeTheme.shouldUseDarkColors,
   },
 });
 
@@ -93,8 +93,7 @@ const createWindow = () => {
     },
   });
 
-  nativeTheme.themeSource =
-    store.get('darkmode') || nativeTheme.shouldUseDarkColors ? 'dark' : 'light';
+  nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
