@@ -183,14 +183,22 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         store.set('darkmode', !store.get('darkmode'));
       },
     },
-    {
-      label: i18next.t('Language'),
-      submenu: langSub,
-    },
   ];
 
   if (!isDarwin) {
     viewSub.push(
+      {
+        label: i18next.t('Toggle Menubar'),
+        accelerator: 'Alt+T',
+        click: () => {
+          win.setMenuBarVisibility(!win.menuBarVisible);
+          store.set('showmenu', !store.get('showmenu'));
+        },
+      },
+      {
+        label: i18next.t('Language'),
+        submenu: langSub,
+      },
       { type: 'separator' },
       {
         label: i18next.t('Toggle Fullscreen'),
@@ -198,6 +206,11 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         accelerator: 'F11',
       }
     );
+  } else {
+    viewSub.push({
+      label: i18next.t('Language'),
+      submenu: langSub,
+    });
   }
 
   const helpSub: MenuItemConstructorOptions[] = [

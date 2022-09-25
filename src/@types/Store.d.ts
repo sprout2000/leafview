@@ -6,4 +6,5 @@ declare type StoreType = {
   height: number | undefined;
   language?: string;
   darkmode: boolean;
+  showmenu: boolean;
 };

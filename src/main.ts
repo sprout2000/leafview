@@ -38,6 +38,7 @@ const store = new Store<StoreType>({
     width: initWidth,
     height: initHeight,
     darkmode: nativeTheme.shouldUseDarkColors,
+    showmenu: true,
   },
 });
 
@@ -82,7 +83,6 @@ const createWindow = () => {
     minHeight: initHeight,
     width: store.get('width'),
     height: store.get('height'),
-    autoHideMenuBar: true,
     fullscreenable: isDarwin ? false : true,
     icon: path.join(getResourceDirectory(), 'images/logo.png'),
     backgroundColor: nativeTheme.shouldUseDarkColors ? '#1e1e1e' : '#f6f6f6',
@@ -93,6 +93,7 @@ const createWindow = () => {
     },
   });
 
+  if (!isDarwin) mainWindow.setMenuBarVisibility(store.get('showmenu'));
   nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
 
   const menu = createMenu(mainWindow, store);
