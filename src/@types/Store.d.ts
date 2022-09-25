@@ -5,4 +5,5 @@ declare type StoreType = {
   width: number | undefined;
   height: number | undefined;
   language?: string;
+  darkmode: boolean;
 };

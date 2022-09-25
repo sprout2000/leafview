@@ -37,6 +37,7 @@ const store = new Store<StoreType>({
     y: undefined,
     width: initWidth,
     height: initHeight,
+    darkmode: false,
   },
 });
 
@@ -91,6 +92,9 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+
+  nativeTheme.themeSource =
+    store.get('darkmode') || nativeTheme.shouldUseDarkColors ? 'dark' : 'light';
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
