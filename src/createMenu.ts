@@ -66,60 +66,6 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   const isDarwin = process.platform === 'darwin';
   const dotfiles = isDarwin ? '.' : '._';
 
-  const fileSub: MenuItemConstructorOptions = {
-    label: i18next.t('File'),
-    submenu: [
-      {
-        label: i18next.t('Open...'),
-        accelerator: 'CmdOrCtrl+O',
-        click: async () => {
-          await dialog
-            .showOpenDialog(win, {
-              properties: ['openFile'],
-              title: i18next.t('Select an image'),
-              filters: [
-                {
-                  name: i18next.t('Image files'),
-                  extensions: [
-                    'bmp',
-                    'gif',
-                    'ico',
-                    'jpg',
-                    'jpeg',
-                    'png',
-                    'svg',
-                    'webp',
-                  ],
-                },
-              ],
-            })
-            .then((result) => {
-              if (result.canceled) return;
-
-              if (path.basename(result.filePaths[0]).startsWith(dotfiles)) {
-                return;
-              }
-
-              win.webContents.send('menu-open', result.filePaths[0]);
-            })
-            .catch((err) => console.log(err));
-        },
-      },
-      { type: 'separator' },
-      {
-        label: i18next.t('Move to Trash'),
-        accelerator: 'Delete',
-        click: () => win.webContents.send('menu-remove'),
-      },
-      { type: 'separator' },
-      {
-        label: i18next.t('Close'),
-        accelerator: isDarwin ? 'Cmd+W' : 'Alt+F4',
-        role: 'close',
-      },
-    ],
-  };
-
   const langSub: MenuItemConstructorOptions[] = [];
 
   localeList.map((locale) => {
@@ -242,7 +188,59 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   }
 
   const template: MenuItemConstructorOptions[] = [
-    fileSub,
+    {
+      label: i18next.t('File'),
+      submenu: [
+        {
+          label: i18next.t('Open...'),
+          accelerator: 'CmdOrCtrl+O',
+          click: async () => {
+            await dialog
+              .showOpenDialog(win, {
+                properties: ['openFile'],
+                title: i18next.t('Select an image'),
+                filters: [
+                  {
+                    name: i18next.t('Image files'),
+                    extensions: [
+                      'bmp',
+                      'gif',
+                      'ico',
+                      'jpg',
+                      'jpeg',
+                      'png',
+                      'svg',
+                      'webp',
+                    ],
+                  },
+                ],
+              })
+              .then((result) => {
+                if (result.canceled) return;
+
+                if (path.basename(result.filePaths[0]).startsWith(dotfiles)) {
+                  return;
+                }
+
+                win.webContents.send('menu-open', result.filePaths[0]);
+              })
+              .catch((err) => console.log(err));
+          },
+        },
+        { type: 'separator' },
+        {
+          label: i18next.t('Move to Trash'),
+          accelerator: 'Delete',
+          click: () => win.webContents.send('menu-remove'),
+        },
+        { type: 'separator' },
+        {
+          label: i18next.t('Close'),
+          accelerator: isDarwin ? 'Cmd+W' : 'Alt+F4',
+          role: 'close',
+        },
+      ],
+    },
     {
       label: i18next.t('View'),
       submenu: viewSub,
