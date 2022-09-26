@@ -128,17 +128,19 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       type: 'radio',
       id: `language-${locale}`,
       click: () => {
-        store.set('language', locale);
-        dialog
-          .showMessageBox(win, {
-            message: i18next.t('Warning'),
-          })
-          .then(() => {
-            setImmediate(() => {
-              app.relaunch();
-              app.exit(0);
+        if (store.get('language') !== locale) {
+          store.set('language', locale);
+          dialog
+            .showMessageBox(win, {
+              message: i18next.t('Warning'),
+            })
+            .then(() => {
+              setImmediate(() => {
+                app.relaunch();
+                app.exit(0);
+              });
             });
-          });
+        }
       },
       checked: store.get('language') === locale,
     });
