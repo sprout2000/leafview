@@ -36,17 +36,17 @@ winget install sprout2000.LeafView
 
 ### :keyboard: Keyboard Shortcuts
 
-|                                          Key                                          | Function                         |
-| :-----------------------------------------------------------------------------------: | :------------------------------- |
-| <kbd>J</kbd>, <kbd>Ctrl</kbd>+<kbd>P</kbd> or <kbd>CmdOrCtrl</kbd>+<kbd>&#8594;</kbd> | Next Image                       |
-| <kbd>K</kbd>, <kbd>Ctrl</kbd>+<kbd>N</kbd> or <kbd>CmdOrCtrl</kbd>+<kbd>&#8592;</kbd> | Previous Image                   |
-|                                     <kbd>+</kbd>                                      | Zoom In                          |
-|                                     <kbd>-</kbd>                                      | Zoom Out                         |
-|                                     <kbd>0</kbd>                                      | Reset Zoom                       |
-|      <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd>      | Pan                              |
-|                   <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>                   | Move to Trash                    |
-|                           <kbd>CmdOrCtrl</kbd>+<kbd>T</kbd>                           | Toggle Dark Mode                 |
-|                              <kbd>Alt</kbd>+<kbd>T</kbd>                              | Toggle Menubar (Windows / Linux) |
+|                                     Key                                     | Function                           |
+| :-------------------------------------------------------------------------: | :--------------------------------- |
+|           <kbd>J</kbd> or <kbd>CmdOrCtrl</kbd>+<kbd>&#8594;</kbd>           | Next Image                         |
+|           <kbd>K</kbd> or <kbd>CmdOrCtrl</kbd>+<kbd>&#8592;</kbd>           | Previous Image                     |
+|                                <kbd>+</kbd>                                 | Zoom In                            |
+|                                <kbd>-</kbd>                                 | Zoom Out                           |
+|                                <kbd>0</kbd>                                 | Reset Zoom                         |
+| <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | Pan                                |
+|              <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>              | Move to Trash                      |
+|                      <kbd>CmdOrCtrl</kbd>+<kbd>T</kbd>                      | Toggle Dark Mode                   |
+|                         <kbd>Alt</kbd>+<kbd>T</kbd>                         | Toggle Menubar _(Windows / Linux)_ |
 
 ### :computer_mouse: Mouse Operations
 
