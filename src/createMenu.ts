@@ -132,6 +132,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
           store.set('language', locale);
           dialog
             .showMessageBox(win, {
+              type: 'info',
               message: i18next.t('Warning'),
             })
             .then(() => {
