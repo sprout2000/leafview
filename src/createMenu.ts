@@ -237,20 +237,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     click: () => app.showAboutPanel(),
   };
 
-  if (process.platform === 'linux') {
-    helpSub.push(
-      {
-        label: 'Automatic update',
-        type: 'checkbox',
-        checked: store.get('ask'),
-        click: () => store.set('ask', !store.get('ask')),
-      },
-      { type: 'separator' },
-      aboutItem
-    );
-  }
-
-  if (process.platform === 'win32') {
+  if (!isDarwin) {
     helpSub.push(aboutItem);
   }
 
@@ -311,13 +298,6 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         {
           label: i18next.t('Show All'),
           role: 'unhide',
-        },
-        { type: 'separator' },
-        {
-          label: 'Automatic update',
-          type: 'checkbox',
-          checked: store.get('ask'),
-          click: () => store.set('ask', !store.get('ask')),
         },
         { type: 'separator' },
         {
