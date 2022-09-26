@@ -26,5 +26,6 @@
   "Show All": "إظهار الكل",
   "Quit": "خروج",
   "Quit LeafView": "الخروج من LeafView",
-  "Language": "لغة"
+  "Language": "لغة",
+  "Warning": "To change the language, please restart LeafView."
 }

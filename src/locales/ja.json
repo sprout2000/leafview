@@ -26,5 +26,6 @@
   "Show All": "すべて表示",
   "Quit": "終了",
   "Quit LeafView": "LeafView を終了",
-  "Language": "言語"
+  "Language": "言語",
+  "Warning": "言語を切り換えるには LeafView を再起動してください。"
 }

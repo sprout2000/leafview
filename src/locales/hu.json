@@ -26,5 +26,6 @@
   "Show All": "Összes mutatása",
   "Quit": "Kilépés",
   "Quit LeafView": "Kilépés a LeafView-ból",
-  "Language": "Nyelv"
+  "Language": "Nyelv",
+  "Warning": "To change the language, please restart LeafView."
 }

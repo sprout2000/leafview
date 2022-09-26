@@ -26,5 +26,6 @@
   "Show All": "Afficher tout",
   "Quit": "Quitter",
   "Quit LeafView": "Quitter LeafView",
-  "Language": "Langue"
+  "Language": "Langue",
+  "Warning": "To change the language, please restart LeafView."
 }

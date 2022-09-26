@@ -26,5 +26,6 @@
   "Show All": "全部顯示",
   "Quit": "退出",
   "Quit LeafView": "退出 LeafView",
-  "Language": "語言"
+  "Language": "語言",
+  "Warning": "To change the language, please restart LeafView."
 }

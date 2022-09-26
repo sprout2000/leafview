@@ -26,5 +26,6 @@
   "Show All": "Показать всё",
   "Quit": "Выйти из LeafView",
   "Quit LeafView": "Выйти из LeafView",
-  "Language": "Язык"
+  "Language": "Язык",
+  "Warning": "To change the language, please restart LeafView."
 }
