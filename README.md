@@ -26,7 +26,7 @@ You can download the latest version of _LeafView_ from the releases page here:
 
 ### :desktop_computer: Windows 10 & 11
 
-You can get the latest version of _LeafView_ via [winget](https://github.com/microsoft/winget-cli):
+You can get _(or upgrade to)_ the latest version of _LeafView_ via [winget](https://github.com/microsoft/winget-cli):
 
 ```sh
 winget install sprout2000.LeafView
