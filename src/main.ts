@@ -268,7 +268,7 @@ app.once('will-finish-launching', () => {
 });
 
 app.whenReady().then(() => {
-  const locale = store.get('language') || app.getLocale();
+  const locale = store.get('language') || app.getSystemLocale();
   setLocales(locale);
   store.set('language', locale);
 
