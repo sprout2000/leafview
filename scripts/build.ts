@@ -13,7 +13,7 @@ build({
       buildResources: 'assets',
       output: 'release',
     },
-    asarUnpack: ['dist/images/logo.png'],
+    asarUnpack: ['dist/logo.png'],
     publish: {
       provider: 'github',
       releaseType: 'release',
