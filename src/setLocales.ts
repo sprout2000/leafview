@@ -1,45 +1,25 @@
 import i18next from 'i18next';
 
+import ar from './locales/ar.json'; // https://github.com/sprout2000/leafview/pull/274 by SuhaibAtef
+import cs from './locales/cs.json'; // https://github.com/sprout2000/leafview/pull/68 by PetrTodorov
+import de from './locales/de.json'; // https://github.com/sprout2000/leafview/pull/166 by DrDeee
 import en from './locales/en.json';
+import es from './locales/es.json'; // https://github.com/sprout2000/leafview/pull/178 by singuerinc
+import fr from './locales/fr.json'; // https://github.com/sprout2000/leafview/pull/312 by BackSpace54
+import hu from './locales/hu.json'; // https://github.com/sprout2000/leafview/pull/305 by Levminer
 import ja from './locales/ja.json';
+import pl from './locales/pl.json'; // https://github.com/sprout2000/leafview/pull/214 by nukeop
+import pt from './locales/pt.json'; // https://github.com/sprout2000/leafview/pull/232 by guaycuru
+import ru from './locales/ru.json'; // https://github.com/sprout2000/leafview/pull/215 by kitt3911
+import zh_CN from './locales/zh_cn.json'; // https://github.com/sprout2000/leafview/pull/235 by ArcherGu
 import zh_TW from './locales/zh_tw.json';
-/** Merge the pull request sent by PetrTodorov. */
-/** https://github.com/sprout2000/leafview/pull/68 */
-import cs from './locales/cs.json';
-/** Merge the pull request sent by DrDeee. */
-/** https://github.com/sprout2000/leafview/pull/166 */
-import de from './locales/de.json';
-/** Merge the pull request sent by singuerinc */
-/** https://github.com/sprout2000/leafview/pull/178 */
-import es from './locales/es.json';
-/** Merge the pull request sent by nukeop */
-/** https://github.com/sprout2000/leafview/pull/214 */
-import pl from './locales/pl.json';
-/** Merge the pull request sent by kitt3911 */
-/** https://github.com/sprout2000/leafview/pull/215 */
-import ru from './locales/ru.json';
-/** Merge the pull request sent by guaycuru */
-/** https://github.com/sprout2000/leafview/pull/232 */
-import pt from './locales/pt.json';
-/** Merge the pull request sent by ArcherGu */
-/** https://github.com/sprout2000/leafview/pull/235 */
-import zh_CN from './locales/zh_cn.json';
-/** Merge the pull request sent by SuhaibAtef */
-/** https://github.com/sprout2000/leafview/pull/274 */
-import ar from './locales/ar.json';
-/** Merge the pull request sent by Levminer */
-/** https://github.com/sprout2000/leafview/pull/305 */
-import hu from './locales/hu.json';
-/** Merge the pull request sent by BackSpace54 */
-/** https://github.com/sprout2000/leafview/pull/312 */
-import fr from './locales/fr.json';
 
 export const setLocales = (locale: string) => {
   i18next.init({
     lng: locale,
     fallbackLng: 'en',
     resources: {
-      /** see: https://source.chromium.org/chromium/chromium/src/+/main:ui/base/l10n/l10n_util.cc */
+      // https://source.chromium.org/chromium/chromium/src/+/main:ui/base/l10n/l10n_util.cc
       ar: { translation: ar },
       cs: { translation: cs },
       de: { translation: de },
