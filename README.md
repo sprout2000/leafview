@@ -45,8 +45,8 @@ winget install sprout2000.LeafView
 |                                <kbd>0</kbd>                                 | Reset Zoom                         |
 | <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | Pan                                |
 |              <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>              | Move to Trash                      |
-|                      <kbd>CmdOrCtrl</kbd>+<kbd>T</kbd>                      | Toggle Dark Mode                   |
-|                         <kbd>Alt</kbd>+<kbd>T</kbd>                         | Toggle Menubar _(Windows / Linux)_ |
+|             <kbd>CmdOrCtrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>              | Toggle Dark Mode                   |
+|                <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>                | Toggle Menubar _(Windows / Linux)_ |
 
 ### :computer_mouse: Mouse Operations
 
