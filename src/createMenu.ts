@@ -131,7 +131,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     { type: 'separator' },
     {
       label: i18next.t('Toggle Dark Mode'),
-      accelerator: 'CmdOrCtrl+T',
+      accelerator: 'CmdOrCtrl+Shift+D',
       type: 'checkbox',
       checked: store.get('darkmode'),
       click: () => {
@@ -145,7 +145,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     viewSub.push(
       {
         label: i18next.t('Toggle Menubar'),
-        accelerator: 'Alt+T',
+        accelerator: 'Ctrl+Shift+T',
         click: () => {
           win.setMenuBarVisibility(!win.menuBarVisible);
           store.set('showmenu', !store.get('showmenu'));
