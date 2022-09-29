@@ -9,7 +9,7 @@ jobs:
   build:
     strategy:
       matrix:
-        platform: [macos-latest, ubuntu-latest, windows-latest]
+        platform: [macos-latest, ubuntu-latest]
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -38,12 +38,34 @@ jobs:
           CSC_LINK: ${{ secrets.CSC_LINK }}
         run: npm run release
 
+  winget:
+    runs-on: windows-latest
+    steps:
+      - name: Check out Git repositry
+        uses: actions/checkout@master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: 16.x
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run release
+
   publish:
     name: Publish to WinGet
-    needs: [build]
+    needs: [winget]
     runs-on: windows-latest # action can only be run on windows
     steps:
       - uses: vedantmgoyal2009/winget-releaser@latest
         with:
-         identifier: sprout2000.LeafView
-         token: ${{ secrets.WINGET_TOKEN }}
+          identifier: sprout2000.LeafView
+          token: ${{ secrets.WINGET_TOKEN }}
