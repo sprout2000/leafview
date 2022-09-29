@@ -1,6 +1,8 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('myAPI', {
+  getLocale: async (): Promise<string> => ipcRenderer.invoke('get-locale'),
+
   mimecheck: async (filepath: string): Promise<boolean> =>
     ipcRenderer.invoke('mime-check', filepath),
 

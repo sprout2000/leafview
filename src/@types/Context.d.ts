@@ -5,6 +5,8 @@ declare global {
 }
 
 export interface IElectronAPI {
+  getLocale: () => Promise<string>;
+
   mimecheck: (filepath: string) => Promise<boolean>;
 
   dirname: (filepath: string) => Promise<string>;

@@ -159,6 +159,8 @@ const createWindow = () => {
     mainWindow.setTitle(path.basename(filepath));
   });
 
+  ipcMain.handle('get-locale', () => store.get('language') || app.getLocale());
+
   mainWindow.webContents.once('did-finish-load', () => {
     if (!isDarwin && process.argv.length >= 2) {
       const filepath = process.argv[process.argv.length - 1];
