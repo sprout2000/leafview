@@ -113,7 +113,7 @@ You can easily contribute to this repository by providing translation files.
 **Special Thanks to:**
 
 - [@BackSpace54](https://github.com/BackSpace54) [#312](https://github.com/sprout2000/leafview/pull/312)
-- [@vedantmgoyal2009](https://github.com/vedantmgoyal2009) [#308](https://github.com/sprout2000/leafview/pull/308), [#311](https://github.com/sprout2000/leafview/pull/311), [#317](https://github.com/sprout2000/leafview/pull/317), [#321](https://github.com/sprout2000/leafview/pull/321)
+- [@vedantmgoyal2009](https://github.com/vedantmgoyal2009) [#308](https://github.com/sprout2000/leafview/pull/308), [#311](https://github.com/sprout2000/leafview/pull/311), [#317](https://github.com/sprout2000/leafview/pull/317), [#321](https://github.com/sprout2000/leafview/pull/321), [#322](https://github.com/sprout2000/leafview/pull/322)
 - [@Levminer](https://github.com/Levminer) [#305](https://github.com/sprout2000/leafview/pull/305)
 - [@SuhaibAtef](https://github.com/SuhaibAtef) [#274](https://github.com/sprout2000/leafview/pull/274)
 - [@mwoz123](https://github.com/mwoz123) [#260](https://github.com/sprout2000/leafview/pull/260), [#261](https://github.com/sprout2000/leafview/pull/261)
