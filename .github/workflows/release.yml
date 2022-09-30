@@ -65,7 +65,7 @@ jobs:
     needs: [winget]
     runs-on: windows-latest # action can only be run on windows
     steps:
-      - uses: vedantmgoyal2009/winget-releaser@latest
+      - uses: vedantmgoyal2009/winget-releaser@v1
         with:
           identifier: sprout2000.LeafView
           token: ${{ secrets.WINGET_TOKEN }}
