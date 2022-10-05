@@ -172,8 +172,10 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   const helpSub: MenuItemConstructorOptions[] = [
     {
       label: i18next.t('Support URL...'),
-      click: () =>
-        shell.openExternal('https://github.com/sprout2000/leafview/#readme'),
+      click: async () =>
+        await shell.openExternal(
+          'https://github.com/sprout2000/leafview/#readme'
+        ),
     },
   ];
 

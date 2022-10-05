@@ -151,8 +151,8 @@ const createWindow = () => {
       .catch((err) => console.log(err));
   });
 
-  ipcMain.handle('move-to-trash', (_e: Event, filepath: string) => {
-    return shell.trashItem(filepath);
+  ipcMain.handle('move-to-trash', async (_e: Event, filepath: string) => {
+    await shell.trashItem(filepath);
   });
 
   ipcMain.handle('update-title', (_e: Event, filepath: string) => {
