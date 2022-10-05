@@ -172,7 +172,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   const helpSub: MenuItemConstructorOptions[] = [
     {
       label: i18next.t('Support URL...'),
-      click: async () =>
+      click: () =>
         shell.openExternal('https://github.com/sprout2000/leafview/#readme'),
     },
   ];
@@ -194,8 +194,8 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         {
           label: i18next.t('Open...'),
           accelerator: 'CmdOrCtrl+O',
-          click: async () => {
-            await dialog
+          click: () => {
+            dialog
               .showOpenDialog(win, {
                 properties: ['openFile'],
                 title: i18next.t('Select an image'),

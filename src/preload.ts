@@ -1,24 +1,24 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('myAPI', {
-  getLocale: async (): Promise<string> => ipcRenderer.invoke('get-locale'),
+  getLocale: (): Promise<string> => ipcRenderer.invoke('get-locale'),
 
-  mimecheck: async (filepath: string): Promise<boolean> =>
+  mimecheck: (filepath: string): Promise<boolean> =>
     ipcRenderer.invoke('mime-check', filepath),
 
-  dirname: async (filepath: string): Promise<string> =>
+  dirname: (filepath: string): Promise<string> =>
     ipcRenderer.invoke('dirname', filepath),
 
-  readdir: async (dirpath: string): Promise<void | string[]> =>
+  readdir: (dirpath: string): Promise<void | string[]> =>
     ipcRenderer.invoke('readdir', dirpath),
 
-  moveToTrash: async (filepath: string): Promise<void> =>
+  moveToTrash: (filepath: string): Promise<void> =>
     ipcRenderer.invoke('move-to-trash', filepath),
 
-  openDialog: async (): Promise<string | void | undefined> =>
+  openDialog: (): Promise<string | void | undefined> =>
     ipcRenderer.invoke('open-dialog'),
 
-  updateTitle: async (filepath: string): Promise<void> =>
+  updateTitle: (filepath: string): Promise<void> =>
     ipcRenderer.invoke('update-title', filepath),
 
   menuNext: (listener: () => Promise<void>) =>
