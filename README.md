@@ -66,7 +66,7 @@ winget install sprout2000.LeafView
 | English       | `en` |     | Polski    | `pl` |     |
 | Español       | `es` |     | Português | `pt` |     |
 
-## :scroll: Contributing
+## :beers: Contributing
 
 You can easily contribute to this repository by providing translation files.
 
