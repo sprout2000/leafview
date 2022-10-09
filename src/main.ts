@@ -205,7 +205,6 @@ const createWindow = () => {
         });
       })
       .catch((err) => console.log(err));
-    mainWindow.webContents.openDevTools({ mode: 'detach' });
   }
 
   if (isDarwin || process.platform === 'linux') {
@@ -258,7 +257,10 @@ const createWindow = () => {
   }
 
   mainWindow.loadFile('dist/index.html');
-  mainWindow.once('ready-to-show', () => mainWindow.show());
+  mainWindow.once('ready-to-show', () => {
+    if (isDevelop) mainWindow.webContents.openDevTools({ mode: 'detach' });
+    mainWindow.show();
+  });
 
   mainWindow.once('close', () => {
     const { x, y, width, height } = mainWindow.getBounds();
