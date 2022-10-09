@@ -199,6 +199,11 @@ export const App = () => {
     mapObj.current?.setZoom(0);
   };
 
+  const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    myAPI.contextMenu();
+  };
+
   const updateTitle = async (filepath: string) => {
     await myAPI.updateTitle(filepath);
   };
@@ -262,6 +267,7 @@ export const App = () => {
       onDragOver={preventDefault}
       onDragEnter={preventDefault}
       onDragLeave={preventDefault}
+      onContextMenu={onContextMenu}
     >
       <div className="bottom">
         <ToolBar

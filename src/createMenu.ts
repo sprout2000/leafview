@@ -146,6 +146,8 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       {
         label: i18next.t('Toggle Menubar'),
         accelerator: 'Ctrl+Shift+T',
+        type: 'checkbox',
+        checked: store.get('showmenu'),
         click: () => {
           win.setMenuBarVisibility(!win.menuBarVisible);
           store.set('showmenu', !store.get('showmenu'));

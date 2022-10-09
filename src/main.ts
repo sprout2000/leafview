@@ -161,6 +161,10 @@ const createWindow = () => {
 
   ipcMain.handle('get-locale', () => store.get('language') || app.getLocale());
 
+  ipcMain.handle('show-context-menu', () => {
+    if (!mainWindow.isMenuBarVisible()) menu.popup();
+  });
+
   mainWindow.webContents.once('did-finish-load', () => {
     if (!isDarwin && process.argv.length >= 2) {
       const filepath = process.argv[process.argv.length - 1];

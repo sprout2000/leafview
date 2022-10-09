@@ -3,6 +3,8 @@ import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('myAPI', {
   getLocale: (): Promise<string> => ipcRenderer.invoke('get-locale'),
 
+  contextMenu: (): Promise<void> => ipcRenderer.invoke('show-context-menu'),
+
   mimecheck: (filepath: string): Promise<boolean> =>
     ipcRenderer.invoke('mime-check', filepath),
 
