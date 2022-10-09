@@ -50,11 +50,12 @@ winget install sprout2000.LeafView
 
 ### :computer_mouse: Mouse Operations
 
-|    Mouse     | Function    |
-| :----------: | :---------- |
-|     Drag     | Pan         |
-|    Wheel     | Zoom in/out |
-| Double click | Reset zoom  |
+|    Mouse     | Function                             |
+| :----------: | :----------------------------------- |
+|     Drag     | Pan                                  |
+|    Wheel     | Zoom in/out                          |
+| Double click | Reset zoom                           |
+| Right click  | Show the context menu when available |
 
 ## :globe_with_meridians: Supported Languages
 
