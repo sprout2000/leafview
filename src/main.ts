@@ -54,6 +54,8 @@ const execPath =
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('electron-reload')(__dirname, {
   electron: path.resolve(__dirname, execPath),
+  forceHardReset: true,
+  hardResetMethod: 'exit',
 });
 /// #endif
 
