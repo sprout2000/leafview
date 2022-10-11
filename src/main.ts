@@ -26,6 +26,11 @@ import { createMenu } from './createMenu';
 console.log = log.log;
 log.info('App starting...');
 
+let openfile: string | null = null;
+
+const isDarwin = process.platform === 'darwin';
+const isDevelop = process.env.NODE_ENV === 'development';
+
 const initWidth = 800;
 const initHeight = 528;
 
@@ -42,9 +47,6 @@ const store = new Store<StoreType>({
   },
 });
 
-const isDarwin = process.platform === 'darwin';
-const isDevelop = process.env.NODE_ENV === 'development';
-
 /// #if DEBUG
 const execPath =
   process.platform === 'win32'
@@ -60,12 +62,10 @@ require('electron-reload')(__dirname, {
 /// #endif
 
 const getResourceDirectory = () => {
-  return process.env.NODE_ENV === 'development'
+  return isDevelop
     ? path.join(process.cwd(), 'dist')
     : path.join(process.resourcesPath, 'app.asar.unpacked', 'dist');
 };
-
-let openfile: string | null = null;
 
 const checkmime = (filepath: string) => {
   const regexp = new RegExp(/bmp|ico|gif|jpeg|png|svg|webp/);
@@ -85,7 +85,7 @@ const createWindow = () => {
     minHeight: initHeight,
     width: store.get('width'),
     height: store.get('height'),
-    fullscreenable: isDarwin ? false : true,
+    fullscreenable: !isDarwin,
     icon: path.join(getResourceDirectory(), 'images/logo.png'),
     backgroundColor: nativeTheme.shouldUseDarkColors ? '#1e1e1e' : '#f6f6f6',
     webPreferences: {
