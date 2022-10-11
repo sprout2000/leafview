@@ -36,7 +36,7 @@
   "devDependencies": {
     "@types/leaflet": "^1.8.0",
     "@types/mime-types": "^2.1.1",
-    "@types/node": "^18.8.3",
+    "@types/node": "^18.8.4",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "copy-webpack-plugin": "^11.0.0",
@@ -60,12 +60,12 @@
     "webpack-cli": "^4.10.0"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.39.0",
-    "@typescript-eslint/parser": "^5.39.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
     "electron-reload": "^2.0.0-alpha.1",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-react": "^7.31.9",
+    "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
