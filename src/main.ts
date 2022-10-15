@@ -215,7 +215,7 @@ const createWindow = () => {
 
     if (store.get('ask')) autoUpdater.checkForUpdates();
 
-    autoUpdater.on('update-available', () => {
+    autoUpdater.once('update-available', () => {
       dialog
         .showMessageBox(mainWindow, {
           message: 'Update Notification',
@@ -240,11 +240,11 @@ const createWindow = () => {
         });
     });
 
-    autoUpdater.on('update-not-available', () => {
+    autoUpdater.once('update-not-available', () => {
       log.info('No updates available.');
     });
 
-    autoUpdater.on('update-downloaded', () => {
+    autoUpdater.once('update-downloaded', () => {
       log.info('Updates downloaded...');
       dialog
         .showMessageBox(mainWindow, {
