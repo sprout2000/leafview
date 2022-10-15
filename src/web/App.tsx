@@ -209,6 +209,10 @@ export const App = () => {
   };
 
   useEffect(() => {
+    if (url) myAPI.history(url);
+  }, [url]);
+
+  useEffect(() => {
     myAPI.menuNext(onNext);
 
     return () => {

@@ -9,6 +9,8 @@ export interface IElectronAPI {
 
   contextMenu: () => Promise<void>;
 
+  history: (filepath: string) => Promise<void>;
+
   mimecheck: (filepath: string) => Promise<boolean>;
 
   dirname: (filepath: string) => Promise<string>;

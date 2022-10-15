@@ -5,6 +5,9 @@ contextBridge.exposeInMainWorld('myAPI', {
 
   contextMenu: (): Promise<void> => ipcRenderer.invoke('show-context-menu'),
 
+  history: (filepath: string): Promise<void> =>
+    ipcRenderer.invoke('file-history', filepath),
+
   mimecheck: (filepath: string): Promise<boolean> =>
     ipcRenderer.invoke('mime-check', filepath),
 

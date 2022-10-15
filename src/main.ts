@@ -163,6 +163,8 @@ const createWindow = () => {
 
   ipcMain.handle('get-locale', () => store.get('language') || app.getLocale());
 
+  ipcMain.handle('file-history', (_e, arg) => app.addRecentDocument(arg));
+
   ipcMain.handle('show-context-menu', () => {
     if (!mainWindow.isMenuBarVisible()) menu.popup();
   });
