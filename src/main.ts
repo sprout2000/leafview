@@ -50,7 +50,7 @@ const store = new Store<StoreType>({
 /// #if DEBUG
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('electron-nice-auto-reload')({
-  rootPath: path.join(process.cwd(), 'src'),
+  rootPath: path.join(process.cwd(), 'dist'),
   rules: [{ action: 'app.relaunch' }],
 });
 /// #endif
