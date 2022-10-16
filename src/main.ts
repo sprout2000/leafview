@@ -48,16 +48,10 @@ const store = new Store<StoreType>({
 });
 
 /// #if DEBUG
-const execPath =
-  process.platform === 'win32'
-    ? '../node_modules/electron/dist/electron.exe'
-    : '../node_modules/.bin/electron';
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require('electron-reload')(__dirname, {
-  electron: path.resolve(__dirname, execPath),
-  forceHardReset: true,
-  hardResetMethod: 'exit',
+require('electron-nice-auto-reload')({
+  rootPath: path.join(process.cwd(), 'src'),
+  rules: [{ action: 'app.relaunch' }],
 });
 /// #endif
 

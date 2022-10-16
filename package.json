@@ -14,14 +14,13 @@
   "main": "dist/main.js",
   "scripts": {
     "dev": "run-p dev:*",
-    "build": "cross-env NODE_ENV=\"production\" webpack",
-    "predev": "rimraf dist",
-    "dev:tsc": "tsc -w -p tsconfig.node.json",
     "dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
-    "dev:electron": "wait-on ./dist/main.js ./dist/index.html && cross-env NODE_ENV=\"development\" electron .",
+    "dev:electron": "wait-on ./dist/index.html ./dist/main.js && electron .",
+    "build": "cross-env NODE_ENV=\"production\" webpack --progress",
+    "predev": "rimraf dist",
     "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts",
     "release": "ts-node scripts/build.ts",
-    "prebuild": "npm r --no-save @typescript-eslint/eslint-plugin @typescript-eslint/parser electron-reload eslint eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks npm-run-all prettier rimraf wait-on"
+    "prebuild": "npm r --no-save @typescript-eslint/eslint-plugin @typescript-eslint/parser electron-nice-auto-reload eslint eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks npm-run-all prettier rimraf wait-on"
   },
   "dependencies": {
     "electron-log": "^4.4.8",
@@ -62,7 +61,7 @@
   "optionalDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
-    "electron-reload": "^2.0.0-alpha.1",
+    "electron-nice-auto-reload": "^1.3.0",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.31.10",
