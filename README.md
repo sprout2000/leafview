@@ -21,10 +21,12 @@ _Image by <a href="https://pixabay.com/users/myriams-fotos-1627417/?utm_source=l
 
 ### :computer: macOS & GNU/Linux
 
-You can download the latest version of _LeafView_ from the releases page here:
+You can download the latest version of _LeafView_ from the releases page here:<br />
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
-### :desktop_computer: Windows 10 & 11
+- _NOTE: macOS 10.13 or earlier is NOT supported._
+
+### :desktop_computer: Windows 11
 
 You can get _(or upgrade to)_ the latest version of _LeafView_ via [winget](https://github.com/microsoft/winget-cli):
 
@@ -36,17 +38,17 @@ winget install sprout2000.LeafView
 
 ### :keyboard: Keyboard Shortcuts
 
-|                                     Key                                     | Function                           |
-| :-------------------------------------------------------------------------: | :--------------------------------- |
-|           <kbd>J</kbd> or <kbd>CmdOrCtrl</kbd>+<kbd>&#8594;</kbd>           | Next Image                         |
-|           <kbd>K</kbd> or <kbd>CmdOrCtrl</kbd>+<kbd>&#8592;</kbd>           | Previous Image                     |
-|                                <kbd>+</kbd>                                 | Zoom In                            |
-|                                <kbd>-</kbd>                                 | Zoom Out                           |
-|                                <kbd>0</kbd>                                 | Reset Zoom                         |
-| <kbd>&#8592;</kbd> <kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8594;</kbd> | Pan                                |
-|              <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>              | Move to Trash                      |
-|             <kbd>CmdOrCtrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>              | Toggle Dark Mode                   |
-|                <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>                | Toggle Menubar _(Windows / Linux)_ |
+|                                      Key                                      | Function                           |
+| :---------------------------------------------------------------------------: | :--------------------------------- |
+| <kbd>J</kbd>, <kbd>Ctrl</kbd>+<kbd>N</kbd>, <kbd>CmdOrCtrl</kbd>+<kbd>→</kbd> | Next Image                         |
+| <kbd>K</kbd>, <kbd>Ctrl</kbd>+<kbd>P</kbd>, <kbd>CmdOrCtrl</kbd>+<kbd>←</kbd> | Previous Image                     |
+|                                 <kbd>+</kbd>                                  | Zoom In                            |
+|                                 <kbd>-</kbd>                                  | Zoom Out                           |
+|                                 <kbd>0</kbd>                                  | Reset Zoom                         |
+|              <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd>              | Pan                                |
+|               <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>               | Move to Trash                      |
+|              <kbd>CmdOrCtrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>               | Toggle Dark Mode                   |
+|                 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>                 | Toggle Menubar _(Windows / Linux)_ |
 
 ### :computer_mouse: Mouse Operations
 
