@@ -215,7 +215,7 @@ export const App = () => {
     [grid]
   );
 
-  const onMenuGrid = useCallback(async () => {
+  const onToggleGrid = useCallback(async () => {
     if (!url) return;
 
     const dir = await myAPI.dirname(url);
@@ -293,12 +293,12 @@ export const App = () => {
   }, [onMenuOpen]);
 
   useEffect(() => {
-    myAPI.menuGrid(onMenuGrid);
+    myAPI.toggleGrid(onToggleGrid);
 
     return () => {
-      myAPI.removeMenuGrid();
+      myAPI.removeToggleGrid();
     };
-  }, [onMenuGrid]);
+  }, [onToggleGrid]);
 
   useEffect(() => {
     const title = !url ? 'Leafview' : url;

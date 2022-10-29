@@ -37,8 +37,8 @@ export interface IElectronAPI {
   ) => Electron.IpcRenderer;
   removeMenuOpen: () => Electron.IpcRenderer;
 
-  menuGrid: (
+  toggleGrid: (
     listener: (_e: Event, filepath: string) => Promise<void>
   ) => Electron.IpcRenderer;
-  removeMenuGrid: () => Electron.IpcRenderer;
+  removeToggleGrid: () => Electron.IpcRenderer;
 }
