@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState, useEffect } from 'react';
+import { Fragment, useCallback, useEffect, useState, useRef } from 'react';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -315,7 +315,7 @@ export const App = () => {
           ))}
         </div>
       ) : (
-        <React.Fragment>
+        <Fragment>
           <div className="bottom">
             <ToolBar
               onPrev={onPrev}
@@ -326,7 +326,7 @@ export const App = () => {
             />
           </div>
           <div className={!url ? 'view init' : 'view'} ref={mapRef} />
-        </React.Fragment>
+        </Fragment>
       )}
     </div>
   );
