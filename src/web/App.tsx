@@ -204,19 +204,6 @@ export const App = () => {
     if (mime) setUrl(filepath);
   }, []);
 
-  const onClickThumb = async (item: string) => {
-    setGrid(false);
-
-    const dir = await myAPI.dirname(item);
-    const list = await myAPI.readdir(dir);
-    if (!list || list.length === 0 || !list.includes(item)) {
-      window.location.reload();
-      return;
-    }
-
-    setUrl(item);
-  };
-
   const onMenuOpen = useCallback(
     async (_e: Event, filepath: string) => {
       if (!filepath) return;
@@ -236,6 +223,19 @@ export const App = () => {
 
     setGrid(!grid);
   }, [grid, url]);
+
+  const onClickThumb = async (item: string) => {
+    setGrid(false);
+
+    const dir = await myAPI.dirname(item);
+    const list = await myAPI.readdir(dir);
+    if (!list || list.length === 0 || !list.includes(item)) {
+      window.location.reload();
+      return;
+    }
+
+    setUrl(item);
+  };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (!url || e.key !== '0' || grid) return;
