@@ -360,6 +360,7 @@ export const App = () => {
               onNext={onNext}
               onRemove={onRemove}
               onClickOpen={onClickOpen}
+              onToggleGrid={onToggleGrid}
             />
           </div>
           <div className={!url ? 'view init' : 'view'} ref={mapRef} />
