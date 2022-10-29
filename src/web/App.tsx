@@ -112,7 +112,7 @@ export const App = () => {
 
   const onNext = useCallback(async () => {
     if (!url) return;
-    if (grid) setGrid(!grid);
+    if (grid) setGrid(false);
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
@@ -138,7 +138,7 @@ export const App = () => {
 
   const onPrev = useCallback(async () => {
     if (!url) return;
-    if (grid) setGrid(!grid);
+    if (grid) setGrid(false);
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
@@ -165,7 +165,7 @@ export const App = () => {
   }, [url, grid]);
 
   const onRemove = useCallback(async () => {
-    if (!url) return;
+    if (!url || grid) return;
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
@@ -194,7 +194,7 @@ export const App = () => {
     } else {
       setUrl(newList[index]);
     }
-  }, [url]);
+  }, [url, grid]);
 
   const onClickOpen = useCallback(async () => {
     const filepath = await myAPI.openDialog();
@@ -217,12 +217,16 @@ export const App = () => {
     setUrl(item);
   };
 
-  const onMenuOpen = useCallback(async (_e: Event, filepath: string) => {
-    if (!filepath) return;
+  const onMenuOpen = useCallback(
+    async (_e: Event, filepath: string) => {
+      if (!filepath) return;
+      if (grid) setGrid(false);
 
-    const mime = await myAPI.mimecheck(filepath);
-    if (mime) setUrl(filepath);
-  }, []);
+      const mime = await myAPI.mimecheck(filepath);
+      if (mime) setUrl(filepath);
+    },
+    [grid]
+  );
 
   const onMenuGrid = useCallback(async () => {
     if (!url) return;
@@ -234,11 +238,16 @@ export const App = () => {
   }, [grid, url]);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!url || e.key !== '0') return;
+    if (!url || e.key !== '0' || grid) return;
     mapObj.current?.setZoom(0);
   };
 
   const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (grid) {
+      e.preventDefault();
+      return false;
+    }
+
     e.preventDefault();
     myAPI.contextMenu();
   };
