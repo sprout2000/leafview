@@ -1,4 +1,4 @@
-import { useRef, useCallback, useState, useEffect } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -10,6 +10,8 @@ const { myAPI } = window;
 
 export const App = () => {
   const [url, setUrl] = useState('');
+  const [grid, setGrid] = useState(false);
+  const [list, setList] = useState<string[]>([]);
 
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
@@ -83,6 +85,10 @@ export const App = () => {
   };
 
   const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
+    if (grid) {
+      return false;
+    }
+
     preventDefault(e);
 
     if (e.dataTransfer) {
@@ -187,6 +193,27 @@ export const App = () => {
     if (mime) setUrl(filepath);
   }, []);
 
+  const onClickGrid = async () => {
+    if (!url) return;
+
+    setGrid(!grid);
+    const dir = await myAPI.dirname(url);
+    myAPI.readdir(dir).then((files) => files && setList(files));
+  };
+
+  const onClickThumb = async (item: string) => {
+    setGrid(false);
+
+    const dir = await myAPI.dirname(item);
+    const list = await myAPI.readdir(dir);
+    if (!list || list.length === 0 || !list.includes(item)) {
+      window.location.reload();
+      return;
+    }
+
+    setUrl(item);
+  };
+
   const onMenuOpen = useCallback(async (_e: Event, filepath: string) => {
     if (!filepath) return;
 
@@ -265,7 +292,7 @@ export const App = () => {
 
   return (
     <div
-      className="container"
+      className={grid ? 'container grid' : 'container'}
       onDrop={onDrop}
       onKeyDown={onKeyDown}
       onDragOver={preventDefault}
@@ -273,15 +300,34 @@ export const App = () => {
       onDragLeave={preventDefault}
       onContextMenu={onContextMenu}
     >
-      <div className="bottom">
-        <ToolBar
-          onPrev={onPrev}
-          onNext={onNext}
-          onRemove={onRemove}
-          onClickOpen={onClickOpen}
-        />
-      </div>
-      <div className={!url ? 'view init' : 'view'} ref={mapRef} />
+      {grid ? (
+        <div className="thumb-container">
+          {list.map((item) => (
+            <img
+              key={item}
+              src={item}
+              className={item === url ? 'thumb current' : 'thumb'}
+              onClick={() => onClickThumb(item)}
+              onDragStart={() => {
+                return false;
+              }}
+            />
+          ))}
+        </div>
+      ) : (
+        <React.Fragment>
+          <div className="bottom">
+            <ToolBar
+              onPrev={onPrev}
+              onNext={onNext}
+              onRemove={onRemove}
+              onClickGrid={onClickGrid}
+              onClickOpen={onClickOpen}
+            />
+          </div>
+          <div className={!url ? 'view init' : 'view'} ref={mapRef} />
+        </React.Fragment>
+      )}
     </div>
   );
 };

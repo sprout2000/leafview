@@ -5,11 +5,13 @@ import { FolderOpen } from './icons/FolderOpen';
 import { ArrowLeft } from './icons/ArrowLeft';
 import { ArrowRight } from './icons/ArrowRight';
 import { Trash } from './icons/Trash';
+import { Grid } from './icons/Grid';
 
 import './ToolBar.scss';
 
 type Props = {
   onClickOpen: () => void;
+  onClickGrid: () => Promise<void>;
   onPrev: () => Promise<void>;
   onNext: () => Promise<void>;
   onRemove: () => Promise<void>;
@@ -41,6 +43,15 @@ export const ToolBar = memo((props: Props) => {
           onClick={props.onNext}
         >
           <ArrowRight />
+        </div>
+      </div>
+      <div className="trash">
+        <div
+          className="icon"
+          title={i18next.t('Grid View')}
+          onClick={props.onClickGrid}
+        >
+          <Grid />
         </div>
       </div>
       <div className="trash">
