@@ -320,7 +320,11 @@ export const App = () => {
   }, [draw, grid]);
 
   useLayoutEffect(() => {
-    if (grid) currentRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (grid)
+      currentRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
   }, [grid]);
 
   return (
