@@ -3,6 +3,7 @@ import { Fragment, useCallback, useEffect, useState, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import { TopBar } from './TopBar';
 import { ToolBar } from './ToolBar';
 import './App.scss';
 
@@ -288,7 +289,7 @@ export const App = () => {
     return () => {
       resizeObserver.disconnect();
     };
-  }, [draw]);
+  }, [draw, grid]);
 
   return (
     <div
@@ -300,6 +301,9 @@ export const App = () => {
       onDragLeave={preventDefault}
       onContextMenu={onContextMenu}
     >
+      <div className="top">
+        <TopBar onClickGrid={onClickGrid} />
+      </div>
       {grid ? (
         <div className="thumb-container">
           {list.map((item) => (
@@ -321,7 +325,6 @@ export const App = () => {
               onPrev={onPrev}
               onNext={onNext}
               onRemove={onRemove}
-              onClickGrid={onClickGrid}
               onClickOpen={onClickOpen}
             />
           </div>
