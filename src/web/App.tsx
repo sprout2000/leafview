@@ -3,7 +3,6 @@ import { Fragment, useCallback, useEffect, useState, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import { TopBar } from './TopBar';
 import { ToolBar } from './ToolBar';
 import './App.scss';
 
@@ -197,9 +196,10 @@ export const App = () => {
   const onClickGrid = async () => {
     if (!url) return;
 
-    setGrid(!grid);
     const dir = await myAPI.dirname(url);
     myAPI.readdir(dir).then((files) => files && setList(files));
+
+    setGrid(!grid);
   };
 
   const onClickThumb = async (item: string) => {
@@ -301,9 +301,6 @@ export const App = () => {
       onDragLeave={preventDefault}
       onContextMenu={onContextMenu}
     >
-      <div className="top">
-        <TopBar onClickGrid={onClickGrid} />
-      </div>
       {grid ? (
         <div className="thumb-container">
           {list.map((item) => (
@@ -325,6 +322,7 @@ export const App = () => {
               onPrev={onPrev}
               onNext={onNext}
               onRemove={onRemove}
+              onClickGrid={onClickGrid}
               onClickOpen={onClickOpen}
             />
           </div>
