@@ -1,4 +1,11 @@
-import { Fragment, useCallback, useEffect, useState, useRef } from 'react';
+import {
+  Fragment,
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+  useLayoutEffect,
+} from 'react';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -15,6 +22,8 @@ export const App = () => {
 
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
+
+  const currentRef = useRef<HTMLImageElement>(null);
 
   const getZoom = useCallback(
     (iw: number, w: number, ih: number, h: number) => {
@@ -103,6 +112,7 @@ export const App = () => {
 
   const onNext = useCallback(async () => {
     if (!url) return;
+    if (grid) setGrid(!grid);
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
@@ -124,10 +134,11 @@ export const App = () => {
     } else {
       setUrl(list[index + 1]);
     }
-  }, [url]);
+  }, [url, grid]);
 
   const onPrev = useCallback(async () => {
     if (!url) return;
+    if (grid) setGrid(!grid);
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
@@ -151,7 +162,7 @@ export const App = () => {
     } else {
       setUrl(list[index - 1]);
     }
-  }, [url]);
+  }, [url, grid]);
 
   const onRemove = useCallback(async () => {
     if (!url) return;
@@ -193,15 +204,6 @@ export const App = () => {
     if (mime) setUrl(filepath);
   }, []);
 
-  const onClickGrid = async () => {
-    if (!url) return;
-
-    const dir = await myAPI.dirname(url);
-    myAPI.readdir(dir).then((files) => files && setList(files));
-
-    setGrid(!grid);
-  };
-
   const onClickThumb = async (item: string) => {
     setGrid(false);
 
@@ -221,6 +223,15 @@ export const App = () => {
     const mime = await myAPI.mimecheck(filepath);
     if (mime) setUrl(filepath);
   }, []);
+
+  const onMenuGrid = useCallback(async () => {
+    if (!url) return;
+
+    const dir = await myAPI.dirname(url);
+    myAPI.readdir(dir).then((files) => files && setList(files));
+
+    setGrid(!grid);
+  }, [grid, url]);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (!url || e.key !== '0') return;
@@ -273,6 +284,14 @@ export const App = () => {
   }, [onMenuOpen]);
 
   useEffect(() => {
+    myAPI.menuGrid(onMenuGrid);
+
+    return () => {
+      myAPI.removeMenuGrid();
+    };
+  }, [onMenuGrid]);
+
+  useEffect(() => {
     const title = !url ? 'Leafview' : url;
     updateTitle(title);
   }, [url]);
@@ -291,6 +310,10 @@ export const App = () => {
     };
   }, [draw, grid]);
 
+  useLayoutEffect(() => {
+    if (grid) currentRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [grid]);
+
   return (
     <div
       className={grid ? 'container grid' : 'container'}
@@ -307,6 +330,7 @@ export const App = () => {
             <img
               key={item}
               src={item}
+              ref={item === url ? currentRef : null}
               className={item === url ? 'thumb current' : 'thumb'}
               onClick={() => onClickThumb(item)}
               onDragStart={() => {
@@ -322,7 +346,6 @@ export const App = () => {
               onPrev={onPrev}
               onNext={onNext}
               onRemove={onRemove}
-              onClickGrid={onClickGrid}
               onClickOpen={onClickOpen}
             />
           </div>
