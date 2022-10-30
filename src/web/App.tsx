@@ -219,15 +219,27 @@ export const App = () => {
     if (!url) return;
 
     const dir = await myAPI.dirname(url);
-    myAPI.readdir(dir).then((files) => files && setList(files));
+    if (!dir) {
+      window.location.reload();
+      return;
+    }
 
+    myAPI.readdir(dir).then((files) => files && setImgList(files));
     setGrid(!grid);
   }, [grid, url]);
 
-  const onClickThumb = async (item: string) => {
-    setGrid(false);
+  const onClickThumb = async (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
+    item: string
+  ) => {
+    e.stopPropagation();
 
     const dir = await myAPI.dirname(item);
+    if (!dir) {
+      window.location.reload();
+      return;
+    }
+
     const list = await myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(item)) {
       window.location.reload();
@@ -345,7 +357,7 @@ export const App = () => {
               src={item}
               ref={item === url ? currentRef : null}
               className={item === url ? 'thumb current' : 'thumb'}
-              onClick={() => onClickThumb(item)}
+              onClick={(e) => onClickThumb(e, item)}
               onDragStart={() => {
                 return false;
               }}
