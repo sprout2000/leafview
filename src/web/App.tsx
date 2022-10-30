@@ -247,6 +247,23 @@ export const App = () => {
     }
 
     setUrl(item);
+    setGrid(false);
+  };
+
+  const onClickBlank = async () => {
+    const dir = await myAPI.dirname(url);
+    if (!dir) {
+      window.location.reload();
+      return;
+    }
+
+    const list = await myAPI.readdir(dir);
+    if (!list || list.length === 0 || !list.includes(url)) {
+      window.location.reload();
+      return;
+    }
+
+    setGrid(false);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
