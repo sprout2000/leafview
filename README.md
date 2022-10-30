@@ -47,7 +47,7 @@ winget install sprout2000.LeafView
 |                                 <kbd>0</kbd>                                  | Reset Zoom                         |
 |              <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd>              | Pan                                |
 |               <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>               | Move to Trash                      |
-| <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>CmdOrCtrl</kbd>+<kbd>↑</kbd> | Toggle Grid View                   |
+|                  <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>U</kbd>                   | Toggle Grid View                   |
 |              <kbd>CmdOrCtrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>               | Toggle Dark Mode                   |
 |                 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>                 | Toggle Menubar _(Windows / Linux)_ |
 
