@@ -7,7 +7,7 @@
 
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
-<img width="640" src="https://user-images.githubusercontent.com/52094761/157586637-4b2deb8e-a1f7-46ef-9f24-d0efeb6a97a8.png">
+<img width="640" alt="Image by Myriams-Fotos from Pixabay" src="https://user-images.githubusercontent.com/52094761/198863112-212ed098-e2bb-451d-9ffd-1fa2eae1970c.png">
 
 _Image by <a href="https://pixabay.com/users/myriams-fotos-1627417/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1568646">Myriams-Fotos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1568646">Pixabay.</a>_
 
@@ -59,6 +59,8 @@ winget install sprout2000.LeafView
 |    Wheel     | Zoom in/out                          |
 | Double click | Reset zoom                           |
 | Right click  | Show the context menu when available |
+
+<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/198863207-c8a7af4f-d35c-4c59-aa9f-42d636fea9cd.png">
 
 ## :globe_with_meridians: Supported Languages
 
