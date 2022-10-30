@@ -148,7 +148,7 @@ const createWindow = () => {
   });
 
   ipcMain.handle('move-to-trash', async (_e: Event, filepath: string) => {
-    await shell.trashItem(filepath);
+    await shell.trashItem(filepath).then(() => shell.beep());
   });
 
   ipcMain.handle('update-title', (_e: Event, filepath: string) => {
