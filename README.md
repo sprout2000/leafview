@@ -60,7 +60,7 @@ winget install sprout2000.LeafView
 | Double click | Reset zoom                           |
 | Right click  | Show the context menu when available |
 
-<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/198863207-c8a7af4f-d35c-4c59-aa9f-42d636fea9cd.png">
+<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/198864415-e9c39f6c-3dbf-4264-9ef2-535f68b4e5eb.png">
 
 ## :globe_with_meridians: Supported Languages
 
