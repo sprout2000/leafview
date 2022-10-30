@@ -18,7 +18,7 @@ const { myAPI } = window;
 export const App = () => {
   const [url, setUrl] = useState('');
   const [grid, setGrid] = useState(false);
-  const [list, setList] = useState<string[]>([]);
+  const [imgList, setImgList] = useState<string[]>([]);
 
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
@@ -338,8 +338,8 @@ export const App = () => {
       onContextMenu={onContextMenu}
     >
       {grid ? (
-        <div className="thumb-container">
-          {list.map((item) => (
+        <div className="thumb-container" onClick={onClickBlank}>
+          {imgList.map((item) => (
             <img
               key={item}
               src={item}
