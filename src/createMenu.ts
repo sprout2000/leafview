@@ -135,13 +135,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     },
     {
       label: 'Toggle Grid View (invisible)',
-      accelerator: 'Ctrl+A',
-      click: () => win.webContents.send('menu-grid'),
-      visible: false,
-    },
-    {
-      label: 'Toggle Grid View (invisible)',
-      accelerator: 'CmdOrCtrl+Up',
+      accelerator: 'Ctrl+U',
       click: () => win.webContents.send('menu-grid'),
       visible: false,
     },
