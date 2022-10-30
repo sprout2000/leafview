@@ -7,9 +7,9 @@
 
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
-<img width="640" alt="Image by Myriams-Fotos from Pixabay" src="https://user-images.githubusercontent.com/52094761/198863112-212ed098-e2bb-451d-9ffd-1fa2eae1970c.png">
+<img width="640" alt="Image by PublicDomainPictures from Pixabay" src="https://user-images.githubusercontent.com/52094761/198906106-65c73947-43ca-41c3-a119-2dc62604cab0.png">
 
-_Image by <a href="https://pixabay.com/users/myriams-fotos-1627417/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1568646">Myriams-Fotos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1568646">Pixabay.</a>_
+_Image by <a href="https://pixabay.com/ja/users/publicdomainpictures-14/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163480">PublicDomainPictures</a> from <a href="https://pixabay.com/ja//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163480">Pixabay</a>._
 
 ## :thumbsup: Features
 
@@ -51,6 +51,8 @@ winget install sprout2000.LeafView
 |              <kbd>CmdOrCtrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>               | Toggle Dark Mode                   |
 |                 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>                 | Toggle Menubar _(Windows / Linux)_ |
 
+<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/198906109-6e477983-dc38-4858-9455-133016b99c65.png">
+
 ### :computer_mouse: Mouse Operations
 
 |    Mouse     | Function                             |
@@ -59,8 +61,6 @@ winget install sprout2000.LeafView
 |    Wheel     | Zoom in/out                          |
 | Double click | Reset zoom                           |
 | Right click  | Show the context menu when available |
-
-<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/198864415-e9c39f6c-3dbf-4264-9ef2-535f68b4e5eb.png">
 
 ## :globe_with_meridians: Supported Languages
 
