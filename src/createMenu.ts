@@ -97,12 +97,12 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     {
       label: i18next.t('Toggle Grid View'),
       accelerator: 'H',
-      click: () => win.webContents.send('menu-grid'),
+      click: () => win.webContents.send('toggle-grid'),
     },
     {
       label: 'Toggle Grid View (invisible)',
       accelerator: 'Ctrl+L',
-      click: () => win.webContents.send('menu-grid'),
+      click: () => win.webContents.send('toggle-grid'),
       visible: false,
     },
     { type: 'separator' },

@@ -43,6 +43,6 @@ contextBridge.exposeInMainWorld('myAPI', {
   removeMenuOpen: () => ipcRenderer.removeAllListeners('menu-open'),
 
   toggleGrid: (listener: (_e: Event, filepath: string) => Promise<void>) =>
-    ipcRenderer.on('menu-grid', listener),
-  removeToggleGrid: () => ipcRenderer.removeAllListeners('menu-grid'),
+    ipcRenderer.on('toggle-grid', listener),
+  removeToggleGrid: () => ipcRenderer.removeAllListeners('toggle-grid'),
 });
