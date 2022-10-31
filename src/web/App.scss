@@ -44,6 +44,10 @@ $THUMB_BORDER: var(--thumb-border);
     }
 
     .thumb-container {
+      position: relative;
+      height: auto;
+      min-height: 100%;
+      box-sizing: border-box;
       padding: 10px;
       .thumb {
         margin: 4px;
