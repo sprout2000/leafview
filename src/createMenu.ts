@@ -13,54 +13,20 @@ import i18next from 'i18next';
 import Store from 'electron-store';
 
 const localeList: Locale[] = [
-  'ar',
-  'cs',
-  'de',
-  'en',
-  'es',
-  'fr',
-  'hu',
-  'ja',
-  'pl',
-  'pt',
-  'ru',
-  'tr',
-  'zh-CN',
-  'zh-TW',
+  { code: 'ar', value: 'اللغة العربية' },
+  { code: 'cs', value: 'Čeština' },
+  { code: 'de', value: 'Deutsch' },
+  { code: 'en', value: 'English' },
+  { code: 'es', value: 'Español' },
+  { code: 'fr', value: 'Français' },
+  { code: 'hu', value: 'Magyar' },
+  { code: 'ja', value: '日本語' },
+  { code: 'pl', value: 'Polski' },
+  { code: 'pt', value: 'Português' },
+  { code: 'ru', value: 'Русский' },
+  { code: 'zh-CN', value: '简体中文' },
+  { code: 'zh-TW', value: '繁体中文' },
 ];
-
-const translate = (locale: Locale) => {
-  switch (locale) {
-    case 'ar':
-      return 'اللغة العربية';
-    case 'cs':
-      return 'Čeština';
-    case 'de':
-      return 'Deutsch';
-    case 'en':
-      return 'English';
-    case 'es':
-      return 'Español';
-    case 'fr':
-      return 'Français';
-    case 'hu':
-      return 'Magyar';
-    case 'ja':
-      return '日本語';
-    case 'pl':
-      return 'Polski';
-    case 'pt':
-      return 'Português';
-    case 'ru':
-      return 'Русский';
-    case 'zh-CN':
-      return '简体中文';
-    case 'zh-TW':
-      return '繁体中文';
-    default:
-      return 'English';
-  }
-};
 
 export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   const isDarwin = process.platform === 'darwin';
@@ -70,12 +36,12 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
 
   localeList.map((locale) => {
     langSub.push({
-      label: translate(locale),
+      label: locale.value,
       type: 'radio',
-      id: `language-${locale}`,
+      id: `language-${locale.code}`,
       click: () => {
-        if (store.get('language') !== locale) {
-          store.set('language', locale);
+        if (store.get('language') !== locale.code) {
+          store.set('language', locale.code);
           dialog
             .showMessageBox(win, {
               type: 'info',
@@ -89,7 +55,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
             });
         }
       },
-      checked: store.get('language') === locale,
+      checked: store.get('language') === locale.code,
     });
   });
 

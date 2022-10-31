@@ -1,4 +1,4 @@
-declare type Locale =
+type Code =
   | 'ar'
   | 'cs'
   | 'de'
@@ -13,3 +13,8 @@ declare type Locale =
   | 'tr'
   | 'zh-CN'
   | 'zh-TW';
+
+declare type Locale = {
+  code: Code;
+  value: string;
+};
