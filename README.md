@@ -7,7 +7,7 @@
 
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
-<img width="640" alt="Image by PublicDomainPictures from Pixabay" src="https://user-images.githubusercontent.com/52094761/198906106-65c73947-43ca-41c3-a119-2dc62604cab0.png">
+<img width="640" alt="Image by PublicDomainPictures from Pixabay" src="https://user-images.githubusercontent.com/52094761/198956815-36e0affd-7fb5-4761-812c-794b83ffcd0f.png">
 
 _Image by <a href="https://pixabay.com/ja/users/publicdomainpictures-14/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163480">PublicDomainPictures</a> from <a href="https://pixabay.com/ja//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163480">Pixabay</a>._
 
