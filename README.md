@@ -15,7 +15,12 @@ _Image by <a href="https://pixabay.com/ja/users/publicdomainpictures-14/?utm_sou
 
 - Pan & Wheel Zoom
 - Browse the images in a folder
+- Grid display mode is also available
+- Available in [13 languages](#globe_with_meridians-supported-languages)
 - Auto update _(macOS / Linux)_
+- Compatible with Windows Package Manager (aka [winget](https://github.com/microsoft/winget-pkgs))
+
+<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/198906109-6e477983-dc38-4858-9455-133016b99c65.png">
 
 ## :inbox_tray: Download
 
@@ -28,7 +33,7 @@ You can download the latest version of _LeafView_ from the releases page here:<b
 
 ### :desktop_computer: Windows 11
 
-You can get _(or upgrade to)_ the latest version of _LeafView_ via [winget](https://github.com/microsoft/winget-cli):
+You can get _(or upgrade to)_ the latest version of _LeafView_ via [winget](https://github.com/microsoft/winget-pkgs):
 
 ```sh
 winget install sprout2000.LeafView
@@ -50,8 +55,6 @@ winget install sprout2000.LeafView
 |                  <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>L</kbd>                   | Toggle Grid View                   |
 |              <kbd>CmdOrCtrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>               | Toggle Dark Mode                   |
 |                 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>                 | Toggle Menubar _(Windows / Linux)_ |
-
-<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/198906109-6e477983-dc38-4858-9455-133016b99c65.png">
 
 ### :computer_mouse: Mouse Operations
 
