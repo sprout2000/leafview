@@ -49,6 +49,7 @@ $THUMB_BORDER: var(--thumb-border);
       min-height: 100%;
       box-sizing: border-box;
       padding: 10px;
+
       .thumb {
         margin: 4px;
         max-width: 128px;
@@ -77,6 +78,7 @@ $THUMB_BORDER: var(--thumb-border);
     justify-content: center;
     align-items: center;
     opacity: 0;
+
     &:hover {
       opacity: 1;
     }
