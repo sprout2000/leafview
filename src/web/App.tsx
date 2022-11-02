@@ -165,7 +165,7 @@ export const App = () => {
   }, [url, grid]);
 
   const onRemove = useCallback(async () => {
-    if (!url || grid) return;
+    if (!url) return;
 
     const dir = await myAPI.dirname(url);
     if (!dir) {
@@ -189,12 +189,14 @@ export const App = () => {
       return;
     }
 
+    setImgList(newList);
+
     if (index > newList.length - 1) {
       setUrl(newList[0]);
     } else {
       setUrl(newList[index]);
     }
-  }, [url, grid]);
+  }, [url]);
 
   const onClickOpen = useCallback(async () => {
     const filepath = await myAPI.openDialog();
