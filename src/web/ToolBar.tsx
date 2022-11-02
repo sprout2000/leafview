@@ -30,7 +30,7 @@ export const ToolBar = memo((props: Props) => {
             <FolderOpen />
           </div>
         </div>
-        <div className="arrows">
+        <div className="controls">
           <div
             className="icon"
             title={i18next.t('Prev Image')}
