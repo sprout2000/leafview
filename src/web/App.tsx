@@ -224,8 +224,18 @@ export const App = () => {
       return;
     }
 
-    myAPI.readdir(dir).then((files) => files && setImgList(files));
-    setGrid(!grid);
+    const list = await myAPI.readdir(dir);
+    if (!list || list.length === 0 || !list.includes(url)) {
+      window.location.reload();
+      return;
+    }
+
+    if (!grid) {
+      setImgList(list);
+      setGrid(true);
+    } else {
+      setGrid(false);
+    }
   }, [grid, url]);
 
   const onClickThumb = async (
