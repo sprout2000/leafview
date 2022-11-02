@@ -19,46 +19,48 @@ type Props = {
 
 export const ToolBar = memo((props: Props) => {
   return (
-    <div className="toolbar">
-      <div className="folder">
-        <div
-          className="icon"
-          title={i18next.t('Open...')}
-          onClick={props.onClickOpen}
-        >
-          <FolderOpen />
+    <div className="bottom">
+      <div className="toolbar">
+        <div className="folder">
+          <div
+            className="icon"
+            title={i18next.t('Open...')}
+            onClick={props.onClickOpen}
+          >
+            <FolderOpen />
+          </div>
         </div>
-      </div>
-      <div className="arrows">
-        <div
-          className="icon"
-          title={i18next.t('Prev Image')}
-          onClick={props.onPrev}
-        >
-          <ArrowLeft />
+        <div className="arrows">
+          <div
+            className="icon"
+            title={i18next.t('Prev Image')}
+            onClick={props.onPrev}
+          >
+            <ArrowLeft />
+          </div>
+          <div
+            className="icon"
+            title={i18next.t('Next Image')}
+            onClick={props.onNext}
+          >
+            <ArrowRight />
+          </div>
+          <div
+            className="icon"
+            title={i18next.t('Toggle Grid View')}
+            onClick={props.onToggleGrid}
+          >
+            <Grid />
+          </div>
         </div>
-        <div
-          className="icon"
-          title={i18next.t('Next Image')}
-          onClick={props.onNext}
-        >
-          <ArrowRight />
-        </div>
-        <div
-          className="icon"
-          title={i18next.t('Toggle Grid View')}
-          onClick={props.onToggleGrid}
-        >
-          <Grid />
-        </div>
-      </div>
-      <div className="trash">
-        <div
-          className="icon"
-          title={i18next.t('Move to Trash')}
-          onClick={props.onRemove}
-        >
-          <Trash />
+        <div className="trash">
+          <div
+            className="icon"
+            title={i18next.t('Move to Trash')}
+            onClick={props.onRemove}
+          >
+            <Trash />
+          </div>
         </div>
       </div>
     </div>

@@ -16,6 +16,21 @@
 
 .container {
   .bottom {
+    position: absolute;
+    bottom: 0;
+    z-index: 20;
+    width: 100%;
+    height: 128px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+    transition: opacity 0.8s ease-in-out;
+
     .toolbar {
       display: flex;
       height: 60px;

@@ -383,15 +383,13 @@ export const App = () => {
         </div>
       ) : (
         <Fragment>
-          <div className="bottom">
-            <ToolBar
-              onPrev={onPrev}
-              onNext={onNext}
-              onRemove={onRemove}
-              onClickOpen={onClickOpen}
-              onToggleGrid={onToggleGrid}
-            />
-          </div>
+          <ToolBar
+            onPrev={onPrev}
+            onNext={onNext}
+            onRemove={onRemove}
+            onClickOpen={onClickOpen}
+            onToggleGrid={onToggleGrid}
+          />
           <div className={!url ? 'view init' : 'view'} ref={mapRef} />
         </Fragment>
       )}

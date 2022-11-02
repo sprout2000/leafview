@@ -68,23 +68,6 @@ $THUMB_BORDER: var(--thumb-border);
     }
   }
 
-  .bottom {
-    position: absolute;
-    bottom: 0;
-    z-index: 20;
-    width: 100%;
-    height: 128px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-
-    &:hover {
-      opacity: 1;
-    }
-    transition: opacity 0.8s ease-in-out;
-  }
-
   .view {
     height: 100%;
     z-index: 0;
