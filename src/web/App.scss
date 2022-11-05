@@ -3,6 +3,7 @@
     --scroll-track: #333;
     --scroll-thumb: #666;
     --thumb-border: #333;
+    --thumb-hover: #666;
     .container {
       background: #1e1e1e;
     }
@@ -11,7 +12,8 @@
   @media (prefers-color-scheme: light) {
     --scroll-track: #ddd;
     --scroll-thumb: #999;
-    --thumb-border: #ddd;
+    --thumb-border: #bbb;
+    --thumb-hover: #acf;
     .container {
       background: #f6f6f6;
     }
@@ -21,6 +23,7 @@
 $SCROLL_TRACK: var(--scroll-track);
 $SCROLL_THUMB: var(--scroll-thumb);
 $THUMB_BORDER: var(--thumb-border);
+$THUMB_HOVER: var(--thumb-hover);
 
 .container {
   height: 100%;
@@ -63,7 +66,9 @@ $THUMB_BORDER: var(--thumb-border);
         }
         &:hover {
           cursor: pointer;
+          border-color: $THUMB_HOVER;
         }
+        transition: border-color 0.3s ease-in-out;
       }
     }
   }
