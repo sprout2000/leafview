@@ -20,6 +20,7 @@ import path from 'node:path';
 import mime from 'mime-types';
 import i18next from 'i18next';
 
+import { reloader } from './reloader';
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 
@@ -47,13 +48,12 @@ const store = new Store<StoreType>({
   },
 });
 
-/// #if DEBUG
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('electron-nice-auto-reload')({
-  rootPath: path.join(process.cwd(), 'dist'),
-  rules: [{ action: 'app.relaunch' }],
-});
-/// #endif
+if (isDevelop) {
+  reloader({
+    mainPaths: ['dist/main.js', 'dist/preload.js'],
+    rendererPaths: ['dist/index.js', 'dist/index.css'],
+  });
+}
 
 const getResourceDirectory = () => {
   return isDevelop
