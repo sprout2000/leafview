@@ -2,8 +2,8 @@ import { watch } from 'chokidar';
 import { BrowserWindow, app } from 'electron';
 
 type Options = {
-  mainPaths: string[];
-  rendererPaths: string[];
+  mainPaths?: string[];
+  rendererPaths?: string[];
 };
 
 const ignoreFiles = /node_modules|[/\\]\./;
