@@ -53,34 +53,25 @@ const common: Configuration = {
     ],
   },
   watch: isDev,
-  stats: 'errors-only',
-  performance: { hints: false },
-  optimization: { minimize: !isDev },
   devtool: isDev ? 'inline-source-map' : undefined,
 };
 
 const main: Configuration = {
   ...common,
   target: 'electron-main',
-  entry: {
-    main: './src/main.ts',
-  },
+  entry: { main: './src/main.ts' },
 };
 
 const preload: Configuration = {
   ...common,
   target: 'electron-preload',
-  entry: {
-    preload: './src/preload.ts',
-  },
+  entry: { preload: './src/preload.ts' },
 };
 
 const renderer: Configuration = {
   ...common,
   target: 'web',
-  entry: {
-    index: './src/web/index.tsx',
-  },
+  entry: { index: './src/web/index.tsx' },
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
