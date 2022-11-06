@@ -27,10 +27,7 @@ const common: Configuration = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'ts-loader' },
-          { loader: 'ifdef-loader', options: { DEBUG: isDev } },
-        ],
+        loader: 'ts-loader',
       },
       {
         test: /\.s?css$/,
