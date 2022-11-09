@@ -33,6 +33,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@electron/notarize": "^1.2.3",
     "@types/leaflet": "^1.9.0",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^18.11.9",
@@ -45,7 +46,6 @@
     "dotenv": "^16.0.3",
     "electron": "^21.2.2",
     "electron-builder": "^23.6.0",
-    "electron-notarize": "^1.2.1",
     "electron-search-devtools": "^1.8.7",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
