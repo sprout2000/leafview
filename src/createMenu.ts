@@ -142,10 +142,17 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       }
     );
   } else {
-    viewSub.push({
-      label: i18next.t('Language'),
-      submenu: langSub,
-    });
+    viewSub.push(
+      {
+        label: i18next.t('Language'),
+        submenu: langSub,
+      },
+      { type: 'separator' },
+      {
+        label: i18next.t('Toggle Fullscreen'),
+        role: 'togglefullscreen',
+      }
+    );
   }
 
   const helpSub: MenuItemConstructorOptions[] = [
