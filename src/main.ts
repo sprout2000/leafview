@@ -120,7 +120,7 @@ const createWindow = () => {
     return dialog
       .showOpenDialog(mainWindow, {
         properties: ['openFile'],
-        title: i18next.t('Select an image'),
+        title: i18next.t('Select an image') as string,
         filters: [
           {
             name: i18next.t('Image files'),
