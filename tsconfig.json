@@ -9,6 +9,7 @@
     "jsx": "react-jsx",
     "strict": true
   },
+  "include": ["src/**/*"],
   "ts-node": {
     "compilerOptions": {
       "target": "ES2020",
