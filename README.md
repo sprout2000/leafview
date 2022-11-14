@@ -119,20 +119,11 @@ You can easily contribute to this repository by providing translation files.
 
 ## :tada: Contributors
 
-**Special Thanks to:**
+Thanks go to these wonderful people :slightly_smiling_face::
 
-- [@BackSpace54](https://github.com/BackSpace54) [#312](https://github.com/sprout2000/leafview/pull/312)
-- [@vedantmgoyal2009](https://github.com/vedantmgoyal2009) [#308](https://github.com/sprout2000/leafview/pull/308), [#311](https://github.com/sprout2000/leafview/pull/311), [#317](https://github.com/sprout2000/leafview/pull/317), [#321](https://github.com/sprout2000/leafview/pull/321), [#322](https://github.com/sprout2000/leafview/pull/322)
-- [@Levminer](https://github.com/Levminer) [#305](https://github.com/sprout2000/leafview/pull/305)
-- [@SuhaibAtef](https://github.com/SuhaibAtef) [#274](https://github.com/sprout2000/leafview/pull/274)
-- [@mwoz123](https://github.com/mwoz123) [#260](https://github.com/sprout2000/leafview/pull/260), [#261](https://github.com/sprout2000/leafview/pull/261)
-- [@ArcherGu](https://github.com/ArcherGu) [#235](https://github.com/sprout2000/leafview/pull/235)
-- [@guaycuru](https://github.com/guaycuru) [#228](https://github.com/sprout2000/leafview/pull/228), [#232](https://github.com/sprout2000/leafview/pull/232)
-- [@kitt3911](https://github.com/kitt3911) [#215](https://github.com/sprout2000/leafview/pull/215)
-- [@nukeop](https://github.com/nukeop) [#214](https://github.com/sprout2000/leafview/pull/214)
-- [@singuerinc](https://github.com/singuerinc) [#178](https://github.com/sprout2000/leafview/pull/178)
-- [@DrDeee](https://github.com/DrDeee) [#166](https://github.com/sprout2000/leafview/pull/166)
-- [@PetrTodorov](https://github.com/PetrTodorov) [#68](https://github.com/sprout2000/leafview/pull/68)
+<a href="https://github.com/sprout2000/leafview/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sprout2000/leafview" />
+</a>
 
 ## :copyright: Copyright
 
