@@ -20,7 +20,6 @@ import path from 'node:path';
 import mime from 'mime-types';
 import i18next from 'i18next';
 
-import { reloader } from './reloader';
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 
@@ -47,13 +46,6 @@ const store = new Store<StoreType>({
     showmenu: true,
   },
 });
-
-if (isDevelop) {
-  reloader({
-    mainPaths: ['dist/main.js', 'dist/preload.js'],
-    rendererPaths: ['dist/index.js', 'dist/index.css'],
-  });
-}
 
 const getResourceDirectory = () => {
   return isDevelop
