@@ -63,6 +63,9 @@ $THUMB_HOVER: var(--thumb-hover);
         &.current {
           border: 4px solid #68f;
           border-radius: 6px;
+          &:hover {
+            border-color: #68f;
+          }
         }
         &:hover {
           cursor: pointer;
