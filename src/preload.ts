@@ -26,23 +26,28 @@ contextBridge.exposeInMainWorld('myAPI', {
   updateTitle: (filepath: string): Promise<void> =>
     ipcRenderer.invoke('update-title', filepath),
 
-  menuNext: (listener: () => Promise<void>) =>
-    ipcRenderer.on('menu-next', listener),
-  removeMenuNext: () => ipcRenderer.removeAllListeners('menu-next'),
+  menuNext: (listener: () => Promise<void>) => {
+    ipcRenderer.on('menu-next', listener);
+    return () => ipcRenderer.removeAllListeners('menu-next');
+  },
 
-  menuPrev: (listener: () => Promise<void>) =>
-    ipcRenderer.on('menu-prev', listener),
-  removeMenuPrev: () => ipcRenderer.removeAllListeners('menu-prev'),
+  menuPrev: (listener: () => Promise<void>) => {
+    ipcRenderer.on('menu-prev', listener);
+    return () => ipcRenderer.removeAllListeners('menu-prev');
+  },
 
-  menuRemove: (listener: () => Promise<void>) =>
-    ipcRenderer.on('menu-remove', listener),
-  removeMenuRemove: () => ipcRenderer.removeAllListeners('menu-remove'),
+  menuRemove: (listener: () => Promise<void>) => {
+    ipcRenderer.on('menu-remove', listener);
+    return () => ipcRenderer.removeAllListeners('menu-remove');
+  },
 
-  menuOpen: (listener: (_e: Event, filepath: string) => Promise<void>) =>
-    ipcRenderer.on('menu-open', listener),
-  removeMenuOpen: () => ipcRenderer.removeAllListeners('menu-open'),
+  menuOpen: (listener: (_e: Event, filepath: string) => Promise<void>) => {
+    ipcRenderer.on('menu-open', listener);
+    return () => ipcRenderer.removeAllListeners('menu-open');
+  },
 
-  toggleGrid: (listener: (_e: Event, filepath: string) => Promise<void>) =>
-    ipcRenderer.on('toggle-grid', listener),
-  removeToggleGrid: () => ipcRenderer.removeAllListeners('toggle-grid'),
+  toggleGrid: (listener: (_e: Event, filepath: string) => Promise<void>) => {
+    ipcRenderer.on('toggle-grid', listener);
+    return () => ipcRenderer.removeAllListeners('toggle-grid');
+  },
 });

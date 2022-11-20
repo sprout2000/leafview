@@ -23,22 +23,17 @@ export interface IElectronAPI {
 
   updateTitle: (filepath: string) => Promise<void>;
 
-  menuNext: (listener: () => Promise<void>) => Electron.IpcRenderer;
-  removeMenuNext: () => Electron.IpcRenderer;
+  menuNext: (listener: () => Promise<void>) => () => Electron.IpcRenderer;
 
-  menuPrev: (listener: () => Promise<void>) => Electron.IpcRenderer;
-  removeMenuPrev: () => Electron.IpcRenderer;
+  menuPrev: (listener: () => Promise<void>) => () => Electron.IpcRenderer;
 
-  menuRemove: (listener: () => Promise<void>) => Electron.IpcRenderer;
-  removeMenuRemove: () => Electron.IpcRenderer;
+  menuRemove: (listener: () => Promise<void>) => () => Electron.IpcRenderer;
 
   menuOpen: (
     listener: (_e: Event, filepath: string) => Promise<void>
-  ) => Electron.IpcRenderer;
-  removeMenuOpen: () => Electron.IpcRenderer;
+  ) => () => Electron.IpcRenderer;
 
   toggleGrid: (
     listener: (_e: Event, filepath: string) => Promise<void>
-  ) => Electron.IpcRenderer;
-  removeToggleGrid: () => Electron.IpcRenderer;
+  ) => () => Electron.IpcRenderer;
 }

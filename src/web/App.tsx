@@ -302,42 +302,37 @@ export const App = () => {
   }, [url]);
 
   useEffect(() => {
-    myAPI.menuNext(onNext);
-
+    const unlistenFn = myAPI.menuNext(onNext);
     return () => {
-      myAPI.removeMenuNext();
+      unlistenFn();
     };
   }, [onNext]);
 
   useEffect(() => {
-    myAPI.menuPrev(onPrev);
-
+    const unlistenFn = myAPI.menuPrev(onPrev);
     return () => {
-      myAPI.removeMenuPrev();
+      unlistenFn();
     };
   }, [onPrev]);
 
   useEffect(() => {
-    myAPI.menuRemove(onRemove);
-
+    const unlistenFn = myAPI.menuRemove(onRemove);
     return () => {
-      myAPI.removeMenuRemove();
+      unlistenFn();
     };
   }, [onRemove]);
 
   useEffect(() => {
-    myAPI.menuOpen(onMenuOpen);
-
+    const unlistenFn = myAPI.menuOpen(onMenuOpen);
     return () => {
-      myAPI.removeMenuOpen();
+      unlistenFn();
     };
   }, [onMenuOpen]);
 
   useEffect(() => {
-    myAPI.toggleGrid(onToggleGrid);
-
+    const unlistenFn = myAPI.toggleGrid(onToggleGrid);
     return () => {
-      myAPI.removeToggleGrid();
+      unlistenFn();
     };
   }, [onToggleGrid]);
 
