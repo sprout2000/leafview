@@ -60,6 +60,19 @@ const main: Configuration = {
   ...common,
   target: 'electron-main',
   entry: { main: './src/main.ts' },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from:
+            process.platform === 'linux'
+              ? './assets/linux.png'
+              : './assets/icon.png',
+          to: './images/logo.png',
+        },
+      ],
+    }),
+  ],
 };
 
 const preload: Configuration = {
@@ -78,17 +91,6 @@ const renderer: Configuration = {
       inject: 'body',
       scriptLoading: 'blocking',
       template: './src/web/index.html',
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from:
-            process.platform === 'linux'
-              ? './assets/linux.png'
-              : './assets/icon.png',
-          to: './images/logo.png',
-        },
-      ],
     }),
   ],
 };
