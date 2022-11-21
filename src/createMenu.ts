@@ -61,7 +61,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
 
   const viewSub: MenuItemConstructorOptions[] = [
     {
-      label: i18next.t('Next Image') as string,
+      label: `${i18next.t('Next Image')}`,
       accelerator: 'J',
       click: () => win.webContents.send('menu-next'),
     },
@@ -78,7 +78,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       visible: false,
     },
     {
-      label: i18next.t('Prev Image') as string,
+      label: `${i18next.t('Prev Image')}`,
       accelerator: 'K',
       click: () => win.webContents.send('menu-prev'),
     },
@@ -95,7 +95,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       visible: false,
     },
     {
-      label: i18next.t('Toggle Grid View') as string,
+      label: `${i18next.t('Toggle Grid View')}`,
       accelerator: 'H',
       click: () => win.webContents.send('toggle-grid'),
     },
@@ -113,7 +113,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     },
     { type: 'separator' },
     {
-      label: i18next.t('Toggle Dark Mode') as string,
+      label: `${i18next.t('Toggle Dark Mode')}`,
       accelerator: 'CmdOrCtrl+Shift+D',
       type: 'checkbox',
       checked: store.get('darkmode'),
@@ -127,7 +127,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   if (!isDarwin) {
     viewSub.push(
       {
-        label: i18next.t('Toggle Menubar') as string,
+        label: `${i18next.t('Toggle Menubar')}`,
         accelerator: 'Ctrl+Shift+T',
         type: 'checkbox',
         checked: store.get('showmenu'),
@@ -137,12 +137,12 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         },
       },
       {
-        label: i18next.t('Language') as string,
+        label: `${i18next.t('Language')}`,
         submenu: langSub,
       },
       { type: 'separator' },
       {
-        label: i18next.t('Toggle Fullscreen') as string,
+        label: `${i18next.t('Toggle Fullscreen')}`,
         role: 'togglefullscreen',
         accelerator: 'F11',
       }
@@ -150,12 +150,12 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   } else {
     viewSub.push(
       {
-        label: i18next.t('Language') as string,
+        label: `${i18next.t('Language')}`,
         submenu: langSub,
       },
       { type: 'separator' },
       {
-        label: i18next.t('Toggle Fullscreen') as string,
+        label: `${i18next.t('Toggle Fullscreen')}`,
         role: 'togglefullscreen',
       }
     );
@@ -163,7 +163,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
 
   const helpSub: MenuItemConstructorOptions[] = [
     {
-      label: i18next.t('Support URL...') as string,
+      label: `${i18next.t('Support URL...')}`,
       click: async () =>
         await shell.openExternal(
           'https://github.com/sprout2000/leafview/#readme'
@@ -172,7 +172,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   ];
 
   const aboutItem: MenuItemConstructorOptions = {
-    label: i18next.t(isDarwin ? 'About LeafView' : 'About') as string,
+    label: `${i18next.t(isDarwin ? 'About LeafView' : 'About')}`,
     accelerator: 'CmdOrCtrl+I',
     click: () => app.showAboutPanel(),
   };
@@ -183,16 +183,16 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
 
   const template: MenuItemConstructorOptions[] = [
     {
-      label: i18next.t('File') as string,
+      label: `${i18next.t('File')}`,
       submenu: [
         {
-          label: i18next.t('Open...') as string,
+          label: `${i18next.t('Open...')}`,
           accelerator: 'CmdOrCtrl+O',
           click: () => {
             dialog
               .showOpenDialog(win, {
                 properties: ['openFile'],
-                title: i18next.t('Select an image') as string,
+                title: `${i18next.t('Select an image')}`,
                 filters: [
                   {
                     name: i18next.t('Image files'),
@@ -223,32 +223,32 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         },
         { type: 'separator' },
         {
-          label: i18next.t('Move to Trash') as string,
+          label: `${i18next.t('Move to Trash')}`,
           accelerator: 'Delete',
           click: () => win.webContents.send('menu-remove'),
         },
         { type: 'separator' },
         {
-          label: i18next.t('Close') as string,
+          label: `${i18next.t('Close')}`,
           accelerator: isDarwin ? 'Cmd+W' : 'Alt+F4',
           role: 'close',
         },
       ],
     },
     {
-      label: i18next.t('View') as string,
+      label: `${i18next.t('View')}`,
       submenu: viewSub,
     },
     {
-      label: i18next.t('Window') as string,
+      label: `${i18next.t('Window')}`,
       submenu: [
         {
-          label: i18next.t('Minimize') as string,
+          label: `${i18next.t('Minimize')}`,
           role: 'minimize',
           accelerator: 'CmdOrCtrl+M',
         },
         {
-          label: i18next.t('Zoom') as string,
+          label: `${i18next.t('Zoom')}`,
           click: () => {
             win.isMaximized() ? win.unmaximize() : win.maximize();
           },
@@ -256,18 +256,18 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         { type: 'separator' },
         isDarwin
           ? {
-              label: i18next.t('Bring All to Front') as string,
+              label: `${i18next.t('Bring All to Front')}`,
               role: 'front',
             }
           : {
-              label: i18next.t('Close') as string,
+              label: `${i18next.t('Close')}`,
               role: 'close',
               accelerator: 'Ctrl+W',
             },
       ],
     },
     {
-      label: i18next.t('Help') as string,
+      label: `${i18next.t('Help')}`,
       role: 'help',
       submenu: helpSub,
     },
@@ -280,20 +280,20 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         aboutItem,
         { type: 'separator' },
         {
-          label: i18next.t('Hide LeafView') as string,
+          label: `${i18next.t('Hide LeafView')}`,
           role: 'hide',
         },
         {
-          label: i18next.t('Hide Others') as string,
+          label: `${i18next.t('Hide Others')}`,
           role: 'hideOthers',
         },
         {
-          label: i18next.t('Show All') as string,
+          label: `${i18next.t('Show All')}`,
           role: 'unhide',
         },
         { type: 'separator' },
         {
-          label: i18next.t('Quit LeafView') as string,
+          label: `${i18next.t('Quit LeafView')}`,
           role: 'quit',
         },
       ],
