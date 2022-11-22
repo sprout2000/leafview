@@ -52,6 +52,7 @@ const common: Configuration = {
       },
     ],
   },
+  stats: 'errors-only',
   watch: isDev,
   devtool: isDev ? 'inline-source-map' : undefined,
 };
@@ -89,7 +90,6 @@ const renderer: Configuration = {
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       inject: 'body',
-      scriptLoading: 'blocking',
       template: './src/web/index.html',
     }),
   ],
