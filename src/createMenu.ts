@@ -46,12 +46,17 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
             .showMessageBox(win, {
               type: 'info',
               message: i18next.t('Warning'),
+              buttons: ['OK', 'Later'],
+              defaultId: 0,
+              cancelId: 1,
             })
-            .then(() => {
-              setImmediate(() => {
-                app.relaunch();
-                app.exit(0);
-              });
+            .then((result) => {
+              if (result.response === 0) {
+                setImmediate(() => {
+                  app.relaunch();
+                  app.exit(0);
+                });
+              }
             });
         }
       },
