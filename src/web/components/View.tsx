@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { memo, useCallback, useEffect, useRef } from 'react';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -9,7 +9,7 @@ type Props = {
   url: string;
 };
 
-export const View = ({ url = '' }: Props) => {
+export const View = memo(({ url = '' }: Props) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapObj: React.MutableRefObject<L.Map | null> = useRef(null);
 
@@ -97,4 +97,5 @@ export const View = ({ url = '' }: Props) => {
   }, [draw]);
 
   return <div className={!url ? 'view init' : 'view'} ref={mapRef} />;
-};
+});
+View.displayName = 'View';
