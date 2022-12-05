@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import { setLocales } from '../setLocales';
 
-import { App } from './App';
+import { App } from './components/App';
 import './index.scss';
 
 const initLocale = async () => {
