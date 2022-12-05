@@ -1,0 +1,16 @@
+.container {
+  .view {
+    height: 100%;
+    z-index: 0;
+    background-color: transparent;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    &.init {
+      cursor: default;
+    }
+  }
+}

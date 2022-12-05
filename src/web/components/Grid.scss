@@ -4,9 +4,6 @@
     --scroll-thumb: #666;
     --thumb-border: #333;
     --thumb-hover: #666;
-    .container {
-      background: #1e1e1e;
-    }
   }
 
   @media (prefers-color-scheme: light) {
@@ -14,9 +11,6 @@
     --scroll-thumb: #999;
     --thumb-border: #bbb;
     --thumb-hover: #acf;
-    .container {
-      background: #f6f6f6;
-    }
   }
 }
 
@@ -26,11 +20,6 @@ $THUMB_BORDER: var(--thumb-border);
 $THUMB_HOVER: var(--thumb-hover);
 
 .container {
-  height: 100%;
-  overflow: hidden;
-  user-select: none;
-  position: relative;
-
   &.grid {
     text-align: center;
     overflow-y: auto;
@@ -73,21 +62,6 @@ $THUMB_HOVER: var(--thumb-hover);
         }
         transition: border-color 0.3s ease-in-out;
       }
-    }
-  }
-
-  .view {
-    height: 100%;
-    z-index: 0;
-    background-color: transparent;
-    cursor: grab;
-
-    &:active {
-      cursor: grabbing;
-    }
-
-    &.init {
-      cursor: default;
     }
   }
 }
