@@ -13,6 +13,8 @@ export const App = () => {
   const [grid, setGrid] = useState(false);
   const [imgList, setImgList] = useState<string[]>([]);
 
+  const isDarwin = navigator.userAgentData.platform === 'macOS';
+
   const preventDefault = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -203,8 +205,8 @@ export const App = () => {
     setGrid(false);
   };
 
-  const onContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (grid) {
+  const onContextMenu = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (grid || isDarwin) {
       e.preventDefault();
       return false;
     }
