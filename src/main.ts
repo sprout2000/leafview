@@ -12,7 +12,6 @@ import {
 import log from 'electron-log';
 import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
-import { searchDevtools } from 'electron-search-devtools';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -187,13 +186,8 @@ const createWindow = () => {
   }
 
   if (isDevelop) {
-    searchDevtools('REACT')
-      .then((devtools) => {
-        session.defaultSession.loadExtension(devtools, {
-          allowFileAccess: true,
-        });
-      })
-      .catch((err) => console.log(err));
+    const extPath = path.resolve(process.cwd(), 'devtools');
+    session.defaultSession.loadExtension(extPath, { allowFileAccess: true });
   }
 
   if (isDarwin || process.platform === 'linux') {

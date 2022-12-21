@@ -1,6 +1,7 @@
-node_modules/
 dist/
 release/
+devtools/
+node_modules/
 npm-*.log
 yarn-*.log
 .env
