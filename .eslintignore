@@ -2,3 +2,5 @@ dist
 release
 devtools
 node_modules
+webpack.config.ts
+scripts

@@ -6,10 +6,8 @@ type Props = {
   url: string;
   imgList: string[];
   onClickBlank: () => Promise<void>;
-  onClickThumb: (
-    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
-    item: string
-  ) => Promise<void>;
+  // eslint-disable-next-line no-undef
+  onClickThumb: (e: React.MouseEvent<HTMLImageElement, MouseEvent>, item: string) => Promise<void>;
 };
 
 export const Grid = memo((props: Props) => {

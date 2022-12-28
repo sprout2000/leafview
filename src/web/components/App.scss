@@ -1,20 +1,23 @@
 :root {
   @media (prefers-color-scheme: dark) {
-    .container {
+    body {
       background: #1e1e1e;
     }
   }
 
   @media (prefers-color-scheme: light) {
-    .container {
+    body {
       background: #f6f6f6;
     }
   }
 }
 
-.container {
-  height: 100%;
+.image-container {
   overflow: hidden;
   user-select: none;
   position: relative;
+}
+
+.sidebar {
+  background: white;
 }

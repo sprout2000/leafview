@@ -5,26 +5,21 @@ contextBridge.exposeInMainWorld('myAPI', {
 
   contextMenu: (): Promise<void> => ipcRenderer.invoke('show-context-menu'),
 
-  history: (filepath: string): Promise<void> =>
-    ipcRenderer.invoke('file-history', filepath),
+  history: (filepath: string): Promise<void> => ipcRenderer.invoke('file-history', filepath),
 
-  mimecheck: (filepath: string): Promise<boolean> =>
-    ipcRenderer.invoke('mime-check', filepath),
+  mimecheck: (filepath: string): Promise<boolean> => ipcRenderer.invoke('mime-check', filepath),
 
-  dirname: (filepath: string): Promise<string> =>
-    ipcRenderer.invoke('dirname', filepath),
+  isVideo: (filepath: string): Promise<boolean> => ipcRenderer.invoke('is-video', filepath),
 
-  readdir: (dirpath: string): Promise<void | string[]> =>
-    ipcRenderer.invoke('readdir', dirpath),
+  dirname: (filepath: string): Promise<string> => ipcRenderer.invoke('dirname', filepath),
 
-  moveToTrash: (filepath: string): Promise<void> =>
-    ipcRenderer.invoke('move-to-trash', filepath),
+  readdir: (dirpath: string): Promise<void | string[]> => ipcRenderer.invoke('readdir', dirpath),
 
-  openDialog: (): Promise<string | void | undefined> =>
-    ipcRenderer.invoke('open-dialog'),
+  moveToTrash: (filepath: string): Promise<void> => ipcRenderer.invoke('move-to-trash', filepath),
 
-  updateTitle: (filepath: string): Promise<void> =>
-    ipcRenderer.invoke('update-title', filepath),
+  openDialog: (): Promise<string | void | undefined> => ipcRenderer.invoke('open-dialog'),
+
+  updateTitle: (filepath: string): Promise<void> => ipcRenderer.invoke('update-title', filepath),
 
   menuNext: (listener: () => Promise<void>) => {
     ipcRenderer.on('menu-next', listener);
@@ -49,5 +44,10 @@ contextBridge.exposeInMainWorld('myAPI', {
   toggleGrid: (listener: (_e: Event, filepath: string) => Promise<void>) => {
     ipcRenderer.on('toggle-grid', listener);
     return () => ipcRenderer.removeAllListeners('toggle-grid');
+  },
+
+  moveFile: (listener: () => Promise<void>) => {
+    ipcRenderer.on('move-file', listener);
+    return () => ipcRenderer.removeAllListeners('move-file');
   },
 });

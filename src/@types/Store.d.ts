@@ -5,6 +5,19 @@ declare type StoreType = {
   width: number | undefined;
   height: number | undefined;
   language?: string;
-  darkmode: boolean;
-  showmenu: boolean;
+  darkMode: boolean;
+  showMenu: boolean;
+  currentFile: FileType | undefined;
+  previousFile: FileType | undefined;
+  nextFile: FileType | undefined;
+  fileKeyBinds: KeyBindType[];
+};
+
+declare type FileType = {
+  name: string;
+  path: string;
+};
+
+declare type KeyBindType = {
+  [key: string]: string;
 };

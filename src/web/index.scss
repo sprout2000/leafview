@@ -1,3 +1,8 @@
+@import './styles/variables';
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import './styles/bootswatch';
+@import './styles/fonts';
+
 * {
   margin: 0;
   padding: 0;
@@ -7,4 +12,14 @@ html,
 body,
 #root {
   height: 100%;
+}
+
+body {
+  font-family: 'Chivo Mono', monospace;
+}
+
+.card {
+  fieldset {
+    padding-left: 5px;
+  }
 }

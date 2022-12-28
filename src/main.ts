@@ -1,20 +1,12 @@
-import {
-  app,
-  Menu,
-  shell,
-  dialog,
-  ipcMain,
-  session,
-  nativeTheme,
-  BrowserWindow,
-} from 'electron';
+import { app, Menu, shell, dialog, ipcMain, session, nativeTheme, BrowserWindow } from 'electron';
 
 import log from 'electron-log';
 import Store from 'electron-store';
 import { autoUpdater } from 'electron-updater';
 
-import fs from 'node:fs';
+// import fs from 'node:fs';
 import path from 'node:path';
+import fs from 'fs-extra';
 
 import mime from 'mime-types';
 import i18next from 'i18next';
@@ -22,6 +14,7 @@ import i18next from 'i18next';
 import { setLocales } from './setLocales';
 import { createMenu } from './createMenu';
 
+// eslint-disable-next-line no-console
 console.log = log.log;
 log.info('App starting...');
 
@@ -33,6 +26,7 @@ const isDevelop = process.env.NODE_ENV === 'development';
 const initWidth = 800;
 const initHeight = 528;
 
+// eslint-disable-next-line no-undef
 const store = new Store<StoreType>({
   configFileMode: 0o666,
   defaults: {
@@ -41,8 +35,12 @@ const store = new Store<StoreType>({
     y: undefined,
     width: initWidth,
     height: initHeight,
-    darkmode: nativeTheme.shouldUseDarkColors,
-    showmenu: true,
+    darkMode: nativeTheme.shouldUseDarkColors,
+    showMenu: true,
+    currentFile: undefined,
+    previousFile: undefined,
+    nextFile: undefined,
+    fileKeyBinds: [{ M: '/Users/fin/Pictures/foo' }],
   },
 });
 
@@ -53,12 +51,30 @@ const getResourceDirectory = () => {
 };
 
 const checkmime = (filepath: string) => {
-  const regexp = new RegExp(/bmp|ico|gif|jpeg|png|svg|webp/);
+  const regexp = new RegExp(/bmp|ico|gif|jpeg|png|svg|webp|webm|mp4/);
   const mimetype = mime.lookup(filepath);
 
   return (mimetype && regexp.test(mimetype)) || false;
 };
 
+const isVideo = (filepath: string) => {
+  const regexp = new RegExp(/webm|mp4/);
+  const mimetype = mime.lookup(filepath);
+
+  return (mimetype && regexp.test(mimetype)) || false;
+};
+
+const moveFile = async (filepath: string, destination: string) => {
+  try {
+    await fs.move(filepath, destination);
+    console.log('success!');
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// @TO-DO fix this complexity
+// eslint-disable-next-line complexity
 const createWindow = () => {
   const dotfiles = isDarwin ? '.' : '._';
 
@@ -79,11 +95,20 @@ const createWindow = () => {
     },
   });
 
-  if (!isDarwin) mainWindow.setMenuBarVisibility(store.get('showmenu'));
-  nativeTheme.themeSource = store.get('darkmode') ? 'dark' : 'light';
+  if (!isDarwin) mainWindow.setMenuBarVisibility(store.get('showMenu'));
+  nativeTheme.themeSource = store.get('darkMode') ? 'dark' : 'light';
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
+
+  ipcMain.handle('move-file', async (_e: Event, path: string, destination: string) => {
+    console.log('foo');
+    return moveFile(path, destination);
+  });
+
+  ipcMain.handle('is-video', (_e: Event, filepath: string) => {
+    return isVideo(filepath);
+  });
 
   ipcMain.handle('mime-check', (_e: Event, filepath: string) => {
     return checkmime(filepath);
@@ -102,31 +127,16 @@ const createWindow = () => {
           .filter(({ name }) => !name.startsWith(dotfiles))
           .map(({ name }) => path.resolve(dir, name))
           .filter((item) => checkmime(item))
-          .sort()
+          .sort(),
       )
-      .catch((err) => console.log(err));
+      .catch((err) => console.info(err));
   });
 
   ipcMain.handle('open-dialog', async () => {
     return dialog
       .showOpenDialog(mainWindow, {
-        properties: ['openFile'],
-        title: `${i18next.t('Select an image')}`,
-        filters: [
-          {
-            name: i18next.t('Image files'),
-            extensions: [
-              'bmp',
-              'gif',
-              'ico',
-              'jpg',
-              'jpeg',
-              'png',
-              'svg',
-              'webp',
-            ],
-          },
-        ],
+        properties: ['openDirectory'],
+        title: `${i18next.t('Select a directory')}`,
       })
       .then((result) => {
         if (result.canceled) return;
@@ -134,7 +144,7 @@ const createWindow = () => {
 
         return result.filePaths[0];
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.info(err));
   });
 
   ipcMain.handle('move-to-trash', async (_e: Event, filepath: string) => {
@@ -142,7 +152,7 @@ const createWindow = () => {
   });
 
   ipcMain.handle('update-title', (_e: Event, filepath: string) => {
-    mainWindow.setTitle(path.basename(filepath));
+    mainWindow.setTitle(filepath);
   });
 
   ipcMain.handle('get-locale', () => store.get('language') || app.getLocale());
@@ -187,7 +197,9 @@ const createWindow = () => {
 
   if (isDevelop) {
     const extPath = path.resolve(process.cwd(), 'devtools');
-    session.defaultSession.loadExtension(extPath, { allowFileAccess: true });
+    if (extPath) {
+      session.defaultSession.loadExtension(extPath, { allowFileAccess: true });
+    }
   }
 
   if (isDarwin || process.platform === 'linux') {
@@ -200,8 +212,7 @@ const createWindow = () => {
       dialog
         .showMessageBox(mainWindow, {
           message: 'Update Notification',
-          detail:
-            'A new version is available.\nDo you want to download it now?',
+          detail: 'A new version is available.\nDo you want to download it now?',
           buttons: ['Not now', 'OK'],
           defaultId: 1,
           cancelId: 0,
@@ -241,13 +252,22 @@ const createWindow = () => {
 
   mainWindow.loadFile('dist/index.html');
   mainWindow.once('ready-to-show', () => {
-    if (isDevelop) mainWindow.webContents.openDevTools({ mode: 'detach' });
+    if (isDevelop) mainWindow.webContents.openDevTools({ mode: 'right' });
     mainWindow.show();
   });
 
   mainWindow.once('close', () => {
     const { x, y, width, height } = mainWindow.getBounds();
     store.set({ x, y, width, height });
+  });
+
+  mainWindow.webContents.on('before-input-event', (event, input) => {
+    console.log(event);
+    // if (input.key.toLowerCase() === 'i') {
+    //   console.log('bar');
+    //   console.log('Pressed Control+I');
+    //   event.preventDefault();
+    // }
   });
 };
 

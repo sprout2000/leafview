@@ -1,18 +1,113 @@
 {
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
   },
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
     "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "promise",
+    "react",
+    "react-hooks"
+  ],
+  "ignorePatterns": [
+    "**/*.json"
   ],
   "rules": {
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "complexity": [
+      "warn",
+      6
+    ],
+    "ban-types": 0,
+    "@typescript-eslint/ban-types": 0,
+    "quotes": [
+      1,
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "semi": [
+      1,
+      "always"
+    ],
+    "no-prototype-builtins": 0,
+    "no-case-declarations": 0,
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "error",
+          "warn",
+          "info"
+        ]
+      }
+    ],
+    "no-unneeded-ternary": "error",
+    "no-unsafe-optional-chaining": 0,
+    "default-param-last": "error",
+    "@typescript-eslint/explicit-member-accessibility": [
+      1,
+      {
+        "accessibility": "no-public"
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-angle-bracket-type-assertion": 0,
+    "@typescript-eslint/no-object-literal-type-assertion": 0,
+    "@typescript-eslint/no-parameter-properties": 0,
+    "@typescript-eslint/array-type": 0,
+    "@typescript-eslint/no-explicit-any": 1,
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/consistent-type-assertions": 0,
+    "promise/no-new-statics": "error",
+    "promise/param-names": "error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-undef": "warn",
+    "no-extra-parens": 0,
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "semi",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        }
+      }
+    ],
+    "strict": [
+      "error",
+      "global"
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ]
   }
 }

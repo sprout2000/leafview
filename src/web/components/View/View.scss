@@ -1,5 +1,14 @@
-.container {
-  .view {
+.image-container {
+  height: 100%;
+
+  video {
+    padding-bottom: 10px;
+    object-fit: contain;
+    max-height: 100%;
+    width: 100%;
+  }
+
+  .view-leaf {
     height: 100%;
     z-index: 0;
     background-color: transparent;

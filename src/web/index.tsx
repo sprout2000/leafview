@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-
 import { setLocales } from '../setLocales';
-
 import { App } from './components/App';
+import { GalleryContextProvider } from './providers/GalleryContext';
 import './index.scss';
 
 const initLocale = async () => {
@@ -14,7 +13,9 @@ const initLocale = async () => {
 initLocale();
 
 createRoot(document.getElementById('root') as Element).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <StrictMode>
+    <GalleryContextProvider>
+      <App />
+    </GalleryContextProvider>
+  </StrictMode>,
 );

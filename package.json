@@ -1,16 +1,9 @@
 {
-  "name": "leafview",
-  "productName": "LeafView",
-  "description": "A minimalist image viewer based on Leaflet.js and Electron.",
-  "version": "2.3.0",
+  "name": "image-sorter",
+  "productName": "image-sorter",
+  "description": "A minimalist image sorter forked from LeafView.",
+  "version": "1.0.0",
   "license": "MIT",
-  "author": {
-    "name": "sprout2000"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:sprout2000/leafview.git"
-  },
   "main": "dist/main.js",
   "scripts": {
     "dev": "rimraf dist && run-p dev:*",
@@ -27,11 +20,14 @@
     ]
   },
   "dependencies": {
+    "bootstrap": "^5.1.1",
     "electron-log": "^4.4.8",
     "electron-store": "^8.1.0",
     "electron-updater": "^5.3.0",
+    "fs-extra": "^11.1.0",
     "i18next": "^22.4.6",
     "leaflet": "^1.9.3",
+    "leaflet.smoothwheelzoom": "git+https://github.com/aijcoa/Leaflet.SmoothWheelZoom.git",
     "mime-types": "^2.1.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -60,13 +56,21 @@
     "webpack-cli": "^5.0.1"
   },
   "optionalDependencies": {
+    "electronmon": "^2.0.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
-    "electronmon": "^2.0.2",
-    "eslint": "^8.30.0",
+    "eslint": "^7.11.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-config-standard-with-typescript": "^24.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.11",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-standard": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.1",
     "rimraf": "^3.0.2",

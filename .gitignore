@@ -2,6 +2,7 @@ dist/
 release/
 devtools/
 node_modules/
+.vscode/
 npm-*.log
 yarn-*.log
 .env

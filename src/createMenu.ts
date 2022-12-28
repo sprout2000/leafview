@@ -3,9 +3,9 @@ import {
   dialog,
   BrowserWindow,
   Menu,
-  MenuItemConstructorOptions,
   nativeTheme,
   shell,
+  MenuItemConstructorOptions,
 } from 'electron';
 
 import path from 'node:path';
@@ -28,6 +28,8 @@ const localeList: Locale[] = [
   { code: 'zh-TW', value: '繁体中文' },
 ];
 
+// @TODO fix complexity
+// eslint-disable-next-line complexity
 export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   const isDarwin = process.platform === 'darwin';
   const dotfiles = isDarwin ? '.' : '._';
@@ -66,25 +68,25 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
 
   const viewSub: MenuItemConstructorOptions[] = [
     {
-      label: `${i18next.t('Next Image')}`,
+      label: `${i18next.t('Skip Image')}`,
       accelerator: 'J',
       click: () => win.webContents.send('menu-next'),
     },
     {
-      label: 'Next Image (invisible)',
+      label: 'Skip Image (invisible)',
       accelerator: 'Ctrl+N',
       click: () => win.webContents.send('menu-next'),
       visible: false,
     },
     {
-      label: 'Next Image (invisible)',
+      label: 'Skip Image (invisible)',
       accelerator: 'CmdOrCtrl+Right',
       click: () => win.webContents.send('menu-next'),
       visible: false,
     },
     {
       label: `${i18next.t('Prev Image')}`,
-      accelerator: 'K',
+      accelerator: 'L',
       click: () => win.webContents.send('menu-prev'),
     },
     {
@@ -115,10 +117,10 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       label: `${i18next.t('Toggle Dark Mode')}`,
       accelerator: 'CmdOrCtrl+Shift+D',
       type: 'checkbox',
-      checked: store.get('darkmode'),
+      checked: store.get('darkMode'),
       click: () => {
-        nativeTheme.themeSource = store.get('darkmode') ? 'light' : 'dark';
-        store.set('darkmode', !store.get('darkmode'));
+        nativeTheme.themeSource = store.get('darkMode') ? 'light' : 'dark';
+        store.set('darkMode', !store.get('darkMode'));
       },
     },
   ];
@@ -129,10 +131,10 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         label: `${i18next.t('Toggle Menubar')}`,
         accelerator: 'Ctrl+Shift+T',
         type: 'checkbox',
-        checked: store.get('showmenu'),
+        checked: store.get('showMenu'),
         click: () => {
           win.setMenuBarVisibility(!win.menuBarVisible);
-          store.set('showmenu', !store.get('showmenu'));
+          store.set('showMenu', !store.get('showMenu'));
         },
       },
       {
@@ -144,7 +146,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         label: `${i18next.t('Toggle Fullscreen')}`,
         role: 'togglefullscreen',
         accelerator: 'F11',
-      }
+      },
     );
   } else {
     viewSub.push(
@@ -156,17 +158,14 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       {
         label: `${i18next.t('Toggle Fullscreen')}`,
         role: 'togglefullscreen',
-      }
+      },
     );
   }
 
   const helpSub: MenuItemConstructorOptions[] = [
     {
       label: `${i18next.t('Support URL...')}`,
-      click: async () =>
-        await shell.openExternal(
-          'https://github.com/sprout2000/leafview/#readme'
-        ),
+      click: async () => await shell.openExternal('https://github.com/sprout2000/leafview/#readme'),
     },
   ];
 
@@ -190,23 +189,8 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
           click: () => {
             dialog
               .showOpenDialog(win, {
-                properties: ['openFile'],
-                title: `${i18next.t('Select an image')}`,
-                filters: [
-                  {
-                    name: i18next.t('Image files'),
-                    extensions: [
-                      'bmp',
-                      'gif',
-                      'ico',
-                      'jpg',
-                      'jpeg',
-                      'png',
-                      'svg',
-                      'webp',
-                    ],
-                  },
-                ],
+                properties: ['openDirectory'],
+                title: `${i18next.t('Select a directory')}`,
               })
               .then((result) => {
                 if (result.canceled) return;
@@ -217,7 +201,10 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
 
                 win.webContents.send('menu-open', result.filePaths[0]);
               })
-              .catch((err) => console.log(err));
+              .catch((err) => {
+                console.info('inside catch');
+                console.info(err);
+              });
           },
         },
         { type: 'separator' },

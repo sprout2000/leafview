@@ -1,0 +1,27 @@
+@mixin Icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  fill: rgb(199, 199, 204);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    fill: rgb(255, 255, 255);
+  }
+}
+
+.gallery {
+  .folder {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+
+    .icon {
+      @include Icon();
+    }
+  }
+}

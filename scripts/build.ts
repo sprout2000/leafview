@@ -90,4 +90,4 @@ build({
         ? null
         : 'scripts/notarize.ts',
   },
-}).catch((err) => console.log(err));
+}).catch((err) => console.info(err));
