@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const Grid = memo((props: Props) => {
-  const currentRef = useRef<HTMLImageElement>(null);
+  const currentRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     currentRef.current?.scrollIntoView({
@@ -25,16 +25,20 @@ export const Grid = memo((props: Props) => {
   return (
     <div className="thumb-container" onClick={props.onClickBlank}>
       {props.imgList.map((item) => (
-        <img
+        <div
+          className="wrapper"
           key={item}
-          src={item}
           ref={item === props.url ? currentRef : null}
-          className={item === props.url ? 'thumb current' : 'thumb'}
-          onClick={(e) => props.onClickThumb(e, item)}
-          onDragStart={() => {
-            return false;
-          }}
-        />
+        >
+          <img
+            src={item}
+            className={item === props.url ? 'thumb current' : 'thumb'}
+            onClick={(e) => props.onClickThumb(e, item)}
+            onDragStart={() => {
+              return false;
+            }}
+          />
+        </div>
       ))}
     </div>
   );
