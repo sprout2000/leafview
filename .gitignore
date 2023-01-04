@@ -4,5 +4,9 @@ devtools/
 node_modules/
 npm-*.log
 yarn-*.log
-.env
 .DS_Store
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
