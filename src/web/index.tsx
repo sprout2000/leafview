@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { setLocales } from '../setLocales';
@@ -14,7 +14,7 @@ const initLocale = async () => {
 initLocale();
 
 createRoot(document.getElementById('root') as Element).render(
-  <React.StrictMode>
+  <StrictMode>
     <App />
-  </React.StrictMode>
+  </StrictMode>
 );
