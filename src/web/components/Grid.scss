@@ -35,42 +35,45 @@ $THUMB_HOVER: var(--thumb-hover);
       border-radius: 10px;
     }
 
-    .thumb-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: center;
-
-      padding: 10px;
+    .grid-content {
       height: auto;
       min-height: 100%;
 
-      .wrapper {
-        width: 148px;
-        height: 148px;
-        display: grid;
-        align-content: flex-end;
+      .thumb-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
         justify-content: center;
 
-        .thumb {
-          margin: 4px;
-          max-width: 128px;
-          max-height: 128px;
-          border: 4px solid $THUMB_BORDER;
-          border-radius: 6px;
+        padding: 10px;
 
-          &.current {
-            border: 4px solid #68f;
+        .wrapper {
+          width: 148px;
+          height: 148px;
+          display: grid;
+          align-content: flex-end;
+          justify-content: center;
+
+          .thumb {
+            margin: 4px;
+            max-width: 128px;
+            max-height: 128px;
+            border: 4px solid $THUMB_BORDER;
             border-radius: 6px;
-            &:hover {
-              border-color: #68f;
+
+            &.current {
+              border: 4px solid #68f;
+              border-radius: 6px;
+              &:hover {
+                border-color: #68f;
+              }
             }
+            &:hover {
+              cursor: pointer;
+              border-color: $THUMB_HOVER;
+            }
+            transition: border-color 0.3s ease-in-out;
           }
-          &:hover {
-            cursor: pointer;
-            border-color: $THUMB_HOVER;
-          }
-          transition: border-color 0.3s ease-in-out;
         }
       }
     }

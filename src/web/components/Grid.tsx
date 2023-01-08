@@ -23,23 +23,25 @@ export const Grid = memo((props: Props) => {
   }, []);
 
   return (
-    <div className="thumb-container" onClick={props.onClickBlank}>
-      {props.imgList.map((item) => (
-        <div
-          className="wrapper"
-          key={item}
-          ref={item === props.url ? currentRef : null}
-        >
-          <img
-            src={item}
-            className={item === props.url ? 'thumb current' : 'thumb'}
-            onClick={(e) => props.onClickThumb(e, item)}
-            onDragStart={() => {
-              return false;
-            }}
-          />
-        </div>
-      ))}
+    <div className="grid-content" onClick={props.onClickBlank}>
+      <div className="thumb-container">
+        {props.imgList.map((item) => (
+          <div
+            className="wrapper"
+            key={item}
+            ref={item === props.url ? currentRef : null}
+          >
+            <img
+              src={item}
+              className={item === props.url ? 'thumb current' : 'thumb'}
+              onClick={(e) => props.onClickThumb(e, item)}
+              onDragStart={() => {
+                return false;
+              }}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 });
