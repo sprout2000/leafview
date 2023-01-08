@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import i18next from 'i18next';
 
-import { FolderOpen } from './icons/FolderOpen';
+import { Trash } from './icons/Trash';
+import { GridIcon } from './icons/GridIcon';
 import { ArrowLeft } from './icons/ArrowLeft';
 import { ArrowRight } from './icons/ArrowRight';
-import { Trash } from './icons/Trash';
-import { Grid } from './icons/Grid';
+import { FolderOpen } from './icons/FolderOpen';
 
 import './ToolBar.scss';
 
@@ -36,7 +36,7 @@ export const ToolBar = memo((props: Props) => {
             title={`${i18next.t('Toggle Grid View')}`}
             onClick={props.onToggleGrid}
           >
-            <Grid />
+            <GridIcon />
           </div>
         </div>
         <div className="arrows">

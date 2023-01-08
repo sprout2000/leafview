@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-export const Grid = memo(() => (
+export const GridIcon = memo(() => (
   <svg
     width="22"
     height="22"
@@ -11,4 +11,4 @@ export const Grid = memo(() => (
   </svg>
 ));
 
-Grid.displayName = 'Grid';
+GridIcon.displayName = 'GridIcon';
