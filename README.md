@@ -7,20 +7,20 @@
 
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
-<img width="640" alt="Image by PublicDomainPictures from Pixabay" src="https://user-images.githubusercontent.com/52094761/200149724-627958fa-d4f0-4ad1-8e26-046bbc29a689.png">
+<img width="640" alt="Image by Frank Winkler from Pixabay" src="https://user-images.githubusercontent.com/52094761/211186660-c4313cf5-5a86-4bf5-b5c7-1997eb12b1ec.png">
 
-_Image by <a href="https://pixabay.com/ja/users/publicdomainpictures-14/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163480">PublicDomainPictures</a> from <a href="https://pixabay.com/ja//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=163480">Pixabay</a>._
+_Image by <a href="https://pixabay.com/ja/users/frankwinkler-64960/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=540123">Frank Winkler</a> from <a href="https://pixabay.com/ja//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=540123">Pixabay</a>_
 
 ## :thumbsup: Features
 
 - Pan & Wheel Zoom
 - Browse the images in a folder
-- Grid display mode is also available
+- Grid view mode available
 - Available in [13 languages](#globe_with_meridians-supported-languages)
 - Auto update _(macOS / Linux)_
 - Compatible with Windows Package Manager (aka [winget](https://github.com/microsoft/winget-pkgs))
 
-<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/198906109-6e477983-dc38-4858-9455-133016b99c65.png">
+<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/211186666-f0c6b745-acdc-456e-be3f-84525249ba34.png">
 
 ## :inbox_tray: Download
 
