@@ -73,7 +73,6 @@
     "wait-on": "^7.0.1"
   },
   "overrides": {
-    "json5": "^2.2.2",
     "minimatch": "^5.1.1"
   }
 }
