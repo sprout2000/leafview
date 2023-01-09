@@ -40,12 +40,10 @@ $THUMB_HOVER: var(--thumb-hover);
       min-height: 100%;
 
       .thumb-container {
+        padding: 10px;
         display: flex;
         flex-wrap: wrap;
-        align-items: flex-end;
         justify-content: center;
-
-        padding: 10px;
 
         .wrapper {
           width: 148px;
