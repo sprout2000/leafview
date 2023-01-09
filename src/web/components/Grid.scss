@@ -19,6 +19,9 @@ $SCROLL_THUMB: var(--scroll-thumb);
 $THUMB_BORDER: var(--thumb-border);
 $THUMB_HOVER: var(--thumb-hover);
 
+$THUMB_SIZE: 128px;
+$WRAPPER_SIZE: 148px;
+
 .container {
   &.grid {
     text-align: center;
@@ -41,21 +44,22 @@ $THUMB_HOVER: var(--thumb-hover);
 
       .thumb-container {
         padding: 10px;
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
         justify-content: center;
+        grid-template-rows: repeat(auto-fill, $WRAPPER_SIZE);
+        grid-template-columns: repeat(auto-fill, $WRAPPER_SIZE);
 
         .wrapper {
-          width: 148px;
-          height: 148px;
+          width: $WRAPPER_SIZE;
+          height: $WRAPPER_SIZE;
           display: grid;
           align-content: flex-end;
           justify-content: center;
 
           .thumb {
             margin: 4px;
-            max-width: 128px;
-            max-height: 128px;
+            max-width: $THUMB_SIZE;
+            max-height: $THUMB_SIZE;
             border: 4px solid $THUMB_BORDER;
             border-radius: 6px;
 
