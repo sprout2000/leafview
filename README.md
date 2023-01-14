@@ -7,7 +7,7 @@
 
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
-<img width="640" alt="Image by Frank Winkler from Pixabay" src="https://user-images.githubusercontent.com/52094761/211186660-c4313cf5-5a86-4bf5-b5c7-1997eb12b1ec.png">
+<img width="640" alt="Image by Frank Winkler from Pixabay" src="https://user-images.githubusercontent.com/52094761/211186660-c4313cf5-5a86-4bf5-b5c7-1997eb12b1ec.png" />
 
 _Image by <a href="https://pixabay.com/ja/users/frankwinkler-64960/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=540123">Frank Winkler</a> from <a href="https://pixabay.com/ja//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=540123">Pixabay</a>_
 
@@ -20,7 +20,7 @@ _Image by <a href="https://pixabay.com/ja/users/frankwinkler-64960/?utm_source=l
 - Auto update _(macOS / Linux)_
 - Compatible with Windows Package Manager (aka [winget](https://github.com/microsoft/winget-pkgs))
 
-<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/212441562-dc318929-028f-4eab-9527-23c2ae38969a.png">
+<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/212441562-dc318929-028f-4eab-9527-23c2ae38969a.png" />
 
 ## :inbox_tray: Download
 
