@@ -47,7 +47,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
     "dotenv": "^16.0.3",
-    "electron": "^22.0.0",
+    "electron": "^22.0.2",
     "electron-builder": "^23.6.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.2",
@@ -60,16 +60,16 @@
     "webpack-cli": "^5.0.1"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.48.0",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
     "electronmon": "^2.0.2",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react": "^7.32.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.2",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.0.4",
     "wait-on": "^7.0.1"
   },
   "overrides": {
