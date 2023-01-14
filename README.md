@@ -20,7 +20,7 @@ _Image by <a href="https://pixabay.com/ja/users/frankwinkler-64960/?utm_source=l
 - Auto update _(macOS / Linux)_
 - Compatible with Windows Package Manager (aka [winget](https://github.com/microsoft/winget-pkgs))
 
-<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/211186666-f0c6b745-acdc-456e-be3f-84525249ba34.png">
+<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/212441562-dc318929-028f-4eab-9527-23c2ae38969a.png">
 
 ## :inbox_tray: Download
 
