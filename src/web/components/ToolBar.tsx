@@ -68,4 +68,5 @@ export const ToolBar = memo((props: Props) => {
     </div>
   );
 });
+
 ToolBar.displayName = 'ToolBar';
