@@ -6,8 +6,6 @@ import { ToolBar } from './ToolBar';
 
 import './App.scss';
 
-const { myAPI } = window;
-
 export const App = () => {
   const [url, setUrl] = useState('');
   const [grid, setGrid] = useState(false);
@@ -30,7 +28,7 @@ export const App = () => {
 
       if (file.name.startsWith('.')) return;
 
-      const mime = await myAPI.mimecheck(file.path);
+      const mime = await window.myAPI.mimecheck(file.path);
       if (mime) setUrl(file.path);
     }
   };
@@ -39,13 +37,13 @@ export const App = () => {
     if (!url) return;
     if (grid) setGrid(false);
 
-    const dir = await myAPI.dirname(url);
+    const dir = await window.myAPI.dirname(url);
     if (!dir) {
       window.location.reload();
       return;
     }
 
-    const list = await myAPI.readdir(dir);
+    const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0) {
       window.location.reload();
       return;
@@ -65,13 +63,13 @@ export const App = () => {
     if (!url) return;
     if (grid) setGrid(false);
 
-    const dir = await myAPI.dirname(url);
+    const dir = await window.myAPI.dirname(url);
     if (!dir) {
       window.location.reload();
       return;
     }
 
-    const list = await myAPI.readdir(dir);
+    const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0) {
       window.location.reload();
       return;
@@ -92,13 +90,13 @@ export const App = () => {
   const onRemove = useCallback(async () => {
     if (!url) return;
 
-    const dir = await myAPI.dirname(url);
+    const dir = await window.myAPI.dirname(url);
     if (!dir) {
       window.location.reload();
       return;
     }
 
-    const list = await myAPI.readdir(dir);
+    const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       window.location.reload();
       return;
@@ -106,8 +104,8 @@ export const App = () => {
 
     const index = list.indexOf(url);
 
-    await myAPI.moveToTrash(url);
-    const newList = await myAPI.readdir(dir);
+    await window.myAPI.moveToTrash(url);
+    const newList = await window.myAPI.readdir(dir);
 
     if (!newList || newList.length === 0) {
       window.location.reload();
@@ -124,10 +122,10 @@ export const App = () => {
   }, [url]);
 
   const onClickOpen = useCallback(async () => {
-    const filepath = await myAPI.openDialog();
+    const filepath = await window.myAPI.openDialog();
     if (!filepath) return;
 
-    const mime = await myAPI.mimecheck(filepath);
+    const mime = await window.myAPI.mimecheck(filepath);
     if (mime) setUrl(filepath);
   }, []);
 
@@ -136,7 +134,7 @@ export const App = () => {
       if (!filepath) return;
       if (grid) setGrid(false);
 
-      const mime = await myAPI.mimecheck(filepath);
+      const mime = await window.myAPI.mimecheck(filepath);
       if (mime) setUrl(filepath);
     },
     [grid]
@@ -145,13 +143,13 @@ export const App = () => {
   const onToggleGrid = useCallback(async () => {
     if (!url) return;
 
-    const dir = await myAPI.dirname(url);
+    const dir = await window.myAPI.dirname(url);
     if (!dir) {
       window.location.reload();
       return;
     }
 
-    const list = await myAPI.readdir(dir);
+    const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       window.location.reload();
       return;
@@ -171,13 +169,13 @@ export const App = () => {
   ) => {
     e.stopPropagation();
 
-    const dir = await myAPI.dirname(item);
+    const dir = await window.myAPI.dirname(item);
     if (!dir) {
       window.location.reload();
       return;
     }
 
-    const list = await myAPI.readdir(dir);
+    const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(item)) {
       window.location.reload();
       return;
@@ -188,13 +186,13 @@ export const App = () => {
   };
 
   const onClickBlank = async () => {
-    const dir = await myAPI.dirname(url);
+    const dir = await window.myAPI.dirname(url);
     if (!dir) {
       window.location.reload();
       return;
     }
 
-    const list = await myAPI.readdir(dir);
+    const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       window.location.reload();
       return;
@@ -210,47 +208,47 @@ export const App = () => {
     }
 
     e.preventDefault();
-    myAPI.contextMenu();
+    window.myAPI.contextMenu();
   };
 
   const updateTitle = async (filepath: string) => {
-    await myAPI.updateTitle(filepath);
+    await window.myAPI.updateTitle(filepath);
   };
 
   useEffect(() => {
-    if (url) myAPI.history(url);
+    if (url) window.myAPI.history(url);
   }, [url]);
 
   useEffect(() => {
-    const unlistenFn = myAPI.menuNext(onNext);
+    const unlistenFn = window.myAPI.menuNext(onNext);
     return () => {
       unlistenFn();
     };
   }, [onNext]);
 
   useEffect(() => {
-    const unlistenFn = myAPI.menuPrev(onPrev);
+    const unlistenFn = window.myAPI.menuPrev(onPrev);
     return () => {
       unlistenFn();
     };
   }, [onPrev]);
 
   useEffect(() => {
-    const unlistenFn = myAPI.menuRemove(onRemove);
+    const unlistenFn = window.myAPI.menuRemove(onRemove);
     return () => {
       unlistenFn();
     };
   }, [onRemove]);
 
   useEffect(() => {
-    const unlistenFn = myAPI.menuOpen(onMenuOpen);
+    const unlistenFn = window.myAPI.menuOpen(onMenuOpen);
     return () => {
       unlistenFn();
     };
   }, [onMenuOpen]);
 
   useEffect(() => {
-    const unlistenFn = myAPI.toggleGrid(onToggleGrid);
+    const unlistenFn = window.myAPI.toggleGrid(onToggleGrid);
     return () => {
       unlistenFn();
     };
@@ -263,6 +261,7 @@ export const App = () => {
 
   return (
     <div
+      data-testid="container"
       className={grid ? 'container grid' : 'container'}
       onDrop={onDrop}
       onDragOver={preventDefault}
