@@ -16,16 +16,20 @@ jobs:
       - name: Check out Git repositry
         uses: actions/checkout@master
 
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.27.0
+
       - name: Setup Node.js
         uses: actions/setup-node@master
         with:
-          node-version: 18.x
+          node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: Build
-        run: npm run build
+        run: pnpm build
 
       - name: Release
         env:
@@ -36,7 +40,7 @@ jobs:
           ASC_PROVIDER: ${{ secrets.ASC_PROVIDER }}
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
           CSC_LINK: ${{ secrets.CSC_LINK }}
-        run: npm run release
+        run: pnpm release
 
   publish:
     name: Publish to WinGet

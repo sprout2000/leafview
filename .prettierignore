@@ -2,3 +2,4 @@ dist
 release
 devtools
 node_modules
+pnpm-lock.yaml
