@@ -41,12 +41,16 @@ contextBridge.exposeInMainWorld('myAPI', {
     return () => ipcRenderer.removeAllListeners('menu-remove');
   },
 
-  menuOpen: (listener: (_e: Event, filepath: string) => Promise<void>) => {
+  menuOpen: (
+    listener: (_e: Electron.IpcRendererEvent, filepath: string) => Promise<void>
+  ) => {
     ipcRenderer.on('menu-open', listener);
     return () => ipcRenderer.removeAllListeners('menu-open');
   },
 
-  toggleGrid: (listener: (_e: Event, filepath: string) => Promise<void>) => {
+  toggleGrid: (
+    listener: (_e: Electron.IpcRendererEvent, filepath: string) => Promise<void>
+  ) => {
     ipcRenderer.on('toggle-grid', listener);
     return () => ipcRenderer.removeAllListeners('toggle-grid');
   },
