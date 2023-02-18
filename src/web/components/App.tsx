@@ -11,17 +11,17 @@ export const App = () => {
   const [grid, setGrid] = useState(false);
   const [imgList, setImgList] = useState<string[]>([]);
 
-  const preventDefault = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
   };
 
-  const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
     if (grid) {
       return false;
     }
 
-    preventDefault(e);
+    handleDrag(e);
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
@@ -33,7 +33,7 @@ export const App = () => {
     }
   };
 
-  const onNext = useCallback(async () => {
+  const handleNext = useCallback(async () => {
     if (!url) return;
     if (grid) setGrid(false);
 
@@ -59,7 +59,7 @@ export const App = () => {
     }
   }, [url, grid]);
 
-  const onPrev = useCallback(async () => {
+  const handlePrev = useCallback(async () => {
     if (!url) return;
     if (grid) setGrid(false);
 
@@ -87,7 +87,7 @@ export const App = () => {
     }
   }, [url, grid]);
 
-  const onRemove = useCallback(async () => {
+  const handleRemove = useCallback(async () => {
     if (!url) return;
 
     const dir = await window.myAPI.dirname(url);
@@ -121,7 +121,7 @@ export const App = () => {
     }
   }, [url]);
 
-  const onClickOpen = useCallback(async () => {
+  const handleClickOpen = useCallback(async () => {
     const filepath = await window.myAPI.openDialog();
     if (!filepath) return;
 
@@ -129,7 +129,7 @@ export const App = () => {
     if (mime) setUrl(filepath);
   }, []);
 
-  const onMenuOpen = useCallback(
+  const handleMenuOpen = useCallback(
     async (_e: Event, filepath: string) => {
       if (!filepath) return;
       if (grid) setGrid(false);
@@ -140,7 +140,7 @@ export const App = () => {
     [grid]
   );
 
-  const onToggleGrid = useCallback(async () => {
+  const handleToggleGrid = useCallback(async () => {
     if (!url) return;
 
     const dir = await window.myAPI.dirname(url);
@@ -163,7 +163,7 @@ export const App = () => {
     }
   }, [grid, url]);
 
-  const onClickThumb = async (
+  const handleClickThumb = async (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>,
     item: string
   ) => {
@@ -185,7 +185,7 @@ export const App = () => {
     setGrid(false);
   };
 
-  const onClickBlank = async () => {
+  const handleClickBlank = async () => {
     const dir = await window.myAPI.dirname(url);
     if (!dir) {
       window.location.reload();
@@ -201,7 +201,9 @@ export const App = () => {
     setGrid(false);
   };
 
-  const onContextMenu = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleContextMenu = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     if (grid) {
       e.preventDefault();
       return false;
@@ -220,39 +222,39 @@ export const App = () => {
   }, [url]);
 
   useEffect(() => {
-    const unlistenFn = window.myAPI.menuNext(onNext);
+    const unlistenFn = window.myAPI.menuNext(handleNext);
     return () => {
       unlistenFn();
     };
-  }, [onNext]);
+  }, [handleNext]);
 
   useEffect(() => {
-    const unlistenFn = window.myAPI.menuPrev(onPrev);
+    const unlistenFn = window.myAPI.menuPrev(handlePrev);
     return () => {
       unlistenFn();
     };
-  }, [onPrev]);
+  }, [handlePrev]);
 
   useEffect(() => {
-    const unlistenFn = window.myAPI.menuRemove(onRemove);
+    const unlistenFn = window.myAPI.menuRemove(handleRemove);
     return () => {
       unlistenFn();
     };
-  }, [onRemove]);
+  }, [handleRemove]);
 
   useEffect(() => {
-    const unlistenFn = window.myAPI.menuOpen(onMenuOpen);
+    const unlistenFn = window.myAPI.menuOpen(handleMenuOpen);
     return () => {
       unlistenFn();
     };
-  }, [onMenuOpen]);
+  }, [handleMenuOpen]);
 
   useEffect(() => {
-    const unlistenFn = window.myAPI.toggleGrid(onToggleGrid);
+    const unlistenFn = window.myAPI.toggleGrid(handleToggleGrid);
     return () => {
       unlistenFn();
     };
-  }, [onToggleGrid]);
+  }, [handleToggleGrid]);
 
   useEffect(() => {
     const title = !url ? 'Leafview' : url;
@@ -263,27 +265,27 @@ export const App = () => {
     <div
       data-testid="container"
       className={grid ? 'container grid' : 'container'}
-      onDrop={onDrop}
-      onDragOver={preventDefault}
-      onDragEnter={preventDefault}
-      onDragLeave={preventDefault}
-      onContextMenu={onContextMenu}
+      onDrop={handleDrop}
+      onDragOver={handleDrag}
+      onDragEnter={handleDrag}
+      onDragLeave={handleDrag}
+      onContextMenu={handleContextMenu}
     >
       {grid ? (
         <Grid
           url={url}
           imgList={imgList}
-          onClickBlank={onClickBlank}
-          onClickThumb={onClickThumb}
+          onClickBlank={handleClickBlank}
+          onClickThumb={handleClickThumb}
         />
       ) : (
         <>
           <ToolBar
-            onPrev={onPrev}
-            onNext={onNext}
-            onRemove={onRemove}
-            onClickOpen={onClickOpen}
-            onToggleGrid={onToggleGrid}
+            onPrev={handlePrev}
+            onNext={handleNext}
+            onRemove={handleRemove}
+            onClickOpen={handleClickOpen}
+            onToggleGrid={handleToggleGrid}
           />
           <View url={url} />
         </>
