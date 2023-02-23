@@ -38,12 +38,9 @@ jobs:
           CSC_LINK: ${{ secrets.CSC_LINK }}
         run: npm run release
 
-  publish:
-    name: Publish to WinGet
-    needs: [build]
-    runs-on: windows-latest # action can only be run on windows
-    steps:
-      - uses: vedantmgoyal2009/winget-releaser@v1
+      - name: Publish to WinGet
+        if: matrix.os == 'windows-latest'
+        uses: vedantmgoyal2009/winget-releaser@v2
         with:
           identifier: sprout2000.LeafView
           token: ${{ secrets.WINGET_TOKEN }}
