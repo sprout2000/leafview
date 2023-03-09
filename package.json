@@ -14,10 +14,10 @@
   "main": "dist/main.js",
   "scripts": {
     "dev": "rimraf dist && run-p dev:webpack dev:electron",
+    "build": "cross-env NODE_ENV=\"production\" webpack --progress",
+    "package": "cross-env NODE_ENV=\"development\" ts-node scripts/build.ts",
     "dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
     "dev:electron": "wait-on ./dist/index.html ./dist/main.js && electronmon .",
-    "build": "cross-env NODE_ENV=\"production\" webpack --progress",
-    "package": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=\"false\" ts-node scripts/build.ts",
     "release": "ts-node scripts/build.ts"
   },
   "electronmon": {
