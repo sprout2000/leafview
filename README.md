@@ -70,7 +70,7 @@ winget install sprout2000.LeafView
 | اللغة العربية | `ar` |     | Français  | `fr` |     | Русский  |  `ru`   |
 | Čeština       | `cs` |     | Magyar    | `hu` |     | 简体中文 | `zh_CN` |
 | Deutsch       | `de` |     | 日本語    | `ja` |     | 繁体中文 | `zh_TW` |
-| English       | `en` |     | Polski    | `pl` |     |
+| English       | `en` |     | Polski    | `pl` |     | Turkish  | `tr`
 | Español       | `es` |     | Português | `pt` |     |
 
 ## :beers: Contributing
