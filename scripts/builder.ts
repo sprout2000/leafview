@@ -1,13 +1,16 @@
-import dotenv from "dotenv";
 import { build } from "electron-builder";
 
-dotenv.config();
+const isDev = process.env.NODE_ENV == "development";
 
 build({
   config: {
     productName: "LeafView",
     artifactName: "${productName}-${version}-${platform}-${arch}.${ext}",
     copyright: "© 2020 sprout2000 and other contributors.",
+    directories: {
+      output: "release",
+      buildResources: "assets",
+    },
     files: [
       "dist/**/*",
       "!node_modules/@electron/notarize",
@@ -52,14 +55,10 @@ build({
       "!node_modules/wait-on",
       "!node_modules/webpack-cli",
     ],
-    directories: {
-      buildResources: "assets",
-      output: "release",
-    },
     asarUnpack: ["dist/images/logo.png"],
     publish: {
       provider: "github",
-      releaseType: "release",
+      releaseType: "draft",
     },
     linux: {
       category: "Graphics",
@@ -96,13 +95,14 @@ build({
         "${productName}-${version}-${platform}-${arch}-installer.${ext}",
     },
     mac: {
-      appId: process.env.APP_BUNDLE_ID,
+      appId: "jp.wassabie64.LeafView",
       category: "public.app-category.photography",
       target: {
         target: "default",
         arch: ["x64", "arm64"],
       },
       icon: "assets/icon.icns",
+      darkModeSupport: true,
       extendInfo: {
         CFBundleName: "LeafView",
         CFBundleDisplayName: "LeafView",
@@ -124,13 +124,9 @@ build({
           },
         ],
         NSRequiresAquaSystemAppearance: false,
-        hardenedRuntime: true,
-        gatekeeperAssess: false,
       },
+      identity: isDev ? null : undefined,
     },
-    afterSign:
-      process.env.CSC_IDENTITY_AUTO_DISCOVERY === "false"
-        ? null
-        : "scripts/notarize.ts",
+    afterSign: isDev ? undefined : "scripts/notarizer.ts",
   },
-}).catch((err) => console.log(err));
+});

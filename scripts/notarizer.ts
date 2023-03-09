@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
 import { notarize } from "@electron/notarize";
-import { AfterPackContext } from "electron-builder";
+import type { AfterPackContext } from "electron-builder";
 
-const notarizing = async (context: AfterPackContext) => {
+const notarizer = async (context: AfterPackContext) => {
   dotenv.config();
 
   const { electronPlatformName, appOutDir } = context;
@@ -13,12 +13,12 @@ const notarizing = async (context: AfterPackContext) => {
   const appName = context.packager.appInfo.productFilename;
 
   return notarize({
-    ascProvider: process.env.ASC_PROVIDER,
+    tool: "notarytool",
     appPath: `${appOutDir}/${appName}.app`,
-    appleId: process.env.APPLE_ID as string,
-    appBundleId: process.env.APP_BUNDLE_ID as string,
-    appleIdPassword: process.env.APPLE_ID_PASSWORD as string,
+    teamId: `${process.env.TEAM_ID}`,
+    appleId: `${process.env.APPLE_ID}`,
+    appleIdPassword: `${process.env.APPLE_ID_PASSWORD}`,
   });
 };
 
-export default notarizing;
+export default notarizer;
