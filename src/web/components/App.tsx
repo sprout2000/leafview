@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
-import { View } from './View';
-import { Grid } from './Grid';
-import { ToolBar } from './ToolBar';
+import { View } from "./View";
+import { Grid } from "./Grid";
+import { ToolBar } from "./ToolBar";
 
-import './App.scss';
+import "./App.scss";
 
 export const App = () => {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
   const [grid, setGrid] = useState(false);
   const [imgList, setImgList] = useState<string[]>([]);
 
@@ -26,7 +26,7 @@ export const App = () => {
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
 
-      if (file.name.startsWith('.')) return;
+      if (file.name.startsWith(".")) return;
 
       const mime = await window.myAPI.mimecheck(file.path);
       if (mime) setUrl(file.path);
@@ -257,14 +257,14 @@ export const App = () => {
   }, [handleToggleGrid]);
 
   useEffect(() => {
-    const title = !url ? 'Leafview' : url;
+    const title = !url ? "Leafview" : url;
     updateTitle(title);
   }, [url]);
 
   return (
     <div
       data-testid="container"
-      className={grid ? 'container grid' : 'container'}
+      className={grid ? "container grid" : "container"}
       onDrop={handleDrop}
       onDragOver={handleDrag}
       onDragEnter={handleDrag}

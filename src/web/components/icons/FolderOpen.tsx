@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo } from "react";
 
 export const FolderOpen = memo(() => (
   <svg
@@ -12,4 +12,4 @@ export const FolderOpen = memo(() => (
   </svg>
 ));
 
-FolderOpen.displayName = 'FolderOpen';
+FolderOpen.displayName = "FolderOpen";

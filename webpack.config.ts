@@ -1,58 +1,58 @@
-import { Configuration } from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { Configuration } from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 
 const common: Configuration = {
-  mode: isDev ? 'development' : 'production',
+  mode: isDev ? "development" : "production",
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
+    extensions: [".js", ".ts", ".jsx", ".tsx", ".json"],
   },
-  externals: ['fsevents'],
+  externals: ["fsevents"],
   output: {
-    publicPath: './',
-    filename: '[name].js',
-    assetModuleFilename: 'images/[name][ext]',
+    publicPath: "./",
+    filename: "[name].js",
+    assetModuleFilename: "images/[name][ext]",
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: 'ts-loader',
+        loader: "ts-loader",
       },
       {
         test: /\.s?css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.png$/,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ],
   },
-  stats: 'errors-only',
+  stats: "errors-only",
   watch: isDev,
-  devtool: isDev ? 'source-map' : undefined,
+  devtool: isDev ? "source-map" : undefined,
 };
 
 const main: Configuration = {
   ...common,
-  target: 'electron-main',
+  target: "electron-main",
   entry: {
-    main: './src/main.ts',
+    main: "./src/main.ts",
   },
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
         {
           from:
-            process.platform === 'linux'
-              ? './assets/linux.png'
-              : './assets/icon.png',
-          to: './images/logo.png',
+            process.platform === "linux"
+              ? "./assets/linux.png"
+              : "./assets/icon.png",
+          to: "./images/logo.png",
         },
       ],
     }),
@@ -61,23 +61,23 @@ const main: Configuration = {
 
 const preload: Configuration = {
   ...common,
-  target: 'electron-preload',
+  target: "electron-preload",
   entry: {
-    preload: './src/preload.ts',
+    preload: "./src/preload.ts",
   },
 };
 
 const renderer: Configuration = {
   ...common,
-  target: 'web',
+  target: "web",
   entry: {
-    index: './src/web/index.tsx',
+    index: "./src/web/index.tsx",
   },
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      inject: 'body',
-      template: './src/web/index.html',
+      inject: "body",
+      template: "./src/web/index.html",
     }),
   ],
 };

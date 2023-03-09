@@ -1,12 +1,12 @@
-import dotenv from 'dotenv';
-import { notarize } from '@electron/notarize';
-import { AfterPackContext } from 'electron-builder';
+import dotenv from "dotenv";
+import { notarize } from "@electron/notarize";
+import { AfterPackContext } from "electron-builder";
 
 const notarizing = async (context: AfterPackContext) => {
   dotenv.config();
 
   const { electronPlatformName, appOutDir } = context;
-  if (electronPlatformName !== 'darwin') {
+  if (electronPlatformName !== "darwin") {
     return;
   }
 

@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import { View, getZoom } from '../View';
+import { View, getZoom } from "../View";
 
 beforeAll(() => {
   window.ResizeObserver =
@@ -11,11 +11,11 @@ beforeAll(() => {
     }));
 });
 
-test('test getZoom()', () => {
+test("test getZoom()", () => {
   expect(getZoom(10, 100, 10, 100)).toBe(1);
   expect(getZoom(100, 10, 100, 10)).toBe(0.1);
 });
 
-test('render View component', async () => {
+test("render View component", async () => {
   render(<View url="../../../../assets/icon.png" />);
 });

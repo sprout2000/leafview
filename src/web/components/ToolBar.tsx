@@ -1,13 +1,13 @@
-import { memo } from 'react';
-import i18next from 'i18next';
+import { memo } from "react";
+import i18next from "i18next";
 
-import { Trash } from './icons/Trash';
-import { GridIcon } from './icons/GridIcon';
-import { ArrowLeft } from './icons/ArrowLeft';
-import { ArrowRight } from './icons/ArrowRight';
-import { FolderOpen } from './icons/FolderOpen';
+import { Trash } from "./icons/Trash";
+import { GridIcon } from "./icons/GridIcon";
+import { ArrowLeft } from "./icons/ArrowLeft";
+import { ArrowRight } from "./icons/ArrowRight";
+import { FolderOpen } from "./icons/FolderOpen";
 
-import './ToolBar.scss';
+import "./ToolBar.scss";
 
 type Props = {
   onClickOpen: () => void;
@@ -24,7 +24,7 @@ export const ToolBar = memo((props: Props) => {
         <div
           className="icon"
           data-testid="open-button"
-          title={`${i18next.t('Open...')}`}
+          title={`${i18next.t("Open...")}`}
           onClick={props.onClickOpen}
         >
           <FolderOpen />
@@ -35,7 +35,7 @@ export const ToolBar = memo((props: Props) => {
           <div
             className="icon"
             data-testid="grid-button"
-            title={`${i18next.t('Toggle Grid View')}`}
+            title={`${i18next.t("Toggle Grid View")}`}
             onClick={props.onToggleGrid}
           >
             <GridIcon />
@@ -45,7 +45,7 @@ export const ToolBar = memo((props: Props) => {
           <div
             className="icon"
             data-testid="prev-button"
-            title={`${i18next.t('Prev Image')}`}
+            title={`${i18next.t("Prev Image")}`}
             onClick={props.onPrev}
           >
             <ArrowLeft />
@@ -53,7 +53,7 @@ export const ToolBar = memo((props: Props) => {
           <div
             className="icon"
             data-testid="next-button"
-            title={`${i18next.t('Next Image')}`}
+            title={`${i18next.t("Next Image")}`}
             onClick={props.onNext}
           >
             <ArrowRight />
@@ -63,7 +63,7 @@ export const ToolBar = memo((props: Props) => {
           <div
             className="icon"
             data-testid="trash-button"
-            title={`${i18next.t('Move to Trash')}`}
+            title={`${i18next.t("Move to Trash")}`}
             onClick={props.onRemove}
           >
             <Trash />
@@ -74,4 +74,4 @@ export const ToolBar = memo((props: Props) => {
   );
 });
 
-ToolBar.displayName = 'ToolBar';
+ToolBar.displayName = "ToolBar";
