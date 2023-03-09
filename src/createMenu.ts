@@ -24,6 +24,7 @@ const localeList: Locale[] = [
   { code: 'pl', value: 'Polski' },
   { code: 'pt', value: 'Português' },
   { code: 'ru', value: 'Русский' },
+  { code: 'tr', value: 'Türkçe' },
   { code: 'zh-CN', value: '简体中文' },
   { code: 'zh-TW', value: '繁体中文' },
 ];

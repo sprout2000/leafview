@@ -16,7 +16,7 @@ _Image by <a href="https://pixabay.com/ja/users/frankwinkler-64960/?utm_source=l
 - Pan & Wheel Zoom
 - Browse the images in a folder
 - Grid view mode available
-- Available in [13 languages](#globe_with_meridians-supported-languages)
+- Available in [14 languages](#globe_with_meridians-supported-languages)
 - Auto update _(macOS / Linux)_
 - Compatible with Windows Package Manager (aka [winget](https://github.com/microsoft/winget-pkgs))
 
@@ -68,9 +68,9 @@ winget install sprout2000.LeafView
 | Language      | Code |     | Language  | Code |     | Language |  Code   |
 | :------------ | :--: | :-: | :-------- | :--: | :-: | :------- | :-----: |
 | اللغة العربية | `ar` |     | Français  | `fr` |     | Русский  |  `ru`   |
-| Čeština       | `cs` |     | Magyar    | `hu` |     | 简体中文 | `zh_CN` |
-| Deutsch       | `de` |     | 日本語    | `ja` |     | 繁体中文 | `zh_TW` |
-| English       | `en` |     | Polski    | `pl` |     | Turkish  | `tr`
+| Čeština       | `cs` |     | Magyar    | `hu` |     | Türkçe   |  `tr`   |
+| Deutsch       | `de` |     | 日本語    | `ja` |     | 简体中文 | `zh_CN` |
+| English       | `en` |     | Polski    | `pl` |     | 繁体中文 | `zh_TW` |
 | Español       | `es` |     | Português | `pt` |     |
 
 ## :beers: Contributing
