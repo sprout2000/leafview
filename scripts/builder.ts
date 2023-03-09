@@ -58,7 +58,7 @@ build({
     asarUnpack: ["dist/images/logo.png"],
     publish: {
       provider: "github",
-      releaseType: "draft",
+      releaseType: "release",
     },
     linux: {
       category: "Graphics",
