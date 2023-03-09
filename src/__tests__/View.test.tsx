@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 
-import { View, getZoom } from "../View";
+import { View, getZoom } from "../components/View";
 
 beforeAll(() => {
   window.ResizeObserver =

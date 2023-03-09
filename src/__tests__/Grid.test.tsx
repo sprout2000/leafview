@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { Grid } from "../Grid";
+import { Grid } from "../components/Grid";
 
 test("render Grid component", async () => {
   const spyFn = jest.fn();

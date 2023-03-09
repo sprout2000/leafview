@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { ToolBar } from "../ToolBar";
+import { ToolBar } from "../components/ToolBar";
 
 test("render ToolBar component", async () => {
   const spyFn = jest.fn();
