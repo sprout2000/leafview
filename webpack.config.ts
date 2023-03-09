@@ -71,7 +71,7 @@ const renderer: Configuration = {
   ...common,
   target: "web",
   entry: {
-    index: "./src/web/index.tsx",
+    index: "./src/index.tsx",
   },
   plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin()],
 };
