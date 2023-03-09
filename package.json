@@ -18,7 +18,8 @@
     "package": "cross-env NODE_ENV=\"development\" ts-node scripts/build.ts",
     "dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
     "dev:electron": "wait-on ./dist/index.html ./dist/main.js && electronmon .",
-    "release": "ts-node scripts/build.ts"
+    "release": "ts-node scripts/build.ts",
+    "test": "jest"
   },
   "electronmon": {
     "patterns": [
