@@ -73,13 +73,7 @@ const renderer: Configuration = {
   entry: {
     index: "./src/web/index.tsx",
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      inject: "body",
-      template: "./src/web/index.html",
-    }),
-  ],
+  plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin()],
 };
 
 export default [main, preload, renderer];
