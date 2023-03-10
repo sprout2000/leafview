@@ -1,6 +1,9 @@
+import dotenv from "dotenv";
 import { build } from "electron-builder";
 
 const isDev = process.env.NODE_ENV == "development";
+
+dotenv.config();
 
 build({
   config: {
@@ -76,7 +79,7 @@ build({
     },
     win: {
       icon: "assets/icon.ico",
-      target: ["zip", "nsis"],
+      target: ["appx"],
       publisherName: "sprout2000",
       fileAssociations: [
         {
@@ -85,14 +88,15 @@ build({
         },
       ],
     },
-    nsis: {
-      oneClick: false,
-      perMachine: false,
-      createDesktopShortcut: false,
-      createStartMenuShortcut: true,
-      installerIcon: "assets/installer.ico",
-      artifactName:
-        "${productName}-${version}-${platform}-${arch}-installer.${ext}",
+    appx: {
+      applicationId: "sprout2000.LeafView",
+      backgroundColor: "#ffffff",
+      displayName: "LeafView",
+      showNameOnTiles: true,
+      languages: ["en-US", "ja-JP"],
+      identityName: process.env.IDENTITY_NAME,
+      publisher: process.env.PUBLISHER,
+      publisherDisplayName: "sprout2000",
     },
     mac: {
       appId: "jp.wassabie64.LeafView",
