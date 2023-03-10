@@ -32,6 +32,7 @@ export const setLocales = (locale: string) => {
       "en-AU": { translation: en },
       "en-CA": { translation: en },
       "en-GB": { translation: en },
+      "en-IE": { translation: en },
       "en-IN": { translation: en },
       "en-NZ": { translation: en },
       "en-US": { translation: en },
