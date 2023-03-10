@@ -24,18 +24,10 @@ _Image by <a href="https://pixabay.com/ja/users/frankwinkler-64960/?utm_source=l
 
 ## :inbox_tray: Download
 
-### :computer: macOS 11+ & GNU/Linux
-
 You can download the latest version of _LeafView_ from the releases page here:<br />
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
-### :desktop_computer: Windows 10 & 11
-
-You can get _(or upgrade to)_ the latest version of _LeafView_ via [winget](https://github.com/microsoft/winget-pkgs):
-
-```sh
-winget install sprout2000.LeafView
-```
+_Note that the Windows version does not have code signing._
 
 ## :green_book: Usage
 
