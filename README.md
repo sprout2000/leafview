@@ -24,10 +24,18 @@ _Image by <a href="https://pixabay.com/ja/users/frankwinkler-64960/?utm_source=l
 
 ## :inbox_tray: Download
 
+<!-- ### :computer: macOS & GNU/Linux -->
+
 You can download the latest version of _LeafView_ from the releases page here:<br />
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
 _Note that the Windows version does not have code signing._
+
+<!-- ### :desktop_computer: Windows 10 & 11
+
+You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
+
+<a href='https://www.microsoft.com/store/apps/9P870THX6217'><img width="160px" src='https://developer.microsoft.com/en-us/store/badges/images/English_get-it-from-MS.png' alt='Badge'/></a> -->
 
 ## :green_book: Usage
 
@@ -114,6 +122,11 @@ Thanks go to these wonderful people :slightly_smiling_face::
 <a href="https://github.com/sprout2000/leafview/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=sprout2000/leafview" />
 </a>
+
+## :vertical_traffic_light: Privacy Policy
+
+- LeafView and the developers do _NOT_ collect any personal information or privacy-related information about the user.
+- LeafView and the developers do _NOT_ collect the information of files opened by LeafView.
 
 ## :copyright: Copyright
 
