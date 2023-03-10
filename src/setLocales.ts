@@ -10,7 +10,7 @@ import hu from "./locales/hu.json"; // https://github.com/sprout2000/leafview/pu
 import ja from "./locales/ja.json";
 import pl from "./locales/pl.json"; // https://github.com/sprout2000/leafview/pull/214 by nukeop
 import pt from "./locales/pt.json"; // https://github.com/sprout2000/leafview/pull/232 by guaycuru
-import tr from "./locales/tr_tr.json"; // https://github.com/sprout2000/leafview/pull/328 by LeaveNhA
+import tr from "./locales/tr.json"; // https://github.com/sprout2000/leafview/pull/328 by LeaveNhA
 import ru from "./locales/ru.json"; // https://github.com/sprout2000/leafview/pull/215 by kitt3911
 import zh_CN from "./locales/zh_cn.json"; // https://github.com/sprout2000/leafview/pull/235 by ArcherGu
 import zh_TW from "./locales/zh_tw.json";
