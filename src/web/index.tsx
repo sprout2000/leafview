@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import { App } from "./components/App";
+import { App } from "./App";
 import "./index.scss";
 
-import { setLocales } from "./setLocales";
+import { setLocales } from "../setLocales";
 
 const initLocale = async () => {
   const locale = await window.myAPI.getLocale();

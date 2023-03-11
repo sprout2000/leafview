@@ -71,9 +71,14 @@ const renderer: Configuration = {
   ...common,
   target: "web",
   entry: {
-    index: "./src/index.tsx",
+    app: "./src/web/index.tsx",
   },
-  plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/web/index.ejs",
+    }),
+  ],
 };
 
 export default [main, preload, renderer];

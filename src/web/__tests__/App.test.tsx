@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { App } from "../components/App";
+import { App } from "../App";
 
 beforeAll(() => {
   window.myAPI = {

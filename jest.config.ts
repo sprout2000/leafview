@@ -4,7 +4,7 @@ const config: Config.InitialOptions = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
   moduleNameMapper: {
-    "^.+\\.s?css$": "<rootDir>/src/__mocks__/styleMock.ts",
+    "^.+\\.s?css$": "<rootDir>/src/web/__mocks__/styleMock.ts",
   },
 };
 
