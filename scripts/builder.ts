@@ -89,14 +89,14 @@ build({
       ],
     },
     appx: {
-      applicationId: "sprout2000.LeafView",
       backgroundColor: "#ffffff",
       displayName: "LeafView",
       showNameOnTiles: true,
       languages: ["en-US", "ja-JP"],
-      identityName: process.env.IDENTITY_NAME,
-      publisher: process.env.PUBLISHER,
       publisherDisplayName: "sprout2000",
+      applicationId: "sprout2000.LeafView",
+      publisher: process.env.PUBLISHER,
+      identityName: process.env.IDENTITY_NAME,
     },
     mac: {
       appId: "jp.wassabie64.LeafView",
