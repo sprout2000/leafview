@@ -18,7 +18,6 @@ _Image by <a href="https://pixabay.com/ja/users/frankwinkler-64960/?utm_source=l
 - Grid view mode available
 - Available in [14 languages](#globe_with_meridians-supported-languages)
 - Auto update _(macOS / Linux)_
-- Compatible with Windows Package Manager (aka [winget](https://github.com/microsoft/winget-pkgs))
 
 <img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/224457447-05a1fa38-aa1b-490d-a1ad-5289c670563b.png" />
 
