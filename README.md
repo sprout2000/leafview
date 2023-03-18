@@ -64,13 +64,22 @@ You can download the latest version of LeafView from [Microsoft Store](https://w
 
 ## :globe_with_meridians: Supported Languages
 
-| Language      | Code |     | Language  | Code |     | Language |  Code   |
-| :------------ | :--: | :-: | :-------- | :--: | :-: | :------- | :-----: |
-| اللغة العربية | `ar` |     | Français  | `fr` |     | Русский  |  `ru`   |
-| Čeština       | `cs` |     | Magyar    | `hu` |     | Türkçe   |  `tr`   |
-| Deutsch       | `de` |     | 日本語    | `ja` |     | 简体中文 | `zh_CN` |
-| English       | `en` |     | Polski    | `pl` |     | 繁体中文 | `zh_TW` |
-| Español       | `es` |     | Português | `pt` |     |
+| Language      |  Code   |
+| :------------ | :-----: |
+| اللغة العربية |  `ar`   |
+| Čeština       |  `cs`   |
+| Deutsch       |  `de`   |
+| English       |  `en`   |
+| Español       |  `es`   |
+| Français      |  `fr`   |
+| Magyar        |  `hu`   |
+| 日本語        |  `ja`   |
+| Polski        |  `pl`   |
+| Português     |  `pt`   |
+| Русский       |  `ru`   |
+| Türkçe        |  `tr`   |
+| 简体中文      | `zh_CN` |
+| 繁体中文      | `zh_TW` |
 
 ## :beers: Contributing
 
