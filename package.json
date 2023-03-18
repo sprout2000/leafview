@@ -70,11 +70,11 @@
     "prettier": "^2.8.4",
     "rimraf": "^4.4.0",
     "sass": "^1.59.3",
-    "sass-loader": "^13.2.0",
+    "sass-loader": "^13.2.1",
     "ts-jest": "^29.0.5",
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.2",
+    "typescript": "^4.9.5",
     "wait-on": "^7.0.1",
     "webpack": "^5.76.2",
     "webpack-cli": "^5.0.1"
