@@ -28,7 +28,6 @@ build({
       "!node_modules/@types/node",
       "!node_modules/@types/react",
       "!node_modules/@types/react-dom",
-      "!node_modules/@types/testing-library__jest-dom",
       "!node_modules/@typescript-eslint/eslint-plugin",
       "!node_modules/@typescript-eslint/parser",
       "!node_modules/copy-webpack-plugin",
