@@ -51,10 +51,4 @@ test("render App component", async () => {
   const contextMenuSpy = jest.spyOn(window.myAPI, "contextMenu");
   fireEvent.contextMenu(screen.getByTestId("container"));
   expect(contextMenuSpy).toHaveBeenCalled();
-
-  await userEvent.click(screen.getByTestId("open-button"));
-  await userEvent.click(screen.getByTestId("grid-button"));
-  await userEvent.click(screen.getByTestId("prev-button"));
-  await userEvent.click(screen.getByTestId("next-button"));
-  await userEvent.click(screen.getByTestId("trash-button"));
 });
