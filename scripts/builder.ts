@@ -35,6 +35,7 @@ build({
       "!node_modules/css-loader",
       "!node_modules/dotenv",
       "!node_modules/electron-builder",
+      "!node_modules/electron-devtools-assembler",
       "!node_modules/electronmon",
       "!node_modules/eslint",
       "!node_modules/eslint-config-prettier",
