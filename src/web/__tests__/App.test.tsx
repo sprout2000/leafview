@@ -1,54 +1,71 @@
+import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { App } from "../App";
 
-beforeAll(() => {
-  window.myAPI = {
-    contextMenu: jest.fn(),
-    dirname: jest.fn(),
-    getLocale: jest.fn(),
-    history: jest.fn(),
-    menuNext: jest.fn().mockReturnValue(() => jest.fn()),
-    menuOpen: jest.fn().mockReturnValue(() => jest.fn()),
-    menuPrev: jest.fn().mockReturnValue(() => jest.fn()),
-    menuRemove: jest.fn().mockReturnValue(() => jest.fn()),
-    mimecheck: jest.fn(),
-    moveToTrash: jest.fn(),
-    openDialog: jest.fn(),
-    readdir: jest.fn(),
-    toggleGrid: jest.fn().mockReturnValue(() => jest.fn()),
-    updateTitle: jest.fn(),
-  };
+describe("App", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    jest.resetAllMocks();
+    window.myAPI = {
+      contextMenu: jest.fn(),
+      dirname: jest.fn(),
+      getLocale: jest.fn(),
+      history: jest.fn(),
+      menuNext: jest.fn().mockReturnValue(() => jest.fn()),
+      menuOpen: jest.fn().mockReturnValue(() => jest.fn()),
+      menuPrev: jest.fn().mockReturnValue(() => jest.fn()),
+      menuRemove: jest.fn().mockReturnValue(() => jest.fn()),
+      mimecheck: jest.fn(),
+      moveToTrash: jest.fn(),
+      openDialog: jest.fn(),
+      readdir: jest.fn(),
+      toggleGrid: jest.fn().mockReturnValue(() => jest.fn()),
+      updateTitle: jest.fn(),
+    };
 
-  window.ResizeObserver =
-    window.ResizeObserver ||
-    jest.fn().mockImplementation(() => ({
+    window.ResizeObserver = jest.fn().mockImplementation(() => ({
       disconnect: jest.fn(),
       observe: jest.fn(),
     }));
-});
+  });
 
-test("render App component", async () => {
-  render(<App />);
+  const pressKey = async (key: string) => {
+    await userEvent.keyboard(key);
+  };
 
-  const menuNextSpy = jest.spyOn(window.myAPI, "menuNext");
-  await userEvent.keyboard("j");
-  expect(menuNextSpy).toHaveBeenCalled();
+  const rightClickOnContainer = () => {
+    fireEvent.contextMenu(screen.getByTestId("container"));
+  };
 
-  const menuPrevSpy = jest.spyOn(window.myAPI, "menuPrev");
-  await userEvent.keyboard("k");
-  expect(menuPrevSpy).toHaveBeenCalled();
+  it("should call menuNext when 'j' is pressed", async () => {
+    render(<App />);
+    await pressKey("j");
+    expect(window.myAPI.menuNext).toHaveBeenCalled();
+  });
 
-  const menuGridSpy = jest.spyOn(window.myAPI, "toggleGrid");
-  await userEvent.keyboard("h");
-  expect(menuGridSpy).toHaveBeenCalled();
+  it("should call menuPrev when 'k' is pressed", async () => {
+    render(<App />);
+    await pressKey("k");
+    expect(window.myAPI.menuPrev).toHaveBeenCalled();
+  });
 
-  const menuRemoveSpy = jest.spyOn(window.myAPI, "menuRemove");
-  await userEvent.keyboard("Del");
-  expect(menuRemoveSpy).toHaveBeenCalled();
+  it("should call toggleGrid when 'h' is pressed", async () => {
+    render(<App />);
+    await pressKey("h");
+    expect(window.myAPI.toggleGrid).toHaveBeenCalled();
+  });
 
-  const contextMenuSpy = jest.spyOn(window.myAPI, "contextMenu");
-  fireEvent.contextMenu(screen.getByTestId("container"));
-  expect(contextMenuSpy).toHaveBeenCalled();
+  it("should call menuRemove when 'Del' is pressed", async () => {
+    render(<App />);
+    await pressKey("Del");
+    expect(window.myAPI.menuRemove).toHaveBeenCalled();
+  });
+
+  it("should call contextMenu when container is right-clicked", async () => {
+    render(<App />);
+    rightClickOnContainer();
+    expect(window.myAPI.contextMenu).toHaveBeenCalled();
+  });
 });
