@@ -93,7 +93,13 @@ export const View = memo(({ url = "" }: Props) => {
     };
   }, [draw]);
 
-  return <div className={!url ? "view init" : "view"} ref={mapRef} />;
+  return (
+    <div
+      data-testid="view"
+      className={!url ? "view init" : "view"}
+      ref={mapRef}
+    />
+  );
 });
 
 View.displayName = "View";

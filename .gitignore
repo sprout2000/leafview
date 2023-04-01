@@ -1,5 +1,6 @@
 dist/
 release/
+coverage/
 devtools/
 node_modules/
 npm-*.log
