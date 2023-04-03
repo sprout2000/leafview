@@ -3,9 +3,8 @@
     "target": "ESNext",
     "module": "ESNext",
     "esModuleInterop": true,
-    "moduleResolution": "Node",
-    "lib": ["DOM", "ESNext"],
     "resolveJsonModule": true,
+    "moduleResolution": "nodenext",
     "jsx": "react-jsx",
     "strict": true
   },
