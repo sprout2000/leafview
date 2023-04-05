@@ -11,7 +11,7 @@ export const App = () => {
   const [grid, setGrid] = useState(false);
   const [imgList, setImgList] = useState<string[]>([]);
 
-  const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {
+  const handlePreventDefault = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
   };
@@ -21,7 +21,7 @@ export const App = () => {
       return false;
     }
 
-    handleDrag(e);
+    handlePreventDefault(e);
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
@@ -266,9 +266,9 @@ export const App = () => {
       data-testid="container"
       className={grid ? "container grid" : "container"}
       onDrop={handleDrop}
-      onDragOver={handleDrag}
-      onDragEnter={handleDrag}
-      onDragLeave={handleDrag}
+      onDragOver={handlePreventDefault}
+      onDragEnter={handlePreventDefault}
+      onDragLeave={handlePreventDefault}
       onContextMenu={handleContextMenu}
     >
       {grid ? (
