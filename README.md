@@ -7,10 +7,14 @@
 
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
+<p align="center">
 <img width="580" alt="Image by Joe from Pixabay" src="https://user-images.githubusercontent.com/52094761/229950711-9c75e51d-0c5e-4de6-9e5d-1efe9214752c.png#gh-light-mode-only" />
 <img width="580" alt="Image by Joe from Pixabay" src="https://user-images.githubusercontent.com/52094761/229950855-18cabd19-7df3-4fa2-a58d-64cbee91333f.png#gh-dark-mode-only" />
+</p>
 
+<p align="center">
 Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4485609">Joe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4485609">Pixabay</a>.
+</p>
 
 ## :thumbsup: Features
 
