@@ -150,7 +150,7 @@ const createWindow = () => {
   ipcMain.handle("file-history", (_e, arg) => app.addRecentDocument(arg));
 
   ipcMain.handle("show-context-menu", () => {
-    if (!mainWindow.menuBarVisible) menu.popup();
+    if (!mainWindow.isMenuBarVisible()) menu.popup();
   });
 
   mainWindow.webContents.once("did-finish-load", () => {
