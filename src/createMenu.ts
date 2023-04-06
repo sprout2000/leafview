@@ -50,6 +50,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
               buttons: ["OK", "Later"],
               defaultId: 0,
               cancelId: 1,
+              noLink: true,
             })
             .then((result) => {
               if (result.response === 0) {
