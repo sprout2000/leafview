@@ -24,7 +24,8 @@ Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-att
 - Available in [14 languages](#globe_with_meridians-supported-languages)
 - Auto update _(macOS / Linux)_
 
-<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/224457447-05a1fa38-aa1b-490d-a1ad-5289c670563b.png" />
+<img width="480" alt="2023-04-06-094957" src="https://user-images.githubusercontent.com/52094761/230277944-8ff62b56-171d-424b-81fd-42bc902d33d5.png#gh-light-mode-only">
+<img width="480" alt="2023-04-06-094922" src="https://user-images.githubusercontent.com/52094761/230277961-186f70c3-4d85-4439-b7b0-0f4ac203ce4d.png#gh-dark-mode-only">
 
 ## :inbox_tray: Download
 
