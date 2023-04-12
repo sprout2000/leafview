@@ -1,4 +1,4 @@
 dist
 release
-devtools
+coverage
 node_modules
