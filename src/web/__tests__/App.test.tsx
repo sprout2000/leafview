@@ -68,4 +68,13 @@ describe("App", () => {
     rightClickOnContainer();
     expect(window.myAPI.contextMenu).toHaveBeenCalled();
   });
+
+  it("should call openDialog when open button is clicked", async () => {
+    render(<App />);
+
+    const openButton = screen.getByLabelText("open-button");
+    const openSpy = jest.spyOn(window.myAPI, "openDialog");
+    await userEvent.click(openButton);
+    expect(openSpy).toHaveBeenCalled();
+  });
 });
