@@ -189,8 +189,8 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         {
           label: `${i18next.t("Open...")}`,
           accelerator: "CmdOrCtrl+O",
-          click: () => {
-            dialog
+          click: async () => {
+            return dialog
               .showOpenDialog(win, {
                 properties: ["openFile"],
                 title: `${i18next.t("Select an image")}`,
