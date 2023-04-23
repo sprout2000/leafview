@@ -46,7 +46,7 @@
     "@types/jest": "^29.5.1",
     "@types/leaflet": "^1.9.3",
     "@types/mime-types": "^2.1.1",
-    "@types/node": "^18.15.13",
+    "@types/node": "^18.16.0",
     "@types/react": "^18.0.38",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
