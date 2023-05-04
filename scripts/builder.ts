@@ -3,7 +3,6 @@ import { build } from "electron-builder";
 build({
   config: {
     productName: "LeafView",
-    appId: "jp.wassabie64.LeafView",
     artifactName: "${productName}-${version}-${platform}-${arch}.${ext}",
     copyright: "© 2020 sprout2000 and other contributors.",
     directories: {
