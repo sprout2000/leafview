@@ -6,7 +6,7 @@ const notarizer = async (context: AfterPackContext) => {
   const appName = context.packager.appInfo.productFilename;
 
   return notarize({
-    appBundleId: "jp.wassabie64.Sample",
+    appBundleId: "jp.wassabie64.LeafView",
     appPath: `${appOutDir}/${appName}.app`,
     appleId: `${process.env.APPLE_ID}`,
     appleIdPassword: `${process.env.APPLE_ID_PASSWORD}`,
