@@ -56,7 +56,7 @@
     "css-loader": "^6.7.3",
     "dotenv": "^16.0.3",
     "electron": "^24.2.0",
-    "electron-builder": "^23.6.0",
+    "electron-builder": "^24.3.0",
     "electronmon": "^2.0.2",
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",

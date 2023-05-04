@@ -1,4 +1,7 @@
+import dotenv from "dotenv";
 import { build } from "electron-builder";
+
+dotenv.config();
 
 build({
   config: {
@@ -54,56 +57,26 @@ build({
       "!node_modules/webpack-cli",
     ],
     asarUnpack: ["dist/images/logo.png"],
-    publish: {
-      provider: "github",
-      releaseType: "release",
-    },
-    linux: {
-      category: "Graphics",
-      icon: "assets/linux.icns",
-      target: ["AppImage"],
-      mimeTypes: [
-        "image/bmp",
-        "image/gif",
-        "image/png",
-        "image/jpeg",
-        "image/webp",
-        "image/svg+xml",
-        "image/vnd.microsoft.icon",
+    win: {
+      icon: "assets/icon.ico",
+      target: ["appx"],
+      publisherName: "sprout2000",
+      fileAssociations: [
+        {
+          ext: ["bmp", "gif", "jpeg", "jpg", "png", "ico", "svg", "webp"],
+          description: "Image files",
+        },
       ],
     },
-    mac: {
-      appId: "jp.wassabie64.LeafView",
-      category: "public.app-category.photography",
-      target: {
-        target: "default",
-        arch: ["x64", "arm64"],
-      },
-      icon: "assets/icon.icns",
-      darkModeSupport: true,
-      extendInfo: {
-        CFBundleName: "LeafView",
-        CFBundleDisplayName: "LeafView",
-        CFBundleExecutable: "LeafView",
-        CFBundlePackageType: "APPL",
-        CFBundleDocumentTypes: [
-          {
-            CFBundleTypeName: "ImageFile",
-            CFBundleTypeRole: "Viewer",
-            LSItemContentTypes: [
-              "com.google.webp",
-              "com.microsoft.bmp",
-              "com.microsoft.ico",
-              "com.compuserve.gif",
-              "public.jpeg",
-              "public.png",
-            ],
-            LSHandlerRank: "Default",
-          },
-        ],
-        NSRequiresAquaSystemAppearance: false,
-      },
+    appx: {
+      backgroundColor: "#ffffff",
+      displayName: "LeafView",
+      showNameOnTiles: true,
+      languages: ["en-US", "ja-JP"],
+      publisherDisplayName: "sprout2000",
+      applicationId: "sprout2000.LeafView",
+      publisher: process.env.PUBLISHER,
+      identityName: process.env.IDENTITY_NAME,
     },
-    afterSign: "scripts/notarizer.ts",
   },
 });
