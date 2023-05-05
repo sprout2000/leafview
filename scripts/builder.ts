@@ -74,10 +74,12 @@ build({
     mac: {
       appId: "jp.wassabie64.LeafView",
       category: "public.app-category.photography",
-      target: {
-        target: "default",
-        arch: ["x64", "arm64"],
-      },
+      target: [
+        {
+          target: "default",
+          arch: ["x64", "arm64"],
+        },
+      ],
       icon: "assets/icon.icns",
       darkModeSupport: true,
       extendInfo: {
