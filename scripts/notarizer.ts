@@ -6,11 +6,11 @@ const notarizer = async (context: AfterPackContext) => {
   const appName = context.packager.appInfo.productFilename;
 
   return notarize({
-    appBundleId: "jp.wassabie64.LeafView",
+    tool: "notarytool",
     appPath: `${appOutDir}/${appName}.app`,
     appleId: `${process.env.APPLE_ID}`,
     appleIdPassword: `${process.env.APPLE_ID_PASSWORD}`,
-    ascProvider: `${process.env.ASC_PROVIDER}`,
+    teamId: `${process.env.TEAM_ID}`,
   });
 };
 
