@@ -1,13 +1,23 @@
 import { build } from "electron-builder";
 
+import dotenv from "dotenv";
+dotenv.config();
+
+const isDev = process.env.NODE_ENV === "development";
+
 build({
   config: {
     productName: "LeafView",
     artifactName: "${productName}-${version}-${platform}-${arch}.${ext}",
     copyright: "© 2020 sprout2000 and other contributors.",
+    asarUnpack: ["dist/images/logo.png"],
     directories: {
       output: "release",
       buildResources: "assets",
+    },
+    publish: {
+      provider: "github",
+      releaseType: "release",
     },
     files: [
       "dist/**/*",
@@ -52,11 +62,6 @@ build({
       "!node_modules/wait-on",
       "!node_modules/webpack-cli",
     ],
-    asarUnpack: ["dist/images/logo.png"],
-    publish: {
-      provider: "github",
-      releaseType: "release",
-    },
     linux: {
       category: "Graphics",
       icon: "assets/linux.icns",
@@ -70,6 +75,27 @@ build({
         "image/svg+xml",
         "image/vnd.microsoft.icon",
       ],
+    },
+    win: {
+      icon: "assets/icon.ico",
+      target: ["appx"],
+      publisherName: "sprout2000",
+      fileAssociations: [
+        {
+          ext: ["bmp", "gif", "jpeg", "jpg", "png", "ico", "svg", "webp"],
+          description: "Image files",
+        },
+      ],
+    },
+    appx: {
+      backgroundColor: "#ffffff",
+      displayName: "LeafView",
+      showNameOnTiles: true,
+      languages: ["en-US", "ja-JP"],
+      publisherDisplayName: "sprout2000",
+      applicationId: "sprout2000.LeafView",
+      publisher: process.env.PUBLISHER,
+      identityName: process.env.IDENTITY_NAME,
     },
     mac: {
       appId: "jp.wassabie64.LeafView",
@@ -104,7 +130,8 @@ build({
         ],
         NSRequiresAquaSystemAppearance: false,
       },
+      identity: isDev ? null : undefined,
     },
-    afterSign: "scripts/notarizer.ts",
+    afterSign: isDev ? undefined : "scripts/notarizer.ts",
   },
 });
