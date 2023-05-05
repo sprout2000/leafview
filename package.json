@@ -15,9 +15,9 @@
   "scripts": {
     "dev": "rimraf dist && run-p dev:webpack dev:electron",
     "build": "rimraf dist && cross-env NODE_ENV=\"production\" webpack --progress",
-    "package": "ts-node scripts/builder_appx.ts",
+    "package": "cross-env NODE_ENV=\"development\" ts-node scripts/builder.ts",
     "dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
-    "dev:electron": "wait-on ./dist/index.html ./dist/main.js && electronmon .",
+    "dev:electron": "wait-on ./dist/main.js ./dist/index.html && electronmon .",
     "release": "ts-node scripts/builder.ts",
     "test": "jest"
   },
