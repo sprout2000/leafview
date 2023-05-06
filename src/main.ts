@@ -41,7 +41,6 @@ const store = new Store<StoreType>({
     y: undefined,
     width: initWidth,
     height: initHeight,
-    darkmode: nativeTheme.shouldUseDarkColors,
     showmenu: true,
   },
 });
@@ -71,7 +70,7 @@ const createWindow = () => {
     width: store.get("width"),
     height: store.get("height"),
     icon: path.join(getResourceDirectory(), "images/logo.png"),
-    backgroundColor: nativeTheme.shouldUseDarkColors ? "#1e1e1e" : "#f6f6f6",
+    backgroundColor: "#1e1e1e",
     webPreferences: {
       safeDialogs: true,
       devTools: isDevelop,
@@ -80,7 +79,7 @@ const createWindow = () => {
   });
 
   if (!isDarwin) mainWindow.setMenuBarVisibility(store.get("showmenu"));
-  nativeTheme.themeSource = store.get("darkmode") ? "dark" : "light";
+  nativeTheme.themeSource = "dark";
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
