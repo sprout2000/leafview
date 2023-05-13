@@ -21,7 +21,6 @@ build({
     },
     files: [
       "dist/**/*",
-      "!node_modules/@electron/notarize",
       "!node_modules/@jest/types",
       "!node_modules/@testing-library/dom",
       "!node_modules/@testing-library/jest-dom",
