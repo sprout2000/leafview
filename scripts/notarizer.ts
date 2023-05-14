@@ -8,7 +8,7 @@ const notarizer = async (context: AfterPackContext) => {
   const { appOutDir } = context;
   const appName = context.packager.appInfo.productFilename;
 
-  return notarize({
+  return await notarize({
     tool: "notarytool",
     appPath: `${appOutDir}/${appName}.app`,
     teamId: `${process.env.TEAM_ID}`,
