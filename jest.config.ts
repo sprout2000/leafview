@@ -1,6 +1,6 @@
-import { Config } from "@jest/types";
+import { JestConfigWithTsJest } from "ts-jest";
 
-const config: Config.InitialOptions = {
+const config: JestConfigWithTsJest = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
   moduleNameMapper: {
