@@ -1,3 +1,4 @@
+import { IpcRendererEvent } from "electron";
 import { useCallback, useEffect, useState } from "react";
 
 import { View } from "./View";
@@ -130,7 +131,7 @@ export const App = () => {
   }, []);
 
   const handleMenuOpen = useCallback(
-    async (_e: Event, filepath: string) => {
+    async (_e: IpcRendererEvent, filepath: string) => {
       if (!filepath) return;
       if (grid) setGrid(false);
 

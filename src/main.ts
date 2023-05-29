@@ -7,6 +7,7 @@ import {
   ipcMain,
   nativeTheme,
   BrowserWindow,
+  IpcMainInvokeEvent,
 } from "electron";
 
 import log from "electron-log";
@@ -84,15 +85,15 @@ const createWindow = () => {
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
 
-  ipcMain.handle("mime-check", (_e: Event, filepath: string) => {
+  ipcMain.handle("mime-check", (_e: IpcMainInvokeEvent, filepath: string) => {
     return checkmime(filepath);
   });
 
-  ipcMain.handle("dirname", (_e: Event, filepath: string) => {
+  ipcMain.handle("dirname", (_e: IpcMainInvokeEvent, filepath: string) => {
     return path.dirname(filepath);
   });
 
-  ipcMain.handle("readdir", async (_e: Event, dir: string) => {
+  ipcMain.handle("readdir", async (_e: IpcMainInvokeEvent, dir: string) => {
     return fs.promises
       .readdir(dir, { withFileTypes: true })
       .then((dirents) =>
@@ -136,11 +137,14 @@ const createWindow = () => {
       .catch((err) => console.log(err));
   });
 
-  ipcMain.handle("move-to-trash", async (_e: Event, filepath: string) => {
-    await shell.trashItem(filepath).then(() => shell.beep());
-  });
+  ipcMain.handle(
+    "move-to-trash",
+    async (_e: IpcMainInvokeEvent, filepath: string) => {
+      await shell.trashItem(filepath).then(() => shell.beep());
+    }
+  );
 
-  ipcMain.handle("update-title", (_e: Event, filepath: string) => {
+  ipcMain.handle("update-title", (_e: IpcMainInvokeEvent, filepath: string) => {
     mainWindow.setTitle(path.basename(filepath));
   });
 
