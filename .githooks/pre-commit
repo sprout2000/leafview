@@ -1,0 +1,2 @@
+#!/bin/sh
+npx eslint --fix . && npx prettier --write .
