@@ -63,7 +63,7 @@ build({
     linux: {
       category: "Graphics",
       icon: "assets/linux.icns",
-      target: ["AppImage"],
+      target: ["AppImage", "deb", "zip"],
       mimeTypes: [
         "image/bmp",
         "image/gif",
