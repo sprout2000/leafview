@@ -86,7 +86,7 @@ build({
       ],
     },
     appx: {
-      backgroundColor: "#162447",
+      backgroundColor: "#1d3557",
       displayName: "LeafView",
       showNameOnTiles: true,
       languages: ["en-US", "ja-JP"],
