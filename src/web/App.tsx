@@ -264,7 +264,6 @@ export const App = () => {
 
   return (
     <div
-      data-testid="container"
       className={grid ? "container grid" : "container"}
       onDrop={handleDrop}
       onDragOver={handlePreventDefault}

@@ -23,11 +23,7 @@ export const Grid = memo((props: Props) => {
   }, []);
 
   return (
-    <div
-      data-testid="grid"
-      className="grid-content"
-      onClick={props.onClickBlank}
-    >
+    <div className="grid-content" onClick={props.onClickBlank}>
       <div className="thumb-container">
         {props.imgList.map((item) => (
           <div
