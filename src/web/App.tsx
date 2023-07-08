@@ -138,7 +138,7 @@ export const App = () => {
       const mime = await window.myAPI.mimecheck(filepath);
       if (mime) setUrl(filepath);
     },
-    [grid]
+    [grid],
   );
 
   const handleToggleGrid = useCallback(async () => {
@@ -166,7 +166,7 @@ export const App = () => {
 
   const handleClickThumb = async (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>,
-    item: string
+    item: string,
   ) => {
     e.stopPropagation();
 
@@ -203,7 +203,7 @@ export const App = () => {
   };
 
   const handleContextMenu = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     if (grid) {
       e.preventDefault();

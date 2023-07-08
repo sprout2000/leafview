@@ -42,7 +42,10 @@ contextBridge.exposeInMainWorld("myAPI", {
   },
 
   menuOpen: (
-    listener: (_e: Electron.IpcRendererEvent, filepath: string) => Promise<void>
+    listener: (
+      _e: Electron.IpcRendererEvent,
+      filepath: string,
+    ) => Promise<void>,
   ) => {
     ipcRenderer.on("menu-open", listener);
     return () => ipcRenderer.removeAllListeners("menu-open");

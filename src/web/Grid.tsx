@@ -8,7 +8,7 @@ type Props = {
   onClickBlank: () => Promise<void>;
   onClickThumb: (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>,
-    item: string
+    item: string,
   ) => Promise<void>;
 };
 

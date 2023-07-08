@@ -16,5 +16,5 @@ initLocale();
 createRoot(document.getElementById("root") as Element).render(
   <StrictMode>
     <App />
-  </StrictMode>
+  </StrictMode>,
 );

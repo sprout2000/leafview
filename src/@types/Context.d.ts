@@ -30,7 +30,10 @@ export interface IElectronAPI {
   menuRemove: (listener: () => Promise<void>) => () => Electron.IpcRenderer;
 
   menuOpen: (
-    listener: (_e: Electron.IpcRendererEvent, filepath: string) => Promise<void>
+    listener: (
+      _e: Electron.IpcRendererEvent,
+      filepath: string,
+    ) => Promise<void>,
   ) => () => Electron.IpcRenderer;
 
   toggleGrid: (listener: () => Promise<void>) => () => Electron.IpcRenderer;
