@@ -33,7 +33,5 @@ export interface IElectronAPI {
     listener: (_e: Electron.IpcRendererEvent, filepath: string) => Promise<void>
   ) => () => Electron.IpcRenderer;
 
-  toggleGrid: (
-    listener: (_e: Electron.IpcRendererEvent, filepath: string) => Promise<void>
-  ) => () => Electron.IpcRenderer;
+  toggleGrid: (listener: () => Promise<void>) => () => Electron.IpcRenderer;
 }
