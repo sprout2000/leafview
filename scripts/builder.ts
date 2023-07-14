@@ -21,6 +21,7 @@ build({
     },
     files: [
       "dist/**/*",
+      "!node_modules/@electron/notarize",
       "!node_modules/@types/leaflet",
       "!node_modules/@types/mime-types",
       "!node_modules/@types/node",
