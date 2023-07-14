@@ -8,12 +8,11 @@
 A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
 <p align="center">
-<img width="580" alt="Image by Joe from Pixabay" src="https://user-images.githubusercontent.com/52094761/229950855-18cabd19-7df3-4fa2-a58d-64cbee91333f.png" />
+<!-- <img width="580" alt="Image by Joe from Pixabay" src="https://user-images.githubusercontent.com/52094761/229950855-18cabd19-7df3-4fa2-a58d-64cbee91333f.png" /> -->
+<img width="640" alt="2023-07-13-171541" src="https://github.com/sprout2000/leafview/assets/52094761/070ac55c-a6df-4ac7-b1da-f77aa25545de">
 </p>
 
-<p align="center">
-Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4485609">Joe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4485609">Pixabay</a>.
-</p>
+_Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4485609">Joe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4485609">Pixabay</a>._
 
 ## :thumbsup: Features
 
@@ -23,7 +22,8 @@ Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-att
 - Available in [14 languages](#globe_with_meridians-supported-languages)
 - Auto update _(only on macOS)_
 
-<img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/224457447-05a1fa38-aa1b-490d-a1ad-5289c670563b.png" />
+<!-- <img width="480" alt="Grid View mode" src="https://user-images.githubusercontent.com/52094761/224457447-05a1fa38-aa1b-490d-a1ad-5289c670563b.png" /> -->
+<img width="480" alt="2023-07-13-171712" src="https://github.com/sprout2000/leafview/assets/52094761/138f527e-14f8-45f3-b310-2c0c82b5dada">
 
 ## :inbox_tray: Download
 
