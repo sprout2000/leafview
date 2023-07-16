@@ -36,9 +36,11 @@ You can download the latest version of _LeafView_ from the releases page here:<b
 
 ### :desktop_computer: Windows 10 & 11
 
-You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
+See ["How to build on Windows"](#hammer_and_wrench-how-to-build-on-windows) below.
 
-<a href='https://www.microsoft.com/store/apps/9P870THX6217'><img width="160px" src='https://developer.microsoft.com/en-us/store/badges/images/English_get-it-from-MS.png' alt='Badge'/></a>
+<!-- You can download the latest version of LeafView from [Microsoft Store](https://www.microsoft.com/store/apps/9P870THX6217).
+
+<a href='https://www.microsoft.com/store/apps/9P870THX6217'><img width="160px" src='https://developer.microsoft.com/en-us/store/badges/images/English_get-it-from-MS.png' alt='Badge'/></a> -->
 
 ## :green_book: Usage
 
@@ -134,10 +136,28 @@ Thanks go to these wonderful people :slightly_smiling_face::
   <img src="https://contrib.rocks/image?repo=sprout2000/leafview" />
 </a>
 
-## :vertical_traffic_light: Privacy Policy
+<!-- ## :vertical_traffic_light: Privacy Policy
 
 - LeafView and the developers do _NOT_ collect any personal information or privacy-related information about the user.
-- LeafView and the developers do _NOT_ collect the information of files opened by LeafView.
+- LeafView and the developers do _NOT_ collect the information of files opened by LeafView. -->
+
+## :hammer_and_wrench: How to build on Windows
+
+You will need to have [Node.js](https://nodejs.org/) and [git](https://git-scm.com/) installed.
+
+```sh
+# 1. clone this repo.
+$ git clone https://github.com/sprout2000/leafview.git
+
+# 2. install dependencies
+$ cd leafview
+$ npm install
+
+# 3. build & package
+$ npm run build && npm run package
+```
+
+And then, You will find the installer in the "release" directory.
 
 ## :copyright: Copyright
 
