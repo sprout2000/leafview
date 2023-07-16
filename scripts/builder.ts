@@ -69,7 +69,7 @@ build({
     },
     win: {
       icon: "assets/icon.ico",
-      target: ["appx"],
+      target: ["nsis"],
       publisherName: "sprout2000",
       fileAssociations: [
         {
@@ -78,16 +78,25 @@ build({
         },
       ],
     },
-    appx: {
-      backgroundColor: "#1d3557",
-      displayName: "LeafView",
-      showNameOnTiles: true,
-      languages: ["en-US", "ja-JP"],
-      publisherDisplayName: "sprout2000",
-      applicationId: "sprout2000.LeafView",
-      publisher: process.env.PUBLISHER,
-      identityName: process.env.IDENTITY_NAME,
+    nsis: {
+      oneClick: false,
+      perMachine: false,
+      createDesktopShortcut: false,
+      createStartMenuShortcut: true,
+      installerIcon: "assets/installer.ico",
+      artifactName:
+        "${productName}-${version}-${platform}-${arch}-installer.${ext}",
     },
+    // appx: {
+    //   backgroundColor: "#1d3557",
+    //   displayName: "LeafView",
+    //   showNameOnTiles: true,
+    //   languages: ["en-US", "ja-JP"],
+    //   publisherDisplayName: "sprout2000",
+    //   applicationId: "sprout2000.LeafView",
+    //   publisher: process.env.PUBLISHER,
+    //   identityName: process.env.IDENTITY_NAME,
+    // },
     mac: {
       appId: "jp.wassabie64.LeafView",
       category: "public.app-category.photography",
