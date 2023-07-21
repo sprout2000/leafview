@@ -1,8 +1,5 @@
 import { build } from "electron-builder";
 
-import dotenv from "dotenv";
-dotenv.config();
-
 const isDev = process.env.NODE_ENV === "development";
 
 build({
@@ -87,16 +84,6 @@ build({
       artifactName:
         "${productName}-${version}-${platform}-${arch}-installer.${ext}",
     },
-    // appx: {
-    //   backgroundColor: "#1d3557",
-    //   displayName: "LeafView",
-    //   showNameOnTiles: true,
-    //   languages: ["en-US", "ja-JP"],
-    //   publisherDisplayName: "sprout2000",
-    //   applicationId: "sprout2000.LeafView",
-    //   publisher: process.env.PUBLISHER,
-    //   identityName: process.env.IDENTITY_NAME,
-    // },
     mac: {
       appId: "jp.wassabie64.LeafView",
       category: "public.app-category.photography",
