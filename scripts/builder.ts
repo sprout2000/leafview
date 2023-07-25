@@ -1,6 +1,7 @@
+import dotenv from "dotenv";
 import { build } from "electron-builder";
 
-const isDev = process.env.NODE_ENV === "development";
+dotenv.config();
 
 build({
   config: {
@@ -18,7 +19,6 @@ build({
     },
     files: [
       "dist/**/*",
-      "!node_modules/@electron/notarize",
       "!node_modules/@types/leaflet",
       "!node_modules/@types/mime-types",
       "!node_modules/@types/node",
@@ -117,8 +117,10 @@ build({
         ],
         NSRequiresAquaSystemAppearance: false,
       },
-      identity: isDev ? null : undefined,
+      notarize: {
+        appBundleId: "jp.wassabie64.LeafView",
+        teamId: "285FKU3L4F",
+      },
     },
-    afterSign: isDev ? undefined : "scripts/notarizer.ts",
   },
 });
