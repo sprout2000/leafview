@@ -118,7 +118,6 @@ build({
         NSRequiresAquaSystemAppearance: false,
       },
       notarize: {
-        appBundleId: "jp.wassabie64.LeafView",
         teamId: "285FKU3L4F",
       },
     },
