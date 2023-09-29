@@ -15,7 +15,7 @@ _Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-at
 
 - Pan & Wheel Zoom
 - Browse the images in a folder
-- Grid view mode available
+- Grid view
 - Available in [14 languages](#globe_with_meridians-supported-languages)
 - Auto update _(only on macOS)_
 
