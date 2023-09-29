@@ -25,14 +25,8 @@ _Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-at
 
 ## :inbox_tray: Download
 
-### :computer: macOS & GNU/Linux
-
 You can download the latest version of _LeafView_ from the releases page here:<br />
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
-
-### :desktop_computer: Windows 10 & 11
-
-See ["How to build on Windows"](#hammer_and_wrench-how-to-build-on-windows) below.
 
 ## :green_book: Usage
 
@@ -127,24 +121,6 @@ Thanks go to these wonderful people :slightly_smiling_face::
 <a href="https://github.com/sprout2000/leafview/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=sprout2000/leafview" />
 </a>
-
-## :hammer_and_wrench: How to build on Windows
-
-You will need to have [Node.js](https://nodejs.org/) and [git](https://git-scm.com/) installed.
-
-```sh
-# 1. clone this repo.
-$ git clone https://github.com/sprout2000/leafview.git
-
-# 2. install dependencies
-$ cd leafview
-$ npm install
-
-# 3. build & package
-$ npm run build && npm run package
-```
-
-And then, You will find the installer in the "release" directory.
 
 ## :copyright: Copyright
 
