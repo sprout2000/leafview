@@ -39,7 +39,7 @@
   "devDependencies": {
     "@types/leaflet": "^1.9.6",
     "@types/mime-types": "^2.1.2",
-    "@types/node": "^18.18.0",
+    "@types/node": "^18.18.1",
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.8",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
