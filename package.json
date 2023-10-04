@@ -39,11 +39,11 @@
   "devDependencies": {
     "@types/leaflet": "^1.9.6",
     "@types/mime-types": "^2.1.2",
-    "@types/node": "^18.18.1",
-    "@types/react": "^18.2.23",
+    "@types/node": "^18.18.3",
+    "@types/react": "^18.2.24",
     "@types/react-dom": "^18.2.8",
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
-    "@typescript-eslint/parser": "^6.7.3",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
@@ -68,5 +68,8 @@
     "wait-on": "^7.0.1",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
+  },
+  "overrides": {
+    "postcss": "^8.4.31"
   }
 }
