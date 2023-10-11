@@ -68,8 +68,5 @@
     "wait-on": "^7.0.1",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
-  },
-  "overrides": {
-    "postcss": "^8.4.31"
   }
 }
