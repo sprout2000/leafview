@@ -168,6 +168,7 @@ export const App = () => {
     e: React.MouseEvent<HTMLImageElement, MouseEvent>,
     item: string,
   ) => {
+    // Prevent onClickBlank() from firing
     e.stopPropagation();
 
     const dir = await window.myAPI.dirname(item);
