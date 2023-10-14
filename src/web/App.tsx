@@ -18,11 +18,11 @@ export const App = () => {
   };
 
   const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
+    handlePreventDefault(e);
+
     if (grid) {
       return false;
     }
-
-    handlePreventDefault(e);
 
     if (e.dataTransfer) {
       const file = e.dataTransfer.files[0];
