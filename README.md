@@ -26,6 +26,8 @@ _Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-at
 You can download the latest version of _LeafView_ from the releases page here:<br />
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
+_Note: No code signing has been done except for the macOS version._
+
 ## :green_book: Usage
 
 ### :keyboard: Keyboard Shortcuts
