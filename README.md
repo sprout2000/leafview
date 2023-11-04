@@ -90,27 +90,7 @@ You can easily contribute to this repository by providing translation files.
   └── web
 ```
 
-2. Import the locale into [src/setLocales.ts](https://github.com/sprout2000/leafview/blob/main/src/setLocales.ts) as follows:
-
-```diff
-  import en from './locales/en.json';
-  import ja from './locales/ja.json';
-+ import cs from './locales/cs.json';
-
-  export const setLocales = (locale: string): void => {
-    i18next.init({
-      lng: locale,
-      fallbackLng: 'en',
-      resources: {
-        en: { translation: en },
-        ja: { translation: ja },
-+       cs: { translation: cs },
-      },
-    });
-  };
-```
-
-3. And then please send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
+2. And then please send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
 
 ## :tada: Contributors
 
