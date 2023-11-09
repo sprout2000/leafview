@@ -7,6 +7,7 @@ import en from "./locales/en.json";
 import es from "./locales/es.json"; // https://github.com/sprout2000/leafview/pull/178 by singuerinc
 import fr from "./locales/fr.json"; // https://github.com/sprout2000/leafview/pull/312 by BackSpace54
 import hu from "./locales/hu.json"; // https://github.com/sprout2000/leafview/pull/305 by Levminer
+import it from "./locales/it.json"; // https://github.com/sprout2000/leafview/pull/331 by bovirus
 import ja from "./locales/ja.json";
 import pl from "./locales/pl.json"; // https://github.com/sprout2000/leafview/pull/214 by nukeop
 import pt from "./locales/pt.json"; // https://github.com/sprout2000/leafview/pull/232 by guaycuru
@@ -55,6 +56,9 @@ export const setLocales = (locale: string) => {
       "fr-CH": { translation: fr },
       "fr-FR": { translation: fr },
       hu: { translation: hu },
+      it: { translation: it },
+      "it-CH": { translation: it },
+      "it-IT": { translation: it },
       ja: { translation: ja },
       pl: { translation: pl },
       pt: { translation: pt },
