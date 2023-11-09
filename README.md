@@ -16,7 +16,7 @@ _Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-at
 - Pan & Wheel Zoom
 - Browse the images in a folder
 - Grid view
-- Available in [14 languages](#globe_with_meridians-supported-languages)
+- Available in [15 languages](#globe_with_meridians-supported-languages)
 - Auto update _(only on macOS)_
 
 <img width="480" alt="2023-07-13-171712" src="https://github.com/sprout2000/leafview/assets/52094761/138f527e-14f8-45f3-b310-2c0c82b5dada">
@@ -64,6 +64,7 @@ _Note: No code signing has been done except for the macOS version._
 | Español       |  `es`   |
 | Français      |  `fr`   |
 | Magyar        |  `hu`   |
+| Italiano      |  `it`   |
 | 日本語        |  `ja`   |
 | Polski        |  `pl`   |
 | Português     |  `pt`   |
