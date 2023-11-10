@@ -102,7 +102,7 @@ const createWindow = () => {
           .filter(({ name }) => !name.startsWith(dotfiles))
           .map(({ name }) => path.resolve(dir, name))
           .filter((item) => checkmime(item))
-          .sort(),
+          .sort()
       )
       .catch((err) => console.log(err));
   });
@@ -141,7 +141,7 @@ const createWindow = () => {
     "move-to-trash",
     async (_e: IpcMainInvokeEvent, filepath: string) => {
       await shell.trashItem(filepath).then(() => shell.beep());
-    },
+    }
   );
 
   ipcMain.handle("update-title", (_e: IpcMainInvokeEvent, filepath: string) => {
@@ -276,7 +276,7 @@ app.setAboutPanelOptions({
     : `v${app.getVersion()} (${process.versions["electron"]})`,
   version: process.versions["electron"],
   iconPath: path.resolve(getResourceDirectory(), "images/logo.png"),
-  copyright: "© 2020 sprout2000 and other contributors",
+  copyright: "© 2020-2023 sprout2000 and other contributors",
 });
 
 app.once("window-all-closed", () => app.exit());
