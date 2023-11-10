@@ -30,7 +30,7 @@
     "electron-log": "^5.0.0",
     "electron-store": "^8.1.0",
     "electron-updater": "^6.1.7",
-    "i18next": "^23.6.0",
+    "i18next": "^23.7.2",
     "leaflet": "^1.9.4",
     "mime-types": "^2.1.35",
     "react": "^18.2.0",
