@@ -136,7 +136,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         label: `${i18next.t("Toggle Fullscreen")}`,
         role: "togglefullscreen",
         accelerator: "F11",
-      }
+      },
     );
   } else {
     viewSub.push(
@@ -148,7 +148,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       {
         label: `${i18next.t("Toggle Fullscreen")}`,
         role: "togglefullscreen",
-      }
+      },
     );
   }
 
@@ -157,7 +157,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       label: `${i18next.t("Support URL...")}`,
       click: async () =>
         await shell.openExternal(
-          "https://github.com/sprout2000/leafview/#readme"
+          "https://github.com/sprout2000/leafview/#readme",
         ),
     },
   ];

@@ -102,7 +102,7 @@ const createWindow = () => {
           .filter(({ name }) => !name.startsWith(dotfiles))
           .map(({ name }) => path.resolve(dir, name))
           .filter((item) => checkmime(item))
-          .sort()
+          .sort(),
       )
       .catch((err) => console.log(err));
   });
@@ -141,7 +141,7 @@ const createWindow = () => {
     "move-to-trash",
     async (_e: IpcMainInvokeEvent, filepath: string) => {
       await shell.trashItem(filepath).then(() => shell.beep());
-    }
+    },
   );
 
   ipcMain.handle("update-title", (_e: IpcMainInvokeEvent, filepath: string) => {
