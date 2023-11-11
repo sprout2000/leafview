@@ -41,7 +41,7 @@ _Note: No code signing has been done except for the macOS version._
 |                                 <kbd>0</kbd>                                  | Reset Zoom                         |
 |              <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd>              | Pan                                |
 |               <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>               | Move to Trash                      |
-|                  <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>L</kbd>                   | Toggle Grid View                   |
+|                  <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>G</kbd>                   | Toggle Grid View                   |
 |                 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>                 | Toggle Menubar _(Windows / Linux)_ |
 
 ### :computer_mouse: Mouse Operations
