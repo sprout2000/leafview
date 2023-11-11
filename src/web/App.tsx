@@ -259,7 +259,7 @@ export const App = () => {
   }, [handleToggleGrid]);
 
   useEffect(() => {
-    const title = !url ? "LeafView" : url;
+    const title = url || "LeafView";
     updateTitle(title);
   }, [url]);
 
