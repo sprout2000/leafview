@@ -271,12 +271,9 @@ app.whenReady().then(() => {
 
 app.setAboutPanelOptions({
   applicationName: app.name,
-  applicationVersion: isDarwin
-    ? app.getVersion()
-    : `v${app.getVersion()} (${process.versions["electron"]})`,
-  version: process.versions["electron"],
+  applicationVersion: app.getVersion(),
   iconPath: path.resolve(getResourceDirectory(), "images/logo.png"),
-  copyright: "© 2020-2023 sprout2000 and other contributors",
+  copyright: "© 2020-2023 sprout2000",
 });
 
 app.once("window-all-closed", () => app.exit());
