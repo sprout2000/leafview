@@ -73,7 +73,6 @@ const createWindow = () => {
     backgroundColor: "#1e1e1e",
     webPreferences: {
       safeDialogs: true,
-      devTools: isDevelop,
       preload: path.join(__dirname, "preload.js"),
     },
   });

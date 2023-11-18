@@ -128,26 +128,34 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         },
       },
       {
-        label: `${i18next.t("Language")}`,
-        submenu: langSub,
-      },
-      { type: "separator" },
-      {
         label: `${i18next.t("Toggle Fullscreen")}`,
         role: "togglefullscreen",
         accelerator: "F11",
+      },
+      {
+        label: `${i18next.t("Toggle Developer Tools")}`,
+        role: "toggleDevTools",
+      },
+      { type: "separator" },
+      {
+        label: `${i18next.t("Language")}`,
+        submenu: langSub,
       },
     );
   } else {
     viewSub.push(
       {
-        label: `${i18next.t("Language")}`,
-        submenu: langSub,
+        label: `${i18next.t("Toggle Fullscreen")}`,
+        role: "togglefullscreen",
+      },
+      {
+        label: `${i18next.t("Toggle Developer Tools")}`,
+        role: "toggleDevTools",
       },
       { type: "separator" },
       {
-        label: `${i18next.t("Toggle Fullscreen")}`,
-        role: "togglefullscreen",
+        label: `${i18next.t("Language")}`,
+        submenu: langSub,
       },
     );
   }
