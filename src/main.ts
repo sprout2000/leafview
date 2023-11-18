@@ -3,7 +3,6 @@ import {
   Menu,
   shell,
   dialog,
-  session,
   ipcMain,
   nativeTheme,
   BrowserWindow,
@@ -186,11 +185,6 @@ const createWindow = () => {
 
       mainWindow.webContents.send("menu-open", filepath);
     });
-  }
-
-  if (isDevelop) {
-    const extPath = path.resolve(process.cwd(), "../devtools");
-    session.defaultSession.loadExtension(extPath, { allowFileAccess: true });
   }
 
   if (isDarwin || process.platform === "linux") {
