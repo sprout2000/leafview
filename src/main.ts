@@ -151,7 +151,7 @@ const createWindow = () => {
   ipcMain.handle("file-history", (_e, arg) => app.addRecentDocument(arg));
 
   ipcMain.handle("show-context-menu", () => {
-    menu.popup();
+    if (isDarwin || !mainWindow.menuBarVisible) menu.popup();
   });
 
   mainWindow.webContents.once("did-finish-load", () => {
