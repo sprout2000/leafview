@@ -1,13 +1,10 @@
 dist/
 release/
-coverage/
-devtools/
 node_modules/
 npm-*.log
 yarn-*.log
-.DS_Store
+yarn.lock
+pnpm-lock.yaml
 
-.env*
-.flaskenv*
-!.env.project
-!.env.vault
+.env
+.DS_Store
