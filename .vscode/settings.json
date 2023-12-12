@@ -6,6 +6,7 @@
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
+  "extensions.ignoreRecommendations": false,
   "files.eol": "\n",
   "prettier.trailingComma": "all"
 }
