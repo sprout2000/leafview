@@ -105,4 +105,4 @@ Thanks go to these wonderful people :slightly_smiling_face::
 
 ## :copyright: Copyright
 
-Copyright (c) 2020-2023 sprout2000
+Copyright (c) 2020-2024 sprout2000
