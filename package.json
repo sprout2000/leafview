@@ -18,7 +18,7 @@
     "build": "rimraf dist && cross-env NODE_ENV=\"production\" webpack --progress",
     "dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
     "dev:electron": "wait-on ./dist/main.js ./dist/index.html && electronmon .",
-    "package": "ts-node scripts/builder.ts",
+    "package": "ts-node scripts/packager.ts",
     "release": "ts-node scripts/builder.ts"
   },
   "electronmon": {
