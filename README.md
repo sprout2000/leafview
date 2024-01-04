@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/sprout2000/leafview)](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
 ![GitHub contributors](https://img.shields.io/github/contributors/sprout2000/leafview)
 
-A minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
+Minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
 <p align="center">
 <img width="640" alt="2023-07-13-171541" src="https://github.com/sprout2000/leafview/assets/52094761/070ac55c-a6df-4ac7-b1da-f77aa25545de">
