@@ -2,6 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/sprout2000/leafview)](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
 ![GitHub contributors](https://img.shields.io/github/contributors/sprout2000/leafview)
+![GitHub all releases](https://img.shields.io/github/downloads/sprout2000/leafview/total)
 
 Minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
 
