@@ -6,12 +6,12 @@
     "resolveJsonModule": true,
     "moduleResolution": "Node",
     "jsx": "react-jsx",
-    "strict": true
+    "strict": true,
   },
   "include": ["src/**/*"],
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+      "module": "CommonJS",
+    },
+  },
 }
