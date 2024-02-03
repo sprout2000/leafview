@@ -33,6 +33,20 @@ const isDevelop = process.env.NODE_ENV === "development";
 const initWidth = 800;
 const initHeight = 528;
 
+if (isDevelop) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require("electron-reload")(__dirname, {
+    electron: path.resolve(
+      __dirname,
+      process.platform === "win32"
+        ? "../node_modules/electron/dist/electron.exe"
+        : "../node_modules/.bin/electron",
+    ),
+    forceHardReset: true,
+    hardResetMethod: "exit",
+  });
+}
+
 const store = new Store<StoreType>({
   configFileMode: 0o666,
   defaults: {
@@ -237,7 +251,7 @@ const createWindow = () => {
 
   mainWindow.loadFile("dist/index.html");
   mainWindow.once("ready-to-show", () => {
-    if (isDevelop) mainWindow.webContents.openDevTools({ mode: "detach" });
+    // if (isDevelop) mainWindow.webContents.openDevTools({ mode: "detach" });
     mainWindow.show();
   });
 
