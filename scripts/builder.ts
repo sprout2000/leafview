@@ -37,7 +37,6 @@ build({
       "!node_modules/eslint-plugin-react-hooks",
       "!node_modules/html-webpack-plugin",
       "!node_modules/mini-css-extract-plugin",
-      "!node_modules/npm-run-all",
       "!node_modules/prettier",
       "!node_modules/rimraf",
       "!node_modules/sass",
