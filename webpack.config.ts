@@ -34,7 +34,6 @@ const common: Configuration = {
     ],
   },
   stats: "errors-only",
-  watch: isDev,
   devtool: isDev ? "source-map" : undefined,
 };
 
@@ -81,4 +80,4 @@ const renderer: Configuration = {
   ],
 };
 
-export default isDev ? renderer : [main, preload, renderer];
+export default [main, preload, renderer];
