@@ -12,6 +12,7 @@ type Code =
   | "pt"
   | "ru"
   | "tr"
+  | "uk"
   | "zh-CN"
   | "zh-TW";
 

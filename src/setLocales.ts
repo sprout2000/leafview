@@ -13,6 +13,7 @@ import pl from "./locales/pl.json"; // https://github.com/sprout2000/leafview/pu
 import pt from "./locales/pt.json"; // https://github.com/sprout2000/leafview/pull/232 by guaycuru
 import ru from "./locales/ru.json"; // https://github.com/sprout2000/leafview/pull/215 by kitt3911
 import tr from "./locales/tr.json"; // https://github.com/sprout2000/leafview/pull/328 by LeaveNhA
+import uk from "./locales/uk.json"; // by bigvovan
 import zh_CN from "./locales/zh_cn.json"; // https://github.com/sprout2000/leafview/pull/235 by ArcherGu
 import zh_TW from "./locales/zh_tw.json";
 
@@ -66,6 +67,7 @@ export const setLocales = (locale: string) => {
       "pt-PT": { translation: pt },
       ru: { translation: ru },
       tr: { translation: tr },
+      uk: { translation: uk },
       zh: { translation: zh_CN },
       "zh-CN": { translation: zh_CN },
       "zh-TW": { translation: zh_TW },
