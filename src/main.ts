@@ -266,8 +266,8 @@ app.setAboutPanelOptions({
   applicationName: app.name,
   applicationVersion: isDarwin
     ? app.getVersion()
-    : `v${app.getVersion()} (Electron v${process.versions["electron"]})`,
-  version: `Electron v${process.versions["electron"]}`,
+    : `v${app.getVersion()} (Electron v${process.versions.electron})`,
+  version: `Electron v${process.versions.electron}`,
   iconPath: path.resolve(getResourceDirectory(), "images/logo.png"),
   copyright: "© 2020-2024 sprout2000",
 });
