@@ -86,7 +86,7 @@ _Note: You will need to have [Node.js](https://nodejs.org/en) and [Git](https://
 | Português     |  `pt`   |
 | Русский       |  `ru`   |
 | Türkçe        |  `tr`   |
-| українська    |  `uk`   |
+| Yкраїнська    |  `uk`   |
 | 简体中文      | `zh_CN` |
 | 繁体中文      | `zh_TW` |
 
