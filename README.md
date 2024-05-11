@@ -26,23 +26,7 @@ _Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-at
 You can download the latest version of _LeafView_ from the releases page here:<br />
 [https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
 
-### How to build by yourself?
-
-```sh
-# 1. Clone this repo.
-$ git clone https://github.com/sprout2000/leafview.git
-
-# 2. Install dependencies
-$ cd leafview
-$ npm install
-
-# 3. Build & Package
-$ npm run build && npm run package
-```
-
-And then, you will find the installer in the "release" directory.
-
-_Note: You will need to have [Node.js](https://nodejs.org/en) and [Git](https://git-scm.com/) installed._
+_Note: No code signing has been done except for the macOS version._
 
 ## :green_book: Usage
 
@@ -110,48 +94,7 @@ You can easily contribute to this repository by providing translation files.
   └── web
 ```
 
-2. Add your locale to `src/@types/Locale.d.ts`, `src/createMenu.ts` and `src/setLocales.ts`.
-
-- `src/@types/Locale.d.ts`
-
-```diff
-  type Code =
-+   | "cs"
-    | "en"
-    | "ja";
-```
-
-- `src/createMenu.ts`
-
-```diff
-  const localeList: Locale[] = [
-+   { code: "cs", value: "Čeština" },
-    { code: "en", value: "English" },
-    { code: "ja", value: "日本語" },
-  ];
-```
-
-- `src/setLocales.ts`
-
-```diff
-+ import cs from "./locales/cs.json";
-  import en from "./locales/en.json";
-  import ja from "./locales/ja.json";
-
-  export const setLocales = (locale: string) => {
-    i18next.init({
-      lng: locale,
-      fallbackLng: "en",
-      resources: {
-+       cs: { translation: cs },
-        en: { translation: en },
-        ja: { translation: ja },
-      },
-    });
-  };
-```
-
-3. And then please send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
+2. And then please send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
 
 ## :tada: Contributors
 
