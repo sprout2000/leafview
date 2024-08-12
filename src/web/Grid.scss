@@ -73,8 +73,8 @@ $WRAPPER_SIZE: 148px;
             &:hover {
               cursor: pointer;
               border-color: $THUMB_HOVER;
+              transition: border-color 0.3s ease-in-out;
             }
-            transition: border-color 0.3s ease-in-out;
           }
         }
       }
