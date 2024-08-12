@@ -86,7 +86,7 @@ export const View = memo(({ url = "" }: Props) => {
       draw(width, height);
     });
 
-    mapRef.current && resizeObserver.observe(mapRef.current);
+    if (mapRef.current) resizeObserver.observe(mapRef.current);
 
     return () => {
       resizeObserver.disconnect();

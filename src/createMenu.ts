@@ -249,9 +249,7 @@ export const createMenu = (win: BrowserWindow, store: Conf<StoreType>) => {
         },
         {
           label: `${i18next.t("Zoom")}`,
-          click: () => {
-            win.isMaximized() ? win.unmaximize() : win.maximize();
-          },
+          click: () => (win.isMaximized() ? win.unmaximize() : win.maximize()),
         },
         { type: "separator" },
         isDarwin
