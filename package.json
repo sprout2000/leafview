@@ -41,7 +41,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "dotenv": "^16.4.5",
-    "electron": "^31.3.1",
+    "electron": "^31.4.0",
     "electron-builder": "^24.13.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
