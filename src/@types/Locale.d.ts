@@ -5,6 +5,7 @@ type Code =
   | "en"
   | "es"
   | "fr"
+  | "hi"
   | "hu"
   | "it"
   | "ja"
