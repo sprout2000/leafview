@@ -16,6 +16,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=\"development\" webpack --progress && electron .",
     "build": "rimraf dist && cross-env NODE_ENV=\"production\" webpack --progress",
+    "lint": "biome check --write .",
     "package": "ts-node scripts/packager.ts",
     "release": "ts-node scripts/builder.ts"
   },
@@ -30,23 +31,18 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.3",
     "@types/leaflet": "^1.9.12",
     "@types/mime-types": "^2.1.4",
     "@types/node": "^20.16.10",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.8.0",
-    "@typescript-eslint/parser": "^8.8.0",
     "copy-webpack-plugin": "^12.0.2",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "dotenv": "^16.4.5",
     "electron": "^32.1.2",
     "electron-builder": "^24.13.3",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react": "^7.37.1",
-    "eslint-plugin-react-hooks": "^4.6.2",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.1",
     "prettier": "^3.3.3",
@@ -55,7 +51,7 @@
     "sass-loader": "^16.0.2",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4",
+    "typescript": "^5.6.2",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4"
   }

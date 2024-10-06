@@ -1,15 +1,15 @@
 import {
+  type BrowserWindow,
+  Menu,
+  type MenuItemConstructorOptions,
   app,
   dialog,
-  BrowserWindow,
-  Menu,
-  MenuItemConstructorOptions,
   shell,
 } from "electron";
 
 import path from "node:path";
+import type { Conf } from "electron-conf/main";
 import i18next from "i18next";
-import { Conf } from "electron-conf/main";
 
 const localeList: Locale[] = [
   { code: "ar", value: "اللغة العربية" },

@@ -1,26 +1,26 @@
 import {
-  app,
+  BrowserWindow,
+  type IpcMainInvokeEvent,
   Menu,
-  shell,
+  app,
   dialog,
   ipcMain,
   nativeTheme,
-  BrowserWindow,
-  IpcMainInvokeEvent,
+  shell,
 } from "electron";
 
-import log from "electron-log";
 import { Conf } from "electron-conf/main";
+import log from "electron-log";
 import { autoUpdater } from "electron-updater";
 
 import fs from "node:fs";
 import path from "node:path";
 
-import mime from "mime-types";
 import i18next from "i18next";
+import mime from "mime-types";
 
-import { setLocales } from "./setLocales";
 import { createMenu } from "./createMenu";
+import { setLocales } from "./setLocales";
 
 console.log = log.log;
 log.info("App starting...");

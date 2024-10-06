@@ -1,11 +1,11 @@
-import { memo } from "react";
 import i18next from "i18next";
+import { memo } from "react";
 
-import { Trash } from "./icons/Trash";
-import { GridIcon } from "./icons/GridIcon";
 import { ArrowLeft } from "./icons/ArrowLeft";
 import { ArrowRight } from "./icons/ArrowRight";
 import { FolderOpen } from "./icons/FolderOpen";
+import { GridIcon } from "./icons/GridIcon";
+import { Trash } from "./icons/Trash";
 
 import "./ToolBar.scss";
 

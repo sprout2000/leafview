@@ -1,6 +1,6 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always"
+    "quickfix.biome": "always"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
@@ -9,5 +9,11 @@
   "extensions.ignoreRecommendations": false,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "prettier.trailingComma": "all"
+  "prettier.trailingComma": "all",
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }

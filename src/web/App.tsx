@@ -1,9 +1,9 @@
-import { IpcRendererEvent } from "electron";
+import type { IpcRendererEvent } from "electron";
 import { useCallback, useEffect, useState } from "react";
 
-import { View } from "./View";
 import { Grid } from "./Grid";
 import { ToolBar } from "./ToolBar";
+import { View } from "./View";
 
 import "./App.scss";
 
@@ -215,9 +215,9 @@ export const App = () => {
     window.myAPI.contextMenu();
   };
 
-  const updateTitle = async (filepath: string) => {
+  const updateTitle = useCallback(async (filepath: string) => {
     await window.myAPI.updateTitle(filepath);
-  };
+  }, []);
 
   useEffect(() => {
     if (url) window.myAPI.history(url);
@@ -261,7 +261,7 @@ export const App = () => {
   useEffect(() => {
     const title = url || "LeafView";
     updateTitle(title);
-  }, [url]);
+  }, [url, updateTitle]);
 
   return (
     <div
