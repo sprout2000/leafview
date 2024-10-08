@@ -1,6 +1,7 @@
 {
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "always"
+    "quickfix.biome": "always",
+    "source.organizeImports.biome": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
