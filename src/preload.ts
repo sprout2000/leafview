@@ -1,6 +1,10 @@
-import { contextBridge, ipcRenderer } from "electron";
+import { contextBridge, ipcRenderer, webUtils } from "electron";
 
 contextBridge.exposeInMainWorld("myAPI", {
+  showFilePath: (file: File) => {
+    return webUtils.getPathForFile(file);
+  },
+
   getLocale: (): Promise<string> => ipcRenderer.invoke("get-locale"),
 
   contextMenu: (): Promise<void> => ipcRenderer.invoke("show-context-menu"),

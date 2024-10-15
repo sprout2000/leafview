@@ -29,8 +29,9 @@ export const App = () => {
 
       if (file.name.startsWith(".")) return;
 
-      const mime = await window.myAPI.mimecheck(file.path);
-      if (mime) setUrl(file.path);
+      const filepath = window.myAPI.showFilePath(file);
+      const mime = await window.myAPI.mimecheck(filepath);
+      if (mime) setUrl(filepath);
     }
   };
 

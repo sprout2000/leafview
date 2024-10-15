@@ -5,6 +5,8 @@ declare global {
 }
 
 export interface IElectronAPI {
+  showFilePath: (file: File) => string;
+
   getLocale: () => Promise<string>;
 
   contextMenu: () => Promise<void>;
