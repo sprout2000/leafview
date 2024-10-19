@@ -8,7 +8,9 @@
     "jsx": "react-jsx",
     "strict": true
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*"
+  ],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
