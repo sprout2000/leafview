@@ -4,6 +4,7 @@ import {
   type MenuItemConstructorOptions,
   app,
   dialog,
+  nativeTheme,
   shell,
 } from "electron";
 
@@ -115,6 +116,16 @@ export const createMenu = (win: BrowserWindow, store: Conf<StoreType>) => {
       visible: false,
     },
     { type: "separator" },
+    {
+      label: i18next.t("Toggle Dark Mode"),
+      accelerator: "CmdOrCtrl+T",
+      type: "checkbox",
+      checked: store.get("darkmode"),
+      click: () => {
+        nativeTheme.themeSource = store.get("darkmode") ? "light" : "dark";
+        store.set("darkmode", !store.get("darkmode"));
+      },
+    },
   ];
 
   if (!isDarwin) {

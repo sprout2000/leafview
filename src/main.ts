@@ -41,6 +41,7 @@ const store = new Conf<StoreType>({
     width: initWidth,
     height: initHeight,
     showmenu: true,
+    darkmode: true,
   },
 });
 
@@ -69,7 +70,7 @@ const createWindow = () => {
     width: store.get("width"),
     height: store.get("height"),
     icon: path.join(getResourceDirectory(), "images/logo.png"),
-    backgroundColor: "#1e1e1e",
+    backgroundColor: nativeTheme.shouldUseDarkColors ? "#1e1e1e" : "#f6f6f6",
     webPreferences: {
       safeDialogs: true,
       preload: path.join(__dirname, "preload.js"),
@@ -77,7 +78,7 @@ const createWindow = () => {
   });
 
   if (!isDarwin) mainWindow.setMenuBarVisibility(store.get("showmenu"));
-  nativeTheme.themeSource = "dark";
+  nativeTheme.themeSource = store.get("darkmode") ? "dark" : "light";
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
