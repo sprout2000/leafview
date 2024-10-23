@@ -140,14 +140,11 @@ export const createMenu = (win: BrowserWindow, store: Conf<StoreType>) => {
           store.set("showmenu", !store.get("showmenu"));
         },
       },
+      { type: "separator" },
       {
         label: `${i18next.t("Toggle Fullscreen")}`,
         role: "togglefullscreen",
         accelerator: "F11",
-      },
-      {
-        label: `${i18next.t("Toggle Developer Tools")}`,
-        role: "toggleDevTools",
       },
       { type: "separator" },
       {
@@ -157,13 +154,10 @@ export const createMenu = (win: BrowserWindow, store: Conf<StoreType>) => {
     );
   } else {
     viewSub.push(
+      { type: "separator" },
       {
         label: `${i18next.t("Toggle Fullscreen")}`,
         role: "togglefullscreen",
-      },
-      {
-        label: `${i18next.t("Toggle Developer Tools")}`,
-        role: "toggleDevTools",
       },
       { type: "separator" },
       {
