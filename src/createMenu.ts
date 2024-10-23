@@ -154,7 +154,6 @@ export const createMenu = (win: BrowserWindow, store: Conf<StoreType>) => {
     );
   } else {
     viewSub.push(
-      { type: "separator" },
       {
         label: `${i18next.t("Toggle Fullscreen")}`,
         role: "togglefullscreen",
