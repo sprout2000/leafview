@@ -70,7 +70,7 @@ const createWindow = () => {
     width: store.get("width"),
     height: store.get("height"),
     icon: path.join(getResourceDirectory(), "images/logo.png"),
-    backgroundColor: nativeTheme.shouldUseDarkColors ? "#1e1e1e" : "#f6f6f6",
+    backgroundColor: store.get("darkmode") ? "#1e1e1e" : "#f6f6f6",
     webPreferences: {
       safeDialogs: true,
       preload: path.join(__dirname, "preload.js"),
