@@ -177,6 +177,8 @@ export const createMenu = (win: BrowserWindow, store: Conf<StoreType>) => {
     },
   ];
 
+  const separator: MenuItemConstructorOptions = { type: "separator" };
+
   const aboutItem: MenuItemConstructorOptions = {
     label: `${i18next.t(isDarwin ? "About LeafView" : "About")}`,
     accelerator: "CmdOrCtrl+I",
@@ -184,7 +186,7 @@ export const createMenu = (win: BrowserWindow, store: Conf<StoreType>) => {
   };
 
   if (!isDarwin) {
-    helpSub.push(aboutItem);
+    helpSub.push(separator, aboutItem);
   }
 
   const template: MenuItemConstructorOptions[] = [
