@@ -9,8 +9,8 @@ import {
   shell,
 } from "electron";
 
-import { Conf } from "electron-conf/main";
 import log from "electron-log";
+import Store from "electron-store";
 import { autoUpdater } from "electron-updater";
 
 import fs from "node:fs";
@@ -33,7 +33,7 @@ const isDevelop = process.env.NODE_ENV === "development";
 const initWidth = 800;
 const initHeight = 528;
 
-const store = new Conf<StoreType>({
+const store = new Store<StoreType>({
   defaults: {
     ask: true,
     x: undefined,

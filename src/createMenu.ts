@@ -9,7 +9,7 @@ import {
 } from "electron";
 
 import path from "node:path";
-import type { Conf } from "electron-conf/main";
+import type Store from "electron-store";
 import i18next from "i18next";
 
 const localeList: Locale[] = [
@@ -32,7 +32,7 @@ const localeList: Locale[] = [
   { code: "zh-TW", value: "繁体中文" },
 ];
 
-export const createMenu = (win: BrowserWindow, store: Conf<StoreType>) => {
+export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   const isDarwin = process.platform === "darwin";
   const dotfiles = isDarwin ? "." : "._";
 
