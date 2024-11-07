@@ -2,7 +2,7 @@
   "name": "leafview",
   "productName": "LeafView",
   "description": "Minimalist image viewer based on Leaflet.js and Electron.",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "license": "MIT",
   "author": {
     "name": "sprout2000",
