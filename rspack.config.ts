@@ -1,6 +1,9 @@
 import type { Configuration } from "@rspack/cli";
-import { CopyRspackPlugin, CssExtractRspackPlugin } from "@rspack/core";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+import {
+  CopyRspackPlugin,
+  CssExtractRspackPlugin,
+  HtmlRspackPlugin,
+} from "@rspack/core";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -87,7 +90,7 @@ const renderer: Configuration = {
   },
   plugins: [
     new CssExtractRspackPlugin(),
-    new HtmlWebpackPlugin({
+    new HtmlRspackPlugin({
       template: isDev ? "./src/web/index.dev.html" : "./src/web/index.html",
     }),
   ],
