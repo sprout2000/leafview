@@ -1,7 +1,6 @@
-import CopyWebpackPlugin from "copy-webpack-plugin";
+import type { Configuration } from "@rspack/cli";
+import { CopyRspackPlugin, CssExtractRspackPlugin } from "@rspack/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import type { Configuration } from "webpack";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -21,11 +20,24 @@ const common: Configuration = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "ts-loader",
+        loader: "builtin:swc-loader",
+        options: {
+          jsc: {
+            parser: {
+              syntax: "typescript",
+            },
+            transform: {
+              react: {
+                runtime: "automatic",
+              },
+            },
+          },
+        },
       },
       {
         test: /\.s?css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [CssExtractRspackPlugin.loader, "css-loader", "sass-loader"],
+        type: "javascript/auto",
       },
       {
         test: /\.png$/,
@@ -34,8 +46,8 @@ const common: Configuration = {
     ],
   },
   watch: isDev,
-  stats: "errors-only",
-  devtool: isDev ? "source-map" : undefined,
+  stats: "summary",
+  devtool: isDev ? "source-map" : false,
 };
 
 const main: Configuration = {
@@ -45,7 +57,7 @@ const main: Configuration = {
     main: "./src/main.ts",
   },
   plugins: [
-    new CopyWebpackPlugin({
+    new CopyRspackPlugin({
       patterns: [
         {
           from:
@@ -74,7 +86,7 @@ const renderer: Configuration = {
     app: "./src/web/index.tsx",
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new CssExtractRspackPlugin(),
     new HtmlWebpackPlugin({
       template: isDev ? "./src/web/index.dev.html" : "./src/web/index.html",
     }),

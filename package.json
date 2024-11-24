@@ -14,10 +14,10 @@
   },
   "main": "dist/main.js",
   "scripts": {
-    "dev": "rimraf dist && run-p dev:webpack dev:electron",
-    "dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
+    "dev": "rimraf dist && run-p dev:rspack dev:electron",
+    "dev:rspack": "rspack --node-env \"development\"",
     "dev:electron": "wait-on ./dist/index.html ./dist/main.js && electronmon .",
-    "build": "rimraf dist && cross-env NODE_ENV=\"production\" webpack --progress",
+    "build": "rimraf dist && rspack --node-env \"production\"",
     "lint": "biome check --write .",
     "package": "ts-node scripts/packager.ts",
     "release": "ts-node scripts/builder.ts"
@@ -34,29 +34,25 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@rspack/cli": "^1.1.3",
+    "@rspack/core": "^1.1.3",
     "@types/leaflet": "^1.9.14",
     "@types/mime-types": "^2.1.4",
     "@types/node": "^20.17.6",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "copy-webpack-plugin": "^12.0.2",
-    "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "dotenv": "^16.4.5",
     "electron": "^33.2.0",
     "electron-builder": "^24.13.3",
     "electronmon": "^2.0.3",
     "html-webpack-plugin": "^5.6.3",
-    "mini-css-extract-plugin": "^2.9.2",
     "npm-run-all": "^4.1.5",
     "rimraf": "^6.0.1",
     "sass": "^1.81.0",
     "sass-loader": "^16.0.3",
-    "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
-    "wait-on": "^8.0.1",
-    "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4"
+    "wait-on": "^8.0.1"
   }
 }
