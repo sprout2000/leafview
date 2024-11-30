@@ -38,7 +38,7 @@
     "@rspack/core": "^1.1.4",
     "@types/leaflet": "^1.9.14",
     "@types/mime-types": "^2.1.4",
-    "@types/node": "^20.17.8",
+    "@types/node": "^20.17.9",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "css-loader": "^7.1.2",
