@@ -1,10 +1,13 @@
+import fs from "node:fs";
+import path from "node:path";
+
 import {
-  BrowserWindow,
-  type IpcMainInvokeEvent,
-  Menu,
   app,
+  BrowserWindow,
   dialog,
+  type IpcMainInvokeEvent,
   ipcMain,
+  Menu,
   nativeTheme,
   shell,
 } from "electron";
@@ -12,9 +15,6 @@ import {
 import log from "electron-log";
 import Store from "electron-store";
 import { autoUpdater } from "electron-updater";
-
-import fs from "node:fs";
-import path from "node:path";
 
 import i18next from "i18next";
 import mime from "mime-types";

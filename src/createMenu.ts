@@ -1,14 +1,14 @@
+import path from "node:path";
+
 import {
+  app,
   type BrowserWindow,
+  dialog,
   Menu,
   type MenuItemConstructorOptions,
-  app,
-  dialog,
   nativeTheme,
   shell,
 } from "electron";
-
-import path from "node:path";
 import type Store from "electron-store";
 import i18next from "i18next";
 
