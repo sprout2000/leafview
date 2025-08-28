@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
   "vcs": {
     "enabled": false,
     "clientKind": "git",
@@ -30,7 +30,8 @@
       },
       "suspicious": {
         "noConfusingVoidType": "off",
-        "noTemplateCurlyInString": "off"
+        "noTemplateCurlyInString": "off",
+        "useIterableCallbackReturn": "off"
       }
     }
   },
