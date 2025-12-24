@@ -51,7 +51,7 @@ const common: Configuration = {
   },
   watch: isDev,
   stats: "summary",
-  devtool: isDev ? "source-map" : undefined,
+  devtool: isDev ? "source-map" : false,
 };
 
 const main: Configuration = {
