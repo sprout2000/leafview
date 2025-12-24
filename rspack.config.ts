@@ -1,7 +1,10 @@
-import CopyWebpackPlugin from "copy-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import type { Configuration } from "webpack";
+import path from "node:path";
+import type { Configuration } from "@rspack/cli";
+import {
+  CopyRspackPlugin,
+  CssExtractRspackPlugin,
+  HtmlRspackPlugin,
+} from "@rspack/core";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -12,6 +15,7 @@ const common: Configuration = {
   },
   externals: ["fsevents"],
   output: {
+    path: path.resolve(__dirname, "dist"),
     publicPath: "./",
     filename: "[name].js",
     assetModuleFilename: "images/[name][ext]",
@@ -21,20 +25,32 @@ const common: Configuration = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "ts-loader",
+        loader: "builtin:swc-loader",
+        options: {
+          jsc: {
+            parser: {
+              syntax: "typescript",
+            },
+            transform: {
+              react: {
+                runtime: "automatic",
+              },
+            },
+          },
+        },
       },
       {
         test: /\.s?css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [CssExtractRspackPlugin.loader, "css-loader", "sass-loader"],
       },
       {
-        test: /\.png$/,
+        test: /\.(bmp|ico|gif|jpe?g|png|svg|ttf|eot|woff?2?)$/,
         type: "asset/resource",
       },
     ],
   },
   watch: isDev,
-  stats: "errors-only",
+  stats: "summary",
   devtool: isDev ? "source-map" : undefined,
 };
 
@@ -45,7 +61,7 @@ const main: Configuration = {
     main: "./src/main.ts",
   },
   plugins: [
-    new CopyWebpackPlugin({
+    new CopyRspackPlugin({
       patterns: [
         {
           from:
@@ -71,11 +87,12 @@ const renderer: Configuration = {
   ...common,
   target: "web",
   entry: {
-    app: "./src/web/index.tsx",
+    index: "./src/web/index.tsx",
   },
   plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
+    new CssExtractRspackPlugin(),
+    new HtmlRspackPlugin({
+      inject: "body",
       template: isDev ? "./src/web/index.dev.html" : "./src/web/index.html",
     }),
   ],
