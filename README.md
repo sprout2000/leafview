@@ -115,4 +115,4 @@ Thanks go to these wonderful people :slightly_smiling_face::
 
 ## :copyright: Copyright
 
-Copyright (c) 2020-2025 sprout2000
+Copyright (c) 2020-2026 sprout2000

@@ -7,7 +7,7 @@ build({
   config: {
     productName: "LeafView",
     artifactName: "${productName}-${version}-${platform}-${arch}.${ext}",
-    copyright: "© 2020-2025 sprout2000",
+    copyright: "© 2020-2026 sprout2000",
     asarUnpack: ["dist/images/logo.png"],
     directories: {
       output: "release",
