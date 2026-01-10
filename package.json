@@ -38,7 +38,7 @@
     "@rspack/core": "^1.7.1",
     "@types/leaflet": "^1.9.21",
     "@types/mime-types": "^3.0.1",
-    "@types/node": "^22.19.3",
+    "@types/node": "^22.19.5",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "cross-env": "^10.1.0",
