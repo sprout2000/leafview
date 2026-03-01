@@ -31,12 +31,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run release
-  publish:
-    name: Publish to WinGet
-    needs: [build]
-    runs-on: windows-latest
-    steps:
-      - uses: vedantmgoyal9/winget-releaser@main
-        with:
-          identifier: sprout2000.LeafView
-          token: ${{ secrets.WINGET_TOKEN }}
+  # publish:
+  #   name: Publish to WinGet
+  #   needs: [build]
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: vedantmgoyal9/winget-releaser@main
+  #       with:
+  #         identifier: sprout2000.LeafView
+  #         token: ${{ secrets.WINGET_TOKEN }}
