@@ -58,6 +58,6 @@
   "overrides": {
     "@tootallnate/once": "^3.0.1",
     "diff": "^8.0.3",
-    "tar": "^7.5.7"
+    "tar": "^7.5.10"
   }
 }
