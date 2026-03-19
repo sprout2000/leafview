@@ -35,7 +35,6 @@ build({
     win: {
       icon: "assets/icon.ico",
       target: ["nsis", "zip"],
-      publisherName: "sprout2000",
       fileAssociations: [
         {
           ext: ["bmp", "gif", "jpeg", "jpg", "png", "ico", "svg", "webp"],
@@ -84,9 +83,6 @@ build({
           },
         ],
         NSRequiresAquaSystemAppearance: false,
-      },
-      notarize: {
-        teamId: "285FKU3L4F",
       },
     },
   },

@@ -28,7 +28,6 @@ build({
     win: {
       icon: "assets/icon.ico",
       target: ["nsis"],
-      publisherName: "sprout2000",
       fileAssociations: [
         {
           ext: ["bmp", "gif", "jpeg", "jpg", "png", "ico", "svg", "webp"],
