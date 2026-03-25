@@ -26,7 +26,7 @@
     "electron-log": "^5.4.3",
     "electron-store": "^11.0.2",
     "electron-updater": "^6.8.3",
-    "i18next": "^25.8.19",
+    "i18next": "^25.10.9",
     "leaflet": "^1.9.4",
     "mime-types": "^3.0.2",
     "react": "^19.2.4",
@@ -34,8 +34,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.8",
-    "@rspack/cli": "^1.7.9",
-    "@rspack/core": "^1.7.9",
+    "@rspack/cli": "^1.7.10",
+    "@rspack/core": "^1.7.10",
     "@types/leaflet": "^1.9.21",
     "@types/mime-types": "^3.0.1",
     "@types/node": "^25.5.0",
@@ -44,7 +44,7 @@
     "cross-env": "^10.1.0",
     "css-loader": "^7.1.4",
     "dotenv": "^17.3.1",
-    "electron": "^41.0.3",
+    "electron": "^41.0.4",
     "electron-builder": "^26.8.1",
     "electronmon": "^2.0.4",
     "npm-run-all": "^4.1.5",
@@ -52,7 +52,7 @@
     "sass": "^1.98.0",
     "sass-loader": "^16.0.7",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "wait-on": "^9.0.4"
   }
 }
