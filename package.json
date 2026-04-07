@@ -54,9 +54,5 @@
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2",
     "wait-on": "^9.0.4"
-  },
-  "overrides": {
-    "axios": "1.14.0",
-    "brace-expansion": "^5.0.5"
   }
 }
