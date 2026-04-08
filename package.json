@@ -20,7 +20,7 @@
     "build": "rimraf dist && rspack --node-env \"production\"",
     "lint": "biome check --write .",
     "package": "ts-node scripts/packager.ts",
-    "release": "ts-node scripts/builder.ts"
+    "publish": "ts-node scripts/builder.ts"
   },
   "dependencies": {
     "electron-log": "^5.4.3",
