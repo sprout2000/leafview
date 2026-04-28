@@ -1,21 +1,17 @@
-import path from "node:path";
-import type { Configuration } from "@rspack/cli";
-import {
-  CopyRspackPlugin,
-  CssExtractRspackPlugin,
-  HtmlRspackPlugin,
-} from "@rspack/core";
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
 
-const common: Configuration = {
+/** @type import("webpack").Configuration */
+const common = {
   mode: isDev ? "development" : "production",
   resolve: {
     extensions: [".js", ".ts", ".jsx", ".tsx", ".json"],
   },
   externals: ["fsevents"],
   output: {
-    path: path.resolve(__dirname, "dist"),
     publicPath: "./",
     filename: "[name].js",
     assetModuleFilename: "images/[name][ext]",
@@ -25,43 +21,32 @@ const common: Configuration = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "builtin:swc-loader",
-        options: {
-          jsc: {
-            parser: {
-              syntax: "typescript",
-            },
-            transform: {
-              react: {
-                runtime: "automatic",
-              },
-            },
-          },
-        },
+        loader: "ts-loader",
       },
       {
         test: /\.s?css$/,
-        use: [CssExtractRspackPlugin.loader, "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
-        test: /\.(bmp|ico|gif|jpe?g|png|svg|ttf|eot|woff?2?)$/,
+        test: /\.png$/,
         type: "asset/resource",
       },
     ],
   },
   watch: isDev,
-  stats: "summary",
-  devtool: isDev ? "source-map" : false,
+  stats: "errors-only",
+  devtool: isDev ? "source-map" : undefined,
 };
 
-const main: Configuration = {
+/** @type import("webpack").Configuration */
+const main = {
   ...common,
   target: "electron-main",
   entry: {
     main: "./src/main.ts",
   },
   plugins: [
-    new CopyRspackPlugin({
+    new CopyWebpackPlugin({
       patterns: [
         {
           from:
@@ -75,7 +60,8 @@ const main: Configuration = {
   ],
 };
 
-const preload: Configuration = {
+/** @type import("webpack").Configuration */
+const preload = {
   ...common,
   target: "electron-preload",
   entry: {
@@ -83,19 +69,19 @@ const preload: Configuration = {
   },
 };
 
-const renderer: Configuration = {
+/** @type import("webpack").Configuration */
+const renderer = {
   ...common,
   target: "web",
   entry: {
-    index: "./src/web/index.tsx",
+    app: "./src/web/index.tsx",
   },
   plugins: [
-    new CssExtractRspackPlugin(),
-    new HtmlRspackPlugin({
-      inject: "body",
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
       template: isDev ? "./src/web/index.dev.html" : "./src/web/index.html",
     }),
   ],
 };
 
-export default [main, preload, renderer];
+module.exports = [main, preload, renderer];
