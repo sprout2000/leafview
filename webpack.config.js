@@ -35,7 +35,7 @@ const common = {
   },
   watch: isDev,
   stats: "errors-only",
-  devtool: isDev ? "source-map" : undefined,
+  devtool: isDev ? "source-map" : false,
 };
 
 /** @type import("webpack").Configuration */
