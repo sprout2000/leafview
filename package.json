@@ -33,7 +33,7 @@
     "react-dom": "^19.2.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.13",
+    "@biomejs/biome": "2.4.14",
     "@types/leaflet": "^1.9.21",
     "@types/mime-types": "^3.0.1",
     "@types/node": "^25.6.0",
@@ -43,7 +43,7 @@
     "cross-env": "^10.1.0",
     "css-loader": "^7.1.4",
     "dotenv": "^17.4.2",
-    "electron": "^41.4.0",
+    "electron": "^41.5.0",
     "electron-builder": "^26.9.0",
     "electronmon": "^2.0.4",
     "html-webpack-plugin": "^5.6.7",
