@@ -58,8 +58,5 @@
     "wait-on": "^9.0.10",
     "webpack": "^5.107.2",
     "webpack-cli": "^7.0.3"
-  },
-  "overrides": {
-    "yauzl": "3.3.1"
   }
 }
