@@ -26,6 +26,7 @@ console.log = log.log;
 log.info("App starting...");
 
 let openfile: string | null = null;
+let lastUsedPath: string | null = null;
 
 const isDarwin = process.platform === "darwin";
 const isDevelop = process.env.NODE_ENV === "development";
@@ -108,6 +109,7 @@ const createWindow = () => {
   ipcMain.handle("open-dialog", async () => {
     return dialog
       .showOpenDialog(mainWindow, {
+        defaultPath: lastUsedPath || app.getPath("pictures"),
         properties: ["openFile"],
         title: `${i18next.t("Select an image")}`,
         filters: [
@@ -129,6 +131,8 @@ const createWindow = () => {
       .then((result) => {
         if (result.canceled) return;
         if (path.basename(result.filePaths[0]).startsWith(dotfiles)) return;
+
+        lastUsedPath = path.dirname(result.filePaths[0]);
 
         return result.filePaths[0];
       })
