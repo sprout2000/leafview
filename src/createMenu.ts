@@ -198,6 +198,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
           click: async () => {
             return dialog
               .showOpenDialog(win, {
+                defaultPath: app.getPath("pictures"),
                 properties: ["openFile"],
                 title: `${i18next.t("Select an image")}`,
                 filters: [
