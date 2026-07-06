@@ -42,6 +42,7 @@ const store = new Store<StoreType>({
     height: initHeight,
     showmenu: true,
     darkmode: true,
+    lastUsedPath: app.getPath("pictures"),
   },
 });
 
@@ -108,7 +109,7 @@ const createWindow = () => {
   ipcMain.handle("open-dialog", async () => {
     return dialog
       .showOpenDialog(mainWindow, {
-        defaultPath: app.getPath("pictures"),
+        defaultPath: store.get("lastUsedPath") || app.getPath("pictures"),
         properties: ["openFile"],
         title: `${i18next.t("Select an image")}`,
         filters: [
@@ -130,6 +131,7 @@ const createWindow = () => {
       .then((result) => {
         if (result.canceled) return;
         if (path.basename(result.filePaths[0]).startsWith(dotfiles)) return;
+        store.set("lastUsedPath", path.dirname(result.filePaths[0]));
 
         return result.filePaths[0];
       })
