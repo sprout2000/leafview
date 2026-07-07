@@ -7,5 +7,4 @@ declare type StoreType = {
   language?: string;
   showmenu: boolean;
   darkmode: boolean;
-  lastUsedPath: string | undefined;
 };

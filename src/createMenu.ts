@@ -198,8 +198,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
           click: async () => {
             return dialog
               .showOpenDialog(win, {
-                defaultPath:
-                  store.get("lastUsedPath") || app.getPath("pictures"),
+                defaultPath: app.getPath("pictures"),
                 properties: ["openFile"],
                 title: `${i18next.t("Select an image")}`,
                 filters: [
@@ -224,7 +223,6 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
                 if (path.basename(result.filePaths[0]).startsWith(dotfiles)) {
                   return;
                 }
-                store.set("lastUsedPath", path.dirname(result.filePaths[0]));
 
                 win.webContents.send("menu-open", result.filePaths[0]);
               })
