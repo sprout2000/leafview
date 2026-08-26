@@ -19,6 +19,7 @@ build({
     },
     files: ["dist/**/*"],
     linux: {
+      syncDesktopName: true,
       category: "Graphics",
       icon: "assets/linux.icns",
       target: ["AppImage", "deb", "zip"],
