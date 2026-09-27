@@ -63,28 +63,28 @@ You can download the latest version of _LeafView_ from the releases page here:
 
 ## :globe_with_meridians: Supported Languages
 
-| Language      |  Code   |
-| :------------ | :-----: |
-| اللغة العربية |  `ar`   |
-| Čeština       |  `cs`   |
-| Deutsch       |  `de`   |
-| English       |  `en`   |
-| Español       |  `es`   |
-| Français      |  `fr`   |
-| हिंदी         |  `hi`   |
-| Magyar        |  `hu`   |
-| Bahasa Indonesia | `id` |
-| Italiano      |  `it`   |
-| 日本語        |  `ja`   |
-| 한국어        |  `ko`   |
-| Bahasa Melayu |  `ms`   |
-| Polski        |  `pl`   |
-| Português     |  `pt`   |
-| Русский       |  `ru`   |
-| Türkçe        |  `tr`   |
-| Українська    |  `uk`   |
-| 简体中文      | `zh_CN` |
-| 繁体中文      | `zh_TW` |
+| Language         |  Code   |
+| :--------------- | :-----: |
+| اللغة العربية    |  `ar`   |
+| Čeština          |  `cs`   |
+| Deutsch          |  `de`   |
+| English          |  `en`   |
+| Español          |  `es`   |
+| Français         |  `fr`   |
+| हिंदी            |  `hi`   |
+| Magyar           |  `hu`   |
+| Bahasa Indonesia |  `id`   |
+| Italiano         |  `it`   |
+| 日本語           |  `ja`   |
+| 한국어           |  `ko`   |
+| Bahasa Melayu    |  `ms`   |
+| Polski           |  `pl`   |
+| Português        |  `pt`   |
+| Русский          |  `ru`   |
+| Türkçe           |  `tr`   |
+| Українська       |  `uk`   |
+| 简体中文         | `zh_CN` |
+| 繁体中文         | `zh_TW` |
 
 ## :beers: Contributing
 
