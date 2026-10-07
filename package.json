@@ -44,7 +44,7 @@
     "cross-env": "^10.1.0",
     "css-loader": "^7.1.5",
     "dotenv": "^17.4.2",
-    "electron": "^44.6.0",
+    "electron": "^44.7.0",
     "electron-builder": "^26.17.0",
     "electronmon": "^2.0.4",
     "html-webpack-plugin": "^5.6.8",
