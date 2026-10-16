@@ -32,6 +32,12 @@ build({
         "image/svg+xml",
         "image/vnd.microsoft.icon",
       ],
+      publish: [
+        {
+          provider: "github",
+          releaseType: "release",
+        },
+      ],
     },
     win: {
       icon: "assets/icon.ico",
@@ -40,6 +46,12 @@ build({
         {
           ext: ["bmp", "gif", "jpeg", "jpg", "png", "ico", "svg", "webp"],
           description: "Image files",
+        },
+      ],
+      publish: [
+        {
+          provider: "github",
+          releaseType: "release",
         },
       ],
     },
