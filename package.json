@@ -16,6 +16,7 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "webpack --progress",
+    "package": "electron-builder --config.mac.identity=null",
     "lint": "biome check --write ."
   },
   "dependencies": {
