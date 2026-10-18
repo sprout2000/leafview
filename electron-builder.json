@@ -48,7 +48,6 @@
       "target": ["dmg", "zip"],
       "icon": "assets/icon.icns",
       "darkModeSupport": true,
-      "identity": null,
       "extendInfo": {
         "CFBundleName": "LeafView",
         "CFBundleDisplayName": "LeafView",
