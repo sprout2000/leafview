@@ -2,9 +2,11 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const isDev = process.env.NODE_ENV === "development";
+
 /** @type import("webpack").Configuration */
 const common = {
-  mode: "production",
+  mode: isDev ? "development" : "production",
   resolve: {
     extensions: [".js", ".ts", ".jsx", ".tsx", ".json"],
   },
@@ -32,7 +34,7 @@ const common = {
     ],
   },
   stats: "errors-only",
-  devtool: false,
+  devtool: isDev ? "source-map" : false,
 };
 
 /** @type import("webpack").Configuration */
