@@ -26,6 +26,9 @@
         "noConfusingVoidType": "off",
         "noTemplateCurlyInString": "off",
         "useIterableCallbackReturn": "off"
+      },
+      "style": {
+        "noDescendingSpecificity": "off"
       }
     }
   },
