@@ -12,7 +12,7 @@ const getZoom = (iw: number, w: number, ih: number, h: number) => {
   if (iw > w || ih > h) {
     const zoomX = w / iw;
     const zoomY = h / ih;
-    return zoomX >= zoomY ? zoomY : zoomX;
+    return Math.min(zoomX, zoomY);
   }
   return 1;
 };
