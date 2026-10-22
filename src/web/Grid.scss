@@ -64,16 +64,17 @@ $WRAPPER_SIZE: 148px;
             border-radius: 6px;
             transition: border-color 0.3s ease-in-out;
 
+            &:hover {
+              cursor: pointer;
+              border-color: $THUMB_HOVER;
+            }
+
             &.current {
               border: 4px solid #68f;
               border-radius: 6px;
               &:hover {
                 border-color: #68f;
               }
-            }
-            &:hover {
-              cursor: pointer;
-              border-color: $THUMB_HOVER;
             }
           }
         }
