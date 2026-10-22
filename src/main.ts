@@ -40,7 +40,6 @@ const store = new Store<StoreType>({
     y: undefined,
     width: initWidth,
     height: initHeight,
-    showmenu: true,
     darkmode: true,
   },
 });
@@ -71,13 +70,13 @@ const createWindow = () => {
     height: store.get("height"),
     icon: path.join(getResourceDirectory(), "images/logo.png"),
     backgroundColor: store.get("darkmode") ? "#1e1e1e" : "#f6f6f6",
+    autoHideMenuBar: true,
     webPreferences: {
       safeDialogs: true,
       preload: path.join(__dirname, "preload.js"),
     },
   });
 
-  if (!isDarwin) mainWindow.setMenuBarVisibility(store.get("showmenu"));
   nativeTheme.themeSource = store.get("darkmode") ? "dark" : "light";
 
   const menu = createMenu(mainWindow, store);
@@ -152,7 +151,7 @@ const createWindow = () => {
   ipcMain.handle("file-history", (_e, arg) => app.addRecentDocument(arg));
 
   ipcMain.handle("show-context-menu", () => {
-    if (isDarwin || !mainWindow.menuBarVisible) menu.popup();
+    menu.popup();
   });
 
   mainWindow.webContents.once("did-finish-load", () => {

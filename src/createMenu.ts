@@ -134,17 +134,6 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   if (!isDarwin) {
     viewSub.push(
       {
-        label: `${i18next.t("Toggle Menubar")}`,
-        accelerator: "Ctrl+Shift+T",
-        type: "checkbox",
-        checked: store.get("showmenu"),
-        click: () => {
-          win.setMenuBarVisibility(!win.menuBarVisible);
-          store.set("showmenu", !store.get("showmenu"));
-        },
-      },
-      { type: "separator" },
-      {
         label: `${i18next.t("Toggle Fullscreen")}`,
         role: "togglefullscreen",
         accelerator: "F11",

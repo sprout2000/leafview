@@ -40,26 +40,25 @@ You can download the latest version of _LeafView_ from the releases page here:
 
 ### :keyboard: Keyboard Shortcuts
 
-|                                      Key                                      | Function                           |
-| :---------------------------------------------------------------------------: | :--------------------------------- |
-| <kbd>J</kbd>, <kbd>Ctrl</kbd>+<kbd>N</kbd>, <kbd>CmdOrCtrl</kbd>+<kbd>→</kbd> | Next Image                         |
-| <kbd>K</kbd>, <kbd>Ctrl</kbd>+<kbd>P</kbd>, <kbd>CmdOrCtrl</kbd>+<kbd>←</kbd> | Previous Image                     |
-|                                 <kbd>+</kbd>                                  | Zoom In                            |
-|                                 <kbd>-</kbd>                                  | Zoom Out                           |
-|                                 <kbd>0</kbd>                                  | Reset Zoom                         |
-|              <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd>              | Pan                                |
-|               <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>               | Move to Trash                      |
-|                  <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>G</kbd>                   | Toggle Grid View                   |
-|                 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>                 | Toggle Menubar _(Windows / Linux)_ |
+|                                      Key                                      | Function         |
+| :---------------------------------------------------------------------------: | :--------------- |
+| <kbd>J</kbd>, <kbd>Ctrl</kbd>+<kbd>N</kbd>, <kbd>CmdOrCtrl</kbd>+<kbd>→</kbd> | Next Image       |
+| <kbd>K</kbd>, <kbd>Ctrl</kbd>+<kbd>P</kbd>, <kbd>CmdOrCtrl</kbd>+<kbd>←</kbd> | Previous Image   |
+|                                 <kbd>+</kbd>                                  | Zoom In          |
+|                                 <kbd>-</kbd>                                  | Zoom Out         |
+|                                 <kbd>0</kbd>                                  | Reset Zoom       |
+|              <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd>              | Pan              |
+|               <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>               | Move to Trash    |
+|                  <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>G</kbd>                   | Toggle Grid View |
 
 ### :computer_mouse: Mouse Operations
 
-|    Mouse     | Function                             |
-| :----------: | :----------------------------------- |
-|     Drag     | Pan                                  |
-|    Wheel     | Zoom in/out                          |
-| Double click | Reset zoom                           |
-| Right click  | Show the context menu when available |
+|    Mouse     | Function              |
+| :----------: | :-------------------- |
+|     Drag     | Pan                   |
+|    Wheel     | Zoom in/out           |
+| Double click | Reset zoom            |
+| Right click  | Show the context menu |
 
 ## :globe_with_meridians: Supported Languages
 
