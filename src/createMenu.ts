@@ -70,6 +70,8 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       },
       checked: store.get("language") === locale.code,
     });
+
+    return locale;
   });
 
   const viewSub: MenuItemConstructorOptions[] = [
