@@ -33,6 +33,7 @@ export const Grid = memo((props: Props) => {
           >
             <img
               src={item}
+              alt=""
               className={item === props.url ? "thumb current" : "thumb"}
               onClick={(e) => props.onClickThumb(e, item)}
               onDragStart={() => {
