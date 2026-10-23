@@ -23,9 +23,7 @@
         "noSvgWithoutTitle": "off"
       },
       "suspicious": {
-        "noConfusingVoidType": "off",
-        "noTemplateCurlyInString": "off",
-        "useIterableCallbackReturn": "off"
+        "noConfusingVoidType": "off"
       }
     }
   },
