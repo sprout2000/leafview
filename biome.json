@@ -19,7 +19,6 @@
       "a11y": {
         "noStaticElementInteractions": "off",
         "useKeyWithClickEvents": "off",
-        "useAltText": "off",
         "noSvgWithoutTitle": "off"
       },
       "suspicious": {
