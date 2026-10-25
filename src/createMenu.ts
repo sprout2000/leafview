@@ -137,34 +137,17 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
       accelerator: isDarwin ? "Cmd+Option+I" : "Ctrl+Shift+I",
       visible: false,
     },
+    {
+      label: `${i18next.t("Toggle Fullscreen")}`,
+      role: "togglefullscreen",
+      accelerator: isDarwin ? "Ctrl+Cmd+F" : "F11",
+    },
+    { type: "separator" },
+    {
+      label: `${i18next.t("Language")}`,
+      submenu: langSub,
+    },
   ];
-
-  if (!isDarwin) {
-    viewSub.push(
-      {
-        label: `${i18next.t("Toggle Fullscreen")}`,
-        role: "togglefullscreen",
-        accelerator: "F11",
-      },
-      { type: "separator" },
-      {
-        label: `${i18next.t("Language")}`,
-        submenu: langSub,
-      },
-    );
-  } else {
-    viewSub.push(
-      {
-        label: `${i18next.t("Toggle Fullscreen")}`,
-        role: "togglefullscreen",
-      },
-      { type: "separator" },
-      {
-        label: `${i18next.t("Language")}`,
-        submenu: langSub,
-      },
-    );
-  }
 
   const helpSub: MenuItemConstructorOptions[] = [
     {
