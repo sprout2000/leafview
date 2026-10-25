@@ -131,6 +131,12 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         store.set("darkmode", !store.get("darkmode"));
       },
     },
+    {
+      label: "Toggle Developer Tools (invisible)",
+      click: () => win.webContents.openDevTools({ mode: "detach" }),
+      accelerator: isDarwin ? "Cmd+Option+I" : "Ctrl+Shift+I",
+      visible: false,
+    },
   ];
 
   if (!isDarwin) {
