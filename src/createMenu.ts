@@ -133,7 +133,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
     },
     {
       label: "Toggle Developer Tools (invisible)",
-      click: () => win.webContents.openDevTools({ mode: "detach" }),
+      role: "toggleDevTools",
       accelerator: isDarwin ? "Cmd+Option+I" : "Ctrl+Shift+I",
       visible: false,
     },
