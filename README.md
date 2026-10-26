@@ -115,23 +115,23 @@ Thanks go to these wonderful people :slightly_smiling_face::
   <img src="https://contrib.rocks/image?repo=sprout2000/leafview" />
 </a>
 
-<!-- ## :gear: How to build by yourself
+<!-- ## :hammer_and_wrench: How to build?
+
+You will need to have [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/) installed.
 
 ```sh
 # 1. Clone this repo.
-$ git clone https://github.com/sprout2000/leafview.git
+git clone https://github.com/sprout2000/leafview.git
 
 # 2. Install dependencies
-$ cd leafview
-$ npm install
+cd leafview
+npm install
 
-# 3. Build and Package
-$ npm run build && npm run package
+# 3. Build the app and create an installer
+npm run build && npm run package
 ```
 
-And then, you'll find the installer in the `“release”` directory.
-
-_* You will need to have [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en) installed._ -->
+And then, you will find the installer in the `release` directory. -->
 
 ## :copyright: Copyright
 
