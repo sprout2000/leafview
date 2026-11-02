@@ -115,7 +115,7 @@ Thanks go to these wonderful people :slightly_smiling_face::
   <img src="https://contrib.rocks/image?repo=sprout2000/leafview" />
 </a>
 
-<!-- ## :hammer_and_wrench: How to build?
+## :hammer_and_wrench: How to build?
 
 You will need to have [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/) installed.
 
@@ -131,7 +131,7 @@ npm install
 npm run build && npm run package
 ```
 
-And then, you will find the installer in the `release` directory. -->
+And then, you will find the installer in the `release` directory.
 
 ## :copyright: Copyright
 
