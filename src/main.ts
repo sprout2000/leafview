@@ -12,6 +12,11 @@ import {
   shell,
 } from "electron";
 
+import {
+  installExtension,
+  REACT_DEVELOPER_TOOLS,
+} from "electron-devtools-installer";
+
 import log from "electron-log";
 import Store from "electron-store";
 import { autoUpdater } from "electron-updater";
@@ -258,6 +263,12 @@ app.whenReady().then(() => {
   const locale = store.get("language") || app.getLocale();
   setLocales(locale);
   store.set("language", locale);
+
+  if (isDevelop) {
+    installExtension(REACT_DEVELOPER_TOOLS, {
+      loadExtensionOptions: { allowFileAccess: true },
+    });
+  }
 
   createWindow();
 });
