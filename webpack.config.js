@@ -33,6 +33,10 @@ const common = {
       },
     ],
   },
+  watch: isDev,
+  watchOptions: {
+    ignored: /node_modules/,
+  },
   stats: "errors-only",
   devtool: isDev ? "source-map" : false,
 };
