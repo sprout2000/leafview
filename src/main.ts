@@ -264,13 +264,13 @@ app.whenReady().then(() => {
   setLocales(locale);
   store.set("language", locale);
 
+  createWindow();
+
   if (isDevelop) {
     installExtension(REACT_DEVELOPER_TOOLS, {
       loadExtensionOptions: { allowFileAccess: true },
     });
   }
-
-  createWindow();
 });
 
 app.setAboutPanelOptions({
