@@ -25,17 +25,13 @@
     },
     "win": {
       "icon": "assets/icon.ico",
-      "target": ["nsis", "portable"],
+      "target": ["nsis", "zip"],
       "fileAssociations": [
         {
           "ext": ["bmp", "gif", "jpeg", "jpg", "png", "ico", "svg", "webp"],
           "description": "Image files"
         }
       ]
-    },
-    "portable": {
-      "artifactName":
-        "${productName}-${version}-${platform}-${arch}-portable.${ext}"
     },
     "nsis": {
       "oneClick": false,
