@@ -70,7 +70,7 @@ You can download the latest version of _LeafView_ from the releases page here:
 | English          |  `en`   |
 | Español          |  `es`   |
 | Français         |  `fr`   |
-| हिंदी            |  `hi`   |
+| हिंदी             |  `hi`   |
 | Magyar           |  `hu`   |
 | Bahasa Indonesia |  `id`   |
 | Italiano         |  `it`   |
