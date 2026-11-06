@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["src/**/*", "webpack.config.js"]
+    "includes": ["**", "!dist/**/*", "!release/**/*"]
   },
   "formatter": {
     "enabled": true,
