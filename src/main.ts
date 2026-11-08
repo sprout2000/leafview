@@ -35,8 +35,8 @@ let openfile: string | null = null;
 const isDarwin = process.platform === "darwin";
 const isDevelop = process.env.NODE_ENV === "development";
 
-const initWidth = 800;
-const initHeight = 528;
+const initWidth = 960;
+const initHeight = 640;
 
 const store = new Store<StoreType>({
   defaults: {
