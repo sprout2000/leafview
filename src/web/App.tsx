@@ -2,6 +2,7 @@ import type { IpcRendererEvent } from "electron";
 import { useCallback, useEffect, useState } from "react";
 
 import { Grid } from "./Grid";
+import { getImageAfterRemoval, getNextImage, getPrevImage } from "./imageUtils";
 import { ToolBar } from "./ToolBar";
 import { View } from "./View";
 
@@ -53,12 +54,7 @@ export const App = () => {
 
     if (list.length === 1) return;
 
-    const index = list.indexOf(url);
-    if (index === list.length - 1 || index === -1) {
-      setUrl(list[0]);
-    } else {
-      setUrl(list[index + 1]);
-    }
+    setUrl(getNextImage(list, url));
   }, [url, grid]);
 
   const handlePrev = useCallback(async () => {
@@ -79,14 +75,7 @@ export const App = () => {
 
     if (list.length === 1) return;
 
-    const index = list.indexOf(url);
-    if (index === 0) {
-      setUrl(list[list.length - 1]);
-    } else if (index === -1) {
-      setUrl(list[0]);
-    } else {
-      setUrl(list[index - 1]);
-    }
+    setUrl(getPrevImage(list, url));
   }, [url, grid]);
 
   const handleRemove = useCallback(async () => {
@@ -116,11 +105,7 @@ export const App = () => {
 
     setImgList(newList);
 
-    if (index > newList.length - 1) {
-      setUrl(newList[0]);
-    } else {
-      setUrl(newList[index]);
-    }
+    setUrl(getImageAfterRemoval(newList, index));
   }, [url]);
 
   const handleClickOpen = useCallback(async () => {

@@ -1,20 +1,13 @@
 import L from "leaflet";
 import { memo, useCallback, useEffect, useRef } from "react";
 
+import { getZoom } from "./imageUtils";
+
 import "leaflet/dist/leaflet.css";
 import "./View.scss";
 
 type Props = {
   url: string;
-};
-
-const getZoom = (iw: number, w: number, ih: number, h: number) => {
-  if (iw > w || ih > h) {
-    const zoomX = w / iw;
-    const zoomY = h / ih;
-    return Math.min(zoomX, zoomY);
-  }
-  return 1;
 };
 
 export const View = memo(({ url = "" }: Props) => {

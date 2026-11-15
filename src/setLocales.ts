@@ -22,7 +22,7 @@ import zh_CN from "./locales/zh_cn.json"; // https://github.com/sprout2000/leafv
 import zh_TW from "./locales/zh_tw.json";
 
 export const setLocales = (locale: string) => {
-  i18next.init({
+  return i18next.init({
     lng: locale,
     fallbackLng: "en",
     resources: {
