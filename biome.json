@@ -7,7 +7,14 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!dist/**/*", "!release/**/*"]
+    "includes": [
+      "**",
+      "!dist/**/*",
+      "!release/**/*",
+      "!coverage/**/*",
+      "!src/__tests__/**/*",
+      "!src/web/__tests__/**/*"
+    ]
   },
   "formatter": {
     "enabled": true,

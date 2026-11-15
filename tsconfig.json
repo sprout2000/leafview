@@ -8,6 +8,15 @@
     "jsx": "react-jsx",
     "strict": true
   },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "release",
+    "coverage",
+    "vitest.config.mts",
+    "src/__tests__",
+    "src/web/__tests__"
+  ],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
