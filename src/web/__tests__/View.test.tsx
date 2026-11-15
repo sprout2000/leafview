@@ -207,6 +207,20 @@ describe("<View />", () => {
     expect(leaflet.map.setZoom).not.toHaveBeenCalled();
   });
 
+  it("does not draw when resized after unmount", async () => {
+    FakeImage.size = { width: 200, height: 100 };
+    const { unmount } = render(<View url="/pics/a.png" />);
+    const observer = latest();
+
+    unmount();
+    // React has cleared the ref, so draw() finds no node.
+    observer.resize(800, 600);
+    await Promise.resolve();
+
+    expect(leaflet.module.map).not.toHaveBeenCalled();
+    expect(leaflet.module.imageOverlay).not.toHaveBeenCalled();
+  });
+
   it("disconnects the observer on unmount", () => {
     const { unmount } = render(<View url="/pics/a.png" />);
     const observer = latest();
