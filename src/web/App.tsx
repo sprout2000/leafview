@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { Grid } from "./Grid";
 import { getImageAfterRemoval, getNextImage, getPrevImage } from "./imageUtils";
+import { reload } from "./reload";
 import { ToolBar } from "./ToolBar";
 import { View } from "./View";
 
@@ -42,13 +43,13 @@ export const App = () => {
 
     const dir = await window.myAPI.dirname(url);
     if (!dir) {
-      window.location.reload();
+      reload();
       return;
     }
 
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0) {
-      window.location.reload();
+      reload();
       return;
     }
 
@@ -63,13 +64,13 @@ export const App = () => {
 
     const dir = await window.myAPI.dirname(url);
     if (!dir) {
-      window.location.reload();
+      reload();
       return;
     }
 
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0) {
-      window.location.reload();
+      reload();
       return;
     }
 
@@ -83,13 +84,13 @@ export const App = () => {
 
     const dir = await window.myAPI.dirname(url);
     if (!dir) {
-      window.location.reload();
+      reload();
       return;
     }
 
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
-      window.location.reload();
+      reload();
       return;
     }
 
@@ -99,7 +100,7 @@ export const App = () => {
     const newList = await window.myAPI.readdir(dir);
 
     if (!newList || newList.length === 0) {
-      window.location.reload();
+      reload();
       return;
     }
 
@@ -132,13 +133,13 @@ export const App = () => {
 
     const dir = await window.myAPI.dirname(url);
     if (!dir) {
-      window.location.reload();
+      reload();
       return;
     }
 
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
-      window.location.reload();
+      reload();
       return;
     }
 
@@ -159,13 +160,13 @@ export const App = () => {
 
     const dir = await window.myAPI.dirname(item);
     if (!dir) {
-      window.location.reload();
+      reload();
       return;
     }
 
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(item)) {
-      window.location.reload();
+      reload();
       return;
     }
 
@@ -176,13 +177,13 @@ export const App = () => {
   const handleClickBlank = async () => {
     const dir = await window.myAPI.dirname(url);
     if (!dir) {
-      window.location.reload();
+      reload();
       return;
     }
 
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
-      window.location.reload();
+      reload();
       return;
     }
 
