@@ -36,9 +36,7 @@ export const Grid = memo((props: Props) => {
               alt=""
               className={item === props.url ? "thumb current" : "thumb"}
               onClick={(e) => props.onClickThumb(e, item)}
-              onDragStart={() => {
-                return false;
-              }}
+              onDragStart={(e) => e.preventDefault()}
             />
           </div>
         ))}
