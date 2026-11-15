@@ -4,12 +4,16 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { IElectronAPI } from "../../@types/Context";
 import { App } from "../App";
+import { reload } from "../reload";
 
 // <View /> depends on Leaflet and ResizeObserver; replace it with a stub
 // that just shows the current url.
 vi.mock("../View", () => ({
   View: ({ url }: { url: string }) => <div data-testid="view">{url}</div>,
 }));
+
+// jsdom cannot reload the page; record the calls instead.
+vi.mock("../reload", () => ({ reload: vi.fn() }));
 
 type Listener = (...args: unknown[]) => Promise<void>;
 
@@ -317,16 +321,26 @@ describe("<App />", () => {
       expect(view()).toHaveTextContent(B);
     });
 
-    it("does not trash an image that no longer exists", async () => {
-      // App calls window.location.reload(), which jsdom reports as
-      // "Not implemented: navigation".
-      vi.spyOn(console, "error").mockImplementation(() => {});
+    it("reloads instead of trashing an image that no longer exists", async () => {
       await renderWith(B);
       mock.api.readdir.mockResolvedValue([A, C]);
 
       await clickButton("Move to Trash");
 
       expect(mock.api.moveToTrash).not.toHaveBeenCalled();
+      expect(reload).toHaveBeenCalledTimes(1);
+    });
+
+    it("reloads when the directory becomes empty after trashing", async () => {
+      mock = createMockAPI([B]);
+      window.myAPI = mock.api as unknown as IElectronAPI;
+      await renderWith(B);
+
+      await clickButton("Move to Trash");
+
+      expect(mock.api.moveToTrash).toHaveBeenCalledWith(B);
+      expect(reload).toHaveBeenCalledTimes(1);
+      expect(view()).toHaveTextContent(B);
     });
   });
 
@@ -400,6 +414,200 @@ describe("<App />", () => {
       });
 
       expect(mock.api.showFilePath).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("reload when the directory is not available", () => {
+    const toolbarActions = [
+      "Next Image",
+      "Prev Image",
+      "Move to Trash",
+      "Toggle Grid View",
+    ];
+
+    it.each(toolbarActions)(
+      "%s reloads when the directory cannot be resolved",
+      async (title) => {
+        await renderWith(B);
+        mock.api.dirname.mockResolvedValueOnce("");
+
+        await clickButton(title);
+
+        expect(reload).toHaveBeenCalledTimes(1);
+        expect(mock.api.readdir).not.toHaveBeenCalled();
+        expect(view()).toHaveTextContent(B);
+      },
+    );
+
+    it.each(toolbarActions)(
+      "%s reloads when the directory cannot be read",
+      async (title) => {
+        await renderWith(B);
+        mock.api.readdir.mockResolvedValueOnce(undefined);
+
+        await clickButton(title);
+
+        expect(reload).toHaveBeenCalledTimes(1);
+        expect(view()).toHaveTextContent(B);
+      },
+    );
+
+    it.each(toolbarActions)(
+      "%s reloads when the directory is empty",
+      async (title) => {
+        await renderWith(B);
+        mock.api.readdir.mockResolvedValueOnce([]);
+
+        await clickButton(title);
+
+        expect(reload).toHaveBeenCalledTimes(1);
+        expect(view()).toHaveTextContent(B);
+      },
+    );
+
+    it("Toggle Grid View reloads when the current image no longer exists", async () => {
+      const { container } = await renderWith(B);
+      mock.api.readdir.mockResolvedValueOnce([A, C]);
+
+      await clickButton("Toggle Grid View");
+
+      expect(reload).toHaveBeenCalledTimes(1);
+      expect(container.firstChild).not.toHaveClass("grid");
+    });
+
+    it("does not reload in the normal case", async () => {
+      await renderWith(B);
+
+      await clickButton("Next Image");
+
+      expect(reload).not.toHaveBeenCalled();
+    });
+
+    describe("in the grid view", () => {
+      const openGrid = async () => {
+        const utils = await renderWith(B);
+        await clickButton("Toggle Grid View");
+        return utils;
+      };
+
+      const clickThumb = async (container: HTMLElement) => {
+        await act(async () => {
+          fireEvent.click(thumbs(container)[2]);
+        });
+      };
+
+      const clickBlank = async (container: HTMLElement) => {
+        await act(async () => {
+          fireEvent.click(container.querySelector(".grid-content") as Element);
+        });
+      };
+
+      it.each([
+        ["thumbnail", clickThumb],
+        ["background", clickBlank],
+      ])(
+        "clicking the %s reloads when the directory cannot be resolved",
+        async (_name, click) => {
+          const { container } = await openGrid();
+          mock.api.dirname.mockResolvedValueOnce("");
+
+          await click(container);
+
+          expect(reload).toHaveBeenCalledTimes(1);
+          expect(container.firstChild).toHaveClass("grid");
+        },
+      );
+
+      it.each([
+        ["thumbnail", clickThumb, undefined],
+        ["thumbnail", clickThumb, []],
+        ["thumbnail", clickThumb, [A, B]],
+        ["background", clickBlank, undefined],
+        ["background", clickBlank, []],
+        ["background", clickBlank, [A, C]],
+      ])(
+        "clicking the %s reloads when readdir returns %j",
+        async (_name, click, list) => {
+          const { container } = await openGrid();
+          mock.api.readdir.mockResolvedValueOnce(list);
+
+          await click(container);
+
+          expect(reload).toHaveBeenCalledTimes(1);
+          expect(container.firstChild).toHaveClass("grid");
+        },
+      );
+    });
+  });
+
+  describe("menu messages in the grid view", () => {
+    it("menu-open closes the grid and opens the file", async () => {
+      const { container } = await renderWith(B);
+      await mock.emit("toggle-grid");
+
+      await mock.emit("menu-open", {} as IpcRendererEvent, C);
+
+      expect(container.firstChild).not.toHaveClass("grid");
+      expect(view()).toHaveTextContent(C);
+    });
+
+    it("menu-prev closes the grid and moves back", async () => {
+      const { container } = await renderWith(B);
+      await mock.emit("toggle-grid");
+
+      await mock.emit("menu-prev");
+
+      expect(container.firstChild).not.toHaveClass("grid");
+      expect(view()).toHaveTextContent(A);
+    });
+  });
+
+  describe("drag and drop", () => {
+    it.each(["dragOver", "dragEnter"] as const)(
+      "cancels the default %s behavior",
+      async (type) => {
+        const { container } = await renderWith();
+
+        const notCancelled = fireEvent[type](container.firstChild as Element);
+
+        expect(notCancelled).toBe(false);
+      },
+    );
+
+    it("stops dragLeave from bubbling", async () => {
+      const { container } = await renderWith();
+      const onDragLeave = vi.fn();
+      // React listens on the render container, so listen on its parent.
+      document.body.addEventListener("dragleave", onDragLeave);
+
+      fireEvent.dragLeave(container.firstChild as Element);
+
+      document.body.removeEventListener("dragleave", onDragLeave);
+      expect(onDragLeave).not.toHaveBeenCalled();
+    });
+
+    it("cancels the default drop behavior", async () => {
+      const { container } = await renderWith();
+      let notCancelled = true;
+
+      await act(async () => {
+        notCancelled = fireEvent.drop(container.firstChild as Element, {
+          dataTransfer: { files: [new File([""], "b.png")] },
+        });
+      });
+
+      expect(notCancelled).toBe(false);
+    });
+
+    it("ignores a drop without dataTransfer", async () => {
+      const { container } = await renderWith();
+
+      await act(async () => {
+        fireEvent.drop(container.firstChild as Element);
+      });
+
+      expect(mock.api.showFilePath).not.toHaveBeenCalled();
+      expect(view()).toBeEmptyDOMElement();
     });
   });
 

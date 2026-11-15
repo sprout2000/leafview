@@ -160,6 +160,19 @@ describe("createMenu", () => {
     expect(electron.app.showAboutPanel).toHaveBeenCalled();
   });
 
+  it("opens the support page", async () => {
+    electron.shell.openExternal.mockResolvedValue(undefined);
+    const { items } = build();
+
+    const support = items.find((item) => item.label === "Support URL...");
+    expect(support, "menu item").toBeDefined();
+    await (support?.click as () => Promise<void>)();
+
+    expect(electron.shell.openExternal).toHaveBeenCalledWith(
+      "https://github.com/sprout2000/leafview/#readme",
+    );
+  });
+
   it("toggles the window size with Zoom", () => {
     const { items, win } = build();
     const zoom = items.find((item) => item.label === "Zoom");
@@ -291,6 +304,20 @@ describe("createMenu", () => {
         filePaths: ["/pics/.hidden.png"],
       });
 
+      expect(win.webContents.send).not.toHaveBeenCalled();
+    });
+
+    it("logs the error when the dialog fails", async () => {
+      const log = vi.spyOn(console, "log").mockImplementation(() => {});
+      setPlatform("darwin");
+      const error = new Error("boom");
+      electron.dialog.showOpenDialog.mockRejectedValue(error);
+      const { items, win } = build();
+
+      click(items.find((item) => item.accelerator === "CmdOrCtrl+O"));
+      await flush();
+
+      expect(log).toHaveBeenCalledWith(error);
       expect(win.webContents.send).not.toHaveBeenCalled();
     });
 

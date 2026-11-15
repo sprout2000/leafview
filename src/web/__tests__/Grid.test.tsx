@@ -80,6 +80,14 @@ describe("<Grid />", () => {
     expect(onClickThumb).not.toHaveBeenCalled();
   });
 
+  it("handles dragstart on a thumbnail", () => {
+    const { thumbs } = setup();
+
+    // The handler only returns false, which React ignores,
+    // so the browser's default drag behavior is not cancelled.
+    expect(fireEvent.dragStart(thumbs[0])).toBe(true);
+  });
+
   it("renders nothing but the container for an empty list", () => {
     const { container } = render(
       <Grid
