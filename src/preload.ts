@@ -16,13 +16,13 @@ contextBridge.exposeInMainWorld("myAPI", {
   dirname: (filepath: string): Promise<string> =>
     ipcRenderer.invoke("dirname", filepath),
 
-  readdir: (dirpath: string): Promise<void | string[]> =>
+  readdir: (dirpath: string): Promise<string[] | undefined> =>
     ipcRenderer.invoke("readdir", dirpath),
 
   moveToTrash: (filepath: string): Promise<void> =>
     ipcRenderer.invoke("move-to-trash", filepath),
 
-  openDialog: (): Promise<string | void | undefined> =>
+  openDialog: (): Promise<string | undefined> =>
     ipcRenderer.invoke("open-dialog"),
 
   updateTitle: (filepath: string): Promise<void> =>

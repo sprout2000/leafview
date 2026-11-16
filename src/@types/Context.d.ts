@@ -17,11 +17,11 @@ export interface IElectronAPI {
 
   dirname: (filepath: string) => Promise<string>;
 
-  readdir: (dirpath: string) => Promise<void | string[]>;
+  readdir: (dirpath: string) => Promise<string[] | undefined>;
 
   moveToTrash: (filepath: string) => Promise<void>;
 
-  openDialog: () => Promise<string | void | undefined>;
+  openDialog: () => Promise<string | undefined>;
 
   updateTitle: (filepath: string) => Promise<void>;
 

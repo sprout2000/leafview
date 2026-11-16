@@ -44,13 +44,13 @@ const createMockAPI = (initialFiles: string[]) => {
     dirname: vi.fn(async (filepath: string) =>
       filepath.slice(0, filepath.lastIndexOf("/")),
     ),
-    readdir: vi.fn(async (_dir: string): Promise<void | string[]> => [
+    readdir: vi.fn(async (_dir: string): Promise<string[] | undefined> => [
       ...files,
     ]),
     moveToTrash: vi.fn(async (filepath: string) => {
       files = files.filter((file) => file !== filepath);
     }),
-    openDialog: vi.fn(async (): Promise<string | void | undefined> => {}),
+    openDialog: vi.fn(async (): Promise<string | undefined> => {}),
     updateTitle: vi.fn(async (_filepath: string) => {}),
     menuNext: subscribe("menu-next"),
     menuPrev: subscribe("menu-prev"),
