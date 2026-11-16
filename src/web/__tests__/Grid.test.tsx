@@ -10,10 +10,7 @@ const setup = (url = "/pics/b.png") => {
   // <App /> stops propagation in its handler so that onClickBlank is not
   // emitted; mimic that here.
   const onClickThumb = vi.fn(
-    async (
-      e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-      _item: string,
-    ) => {
+    async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, _item: string) => {
       e.stopPropagation();
     },
   );
@@ -55,7 +52,7 @@ describe("<Grid />", () => {
     const { thumbs } = setup("/pics/c.png");
 
     expect(scrollIntoView).toHaveBeenCalledTimes(1);
-    expect(scrollIntoView.mock.contexts[0]).toBe(thumbs[2].parentElement);
+    expect(scrollIntoView.mock.contexts[0]).toBe(thumbs[2].closest(".wrapper"));
     expect(scrollIntoView).toHaveBeenCalledWith({
       behavior: "smooth",
       block: "center",
