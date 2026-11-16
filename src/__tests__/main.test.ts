@@ -162,6 +162,8 @@ vi.mock("i18next", () => ({ default: { t: (key: string) => key } }));
 vi.mock("../createMenu", () => ({ createMenu: h.createMenu }));
 vi.mock("../setLocales", () => ({ setLocales: h.setLocales }));
 
+const RESOURCES_PATH = "/opt/LeafView/resources";
+
 const original = {
   platform: process.platform,
   argv: process.argv,
@@ -225,7 +227,7 @@ const fakeEvent = () => ({ preventDefault: vi.fn() });
 
 beforeAll(() => {
   Object.defineProperty(process, "resourcesPath", {
-    value: "/opt/LeafView/resources",
+    value: RESOURCES_PATH,
     configurable: true,
   });
 });
@@ -282,7 +284,14 @@ describe("main.ts", () => {
         expect.objectContaining({
           applicationName: "LeafView",
           applicationVersion: expect.stringMatching(/^v4\.5\.4 \(Electron v/),
-          iconPath: "/opt/LeafView/resources/app.asar.unpacked/dist/images/logo.png",
+          // Build the expected path with node:path so that it matches the
+          // separators and drive letter of the OS running the tests.
+          iconPath: path.resolve(
+            RESOURCES_PATH,
+            "app.asar.unpacked",
+            "dist",
+            "images/logo.png",
+          ),
           copyright: `© 2020-${new Date().getFullYear()} sprout2000`,
         }),
       );
