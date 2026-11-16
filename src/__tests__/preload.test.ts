@@ -98,10 +98,7 @@ describe("preload.ts", () => {
 
         const unsubscribe = subscribe(listener);
 
-        expect(electron.ipcRenderer.on).toHaveBeenCalledWith(
-          channel,
-          listener,
-        );
+        expect(electron.ipcRenderer.on).toHaveBeenCalledWith(channel, listener);
         expect(electron.ipcRenderer.removeAllListeners).not.toHaveBeenCalled();
 
         unsubscribe();

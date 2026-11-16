@@ -10,7 +10,10 @@ const setup = (url = "/pics/b.png") => {
   // <App /> stops propagation in its handler so that onClickBlank is not
   // emitted; mimic that here.
   const onClickThumb = vi.fn(
-    async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, _item: string) => {
+    async (
+      e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+      _item: string,
+    ) => {
       e.stopPropagation();
     },
   );

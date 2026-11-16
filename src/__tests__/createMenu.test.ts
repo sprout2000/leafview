@@ -77,9 +77,15 @@ const build = (
   return { template, items: flatten(template), win, store };
 };
 
+/** Returns the click handler of a menu item, failing if there is none. */
+const getClickHandler = (item: Item | undefined) => {
+  const handler = item?.click;
+  if (!handler) throw new Error("menu item with a click handler not found");
+  return handler as () => unknown;
+};
+
 const click = (item: Item | undefined) => {
-  expect(item, "menu item").toBeDefined();
-  (item?.click as () => unknown)();
+  getClickHandler(item)();
 };
 
 const flush = () => new Promise((resolve) => setImmediate(resolve));
@@ -144,7 +150,9 @@ describe("createMenu", () => {
     ]);
 
     const help = template.find((item) => item.role === "help");
-    const helpLabels = (help?.submenu as Item[]).map((item) => item.label);
+    const submenu = help?.submenu;
+    if (!Array.isArray(submenu)) throw new Error("Help menu not found");
+    const helpLabels = submenu.map((item) => item.label);
     expect(helpLabels).toContain("About");
 
     expect(
@@ -165,8 +173,7 @@ describe("createMenu", () => {
     const { items } = build();
 
     const support = items.find((item) => item.label === "Support URL...");
-    expect(support, "menu item").toBeDefined();
-    await (support?.click as () => Promise<void>)();
+    await getClickHandler(support)();
 
     expect(electron.shell.openExternal).toHaveBeenCalledWith(
       "https://github.com/sprout2000/leafview/#readme",

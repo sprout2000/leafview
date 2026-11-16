@@ -25,10 +25,16 @@ const h = vi.hoisted(() => {
     return {
       listeners,
       on: (event: string, cb: Fn) => {
-        listeners.set(event, [...(listeners.get(event) ?? []), { cb, once: false }]);
+        listeners.set(event, [
+          ...(listeners.get(event) ?? []),
+          { cb, once: false },
+        ]);
       },
       once: (event: string, cb: Fn) => {
-        listeners.set(event, [...(listeners.get(event) ?? []), { cb, once: true }]);
+        listeners.set(event, [
+          ...(listeners.get(event) ?? []),
+          { cb, once: true },
+        ]);
       },
       emit: (event: string, ...args: unknown[]) => {
         const list = listeners.get(event) ?? [];
@@ -198,7 +204,8 @@ const load = async ({
   process.argv = argv;
   process.env.NODE_ENV = env;
 
-  for (const [key, value] of Object.entries(store)) h.state.store.set(key, value);
+  for (const [key, value] of Object.entries(store))
+    h.state.store.set(key, value);
 
   h.state.readyPromise = new Promise<void>((resolve) => {
     h.state.resolveReady = resolve;

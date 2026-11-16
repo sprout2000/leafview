@@ -44,9 +44,9 @@ const createMockAPI = (initialFiles: string[]) => {
     dirname: vi.fn(async (filepath: string) =>
       filepath.slice(0, filepath.lastIndexOf("/")),
     ),
-    readdir: vi.fn(async (_dir: string): Promise<string[] | undefined> => [
-      ...files,
-    ]),
+    readdir: vi.fn(
+      async (_dir: string): Promise<string[] | undefined> => [...files],
+    ),
     moveToTrash: vi.fn(async (filepath: string) => {
       files = files.filter((file) => file !== filepath);
     }),
@@ -132,20 +132,18 @@ describe("<App />", () => {
       expect(mock.listeners.size).toBe(0);
     });
 
-    it.each([
-      "Next Image",
-      "Prev Image",
-      "Move to Trash",
-      "Toggle Grid View",
-    ])("ignores %s when no image is opened", async (title) => {
-      await renderWith();
+    it.each(["Next Image", "Prev Image", "Move to Trash", "Toggle Grid View"])(
+      "ignores %s when no image is opened",
+      async (title) => {
+        await renderWith();
 
-      await clickButton(title);
+        await clickButton(title);
 
-      expect(mock.api.dirname).not.toHaveBeenCalled();
-      expect(mock.api.moveToTrash).not.toHaveBeenCalled();
-      expect(view()).toBeEmptyDOMElement();
-    });
+        expect(mock.api.dirname).not.toHaveBeenCalled();
+        expect(mock.api.moveToTrash).not.toHaveBeenCalled();
+        expect(view()).toBeEmptyDOMElement();
+      },
+    );
   });
 
   describe("opening images", () => {
@@ -353,9 +351,11 @@ describe("<App />", () => {
       expect(container.firstChild).toHaveClass("container", "grid");
       expect(view()).toBeNull();
       expect(screen.queryByTitle("Open...")).toBeNull();
-      expect(thumbs(container).map((img) => img.getAttribute("src"))).toEqual(
-        [A, B, C],
-      );
+      expect(thumbs(container).map((img) => img.getAttribute("src"))).toEqual([
+        A,
+        B,
+        C,
+      ]);
       expect(thumbs(container)[1]).toHaveClass("current");
     });
 

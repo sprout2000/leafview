@@ -167,11 +167,9 @@ describe("<View />", () => {
       [100, 0],
       [0, 200],
     ]);
-    expect(leaflet.map.setView).toHaveBeenCalledWith(
-      { lat: 50, lng: 100 },
-      0,
-      { animate: false },
-    );
+    expect(leaflet.map.setView).toHaveBeenCalledWith({ lat: 50, lng: 100 }, 0, {
+      animate: false,
+    });
   });
 
   it("removes the previous map before redrawing", async () => {
