@@ -46,3 +46,12 @@ export const getZoom = (iw: number, w: number, ih: number, h: number) => {
   }
   return 1;
 };
+
+/**
+ * Returns the display scale (%) relative to the original image size.
+ * `fitZoom` is the ratio used to fit the image into the viewport
+ * (see getZoom) and `mapZoom` is the current Leaflet zoom level,
+ * where each level doubles the size (CRS.Simple).
+ */
+export const getScalePercent = (fitZoom: number, mapZoom: number) =>
+  Math.round(fitZoom * 2 ** mapZoom * 100);

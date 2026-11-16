@@ -4,6 +4,7 @@ import {
   getImageAfterRemoval,
   getNextImage,
   getPrevImage,
+  getScalePercent,
   getZoom,
 } from "../imageUtils";
 
@@ -74,5 +75,28 @@ describe("getZoom", () => {
 
   it("uses the smaller ratio when both sides overflow", () => {
     expect(getZoom(1600, 800, 3000, 600)).toBe(0.2);
+  });
+});
+
+describe("getScalePercent", () => {
+  it("returns 100% for an image shown at its actual size", () => {
+    expect(getScalePercent(1, 0)).toBe(100);
+  });
+
+  it("takes the fitting ratio into account", () => {
+    expect(getScalePercent(0.5, 0)).toBe(50);
+    expect(getScalePercent(0.25, 0)).toBe(25);
+  });
+
+  it("doubles the scale for each zoom level", () => {
+    expect(getScalePercent(1, 1)).toBe(200);
+    expect(getScalePercent(1, -1)).toBe(50);
+    expect(getScalePercent(0.5, 2)).toBe(200);
+  });
+
+  it("rounds fractional zoom levels", () => {
+    // 2 ** 0.3 = 1.2311...
+    expect(getScalePercent(1, 0.3)).toBe(123);
+    expect(getScalePercent(0.5, 0.3)).toBe(62);
   });
 });

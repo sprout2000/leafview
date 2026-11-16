@@ -1,13 +1,14 @@
-import { act, render } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { View } from "../View";
+import { SCALE_POPUP_DURATION, View } from "../View";
 
 const leaflet = vi.hoisted(() => {
   const map = {
     fitBounds: vi.fn(),
     setView: vi.fn(),
     setZoom: vi.fn(),
+    getZoom: vi.fn(),
     on: vi.fn(),
     off: vi.fn(),
     remove: vi.fn(),
@@ -88,6 +89,7 @@ const resize = async (width: number, height: number) => {
 beforeEach(() => {
   FakeResizeObserver.instances = [];
   leaflet.map.fitBounds.mockReturnValue(leaflet.map);
+  leaflet.map.getZoom.mockReturnValue(0);
   leaflet.module.map.mockReturnValue(leaflet.map);
   leaflet.module.imageOverlay.mockReturnValue(leaflet.overlay);
   vi.stubGlobal("Image", FakeImage);
@@ -228,5 +230,146 @@ describe("<View />", () => {
     unmount();
 
     expect(observer.disconnect).toHaveBeenCalled();
+  });
+
+  describe("scale popup", () => {
+    /** Returns the listeners registered with map.on(). */
+    const handlers = () =>
+      Object.fromEntries(
+        leaflet.map.on.mock.calls as unknown as [string, () => void][],
+      );
+
+    const zoomTo = (level: number) => {
+      leaflet.map.getZoom.mockReturnValue(level);
+      act(() => {
+        handlers().zoomend();
+      });
+    };
+
+    const hide = () => {
+      act(() => {
+        vi.advanceTimersByTime(SCALE_POPUP_DURATION);
+      });
+    };
+
+    const popup = () => screen.queryByRole("status");
+
+    beforeEach(() => {
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it("is not shown before an image is drawn", () => {
+      render(<View url="/pics/a.png" />);
+
+      expect(popup()).toBeNull();
+    });
+
+    it("is shown when an image is opened", async () => {
+      // fitted at 50% (1600 x 1200 -> 800 x 600)
+      FakeImage.size = { width: 1600, height: 1200 };
+      render(<View url="/pics/large.png" />);
+
+      await resize(800, 600);
+
+      expect(popup()).toHaveTextContent("50%");
+      expect(popup()).toHaveClass("scale-popup", "show");
+    });
+
+    it("is shown when the image is switched", async () => {
+      FakeImage.size = { width: 200, height: 100 };
+      const { rerender } = render(<View url="/pics/a.png" />);
+      await resize(800, 600);
+      expect(popup()).toHaveTextContent("100%");
+      hide();
+
+      FakeImage.size = { width: 1600, height: 1200 };
+      rerender(<View url="/pics/b.png" />);
+      await resize(800, 600);
+
+      expect(popup()).toHaveClass("show");
+      expect(popup()).toHaveTextContent("50%");
+    });
+
+    it("is not shown again when the window is resized", async () => {
+      FakeImage.size = { width: 200, height: 100 };
+      render(<View url="/pics/a.png" />);
+      await resize(800, 600);
+      hide();
+
+      await resize(1024, 768);
+
+      expect(popup()).not.toHaveClass("show");
+    });
+
+    it("shows the scale relative to the original size when zooming", async () => {
+      FakeImage.size = { width: 1600, height: 1200 };
+      render(<View url="/pics/large.png" />);
+      await resize(800, 600);
+      hide();
+
+      zoomTo(1);
+      expect(popup()).toHaveClass("show");
+      expect(popup()).toHaveTextContent("100%");
+
+      zoomTo(0.3);
+      expect(popup()).toHaveTextContent("62%");
+
+      zoomTo(-1);
+      expect(popup()).toHaveTextContent("25%");
+    });
+
+    it("hides after a while", async () => {
+      FakeImage.size = { width: 200, height: 100 };
+      render(<View url="/pics/a.png" />);
+      await resize(800, 600);
+      hide();
+
+      zoomTo(0);
+      expect(popup()).toHaveClass("show");
+
+      hide();
+
+      expect(popup()).not.toHaveClass("show");
+    });
+
+    it("stays visible while zooming continuously", async () => {
+      FakeImage.size = { width: 200, height: 100 };
+      render(<View url="/pics/a.png" />);
+      await resize(800, 600);
+      hide();
+
+      zoomTo(0);
+      act(() => {
+        vi.advanceTimersByTime(SCALE_POPUP_DURATION - 100);
+      });
+      zoomTo(1);
+      act(() => {
+        vi.advanceTimersByTime(SCALE_POPUP_DURATION - 100);
+      });
+
+      expect(popup()).toHaveClass("show");
+      expect(popup()).toHaveTextContent("200%");
+
+      act(() => {
+        vi.advanceTimersByTime(100);
+      });
+
+      expect(popup()).not.toHaveClass("show");
+    });
+
+    it("clears the timer on unmount", async () => {
+      FakeImage.size = { width: 200, height: 100 };
+      const { unmount } = render(<View url="/pics/a.png" />);
+      await resize(800, 600);
+      zoomTo(0);
+
+      unmount();
+
+      expect(vi.getTimerCount()).toBe(0);
+    });
   });
 });
