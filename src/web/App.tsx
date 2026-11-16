@@ -152,7 +152,7 @@ export const App = () => {
   }, [grid, url]);
 
   const handleClickThumb = async (
-    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     item: string,
   ) => {
     // not to emit onClickBlank()
@@ -251,6 +251,7 @@ export const App = () => {
   }, [url, updateTitle]);
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: the whole window is a drop target for image files and opens the native context menu; it is not a control.
     <div
       className={grid ? "container grid" : "container"}
       onDrop={handleDrop}

@@ -2,6 +2,7 @@ import { memo } from "react";
 
 export const FolderOpen = memo(() => (
   <svg
+    aria-hidden="true"
     width="22"
     height="18"
     viewBox="0 0 22 18"

@@ -21,17 +21,7 @@
     "indentStyle": "space"
   },
   "linter": {
-    "enabled": true,
-    "rules": {
-      "a11y": {
-        "noStaticElementInteractions": "off",
-        "useKeyWithClickEvents": "off",
-        "noSvgWithoutTitle": "off"
-      },
-      "suspicious": {
-        "noConfusingVoidType": "off"
-      }
-    }
+    "enabled": true
   },
   "javascript": {
     "formatter": {

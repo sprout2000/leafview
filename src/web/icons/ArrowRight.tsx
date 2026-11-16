@@ -2,6 +2,7 @@ import { memo } from "react";
 
 export const ArrowRight = memo(() => (
   <svg
+    aria-hidden="true"
     width="19"
     height="22"
     viewBox="0 0 19 22"

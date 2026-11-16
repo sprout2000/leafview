@@ -77,6 +77,25 @@ $WRAPPER_SIZE: 148px;
               }
             }
           }
+
+          // Keep after .thumb: this selector is more specific
+          // (lint/style/noDescendingSpecificity).
+          .thumb-button {
+            display: block;
+            padding: 0;
+            border: none;
+            background: none;
+            line-height: 0;
+            cursor: pointer;
+
+            &:focus-visible {
+              outline: none;
+
+              .thumb {
+                border-color: $THUMB_HOVER;
+              }
+            }
+          }
         }
       }
     }

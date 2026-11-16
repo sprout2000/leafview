@@ -2,6 +2,7 @@ import { memo } from "react";
 
 export const GridIcon = memo(() => (
   <svg
+    aria-hidden="true"
     width="22"
     height="22"
     viewBox="0 0 22 22"

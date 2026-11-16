@@ -50,6 +50,37 @@ describe("<ToolBar />", () => {
     }
   });
 
+  it("renders real buttons that can be focused with the keyboard", () => {
+    setup();
+
+    const buttons = screen.getAllByRole("button");
+    expect(buttons).toHaveLength(5);
+
+    for (const button of buttons) {
+      expect(button).toHaveAttribute("type", "button");
+      button.focus();
+      expect(button).toHaveFocus();
+    }
+
+    expect(screen.getByRole("button", { name: "Open..." })).toBeInTheDocument();
+  });
+
+  it("hides the decorative icons from assistive technologies", () => {
+    const { container } = render(
+      <ToolBar
+        onClickOpen={vi.fn()}
+        onPrev={vi.fn()}
+        onNext={vi.fn()}
+        onRemove={vi.fn()}
+        onToggleGrid={vi.fn()}
+      />,
+    );
+
+    for (const svg of container.querySelectorAll("svg")) {
+      expect(svg).toHaveAttribute("aria-hidden", "true");
+    }
+  });
+
   it("renders an icon in each button", () => {
     const { container } = render(
       <ToolBar

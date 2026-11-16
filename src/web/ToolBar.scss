@@ -5,12 +5,22 @@
   justify-content: center;
   align-items: center;
 
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  font: inherit;
+
   fill: rgb(199, 199, 204);
   &:hover {
     cursor: pointer;
   }
   &:active {
     fill: rgb(255, 255, 255);
+  }
+  &:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: -4px;
   }
 }
 
@@ -27,7 +37,8 @@
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
 
-    &:hover {
+    &:hover,
+    &:focus-within {
       opacity: 1;
     }
 

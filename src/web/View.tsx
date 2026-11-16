@@ -126,12 +126,9 @@ export const View = memo(({ url = "" }: Props) => {
     <>
       <div className={!url ? "view init" : "view"} ref={mapRef} />
       {scale !== null && (
-        <div
-          className={showScale ? "scale-popup show" : "scale-popup"}
-          role="status"
-        >
+        <output className={showScale ? "scale-popup show" : "scale-popup"}>
           {scale}%
-        </div>
+        </output>
       )}
     </>
   );

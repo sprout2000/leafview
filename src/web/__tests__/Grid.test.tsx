@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import { Grid } from "../Grid";
@@ -10,7 +10,7 @@ const setup = (url = "/pics/b.png") => {
   // <App /> stops propagation in its handler so that onClickBlank is not
   // emitted; mimic that here.
   const onClickThumb = vi.fn(
-    async (e: React.MouseEvent<HTMLImageElement, MouseEvent>, _item: string) => {
+    async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, _item: string) => {
       e.stopPropagation();
     },
   );
@@ -85,6 +85,29 @@ describe("<Grid />", () => {
 
     // fireEvent returns false when preventDefault() was called.
     expect(fireEvent.dragStart(thumbs[0])).toBe(false);
+  });
+
+  it("renders each thumbnail as a button named after the file", () => {
+    render(
+      <Grid
+        url=""
+        imgList={["/pics/a.png", "C:\\pics\\b.png"]}
+        onClickBlank={vi.fn()}
+        onClickThumb={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByRole("button", { name: "a.png" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "b.png" })).toBeInTheDocument();
+  });
+
+  it("lets the keyboard focus the thumbnails", () => {
+    setup();
+
+    const button = screen.getByRole("button", { name: "a.png" });
+    button.focus();
+
+    expect(button).toHaveFocus();
   });
 
   it("renders nothing but the container for an empty list", () => {
