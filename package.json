@@ -21,9 +21,7 @@
     "build": "cross-env NODE_ENV=\"production\" webpack --progress",
     "package": "electron-builder --config.mac.identity=null",
     "lint": "biome check --write .",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "coverage": "vitest run --coverage"
+    "test": "vitest run --coverage"
   },
   "dependencies": {
     "electron-log": "^5.4.4",
