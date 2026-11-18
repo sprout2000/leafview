@@ -212,6 +212,16 @@ describe("createMenu", () => {
       expect(electron.nativeTheme.themeSource).toBe("light");
       expect(store.set).toHaveBeenCalledWith("darkmode", false);
     });
+
+    it("switches back to the dark theme", () => {
+      const store = createStore({ language: "en", darkmode: false });
+      const { items } = build(createWin(), store);
+
+      click(items.find((item) => item.accelerator === "CmdOrCtrl+T"));
+
+      expect(electron.nativeTheme.themeSource).toBe("dark");
+      expect(store.set).toHaveBeenCalledWith("darkmode", true);
+    });
   });
 
   describe("language", () => {

@@ -191,6 +191,15 @@ describe("<App />", () => {
       expect(mock.api.mimecheck).not.toHaveBeenCalled();
     });
 
+    it("ignores a menu-open message for a file that is not an image", async () => {
+      await renderWith();
+
+      await mock.emit("menu-open", {} as IpcRendererEvent, "/pics/readme.txt");
+
+      expect(mock.api.mimecheck).toHaveBeenCalledWith("/pics/readme.txt");
+      expect(view()).toBeEmptyDOMElement();
+    });
+
     it("opens a dropped image", async () => {
       const { container } = await renderWith();
 
