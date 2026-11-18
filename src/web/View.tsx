@@ -111,6 +111,9 @@ export const View = memo(({ url = "" }: Props) => {
       draw(width, height);
     });
 
+    // The div is always rendered before this effect runs, so mapRef.current
+    // is never null here; the guard only satisfies the type checker.
+    /* v8 ignore else */
     if (mapRef.current) resizeObserver.observe(mapRef.current);
 
     return () => {
