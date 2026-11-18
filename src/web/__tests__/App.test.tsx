@@ -352,9 +352,9 @@ describe("<App />", () => {
       expect(view()).toBeNull();
       expect(screen.queryByTitle("Open...")).toBeNull();
       expect(thumbs(container).map((img) => img.getAttribute("src"))).toEqual([
-        A,
-        B,
-        C,
+        `file://${A}`,
+        `file://${B}`,
+        `file://${C}`,
       ]);
       expect(thumbs(container)[1]).toHaveClass("current");
     });

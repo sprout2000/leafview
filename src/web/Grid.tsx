@@ -1,5 +1,7 @@
 import { memo, useLayoutEffect, useRef } from "react";
 
+import { toFileUrl } from "./imageUtils";
+
 import "./Grid.scss";
 
 const getFileName = (filepath: string) => filepath.split(/[\\/]/).pop();
@@ -44,7 +46,7 @@ export const Grid = memo((props: Props) => {
               onClick={(e) => props.onClickThumb(e, item)}
             >
               <img
-                src={item}
+                src={toFileUrl(item)}
                 alt={getFileName(item)}
                 className={item === props.url ? "thumb current" : "thumb"}
                 onDragStart={(e) => e.preventDefault()}

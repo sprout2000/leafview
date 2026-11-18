@@ -55,3 +55,37 @@ export const getZoom = (iw: number, w: number, ih: number, h: number) => {
  */
 export const getScalePercent = (fitZoom: number, mapZoom: number) =>
   Math.round(fitZoom * 2 ** mapZoom * 100);
+
+const encodeSegments = (filepath: string) =>
+  filepath
+    .split("/")
+    .map((segment) =>
+      // Keep Windows drive letters ("C:") as they are.
+      /^[A-Za-z]:$/.test(segment) ? segment : encodeURIComponent(segment),
+    )
+    .join("/");
+
+/**
+ * Converts a local file path into a file:// URL.
+ *
+ * Using a raw path as a URL breaks on characters that have a meaning in URLs,
+ * such as "#" (fragment), "?" (query) and "%" (escape). Every path segment is
+ * percent-encoded so that they are treated as part of the file name.
+ *
+ * - POSIX:   /Users/me/a#b/c.png  -> file:///Users/me/a%23b/c.png
+ * - Windows: C:\Users\a#b\c.png  -> file:///C:/Users/a%23b/c.png
+ * - UNC:     \\server\share\c.png -> file://server/share/c.png
+ */
+export const toFileUrl = (filepath: string) => {
+  const isWindowsPath = /^(?:[A-Za-z]:[\\/]|\\\\)/.test(filepath);
+  // Backslashes are separators only on Windows; on macOS / Linux they are
+  // valid characters in file names.
+  const normalized = isWindowsPath ? filepath.replace(/\\/g, "/") : filepath;
+
+  // UNC path: "//server/share/..." -> "file://server/share/..."
+  if (normalized.startsWith("//")) return `file:${encodeSegments(normalized)}`;
+
+  // "C:/..." -> "/C:/..."
+  const absolute = normalized.startsWith("/") ? normalized : `/${normalized}`;
+  return `file://${encodeSegments(absolute)}`;
+};

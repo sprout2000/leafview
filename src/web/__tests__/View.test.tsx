@@ -107,6 +107,25 @@ describe("<View />", () => {
     expect(container.firstChild).toHaveClass("view", "init");
   });
 
+  it("does not load anything before an image is opened", async () => {
+    const created = vi.fn();
+    vi.stubGlobal(
+      "Image",
+      class extends FakeImage {
+        constructor() {
+          super();
+          created();
+        }
+      },
+    );
+    render(<View url="" />);
+
+    await resize(800, 600);
+
+    expect(created).not.toHaveBeenCalled();
+    expect(leaflet.module.map).not.toHaveBeenCalled();
+  });
+
   it("drops the init class once an image is opened", () => {
     const { container } = render(<View url="/pics/a.png" />);
 
@@ -148,10 +167,25 @@ describe("<View />", () => {
     expect(leaflet.map.setView).not.toHaveBeenCalled();
 
     expect(leaflet.module.imageOverlay).toHaveBeenCalledWith(
-      "/pics/large.png",
+      "file:///pics/large.png",
       bounds,
     );
     expect(leaflet.overlay.addTo).toHaveBeenCalledWith(leaflet.map);
+  });
+
+  it.each([
+    ["/pics/#1/a.png", "file:///pics/%231/a.png"],
+    ["C:\\Users\\me\\#1\\a.png", "file:///C:/Users/me/%231/a.png"],
+  ])("loads %s even if a folder name contains #", async (url, expected) => {
+    FakeImage.size = { width: 200, height: 100 };
+    render(<View url={url} />);
+
+    await resize(800, 600);
+
+    expect(leaflet.module.imageOverlay).toHaveBeenCalledWith(
+      expected,
+      expect.anything(),
+    );
   });
 
   it("shows a small image at its actual size, centered", async () => {

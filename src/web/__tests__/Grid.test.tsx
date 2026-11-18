@@ -38,7 +38,30 @@ describe("<Grid />", () => {
   it("renders a thumbnail for every image", () => {
     const { thumbs } = setup();
 
-    expect(thumbs.map((img) => img.getAttribute("src"))).toEqual(imgList);
+    expect(thumbs.map((img) => img.getAttribute("src"))).toEqual([
+      "file:///pics/a.png",
+      "file:///pics/b.png",
+      "file:///pics/c.png",
+    ]);
+  });
+
+  it("loads thumbnails in folders whose names contain #", () => {
+    const { container } = render(
+      <Grid
+        url=""
+        imgList={["/pics/#1/a.png", "C:\\pics\\#2\\b.png"]}
+        onClickBlank={vi.fn()}
+        onClickThumb={vi.fn()}
+      />,
+    );
+
+    const srcs = Array.from(container.querySelectorAll("img")).map((img) =>
+      img.getAttribute("src"),
+    );
+    expect(srcs).toEqual([
+      "file:///pics/%231/a.png",
+      "file:///C:/pics/%232/b.png",
+    ]);
   });
 
   it("highlights the current image", () => {

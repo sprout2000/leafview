@@ -6,6 +6,7 @@ import {
   getPrevImage,
   getScalePercent,
   getZoom,
+  toFileUrl,
 } from "../imageUtils";
 
 const list = ["/pics/a.png", "/pics/b.png", "/pics/c.png"];
@@ -98,5 +99,47 @@ describe("getScalePercent", () => {
     // 2 ** 0.3 = 1.2311...
     expect(getScalePercent(1, 0.3)).toBe(123);
     expect(getScalePercent(0.5, 0.3)).toBe(62);
+  });
+});
+
+describe("toFileUrl", () => {
+  it.each([
+    ["/Users/me/Pictures/a.png", "file:///Users/me/Pictures/a.png"],
+    ["C:\\Users\\me\\Pictures\\a.png", "file:///C:/Users/me/Pictures/a.png"],
+    ["C:/Users/me/Pictures/a.png", "file:///C:/Users/me/Pictures/a.png"],
+    ["\\\\server\\share\\a.png", "file://server/share/a.png"],
+  ])("converts %s", (filepath, expected) => {
+    expect(toFileUrl(filepath)).toBe(expected);
+  });
+
+  it.each([
+    // the reported issue: "#" was treated as the start of a URL fragment
+    ["C:\\Users\\me\\#1\\a.png", "file:///C:/Users/me/%231/a.png"],
+    ["/Users/me/#1/a.png", "file:///Users/me/%231/a.png"],
+    ["\\\\server\\share\\#1\\a.png", "file://server/share/%231/a.png"],
+    ["/pics/what?.png", "file:///pics/what%3F.png"],
+    ["/pics/100%/a.png", "file:///pics/100%25/a.png"],
+    ["/pics/my photo.png", "file:///pics/my%20photo.png"],
+    ["/pics/写真.png", "file:///pics/%E5%86%99%E7%9C%9F.png"],
+  ])("encodes special characters in %s", (filepath, expected) => {
+    expect(toFileUrl(filepath)).toBe(expected);
+  });
+
+  it("keeps backslashes in POSIX file names", () => {
+    expect(toFileUrl("/pics/back\\slash.png")).toBe(
+      "file:///pics/back%5Cslash.png",
+    );
+  });
+
+  it.each([
+    "/Users/me/#1/a.png",
+    "C:\\Users\\me\\#1\\a.png",
+    "/pics/100%/what?.png",
+  ])("does not leave a fragment or query in the URL (%s)", (filepath) => {
+    const url = new URL(toFileUrl(filepath));
+
+    expect(url.hash).toBe("");
+    expect(url.search).toBe("");
+    expect(url.protocol).toBe("file:");
   });
 });

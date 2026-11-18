@@ -1,7 +1,7 @@
 import L from "leaflet";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 
-import { getScalePercent, getZoom } from "./imageUtils";
+import { getScalePercent, getZoom, toFileUrl } from "./imageUtils";
 
 import "leaflet/dist/leaflet.css";
 import "./View.scss";
@@ -37,7 +37,9 @@ export const View = memo(({ url = "" }: Props) => {
     (width: number, height: number) => {
       const node = mapRef.current;
 
-      if (node) {
+      // Nothing to draw before an image is opened. Without this check,
+      // toFileUrl("") would request "file:///" and log ERR_FILE_NOT_FOUND.
+      if (node && url) {
         const img = new Image();
 
         img.onload = () => {
@@ -96,7 +98,7 @@ export const View = memo(({ url = "" }: Props) => {
           node.focus();
         };
 
-        img.src = url;
+        img.src = toFileUrl(url);
       }
     },
     [url, popupScale],
