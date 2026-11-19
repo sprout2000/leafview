@@ -26,5 +26,7 @@
   "Quit": "Ukončit LeafView",
   "Quit LeafView": "Ukončit LeafView",
   "Language": "Jazyk",
-  "Warning": "To change the language, please restart LeafView."
+  "Warning": "To change the language, please restart LeafView.",
+  "Actual Size": "Skutečná velikost",
+  "Fit to Window": "Přizpůsobit oknu"
 }

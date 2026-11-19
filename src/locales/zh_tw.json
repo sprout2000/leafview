@@ -26,5 +26,7 @@
   "Quit": "退出",
   "Quit LeafView": "退出 LeafView",
   "Language": "語言",
-  "Warning": "To change the language, please restart LeafView."
+  "Warning": "To change the language, please restart LeafView.",
+  "Actual Size": "實際大小",
+  "Fit to Window": "符合視窗"
 }

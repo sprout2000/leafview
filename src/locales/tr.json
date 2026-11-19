@@ -26,5 +26,7 @@
   "Quit": "Çıkış",
   "Quit LeafView": "LeafView'dan Çık",
   "Language": "Dil",
-  "Warning": "Dili değiştirmek için LeafView'ı yeniden başlatın."
+  "Warning": "Dili değiştirmek için LeafView'ı yeniden başlatın.",
+  "Actual Size": "Gerçek Boyut",
+  "Fit to Window": "Pencereye Sığdır"
 }

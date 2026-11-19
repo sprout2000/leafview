@@ -26,5 +26,7 @@
   "Quit": "Zamknij LeafView",
   "Quit LeafView": "Zamknij LeafView",
   "Language": "Język",
-  "Warning": "To change the language, please restart LeafView."
+  "Warning": "To change the language, please restart LeafView.",
+  "Actual Size": "Rzeczywisty rozmiar",
+  "Fit to Window": "Dopasuj do okna"
 }

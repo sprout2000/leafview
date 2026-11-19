@@ -46,7 +46,10 @@ export const readImageDir = async (
  * Used for the folder remembered from the last session, which may have been
  * moved or deleted since then.
  */
-export const resolveExistingDir = (dir: string | undefined, fallback: string) => {
+export const resolveExistingDir = (
+  dir: string | undefined,
+  fallback: string,
+) => {
   if (!dir) return fallback;
 
   try {

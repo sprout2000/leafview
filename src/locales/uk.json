@@ -26,5 +26,7 @@
   "Quit": "Вийти з LeafView",
   "Quit LeafView": "Вийти з LeafView",
   "Language": "Мова",
-  "Warning": "Щоб змінити мову, перезапустіть LeafView."
+  "Warning": "Щоб змінити мову, перезапустіть LeafView.",
+  "Actual Size": "Справжній розмір",
+  "Fit to Window": "За розміром вікна"
 }

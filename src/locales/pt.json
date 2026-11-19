@@ -26,5 +26,7 @@
   "Quit": "Sair do LeafView",
   "Quit LeafView": "Sair do LeafView",
   "Language": "Língua",
-  "Warning": "To change the language, please restart LeafView."
+  "Warning": "To change the language, please restart LeafView.",
+  "Actual Size": "Tamanho real",
+  "Fit to Window": "Ajustar à janela"
 }

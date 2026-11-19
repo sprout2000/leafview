@@ -1,7 +1,7 @@
-import { act, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { SCALE_POPUP_DURATION, View } from "../View";
+import { SCALE_POPUP_DURATION, SCALE_POPUP_HOVER_AREA, View } from "../View";
 
 const leaflet = vi.hoisted(() => {
   const map = {
@@ -12,6 +12,7 @@ const leaflet = vi.hoisted(() => {
     on: vi.fn(),
     off: vi.fn(),
     remove: vi.fn(),
+    options: { zoomSnap: 0.3 },
   };
   map.fitBounds.mockReturnValue(map);
 
@@ -90,6 +91,7 @@ beforeEach(() => {
   FakeResizeObserver.instances = [];
   leaflet.map.fitBounds.mockReturnValue(leaflet.map);
   leaflet.map.getZoom.mockReturnValue(0);
+  leaflet.map.options.zoomSnap = 0.3;
   leaflet.module.map.mockReturnValue(leaflet.map);
   leaflet.module.imageOverlay.mockReturnValue(leaflet.overlay);
   vi.stubGlobal("Image", FakeImage);
@@ -284,7 +286,8 @@ describe("<View />", () => {
       });
     };
 
-    const popup = () => screen.queryByRole("status");
+    const popup = () => document.querySelector(".scale-popup");
+    const value = () => screen.queryByRole("status");
 
     beforeEach(() => {
       vi.useFakeTimers();
@@ -307,7 +310,7 @@ describe("<View />", () => {
 
       await resize(800, 600);
 
-      expect(popup()).toHaveTextContent("50%");
+      expect(value()).toHaveTextContent("50%");
       expect(popup()).toHaveClass("scale-popup", "show");
     });
 
@@ -315,7 +318,7 @@ describe("<View />", () => {
       FakeImage.size = { width: 200, height: 100 };
       const { rerender } = render(<View url="/pics/a.png" />);
       await resize(800, 600);
-      expect(popup()).toHaveTextContent("100%");
+      expect(value()).toHaveTextContent("100%");
       hide();
 
       FakeImage.size = { width: 1600, height: 1200 };
@@ -323,7 +326,7 @@ describe("<View />", () => {
       await resize(800, 600);
 
       expect(popup()).toHaveClass("show");
-      expect(popup()).toHaveTextContent("50%");
+      expect(value()).toHaveTextContent("50%");
     });
 
     it("is not shown again when the window is resized", async () => {
@@ -345,13 +348,13 @@ describe("<View />", () => {
 
       zoomTo(1);
       expect(popup()).toHaveClass("show");
-      expect(popup()).toHaveTextContent("100%");
+      expect(value()).toHaveTextContent("100%");
 
       zoomTo(0.3);
-      expect(popup()).toHaveTextContent("62%");
+      expect(value()).toHaveTextContent("62%");
 
       zoomTo(-1);
-      expect(popup()).toHaveTextContent("25%");
+      expect(value()).toHaveTextContent("25%");
     });
 
     it("hides after a while", async () => {
@@ -384,7 +387,7 @@ describe("<View />", () => {
       });
 
       expect(popup()).toHaveClass("show");
-      expect(popup()).toHaveTextContent("200%");
+      expect(value()).toHaveTextContent("200%");
 
       act(() => {
         vi.advanceTimersByTime(100);
@@ -402,6 +405,212 @@ describe("<View />", () => {
       unmount();
 
       expect(vi.getTimerCount()).toBe(0);
+    });
+
+    describe("hovering the top of the window", () => {
+      const moveTo = (clientY: number) => {
+        act(() => {
+          fireEvent.mouseMove(window, { clientY });
+        });
+      };
+
+      it("shows the popup for a while", async () => {
+        FakeImage.size = { width: 200, height: 100 };
+        render(<View url="/pics/a.png" />);
+        await resize(800, 600);
+        hide();
+        expect(popup()).not.toHaveClass("show");
+
+        moveTo(SCALE_POPUP_HOVER_AREA);
+        expect(popup()).toHaveClass("show");
+        expect(value()).toHaveTextContent("100%");
+
+        hide();
+        expect(popup()).not.toHaveClass("show");
+      });
+
+      it("keeps the popup visible while the pointer moves in the area", async () => {
+        FakeImage.size = { width: 200, height: 100 };
+        render(<View url="/pics/a.png" />);
+        await resize(800, 600);
+        hide();
+
+        moveTo(10);
+        act(() => {
+          vi.advanceTimersByTime(SCALE_POPUP_DURATION - 100);
+        });
+        moveTo(20);
+        act(() => {
+          vi.advanceTimersByTime(SCALE_POPUP_DURATION - 100);
+        });
+
+        expect(popup()).toHaveClass("show");
+      });
+
+      it("does not show the popup below the area", async () => {
+        FakeImage.size = { width: 200, height: 100 };
+        render(<View url="/pics/a.png" />);
+        await resize(800, 600);
+        hide();
+
+        moveTo(SCALE_POPUP_HOVER_AREA + 1);
+
+        expect(popup()).not.toHaveClass("show");
+      });
+
+      it("does nothing before an image is drawn", () => {
+        render(<View url="/pics/a.png" />);
+
+        moveTo(10);
+
+        expect(popup()).toBeNull();
+      });
+
+      it("stops listening on unmount", async () => {
+        FakeImage.size = { width: 200, height: 100 };
+        const { unmount } = render(<View url="/pics/a.png" />);
+        await resize(800, 600);
+        const removeListener = vi.spyOn(window, "removeEventListener");
+
+        unmount();
+
+        expect(removeListener).toHaveBeenCalledWith(
+          "mousemove",
+          expect.any(Function),
+        );
+      });
+    });
+
+    describe("toggle button", () => {
+      const button = () => screen.getByRole("button");
+
+      /** Opens a 1600 x 1200 image in an 800 x 600 view (fitted at 50%). */
+      const openLargeImage = async () => {
+        FakeImage.size = { width: 1600, height: 1200 };
+        render(<View url="/pics/large.png" />);
+        await resize(800, 600);
+      };
+
+      it("is the only button in the popup", async () => {
+        await openLargeImage();
+
+        expect(screen.getByRole("toolbar", { name: "Zoom" })).toBe(popup());
+        expect(screen.getAllByRole("button")).toHaveLength(1);
+        expect(button()).toHaveAttribute("type", "button");
+      });
+
+      it("offers Actual Size while the image is not at 100%", async () => {
+        await openLargeImage();
+
+        expect(button()).toHaveAccessibleName("Actual Size");
+      });
+
+      it("zooms to exactly 100% with Actual Size", async () => {
+        await openLargeImage();
+        let snapWhileZooming: number | undefined;
+        leaflet.map.setZoom.mockImplementation(() => {
+          snapWhileZooming = leaflet.map.options.zoomSnap;
+        });
+
+        fireEvent.click(button());
+
+        // fitted at 50% -> zoom level 1 doubles it to 100%
+        expect(leaflet.map.setZoom).toHaveBeenCalledWith(1);
+        // zoomSnap is disabled while zooming so that 100% is not rounded,
+        // and restored afterwards
+        expect(snapWhileZooming).toBe(0);
+        expect(leaflet.map.options.zoomSnap).toBe(0.3);
+      });
+
+      it("switches to Fit to Window at 100% and back", async () => {
+        await openLargeImage();
+
+        zoomTo(1); // 100%
+        expect(button()).toHaveAccessibleName("Fit to Window");
+
+        leaflet.map.setView.mockClear();
+        fireEvent.click(button());
+        expect(leaflet.map.setView).toHaveBeenCalledWith(
+          { lat: 300, lng: 400 },
+          0,
+        );
+        expect(leaflet.map.setZoom).not.toHaveBeenCalled();
+
+        zoomTo(0); // 50%
+        expect(button()).toHaveAccessibleName("Actual Size");
+      });
+
+      it("offers Fit to Window for an image shown at its actual size", async () => {
+        FakeImage.size = { width: 200, height: 100 };
+        render(<View url="/pics/small.png" />);
+        await resize(800, 600);
+
+        expect(button()).toHaveAccessibleName("Fit to Window");
+      });
+
+      it("keeps the popup visible while the pointer is on it", async () => {
+        await openLargeImage();
+
+        fireEvent.mouseEnter(popup() as Element);
+        hide();
+        expect(popup()).toHaveClass("show");
+
+        // zooming with the button does not start the timer either
+        zoomTo(1);
+        hide();
+        expect(popup()).toHaveClass("show");
+
+        fireEvent.mouseLeave(popup() as Element);
+        hide();
+        expect(popup()).not.toHaveClass("show");
+      });
+
+      it("hides the popup after a mouse click once the pointer leaves", async () => {
+        await openLargeImage();
+
+        fireEvent.mouseEnter(popup() as Element);
+        act(() => {
+          button().focus();
+        });
+        // detail > 0: clicked with a mouse
+        fireEvent.click(button(), { detail: 1 });
+
+        expect(button()).not.toHaveFocus();
+
+        fireEvent.mouseLeave(popup() as Element);
+        hide();
+        expect(popup()).not.toHaveClass("show");
+      });
+
+      it("keeps the focus on the button when used with the keyboard", async () => {
+        await openLargeImage();
+
+        act(() => {
+          button().focus();
+        });
+        // detail === 0: activated with Enter or Space
+        fireEvent.click(button(), { detail: 0 });
+
+        expect(button()).toHaveFocus();
+        hide();
+        expect(popup()).toHaveClass("show");
+      });
+
+      it("keeps the popup visible while the button has focus", async () => {
+        await openLargeImage();
+
+        act(() => {
+          button().focus();
+        });
+        hide();
+        expect(popup()).toHaveClass("show");
+
+        act(() => {
+          button().blur();
+        });
+        hide();
+        expect(popup()).not.toHaveClass("show");
+      });
     });
   });
 });
