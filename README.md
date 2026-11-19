@@ -1,6 +1,6 @@
 # <img width="48" alt="leaves" src="https://user-images.githubusercontent.com/52094761/156916014-b9472d73-3270-455a-be95-25e527efeaff.svg" /> LeafView
 
-[![GitHub license](https://img.shields.io/github/license/sprout2000/leafview)](https://github.com/sprout2000/leafview/blob/master/LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/sprout2000/leafview)](https://github.com/sprout2000/leafview/blob/main/LICENSE.md)
 ![GitHub contributors](https://img.shields.io/github/contributors/sprout2000/leafview)
 
 Minimalist image viewer based on [Leaflet.js](https://leafletjs.com/) and [Electron](https://www.electronjs.org/).
@@ -13,11 +13,13 @@ _Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-at
 
 ## :thumbsup: Features
 
-- Pan & Wheel Zoom
-- Browse the images in a folder
+- Pan and zoom with the mouse wheel
+- Browse images in a folder
 - Grid view
+- Scale popup with a toggle between the actual size and fitting to the window
+- Remembers the last opened folder
 - Available in [20 languages](#globe_with_meridians-supported-languages)
-- Auto update _(only on macOS)_
+- Automatic updates _(macOS and Linux only)_
 
 <img width="480" alt="2023-07-13-171712" src="https://github.com/sprout2000/leafview/assets/52094761/138f527e-14f8-45f3-b310-2c0c82b5dada">
 
@@ -25,8 +27,7 @@ _Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-at
 
 <!-- ### :computer: macOS & GNU/Linux -->
 
-You can download the latest version of _LeafView_ from the releases page here:
-[https://github.com/sprout2000/leafview/releases](https://github.com/sprout2000/leafview/releases)
+Download the latest version of _LeafView_ from the [Releases page](https://github.com/sprout2000/leafview/releases).
 
 <!-- ### :desktop_computer: Windows -->
 
@@ -40,25 +41,25 @@ You can download the latest version of _LeafView_ from the releases page here:
 
 ### :keyboard: Keyboard Shortcuts
 
-|                                      Key                                      | Function         |
-| :---------------------------------------------------------------------------: | :--------------- |
-| <kbd>J</kbd>, <kbd>Ctrl</kbd>+<kbd>N</kbd>, <kbd>CmdOrCtrl</kbd>+<kbd>→</kbd> | Next Image       |
-| <kbd>K</kbd>, <kbd>Ctrl</kbd>+<kbd>P</kbd>, <kbd>CmdOrCtrl</kbd>+<kbd>←</kbd> | Previous Image   |
-|                                 <kbd>+</kbd>                                  | Zoom In          |
-|                                 <kbd>-</kbd>                                  | Zoom Out         |
-|                                 <kbd>0</kbd>                                  | Reset Zoom       |
-|              <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd>              | Pan              |
-|               <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>               | Move to Trash    |
-|                  <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>G</kbd>                   | Toggle Grid View |
+|                                           Key                                           | Function         |
+| :-------------------------------------------------------------------------------------: | :--------------- |
+| <kbd>J</kbd>, <kbd>Ctrl</kbd>+<kbd>N</kbd>, <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>→</kbd> | Next Image       |
+| <kbd>K</kbd>, <kbd>Ctrl</kbd>+<kbd>P</kbd>, <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>←</kbd> | Previous Image   |
+|                                       <kbd>+</kbd>                                      | Zoom In          |
+|                                       <kbd>-</kbd>                                      | Zoom Out         |
+|                                       <kbd>0</kbd>                                      | Reset Zoom       |
+|                   <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd>                   | Pan              |
+|                    <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>                    | Move to Trash    |
+|                        <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>G</kbd>                       | Toggle Grid View |
 
 ### :computer_mouse: Mouse Operations
 
 |    Mouse     | Function              |
 | :----------: | :-------------------- |
 |     Drag     | Pan                   |
-|    Wheel     | Zoom in/out           |
-| Double click | Reset zoom            |
-| Right click  | Show the context menu |
+|    Wheel     | Zoom In/Out           |
+| Double-click | Reset Zoom            |
+| Right-click  | Show the Context Menu |
 
 ## :globe_with_meridians: Supported Languages
 
@@ -83,13 +84,13 @@ You can download the latest version of _LeafView_ from the releases page here:
 | Türkçe           |  `tr`   |
 | Українська       |  `uk`   |
 | 简体中文         | `zh_CN` |
-| 繁体中文         | `zh_TW` |
+| 繁體中文         | `zh_TW` |
 
 ## :beers: Contributing
 
-You can easily contribute to this repository by providing translation files.
+You can easily contribute to this repository by providing a translation.
 
-1. Create `{your_LANG}.json` in `src/locales`.
+1. Create `{language_code}.json` _(e.g. `fr.json`)_ in `src/locales`, based on `en.json`.
 
 ```diff
   src
@@ -105,7 +106,9 @@ You can easily contribute to this repository by providing translation files.
   └── web
 ```
 
-2. And then please send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
+2. Import the file and add it to `resources` in `src/setLocales.ts`.
+3. Add the language to `localeList` in `src/createMenu.ts`.
+4. Send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
 
 ## :tada: Contributors
 
@@ -115,12 +118,12 @@ Thanks go to these wonderful people :slightly_smiling_face::
   <img src="https://contrib.rocks/image?repo=sprout2000/leafview" />
 </a>
 
-## :hammer_and_wrench: How to build?
+## :hammer_and_wrench: Building from Source
 
 You will need to have [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/) installed.
 
 ```sh
-# 1. Clone this repo.
+# 1. Clone this repo
 git clone https://github.com/sprout2000/leafview.git
 
 # 2. Install dependencies
@@ -131,7 +134,7 @@ npm install
 npm run build && npm run package
 ```
 
-And then, you will find the installer in the `release` directory.
+The installer will be created in the `release` directory.
 
 ## :copyright: Copyright
 
