@@ -40,3 +40,18 @@ export const readImageDir = async (
     .filter((item) => checkmime(item))
     .sort();
 };
+
+/**
+ * Returns `dir` if it is an existing directory, otherwise `fallback`.
+ * Used for the folder remembered from the last session, which may have been
+ * moved or deleted since then.
+ */
+export const resolveExistingDir = (dir: string | undefined, fallback: string) => {
+  if (!dir) return fallback;
+
+  try {
+    return fs.statSync(dir).isDirectory() ? dir : fallback;
+  } catch {
+    return fallback;
+  }
+};

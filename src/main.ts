@@ -23,7 +23,12 @@ import { autoUpdater } from "electron-updater";
 import i18next from "i18next";
 
 import { createMenu } from "./createMenu";
-import { checkmime, isDotfile, readImageDir } from "./fileUtils";
+import {
+  checkmime,
+  isDotfile,
+  readImageDir,
+  resolveExistingDir,
+} from "./fileUtils";
 import { setLocales } from "./setLocales";
 
 console.log = log.log;
@@ -92,7 +97,10 @@ const createWindow = () => {
   ipcMain.handle("open-dialog", async () => {
     return dialog
       .showOpenDialog(mainWindow, {
-        defaultPath: app.getPath("pictures"),
+        defaultPath: resolveExistingDir(
+          store.get("lastDir"),
+          app.getPath("pictures"),
+        ),
         properties: ["openFile"],
         title: `${i18next.t("Select an image")}`,
         filters: [
@@ -133,7 +141,11 @@ const createWindow = () => {
 
   ipcMain.handle("get-locale", () => store.get("language") || app.getLocale());
 
-  ipcMain.handle("file-history", (_e, arg) => app.addRecentDocument(arg));
+  ipcMain.handle("file-history", (_e, arg: string) => {
+    app.addRecentDocument(arg);
+    // Remember the folder so that the open dialog starts there next time.
+    store.set("lastDir", path.dirname(arg));
+  });
 
   ipcMain.handle("show-context-menu", () => {
     menu.popup();

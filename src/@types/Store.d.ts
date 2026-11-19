@@ -6,4 +6,6 @@ declare type StoreType = {
   height: number | undefined;
   language?: string;
   darkmode: boolean;
+  /** The folder of the image opened last time. */
+  lastDir?: string;
 };

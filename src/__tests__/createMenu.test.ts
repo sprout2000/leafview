@@ -1,3 +1,6 @@
+import os from "node:os";
+import path from "node:path";
+
 import type { BrowserWindow, MenuItemConstructorOptions } from "electron";
 import type Store from "electron-store";
 import {
@@ -282,10 +285,11 @@ describe("createMenu", () => {
     const open = async (
       result: { canceled: boolean; filePaths: string[] },
       platform: NodeJS.Platform = "darwin",
+      store = createStore({ language: "en", darkmode: true }),
     ) => {
       setPlatform(platform);
       electron.dialog.showOpenDialog.mockResolvedValue(result);
-      const { items, win } = build();
+      const { items, win } = build(createWin(), store);
 
       click(items.find((item) => item.accelerator === "CmdOrCtrl+O"));
       await flush();
@@ -306,6 +310,37 @@ describe("createMenu", () => {
       expect(win.webContents.send).toHaveBeenCalledWith(
         "menu-open",
         "/pics/a.png",
+      );
+    });
+
+    it("starts in the folder opened last time", async () => {
+      const lastDir = os.tmpdir();
+      const win = await open(
+        { canceled: true, filePaths: [] },
+        "darwin",
+        createStore({ language: "en", darkmode: true, lastDir }),
+      );
+
+      expect(electron.dialog.showOpenDialog).toHaveBeenCalledWith(
+        win,
+        expect.objectContaining({ defaultPath: lastDir }),
+      );
+    });
+
+    it("starts in Pictures when the last folder no longer exists", async () => {
+      const win = await open(
+        { canceled: true, filePaths: [] },
+        "darwin",
+        createStore({
+          language: "en",
+          darkmode: true,
+          lastDir: path.join(os.tmpdir(), "leafview-removed-folder"),
+        }),
+      );
+
+      expect(electron.dialog.showOpenDialog).toHaveBeenCalledWith(
+        win,
+        expect.objectContaining({ defaultPath: "/home/user/Pictures" }),
       );
     });
 

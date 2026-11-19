@@ -9,6 +9,7 @@ import {
   getDotfilesPrefix,
   isDotfile,
   readImageDir,
+  resolveExistingDir,
 } from "../fileUtils";
 
 describe("checkmime", () => {
@@ -115,5 +116,40 @@ describe("readImageDir", () => {
     await expect(
       readImageDir(path.join(dir, "does-not-exist")),
     ).rejects.toThrow();
+  });
+});
+
+describe("resolveExistingDir", () => {
+  const fallback = "/home/user/Pictures";
+  let dir: string;
+  let file: string;
+
+  beforeAll(async () => {
+    dir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "leafview-"));
+    file = path.join(dir, "a.png");
+    await fs.promises.writeFile(file, "");
+  });
+
+  afterAll(async () => {
+    await fs.promises.rm(dir, { recursive: true, force: true });
+  });
+
+  it("returns an existing directory", () => {
+    expect(resolveExistingDir(dir, fallback)).toBe(dir);
+  });
+
+  it("falls back when nothing is remembered", () => {
+    expect(resolveExistingDir(undefined, fallback)).toBe(fallback);
+    expect(resolveExistingDir("", fallback)).toBe(fallback);
+  });
+
+  it("falls back when the directory no longer exists", () => {
+    expect(resolveExistingDir(path.join(dir, "removed"), fallback)).toBe(
+      fallback,
+    );
+  });
+
+  it("falls back when the path is a file", () => {
+    expect(resolveExistingDir(file, fallback)).toBe(fallback);
   });
 });

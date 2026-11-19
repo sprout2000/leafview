@@ -12,6 +12,8 @@ import {
 import type Store from "electron-store";
 import i18next from "i18next";
 
+import { resolveExistingDir } from "./fileUtils";
+
 const localeList: Locale[] = [
   { code: "ar", value: "اللغة العربية" },
   { code: "cs", value: "Čeština" },
@@ -199,7 +201,10 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
           click: async () => {
             return dialog
               .showOpenDialog(win, {
-                defaultPath: app.getPath("pictures"),
+                defaultPath: resolveExistingDir(
+                  store.get("lastDir"),
+                  app.getPath("pictures"),
+                ),
                 properties: ["openFile"],
                 title: `${i18next.t("Select an image")}`,
                 filters: [

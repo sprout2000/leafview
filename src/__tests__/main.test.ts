@@ -507,6 +507,39 @@ describe("main.ts", () => {
         expect(h.electron.app.getPath).toHaveBeenCalledWith("pictures");
       });
 
+      it("starts in the folder opened last time", async () => {
+        h.electron.dialog.showOpenDialog.mockResolvedValue({
+          canceled: true,
+          filePaths: [],
+        });
+        const lastDir = os.tmpdir();
+        const { invoke } = await load({ store: { lastDir } });
+
+        await invoke("open-dialog");
+
+        expect(h.electron.dialog.showOpenDialog).toHaveBeenCalledWith(
+          expect.anything(),
+          expect.objectContaining({ defaultPath: lastDir }),
+        );
+      });
+
+      it("starts in Pictures when the last folder no longer exists", async () => {
+        h.electron.dialog.showOpenDialog.mockResolvedValue({
+          canceled: true,
+          filePaths: [],
+        });
+        const { invoke } = await load({
+          store: { lastDir: path.join(os.tmpdir(), "leafview-removed-folder") },
+        });
+
+        await invoke("open-dialog");
+
+        expect(h.electron.dialog.showOpenDialog).toHaveBeenCalledWith(
+          expect.anything(),
+          expect.objectContaining({ defaultPath: "/home/user/Pictures" }),
+        );
+      });
+
       it("returns undefined when canceled", async () => {
         h.electron.dialog.showOpenDialog.mockResolvedValue({
           canceled: true,
@@ -575,6 +608,14 @@ describe("main.ts", () => {
       expect(h.electron.app.addRecentDocument).toHaveBeenCalledWith(
         "/pics/a.png",
       );
+    });
+
+    it("file-history remembers the folder of the image", async () => {
+      const { invoke } = await load();
+
+      invoke("file-history", path.join("/pics", "2026", "a.png"));
+
+      expect(h.state.store.get("lastDir")).toBe(path.join("/pics", "2026"));
     });
 
     it("show-context-menu", async () => {
