@@ -26,7 +26,5 @@
   "Quit": "終了",
   "Quit LeafView": "LeafView を終了",
   "Language": "言語",
-  "Warning": "言語を切り換えるには LeafView を再起動してください。",
-  "Actual Size": "実際のサイズ",
-  "Fit to Window": "ウィンドウに合わせる"
+  "Warning": "言語を切り換えるには LeafView を再起動してください。"
 }

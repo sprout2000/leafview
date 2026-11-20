@@ -26,7 +26,5 @@
   "Quit": "Esci",
   "Quit LeafView": "Esci da LeafView",
   "Language": "Lingua GUI",
-  "Warning": "Per applicare le modifiche alla lingua GUI, riavvia LeafView.",
-  "Actual Size": "Dimensioni reali",
-  "Fit to Window": "Adatta alla finestra"
+  "Warning": "Per applicare le modifiche alla lingua GUI, riavvia LeafView."
 }

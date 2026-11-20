@@ -16,7 +16,6 @@ _Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-at
 - Pan and zoom with the mouse wheel
 - Browse images in a folder
 - Grid view
-- Scale popup with a toggle between the actual size and fitting to the window
 - Remembers the last opened folder
 - Available in [20 languages](#globe_with_meridians-supported-languages)
 - Automatic updates _(macOS and Linux only)_
@@ -45,12 +44,12 @@ Download the latest version of _LeafView_ from the [Releases page](https://githu
 | :-------------------------------------------------------------------------------------: | :--------------- |
 | <kbd>J</kbd>, <kbd>Ctrl</kbd>+<kbd>N</kbd>, <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>→</kbd> | Next Image       |
 | <kbd>K</kbd>, <kbd>Ctrl</kbd>+<kbd>P</kbd>, <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>←</kbd> | Previous Image   |
-|                                       <kbd>+</kbd>                                      | Zoom In          |
-|                                       <kbd>-</kbd>                                      | Zoom Out         |
-|                                       <kbd>0</kbd>                                      | Reset Zoom       |
+|                                      <kbd>+</kbd>                                       | Zoom In          |
+|                                      <kbd>-</kbd>                                       | Zoom Out         |
+|                                      <kbd>0</kbd>                                       | Reset Zoom       |
 |                   <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd>                   | Pan              |
 |                    <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>                    | Move to Trash    |
-|                        <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>G</kbd>                       | Toggle Grid View |
+|                       <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>G</kbd>                        | Toggle Grid View |
 
 ### :computer_mouse: Mouse Operations
 
