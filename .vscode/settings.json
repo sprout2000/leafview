@@ -8,5 +8,8 @@
   "editor.tabSize": 2,
   "extensions.ignoreRecommendations": false,
   "files.eol": "\n",
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }
