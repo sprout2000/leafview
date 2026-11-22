@@ -17,6 +17,7 @@ _Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-at
 - Browse images in a folder
 - Grid view
 - Remembers the last opened folder
+- Follows files added to or removed from the folder
 - Available in [20 languages](#globe_with_meridians-supported-languages)
 - Automatic updates _(macOS and Linux only)_
 
@@ -89,16 +90,18 @@ Download the latest version of _LeafView_ from the [Releases page](https://githu
 
 You can easily contribute to this repository by providing a translation.
 
-1. Create `{language_code}.json` _(e.g. `fr.json`)_ in `src/locales`, based on `en.json`.
+1. Create `{language_code}.json` _(e.g. `nl.json`)_ in `src/locales`, based on `en.json`. It must have the same keys as `en.json`.
 
 ```diff
   src
   ├── @types
+  ├── __tests__
   ├── createMenu.ts
   ├── locales
-+ │   ├── cs.json
-  │   ├── en.json
-  │   └── ja.json
+  │   ├── en.json
+  │   ├── ja.json
++ │   ├── nl.json
+  │   └── ...
   ├── main.ts
   ├── preload.ts
   ├── setLocales.ts
@@ -107,7 +110,8 @@ You can easily contribute to this repository by providing a translation.
 
 2. Import the file and add it to `resources` in `src/setLocales.ts`.
 3. Add the language to `localeList` in `src/createMenu.ts`.
-4. Send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
+4. Add the language to the list in `src/__tests__/setLocales.test.ts` and update the number of languages in `src/__tests__/createMenu.test.ts`, then make sure `npm run lint` and `npm test` pass _(see [Development](#wrench-development))_.
+5. Send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
 
 ## :tada: Contributors
 
@@ -134,6 +138,21 @@ npm run build && npm run package
 ```
 
 The installer will be created in the `release` directory.
+
+## :wrench: Development
+
+```sh
+# Start the app in development mode
+npm run dev
+
+# Lint and format the code with Biome
+npm run lint
+
+# Run the tests with Vitest and show the coverage
+npm test
+```
+
+The tests are in `src/__tests__` _(main process)_ and `src/__tests__/web` _(renderer process)_.
 
 ## :copyright: Copyright
 
