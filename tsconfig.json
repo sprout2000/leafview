@@ -14,8 +14,7 @@
     "release",
     "coverage",
     "vitest.config.mts",
-    "src/__tests__",
-    "src/web/__tests__"
+    "src/__tests__"
   ],
   "ts-node": {
     "compilerOptions": {

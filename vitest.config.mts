@@ -17,7 +17,7 @@ export default defineConfig({
         test: {
           name: "main",
           environment: "node",
-          include: ["src/__tests__/**/*.test.ts"],
+          include: ["src/__tests__/*.test.ts"],
         },
       },
       {
@@ -25,8 +25,8 @@ export default defineConfig({
         test: {
           name: "web",
           environment: "jsdom",
-          include: ["src/web/__tests__/**/*.test.{ts,tsx}"],
-          setupFiles: ["./src/web/__tests__/setup.ts"],
+          include: ["src/__tests__/web/**/*.test.{ts,tsx}"],
+          setupFiles: ["./src/__tests__/web/setup.ts"],
         },
       },
     ],
