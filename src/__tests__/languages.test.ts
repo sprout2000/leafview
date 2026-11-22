@@ -24,7 +24,9 @@ describe("languages", () => {
     const translations = languages.map(({ translation }) => translation);
 
     for (const file of localeFiles) {
-      const { default: json } = await import(`../locales/${file}`);
+      // Vite needs the extension in the static part of a dynamic import.
+      const name = path.basename(file, ".json");
+      const { default: json } = await import(`../locales/${name}.json`);
 
       // forgetting to add a new file to languages.ts fails here
       expect(translations, file).toContain(json);
