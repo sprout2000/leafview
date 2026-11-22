@@ -69,4 +69,32 @@ describe("locale files", () => {
       expect(value.trim(), key).not.toBe("");
     }
   });
+
+  // Words that are the same as in English in these languages.
+  const sameAsEnglish: Record<string, string[]> = {
+    "de.json": ["Zoom"],
+    "es.json": ["Zoom"],
+    "fr.json": ["Zoom"],
+    "hu.json": ["Zoom"],
+    "it.json": ["File", "Zoom"],
+    "pl.json": ["Zoom"],
+    "pt.json": ["Zoom"],
+  };
+
+  it.each(localeFiles.filter((file) => file !== "en.json"))(
+    "%s has no untranslated English text",
+    (file) => {
+      const json = JSON.parse(
+        fs.readFileSync(path.join(localesDir, file), "utf-8"),
+      ) as Record<string, string>;
+
+      const untranslated = Object.keys(en).filter(
+        (key) =>
+          json[key] === en[key as keyof typeof en] &&
+          !sameAsEnglish[file]?.includes(key),
+      );
+
+      expect(untranslated).toEqual([]);
+    },
+  );
 });

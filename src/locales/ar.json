@@ -7,7 +7,7 @@
   "View": "عرض",
   "Next Image": "الصورة التالية",
   "Prev Image": "الصورة السابقة",
-  "Toggle Grid View": "Toggle Grid View",
+  "Toggle Grid View": "تفعيل عرض الشبكة",
   "Toggle Fullscreen": "تفعيل وضع ملء الشاشة",
   "Toggle Dark Mode": "تفعيل الوضع المظلم",
   "Window": "نافذة",
@@ -26,5 +26,5 @@
   "Quit": "خروج",
   "Quit LeafView": "الخروج من LeafView",
   "Language": "لغة",
-  "Warning": "To change the language, please restart LeafView."
+  "Warning": "لتغيير اللغة، يُرجى إعادة تشغيل LeafView."
 }
