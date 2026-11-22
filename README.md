@@ -109,9 +109,10 @@ You can easily contribute to this repository by providing a translation.
 ```
 
 2. Import the file and add it to `resources` in `src/setLocales.ts`.
-3. Add the language to `localeList` in `src/createMenu.ts`.
-4. Add the language to the list in `src/__tests__/setLocales.test.ts` and update the number of languages in `src/__tests__/createMenu.test.ts`, then make sure `npm run lint` and `npm test` pass _(see [Development](#wrench-development))_.
-5. Send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
+3. Add the language code to the `Code` type in `src/@types/Locale.d.ts`.
+4. Add the language to `localeList` in `src/createMenu.ts`.
+5. Add the language to the list in `src/__tests__/setLocales.test.ts` and update the number of languages in `src/__tests__/createMenu.test.ts`, then make sure `npm run lint` and `npm test` pass _(see [Development](#wrench-development))_.
+6. Send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
 
 ## :tada: Contributors
 
