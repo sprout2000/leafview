@@ -3,7 +3,6 @@ import path from "node:path";
 import {
   app,
   BrowserWindow,
-  dialog,
   type IpcMainInvokeEvent,
   ipcMain,
   Menu,
@@ -18,8 +17,8 @@ import {
 
 import log from "electron-log";
 import Store from "electron-store";
-import { autoUpdater } from "electron-updater";
 
+import { setupAutoUpdate } from "./autoUpdate";
 import { createMenu } from "./createMenu";
 import { createDirWatcher } from "./dirWatcher";
 import { checkmime, isDotfile, readImageDir } from "./fileUtils";
@@ -157,54 +156,7 @@ const createWindow = () => {
     });
   }
 
-  if (isDarwin || process.platform === "linux") {
-    autoUpdater.logger = log;
-    autoUpdater.autoDownload = false;
-
-    if (store.get("ask")) autoUpdater.checkForUpdates();
-
-    autoUpdater.once("update-available", () => {
-      dialog
-        .showMessageBox(mainWindow, {
-          message: "Update Notification",
-          detail:
-            "A new version is available.\nDo you want to download it now?",
-          buttons: ["Not now", "OK"],
-          defaultId: 1,
-          cancelId: 0,
-          checkboxLabel: "No update notifications required.",
-        })
-        .then((result) => {
-          if (result.response === 1) {
-            log.info("User chose to update...");
-            autoUpdater.downloadUpdate();
-          } else {
-            log.info("User refused to update...");
-            if (result.checkboxChecked) {
-              log.info("User rejected the update notification.");
-              store.set("ask", false);
-            }
-          }
-        });
-    });
-
-    autoUpdater.once("update-not-available", () => {
-      log.info("No updates available.");
-    });
-
-    autoUpdater.once("update-downloaded", () => {
-      log.info("Updates downloaded...");
-      dialog
-        .showMessageBox(mainWindow, {
-          message: "Install Updates",
-          detail: "Updates downloaded.\nPlease restart LeafView...",
-        })
-        .then(() => {
-          setImmediate(() => autoUpdater.quitAndInstall());
-        })
-        .catch((err) => log.info(`Updater Error: ${err}`));
-    });
-  }
+  setupAutoUpdate(mainWindow, store);
 
   mainWindow.loadFile("dist/index.html");
   mainWindow.once("ready-to-show", () => {

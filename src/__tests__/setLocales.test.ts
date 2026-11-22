@@ -4,6 +4,7 @@ import path from "node:path";
 import i18next from "i18next";
 import { describe, expect, it } from "vitest";
 
+import { languages } from "../languages";
 import en from "../locales/en.json";
 import { setLocales } from "../setLocales";
 
@@ -38,32 +39,14 @@ describe("setLocales", () => {
     expect(i18next.t("Next Image")).toBe("Next Image");
   });
 
-  it.each([
-    "ar",
-    "cs",
-    "de",
-    "en",
-    "es",
-    "fr",
-    "hi",
-    "hu",
-    "id",
-    "it",
-    "ja",
-    "ko",
-    "ms",
-    "pl",
-    "pt",
-    "ru",
-    "tr",
-    "uk",
-    "zh-CN",
-    "zh-TW",
-  ])("has resources for the menu language %s", async (code) => {
-    await setLocales(code);
+  it.each(languages.map(({ code }) => code))(
+    "has resources for the menu language %s",
+    async (code) => {
+      await setLocales(code);
 
-    expect(i18next.hasResourceBundle(code, "translation")).toBe(true);
-  });
+      expect(i18next.hasResourceBundle(code, "translation")).toBe(true);
+    },
+  );
 });
 
 describe("locale files", () => {

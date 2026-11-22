@@ -91,28 +91,20 @@ Download the latest version of _LeafView_ from the [Releases page](https://githu
 You can easily contribute to this repository by providing a translation.
 
 1. Create `{language_code}.json` _(e.g. `nl.json`)_ in `src/locales`, based on `en.json`. It must have the same keys as `en.json`.
+2. Import the file and add the language to `languages` in `src/languages.ts`.
 
 ```diff
-  src
-  ├── @types
-  ├── __tests__
-  ├── createMenu.ts
-  ├── locales
-  │   ├── en.json
-  │   ├── ja.json
-+ │   ├── nl.json
-  │   └── ...
-  ├── main.ts
-  ├── preload.ts
-  ├── setLocales.ts
-  └── web
++ import nl from "./locales/nl.json";
+
+  export const languages: Language[] = [
+    ...
++   { code: "nl", label: "Nederlands", translation: nl },
+    ...
+  ];
 ```
 
-2. Import the file and add it to `resources` in `src/setLocales.ts`.
-3. Add the language code to the `Code` type in `src/@types/Locale.d.ts`.
-4. Add the language to `localeList` in `src/createMenu.ts`.
-5. Add the language to the list in `src/__tests__/setLocales.test.ts` and update the number of languages in `src/__tests__/createMenu.test.ts`, then make sure `npm run lint` and `npm test` pass _(see [Development](#wrench-development))_.
-6. Send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
+3. Make sure `npm run lint` and `npm test` pass _(see [Development](#wrench-development))_.
+4. Send a [pull request](https://github.com/sprout2000/leafview/pulls) to this repository.
 
 ## :tada: Contributors
 

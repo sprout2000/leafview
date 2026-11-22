@@ -10,42 +10,20 @@ import {
 import type Store from "electron-store";
 import i18next from "i18next";
 
+import { languages } from "./languages";
 import { showOpenImageDialog } from "./openImageDialog";
-
-const localeList: Locale[] = [
-  { code: "ar", value: "اللغة العربية" },
-  { code: "cs", value: "Čeština" },
-  { code: "de", value: "Deutsch" },
-  { code: "en", value: "English" },
-  { code: "es", value: "Español" },
-  { code: "fr", value: "Français" },
-  { code: "hi", value: "हिंदी" },
-  { code: "hu", value: "Magyar" },
-  { code: "id", value: "Bahasa Indonesia" },
-  { code: "it", value: "Italiano" },
-  { code: "ja", value: "日本語" },
-  { code: "ko", value: "한국어" },
-  { code: "ms", value: "Bahasa Melayu" },
-  { code: "pl", value: "Polski" },
-  { code: "pt", value: "Português" },
-  { code: "ru", value: "Русский" },
-  { code: "tr", value: "Türkçe" },
-  { code: "uk", value: "Українська" },
-  { code: "zh-CN", value: "简体中文" },
-  { code: "zh-TW", value: "繁体中文" },
-];
 
 export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   const isDarwin = process.platform === "darwin";
 
-  const langSub = localeList.map(
-    (locale): MenuItemConstructorOptions => ({
-      label: locale.value,
+  const langSub = languages.map(
+    (language): MenuItemConstructorOptions => ({
+      label: language.label,
       type: "radio",
-      id: `language-${locale.code}`,
+      id: `language-${language.code}`,
       click: () => {
-        if (store.get("language") !== locale.code) {
-          store.set("language", locale.code);
+        if (store.get("language") !== language.code) {
+          store.set("language", language.code);
           dialog
             .showMessageBox(win, {
               type: "info",
@@ -65,7 +43,7 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
             });
         }
       },
-      checked: store.get("language") === locale.code,
+      checked: store.get("language") === language.code,
     }),
   );
 

@@ -14,6 +14,7 @@ import {
 } from "vitest";
 
 import { createMenu } from "../createMenu";
+import { languages } from "../languages";
 import { setLocales } from "../setLocales";
 
 const electron = vi.hoisted(() => ({
@@ -231,19 +232,21 @@ describe("createMenu", () => {
     const langItem = (items: Item[], code: string) =>
       items.find((item) => item.id === `language-${code}`);
 
-    it("lists 20 languages and checks the current one", () => {
+    it("lists every language in order and checks the current one", () => {
       const { items } = build(
         createWin(),
         createStore({ language: "ja", darkmode: true }),
       );
 
-      const languages = items.filter((item) =>
+      const languageItems = items.filter((item) =>
         item.id?.startsWith("language-"),
       );
-      expect(languages).toHaveLength(20);
-      expect(languages.filter((item) => item.checked).map((i) => i.id)).toEqual(
-        ["language-ja"],
+      expect(languageItems.map((item) => item.label)).toEqual(
+        languages.map(({ label }) => label),
       );
+      expect(
+        languageItems.filter((item) => item.checked).map((i) => i.id),
+      ).toEqual(["language-ja"]);
     });
 
     it("does nothing when the current language is selected", () => {
