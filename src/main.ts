@@ -23,6 +23,7 @@ import { autoUpdater } from "electron-updater";
 import i18next from "i18next";
 
 import { createMenu } from "./createMenu";
+import { createDirWatcher } from "./dirWatcher";
 import {
   checkmime,
   isDotfile,
@@ -81,6 +82,12 @@ const createWindow = () => {
 
   const menu = createMenu(mainWindow, store);
   Menu.setApplicationMenu(menu);
+
+  // Watch the folder of the image being shown, so that the renderer can
+  // follow files added or removed outside the app.
+  const dirWatcher = createDirWatcher((dir) => {
+    mainWindow.webContents.send("dir-changed", dir);
+  });
 
   ipcMain.handle("mime-check", (_e: IpcMainInvokeEvent, filepath: string) => {
     return checkmime(filepath);
@@ -145,6 +152,7 @@ const createWindow = () => {
     app.addRecentDocument(arg);
     // Remember the folder so that the open dialog starts there next time.
     store.set("lastDir", path.dirname(arg));
+    dirWatcher.watch(path.dirname(arg));
   });
 
   ipcMain.handle("show-context-menu", () => {
@@ -239,6 +247,8 @@ const createWindow = () => {
   });
 
   mainWindow.once("close", () => {
+    dirWatcher.close();
+
     const { x, y, width, height } = mainWindow.getBounds();
     store.set({ x, y, width, height });
   });

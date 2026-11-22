@@ -40,6 +40,7 @@ describe("preload.ts", () => {
         "menuRemove",
         "menuOpen",
         "toggleGrid",
+        "dirChanged",
       ].sort(),
     );
   });
@@ -88,6 +89,7 @@ describe("preload.ts", () => {
       ["menuRemove", "menu-remove"],
       ["menuOpen", "menu-open"],
       ["toggleGrid", "toggle-grid"],
+      ["dirChanged", "dir-changed"],
     ];
 
     it.each(cases)(

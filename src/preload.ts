@@ -57,4 +57,11 @@ contextBridge.exposeInMainWorld("myAPI", {
     ipcRenderer.on("toggle-grid", listener);
     return () => ipcRenderer.removeAllListeners("toggle-grid");
   },
+
+  dirChanged: (
+    listener: (_e: Electron.IpcRendererEvent, dir: string) => Promise<void>,
+  ) => {
+    ipcRenderer.on("dir-changed", listener);
+    return () => ipcRenderer.removeAllListeners("dir-changed");
+  },
 });

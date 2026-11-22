@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  getImageAfterExternalRemoval,
   getImageAfterRemoval,
   getNextImage,
   getPrevImage,
@@ -53,6 +54,37 @@ describe("getImageAfterRemoval", () => {
     expect(getImageAfterRemoval(["/pics/a.png", "/pics/b.png"], 2)).toBe(
       "/pics/a.png",
     );
+  });
+});
+
+describe("getImageAfterExternalRemoval", () => {
+  it("shows the image that sorted after the removed one", () => {
+    // "/pics/b.png" was removed from [a, b, c]
+    expect(
+      getImageAfterExternalRemoval(
+        ["/pics/a.png", "/pics/c.png"],
+        "/pics/b.png",
+      ),
+    ).toBe("/pics/c.png");
+  });
+
+  it("wraps around to the first image when the last one was removed", () => {
+    expect(
+      getImageAfterExternalRemoval(
+        ["/pics/a.png", "/pics/b.png"],
+        "/pics/c.png",
+      ),
+    ).toBe("/pics/a.png");
+  });
+
+  it("skips several images removed at once", () => {
+    // b, c and d were removed from [a, b, c, d, e]
+    expect(
+      getImageAfterExternalRemoval(
+        ["/pics/a.png", "/pics/e.png"],
+        "/pics/c.png",
+      ),
+    ).toBe("/pics/e.png");
   });
 });
 

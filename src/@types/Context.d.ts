@@ -39,4 +39,9 @@ export interface IElectronAPI {
   ) => () => Electron.IpcRenderer;
 
   toggleGrid: (listener: () => Promise<void>) => () => Electron.IpcRenderer;
+
+  /** Called when files in the folder of the current image change. */
+  dirChanged: (
+    listener: (_e: Electron.IpcRendererEvent, dir: string) => Promise<void>,
+  ) => () => Electron.IpcRenderer;
 }

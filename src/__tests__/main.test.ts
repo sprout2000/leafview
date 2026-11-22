@@ -55,6 +55,7 @@ const h = vi.hoisted(() => {
     windows: [] as FakeWindow[],
     store: new Map<string, unknown>(),
     resolveReady: () => {},
+    onDirChange: (_dir: string) => {},
     readyPromise: Promise.resolve(),
   };
 
@@ -102,6 +103,7 @@ const h = vi.hoisted(() => {
   }
 
   const menu = { popup: vi.fn() };
+  const dirWatcher = { watch: vi.fn(), close: vi.fn() };
 
   const electron = {
     app: {
@@ -153,6 +155,11 @@ const h = vi.hoisted(() => {
     createMenu: vi.fn(() => menu),
     setLocales: vi.fn(),
     installExtension: vi.fn(),
+    dirWatcher,
+    createDirWatcher: vi.fn((onChange: (dir: string) => void) => {
+      state.onDirChange = onChange;
+      return dirWatcher;
+    }),
   };
 });
 
@@ -167,6 +174,7 @@ vi.mock("electron-devtools-installer", () => ({
 vi.mock("i18next", () => ({ default: { t: (key: string) => key } }));
 vi.mock("../createMenu", () => ({ createMenu: h.createMenu }));
 vi.mock("../setLocales", () => ({ setLocales: h.setLocales }));
+vi.mock("../dirWatcher", () => ({ createDirWatcher: h.createDirWatcher }));
 
 const RESOURCES_PATH = "/opt/LeafView/resources";
 
@@ -413,6 +421,22 @@ describe("main.ts", () => {
       });
     });
 
+    it("tells the renderer when the watched folder changes", async () => {
+      const { win } = await load();
+
+      h.state.onDirChange("/pics");
+
+      expect(win.webContents.send).toHaveBeenCalledWith("dir-changed", "/pics");
+    });
+
+    it("stops watching the folder when closed", async () => {
+      const { win } = await load();
+
+      win.events.emit("close");
+
+      expect(h.dirWatcher.close).toHaveBeenCalled();
+    });
+
     it("saves the bounds when closed", async () => {
       const { win } = await load();
 
@@ -607,6 +631,16 @@ describe("main.ts", () => {
 
       expect(h.electron.app.addRecentDocument).toHaveBeenCalledWith(
         "/pics/a.png",
+      );
+    });
+
+    it("file-history watches the folder of the image", async () => {
+      const { invoke } = await load();
+
+      invoke("file-history", path.join("/pics", "2026", "a.png"));
+
+      expect(h.dirWatcher.watch).toHaveBeenCalledWith(
+        path.join("/pics", "2026"),
       );
     });
 

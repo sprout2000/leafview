@@ -57,6 +57,12 @@ const createMockAPI = (initialFiles: string[]) => {
     menuRemove: subscribe("menu-remove"),
     menuOpen: subscribe("menu-open"),
     toggleGrid: subscribe("toggle-grid"),
+    dirChanged: subscribe("dir-changed"),
+  };
+
+  /** Emulates files added or removed outside the app. */
+  const setFiles = (newFiles: string[]) => {
+    files = [...newFiles];
   };
 
   /** Emulates an IPC message sent from the main process. */
@@ -68,7 +74,7 @@ const createMockAPI = (initialFiles: string[]) => {
     });
   };
 
-  return { api, emit, listeners };
+  return { api, emit, listeners, setFiles };
 };
 
 let mock: ReturnType<typeof createMockAPI>;
@@ -116,6 +122,7 @@ describe("<App />", () => {
       await renderWith();
 
       expect([...mock.listeners.keys()].sort()).toEqual([
+        "dir-changed",
         "menu-next",
         "menu-open",
         "menu-prev",
@@ -617,6 +624,98 @@ describe("<App />", () => {
 
       expect(mock.api.showFilePath).not.toHaveBeenCalled();
       expect(view()).toBeEmptyDOMElement();
+    });
+  });
+
+  describe("folder watching", () => {
+    /** Emulates a change notified by the folder watcher of main.ts. */
+    const changeFolder = async (files: string[], dir = "/pics") => {
+      mock.setFiles(files);
+      await mock.emit("dir-changed", {} as IpcRendererEvent, dir);
+    };
+
+    it("shows the next image when the current one is removed", async () => {
+      await renderWith(B);
+
+      await changeFolder([A, C]);
+
+      expect(view()).toHaveTextContent(C);
+      expect(reload).not.toHaveBeenCalled();
+    });
+
+    it("wraps around when the last image is removed", async () => {
+      await renderWith(C);
+
+      await changeFolder([A, B]);
+
+      expect(view()).toHaveTextContent(A);
+    });
+
+    it("keeps the current image when other files change", async () => {
+      await renderWith(B);
+
+      await changeFolder([A, B, C, "/pics/d.png"]);
+
+      expect(view()).toHaveTextContent(B);
+    });
+
+    it("reloads when the folder becomes empty", async () => {
+      await renderWith(B);
+
+      await changeFolder([]);
+
+      expect(reload).toHaveBeenCalledTimes(1);
+    });
+
+    it("reloads when the folder can no longer be read", async () => {
+      await renderWith(B);
+      mock.api.readdir.mockResolvedValueOnce(undefined);
+
+      await mock.emit("dir-changed", {} as IpcRendererEvent, "/pics");
+
+      expect(reload).toHaveBeenCalledTimes(1);
+    });
+
+    it("ignores changes in another folder", async () => {
+      await renderWith(B);
+
+      await changeFolder([A, C], "/other");
+
+      expect(mock.api.readdir).not.toHaveBeenCalled();
+      expect(view()).toHaveTextContent(B);
+    });
+
+    it("ignores changes before an image is opened", async () => {
+      await renderWith();
+
+      await changeFolder([A, C]);
+
+      expect(mock.api.dirname).not.toHaveBeenCalled();
+      expect(view()).toBeEmptyDOMElement();
+    });
+
+    it("removes the thumbnail and moves the highlight in the grid", async () => {
+      const { container } = await renderWith(B);
+      await clickButton("Toggle Grid View");
+
+      await changeFolder([A, C]);
+
+      expect(thumbs(container).map((img) => img.getAttribute("src"))).toEqual([
+        `file://${A}`,
+        `file://${C}`,
+      ]);
+      expect(thumbs(container)[1]).toHaveClass("current");
+      expect(container.firstChild).toHaveClass("grid");
+    });
+
+    it("adds a thumbnail for a new file in the grid", async () => {
+      const { container } = await renderWith(B);
+      await clickButton("Toggle Grid View");
+
+      await changeFolder([A, B, C, "/pics/d.png"]);
+
+      expect(thumbs(container)).toHaveLength(4);
+      expect(thumbs(container)[1]).toHaveClass("current");
     });
   });
 

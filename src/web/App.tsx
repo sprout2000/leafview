@@ -2,7 +2,12 @@ import type { IpcRendererEvent } from "electron";
 import { useCallback, useEffect, useState } from "react";
 
 import { Grid } from "./Grid";
-import { getImageAfterRemoval, getNextImage, getPrevImage } from "./imageUtils";
+import {
+  getImageAfterExternalRemoval,
+  getImageAfterRemoval,
+  getNextImage,
+  getPrevImage,
+} from "./imageUtils";
 import { reload } from "./reload";
 import { ToolBar } from "./ToolBar";
 import { View } from "./View";
@@ -190,6 +195,32 @@ export const App = () => {
     setGrid(false);
   };
 
+  // Files in the folder were added, removed or renamed outside the app.
+  const handleDirChanged = useCallback(
+    async (_e: IpcRendererEvent, changedDir: string) => {
+      if (!url) return;
+
+      const dir = await window.myAPI.dirname(url);
+      // Ignore events from the folder watched before moving to another one.
+      if (dir !== changedDir) return;
+
+      const list = await window.myAPI.readdir(dir);
+      if (!list || list.length === 0) {
+        reload();
+        return;
+      }
+
+      // Keep the thumbnails in sync with the folder.
+      setImgList(list);
+
+      // The current image was removed: show the next one.
+      if (!list.includes(url)) {
+        setUrl(getImageAfterExternalRemoval(list, url));
+      }
+    },
+    [url],
+  );
+
   const handleContextMenu = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
@@ -244,6 +275,13 @@ export const App = () => {
       unlistenFn();
     };
   }, [handleToggleGrid]);
+
+  useEffect(() => {
+    const unlistenFn = window.myAPI.dirChanged(handleDirChanged);
+    return () => {
+      unlistenFn();
+    };
+  }, [handleDirChanged]);
 
   useEffect(() => {
     const title = url || "LeafView";

@@ -35,6 +35,15 @@ export const getImageAfterRemoval = (
 ) => (removedIndex > newList.length - 1 ? newList[0] : newList[removedIndex]);
 
 /**
+ * Returns the image to show after `removed` was deleted outside the app.
+ * `list` is sorted (see readImageDir) and no longer contains `removed`, so
+ * the next image is the first one that sorts after it. Wraps around to the
+ * first image.
+ */
+export const getImageAfterExternalRemoval = (list: string[], removed: string) =>
+  list.find((item) => item > removed) ?? list[0];
+
+/**
  * Returns the zoom ratio that fits an image (iw x ih) into
  * the viewport (w x h). Images smaller than the viewport are not enlarged.
  */
