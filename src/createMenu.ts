@@ -1,5 +1,3 @@
-import path from "node:path";
-
 import {
   app,
   type BrowserWindow,
@@ -12,7 +10,7 @@ import {
 import type Store from "electron-store";
 import i18next from "i18next";
 
-import { resolveExistingDir } from "./fileUtils";
+import { showOpenImageDialog } from "./openImageDialog";
 
 const localeList: Locale[] = [
   { code: "ar", value: "اللغة العربية" },
@@ -39,12 +37,9 @@ const localeList: Locale[] = [
 
 export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
   const isDarwin = process.platform === "darwin";
-  const dotfiles = isDarwin ? "." : "._";
 
-  const langSub: MenuItemConstructorOptions[] = [];
-
-  localeList.map((locale) => {
-    langSub.push({
+  const langSub = localeList.map(
+    (locale): MenuItemConstructorOptions => ({
       label: locale.value,
       type: "radio",
       id: `language-${locale.code}`,
@@ -71,10 +66,8 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         }
       },
       checked: store.get("language") === locale.code,
-    });
-
-    return locale;
-  });
+    }),
+  );
 
   const viewSub: MenuItemConstructorOptions[] = [
     {
@@ -198,42 +191,12 @@ export const createMenu = (win: BrowserWindow, store: Store<StoreType>) => {
         {
           label: `${i18next.t("Open...")}`,
           accelerator: "CmdOrCtrl+O",
-          click: async () => {
-            return dialog
-              .showOpenDialog(win, {
-                defaultPath: resolveExistingDir(
-                  store.get("lastDir"),
-                  app.getPath("pictures"),
-                ),
-                properties: ["openFile"],
-                title: `${i18next.t("Select an image")}`,
-                filters: [
-                  {
-                    name: i18next.t("Image files"),
-                    extensions: [
-                      "bmp",
-                      "gif",
-                      "ico",
-                      "jpg",
-                      "jpeg",
-                      "png",
-                      "svg",
-                      "webp",
-                    ],
-                  },
-                ],
+          click: () =>
+            showOpenImageDialog(win, store)
+              .then((filepath) => {
+                if (filepath) win.webContents.send("menu-open", filepath);
               })
-              .then((result) => {
-                if (result.canceled) return;
-
-                if (path.basename(result.filePaths[0]).startsWith(dotfiles)) {
-                  return;
-                }
-
-                win.webContents.send("menu-open", result.filePaths[0]);
-              })
-              .catch((err) => console.log(err));
-          },
+              .catch((err) => console.log(err)),
         },
         { type: "separator" },
         {

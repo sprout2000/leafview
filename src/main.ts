@@ -20,16 +20,10 @@ import log from "electron-log";
 import Store from "electron-store";
 import { autoUpdater } from "electron-updater";
 
-import i18next from "i18next";
-
 import { createMenu } from "./createMenu";
 import { createDirWatcher } from "./dirWatcher";
-import {
-  checkmime,
-  isDotfile,
-  readImageDir,
-  resolveExistingDir,
-} from "./fileUtils";
+import { checkmime, isDotfile, readImageDir } from "./fileUtils";
+import { showOpenImageDialog } from "./openImageDialog";
 import { setLocales } from "./setLocales";
 
 console.log = log.log;
@@ -89,8 +83,10 @@ const createWindow = () => {
     mainWindow.webContents.send("dir-changed", dir);
   });
 
+  // Dotfiles are rejected here too, so that every way of opening a file
+  // (dialog, menu, drop, launch) follows the same rule.
   ipcMain.handle("mime-check", (_e: IpcMainInvokeEvent, filepath: string) => {
-    return checkmime(filepath);
+    return !isDotfile(filepath) && checkmime(filepath);
   });
 
   ipcMain.handle("dirname", (_e: IpcMainInvokeEvent, filepath: string) => {
@@ -101,39 +97,9 @@ const createWindow = () => {
     return readImageDir(dir).catch((err) => console.log(err));
   });
 
-  ipcMain.handle("open-dialog", async () => {
-    return dialog
-      .showOpenDialog(mainWindow, {
-        defaultPath: resolveExistingDir(
-          store.get("lastDir"),
-          app.getPath("pictures"),
-        ),
-        properties: ["openFile"],
-        title: `${i18next.t("Select an image")}`,
-        filters: [
-          {
-            name: i18next.t("Image files"),
-            extensions: [
-              "bmp",
-              "gif",
-              "ico",
-              "jpg",
-              "jpeg",
-              "png",
-              "svg",
-              "webp",
-            ],
-          },
-        ],
-      })
-      .then((result) => {
-        if (result.canceled) return;
-        if (isDotfile(result.filePaths[0])) return;
-
-        return result.filePaths[0];
-      })
-      .catch((err) => console.log(err));
-  });
+  ipcMain.handle("open-dialog", () =>
+    showOpenImageDialog(mainWindow, store).catch((err) => console.log(err)),
+  );
 
   ipcMain.handle(
     "move-to-trash",

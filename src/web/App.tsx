@@ -5,9 +5,28 @@ import { Grid } from "./Grid";
 import { getImageAfterRemoval, getNextImage, getPrevImage } from "./imageUtils";
 import { reload } from "./reload";
 import { ToolBar } from "./ToolBar";
+import { useIpcListener } from "./useIpcListener";
 import { View } from "./View";
 
 import "./App.scss";
+
+/**
+ * Reads the image files in the folder of `filepath`.
+ *
+ * Reloads the app and resolves with undefined when the folder is empty or
+ * cannot be read, or, with `mustInclude`, when `filepath` is no longer in it.
+ */
+const readFolderOf = async (filepath: string, mustInclude = false) => {
+  const dir = await window.myAPI.dirname(filepath);
+  const list = await window.myAPI.readdir(dir);
+
+  if (!list || list.length === 0 || (mustInclude && !list.includes(filepath))) {
+    reload();
+    return undefined;
+  }
+
+  return list;
+};
 
 export const App = () => {
   const [url, setUrl] = useState("");
@@ -22,33 +41,20 @@ export const App = () => {
   const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
     handlePreventDefault(e);
 
-    if (grid) {
-      return false;
-    }
+    if (grid || !e.dataTransfer) return;
 
-    if (e.dataTransfer) {
-      const file = e.dataTransfer.files[0];
-
-      if (file.name.startsWith(".")) return;
-
-      const filepath = window.myAPI.showFilePath(file);
-      const mime = await window.myAPI.mimecheck(filepath);
-      if (mime) setUrl(filepath);
-    }
+    // Dotfiles are rejected by mimecheck() in the main process.
+    const filepath = window.myAPI.showFilePath(e.dataTransfer.files[0]);
+    const mime = await window.myAPI.mimecheck(filepath);
+    if (mime) setUrl(filepath);
   };
 
   const handleNext = useCallback(async () => {
     if (!url) return;
     if (grid) setGrid(false);
 
-    const dir = await window.myAPI.dirname(url);
-    const list = await window.myAPI.readdir(dir);
-    if (!list || list.length === 0) {
-      reload();
-      return;
-    }
-
-    if (list.length === 1) return;
+    const list = await readFolderOf(url);
+    if (!list || list.length === 1) return;
 
     setUrl(getNextImage(list, url));
   }, [url, grid]);
@@ -57,14 +63,8 @@ export const App = () => {
     if (!url) return;
     if (grid) setGrid(false);
 
-    const dir = await window.myAPI.dirname(url);
-    const list = await window.myAPI.readdir(dir);
-    if (!list || list.length === 0) {
-      reload();
-      return;
-    }
-
-    if (list.length === 1) return;
+    const list = await readFolderOf(url);
+    if (!list || list.length === 1) return;
 
     setUrl(getPrevImage(list, url));
   }, [url, grid]);
@@ -72,23 +72,15 @@ export const App = () => {
   const handleRemove = useCallback(async () => {
     if (!url) return;
 
-    const dir = await window.myAPI.dirname(url);
-    const list = await window.myAPI.readdir(dir);
-    if (!list || list.length === 0 || !list.includes(url)) {
-      reload();
-      return;
-    }
+    const list = await readFolderOf(url, true);
+    if (!list) return;
 
     await window.myAPI.moveToTrash(url);
-    const newList = await window.myAPI.readdir(dir);
 
-    if (!newList || newList.length === 0) {
-      reload();
-      return;
-    }
+    const newList = await readFolderOf(url);
+    if (!newList) return;
 
     setImgList(newList);
-
     setUrl(getImageAfterRemoval(newList, url));
   }, [url]);
 
@@ -114,12 +106,8 @@ export const App = () => {
   const handleToggleGrid = useCallback(async () => {
     if (!url) return;
 
-    const dir = await window.myAPI.dirname(url);
-    const list = await window.myAPI.readdir(dir);
-    if (!list || list.length === 0 || !list.includes(url)) {
-      reload();
-      return;
-    }
+    const list = await readFolderOf(url, true);
+    if (!list) return;
 
     if (!grid) {
       setImgList(list);
@@ -136,24 +124,16 @@ export const App = () => {
     // not to emit onClickBlank()
     e.stopPropagation();
 
-    const dir = await window.myAPI.dirname(item);
-    const list = await window.myAPI.readdir(dir);
-    if (!list || list.length === 0 || !list.includes(item)) {
-      reload();
-      return;
-    }
+    const list = await readFolderOf(item, true);
+    if (!list) return;
 
     setUrl(item);
     setGrid(false);
   };
 
   const handleClickBlank = async () => {
-    const dir = await window.myAPI.dirname(url);
-    const list = await window.myAPI.readdir(dir);
-    if (!list || list.length === 0 || !list.includes(url)) {
-      reload();
-      return;
-    }
+    const list = await readFolderOf(url, true);
+    if (!list) return;
 
     setGrid(false);
   };
@@ -163,15 +143,12 @@ export const App = () => {
     async (_e: IpcRendererEvent, changedDir: string) => {
       if (!url) return;
 
-      const dir = await window.myAPI.dirname(url);
       // Ignore events from the folder watched before moving to another one.
+      const dir = await window.myAPI.dirname(url);
       if (dir !== changedDir) return;
 
-      const list = await window.myAPI.readdir(dir);
-      if (!list || list.length === 0) {
-        reload();
-        return;
-      }
+      const list = await readFolderOf(url);
+      if (!list) return;
 
       // Keep the thumbnails in sync with the folder.
       setImgList(list);
@@ -187,69 +164,24 @@ export const App = () => {
   const handleContextMenu = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
-    if (grid) {
-      e.preventDefault();
-      return false;
-    }
-
     e.preventDefault();
-    window.myAPI.contextMenu();
+    if (!grid) window.myAPI.contextMenu();
   };
-
-  const updateTitle = useCallback(async (filepath: string) => {
-    await window.myAPI.updateTitle(filepath);
-  }, []);
 
   useEffect(() => {
     if (url) window.myAPI.history(url);
   }, [url]);
 
   useEffect(() => {
-    const unlistenFn = window.myAPI.menuNext(handleNext);
-    return () => {
-      unlistenFn();
-    };
-  }, [handleNext]);
+    window.myAPI.updateTitle(url || "LeafView");
+  }, [url]);
 
-  useEffect(() => {
-    const unlistenFn = window.myAPI.menuPrev(handlePrev);
-    return () => {
-      unlistenFn();
-    };
-  }, [handlePrev]);
-
-  useEffect(() => {
-    const unlistenFn = window.myAPI.menuRemove(handleRemove);
-    return () => {
-      unlistenFn();
-    };
-  }, [handleRemove]);
-
-  useEffect(() => {
-    const unlistenFn = window.myAPI.menuOpen(handleMenuOpen);
-    return () => {
-      unlistenFn();
-    };
-  }, [handleMenuOpen]);
-
-  useEffect(() => {
-    const unlistenFn = window.myAPI.toggleGrid(handleToggleGrid);
-    return () => {
-      unlistenFn();
-    };
-  }, [handleToggleGrid]);
-
-  useEffect(() => {
-    const unlistenFn = window.myAPI.dirChanged(handleDirChanged);
-    return () => {
-      unlistenFn();
-    };
-  }, [handleDirChanged]);
-
-  useEffect(() => {
-    const title = url || "LeafView";
-    updateTitle(title);
-  }, [url, updateTitle]);
+  useIpcListener(window.myAPI.menuNext, handleNext);
+  useIpcListener(window.myAPI.menuPrev, handlePrev);
+  useIpcListener(window.myAPI.menuRemove, handleRemove);
+  useIpcListener(window.myAPI.menuOpen, handleMenuOpen);
+  useIpcListener(window.myAPI.toggleGrid, handleToggleGrid);
+  useIpcListener(window.myAPI.dirChanged, handleDirChanged);
 
   return (
     // biome-ignore lint/a11y/noStaticElementInteractions: the whole window is a drop target for image files and opens the native context menu; it is not a control.

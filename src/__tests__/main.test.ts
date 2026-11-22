@@ -473,6 +473,20 @@ describe("main.ts", () => {
       expect(invoke("mime-check", "/pics/a.txt")).toBe(false);
     });
 
+    it("mime-check rejects dotfiles on macOS", async () => {
+      const { invoke } = await load({ platform: "darwin" });
+
+      expect(invoke("mime-check", "/pics/.hidden.png")).toBe(false);
+      expect(invoke("mime-check", "/pics/._a.png")).toBe(false);
+    });
+
+    it("mime-check only rejects AppleDouble files on other platforms", async () => {
+      const { invoke } = await load({ platform: "win32" });
+
+      expect(invoke("mime-check", "/pics/.hidden.png")).toBe(true);
+      expect(invoke("mime-check", "/pics/._a.png")).toBe(false);
+    });
+
     it("dirname", async () => {
       const { invoke } = await load();
 

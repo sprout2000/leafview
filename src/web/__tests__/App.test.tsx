@@ -21,8 +21,10 @@ const A = "/pics/a.png";
 const B = "/pics/b.png";
 const C = "/pics/c.png";
 
+/** Emulates the "mime-check" handler of main.ts, which also rejects dotfiles. */
 const isImage = (filepath: string) =>
-  /\.(bmp|gif|ico|jpe?g|png|svg|webp)$/i.test(filepath);
+  /\.(bmp|gif|ico|jpe?g|png|svg|webp)$/i.test(filepath) &&
+  !filepath.slice(filepath.lastIndexOf("/") + 1).startsWith(".");
 
 /** In-memory replacement of the API exposed by preload.ts */
 const createMockAPI = (initialFiles: string[]) => {
@@ -229,7 +231,8 @@ describe("<App />", () => {
         });
       });
 
-      expect(mock.api.showFilePath).not.toHaveBeenCalled();
+      // rejected by the main process
+      expect(mock.api.mimecheck).toHaveBeenCalledWith("/pics/.hidden.png");
       expect(view()).toBeEmptyDOMElement();
     });
 

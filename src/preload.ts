@@ -1,4 +1,20 @@
-import { contextBridge, ipcRenderer, webUtils } from "electron";
+import {
+  contextBridge,
+  type IpcRendererEvent,
+  ipcRenderer,
+  webUtils,
+} from "electron";
+
+/**
+ * Returns a function that subscribes a listener to an IPC message from the
+ * main process, and returns a function to unsubscribe it.
+ */
+const listen =
+  <Args extends unknown[] = []>(channel: string) =>
+  (listener: (e: IpcRendererEvent, ...args: Args) => Promise<void>) => {
+    ipcRenderer.on(channel, listener);
+    return () => ipcRenderer.removeAllListeners(channel);
+  };
 
 contextBridge.exposeInMainWorld("myAPI", {
   showFilePath: (file: File) => webUtils.getPathForFile(file),
@@ -28,40 +44,10 @@ contextBridge.exposeInMainWorld("myAPI", {
   updateTitle: (filepath: string): Promise<void> =>
     ipcRenderer.invoke("update-title", filepath),
 
-  menuNext: (listener: () => Promise<void>) => {
-    ipcRenderer.on("menu-next", listener);
-    return () => ipcRenderer.removeAllListeners("menu-next");
-  },
-
-  menuPrev: (listener: () => Promise<void>) => {
-    ipcRenderer.on("menu-prev", listener);
-    return () => ipcRenderer.removeAllListeners("menu-prev");
-  },
-
-  menuRemove: (listener: () => Promise<void>) => {
-    ipcRenderer.on("menu-remove", listener);
-    return () => ipcRenderer.removeAllListeners("menu-remove");
-  },
-
-  menuOpen: (
-    listener: (
-      _e: Electron.IpcRendererEvent,
-      filepath: string,
-    ) => Promise<void>,
-  ) => {
-    ipcRenderer.on("menu-open", listener);
-    return () => ipcRenderer.removeAllListeners("menu-open");
-  },
-
-  toggleGrid: (listener: () => Promise<void>) => {
-    ipcRenderer.on("toggle-grid", listener);
-    return () => ipcRenderer.removeAllListeners("toggle-grid");
-  },
-
-  dirChanged: (
-    listener: (_e: Electron.IpcRendererEvent, dir: string) => Promise<void>,
-  ) => {
-    ipcRenderer.on("dir-changed", listener);
-    return () => ipcRenderer.removeAllListeners("dir-changed");
-  },
+  menuNext: listen("menu-next"),
+  menuPrev: listen("menu-prev"),
+  menuRemove: listen("menu-remove"),
+  menuOpen: listen<[filepath: string]>("menu-open"),
+  toggleGrid: listen("toggle-grid"),
+  dirChanged: listen<[dir: string]>("dir-changed"),
 });
