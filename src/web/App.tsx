@@ -42,11 +42,6 @@ export const App = () => {
     if (grid) setGrid(false);
 
     const dir = await window.myAPI.dirname(url);
-    if (!dir) {
-      reload();
-      return;
-    }
-
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0) {
       reload();
@@ -63,11 +58,6 @@ export const App = () => {
     if (grid) setGrid(false);
 
     const dir = await window.myAPI.dirname(url);
-    if (!dir) {
-      reload();
-      return;
-    }
-
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0) {
       reload();
@@ -83,11 +73,6 @@ export const App = () => {
     if (!url) return;
 
     const dir = await window.myAPI.dirname(url);
-    if (!dir) {
-      reload();
-      return;
-    }
-
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       reload();
@@ -130,11 +115,6 @@ export const App = () => {
     if (!url) return;
 
     const dir = await window.myAPI.dirname(url);
-    if (!dir) {
-      reload();
-      return;
-    }
-
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       reload();
@@ -157,11 +137,6 @@ export const App = () => {
     e.stopPropagation();
 
     const dir = await window.myAPI.dirname(item);
-    if (!dir) {
-      reload();
-      return;
-    }
-
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(item)) {
       reload();
@@ -174,11 +149,6 @@ export const App = () => {
 
   const handleClickBlank = async () => {
     const dir = await window.myAPI.dirname(url);
-    if (!dir) {
-      reload();
-      return;
-    }
-
     const list = await window.myAPI.readdir(dir);
     if (!list || list.length === 0 || !list.includes(url)) {
       reload();

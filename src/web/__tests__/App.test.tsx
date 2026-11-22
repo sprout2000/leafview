@@ -442,20 +442,6 @@ describe("<App />", () => {
     ];
 
     it.each(toolbarActions)(
-      "%s reloads when the directory cannot be resolved",
-      async (title) => {
-        await renderWith(B);
-        mock.api.dirname.mockResolvedValueOnce("");
-
-        await clickButton(title);
-
-        expect(reload).toHaveBeenCalledTimes(1);
-        expect(mock.api.readdir).not.toHaveBeenCalled();
-        expect(view()).toHaveTextContent(B);
-      },
-    );
-
-    it.each(toolbarActions)(
       "%s reloads when the directory cannot be read",
       async (title) => {
         await renderWith(B);
@@ -517,22 +503,6 @@ describe("<App />", () => {
           fireEvent.click(container.querySelector(".grid-content") as Element);
         });
       };
-
-      it.each([
-        ["thumbnail", clickThumb],
-        ["background", clickBlank],
-      ])(
-        "clicking the %s reloads when the directory cannot be resolved",
-        async (_name, click) => {
-          const { container } = await openGrid();
-          mock.api.dirname.mockResolvedValueOnce("");
-
-          await click(container);
-
-          expect(reload).toHaveBeenCalledTimes(1);
-          expect(container.firstChild).toHaveClass("grid");
-        },
-      );
 
       it.each([
         ["thumbnail", clickThumb, undefined],
