@@ -2,12 +2,7 @@ import type { IpcRendererEvent } from "electron";
 import { useCallback, useEffect, useState } from "react";
 
 import { Grid } from "./Grid";
-import {
-  getImageAfterExternalRemoval,
-  getImageAfterRemoval,
-  getNextImage,
-  getPrevImage,
-} from "./imageUtils";
+import { getImageAfterRemoval, getNextImage, getPrevImage } from "./imageUtils";
 import { reload } from "./reload";
 import { ToolBar } from "./ToolBar";
 import { View } from "./View";
@@ -99,8 +94,6 @@ export const App = () => {
       return;
     }
 
-    const index = list.indexOf(url);
-
     await window.myAPI.moveToTrash(url);
     const newList = await window.myAPI.readdir(dir);
 
@@ -111,7 +104,7 @@ export const App = () => {
 
     setImgList(newList);
 
-    setUrl(getImageAfterRemoval(newList, index));
+    setUrl(getImageAfterRemoval(newList, url));
   }, [url]);
 
   const handleClickOpen = useCallback(async () => {
@@ -215,7 +208,7 @@ export const App = () => {
 
       // The current image was removed: show the next one.
       if (!list.includes(url)) {
-        setUrl(getImageAfterExternalRemoval(list, url));
+        setUrl(getImageAfterRemoval(list, url));
       }
     },
     [url],
