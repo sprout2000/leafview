@@ -14,6 +14,7 @@
     "icon": "assets/linux.icns",
     "target": ["AppImage", "deb"],
     "mimeTypes": [
+      "image/avif",
       "image/bmp",
       "image/gif",
       "image/png",
@@ -28,7 +29,17 @@
     "target": ["nsis", "zip"],
     "fileAssociations": [
       {
-        "ext": ["bmp", "gif", "jpeg", "jpg", "png", "ico", "svg", "webp"],
+        "ext": [
+          "avif",
+          "bmp",
+          "gif",
+          "jpeg",
+          "jpg",
+          "png",
+          "ico",
+          "svg",
+          "webp"
+        ],
         "description": "Image files"
       }
     ]
@@ -57,12 +68,14 @@
           "CFBundleTypeName": "ImageFile",
           "CFBundleTypeRole": "Viewer",
           "LSItemContentTypes": [
+            "public.avif",
             "com.google.webp",
             "com.microsoft.bmp",
             "com.microsoft.ico",
             "com.compuserve.gif",
             "public.jpeg",
-            "public.png"
+            "public.png",
+            "public.svg-image"
           ],
           "LSHandlerRank": "Default"
         }

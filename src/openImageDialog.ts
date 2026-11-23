@@ -25,7 +25,17 @@ export const showOpenImageDialog = async (
     filters: [
       {
         name: i18next.t("Image files"),
-        extensions: ["bmp", "gif", "ico", "jpg", "jpeg", "png", "svg", "webp"],
+        extensions: [
+          "avif",
+          "bmp",
+          "gif",
+          "ico",
+          "jpg",
+          "jpeg",
+          "png",
+          "svg",
+          "webp",
+        ],
       },
     ],
   });

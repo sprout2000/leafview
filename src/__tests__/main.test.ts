@@ -578,6 +578,21 @@ describe("main.ts", () => {
         );
       });
 
+      it("lists AVIF in the file filter", async () => {
+        h.electron.dialog.showOpenDialog.mockResolvedValue({
+          canceled: true,
+          filePaths: [],
+        });
+        const { invoke } = await load();
+
+        await invoke("open-dialog");
+
+        const options = h.electron.dialog.showOpenDialog.mock.calls[0][1] as {
+          filters: { extensions: string[] }[];
+        };
+        expect(options.filters[0].extensions).toContain("avif");
+      });
+
       it("returns undefined when canceled", async () => {
         h.electron.dialog.showOpenDialog.mockResolvedValue({
           canceled: true,
