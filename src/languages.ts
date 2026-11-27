@@ -114,5 +114,5 @@ export const languages: Language[] = [
     translation: zh_CN,
     aliases: ["zh"],
   },
-  { code: "zh-TW", label: "繁体中文", translation: zh_TW },
+  { code: "zh-TW", label: "繁體中文", translation: zh_TW },
 ];
