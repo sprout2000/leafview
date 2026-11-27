@@ -17,7 +17,7 @@ _Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-at
 - Browse images in a folder
 - Grid view
 - Remembers the last opened folder
-- Follows files added to or removed from the folder
+- Automatically picks up files added to or removed from the folder
 - Available in [20 languages](#globe_with_meridians-supported-languages)
 - Automatic updates _(macOS and Linux only)_
 
@@ -52,14 +52,14 @@ Download the latest version of _LeafView_ from the [Releases page](https://githu
 |                    <kbd>Fn</kbd>+<kbd>Delete</kbd> or <kbd>Del</kbd>                    | Move to Trash    |
 |                       <kbd>H</kbd>, <kbd>Ctrl</kbd>+<kbd>G</kbd>                        | Toggle Grid View |
 
-### :computer_mouse: Mouse Operations
+### :computer_mouse: Mouse Controls
 
 |    Mouse     | Function              |
 | :----------: | :-------------------- |
 |     Drag     | Pan                   |
 |    Wheel     | Zoom In/Out           |
 | Double-click | Reset Zoom            |
-| Right-click  | Show the Context Menu |
+| Right-click  | Show Context Menu     |
 
 ## :globe_with_meridians: Supported Languages
 
@@ -83,8 +83,8 @@ Download the latest version of _LeafView_ from the [Releases page](https://githu
 | Русский          |  `ru`   |
 | Türkçe           |  `tr`   |
 | Українська       |  `uk`   |
-| 简体中文         | `zh_CN` |
-| 繁體中文         | `zh_TW` |
+| 简体中文         | `zh-CN` |
+| 繁體中文         | `zh-TW` |
 
 ## :beers: Contributing
 
@@ -108,7 +108,7 @@ You can easily contribute to this repository by providing a translation.
 
 ## :tada: Contributors
 
-Thanks go to these wonderful people :slightly_smiling_face::
+Thanks go to these wonderful people! :slightly_smiling_face:
 
 <a href="https://github.com/sprout2000/leafview/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=sprout2000/leafview" />
