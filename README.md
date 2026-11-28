@@ -54,12 +54,12 @@ Download the latest version of _LeafView_ from the [Releases page](https://githu
 
 ### :computer_mouse: Mouse Controls
 
-|    Mouse     | Function              |
-| :----------: | :-------------------- |
-|     Drag     | Pan                   |
-|    Wheel     | Zoom In/Out           |
-| Double-click | Reset Zoom            |
-| Right-click  | Show Context Menu     |
+|    Mouse     | Function          |
+| :----------: | :---------------- |
+|     Drag     | Pan               |
+|    Wheel     | Zoom In/Out       |
+| Double-click | Reset Zoom        |
+| Right-click  | Show Context Menu |
 
 ## :globe_with_meridians: Supported Languages
 
