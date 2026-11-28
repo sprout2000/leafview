@@ -52,7 +52,7 @@ const createMockAPI = (initialFiles: string[]) => {
     moveToTrash: vi.fn(async (filepath: string) => {
       files = files.filter((file) => file !== filepath);
     }),
-    openDialog: vi.fn(async (): Promise<string | undefined> => {}),
+    openDialog: vi.fn(async (): Promise<string | undefined> => undefined),
     updateTitle: vi.fn(async (_filepath: string) => {}),
     menuNext: subscribe("menu-next"),
     menuPrev: subscribe("menu-prev"),
