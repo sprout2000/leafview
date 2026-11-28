@@ -23,7 +23,7 @@ const C = "/pics/c.png";
 
 /** Emulates the "mime-check" handler of main.ts, which also rejects dotfiles. */
 const isImage = (filepath: string) =>
-  /\.(avif|bmp|gif|ico|jpe?g|png|svg|webp)$/i.test(filepath) &&
+  /\.(bmp|gif|ico|jpe?g|png|svg|webp)$/i.test(filepath) &&
   !filepath.slice(filepath.lastIndexOf("/") + 1).startsWith(".");
 
 /** In-memory replacement of the API exposed by preload.ts */

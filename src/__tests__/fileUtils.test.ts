@@ -14,7 +14,6 @@ import {
 
 describe("checkmime", () => {
   it.each([
-    "a.avif",
     "a.bmp",
     "a.gif",
     "a.ico",

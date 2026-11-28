@@ -17,7 +17,7 @@ export const isDotfile = (
 ) => path.basename(filepath).startsWith(getDotfilesPrefix(platform));
 
 export const checkmime = (filepath: string) => {
-  const regexp = new RegExp(/avif|bmp|ico|gif|jpeg|png|svg|webp/);
+  const regexp = new RegExp(/bmp|ico|gif|jpeg|png|svg|webp/);
   const mimetype = mime.lookup(filepath);
 
   return (mimetype && regexp.test(mimetype)) || false;
