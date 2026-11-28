@@ -14,7 +14,6 @@
     "icon": "assets/linux.icns",
     "target": ["AppImage", "deb"],
     "mimeTypes": [
-      "image/avif",
       "image/bmp",
       "image/gif",
       "image/png",
